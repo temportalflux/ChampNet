@@ -36,3 +36,5 @@ _WORKSPACE/
 *.gradle
 *.tmp
 project/.vs/
+DevSDKs/DevSDKs/
+DevSDKs/readme.txt
