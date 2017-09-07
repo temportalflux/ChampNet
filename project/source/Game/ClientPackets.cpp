@@ -15,7 +15,7 @@ namespace Game {
 
 	void ClientPackets::subscribeTo(Network::Network* network) {
 		this->mpNetwork = network;
-		//network->addPacketHandler(ID_CONNECTION_REQUEST_ACCEPTED, this);
+		network->addPacketHandler(ID_CONNECTION_REQUEST_ACCEPTED, this);
 		//network->addPacketHandler(ID_NO_FREE_INCOMING_CONNECTIONS, this);
 		//network->addPacketHandler(ID_DISCONNECTION_NOTIFICATION, this);
 		//network->addPacketHandler(ID_CONNECTION_LOST, this);
@@ -61,11 +61,22 @@ namespace Game {
 			break;
 		}
 		*/
+		switch (info.getPacketType()) {
+			case ID_CONNECTION_REQUEST_ACCEPTED:
+				{
+					this->mAddressServer = info.address;
+
+
+				}
+				break;
+			default:
+				break;
+		}
 	}
 
 	void ClientPackets::onExit() {
 		this->mpNetwork->disconnect(
-			Game::PacketMessage{ (unsigned char)Game::ID_CLIENT_LEFT, "Client is leaving." }
+			PacketString{ (unsigned char)GameMessages::ID_CLIENT_LEFT, "Client is leaving." }
 		);
 	}
 

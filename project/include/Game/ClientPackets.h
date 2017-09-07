@@ -8,6 +8,7 @@ namespace Game {
 
 	private:
 		Network::Network* mpNetwork;
+		RakNet::SystemAddress mAddressServer;
 
 	public:
 		ClientPackets();

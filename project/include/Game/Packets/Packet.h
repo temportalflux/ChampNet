@@ -20,22 +20,51 @@ namespace Game {
 	{
 		ID_PLACEHOLDER = Network::BASE_PACKET_ENUM,
 		// CLIENT->SERVER, notify server that a client has successfully joined
-		ID_CLIENT_JOINED,
+		//ID_CLIENT_JOINED,
 		// SERVER->CLIENT, confirm that the server recognizes the client has joined
-		ID_CLIENT_JOINED_CONFIRM,
+		//ID_CLIENT_JOINED_CONFIRM,
 		// CLIENT->SERVER, notify server that a client has left
-		ID_CLIENT_LEFT
+		ID_CLIENT_LEFT,
+
+		// Handshake exchange
+		// Client->Server; client responds to connection by sendings its username
+		ID_USERNAME,
+		// Server->Client; broadcast welcome message to all clients (a new client has joined)
+		ID_NEW_CLIENT_JOINED,
+		// Server->Client; server tells client its ID number
+		ID_CLIENT_NUMBER,
+
+		// Messaging
+		// Client->Client; Client broadcast to some username (or all)
+		ID_CHAT_MESSAGE,
+		ID_COMMAND_REQUEST,
+
+		// Misc
+		ID_SEND_ALL, // used to notify incoming users of a list of current usernames active
 
 	};
 
 #pragma pack(push, 1)
 
-	// A simple packet carrying a message
-	struct PacketMessage {
-		unsigned char typeId;
-		char *message;
+	// GameMessages::ID_USERNAME
+	// GameMessages::ID_NEW_CLIENT_JOINED
+	struct PacketString {
+		unsigned char packetID;
+		char content[31];
 	};
 
+	// GameMessages::ID_CLIENT_NUMBER
+	struct PacketUInt {
+		unsigned char packetID;
+		unsigned int clientID;
+	};
+
+	// GameMessages::ID_CHAT_MESSAGE
+	struct PacketChatMessage {
+		unsigned char packetID;
+		char username[31];
+		char message[64];
+	};
 
 #pragma pack(pop)
 	

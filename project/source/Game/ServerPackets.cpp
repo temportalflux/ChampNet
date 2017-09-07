@@ -21,7 +21,7 @@ namespace Game {
 		//network->addPacketHandler(ID_CONNECTION_LOST, this);
 		//network->addPacketHandler(ID_REMOTE_CONNECTION_LOST, this);
 		//network->addPacketHandler(ID_CLIENT_JOINED, this);
-		//network->addPacketHandler(ID_CLIENT_LEFT, this);
+		network->addPacketHandler(ID_CLIENT_LEFT, this);
 	}
 
 	void ServerPackets::handlePacketData(Network::PacketInfo info) {
@@ -75,6 +75,15 @@ namespace Game {
 			break;
 		}
 		*/
+		switch (info.getPacketType()) {
+			case ID_CLIENT_LEFT:
+				{
+					printf("%s\n", ((PacketString*)(info.data))->content);
+				}
+				break;
+			default:
+				break;
+		}
 	}
 
 }
