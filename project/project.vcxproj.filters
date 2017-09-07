@@ -13,14 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\packets">
-      <UniqueIdentifier>{46eceb1b-0012-44c7-a51f-c3f29608d96e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\network">
+    <Filter Include="Header Files\Network">
       <UniqueIdentifier>{ecd2897b-8417-476f-b676-31efe03df4a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\network">
+    <Filter Include="Source Files\Network">
       <UniqueIdentifier>{9016c8a1-9246-4a07-9b52-424ccb901d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{27504487-f130-469d-a86c-f3584f5af452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6c481f2f-d116-464b-b552-3e045155b7d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Packets">
+      <UniqueIdentifier>{bda9f182-df89-419c-92d8-20b0c60dd7b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,33 +34,63 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\network\Network.cpp">
-      <Filter>Source Files\network</Filter>
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
     <ClCompile Include="source\network\PacketManager.cpp">
-      <Filter>Source Files\network</Filter>
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="source\PacketHandlerImpl.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\network\Client.cpp">
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="source\Framework.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\network\Framework.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="source\network\Server.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\ClientPackets.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\ServerPackets.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\InputSystem.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\Game.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\packets\Packet.h">
-      <Filter>Header Files\packets</Filter>
-    </ClInclude>
     <ClInclude Include="include\network\Network.h">
-      <Filter>Header Files\network</Filter>
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
     <ClInclude Include="include\network\PacketManager.h">
-      <Filter>Header Files\network</Filter>
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\PacketHandlerImpl.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\network\Client.h">
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\Framework.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\network\Framework.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\network\Server.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\ServerPackets.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\ClientPackets.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\InputSystem.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Packets\Packet.h">
+      <Filter>Header Files\Game\Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Game.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

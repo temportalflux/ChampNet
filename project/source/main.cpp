@@ -9,11 +9,12 @@
 	to a plagiarism-checking service, which may retain a copy of
 	the project on its database.
 */
-#include "Framework.h"
+#include <cstdlib>
+#include "Game\Game.h"
 
 int main(void)
 {
-	Framework().run();
+	Game::Game().run();
 	system("pause");
 	return 0;
 }

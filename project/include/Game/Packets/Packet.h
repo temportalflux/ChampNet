@@ -13,7 +13,7 @@
 
 #include "network\Network.h"
 
-namespace NetworkImpl {
+namespace Game {
 	
 	// A list of user implemented methods outside of RakNet
 	enum GameMessages
