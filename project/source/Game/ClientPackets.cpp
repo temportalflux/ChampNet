@@ -50,7 +50,13 @@ namespace Game {
 					// Prompt for username
 					printf("Enter Username (30 characters): ");
 					fgets(packetUsername.content, 31, stdin); // clean up input
-					
+					// Remove newline from string
+					for (int i = 0; i < strlen(packetUsername.content); i++)
+						if (packetUsername.content[i] == '\n') {
+							packetUsername.content[i] = '\0';
+							break;
+						}
+
 					// Send username to server
 					this->mpNetwork->sendTo(packetUsername, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 					
@@ -65,6 +71,7 @@ namespace Game {
 				// AUTHOR: Dustin Yost
 			case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 				{
+					printf("Recieved client ID\n");
 					mID = ((PacketUInt*)info.data)->clientID;
 				}
 				break;

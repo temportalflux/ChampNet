@@ -46,8 +46,10 @@ namespace Game {
 			//Author: Jon T
 			case ID_USERNAME:
 				{
+					PacketString* packetOut = (PacketString*)(info.data);
+
 					//gets the username that the user inputed
-					UserName username = ((PacketString*)(info.data))->content;
+					UserName username = packetOut->content;
 					//gets the systemAdress of the 
 					UserAddress systemAddress = (info.address);
 
@@ -58,8 +60,13 @@ namespace Game {
 					this->mMapAddressToID[systemAddress] = userId;
 					this->mMapIDToName[userId] = username;
 					
-					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
-					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+					PacketString notifyNewUser = PacketString{ ID_NEW_CLIENT_JOINED };
+					strncpy(notifyNewUser.content, username, 31);
+					this->mpNetwork->sendTo(notifyNewUser, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
+					
+					// Notify client of its ID
+					this->mpNetwork->sendTo(PacketUInt{ ID_CLIENT_NUMBER, userId }, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+				
 				}
 				break;
 			default:
@@ -72,8 +79,9 @@ namespace Game {
 	ServerPackets::UserID ServerPackets::getNextFreeID()
 	{
 		UserID nextID;
+		size_t count = this->mMapIDToName.size();
 		// look for empty slots in the map
-		for (nextID = 0; nextID < this->mMapIDToName.count; nextID++) {
+		for (nextID = 0; nextID < count; nextID++) {
 			if (this->mMapIDToName.find(nextID) == this->mMapIDToName.end()) {
 				// no entry for nextID - empty slot found
 				break;
