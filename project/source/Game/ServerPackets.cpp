@@ -6,7 +6,8 @@
 namespace Game {
 
 	ServerPackets::ServerPackets() {
-
+		mMapNameToAddress = UserNameToAddress();
+		mMapAddressToName = UserAddressToName();
 	}
 
 	ServerPackets::~ServerPackets() {
