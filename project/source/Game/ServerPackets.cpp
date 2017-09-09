@@ -22,6 +22,7 @@ namespace Game {
 		//network->addPacketHandler(ID_REMOTE_CONNECTION_LOST, this);
 		//network->addPacketHandler(ID_CLIENT_JOINED, this);
 		network->addPacketHandler(ID_CLIENT_LEFT, this);
+		network->addPacketHandler(ID_USERNAME, this);
 	}
 
 	void ServerPackets::handlePacketData(Network::PacketInfo info) {
@@ -79,6 +80,17 @@ namespace Game {
 			case ID_CLIENT_LEFT:
 				{
 					printf("%s\n", ((PacketString*)(info.data))->content);
+				}
+				break;
+			//Author: by Jon
+			case ID_USERNAME:
+				{
+					//gets the username that the user inputed
+					char * Username = ((PacketString*)(info.data))->content;
+					//gets the systemAdress of the 
+					RakNet::SystemAddress systemAddress = (info.address);
+
+
 				}
 				break;
 			default:
