@@ -13,6 +13,8 @@ namespace Game {
 		typedef std::map<UserAddress, UserName> UserAddressToName;
 
 	private:
+		Network::Network* mpNetwork;
+
 		UserNameToAddress mMapNameToAddress;
 		UserAddressToName mMapAddressToName;
 
@@ -26,6 +28,8 @@ namespace Game {
 		virtual void handlePacketData(Network::PacketInfo info);
 
 		virtual void onExit() {}
+
+		unsigned int getNextFreeID();
 
 	};
 
