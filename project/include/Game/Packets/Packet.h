@@ -1,8 +1,8 @@
 /*
 	Dustin Yost 0984932
 	EGP-405-02
-	Lab1
-	09/03/2017
+	Project 1
+	09/21/2017
 	We certify that this work is entirely our own.
 	The assessor of this project may reproduce this project and provide
 	copies to other academic staff, and/or communicate a copy of this project
@@ -14,7 +14,8 @@
 #include "network\Network.h"
 
 namespace Game {
-	
+
+	// Author: Dustin Yost
 	// A list of user implemented methods outside of RakNet
 	enum GameMessages
 	{
@@ -46,24 +47,28 @@ namespace Game {
 
 #pragma pack(push, 1)
 
+	// Author: Dustin Yost
 	// GameMessages::ID_USERNAME
 	struct PacketString {
 		unsigned char packetID;
 		char content[31];
 	};
 
+	// Author: Dustin Yost
 	// GameMessages::ID_NEW_CLIENT_JOINED
 	struct PacketStringLarge {
 		unsigned char packetID;
 		char content[511];
 	};
 
+	// Author: Dustin Yost
 	// GameMessages::ID_CLIENT_NUMBER
 	struct PacketUInt {
 		unsigned char packetID;
 		unsigned int clientID;
 	};
 
+	// Author: Dustin Yost
 	// GameMessages::ID_CHAT_MESSAGE
 	struct PacketChatMessage {
 		unsigned char packetID;

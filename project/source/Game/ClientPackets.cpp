@@ -1,7 +1,7 @@
 /*
 	Dustin Yost 0984932
 	EGP-405-02
-	Project1
+	Project 1
 	09/21/2017
 	We certify that this work is entirely our own.
 	The assessor of this project may reproduce this project and provide
@@ -16,68 +16,30 @@
 
 #include <iostream>
 
-// AUTHOR: Dustin Yost
 namespace Game {
 
+	// AUTHOR: Dustin Yost
 	ClientPackets::ClientPackets() {
 
 	}
 
+	// AUTHOR: Dustin Yost
 	ClientPackets::~ClientPackets() {
 		mpNetwork = NULL; // not owned by us
 	}
 
+	// Author: Dustin Yost
 	void ClientPackets::subscribeTo(Network::Network* network) {
 		this->mpNetwork = network;
 		network->addPacketHandler(ID_CONNECTION_REQUEST_ACCEPTED, this);
 		network->addPacketHandler(ID_NEW_CLIENT_JOINED, this);
 		network->addPacketHandler(ID_CLIENT_NUMBER, this);
-		//network->addPacketHandler(ID_NO_FREE_INCOMING_CONNECTIONS, this);
-		//network->addPacketHandler(ID_DISCONNECTION_NOTIFICATION, this);
-		//network->addPacketHandler(ID_CONNECTION_LOST, this);
-		//network->addPacketHandler(ID_CLIENT_JOINED_CONFIRM, this);
 	}
 
+	// AUTHOR: Dustin Yost
 	void ClientPackets::handlePacketData(Network::PacketInfo info) {
-		/*
-		switch (info.data[0])
-		{
-			// the request to join a server has been granted
-		case ID_CONNECTION_REQUEST_ACCEPTED:
-		{
-			//printf("> Our connection request has been accepted.\n");
-
-			PacketMessage packetMsg = PacketMessage();
-			packetMsg.typeId = (unsigned char)ID_CLIENT_JOINED;
-			packetMsg.message = "Hello server";
-			info.network->sendTo(packetMsg, info.address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
-
-		}
-		break;
-		// tried to join, but the server was full
-		case ID_NO_FREE_INCOMING_CONNECTIONS:
-			printf("> The server is full.\n");
-			break;
-			// client disconnected
-		case ID_DISCONNECTION_NOTIFICATION:
-			printf("> We have been disconnected.\n");
-			break;
-			// client lost connection
-		case ID_CONNECTION_LOST:
-			printf("> Connection lost.\n");
-			break;
-		case ID_CLIENT_JOINED_CONFIRM:
-		{
-			//printf("> Joined confirmation.\n");
-			printf("%s\n", ((PacketMessage*)(info.data))->message);
-			break;
-		}
-		default:
-			printf("> Message with identifier %i has arrived.\n", info.data[0]);
-			break;
-		}
-		*/
 		switch (info.getPacketType()) {
+			// AUTHOR: Dustin Yost
 			case ID_CONNECTION_REQUEST_ACCEPTED: // Handle connections
 				{
 					this->mAddressServer = info.address;
@@ -94,11 +56,13 @@ namespace Game {
 					
 				}
 				break;
+				// AUTHOR: Dustin Yost
 			case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
 				{
-					printf("> %s\n", ((PacketStringLarge*)info.data)->content);
+					printf("> %s%s%s\n", "User ", ((PacketString*)info.data)->content, " has joined.");
 				}
 				break;
+				// AUTHOR: Dustin Yost
 			case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 				{
 					mID = ((PacketUInt*)info.data)->clientID;
