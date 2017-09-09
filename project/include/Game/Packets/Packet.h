@@ -47,10 +47,15 @@ namespace Game {
 #pragma pack(push, 1)
 
 	// GameMessages::ID_USERNAME
-	// GameMessages::ID_NEW_CLIENT_JOINED
 	struct PacketString {
 		unsigned char packetID;
 		char content[31];
+	};
+
+	// GameMessages::ID_NEW_CLIENT_JOINED
+	struct PacketStringLarge {
+		unsigned char packetID;
+		char content[511];
 	};
 
 	// GameMessages::ID_CLIENT_NUMBER
