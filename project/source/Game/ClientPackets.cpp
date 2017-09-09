@@ -3,6 +3,8 @@
 #include "Network\Network.h"
 #include "Game\Packets\Packet.h"
 
+#include <iostream>
+
 namespace Game {
 
 	ClientPackets::ClientPackets() {
@@ -64,9 +66,19 @@ namespace Game {
 		switch (info.getPacketType()) {
 			case ID_CONNECTION_REQUEST_ACCEPTED:
 				{
+					// AUTHOR: Dustin Yost
 					this->mAddressServer = info.address;
 
+					// Construct response packet
+					PacketString packetUsername = PacketString{ ID_USERNAME };
 
+					// Prompt for username
+					printf("Enter Username (30 characters): ");
+					fgets(packetUsername.content, 31, stdin); // clean up input
+					
+					// Send username to server
+					this->mpNetwork->sendTo(packetUsername, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+					
 				}
 				break;
 			default:
