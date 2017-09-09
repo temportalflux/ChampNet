@@ -28,6 +28,7 @@ namespace Game {
 		typedef std::map<UserID, UserName> UserIDToName;
 
 	private:
+		Network::Network* mpNetwork;
 		// Author: Dustin Yost
 		UserIDToAddress mMapIDToAddress;
 		// Author: Dustin Yost
@@ -48,6 +49,8 @@ namespace Game {
 
 		// Author: Dustin Yost
 		virtual void onExit() {}
+
+		unsigned int getNextFreeID();
 
 	};
 

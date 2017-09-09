@@ -30,6 +30,7 @@ namespace Game {
 
 	void ServerPackets::subscribeTo(Network::Network* network) {
 		// Author: Dustin Yost
+		this->mpNetwork = network;
 		network->addPacketHandler(ID_CLIENT_LEFT, this);
 		network->addPacketHandler(ID_USERNAME, this);
 	}
@@ -52,11 +53,17 @@ namespace Game {
 					//inputs that information into a pair of maps so the server has access to them
 					this->mMapIDToAddress[username] = systemAddress;
 					this->mMapAddressToID[systemAddress] = username;
+					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
 				}
 				break;
 			default:
 				break;
 		}
+	}
+
+	unsigned int ServerPackets::getNextFreeID()
+	{
+		return 0;
 	}
 
 }
