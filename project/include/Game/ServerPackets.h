@@ -47,7 +47,10 @@ namespace Game {
 
 		virtual void onExit() {}
 
+		// Find the next available ID in the mMapIDToName map (seraches for empty slots)
+		// Returns the first available empty slot, or the number of entries in the map if there are no empty slots
 		UserID getNextFreeID();
+		// Returnst the user name for the user id
 		UserName getNameFromID(UserID id);
 
 	};
