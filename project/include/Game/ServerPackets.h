@@ -20,16 +20,20 @@ namespace Game {
 	// Author: Dustin Yost
 	class ServerPackets : public Network::PacketHandler {
 		// Author: Dustin Yost
-		typedef char* UserName;
+		typedef unsigned int UserID;
 		typedef RakNet::SystemAddress UserAddress;
-		typedef std::map<UserName, UserAddress> UserNameToAddress;
-		typedef std::map<UserAddress, UserName> UserAddressToName;
+		typedef char* UserName;
+		typedef std::map<UserID, UserAddress> UserIDToAddress;
+		typedef std::map<UserAddress, UserID> UserAddressToID;
+		typedef std::map<UserID, UserName> UserIDToName;
 
 	private:
 		// Author: Dustin Yost
-		UserNameToAddress mMapNameToAddress;
+		UserIDToAddress mMapIDToAddress;
 		// Author: Dustin Yost
-		UserAddressToName mMapAddressToName;
+		UserAddressToID mMapAddressToID;
+		// Author: Dustin Yost
+		UserIDToName mMapIDToName;
 
 	public:
 		ServerPackets();

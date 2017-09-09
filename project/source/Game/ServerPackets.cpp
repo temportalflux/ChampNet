@@ -18,8 +18,9 @@ namespace Game {
 
 	// Author: Dustin Yost
 	ServerPackets::ServerPackets() {
-		mMapNameToAddress = UserNameToAddress();
-		mMapAddressToName = UserAddressToName();
+		mMapIDToAddress = UserIDToAddress();
+		mMapAddressToID = UserAddressToID();
+		mMapIDToName = UserIDToName();
 	}
 
 	// Author: Dustin Yost
@@ -45,12 +46,12 @@ namespace Game {
 			case ID_USERNAME:
 				{
 					//gets the username that the user inputed
-					char* Username = ((PacketString*)(info.data))->content;
+					UserName username = ((PacketString*)(info.data))->content;
 					//gets the systemAdress of the 
-					RakNet::SystemAddress systemAddress = (info.address);
+					UserAddress systemAddress = (info.address);
 					//inputs that information into a pair of maps so the server has access to them
-					this->mMapNameToAddress[Username] = systemAddress;
-					this->mMapAddressToName[systemAddress] = Username;
+					this->mMapIDToAddress[username] = systemAddress;
+					this->mMapAddressToID[systemAddress] = username;
 				}
 				break;
 			default:
