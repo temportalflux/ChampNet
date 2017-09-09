@@ -50,10 +50,16 @@ namespace Game {
 					UserName username = ((PacketString*)(info.data))->content;
 					//gets the systemAdress of the 
 					UserAddress systemAddress = (info.address);
+
+					UserID userId = this->getNextFreeID();
+
 					//inputs that information into a pair of maps so the server has access to them
-					this->mMapIDToAddress[username] = systemAddress;
-					this->mMapAddressToID[systemAddress] = username;
+					this->mMapIDToAddress[userId] = systemAddress;
+					this->mMapAddressToID[systemAddress] = userId;
+					this->mMapIDToName[userId] = username;
+					
 					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
+
 				}
 				break;
 			default:
@@ -61,9 +67,27 @@ namespace Game {
 		}
 	}
 
-	unsigned int ServerPackets::getNextFreeID()
+	// Author: Dustin Yost
+	// Performance: O(n^2)
+	ServerPackets::UserID ServerPackets::getNextFreeID()
 	{
-		return 0;
+		UserID nextID;
+		// look for empty slots in the map
+		for (nextID = 0; nextID < this->mMapIDToName.count; nextID++) {
+			if (this->mMapIDToName.find(nextID) == this->mMapIDToName.end()) {
+				// no entry for nextID - empty slot found
+				break;
+			}
+			// nextID found in the map, find the next
+		}
+		// map has no empty slots, use the last value (which is the size of the map)
+		return nextID;
+	}
+
+	// Author: Dustin Yost
+	ServerPackets::UserName ServerPackets::getNameFromID(UserID id)
+	{
+		return this->mMapIDToName[id];
 	}
 
 }

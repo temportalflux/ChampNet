@@ -40,17 +40,15 @@ namespace Game {
 		ServerPackets();
 		virtual ~ServerPackets();
 
-		// Author: Dustin Yost
 		virtual void subscribeTo(Network::Network *network);
 
-		// Author: Dustin Yost
 		// Handle incoming packets
 		virtual void handlePacketData(Network::PacketInfo info);
 
-		// Author: Dustin Yost
 		virtual void onExit() {}
 
-		unsigned int getNextFreeID();
+		UserID getNextFreeID();
+		UserName getNameFromID(UserID id);
 
 	};
 
