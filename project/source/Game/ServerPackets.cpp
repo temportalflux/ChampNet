@@ -59,7 +59,7 @@ namespace Game {
 					this->mMapIDToName[userId] = username;
 					
 					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
-
+					this->mpNetwork->sendTo(username, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 				}
 				break;
 			default:
