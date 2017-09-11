@@ -46,10 +46,12 @@ namespace Game {
 			//Author: Jon T
 			case ID_USERNAME:
 				{
-					PacketString* packetOut = (PacketString*)(info.data);
-
+					PacketString* packetUsername = (PacketString*)(info.data);
 					//gets the username that the user inputed
-					UserName username = packetOut->content;
+					UserName username = packetUsername->content;
+
+					printf("%s%s%s\n", "User ", username, " has joined");
+
 					//gets the systemAdress of the 
 					UserAddress systemAddress = (info.address);
 

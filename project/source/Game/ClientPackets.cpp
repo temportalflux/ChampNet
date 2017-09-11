@@ -71,7 +71,7 @@ namespace Game {
 				// AUTHOR: Dustin Yost
 			case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 				{
-					printf("Recieved client ID\n");
+					printf("Welcome to the server\n");
 					mID = ((PacketUInt*)info.data)->clientID;
 				}
 				break;
