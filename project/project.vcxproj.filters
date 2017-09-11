@@ -28,6 +28,12 @@
     <Filter Include="Header Files\Game\Packets">
       <UniqueIdentifier>{bda9f182-df89-419c-92d8-20b0c60dd7b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\State">
+      <UniqueIdentifier>{4231825d-451e-4fde-93bc-4172fb5ce033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\State">
+      <UniqueIdentifier>{b58234f9-e8d9-478c-ae3c-66278cf38718}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -60,6 +66,12 @@
     <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="source\Game\State\State.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\State\StateLogin.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\network\Network.h">
@@ -91,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="include\Game\Game.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\State.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateLogin.h">
+      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

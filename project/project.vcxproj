@@ -23,6 +23,8 @@
     <ClCompile Include="source\Game\Game.cpp" />
     <ClCompile Include="source\Game\InputSystem.cpp" />
     <ClCompile Include="source\Game\ServerPackets.cpp" />
+    <ClCompile Include="source\Game\State\State.cpp" />
+    <ClCompile Include="source\Game\State\StateLogin.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\network\Client.cpp" />
     <ClCompile Include="source\network\Framework.cpp" />
@@ -36,6 +38,8 @@
     <ClInclude Include="include\Game\InputSystem.h" />
     <ClInclude Include="include\Game\Packets\Packet.h" />
     <ClInclude Include="include\Game\ServerPackets.h" />
+    <ClInclude Include="include\Game\State\State.h" />
+    <ClInclude Include="include\Game\State\StateLogin.h" />
     <ClInclude Include="include\network\Client.h" />
     <ClInclude Include="include\network\Framework.h" />
     <ClInclude Include="include\network\Network.h" />
