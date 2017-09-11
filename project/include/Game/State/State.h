@@ -2,7 +2,7 @@
 
 class State {
 
-public:
+protected:
 	virtual ~State();
 
 	virtual void init() = 0;

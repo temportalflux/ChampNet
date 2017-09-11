@@ -1,8 +1,11 @@
 #include "Game\State\StateLogin.h"
 
-StateLogin::~StateLogin() {
+StateLogin::~StateLogin() 
+{
+
 }
 
-void StateLogin::init() {
+void StateLogin::init() 
+{
 
 }
