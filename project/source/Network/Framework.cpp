@@ -12,6 +12,7 @@
 #include "Network\Framework.h"
 
 #include <iostream>
+#include "Game\State\GameState.h"
 
 // Author: Dustin Yost
 Framework::Framework(bool isServer, Network::PacketHandler* packetHandler) : mIsServer(isServer) {
@@ -41,9 +42,11 @@ void Framework::startup() {
 
 }
 
-void Framework::update() {
+void Framework::update(StateNetwork* stateNetwork) {
 	// Update the network
-	this->mpNetwork->update();
+	if (this->mpNetwork != NULL) {
+		this->mpNetwork->update();
+	}
 }
 
 void Framework::onExit() {

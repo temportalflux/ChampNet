@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Game\Network">
       <UniqueIdentifier>{206e4d5e-6f12-40eb-9ec1-0b42a52e1596}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Input">
+      <UniqueIdentifier>{c4fd1617-3380-4eb8-a0b7-6e50e1c9bba8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Input">
+      <UniqueIdentifier>{4a2804bd-fbbd-4bfe-984f-d0c9e463e4c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -124,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="include\Game\Network\ServerPackets.h">
       <Filter>Header Files\Game\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\GameState.h">
+      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

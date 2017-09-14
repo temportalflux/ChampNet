@@ -6,21 +6,20 @@
 #include "Game\Game.h"
 
 StateMachine::StateMachine() {
-	mpState = NULL;
-	mStateCurrent = EnumState::NONE;
-	mStateNext = EnumState::NONE;
+	this->mpState = NULL;
+	this->mpStateNext = NULL;
 }
 
 StateMachine::~StateMachine() {
 	this->cleanState();
 }
 
-void StateMachine::queueState(EnumState state) {
-	this->mStateNext = state;
+void StateMachine::queueState(State* nextState) {
+	this->mpStateNext = nextState;
 }
 
 void StateMachine::update(Game* game) {
-	if (mStateNext != mStateCurrent) {
+	if (this->mpStateNext != NULL) {
 
 		// Process exit
 		if (this->mpState != NULL) {
@@ -31,8 +30,7 @@ void StateMachine::update(Game* game) {
 		this->cleanState();
 
 		// Create the next state
-		this->mpState = this->createStateFor(mStateNext);
-		this->mStateCurrent = this->mStateNext;
+		this->mpState = this->mpStateNext;
 
 		// Process enter
 		if (this->mpState != NULL) {
@@ -49,14 +47,5 @@ void StateMachine::cleanState() {
 	if (this->mpState != NULL) {
 		delete mpState;
 		this->mpState = NULL;
-	}
-}
-
-State* StateMachine::createStateFor(EnumState state) {
-	switch (state) {
-		case EnumState::LOGIN:
-			return new StateLogin();
-		default:
-			return NULL;
 	}
 }

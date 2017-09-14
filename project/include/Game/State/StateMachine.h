@@ -3,25 +3,17 @@
 class State;
 class Game;
 
-enum EnumState {
-	NONE,
-	LOGIN,
-};
-
 class StateMachine {
 
 private:
 	State* mpState;
-	EnumState mStateCurrent;
-	EnumState mStateNext;
-
-	State* createStateFor(EnumState state);
+	State* mpStateNext;
 
 public:
 	StateMachine();
 	~StateMachine();
 
-	void queueState(EnumState state);
+	void queueState(State* nextState);
 	void update(Game* game);
 	void cleanState();
 

@@ -44,6 +44,7 @@
     <ClInclude Include="include\Game\Network\ClientPackets.h" />
     <ClInclude Include="include\Game\Network\ServerPackets.h" />
     <ClInclude Include="include\Game\Packets\Packet.h" />
+    <ClInclude Include="include\Game\State\GameState.h" />
     <ClInclude Include="include\Game\State\State.h" />
     <ClInclude Include="include\Game\State\StateLogin.h" />
     <ClInclude Include="include\Game\State\StateMachine.h" />

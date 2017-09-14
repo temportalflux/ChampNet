@@ -19,6 +19,8 @@ struct FrameworkData {
 	char serverAddress[15];// ***.***.***.*** 12+3=15
 };
 
+struct StateNetwork;
+
 // Author: Dustin Yost
 class Framework {
 
@@ -39,7 +41,7 @@ public:
 	void startup();
 
 	// Runs the game loop
-	void update();
+	void update(StateNetwork* stateNetwork);
 	void onExit();
 
 };

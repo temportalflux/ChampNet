@@ -10,6 +10,19 @@ StateLogin::~StateLogin()
 
 }
 
+void StateLogin::handleInput(StateInput* state) {
+	for (int key = 0; key < StateInput::SIZE_KEYBOARD; key++) {
+		if (state->keyboard[key] & 0x8000) {
+			std::cout << "Key " << key << " is down\n";
+		}
+	}
+}
+
+void StateLogin::handleGameUpdates(StateGame* state, Game* game) {
+
+}
+
+/*
 void StateLogin::onEnter(Game* game)
 {
 	char str[512];
@@ -43,3 +56,4 @@ void StateLogin::onEnter(Game* game)
 
 	game->setNetworkType(isClient, data);
 }
+//*/

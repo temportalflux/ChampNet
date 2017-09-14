@@ -33,11 +33,16 @@ public:
 
 	void run();
 	void setNetworkType(bool isClient, FrameworkData data);
+	StateGame* getGameState();
 
 protected:
 
 	void startup();
 	void runLoop();
-	void update(bool &shouldExit);
+
+	void queueState(StateGame::EnumState nextState);
+	void update();
+	void processStateQueue();
+	void updateState();
 
 };

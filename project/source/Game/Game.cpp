@@ -19,6 +19,7 @@
 
 #include "Game\InputSystem.h"
 #include "Game\State\StateMachine.h"
+#include "Game\State\StateLogin.h"
 
 // Author: Dustin Yost
 	
@@ -37,10 +38,12 @@ Game::~Game() {
 		delete mpSystemInput;
 		mpSystemInput = NULL;
 	}
+	/*
 	if (mpStateMachine != NULL) {
 		delete mpStateMachine;
 		mpStateMachine = NULL;
 	}
+	//*/
 }
 
 void Game::run() {
@@ -49,8 +52,10 @@ void Game::run() {
 }
 
 void Game::startup() {
-	this->mpStateMachine->queueState(EnumState::LOGIN);
-	this->mpStateMachine->update(this);
+	this->mpStateGame->running = true;
+	//this->mpStateGame->state = StateGame::LOGIN;
+	//this->mpStateMachine->queueState(EnumState::LOGIN);
+	//this->mpStateMachine->update(this);
 }
 
 void Game::setNetworkType(bool isClient, FrameworkData data) {
@@ -67,26 +72,59 @@ void Game::setNetworkType(bool isClient, FrameworkData data) {
 	mpNetworkFramework->startup();
 }
 
+StateGame* Game::getGameState() {
+	return this->mpStateGame;
+}
+
 void Game::runLoop() {
 	// Search for packet messages
-	bool shouldExit = false;
-	while (!shouldExit)
+	while (this->mpStateGame->running)
 	{
-		this->update(shouldExit);
+		this->update();
 	}
 }
 
-void Game::update(bool &shouldExit) {
+void Game::update() {
 
 	this->mpSystemInput->update(this->mpStateGame->input);
-	this->mpNetworkFramework->update(this->mpStateGame->network);
-
-	//this->mpStateMachine->update(this);
+	if (this->mpNetworkFramework != NULL) {
+		this->mpNetworkFramework->update(this->mpStateGame->network);
+	}
+	this->updateState();
 	
 	// TODO: Move to state handling
-	if (!this->mpStateGame->running) {
+	if (!this->mpStateGame->running && this->mpNetworkFramework != NULL) {
 		this->mpNetworkFramework->onExit();
-		shouldExit = true;
 	}
 	
+}
+
+void Game::updateState() {
+
+	// Handle queue to the state machine
+	this->processStateQueue();
+
+	// Handle updating state classes
+	this->mpStateMachine->update(this);
+
+	// Update game state data to follow the state machine
+	if (this->mpStateGame->stateNext != StateGame::NONE) {
+		this->mpStateGame->stateCurrent = this->mpStateGame->stateNext;
+		this->mpStateGame->stateNext = StateGame::NONE;
+	}
+
+}
+
+void Game::queueState(StateGame::EnumState stateNext) {
+	this->mpStateGame->stateNext = stateNext;
+}
+
+void Game::processStateQueue() {
+	switch (this->mpStateGame->stateNext) {
+		case StateGame::LOGIN:
+			this->mpStateMachine->queueState(new StateLogin());
+			break;
+		default:
+			break;
+	}
 }

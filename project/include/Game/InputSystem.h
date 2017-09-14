@@ -11,6 +11,8 @@
 */
 #pragma once
 
+struct StateInput;
+
 // Author: Dustin Yost
 class InputSystem {
 
@@ -22,6 +24,6 @@ public:
 	InputSystem();
 	~InputSystem() {};
 
-	void update(bool &shouldExit);
+	void update(StateInput* stateInput);
 
 };

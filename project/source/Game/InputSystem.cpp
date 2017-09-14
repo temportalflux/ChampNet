@@ -13,13 +13,14 @@
 
 #include <string>
 #include "Network\Framework.h"
+#include "Game\State\GameState.h"
 
 // Author: Dustin Yost
 InputSystem::InputSystem() {
 	this->mpConsoleWindow = GetForegroundWindow();
 }
 
-void InputSystem::update(bool &shouldExit) {
+void InputSystem::update(StateInput* stateInput) {
 
 	// Do not handle WINAPI input if this window is not active
 	if (GetForegroundWindow() != this->mpConsoleWindow) {
@@ -28,7 +29,7 @@ void InputSystem::update(bool &shouldExit) {
 
 	// check for escape key
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
-		shouldExit = true;
+		// TODO: Move shouldExit = true;
 	}
 
 }
