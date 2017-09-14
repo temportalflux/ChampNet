@@ -77,13 +77,16 @@ void Game::runLoop() {
 }
 
 void Game::update(bool &shouldExit) {
-	bool preShouldExit = shouldExit;
-		
-	this->mpStateMachine->update(this);
-	this->mpNetworkFramework->update();
-	this->mpSystemInput->update(shouldExit);
 
-	if (preShouldExit != shouldExit) {
+	this->mpSystemInput->update(this->mpStateGame->input);
+	this->mpNetworkFramework->update(this->mpStateGame->network);
+
+	//this->mpStateMachine->update(this);
+	
+	// TODO: Move to state handling
+	if (!this->mpStateGame->running) {
 		this->mpNetworkFramework->onExit();
+		shouldExit = true;
 	}
+	
 }

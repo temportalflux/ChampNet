@@ -11,6 +11,8 @@
 */
 #pragma once
 
+#include "Game\State\GameState.h"
+
 class Framework;
 struct FrameworkData;
 class InputSystem;
@@ -23,6 +25,7 @@ private:
 	Framework* mpNetworkFramework;
 	InputSystem* mpSystemInput;
 	StateMachine* mpStateMachine;
+	StateGame mpStateGame[1];
 
 public:
 	Game();
