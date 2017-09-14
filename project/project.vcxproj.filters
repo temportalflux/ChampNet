@@ -34,6 +34,12 @@
     <Filter Include="Source Files\Game\State">
       <UniqueIdentifier>{b58234f9-e8d9-478c-ae3c-66278cf38718}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Network">
+      <UniqueIdentifier>{0c69df97-6469-45d8-8bde-8e557ee972de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Network">
+      <UniqueIdentifier>{206e4d5e-6f12-40eb-9ec1-0b42a52e1596}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -54,12 +60,6 @@
     <ClCompile Include="source\network\Server.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\ClientPackets.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\ServerPackets.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\InputSystem.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -71,6 +71,15 @@
     </ClCompile>
     <ClCompile Include="source\Game\State\StateLogin.cpp">
       <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\State\StateMachine.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\Network\ClientPackets.cpp">
+      <Filter>Source Files\Game\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\Network\ServerPackets.cpp">
+      <Filter>Source Files\Game\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,12 +98,6 @@
     <ClInclude Include="include\network\Server.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game\ServerPackets.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\ClientPackets.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game\InputSystem.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -109,6 +112,18 @@
     </ClInclude>
     <ClInclude Include="include\Game\State\StateLogin.h">
       <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateMachine.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mainSample.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Network\ClientPackets.h">
+      <Filter>Header Files\Game\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Network\ServerPackets.h">
+      <Filter>Header Files\Game\Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,30 +12,29 @@
 #pragma once
 
 class Framework;
+struct FrameworkData;
+class InputSystem;
+class StateMachine;
 
 // Author: Dustin Yost
-namespace Game {
+class Game {
 
-	class InputSystem;
+private:
+	Framework* mpNetworkFramework;
+	InputSystem* mpSystemInput;
+	StateMachine* mpStateMachine;
 
-	class Game {
+public:
+	Game();
+	~Game();
 
-	private:
-		Framework* mpNetworkFramework;
-		InputSystem* mpSystemInput;
+	void run();
+	void setNetworkType(bool isClient, FrameworkData data);
 
-	public:
-		Game();
-		~Game();
+protected:
 
-		void run();
-
-	protected:
-
-		void startup();
-		void runLoop();
-		void update(bool &shouldExit);
-
-	};
+	void startup();
+	void runLoop();
+	void update(bool &shouldExit);
 
 };

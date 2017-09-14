@@ -7,6 +7,6 @@ class StateLogin : public State {
 public:
 	virtual ~StateLogin();
 
-	virtual void init();
+	virtual void onEnter(Game* game) override;
 
 };

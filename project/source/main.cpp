@@ -15,7 +15,7 @@
 // Author: Dustin Yost
 int main(void)
 {
-	Game::Game().run();
+	Game().run();
 	system("pause");
 	return 0;
 }

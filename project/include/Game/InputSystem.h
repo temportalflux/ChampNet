@@ -12,20 +12,16 @@
 #pragma once
 
 // Author: Dustin Yost
-namespace Game {
+class InputSystem {
 
-	class InputSystem {
+private:
 
-	private:
+	void *mpConsoleWindow;
 
-		void *mpConsoleWindow;
+public:
+	InputSystem();
+	~InputSystem() {};
 
-	public:
-		InputSystem();
-		~InputSystem() {};
-
-		void update(bool &shouldExit);
-
-	};
+	void update(bool &shouldExit);
 
 };

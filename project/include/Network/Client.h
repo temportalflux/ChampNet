@@ -8,12 +8,11 @@ protected:
 	std::string mAddressServerStr;
 
 public:
-	Client(Network::PacketHandler* packetHandler);
+	Client(Network::PacketHandler* packetHandler, FrameworkData data);
 	virtual ~Client();
 
 protected:
 
-	virtual void prompt();
 	virtual Network::Network* createNetwork();
 
 };

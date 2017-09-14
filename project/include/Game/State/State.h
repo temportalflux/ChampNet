@@ -1,10 +1,14 @@
 #pragma once
 
+class Game;
+
 class State {
 
-protected:
+public:
 	virtual ~State();
 
-	virtual void init() = 0;
+	virtual void onEnter(Game* game);
+	virtual void update(Game* game);
+	virtual void onExit(Game* game);
 
 };

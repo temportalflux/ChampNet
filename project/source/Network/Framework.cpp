@@ -26,9 +26,6 @@ Framework::~Framework() {
 
 void Framework::startup() {
 
-	// Prompt user for required information
-	this->prompt();
-
 	// Create the network and a packethandler for the network
 	this->mpNetwork = this->createNetwork();
 	this->mpPacketHandler->subscribeTo(this->mpNetwork);
@@ -41,15 +38,6 @@ void Framework::startup() {
 
 	// Setup the server or Connect from client to server
 	this->mpNetwork->connect();
-
-}
-
-void Framework::prompt() {
-	char str[512];
-
-	printf("Server Port: ");
-	std::cin >> this->mPort;
-	fgets(str, 512, stdin); // clean up input
 
 }
 

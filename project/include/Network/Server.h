@@ -19,11 +19,10 @@ class Server : public Framework {
 protected:
 	unsigned int mMaxClients;
 
-	virtual void prompt();
 	virtual Network::Network* createNetwork();
 
 public:
-	Server(Network::PacketHandler* packetHandler);
+	Server(Network::PacketHandler* packetHandler, FrameworkData data);
 	virtual ~Server();
 
 };

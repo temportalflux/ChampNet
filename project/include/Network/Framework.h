@@ -13,6 +13,12 @@
 
 #include "network\Network.h"
 
+struct FrameworkData {
+	unsigned int port;
+	unsigned int maxClients;
+	char serverAddress[15];// ***.***.***.*** 12+3=15
+};
+
 // Author: Dustin Yost
 class Framework {
 
@@ -22,9 +28,6 @@ protected:
 
 	Network::Network *mpNetwork;
 	Network::PacketHandler *mpPacketHandler;
-
-	// Prompts the user for required information for initializing a client or server
-	virtual void prompt();
 
 	// Creates a network object based on user preference
 	virtual Network::Network* createNetwork() { return NULL; };
