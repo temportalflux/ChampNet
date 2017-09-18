@@ -11,12 +11,14 @@
 */
 #pragma once
 
-#include "Game\State\GameState.h"
+//#include "Game\State\GameState.h"
 
 class Framework;
 struct FrameworkData;
 class InputSystem;
 class StateMachine;
+class State;
+class StateApplication;
 
 // Author: Dustin Yost
 class Game {
@@ -25,7 +27,7 @@ private:
 	Framework* mpNetworkFramework;
 	InputSystem* mpSystemInput;
 	StateMachine* mpStateMachine;
-	StateGame mpStateGame[1];
+	StateApplication* mpStateGame;
 
 public:
 	Game();
@@ -33,16 +35,16 @@ public:
 
 	void run();
 	void setNetworkType(bool isClient, FrameworkData data);
-	StateGame* getGameState();
+	StateApplication* getGameState();
 
 protected:
 
 	void startup();
 	void runLoop();
 
-	void queueState(StateGame::EnumState nextState);
-	void update();
-	void processStateQueue();
 	void updateState();
+	//void queueState(StateApplication::EnumState nextState);
+	void processStateQueue();
+	void updateNetwork();
 
 };

@@ -12,7 +12,7 @@ struct StateNetwork {
 
 };
 
-struct StateGame {
+struct StateApplication {
 
 	bool running;
 	StateInput input[1];
@@ -20,6 +20,7 @@ struct StateGame {
 
 };
 
+/*
 void updateInput(StateInput* state) {
 	// Get mouse, keyboard, controller, etc state
 	// store somewhere for later
@@ -40,7 +41,7 @@ void updateNetwork(StateNetwork* state) {
 	//  process loop
 }
 
-void updateState(StateGame* state) {
+void updateState(StateApplication* state) {
 	// account for all previous updates (input & network)
 	// change application wrt time and other updates
 
@@ -48,24 +49,32 @@ void updateState(StateGame* state) {
 	//	update char stream
 }
 
-void render(const StateGame* state) {
+void render(const StateApplication* state) {
 	// clear the buffer (for text rendering): system("cls")
 	// display state to display medium
 
 	// e.g. chat room
 	//	display chat stream (all of it)
 }
+//*/
 
 int main() {
 	
-	StateGame stateGame[1];
-	stateGame->running = true;
+//	StateApplication stateGame[1];
+//	stateGame->running = true;
 
-	while (stateGame->running) {
-		updateInput(stateGame->input);
-		updateNetwork(stateGame->network);
-		updateState(stateGame);
-		render(stateGame);
+	StateApplication *stateCurrent;
+
+	while (stateCurrent->running) {
+		//updateInput(stateGame->input);
+		//updateNetwork(stateGame->network);
+		//updateState(stateGame);
+		//render(stateGame);
+
+		//stateCurrent->updateInput();
+		//stateCurrent->updateNetwork();
+		//stateCurrent->updateState();
+		//stateCurrent->render();
 	}
 
 	return 0;

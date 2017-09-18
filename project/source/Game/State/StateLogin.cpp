@@ -1,4 +1,5 @@
 #include "Game\State\StateLogin.h"
+
 #include <stdio.h>
 #include "Game\Game.h"
 #include "Network\Framework.h"
@@ -11,14 +12,14 @@ StateLogin::~StateLogin()
 }
 
 void StateLogin::handleInput(StateInput* state) {
-	for (int key = 0; key < StateInput::SIZE_KEYBOARD; key++) {
-		if (state->keyboard[key] & 0x8000) {
-			std::cout << "Key " << key << " is down\n";
-		}
-	}
+	GetKeyboardState(state->keyboard);
 }
 
-void StateLogin::handleGameUpdates(StateGame* state, Game* game) {
+void StateLogin::handleGameUpdates(StateApplication* state, Game* game) {
+
+	for (int key = 0; key < StateInput::SIZE_KEYBOARD; key++) {
+		
+	}
 
 }
 

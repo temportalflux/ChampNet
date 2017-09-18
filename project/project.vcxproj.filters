@@ -87,6 +87,12 @@
     <ClCompile Include="source\Game\Network\ServerPackets.cpp">
       <Filter>Source Files\Game\Network</Filter>
     </ClCompile>
+    <ClCompile Include="source\Game\State\StateLobby.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\State\StateGameLocal.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\network\Network.h">
@@ -132,6 +138,15 @@
       <Filter>Header Files\Game\Network</Filter>
     </ClInclude>
     <ClInclude Include="include\Game\State\GameState.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateApplication.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateLobby.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateGameLocal.h">
       <Filter>Header Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>

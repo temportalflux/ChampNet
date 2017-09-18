@@ -3,7 +3,7 @@
 class Game;
 struct StateInput;
 struct StateNetwork;
-struct StateGame;
+struct StateApplication;
 
 class State {
 
@@ -14,7 +14,7 @@ public:
 	virtual void update(Game* game);
 	virtual void handleInput(StateInput* state);
 	virtual void handleNetwork(StateNetwork* state);
-	virtual void handleGameUpdates(StateGame* state, Game* game);
+	virtual void handleGameUpdates(StateApplication* state, Game* game);
 	virtual void onExit(Game* game);
 
 };

@@ -11,7 +11,7 @@ struct StateNetwork {
 
 };
 
-struct StateGame {
+struct StateApplication {
 
 	bool running;
 	StateInput input[1];

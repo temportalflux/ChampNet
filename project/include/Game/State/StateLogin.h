@@ -8,6 +8,6 @@ public:
 	virtual ~StateLogin();
 
 	virtual void handleInput(StateInput* state) override;
-	virtual void handleGameUpdates(StateGame* state, Game* game) override;
+	virtual void handleGameUpdates(StateApplication* state, Game* game) override;
 
 };

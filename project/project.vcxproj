@@ -24,6 +24,8 @@
     <ClCompile Include="source\Game\Network\ClientPackets.cpp" />
     <ClCompile Include="source\Game\Network\ServerPackets.cpp" />
     <ClCompile Include="source\Game\State\State.cpp" />
+    <ClCompile Include="source\Game\State\StateGameLocal.cpp" />
+    <ClCompile Include="source\Game\State\StateLobby.cpp" />
     <ClCompile Include="source\Game\State\StateLogin.cpp" />
     <ClCompile Include="source\Game\State\StateMachine.cpp" />
     <ClCompile Include="source\main.cpp">
@@ -46,6 +48,9 @@
     <ClInclude Include="include\Game\Packets\Packet.h" />
     <ClInclude Include="include\Game\State\GameState.h" />
     <ClInclude Include="include\Game\State\State.h" />
+    <ClInclude Include="include\Game\State\StateApplication.h" />
+    <ClInclude Include="include\Game\State\StateGameLocal.h" />
+    <ClInclude Include="include\Game\State\StateLobby.h" />
     <ClInclude Include="include\Game\State\StateLogin.h" />
     <ClInclude Include="include\Game\State\StateMachine.h" />
     <ClInclude Include="include\network\Client.h" />

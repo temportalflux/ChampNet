@@ -8,7 +8,7 @@ void State::onEnter(Game* game) {
 }
 
 void State::update(Game* game) {
-	StateGame* state = game->getGameState();
+	StateApplication* state = game->getGameState();
 	this->handleInput(state->input);
 	this->handleNetwork(state->network);
 	this->handleGameUpdates(state, game);
@@ -18,7 +18,7 @@ void State::handleInput(StateInput* state) {}
 
 void State::handleNetwork(StateNetwork* state) {}
 
-void State::handleGameUpdates(StateGame* state, Game* game) {}
+void State::handleGameUpdates(StateApplication* state, Game* game) {}
 
 void State::onExit(Game* game) {
 }
