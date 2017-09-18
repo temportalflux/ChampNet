@@ -1,25 +1,24 @@
 #include "Game\State\StateLobby.h"
-
-void StateLobby::onExit(Data *next) {
-	// Prepare data
-}
-
-void StateLobby::onEnter(Data *previous) {
-	// Recieve data
-}
-
-void StateLobby::updateInput() {
-
-}
+#include <Windows.h>
+#include <iostream>
 
 void StateLobby::updateNetwork() {
 
 }
 
 void StateLobby::updateGame() {
+	// Cache keyboard state
+	bool *current = this->mData.input->keyboard;
+	bool *previous = this->mData.input->previous;
+
+	// Handle states
+	if (current[VK_ESCAPE] && !previous[VK_ESCAPE]) {
+		this->mRunning = false;
+	}
 
 }
 
 void StateLobby::render() {
+	system("cls");
 
 }

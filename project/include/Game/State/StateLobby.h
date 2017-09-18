@@ -6,10 +6,13 @@ class StateLobby : public StateApplication {
 
 private:
 
-	void onEnter(Data *previous);
-	void onExit(Data *next);
+	enum EnumLogin {
+		NETWORK_TYPE, // Server or Client
+		NETWORK_PORT, // Port #
+		ADDRESS, // Client: The address string
+		MAX_CLIENTS // Server: Max Clients
+	} mPhase;
 
-	void updateInput();
 	void updateNetwork();
 	void updateGame();
 	void render();

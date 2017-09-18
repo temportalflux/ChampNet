@@ -17,11 +17,6 @@
 #include "Game\Network\ServerPackets.h"
 #include "Game\Network\ClientPackets.h"
 
-#include "Game\InputSystem.h"
-#include "Game\State\StateMachine.h"
-#include "Game\State\StateLogin.h"
-
-#include "Game\State\State.h"
 #include "Game\State\StateApplication.h"
 #include "Game\State\StateLobby.h"
 
@@ -29,8 +24,6 @@
 	
 Game::Game() {
 	mpNetworkFramework = NULL;
-	mpSystemInput = new InputSystem();
-	mpStateMachine = new StateMachine();
 }
 
 Game::~Game() {
@@ -38,16 +31,7 @@ Game::~Game() {
 		delete mpNetworkFramework;
 		mpNetworkFramework = NULL;
 	}
-	if (mpSystemInput != NULL) {
-		delete mpSystemInput;
-		mpSystemInput = NULL;
-	}
-	/*
-	if (mpStateMachine != NULL) {
-		delete mpStateMachine;
-		mpStateMachine = NULL;
-	}
-	//*/
+	delete mpStateGame;
 }
 
 void Game::run() {
@@ -56,10 +40,7 @@ void Game::run() {
 }
 
 void Game::startup() {
-	//this->mpStateGame->running = true;
-	//this->mpStateGame->stateNext = StateApplication::LOGIN;
-	StateLobby stateLobby[1];
-	this->mpStateGame = stateLobby;
+	this->mpStateGame = new StateLobby();
 }
 
 void Game::setNetworkType(bool isClient, FrameworkData data) {
@@ -89,11 +70,16 @@ void Game::runLoop() {
 		this->mpStateGame->updateGame();
 		this->mpStateGame->render();
 
-		// Update the state
+		// Handle state transitions
 		if (this->mpStateGame->hasNext()) {
-			StateApplication::Data stateData;
-			this->mpStateGame->onExit(&stateData);
-			// TODO: finish me
+			// Cache the previous state
+			StateApplication *tmp = this->mpStateGame;
+			// Notify previous state of exit
+			this->mpStateGame->onExit();
+			// Get the next state
+			this->mpStateGame = this->mpStateGame->getNext();
+			// Notify next state of entrance from previous state
+			this->mpStateGame->onEnterFrom(tmp);
 		}
 	}
 }
@@ -101,10 +87,10 @@ void Game::runLoop() {
 void Game::updateState() {
 
 	// Handle queue to the state machine
-	this->processStateQueue();
+	//this->processStateQueue();
 
 	// Handle updating state classes
-	this->mpStateMachine->update(this);
+	//this->mpStateMachine->update(this);
 
 	// Update game state data to follow the state machine
 	/*
@@ -116,22 +102,9 @@ void Game::updateState() {
 
 }
 
-void Game::queueState(StateApplication::EnumState stateNext) {
-	this->mpStateGame->stateNext = stateNext;
-}
-
-void Game::processStateQueue() {
-	switch (this->mpStateGame->stateNext) {
-		case StateApplication::LOGIN:
-			this->mpStateMachine->queueState(new StateLogin());
-			break;
-		default:
-			break;
-	}
-}
-
 void Game::updateNetwork() {
 	
+	/*
 	if (!this->mpStateGame->running && this->mpNetworkFramework != NULL) {
 		this->mpNetworkFramework->onExit();
 	}
@@ -139,5 +112,6 @@ void Game::updateNetwork() {
 	if (this->mpNetworkFramework != NULL) {
 		this->mpNetworkFramework->update(this->mpStateGame->network);
 	}
+	//*/
 
 }

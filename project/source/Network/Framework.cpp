@@ -12,7 +12,6 @@
 #include "Network\Framework.h"
 
 #include <iostream>
-#include "Game\State\GameState.h"
 
 // Author: Dustin Yost
 Framework::Framework(bool isServer, Network::PacketHandler* packetHandler) : mIsServer(isServer) {

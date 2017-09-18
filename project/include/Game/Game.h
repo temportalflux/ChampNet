@@ -15,9 +15,6 @@
 
 class Framework;
 struct FrameworkData;
-class InputSystem;
-class StateMachine;
-class State;
 class StateApplication;
 
 // Author: Dustin Yost
@@ -25,8 +22,6 @@ class Game {
 
 private:
 	Framework* mpNetworkFramework;
-	InputSystem* mpSystemInput;
-	StateMachine* mpStateMachine;
 	StateApplication* mpStateGame;
 
 public:
@@ -43,8 +38,6 @@ protected:
 	void runLoop();
 
 	void updateState();
-	//void queueState(StateApplication::EnumState nextState);
-	void processStateQueue();
 	void updateNetwork();
 
 };

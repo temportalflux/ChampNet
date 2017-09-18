@@ -66,19 +66,10 @@
     <ClCompile Include="source\network\Server.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\InputSystem.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\State\State.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\State\StateLogin.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\State\StateMachine.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="source\Game\Network\ClientPackets.cpp">
@@ -91,6 +82,9 @@
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="source\Game\State\StateGameLocal.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\State\StateApplication.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,23 +104,11 @@
     <ClInclude Include="include\network\Server.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game\InputSystem.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game\Packets\Packet.h">
       <Filter>Header Files\Game\Packets</Filter>
     </ClInclude>
     <ClInclude Include="include\Game\Game.h">
       <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\State.h">
-      <Filter>Header Files\Game\State</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\StateLogin.h">
-      <Filter>Header Files\Game\State</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\StateMachine.h">
-      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="source\mainSample.h">
       <Filter>Source Files</Filter>
@@ -136,9 +118,6 @@
     </ClInclude>
     <ClInclude Include="include\Game\Network\ServerPackets.h">
       <Filter>Header Files\Game\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\GameState.h">
-      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="include\Game\State\StateApplication.h">
       <Filter>Header Files\Game\State</Filter>

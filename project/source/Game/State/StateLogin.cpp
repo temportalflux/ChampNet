@@ -1,27 +1,3 @@
-#include "Game\State\StateLogin.h"
-
-#include <stdio.h>
-#include "Game\Game.h"
-#include "Network\Framework.h"
-
-#include <iostream>
-
-StateLogin::~StateLogin()
-{
-
-}
-
-void StateLogin::handleInput(StateInput* state) {
-	GetKeyboardState(state->keyboard);
-}
-
-void StateLogin::handleGameUpdates(StateApplication* state, Game* game) {
-
-	for (int key = 0; key < StateInput::SIZE_KEYBOARD; key++) {
-		
-	}
-
-}
 
 /*
 void StateLogin::onEnter(Game* game)
