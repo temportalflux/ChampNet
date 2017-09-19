@@ -12,6 +12,11 @@
 #include "network\Network.h"
 
 #include <RakNet\BitStream.h>
+#include "Network\Packets\PacketInfo.h"
+#include "Network\Packets\PacketManager.h"
+#include "Network\Packets\PacketHandler.h"
+
+//#include <RakNet\RakNetTypes.h>  // MessageID
 
 // Base level networking / handling peer interfaces
 namespace Network {
@@ -51,7 +56,7 @@ namespace Network {
 		PacketHandler* handler = this->packetManager->getHandlerFor(packet->data[0]);
 		if (handler != NULL) {
 			// Create encapsulation struct containing packet info
-			PacketInfo info = { this, packet->systemAddress, packet->data, packet->length };
+			PacketInfo info = { this, &(packet->systemAddress), packet->data, packet->length };
 			// Pass off to be handled by the handler
 			handler->handlePacketData(info);
 		}

@@ -56,7 +56,7 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 					}
 
 				// Send username to server
-				this->mpNetwork->sendTo(packetUsername, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+				this->mpNetwork->sendTo(packetUsername, *(this->mAddressServer), HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 
 			}
 			break;

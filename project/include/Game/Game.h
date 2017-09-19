@@ -13,15 +13,12 @@
 
 //#include "Game\State\GameState.h"
 
-class Framework;
-struct FrameworkData;
 class StateApplication;
 
 // Author: Dustin Yost
 class Game {
 
 private:
-	Framework* mpNetworkFramework;
 	StateApplication* mpStateGame;
 
 public:
@@ -29,15 +26,11 @@ public:
 	~Game();
 
 	void run();
-	void setNetworkType(bool isClient, FrameworkData data);
 	StateApplication* getGameState();
 
 protected:
 
 	void startup();
 	void runLoop();
-
-	void updateState();
-	void updateNetwork();
 
 };

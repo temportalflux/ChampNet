@@ -11,7 +11,7 @@
 */
 #pragma once
 
-#include "Network\PacketManager.h"
+#include "Network\Packets\PacketHandler.h"
 
 #include <map>
 

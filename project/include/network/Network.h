@@ -13,20 +13,22 @@
 
 #include <string>
 
+#include <RakNet\RakNetTypes.h>  // MessageID
 #include <RakNet\RakPeerInterface.h>
 #include <RakNet\MessageIdentifiers.h>
-#include <RakNet\RakNetTypes.h>  // MessageID
 #include <RakNet\PacketPriority.h>
-
-#include "network\PacketManager.h"
 
 namespace RakNet {
 	struct Packet;
+	//class RakPeerInterface;
 };
 
 // Author: Dustin Yost
 // A container for all things network related
 namespace Network {
+
+	class PacketManager;
+	class PacketHandler;
 
 	const int BASE_PACKET_ENUM = ID_USER_PACKET_ENUM + 1;
 
@@ -65,7 +67,7 @@ namespace Network {
 		virtual void connect() = 0;
 
 		// Registers a packethandler to a specific packet identifier
-		void addPacketHandler(PacketManager::PacketID packet, PacketHandler *handler);
+		void addPacketHandler(unsigned char packet, PacketHandler *handler);
 
 		// Handles updates for the network, specifically searching for new packets
 		void update();

@@ -46,15 +46,18 @@
     <Filter Include="Source Files\Game\Input">
       <UniqueIdentifier>{4a2804bd-fbbd-4bfe-984f-d0c9e463e4c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Network\Packets">
+      <UniqueIdentifier>{bd5a0af0-19e7-4be5-bf9e-e629ca225e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network\Packets">
+      <UniqueIdentifier>{60f385e8-a6e2-46b2-a02c-49a3e4bf8233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\network\Network.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="source\network\PacketManager.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
     <ClCompile Include="source\network\Client.cpp">
@@ -68,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\State\StateLogin.cpp">
-      <Filter>Source Files\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="source\Game\Network\ClientPackets.cpp">
       <Filter>Source Files\Game\Network</Filter>
@@ -87,12 +87,15 @@
     <ClCompile Include="source\Game\State\StateApplication.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
+    <ClCompile Include="source\Game\State\StateChatroom.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Network\Packets\PacketManager.cpp">
+      <Filter>Source Files\Network\Packets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\network\Network.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\network\PacketManager.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
     <ClInclude Include="include\network\Client.h">
@@ -127,6 +130,21 @@
     </ClInclude>
     <ClInclude Include="include\Game\State\StateGameLocal.h">
       <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\FrameworkDefines.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateChatroom.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Packets\PacketInfo.h">
+      <Filter>Header Files\Network\Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Packets\PacketHandler.h">
+      <Filter>Header Files\Network\Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Packets\PacketManager.h">
+      <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

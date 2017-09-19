@@ -51,7 +51,7 @@ void ServerPackets::handlePacketData(Network::PacketInfo info) {
 				printf("%s%s%s\n", "User ", username, " has joined");
 
 				//gets the systemAdress of the 
-				UserAddress systemAddress = (info.address);
+				UserAddress systemAddress = *(info.address);
 
 				UserID userId = this->getNextFreeID();
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Framework.h"
+#include <string>
 
 class Client : public Framework {
 

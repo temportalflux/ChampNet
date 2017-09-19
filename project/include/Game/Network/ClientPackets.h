@@ -11,7 +11,7 @@
 */
 #pragma once
 
-#include "Network\PacketManager.h"
+#include "Network\Packets\PacketHandler.h"
 
 // Author: Dustin Yost
 class ClientPackets : public Network::PacketHandler {
@@ -21,7 +21,7 @@ private:
 	// Author: Dustin Yost
 	Network::Network* mpNetwork;
 	// Author: Dustin Yost
-	RakNet::SystemAddress mAddressServer;
+	RakNet::SystemAddress *mAddressServer;
 	// Author: Dustin Yost
 	UserID mID;
 

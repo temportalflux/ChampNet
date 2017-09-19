@@ -12,6 +12,7 @@
 #include "Network\Server.h"
 
 #include <iostream>
+#include "Network\Network.h"
 
 Server::Server(Network::PacketHandler* packetHandler, FrameworkData data) : Framework(true, packetHandler) {
 	this->mPort = data.port;

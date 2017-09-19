@@ -9,7 +9,7 @@
 	to a plagiarism-checking service, which may retain a copy of
 	the project on its database.
 */
-#include "network\PacketManager.h"
+#include "Network\Packets\PacketManager.h"
 
 #include <RakNet\RakNetTypes.h>  // MessageID
 

@@ -11,15 +11,12 @@
 */
 #pragma once
 
-#include "network\Network.h"
+#include "Network\FrameworkDefines.h"
 
-struct FrameworkData {
-	unsigned int port;
-	unsigned int maxClients;
-	char serverAddress[15];// ***.***.***.*** 12+3=15
+namespace Network {
+	class Network;
+	class PacketHandler;
 };
-
-struct StateNetwork;
 
 // Author: Dustin Yost
 class Framework {
@@ -32,7 +29,7 @@ protected:
 	Network::PacketHandler *mpPacketHandler;
 
 	// Creates a network object based on user preference
-	virtual Network::Network* createNetwork() { return NULL; };
+	virtual Network::Network* createNetwork() = 0;
 
 public:
 	Framework(bool isServer, Network::PacketHandler* packetHandler);
@@ -41,7 +38,7 @@ public:
 	void startup();
 
 	// Runs the game loop
-	void update(StateNetwork* stateNetwork);
+	void update();
 	void onExit();
 
 };

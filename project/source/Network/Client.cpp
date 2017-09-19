@@ -10,6 +10,7 @@
 	the project on its database.
 */
 #include "Network\Client.h"
+#include "Network\Network.h"
 
 // Author: Dustin Yost
 Client::Client(Network::PacketHandler* packetHandler, FrameworkData data) : Framework(false, packetHandler) {

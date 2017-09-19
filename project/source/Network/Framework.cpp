@@ -13,6 +13,9 @@
 
 #include <iostream>
 
+#include "network\Network.h"
+#include "Network\Packets\PacketHandler.h"
+
 // Author: Dustin Yost
 Framework::Framework(bool isServer, Network::PacketHandler* packetHandler) : mIsServer(isServer) {
 	this->mpPacketHandler = packetHandler;
@@ -41,7 +44,7 @@ void Framework::startup() {
 
 }
 
-void Framework::update(StateNetwork* stateNetwork) {
+void Framework::update() {
 	// Update the network
 	if (this->mpNetwork != NULL) {
 		this->mpNetwork->update();
