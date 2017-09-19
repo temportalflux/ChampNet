@@ -1,10 +1,30 @@
 #pragma once
 
+#include <vector>
+#include <sstream>
+#include <Windows.h>
+
 struct StateInput {
 
 	static const unsigned int SIZE_KEYBOARD = 256;
 	bool previous[StateInput::SIZE_KEYBOARD];
 	bool keyboard[StateInput::SIZE_KEYBOARD];
+	bool isCaps;
+	
+	std::vector<std::string> textRecord;
+	std::string currentLine;
+
+};
+
+struct StateConsole {
+
+	HWND consoleWindow;
+	RECT size;
+
+	void setSize(RECT rect);
+	void showConsoleCursor(bool showFlag);
+	void setCursorPosition(int x, int y);
+	std::string spaceCount(int count);
 
 };
 
@@ -14,7 +34,11 @@ public:
 
 	struct Data {
 
-		StateInput input[1];
+		Data();
+		~Data();
+
+		StateConsole *console;
+		StateInput *input;
 
 	};
 
@@ -29,9 +53,6 @@ public:
 
 	bool mRunning = true;
 
-	bool hasNext();
-	StateApplication* getNext();
-
 	// When exiting this state (we are the previous state)
 	// Prepare data
 	virtual void onExit();
@@ -44,5 +65,11 @@ public:
 	virtual void updateNetwork() = 0;
 	virtual void updateGame() = 0;
 	virtual void render() = 0;
+
+	void setWindow(HWND window);
+	bool hasNext();
+	StateApplication* getNext();
+
+	StateConsole* console();
 
 };

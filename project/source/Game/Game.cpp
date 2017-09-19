@@ -40,7 +40,21 @@ void Game::run() {
 }
 
 void Game::startup() {
+	
 	this->mpStateGame = new StateLobby();
+
+	HWND consoleWindow = GetConsoleWindow();
+	this->mpStateGame->setWindow(consoleWindow);
+
+	SetWindowLongPtr(consoleWindow, GWL_STYLE, GetWindowLongPtr(consoleWindow, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+
+	// yOffset, xOffset, height, width
+	RECT rect = { 200, 200, 600, 800 };
+	this->mpStateGame->console()->setSize(rect);
+	MoveWindow(consoleWindow, rect.top, rect.left, rect.bottom, rect.right, TRUE);
+
+	this->mpStateGame->console()->showConsoleCursor(false);
+
 }
 
 void Game::setNetworkType(bool isClient, FrameworkData data) {

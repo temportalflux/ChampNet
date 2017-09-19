@@ -10,12 +10,14 @@
 	the project on its database.
 */
 #include <cstdlib>
+#include <stdio.h>
 #include "Game\Game.h"
 
 // Author: Dustin Yost
 int main(void)
 {
 	Game().run();
-	system("pause");
+	//printf("\n");
+	//system("pause");
 	return 0;
 }
