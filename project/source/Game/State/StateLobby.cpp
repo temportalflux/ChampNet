@@ -103,9 +103,9 @@ Queues the chatroom state
 */
 void StateLobby::queueStateChatroom() {
 	if (this->mData.network->isServer) {
-		this->mNext = new StateChatroomClient();
+		this->mNext = new StateChatroomServer();
 	}
 	else {
-		this->mNext = new StateChatroomServer();
+		this->mNext = new StateChatroomClient();
 	}
 }

@@ -7,10 +7,11 @@
 using std::stringstream;
 
 // AUTHOR: Dustin Yost
-void StateChatroomClient::doHandlePacket(Network::PacketInfo info) {
-	switch (info.getPacketType()) {
+void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
+	unsigned char id = info->getPacketType();
+	switch (id) {
 		case ID_CONNECTION_REQUEST_ACCEPTED: // Handle connections
-			this->mAddressServer = info.address;
+			this->mAddressServer = info->address;
 			{
 				this->pushMessage("Connected.");
 
@@ -25,7 +26,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo info) {
 		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
 			{
 				stringstream msg;
-				msg << "User " << ((PacketString*)info.data)->content << " has joined.";
+				msg << "User " << ((PacketString*)info->data)->content << " has joined.";
 				this->pushMessage(msg.str());
 			}
 			break;
@@ -33,6 +34,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo info) {
 			this->pushMessage("Welcome to the server");
 			break;
 		default:
+			this->pushMessage("Recieved message id " + id);
 			break;
 	}
 }

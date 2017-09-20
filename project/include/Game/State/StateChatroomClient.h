@@ -8,7 +8,7 @@ private:
 	RakNet::SystemAddress *mAddressServer;
 
 	//void updateGame();
-	void doHandlePacket(Network::PacketInfo info) override;
+	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
 	
 	void sendPacket(Packet packet) override;

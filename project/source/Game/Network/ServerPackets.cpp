@@ -35,8 +35,8 @@ void ServerPackets::subscribeTo(Network::Network* network) {
 	network->addPacketHandler(ID_USERNAME, this);
 }
 
-void ServerPackets::handlePacketData(Network::PacketInfo info) {
-	switch (info.getPacketType()) {
+void ServerPackets::handlePacketData(Network::PacketInfo *info) {
+	switch (info->getPacketType()) {
 		// Author: Dustin Yost
 		case ID_CLIENT_LEFT:
 			{

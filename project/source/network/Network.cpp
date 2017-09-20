@@ -52,11 +52,24 @@ namespace Network {
 	}
 
 	void Network::handlePacket(RakNet::Packet *packet) {
+		unsigned char id = packet->data[0];
 		// Check if there is a handler for the packet ID recieved
-		PacketHandler* handler = this->packetManager->getHandlerFor(packet->data[0]);
+		PacketHandler* handler = this->packetManager->getHandlerFor(id);
 		if (handler != NULL) {
 			// Create encapsulation struct containing packet info
-			PacketInfo info = { this, &(packet->systemAddress), packet->data, packet->length };
+			PacketInfo *info = new PacketInfo;
+			// this, &(packet->systemAddress), packet->data, packet->length
+			info->network = this;
+			info->address = &(packet->systemAddress);
+			info->length = packet->length;
+
+			unsigned int size = sizeof(packet->data);
+			unsigned char *test = new unsigned char[packet->length]; // delete in PacketInfo descructor
+			for (int i = 0; i < size; i++) {
+				test[i] = packet->data[i];
+			}
+			info->data = test;
+
 			// Pass off to be handled by the handler
 			handler->handlePacketData(info);
 		}

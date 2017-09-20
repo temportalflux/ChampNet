@@ -20,7 +20,11 @@ namespace Network {
 		// The bit length of the packet data
 		unsigned int length;
 
-		unsigned int getPacketType() { return this->data[0]; }
+		~PacketInfo() {
+			delete[] data;
+		}
+
+		unsigned char getPacketType() { return (unsigned char)this->data[0]; }
 
 	};
 

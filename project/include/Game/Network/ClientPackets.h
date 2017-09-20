@@ -38,7 +38,7 @@ public:
 
 	// Author: Dustin Yost
 	// Handle incoming packets
-	virtual void handlePacketData(Network::PacketInfo info);
+	virtual void handlePacketData(Network::PacketInfo *info);
 
 	// Author: Dustin Yost
 	virtual void onExit();

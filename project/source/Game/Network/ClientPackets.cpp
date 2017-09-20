@@ -38,12 +38,12 @@ void ClientPackets::subscribeTo(Network::Network* network) {
 }
 
 // AUTHOR: Dustin Yost
-void ClientPackets::handlePacketData(Network::PacketInfo info) {
-	switch (info.getPacketType()) {
+void ClientPackets::handlePacketData(Network::PacketInfo *info) {
+	switch (info->getPacketType()) {
 		// AUTHOR: Dustin Yost
 		case ID_CONNECTION_REQUEST_ACCEPTED: // Handle connections
 			{
-				this->mAddressServer = info.address;
+				//this->mAddressServer = info.address;
 
 				/*
 				// Construct response packet
@@ -67,7 +67,7 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 			break;
 			// AUTHOR: Dustin Yost
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
-			mID = ((PacketUInt*)info.data)->clientID;
+			mID = ((PacketUInt*)info->data)->clientID;
 			break;
 		default:
 			break;

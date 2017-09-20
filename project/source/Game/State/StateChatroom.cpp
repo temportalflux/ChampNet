@@ -14,7 +14,7 @@
 
 StateChatroom::StateChatroom() : StateApplication() {
 	mpNetworkFramework = NULL;
-	mPacketInputQueue = std::deque<Network::PacketInfo>();
+	mPacketInputQueue = std::deque<Network::PacketInfo*>();
 }
 
 StateChatroom::~StateChatroom() {
@@ -52,7 +52,8 @@ void StateChatroom::updateNetwork() {
 /* Author: Dustin Yost
 Handle packets which have been recieved since last update
 */
-void StateChatroom::handlePacket(Network::PacketInfo info) {
+void StateChatroom::handlePacket(Network::PacketInfo *info) {
+	//this->pushMessage("Handling packet...");
 	// Called from the updateNetwork loop
 	// push a packet into the queue for later
 	this->mPacketInputQueue.push_back(info);
@@ -64,10 +65,12 @@ void StateChatroom::updateGame()
 	// Author: Dustin Yost
 	// Handle updates from the network packets
 	while (this->mPacketInputQueue.size() > 0) {
+		Network::PacketInfo *info = this->mPacketInputQueue.front();
 		// Pass off the packet for handling in children classes
-		this->doHandlePacket(this->mPacketInputQueue.front());
+		this->doHandlePacket(info);
 		// Pop the first packet (we are done with it)
 		this->mPacketInputQueue.pop_front();
+		delete info;
 	}
 
 	// Author: Jon Trusheim

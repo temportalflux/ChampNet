@@ -6,6 +6,6 @@ class MessageHandler abstract {
 
 public:
 
-	virtual void handlePacket(Network::PacketInfo info) = 0;
+	virtual void handlePacket(Network::PacketInfo *info) = 0;
 
 };
