@@ -13,17 +13,19 @@
 
 #include "Network\Network.h"
 #include "Game\Packets\Packet.h"
+#include "Game\Network\MessageHandler.h"
 
 #include <iostream>
 
 // AUTHOR: Dustin Yost
-ClientPackets::ClientPackets() {
-
+ClientPackets::ClientPackets(MessageHandler *messageHandler) {
+	mpMessageHandler = messageHandler;
 }
 
 // AUTHOR: Dustin Yost
 ClientPackets::~ClientPackets() {
 	mpNetwork = NULL; // not owned by us
+	mpMessageHandler = NULL;
 }
 
 // Author: Dustin Yost
@@ -42,6 +44,7 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 			{
 				this->mAddressServer = info.address;
 
+				/*
 				// Construct response packet
 				PacketString packetUsername = PacketString{ ID_USERNAME };
 
@@ -57,25 +60,29 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 
 				// Send username to server
 				this->mpNetwork->sendTo(packetUsername, *(this->mAddressServer), HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+				//*/
 
 			}
 			break;
 			// AUTHOR: Dustin Yost
 		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
 			{
-				printf("> %s%s%s\n", "User ", ((PacketString*)info.data)->content, " has joined.");
+				//printf("> %s%s%s\n", "User ", ((PacketString*)info.data)->content, " has joined.");
 			}
 			break;
 			// AUTHOR: Dustin Yost
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 			{
-				printf("Welcome to the server\n");
+				//printf("Welcome to the server\n");
 				mID = ((PacketUInt*)info.data)->clientID;
 			}
 			break;
 		default:
 			break;
 	}
+
+	this->mpMessageHandler->handlePacket(info);
+
 }
 
 void ClientPackets::onExit() {

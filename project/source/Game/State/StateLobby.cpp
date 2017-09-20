@@ -3,7 +3,8 @@
 #include <Windows.h>
 #include <iostream>
 
-#include "Game\State\StateChatroom.h"
+#include "Game\State\StateChatroomClient.h"
+#include "Game\State\StateChatroomServer.h"
 
 void StateLobby::updateNetwork() {
 	// STUB: no network checks while in lobby
@@ -136,5 +137,10 @@ void StateLobby::render() {
 Queues the chatroom state
 */
 void StateLobby::queueStateChatroom() {
-	this->mNext = new StateChatroom();
+	if (this->mData.network->isServer) {
+		this->mNext = new StateChatroomClient();
+	}
+	else {
+		this->mNext = new StateChatroomServer();
+	}
 }
