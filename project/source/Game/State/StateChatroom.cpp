@@ -5,6 +5,8 @@
 #include "Network\Client.h"
 #include "Game\Network\ServerPackets.h"
 #include "Game\Network\ClientPackets.h"
+#include "Game\Packets\Packet.h"
+#include "Network\Packets\PacketInfo.h"
 
 StateChatroom::StateChatroom() : StateApplication() {
 	mpNetworkFramework = NULL;
@@ -35,6 +37,8 @@ void StateChatroom::onEnterFrom(StateApplication *previous) {
 
 	mpNetworkFramework->startup();
 
+	this->pushMessage(std::string("Starting the ") + (this->mData.network->isServer ? "server" : "client"));
+
 }
 
 void StateChatroom::updateNetwork() {
@@ -55,7 +59,6 @@ void StateChatroom::updateGame()
 
 	// Author: Dustin Yost
 	// Handle updates from the network packets
-	Network::PacketInfo info;
 	while (this->mPacketInputQueue.size() > 0) {
 		// Pass off the packet for handling in children classes
 		this->doHandlePacket(this->mPacketInputQueue.front());
@@ -65,7 +68,7 @@ void StateChatroom::updateGame()
 
 	// Author: Jon Trusheim
 	std::string latestLine;
-	if (this->updateForInput(latestLine, true))
+	if (this->updateForInput(latestLine, false))
 	{
 		if (latestLine.at(0) == '/') //checks to make sure that the first character is a /
 		{
@@ -94,10 +97,33 @@ void StateChatroom::updateGame()
 	}
 }
 
+Framework* StateChatroom::getFramework() {
+	return mpNetworkFramework;
+}
+
 /* Author: Dustin Yost
 Pushes a text message to the record of messages to display
 */
 void StateChatroom::pushMessage(const std::string &msg) {
 	// Push the message into the buffer
 	this->mData.display->textRecord.push_back(std::string(msg.c_str()));
+}
+
+/* Author: Dustin Yost
+Sends a packet to the server indicating a public message
+*/
+void StateChatroom::sendMessage(const std::string &message) {
+	PacketString packet;
+	packet.packetID = ID_CHAT_MESSAGE;
+	strncpy(packet.content, message.c_str(), min(message.length(), PacketString::MAX_SIZE_CONTENT));
+	this->sendPacket(packet);
+}
+
+/* Author: Dustin Yost
+Sends a packet to the server indicating a private message
+*/
+void StateChatroom::sendMessage(const std::string &username, const std::string &message) {
+	PacketString packet;
+	packet.packetID = ID_SEND_ALL;
+
 }

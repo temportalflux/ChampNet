@@ -161,5 +161,8 @@
     <ClInclude Include="include\Game\State\StateChatroomServer.h">
       <Filter>Header Files\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="include\Network\NetworkDefines.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

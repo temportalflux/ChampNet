@@ -1,7 +1,6 @@
 #include "Game\State\StateLobby.h"
 
 #include <Windows.h>
-#include <iostream>
 
 #include "Game\State\StateChatroomClient.h"
 #include "Game\State\StateChatroomServer.h"
@@ -57,6 +56,8 @@ void StateLobby::updateGame() {
 											  // Log user input
 				this->mData.network->networkInfo.maxClients = std::stoi(latestLine);
 
+				this->mData.display->textRecord.clear();
+
 				// Startup the server
 				this->queueStateChatroom();
 
@@ -73,6 +74,8 @@ void StateLobby::updateGame() {
 			case EnumLoginPhase::USERNAME: // CLIENT
 				// Set username of client
 				this->mData.network->networkInfo.username.assign(latestLine);
+
+				this->mData.display->textRecord.clear();
 
 				// Startup the server
 				this->queueStateChatroom();
@@ -92,47 +95,7 @@ void StateLobby::updateGame() {
 Handle rendering all text to the screen
 */
 void StateLobby::render() {
-	// Clear the screen
-	this->console()->setCursorPosition(0, 0);
-	
-	// Get the max lines and columns for the window
-	// TODO: Put this in the state
-	const int totalLines = 35;
-	const int maxColumns = 50;
-
-	// Figure out how many lines can be used for displaying text records
-	// one line must be used for user text
-	const int totalLinesRecord = totalLines - 1; // 1 for current text
-
-	// Get the text record from the state data
-	std::vector<std::string> textRecord = this->mData.display->textRecord;
-	const int textRecordCount = (int)textRecord.size();
-	// get the first index of the recorded lines to render
-	int textRecordStart = textRecordCount - totalLinesRecord;
-	textRecordStart = textRecordStart < 0 ? 0 : textRecordStart;
-
-	for (int line = textRecordStart; line < textRecordCount; line++) {
-		std::string text = textRecord[line];
-		size_t length = text.length();
-		// WARNING: spaceCount is a generative for loop. Move to text enqueue?
-		std::string postSpaces = this->console()->spaceCount((int)max(0, maxColumns - length));
-		std::cout << text << postSpaces << '\n';
-	}
-
-	// Find out how many lines are remaining (these need to be populated via spaces)
-	int linesRemaining = totalLinesRecord - textRecordCount;
-	linesRemaining = linesRemaining < 0 ? 0 : linesRemaining;
-
-	// Fill empty space with extra spaces and new lines
-	// this "pushes" the user's text to the bottom of the screen
-	for (int line = 0; line < linesRemaining; line++) {
-		std::cout << this->console()->spaceCount(maxColumns) << "\n";
-	}
-
-	// Render text incoming from user
-	std::string currentText = this->mData.input->currentLine;
-	std::string postSpaces = this->console()->spaceCount((int)max(0, maxColumns - currentText.length()));
-	std::cout << "> " << currentText << postSpaces;
+	this->renderConsole();
 }
 
 /* Author: Dustin Yost

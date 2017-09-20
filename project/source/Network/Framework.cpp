@@ -37,7 +37,7 @@ void Framework::startup() {
 	this->mpNetwork->startup();
 
 	// Notify user that the game has started
-	printf("Starting the %s.\n", this->mpNetwork->isServer ? "server" : "client");
+	//printf("Starting the %s.\n", this->mpNetwork->isServer ? "server" : "client");
 
 	// Setup the server or Connect from client to server
 	this->mpNetwork->connect();
@@ -53,4 +53,12 @@ void Framework::update() {
 
 void Framework::onExit() {
 	this->mpPacketHandler->onExit();
+}
+
+Network::Network* Framework::getNetwork() {
+	return mpNetwork;
+}
+
+void Framework::sendPacket(Packet packet, RakNet::SystemAddress *address) {
+	this->getNetwork()->sendTo(packet, *address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
 }

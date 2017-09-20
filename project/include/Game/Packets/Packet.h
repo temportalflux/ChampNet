@@ -11,7 +11,7 @@
 */
 #pragma once
 
-#include "network\Network.h"
+#include "Network\NetworkDefines.h"
 
 // Author: Dustin Yost
 // A list of user implemented methods outside of RakNet
@@ -47,28 +47,29 @@ enum GameMessages
 
 // Author: Dustin Yost
 // GameMessages::ID_USERNAME
-struct PacketString {
+struct PacketString : Packet {
+	static const unsigned int MAX_SIZE_CONTENT = 31;
 	unsigned char packetID;
-	char content[31];
+	char content[PacketString::MAX_SIZE_CONTENT];
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_NEW_CLIENT_JOINED
-struct PacketStringLarge {
+struct PacketStringLarge : Packet {
 	unsigned char packetID;
 	char content[511];
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_CLIENT_NUMBER
-struct PacketUInt {
+struct PacketUInt : Packet {
 	unsigned char packetID;
 	unsigned int clientID;
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_CHAT_MESSAGE
-struct PacketChatMessage {
+struct PacketChatMessage : Packet {
 	unsigned char packetID;
 	char username[31];
 	char message[64];

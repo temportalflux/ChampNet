@@ -76,6 +76,8 @@ void ServerPackets::handlePacketData(Network::PacketInfo info) {
 		default:
 			break;
 	}
+
+	this->mpMessageHandler->handlePacket(info);
 }
 
 // Author: Dustin Yost

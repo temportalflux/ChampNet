@@ -56,6 +56,7 @@
     <ClInclude Include="include\network\Framework.h" />
     <ClInclude Include="include\Network\FrameworkDefines.h" />
     <ClInclude Include="include\network\Network.h" />
+    <ClInclude Include="include\Network\NetworkDefines.h" />
     <ClInclude Include="include\Network\Packets\PacketHandler.h" />
     <ClInclude Include="include\Network\Packets\PacketInfo.h" />
     <ClInclude Include="include\Network\Packets\PacketManager.h" />

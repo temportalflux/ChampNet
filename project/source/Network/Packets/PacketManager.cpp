@@ -11,7 +11,10 @@
 */
 #include "Network\Packets\PacketManager.h"
 
+#ifndef _RAKNET_TYPES
+#define _RAKNET_TYPES
 #include <RakNet\RakNetTypes.h>  // MessageID
+#endif
 
 namespace Network {
 

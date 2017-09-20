@@ -20,6 +20,8 @@ struct StateInput {
 	// The current line being editted by the user
 	std::string currentLine;
 
+	void copyFrom(StateInput *other);
+
 };
 
 // Author: Dustin Yost
@@ -29,6 +31,8 @@ struct StateConsole {
 	HWND consoleWindow;
 	// The size of the console window
 	RECT size;
+
+	void copyFrom(StateConsole *other);
 
 	// Sets the local size variable
 	void setSize(RECT rect);
@@ -47,12 +51,16 @@ struct StateNetwork {
 	bool isServer;
 	FrameworkData networkInfo;
 
+	void copyFrom(StateNetwork *other);
+
 };
 
 struct StateDisplay {
 
 	// A record of all text inputs
 	std::vector<std::string> textRecord;
+
+	void copyFrom(StateDisplay *other);
 
 };
 
@@ -74,6 +82,8 @@ public:
 		StateNetwork *network;
 		// The state of network
 		StateDisplay *display;
+
+		void copyFrom(Data &data);
 
 	};
 
@@ -114,5 +124,6 @@ public:
 	void setWindow(HWND window);
 
 	bool updateForInput(std::string &latestLine, bool allowEmptyLines);
+	void renderConsole();
 
 };
