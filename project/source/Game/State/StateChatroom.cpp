@@ -75,7 +75,7 @@ void StateChatroom::updateGame()
 		{
 			if (latestLine.find("/help") == 0)
 			{
-				this->mData.display->textRecord.push_back("type /pm to message a specfic user");
+				this->mData.display->textRecord.push_back("type /pm to message a specfic user or type /clear to clear the screen");
 			}
 			else if (latestLine.find("/pm") == 0)
 			{
@@ -109,6 +109,10 @@ void StateChatroom::updateGame()
 					}
 				}
 				//sendMessage(username, message);
+			}
+			else if (latestLine.find("/clear") == 0)
+			{
+				system("cls");
 			}
 			else
 			{
