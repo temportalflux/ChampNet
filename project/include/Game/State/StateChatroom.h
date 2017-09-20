@@ -33,6 +33,11 @@ protected:
 	*/
 	void pushMessage(const std::string &msg);
 
+	/*
+	Author: Jon Trusheim
+	chat commands
+	*/
+	void chatCommands(const std::string &latestLine);
 public:
 	StateChatroom();
 	virtual ~StateChatroom();
