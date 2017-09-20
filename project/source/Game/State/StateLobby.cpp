@@ -81,8 +81,6 @@ void StateLobby::updateGame() {
 				break;
 		}
 
-
-
 	}
 
 }

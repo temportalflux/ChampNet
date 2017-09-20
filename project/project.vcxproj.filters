@@ -146,5 +146,8 @@
     <ClInclude Include="include\Network\Packets\PacketManager.h">
       <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
+    <ClInclude Include="include\Network\MessageHandler.h">
+      <Filter>Header Files\Game\Network</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
