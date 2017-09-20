@@ -6,6 +6,10 @@
 #include "Game\Network\ServerPackets.h"
 #include "Game\Network\ClientPackets.h"
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
 StateChatroom::StateChatroom() : StateApplication() {
 	mpNetworkFramework = NULL;
 	mPacketInputQueue = std::deque<Network::PacketInfo>();
@@ -75,15 +79,36 @@ void StateChatroom::updateGame()
 			}
 			else if (latestLine.find("/pm") == 0)
 			{
-				/*
-				get input of the username
-				string userName = input;
-				check user name with server to see if it is valid
-
-
-
-
-				*/
+				std::string username, message, temp;
+				std::istringstream split(latestLine);
+				int i = 0;
+				while (split)
+				{
+					//used to get the /pm out of the message
+					if (i == 0)
+					{
+						split >> temp;
+						i++;
+					}
+					// splits the username off the message and stores it seperatly
+					else if (i == 1)
+					{
+						split >> username;
+						i++;
+					}
+					//starts of the message
+					else if (i == 3)
+					{
+						split >> message;
+					}
+					//the rest of the message is added on one by one
+					else
+					{
+						split >> temp;
+						message.append(" " + temp);
+					}
+				}
+				//sendMessage(username, message);
 			}
 			else
 			{
