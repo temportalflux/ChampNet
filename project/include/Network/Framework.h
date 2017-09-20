@@ -12,10 +12,14 @@
 #pragma once
 
 #include "Network\FrameworkDefines.h"
+#include "Network\NetworkDefines.h"
 
 namespace Network {
 	class Network;
 	class PacketHandler;
+};
+namespace RakNet {
+	struct SystemAddress;
 };
 
 // Author: Dustin Yost
@@ -40,5 +44,8 @@ public:
 	// Runs the game loop
 	void update();
 	void onExit();
+
+	Network::Network *getNetwork();
+	void sendPacket(Packet packet, RakNet::SystemAddress *address);
 
 };

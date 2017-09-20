@@ -13,7 +13,6 @@
 
 #include <string>
 
-#include <RakNet\RakNetTypes.h>  // MessageID
 #include <RakNet\RakPeerInterface.h>
 #include <RakNet\MessageIdentifiers.h>
 #include <RakNet\PacketPriority.h>
@@ -29,8 +28,6 @@ namespace Network {
 
 	class PacketManager;
 	class PacketHandler;
-
-	const int BASE_PACKET_ENUM = ID_USER_PACKET_ENUM + 1;
 
 	/**
 		A wrapper class for the RakNet interface

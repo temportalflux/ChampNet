@@ -16,6 +16,7 @@
 #include "Game\Network\MessageHandler.h"
 
 #include <iostream>
+#include <string>
 
 // AUTHOR: Dustin Yost
 ClientPackets::ClientPackets(MessageHandler *messageHandler) {
@@ -77,7 +78,9 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 }
 
 void ClientPackets::onExit() {
-	this->mpNetwork->disconnect(
-		PacketString{ (unsigned char)GameMessages::ID_CLIENT_LEFT, "Client is leaving." }
-	);
+	PacketString packet;
+	packet.packetID = (unsigned char)GameMessages::ID_CLIENT_LEFT;
+	std::string msg = "Client is leaving.";
+	strncpy(packet.content, msg.c_str(), msg.length());
+	this->mpNetwork->disconnect(packet);
 }

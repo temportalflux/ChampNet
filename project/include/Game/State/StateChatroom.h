@@ -7,6 +7,7 @@
 
 class Framework;
 struct FrameworkData;
+struct Packet;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 
@@ -18,12 +19,12 @@ private:
 	void updateNetwork();
 	void updateGame();
 
+protected:
 	/* Author: Dustin Yost
-		Handles the queue of packets to later be processed
+	Handles the queue of packets to later be processed
 	*/
 	virtual void handlePacket(Network::PacketInfo info) override;
 
-protected:
 	/* Author: Dustin Yost
 		Handle packets which have been recieved since last update
 	*/
@@ -33,11 +34,20 @@ protected:
 	*/
 	void pushMessage(const std::string &msg);
 
+
 	/*
 	Author: Jon Trusheim
 	chat commands
 	*/
 	void chatCommands(const std::string &latestLine);
+
+	Framework* getFramework();
+
+	virtual void sendMessage(const std::string &message);
+	virtual void sendMessage(const std::string &username, const std::string &message);
+	virtual void sendPacket(Packet packet) = 0;
+
+
 public:
 	StateChatroom();
 	virtual ~StateChatroom();

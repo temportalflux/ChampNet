@@ -1,8 +1,8 @@
 #include "Game\State\StateChatroomClient.h"
 
-#include "Network\Network.h"
 #include "Game\Packets\Packet.h"
 #include <sstream>
+#include "Network\Framework.h"
 
 using std::stringstream;
 
@@ -10,7 +10,17 @@ using std::stringstream;
 void StateChatroomClient::doHandlePacket(Network::PacketInfo info) {
 	switch (info.getPacketType()) {
 		case ID_CONNECTION_REQUEST_ACCEPTED: // Handle connections
-			// TODO: Send username response to server
+			this->mAddressServer = info.address;
+			{
+				this->pushMessage("Connected.");
+
+				PacketString packet;
+				packet.packetID = GameMessages::ID_USERNAME;
+				std::string username = this->mData.network->networkInfo.username;
+				strncpy(packet.content, username.c_str(), username.length());
+
+				this->sendPacket(packet);
+			}
 			break;
 		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
 			{
@@ -28,5 +38,9 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo info) {
 }
 
 void StateChatroomClient::render() {
+	this->renderConsole();
+}
 
+void StateChatroomClient::sendPacket(Packet packet) {
+	this->getFramework()->sendPacket(packet, this->mAddressServer);
 }
