@@ -7,5 +7,7 @@ struct FrameworkData {
 	unsigned int maxClients;
 	// CLIENT ONLY: the address of the server to connect to
 	char serverAddress[15];// ***.***.***.*** 12+3=15
+	// CLIENT ONLY: the username of the user
+	std::string username;
 };
 
