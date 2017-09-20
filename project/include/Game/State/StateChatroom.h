@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game\State\StateApplication.h"
-
+#include <string>
 class Framework;
 struct FrameworkData;
 
@@ -14,6 +14,7 @@ private:
 	void updateNetwork();
 	void updateGame();
 	void render();
+	
 
 public:
 	StateChatroom();

@@ -27,6 +27,25 @@ void StateLobby::updateGame() {
 	if (this->updateForInput(latestLine, mPhase == EnumLoginPhase::ADDRESS)) {
 		// new line has been entered
 
+		if (this->updateForInput(latestLine, mPhase == EnumLoginPhase::ADDRESS))
+		{
+			if (latestLine.at(0) == '/')
+			{
+				if (latestLine == "/help")
+				{
+
+				}
+				else if(latestLine == "/test")
+				{
+
+				}
+				else
+				{
+					//tell the user that the command is not valid
+				}
+			}
+		}
+
 		switch (mPhase) {
 			case EnumLoginPhase::NETWORK_TYPE: // Client and Server
 				// Log user input
