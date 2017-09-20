@@ -65,17 +65,8 @@ void ClientPackets::handlePacketData(Network::PacketInfo info) {
 			}
 			break;
 			// AUTHOR: Dustin Yost
-		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
-			{
-				//printf("> %s%s%s\n", "User ", ((PacketString*)info.data)->content, " has joined.");
-			}
-			break;
-			// AUTHOR: Dustin Yost
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
-			{
-				//printf("Welcome to the server\n");
-				mID = ((PacketUInt*)info.data)->clientID;
-			}
+			mID = ((PacketUInt*)info.data)->clientID;
 			break;
 		default:
 			break;

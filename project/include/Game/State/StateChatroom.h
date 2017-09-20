@@ -17,10 +17,20 @@ private:
 	void updateNetwork();
 	void updateGame();
 
+	/* Author: Dustin Yost
+		Handles the queue of packets to later be processed
+	*/
 	virtual void handlePacket(Network::PacketInfo info) override;
 
 protected:
+	/* Author: Dustin Yost
+		Handle packets which have been recieved since last update
+	*/
 	virtual void doHandlePacket(Network::PacketInfo info) = 0;
+	/* Author: Dustin Yost
+		Pushes a text message to the record of messages to display
+	*/
+	void pushMessage(const std::string &msg);
 
 public:
 	StateChatroom();
