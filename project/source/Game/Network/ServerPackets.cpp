@@ -13,17 +13,19 @@
 
 #include "Network\Network.h"
 #include "Game\Packets\Packet.h"
+#include "Game\Network\MessageHandler.h"
 
 // Author: Dustin Yost
-ServerPackets::ServerPackets() {
+ServerPackets::ServerPackets(MessageHandler *messageHandler) {
 	mMapIDToAddress = UserIDToAddress();
 	mMapAddressToID = UserAddressToID();
 	mMapIDToName = UserIDToName();
+	mpMessageHandler = messageHandler;
 }
 
 // Author: Dustin Yost
 ServerPackets::~ServerPackets() {
-
+	mpMessageHandler = NULL;
 }
 
 void ServerPackets::subscribeTo(Network::Network* network) {
@@ -38,12 +40,13 @@ void ServerPackets::handlePacketData(Network::PacketInfo info) {
 		// Author: Dustin Yost
 		case ID_CLIENT_LEFT:
 			{
-				printf("%s\n", ((PacketString*)(info.data))->content);
+				//printf("%s\n", ((PacketString*)(info.data))->content);
 			}
 			break;
 			//Author: Jon T
 		case ID_USERNAME:
 			{
+				/*
 				PacketString* packetUsername = (PacketString*)(info.data);
 				//gets the username that the user inputed
 				UserName username = packetUsername->content;
@@ -66,6 +69,7 @@ void ServerPackets::handlePacketData(Network::PacketInfo info) {
 
 				// Notify client of its ID
 				this->mpNetwork->sendTo(PacketUInt{ ID_CLIENT_NUMBER, userId }, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+				*/
 
 			}
 			break;

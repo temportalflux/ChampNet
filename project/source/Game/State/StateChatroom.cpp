@@ -8,6 +8,7 @@
 
 StateChatroom::StateChatroom() : StateApplication() {
 	mpNetworkFramework = NULL;
+	mPacketInputQueue = std::deque<Network::PacketInfo>();
 }
 
 StateChatroom::~StateChatroom() {
@@ -26,10 +27,10 @@ void StateChatroom::onEnterFrom(StateApplication *previous) {
 	// Startup the network
 	// Create the framework peer
 	if (this->mData.network->isServer) {
-		mpNetworkFramework = new Server(new ServerPackets(), this->mData.network->networkInfo);
+		mpNetworkFramework = new Server(new ServerPackets(this), this->mData.network->networkInfo);
 	}
 	else {
-		mpNetworkFramework = new Client(new ClientPackets(), this->mData.network->networkInfo);
+		mpNetworkFramework = new Client(new ClientPackets(this), this->mData.network->networkInfo);
 	}
 
 	mpNetworkFramework->startup();
@@ -37,14 +38,23 @@ void StateChatroom::onEnterFrom(StateApplication *previous) {
 }
 
 void StateChatroom::updateNetwork() {
+	this->mpNetworkFramework->update();
+}
 
-	// TODO: this->mpNetworkFramework->update();
-
+void StateChatroom::handlePacket(Network::PacketInfo info) {
+	this->mPacketInputQueue.push_back(info);
 }
 
 // Author: Jon Trusheim
 void StateChatroom::updateGame() 
 {
+
+	Network::PacketInfo info;
+	while (this->mPacketInputQueue.size() > 0) {
+		this->doHandlePacket(this->mPacketInputQueue.front());
+		this->mPacketInputQueue.pop_front();
+	}
+
 	std::string latestLine;
 	if (this->updateForInput(latestLine, true))
 	{
@@ -73,10 +83,6 @@ void StateChatroom::updateGame()
 			}
 		}
 	}
-}
-
-void StateChatroom::render() {
-
 }
 
 

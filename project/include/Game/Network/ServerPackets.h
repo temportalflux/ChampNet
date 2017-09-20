@@ -15,6 +15,8 @@
 
 #include <map>
 
+class MessageHandler;
+
 // Author: Dustin Yost
 class ServerPackets : public Network::PacketHandler {
 	// Author: Dustin Yost
@@ -34,8 +36,10 @@ private:
 	// Author: Dustin Yost
 	UserIDToName mMapIDToName;
 
+	MessageHandler *mpMessageHandler;
+
 public:
-	ServerPackets();
+	ServerPackets(MessageHandler *messageHandler);
 	virtual ~ServerPackets();
 
 	virtual void subscribeTo(Network::Network *network);

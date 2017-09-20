@@ -24,6 +24,8 @@
     <ClCompile Include="source\Game\Network\ServerPackets.cpp" />
     <ClCompile Include="source\Game\State\StateApplication.cpp" />
     <ClCompile Include="source\Game\State\StateChatroom.cpp" />
+    <ClCompile Include="source\Game\State\StateChatroomClient.cpp" />
+    <ClCompile Include="source\Game\State\StateChatroomServer.cpp" />
     <ClCompile Include="source\Game\State\StateGameLocal.cpp" />
     <ClCompile Include="source\Game\State\StateLobby.cpp" />
     <ClCompile Include="source\main.cpp">
@@ -41,16 +43,18 @@
   <ItemGroup>
     <ClInclude Include="include\Game\Game.h" />
     <ClInclude Include="include\Game\Network\ClientPackets.h" />
+    <ClInclude Include="include\Game\Network\MessageHandler.h" />
     <ClInclude Include="include\Game\Network\ServerPackets.h" />
     <ClInclude Include="include\Game\Packets\Packet.h" />
     <ClInclude Include="include\Game\State\StateApplication.h" />
     <ClInclude Include="include\Game\State\StateChatroom.h" />
+    <ClInclude Include="include\Game\State\StateChatroomClient.h" />
+    <ClInclude Include="include\Game\State\StateChatroomServer.h" />
     <ClInclude Include="include\Game\State\StateGameLocal.h" />
     <ClInclude Include="include\Game\State\StateLobby.h" />
     <ClInclude Include="include\network\Client.h" />
     <ClInclude Include="include\network\Framework.h" />
     <ClInclude Include="include\Network\FrameworkDefines.h" />
-    <ClInclude Include="include\Network\MessageHandler.h" />
     <ClInclude Include="include\network\Network.h" />
     <ClInclude Include="include\Network\Packets\PacketHandler.h" />
     <ClInclude Include="include\Network\Packets\PacketInfo.h" />

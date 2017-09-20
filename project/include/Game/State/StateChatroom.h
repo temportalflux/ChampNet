@@ -2,19 +2,26 @@
 
 #include "Game\State\StateApplication.h"
 #include <string>
+#include "Game\Network\MessageHandler.h"
+#include <deque>
+
 class Framework;
 struct FrameworkData;
 
-class StateChatroom : public StateApplication {
+class StateChatroom abstract : public StateApplication, public MessageHandler {
 
 private:
 	Framework* mpNetworkFramework;
+	std::deque<Network::PacketInfo> mPacketInputQueue;
 
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateNetwork();
 	void updateGame();
-	void render();
-	
+
+	virtual void handlePacket(Network::PacketInfo info) override;
+
+protected:
+	virtual void doHandlePacket(Network::PacketInfo info) = 0;
 
 public:
 	StateChatroom();

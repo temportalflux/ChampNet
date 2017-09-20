@@ -13,6 +13,8 @@
 
 #include "Network\Packets\PacketHandler.h"
 
+class MessageHandler;
+
 // Author: Dustin Yost
 class ClientPackets : public Network::PacketHandler {
 	typedef unsigned int UserID;
@@ -25,8 +27,10 @@ private:
 	// Author: Dustin Yost
 	UserID mID;
 
+	MessageHandler *mpMessageHandler;
+
 public:
-	ClientPackets();
+	ClientPackets(MessageHandler *messageHandler);
 	virtual ~ClientPackets();
 
 	// Author: Dustin Yost

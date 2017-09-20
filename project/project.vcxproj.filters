@@ -93,6 +93,12 @@
     <ClCompile Include="source\Network\Packets\PacketManager.cpp">
       <Filter>Source Files\Network\Packets</Filter>
     </ClCompile>
+    <ClCompile Include="source\Game\State\StateChatroomClient.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\State\StateChatroomServer.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\network\Network.h">
@@ -146,8 +152,14 @@
     <ClInclude Include="include\Network\Packets\PacketManager.h">
       <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
-    <ClInclude Include="include\Network\MessageHandler.h">
+    <ClInclude Include="include\Game\Network\MessageHandler.h">
       <Filter>Header Files\Game\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateChatroomClient.h">
+      <Filter>Header Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\State\StateChatroomServer.h">
+      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
