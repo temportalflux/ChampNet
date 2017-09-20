@@ -1,5 +1,6 @@
 /*
 	Dustin Yost 0984932
+	Jon Trusheim 0979380
 	EGP-405-02
 	Project 1
 	09/21/2017
