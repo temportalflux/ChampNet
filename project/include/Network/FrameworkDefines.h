@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 struct FrameworkData {
 	// The port of the server (this server if isServer is true, else the server this client is connecting to)
 	unsigned int port;

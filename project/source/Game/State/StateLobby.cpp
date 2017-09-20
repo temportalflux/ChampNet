@@ -100,8 +100,6 @@ void StateLobby::updateGame() {
 				break;
 		}
 
-
-
 	}
 
 }
