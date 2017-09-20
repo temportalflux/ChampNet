@@ -50,7 +50,8 @@ void StateChatroom::handlePacket(Network::PacketInfo info) {
 	this->mPacketInputQueue.push_back(info);
 }
 
-void StateChatroom::updateGame() {
+void StateChatroom::updateGame() 
+{
 
 	// Author: Dustin Yost
 	// Handle updates from the network packets
@@ -62,6 +63,35 @@ void StateChatroom::updateGame() {
 		this->mPacketInputQueue.pop_front();
 	}
 
+	// Author: Jon Trusheim
+	std::string latestLine;
+	if (this->updateForInput(latestLine, true))
+	{
+		if (latestLine.at(0) == '/') //checks to make sure that the first character is a /
+		{
+			if (latestLine.find("/help") == 0)
+			{
+				this->mData.display->textRecord.push_back("type /pm to message a specfic user");
+			}
+			else if (latestLine.find("/pm") == 0)
+			{
+				/*
+				get input of the username
+				string userName = input;
+				check user name with server to see if it is valid
+
+
+
+
+				*/
+			}
+			else
+			{
+				// tells the user that it was not a valid command
+				this->mData.display->textRecord.push_back("Not a valid command");
+			}
+		}
+	}
 }
 
 /* Author: Dustin Yost

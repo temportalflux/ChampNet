@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game\State\StateApplication.h"
+#include <string>
 #include "Game\Network\MessageHandler.h"
 #include <deque>
 

@@ -78,6 +78,8 @@ void StateLobby::updateGame() {
 				this->queueStateChatroom();
 
 				break;
+			case EnumLoginPhase::WAIT_FOR_USERNAME_VALIDATION:
+				break;
 			default:
 				break;
 		}
