@@ -17,9 +17,6 @@ struct StateInput {
 	// If the capslock is enabled
 	bool isCaps;
 	
-	// A record of all text inputs
-	// TODO: Move to game state
-	std::vector<std::string> textRecord;
 	// The current line being editted by the user
 	std::string currentLine;
 
@@ -52,6 +49,13 @@ struct StateNetwork {
 
 };
 
+struct StateDisplay {
+
+	// A record of all text inputs
+	std::vector<std::string> textRecord;
+
+};
+
 // Author: Dustin Yost
 class StateApplication {
 
@@ -68,6 +72,8 @@ public:
 		StateInput *input;
 		// The state of network
 		StateNetwork *network;
+		// The state of network
+		StateDisplay *display;
 
 	};
 
@@ -106,5 +112,7 @@ public:
 	StateConsole* console();
 	// Sets the console window reference
 	void setWindow(HWND window);
-	
+
+	bool updateForInput(std::string &latestLine, bool allowEmptyLines);
+
 };

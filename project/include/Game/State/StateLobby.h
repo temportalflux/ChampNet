@@ -11,7 +11,8 @@ private:
 		NETWORK_TYPE, // Server or Client
 		NETWORK_PORT, // Port #
 		ADDRESS, // Client: The address string
-		MAX_CLIENTS // Server: Max Clients
+		MAX_CLIENTS, // Server: Max Clients
+		USERNAME, // users username
 	} mPhase;
 
 	virtual void onEnterFrom(StateApplication *previous);
@@ -19,7 +20,6 @@ private:
 	void updateGame();
 	void render();
 
-	bool updateForInput(std::string &latestLine, bool allowEmptyLines);
 	void queueStateChatroom();
 
 };

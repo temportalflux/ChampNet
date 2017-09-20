@@ -44,6 +44,7 @@ StateApplication::Data::Data() {
 	console = new StateConsole();
 	input = new StateInput();
 	network = new StateNetwork();
+	display = new StateDisplay();
 }
 
 // Author: Dustin Yost
@@ -51,6 +52,7 @@ StateApplication::Data::~Data() {
 	delete console;
 	delete input;
 	delete network;
+	delete display;
 }
 
 // Author: Dustin Yost
@@ -115,4 +117,77 @@ Returns the console state
 */
 StateConsole* StateApplication::console() {
 	return mData.console;
+}
+
+/* Author: Dustin Yost
+Handles updates from the input state and handling how those strings are cached
+*/
+bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLines) {
+	// Cache keyboard state
+	bool *current = this->mData.input->keyboard;
+	bool *previous = this->mData.input->previous;
+
+	bool enteredNewLine = false;
+
+	// Handle updates from the keyboard
+	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++) {
+		// Check if the key was pressed this update
+		if (current[i] && !previous[i]) {
+			// Check all keys that were pressed
+			switch (i) {
+				case VK_ESCAPE: // special effect, set the application to stop running
+					this->mRunning = false;
+					break;
+				case VK_RETURN: // special effect, push the text line into the records buffer
+								// only if there is text in the buffer
+					if (allowEmptyLines || this->mData.input->currentLine.length() > 0) {
+
+						// Set return to mark that a new line was recorded
+						enteredNewLine = true;
+
+						// Mark the latest line for the caller
+						latestLine = this->mData.input->currentLine;
+
+						// push back the string
+						this->mData.display->textRecord.push_back(latestLine);
+
+						// empty the string
+						this->mData.input->currentLine = "";
+					}
+					break;
+				case VK_BACK: // special effect, remove the last character in the stream
+					{
+						// get teh current line
+						std::string str = this->mData.input->currentLine;
+						// ensure that the line has content to begin with
+						if (str.length() > 0) {
+							// find the substring without the last character, the current string buffer becomes that
+							this->mData.input->currentLine = str.substr(0, str.length() - 1);
+						}
+					}
+					break;
+				case VK_CAPITAL: // special effect, toggle the capslock
+					this->mData.input->isCaps = !this->mData.input->isCaps;
+					break;
+					// These should not have an input effect
+				case VK_SHIFT: break;
+				case VK_LSHIFT: break;
+				case VK_RSHIFT: break;
+				case VK_CONTROL: break;
+					// Handle all remaining cases (letters and specials)
+				default:
+					// get the character from the virtual key index
+					char character = (char)MapVirtualKey(i, MAPVK_VK_TO_CHAR);
+					// handle upper/lower case letters: check to see if the shift key is down
+					if (!(current[VK_SHIFT] || current[VK_LSHIFT] || current[VK_RSHIFT] || this->mData.input->isCaps)) {
+						character = tolower(character);
+					}
+					// push the character onto the text buffer
+					this->mData.input->currentLine.push_back(character);
+					break;
+			}
+		}
+	}
+
+	return enteredNewLine;
 }
