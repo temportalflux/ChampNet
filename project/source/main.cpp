@@ -9,6 +9,7 @@
 	to a plagiarism-checking service, which may retain a copy of
 	the project on its database.
 */
+
 #include <cstdlib>
 #include <stdio.h>
 #include "Game\Game.h"
