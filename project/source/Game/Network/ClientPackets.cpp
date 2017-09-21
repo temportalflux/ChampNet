@@ -36,6 +36,10 @@ void ClientPackets::subscribeTo(Network::Network* network) {
 	network->addPacketHandler(ID_CONNECTION_REQUEST_ACCEPTED, this);
 	network->addPacketHandler(ID_NEW_CLIENT_JOINED, this);
 	network->addPacketHandler(ID_CLIENT_NUMBER, this);
+	network->addPacketHandler(ID_SEND_ALL, this);
+	network->addPacketHandler(ID_PRIVATE_MESSAGE, this);
+	network->addPacketHandler(ID_CHAT_MESSAGE, this);
+	network->addPacketHandler(ID_CLIENT_LEFT, this);
 }
 
 // AUTHOR: Dustin Yost

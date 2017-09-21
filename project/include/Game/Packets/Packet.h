@@ -45,6 +45,9 @@ enum GameMessages
 
 };
 
+static const unsigned int PACKET_MAX_SIZE_CONTENT = 31;
+static const unsigned int PACKET_MAX_SIZE_TEXT = 63;
+
 #pragma pack(push, 1)
 
 struct PacketNotification {
@@ -53,33 +56,39 @@ struct PacketNotification {
 
 // Author: Dustin Yost
 // GameMessages::ID_USERNAME
-struct PacketString : Packet {
-	static const unsigned int MAX_SIZE_CONTENT = 31;
+struct PacketString {
 	unsigned char packetID;
-	char content[PacketString::MAX_SIZE_CONTENT];
+	char content[PACKET_MAX_SIZE_CONTENT];
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_NEW_CLIENT_JOINED
-struct PacketStringLarge : Packet {
+struct PacketStringLarge {
 	unsigned char packetID;
-	char content[511];
+	char content[PACKET_MAX_SIZE_TEXT];
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_CLIENT_NUMBER
-struct PacketUInt : Packet {
+struct PacketUInt {
 	unsigned char packetID;
 	unsigned int clientID;
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_CHAT_MESSAGE
-struct PacketChatMessage : Packet {
+struct PacketChatMessage {
 	unsigned char packetID;
-	char username[31];
+	char username[PACKET_MAX_SIZE_CONTENT];
 	char message[64];
 };
 
+// Author: Dustin Yost
+// GameMessages::ID_CHAT_MESSAGE
+struct PacketStringLargeUsername {
+	unsigned char packetID;
+	char username[PACKET_MAX_SIZE_CONTENT];
+	char message[PACKET_MAX_SIZE_TEXT + 1];
+};
 
 #pragma pack(pop)

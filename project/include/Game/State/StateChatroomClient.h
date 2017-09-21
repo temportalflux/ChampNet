@@ -25,7 +25,8 @@ private:
 	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
 	
-	virtual void sendTo(PacketString packet) override;
-	virtual void sendTo(PacketChatMessage packet) override;
+	virtual void sendToServer(PacketString *packet) override;
+	virtual void sendToServer(PacketChatMessage *packet) override;
+	virtual void sendToServer(PacketStringLarge *packet) override;
 
 };

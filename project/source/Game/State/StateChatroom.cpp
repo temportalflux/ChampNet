@@ -94,7 +94,12 @@ void StateChatroom::updateGame()
 	std::string latestLine;
 	if (this->updateForInput(latestLine, false))
 	{
-		chatCommands(latestLine);
+		if (!chatCommands(latestLine)) {
+
+			this->mData.display->textRecord.push_back(this->mData.network->networkInfo.username + ": " + latestLine);
+
+			this->sendMessage(latestLine);
+		}
 	}
 }
 
@@ -114,7 +119,7 @@ void StateChatroom::pushMessage(const std::string &msg) {
 Author: Jon Trusheim
 Holds all chat room commands 
 */
-void StateChatroom::chatCommands(const std::string & latestLine)
+bool StateChatroom::chatCommands(const std::string & latestLine)
 {
 	if (latestLine.at(0) == '/') //checks to make sure that the first character is a /
 	{
@@ -158,7 +163,7 @@ void StateChatroom::chatCommands(const std::string & latestLine)
 		// gives a command for users to choose when they would like to clear the screen
 		else if (latestLine.find("/clear") == 0)
 		{
-			system("cls");
+			this->mData.display->textRecord.clear();
 		}
 		// lets you exit the current server and join a different one instead
 		else if (latestLine.find("/exit") == 0)
@@ -170,17 +175,21 @@ void StateChatroom::chatCommands(const std::string & latestLine)
 			// tells the user that it was not a valid command
 			this->mData.display->textRecord.push_back("Not a valid command");
 		}
+		return true;
 	}
+	return false;
 }
 
 /* Author: Dustin Yost
 Sends a packet to the server indicating a public message
 */
 void StateChatroom::sendMessage(const std::string &message) {
-	PacketString packet;
+	PacketStringLarge packet;
 	packet.packetID = ID_CHAT_MESSAGE;
-	strncpy(packet.content, message.c_str(), min(message.length(), PacketString::MAX_SIZE_CONTENT));
-	this->sendTo(packet);
+	size_t length = min(message.length(), PACKET_MAX_SIZE_CONTENT - 1);
+	strncpy(packet.content, message.c_str(), length);
+	packet.content[length] = '\0';
+	this->sendToServer(&packet);
 }
 
 /* Author: Jon Trusheim
@@ -190,7 +199,7 @@ void StateChatroom::sendMessage(const std::string &username, const std::string &
 {
 	PacketChatMessage packet;
 	packet.packetID = ID_PRIVATE_MESSAGE;
-	strncpy(packet.message, message.c_str(), min(message.length(), PacketString::MAX_SIZE_CONTENT));
-	strncpy(packet.username, username.c_str(), min(username.length(), PacketString::MAX_SIZE_CONTENT));
-	this->sendTo(packet);
+	strncpy(packet.message, message.c_str(), min(message.length(), PACKET_MAX_SIZE_CONTENT));
+	strncpy(packet.username, username.c_str(), min(username.length(), PACKET_MAX_SIZE_CONTENT));
+	this->sendToServer(&packet);
 }

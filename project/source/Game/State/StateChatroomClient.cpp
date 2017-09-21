@@ -35,7 +35,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 				strncpy(packet.content, username.c_str(), length);
 				packet.content[length] = '\0';
 
-				this->sendTo(packet);
+				this->sendToServer(&packet);
 			}
 			break;
 		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
@@ -46,25 +46,26 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			}
 			break;
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
+			// Note: user IDs are not used locally
 			this->pushMessage("Welcome to the server");
 			break;
 
 		//Author: Jon Trusheim
-		case ID_SEND_ALL: //Handle incomeing messages that are ment for all users
-		{
-			stringstream msg;
-			msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
-			this->pushMessage(msg.str());
-			break;
-		}
+		case ID_CHAT_MESSAGE:  //Handle incomeing messages that are ment for all users
+			{
+				PacketStringLarge *packet = ((PacketStringLarge*)info->data);
+				std::string message = std::string(packet->content);
+				this->pushMessage(message);
+				break;
+			}
 		//Author: Jon Trusheim
 		case ID_PRIVATE_MESSAGE: //Handle incoming private message
-		{
-			stringstream msg;
-			msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
-			this->pushMessage(msg.str());
-			break;
-		}
+			{
+				stringstream msg;
+				msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
+				this->pushMessage(msg.str());
+				break;
+			}
 		case ID_CLIENT_LEFT:
 		{
 			stringstream msg;
@@ -82,15 +83,23 @@ void StateChatroomClient::render() {
 	this->renderConsole();
 }
 
-void StateChatroomClient::sendTo(PacketString packet) {
-	char *data = (char*)(&packet);
-	unsigned int size = sizeof(packet);
+void StateChatroomClient::sendToServer(PacketString *packet) {
+	PacketString obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
 
-void StateChatroomClient::sendTo(PacketChatMessage packet)
-{
-	char *data = (char*)(&packet);
-	unsigned int size = sizeof(packet);
+void StateChatroomClient::sendToServer(PacketChatMessage *packet) {
+	PacketChatMessage obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+}
+
+void StateChatroomClient::sendToServer(PacketStringLarge *packet) {
+	PacketStringLarge obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }

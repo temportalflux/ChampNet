@@ -13,6 +13,7 @@ the project on its database.
 
 #include "Game\State\StateApplication.h"
 #include <cstdlib>
+#include <RakNet\WindowsIncludes.h>
 #include <Windows.h>
 #include <iostream>
 
@@ -229,7 +230,7 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 						latestLine = this->mData.input->currentLine;
 
 						// push back the string
-						this->mData.display->textRecord.push_back(latestLine);
+						//this->mData.display->textRecord.push_back(latestLine);
 
 						// empty the string
 						this->mData.input->currentLine = "";

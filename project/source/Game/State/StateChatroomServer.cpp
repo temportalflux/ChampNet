@@ -15,6 +15,7 @@ the project on its database.
 #include "Game\Packets\Packet.h"
 #include "Network\Packets\PacketInfo.h"
 #include "Network\Framework.h"
+#include <RakNet\RakNetTypes.h>
 
 void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	unsigned int id = info->getPacketType();
@@ -24,31 +25,64 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketString* packetUsername = (PacketString*)(info->data);
 				//gets the username that the user inputed
 				StateNetwork::UserName username = std::string(packetUsername->content);
-
-				this->pushMessage(std::string("User ") + username + " joined.");
-
-				//gets the systemAdress of the 
 				StateNetwork::UserAddress systemAddress = info->address;
+
 				std::stringstream msg;
-				msg << systemAddress;
+				msg << "User " << username << " has joined at IP " << systemAddress << ".";
 				this->pushMessage(msg.str());
+
 				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
 
 				//inputs that information into a pair of maps so the server has access to them
 				this->mData.network->mMapIDToAddress[userId] = systemAddress;
 				this->mData.network->mMapAddressToID[systemAddress] = userId;
 				this->mData.network->mMapIDToName[userId] = username;
-				this->mData.network->mUserNameToID[username] = userId;
+				this->mData.network->mMapNameToID[username] = userId;
 
 				PacketString notifyNewUser;
 				notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
 				strncpy(notifyNewUser.content, username.c_str(), 31);
-				this->sendTo(notifyNewUser, systemAddress, true);
+				this->sendTo(&notifyNewUser, systemAddress, true);
+
+				PacketUInt packetID = PacketUInt{ ID_CLIENT_NUMBER, userId };
+				this->sendTo(&packetID, systemAddress);
+
+			}
+			break;
+		case ID_CHAT_MESSAGE:
+			{
+				PacketStringLarge *packet = ((PacketStringLarge*)info->data);
+				StateNetwork::UserID sourceID = this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
+				std::string content = std::string(packet->content);
+
+				std::stringstream msg;
+				msg << sourceName << ": " << content;
+				std::string msgContent = msg.str();
+				this->pushMessage(msgContent);
+
+				size_t length = min(msgContent.length(), PACKET_MAX_SIZE_TEXT - 1);
+				strncpy(packet->content, msgContent.c_str(), length);
+				packet->content[length] = '\0';
+				
+				this->sendTo(packet, info->address, true);
 
 			}
 			break;
 		case ID_PRIVATE_MESSAGE:
-			info->address;
+			{
+				PacketChatMessage *packet = ((PacketChatMessage*)info->data);
+
+				StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
+				StateNetwork::UserID sourceID = this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
+				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
+
+				strncpy(packet->username, sourceName.c_str(), min(sourceName.length(), PACKET_MAX_SIZE_CONTENT));
+				
+				this->sendTo(packet, targetAddress);
+
+			}
 			break;
 		case ID_CLIENT_LEFT:
 		{
@@ -69,26 +103,42 @@ void StateChatroomServer::render() {
 	this->renderConsole();
 }
 
-void StateChatroomServer::sendTo(PacketString packet) 
+void StateChatroomServer::sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast)
 {
-	// Never send from server to self, pack into PacketInfo and use
-}
-
-void StateChatroomServer::sendTo(PacketChatMessage packet)
-{
-	char *data = (char*)(&packet);
-	unsigned int size = sizeof(packet);
-	//this->getFramework()->sendTo(data, size, /*RakNet stuff*/, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
-}
-
-void StateChatroomServer::sendTo(PacketString packet, RakNet::SystemAddress *address, bool broadcast) {
-	char *data = (char*)(&packet);
-	unsigned int size = sizeof(packet);
+	PacketString obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, broadcast);
 }
 
-void StateChatroomServer::sendTo(PacketUInt packet, RakNet::SystemAddress *address, bool broadcast) {
-	char *data = (char*)(&packet);
-	unsigned int size = sizeof(packet);
+void StateChatroomServer::sendTo(PacketUInt *packet, RakNet::SystemAddress *address, bool broadcast)
+{
+	PacketUInt obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, broadcast);
+}
+
+void StateChatroomServer::sendTo(PacketChatMessage *packet, RakNet::SystemAddress *address, bool broadcast)
+{
+	PacketChatMessage obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, broadcast);
+}
+
+void StateChatroomServer::sendTo(PacketStringLarge *packet, RakNet::SystemAddress *address, bool broadcast)
+{
+	PacketStringLarge obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, broadcast);
+}
+
+void StateChatroomServer::sendTo(PacketStringLargeUsername *packet, RakNet::SystemAddress *address, bool broadcast)
+{
+	PacketStringLargeUsername obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, broadcast);
 }

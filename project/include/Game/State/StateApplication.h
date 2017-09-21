@@ -15,6 +15,7 @@ the project on its database.
 
 #include <vector>
 #include <sstream>
+#include <RakNet\WindowsIncludes.h>
 #include <Windows.h>
 #include "Network\FrameworkDefines.h"
 #include <map>
@@ -80,7 +81,7 @@ struct StateNetwork {
 	UserIDToAddress mMapIDToAddress;
 	UserAddressToID mMapAddressToID;
 	UserIDToName mMapIDToName;
-	UserNameToID mUserNameToID;
+	UserNameToID mMapNameToID;
 
 	void copyFrom(StateNetwork *other);
 

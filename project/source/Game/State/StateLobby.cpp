@@ -26,7 +26,7 @@ void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 	// prep the state to be in the login phase
 	mPhase = EnumLoginPhase::NETWORK_TYPE;
-	this->mData.display->textRecord.push_back("(C) or (S)erver?");
+	this->mData.display->textRecord.push_back("(C) or (S)erver? ");
 }
 
 /* Author: Dustin Yost
@@ -39,6 +39,9 @@ void StateLobby::updateGame() {
 	// update for input state changes, will be true if a new line was entered
 	if (this->updateForInput(latestLine, mPhase == EnumLoginPhase::ADDRESS)) {
 		// new line has been entered
+		
+		size_t last = this->mData.display->textRecord.size() - 1;
+		this->mData.display->textRecord[last] = this->mData.display->textRecord[last] + latestLine;
 
 		switch (mPhase) {
 			case EnumLoginPhase::NETWORK_TYPE: // Client and Server
@@ -47,7 +50,7 @@ void StateLobby::updateGame() {
 				
 				// Prompt user for next info part
 				mPhase = EnumLoginPhase::NETWORK_PORT;
-				this->mData.display->textRecord.push_back("Server Port:");
+				this->mData.display->textRecord.push_back("Server Port: ");
 				
 				break;
 			case EnumLoginPhase::NETWORK_PORT: // Client and Server
@@ -57,11 +60,11 @@ void StateLobby::updateGame() {
 				// Prompt user for next info part
 				if (this->mData.network->isServer) {
 					mPhase = EnumLoginPhase::MAX_CLIENTS;
-					this->mData.display->textRecord.push_back("Max Clients:");
+					this->mData.display->textRecord.push_back("Max Clients: ");
 				}
 				else {
 					mPhase = EnumLoginPhase::ADDRESS;
-					this->mData.display->textRecord.push_back("Enter server IP or hit enter for 127.0.0.1...");
+					this->mData.display->textRecord.push_back("Enter server IP or hit enter for 127.0.0.1... ");
 				}
 
 				break;
@@ -81,7 +84,7 @@ void StateLobby::updateGame() {
 
 				// Prompt user for next info part
 				mPhase = EnumLoginPhase::USERNAME;
-				this->mData.display->textRecord.push_back("Username:");
+				this->mData.display->textRecord.push_back("Username: ");
 
 				break;
 			case EnumLoginPhase::USERNAME: // CLIENT

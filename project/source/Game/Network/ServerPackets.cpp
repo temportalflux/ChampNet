@@ -31,49 +31,10 @@ void ServerPackets::subscribeTo(Network::Network* network) {
 	this->mpNetwork = network;
 	network->addPacketHandler(ID_CLIENT_LEFT, this);
 	network->addPacketHandler(ID_USERNAME, this);
+	network->addPacketHandler(ID_CHAT_MESSAGE, this);
+	network->addPacketHandler(ID_PRIVATE_MESSAGE, this);
 }
 
 void ServerPackets::handlePacketData(Network::PacketInfo *info) {
-	switch (info->getPacketType()) {
-		// Author: Dustin Yost
-		case ID_CLIENT_LEFT:
-			{
-				//printf("%s\n", ((PacketString*)(info.data))->content);
-			}
-			break;
-			//Author: Jon T
-		case ID_USERNAME:
-			{
-				/*
-				PacketString* packetUsername = (PacketString*)(info.data);
-				//gets the username that the user inputed
-				UserName username = packetUsername->content;
-
-				printf("%s%s%s\n", "User ", username, " has joined");
-
-				//gets the systemAdress of the 
-				UserAddress systemAddress = *(info.address);
-
-				UserID userId = this->getNextFreeID();
-
-				//inputs that information into a pair of maps so the server has access to them
-				this->mMapIDToAddress[userId] = systemAddress;
-				this->mMapAddressToID[systemAddress] = userId;
-				this->mMapIDToName[userId] = username;
-
-				PacketString notifyNewUser = PacketString{ ID_NEW_CLIENT_JOINED };
-				strncpy(notifyNewUser.content, username, 31);
-				this->mpNetwork->sendTo(notifyNewUser, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
-
-				// Notify client of its ID
-				this->mpNetwork->sendTo(PacketUInt{ ID_CLIENT_NUMBER, userId }, systemAddress, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
-				*/
-
-			}
-			break;
-		default:
-			break;
-	}
-
 	this->mpMessageHandler->handlePacket(info);
 }

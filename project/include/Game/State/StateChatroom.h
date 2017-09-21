@@ -20,8 +20,12 @@ the project on its database.
 
 class Framework;
 struct FrameworkData;
+
+struct PacketString;
 struct PacketChatMessage;
 struct PacketUInt;
+struct PacketStringLarge;
+struct PacketStringLargeUsername;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 
@@ -54,15 +58,16 @@ protected:
 	Author: Jon Trusheim
 	chat commands
 	*/
-	void chatCommands(const std::string &latestLine);
+	bool chatCommands(const std::string &latestLine);
 
 	Framework* getFramework();
 
 	virtual void sendMessage(const std::string &message);
 	virtual void sendMessage(const std::string &username, const std::string &message);
 
-	virtual void sendTo(PacketString packet) = 0;
-	virtual void sendTo(PacketChatMessage packet) = 0;
+	virtual void sendToServer(PacketString *packet) = 0;
+	virtual void sendToServer(PacketChatMessage *packet) = 0;
+	virtual void sendToServer(PacketStringLarge *packet) = 0;
 
 public:
 	StateChatroom();
