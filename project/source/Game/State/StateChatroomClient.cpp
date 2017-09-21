@@ -46,7 +46,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			}
 			break;
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
-			// Note: user IDs are not used locally
+			this->mData.network->clientID = ((PacketUInt*)info->data)->clientID;
 			this->pushMessage("Welcome to the server");
 			break;
 
