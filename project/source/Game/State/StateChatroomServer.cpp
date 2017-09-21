@@ -28,7 +28,8 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				StateNetwork::UserAddress systemAddress = info->address;
 
 				std::stringstream msg;
-				msg << "User " << username << " has joined at IP " << systemAddress << ".";
+				// TODO: Use peer->getLocalIP(0)
+				msg << "User " << username << " has joined at IP ";// << *systemAddress << ".";
 				this->pushMessage(msg.str());
 
 				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
