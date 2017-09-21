@@ -47,15 +47,26 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			this->pushMessage("Welcome to the server");
 			break;
 
-		case ID_SEND_ALL:
-
+		//Author: Jon Trusheim
+		case ID_SEND_ALL: //Handle incomeing messages that are ment for all users
+		{
+			stringstream msg;
+			msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
+			this->pushMessage(msg.str());
 			break;
-
-			//Author: Jon Trusheim
+		}
+		//Author: Jon Trusheim
 		case ID_PRIVATE_MESSAGE: //Handle incoming private message
 		{
 			stringstream msg;
 			msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
+			this->pushMessage(msg.str());
+			break;
+		}
+		case ID_CLIENT_LEFT:
+		{
+			stringstream msg;
+			msg << "User " << ((PacketString*)info->data)->content << " has left.";
 			this->pushMessage(msg.str());
 			break;
 		}
