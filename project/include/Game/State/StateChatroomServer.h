@@ -26,9 +26,9 @@ private:
 	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
 
-	virtual void sendToServer(PacketString *packet) override {} // STUB: Client Only
-	virtual void sendToServer(PacketChatMessage *packet) override {} // STUB: Client Only
-	virtual void sendToServer(PacketStringLarge *packet) override {} // STUB: Client Only
+	virtual void sendToServer(PacketString *packet) override;
+	virtual void sendToServer(PacketChatMessage *packet) override;
+	virtual void sendToServer(PacketStringLarge *packet) override;
 
 	virtual void sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast = false);
 	virtual void sendTo(PacketUInt *packet, RakNet::SystemAddress *address, bool broadcast = false);

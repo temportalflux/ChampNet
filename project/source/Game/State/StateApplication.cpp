@@ -310,7 +310,7 @@ void StateApplication::renderConsole() {
 	// Get the max lines and columns for the window
 	// TODO: Put this in the state
 	const int totalLines = 35;
-	const int maxColumns = 50;
+	const int maxColumns = 90;
 
 	// Figure out how many lines can be used for displaying text records
 	// one line must be used for user text

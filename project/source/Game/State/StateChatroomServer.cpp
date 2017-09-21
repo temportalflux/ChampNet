@@ -52,7 +52,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 		case ID_CHAT_MESSAGE:
 			{
 				PacketStringLarge *packet = ((PacketStringLarge*)info->data);
-				StateNetwork::UserID sourceID = this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserID sourceID = packet->clientID;// this->mData.network->mMapAddressToID[info->address];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
 				std::string content = std::string(packet->content);
 
@@ -74,7 +74,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketChatMessage *packet = ((PacketChatMessage*)info->data);
 
 				StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
-				StateNetwork::UserID sourceID = this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserID sourceID = packet->clientID;// this->mData.network->mMapAddressToID[info->address];
 				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
 
@@ -101,6 +101,22 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 
 void StateChatroomServer::render() {
 	this->renderConsole();
+}
+
+void StateChatroomServer::sendToServer(PacketString *packet) {
+	this->sendTo(packet, NULL, true);
+}
+
+void StateChatroomServer::sendToServer(PacketChatMessage *packet) {
+	StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
+	StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
+	this->sendTo(packet, targetAddress, true);
+}
+
+void StateChatroomServer::sendToServer(PacketStringLarge *packet) {
+	RakNet::SystemAddress me;
+	this->getFramework()->queryAddress(me);
+	this->sendTo(packet, &me, true);
 }
 
 void StateChatroomServer::sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast)

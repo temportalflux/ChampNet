@@ -77,6 +77,7 @@ struct StateNetwork {
 
 	// If this is a server (false for clients)
 	bool isServer;
+	UserID clientID;
 	FrameworkData networkInfo;
 	UserIDToAddress mMapIDToAddress;
 	UserAddressToID mMapAddressToID;

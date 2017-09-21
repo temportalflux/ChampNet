@@ -34,6 +34,10 @@ namespace Network {
 		delete packetManager;
 	}
 
+	void Network::queryAddress(RakNet::SystemAddress &address) {
+		address = this->peerInterface->GetMyBoundAddress();
+	}
+
 	// Register a packet handler to an ID
 	void Network::addPacketHandler(PacketManager::PacketID packet, PacketHandler *handler) {
 		this->packetManager->registerHandler(packet, handler);

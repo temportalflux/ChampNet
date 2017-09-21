@@ -45,8 +45,6 @@ StateChatroom::~StateChatroom() {
 void StateChatroom::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
-	system("cls");
-
 	// Startup the network
 	// Create the framework peer
 	if (this->mData.network->isServer) {
@@ -125,7 +123,7 @@ bool StateChatroom::chatCommands(const std::string & latestLine)
 	{
 		if (latestLine.find("/help") == 0)
 		{
-			this->mData.display->textRecord.push_back("type /pm to message a specfic user or type /clear to clear the screen\n You can also type /exit to leave the server");
+			this->mData.display->textRecord.push_back("type /pm to message a specfic user or type /clear to clear the screen\n You can also type /exit to leave the server\n(Try /taco, its yummy)");
 		}
 		else if (latestLine.find("/pm") == 0)
 		{
@@ -165,6 +163,10 @@ bool StateChatroom::chatCommands(const std::string & latestLine)
 		{
 			this->mData.display->textRecord.clear();
 		}
+		else if (latestLine.find("/taco") == 0)
+		{
+			this->sendMessage("NOM NOM NOM NOM NOM, TACO");
+		}
 		// lets you exit the current server and join a different one instead
 		else if (latestLine.find("/exit") == 0)
 		{
@@ -186,6 +188,7 @@ Sends a packet to the server indicating a public message
 void StateChatroom::sendMessage(const std::string &message) {
 	PacketStringLarge packet;
 	packet.packetID = ID_CHAT_MESSAGE;
+	packet.clientID = this->mData.network->clientID;
 	size_t length = min(message.length(), PACKET_MAX_SIZE_CONTENT - 1);
 	strncpy(packet.content, message.c_str(), length);
 	packet.content[length] = '\0';
@@ -199,6 +202,7 @@ void StateChatroom::sendMessage(const std::string &username, const std::string &
 {
 	PacketChatMessage packet;
 	packet.packetID = ID_PRIVATE_MESSAGE;
+	packet.clientID = this->mData.network->clientID;
 	strncpy(packet.message, message.c_str(), min(message.length(), PACKET_MAX_SIZE_CONTENT));
 	strncpy(packet.username, username.c_str(), min(username.length(), PACKET_MAX_SIZE_CONTENT));
 	this->sendToServer(&packet);

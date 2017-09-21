@@ -59,6 +59,8 @@ namespace Network {
 		Network() : Network(false) {}
 		virtual ~Network();
 
+		void queryAddress(RakNet::SystemAddress &address);
+
 		// Abstract method to startup the peer interface
 		virtual void startup() = 0;
 		// Abstract method to connect the interface to its destination

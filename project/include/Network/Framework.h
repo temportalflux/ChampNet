@@ -41,6 +41,8 @@ public:
 	Framework(bool isServer, Network::PacketHandler* packetHandler);
 	virtual ~Framework();
 
+	void queryAddress(RakNet::SystemAddress &address);
+
 	void startup();
 
 	// Runs the game loop

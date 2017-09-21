@@ -28,6 +28,10 @@ Framework::~Framework() {
 	delete this->mpPacketHandler;
 }
 
+void Framework::queryAddress(RakNet::SystemAddress &address) {
+	this->mpNetwork->queryAddress(address);
+}
+
 void Framework::startup() {
 
 	// Create the network and a packethandler for the network
