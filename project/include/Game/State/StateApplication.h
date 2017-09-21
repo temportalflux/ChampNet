@@ -17,6 +17,11 @@ the project on its database.
 #include <sstream>
 #include <Windows.h>
 #include "Network\FrameworkDefines.h"
+#include <map>
+
+namespace RakNet {
+	struct SystemAddress;
+};
 
 // Author: Dustin Yost
 struct StateInput {
@@ -58,11 +63,18 @@ struct StateConsole {
 
 };
 
+// Author: Dustin Yost
 struct StateNetwork {
 
 	// If this is a server (false for clients)
 	bool isServer;
 	FrameworkData networkInfo;
+	typedef unsigned int UserID;
+	typedef RakNet::SystemAddress* UserAddress;
+	typedef char* UserName;
+	typedef std::map<UserID, UserAddress> UserIDToAddress;
+	typedef std::map<UserAddress, UserID> UserAddressToID;
+	typedef std::map<UserID, UserName> UserIDToName;
 
 	void copyFrom(StateNetwork *other);
 

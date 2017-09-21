@@ -22,6 +22,9 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	switch (id) {
 		case ID_USERNAME: // Handle connections
 			this->pushMessage("User joined.");
+
+
+
 			break;
 		case ID_PRIVATE_MESSAGE:
 			info->address;
