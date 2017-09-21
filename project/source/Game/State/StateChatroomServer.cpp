@@ -24,7 +24,7 @@ void StateChatroomServer::onEnterFrom(StateApplication *previous) {
 		this->mData.network->mMapIDToAddress = new StateNetwork::UserAddress[this->mData.network->networkInfo.maxClients];
 		this->mData.network->mMapIDToName = new StateNetwork::UserName[this->mData.network->networkInfo.maxClients];
 		for (unsigned int i = 0; i < this->mData.network->networkInfo.maxClients; i++) {
-			this->mData.network->mMapIDToAddress[i] = NULL;
+			//this->mData.network->mMapIDToAddress[i] = NULL;
 			this->mData.network->mMapIDToName[i] = "";
 		}
 	}
@@ -59,10 +59,10 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketString notifyNewUser;
 				notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
 				writeToCharData(notifyNewUser.content, username, PACKET_MAX_SIZE_CONTENT);
-				this->sendTo(&notifyNewUser, systemAddress, true);
+				this->sendTo(&notifyNewUser, &systemAddress, true);
 
 				PacketUInt packetID = PacketUInt{ ID_CLIENT_NUMBER, userId };
-				this->sendTo(&packetID, systemAddress);
+				this->sendTo(&packetID, &systemAddress);
 
 			}
 			break;
@@ -82,7 +82,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				strncpy(packet->content, msgContent.c_str(), length);
 				packet->content[length] = '\0';
 				
-				this->sendTo(packet, info->address, true);
+				this->sendTo(packet, &(info->address), true);
 
 			}
 			break;
@@ -92,8 +92,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 
 				StateNetwork::UserName targetName = packet->username;
 				StateNetwork::UserID targetID = this->mData.network->getIDFromName(targetName);
-				//StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
-				StateNetwork::UserID sourceID = packet->clientID;// this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserID sourceID = packet->clientID;
 				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
 
@@ -103,7 +102,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 
 				writeToCharData(packet->username, sourceName, PACKET_MAX_SIZE_CONTENT);
 
-				this->sendTo(packet, targetAddress);
+				this->sendTo(packet, &targetAddress);
 
 			}
 			break;
@@ -125,7 +124,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketString packetOut;
 				packetOut.packetID = ID_CLIENT_LEFT;
 				writeToCharData(packetOut.content, msgStr, PACKET_MAX_SIZE_CONTENT);
-				this->sendTo(&packetOut, info->address, true);
+				this->sendTo(&packetOut, &(info->address), true);
 
 				break;
 			}
@@ -146,7 +145,7 @@ void StateChatroomServer::sendToServer(PacketString *packet) {
 void StateChatroomServer::sendToServer(PacketChatMessage *packet) {
 	StateNetwork::UserID targetID = this->mData.network->getIDFromName(packet->username);
 	StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
-	this->sendTo(packet, targetAddress, true);
+	this->sendTo(packet, &targetAddress, true);
 }
 
 void StateChatroomServer::sendToServer(PacketStringLarge *packet) {

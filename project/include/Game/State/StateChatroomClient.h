@@ -19,7 +19,7 @@ the project on its database.
 class StateChatroomClient : public StateChatroom {
 
 private:
-	RakNet::SystemAddress *mAddressServer;
+	RakNet::SystemAddress mAddressServer;
 
 	void updateGame() override;
 	void doHandlePacket(Network::PacketInfo *info) override;

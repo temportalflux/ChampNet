@@ -15,14 +15,11 @@ the project on its database.
 
 #include <vector>
 #include <sstream>
+#include <RakNet\RakNetTypes.h>
 #include <RakNet\WindowsIncludes.h>
 #include <Windows.h>
 #include "Network\FrameworkDefines.h"
 #include <map>
-
-namespace RakNet {
-	struct SystemAddress;
-};
 
 // Author: Dustin Yost
 struct StateInput {
@@ -67,7 +64,7 @@ struct StateConsole {
 // Author: Dustin Yost
 struct StateNetwork {
 	typedef int UserID;
-	typedef RakNet::SystemAddress* UserAddress;
+	typedef RakNet::SystemAddress UserAddress;
 	//typedef char* UserName;
 	typedef std::string UserName;
 	//typedef std::map<UserID, UserAddress> UserIDToAddress;

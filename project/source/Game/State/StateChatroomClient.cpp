@@ -102,33 +102,33 @@ void StateChatroomClient::sendToServer(PacketString *packet) {
 	PacketString obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
-	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	this->getFramework()->sendTo(data, size, &mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
 
 void StateChatroomClient::sendToServer(PacketChatMessage *packet) {
 	PacketChatMessage obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
-	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	this->getFramework()->sendTo(data, size, &mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
 
 void StateChatroomClient::sendToServer(PacketStringLarge *packet) {
 	PacketStringLarge obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
-	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	this->getFramework()->sendTo(data, size, &mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
 
 void StateChatroomClient::sendToServer(PacketUsername *packet) {
 	PacketUsername obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
-	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	this->getFramework()->sendTo(data, size, &mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
 
 void StateChatroomClient::sendToServer(PacketUInt *packet) {
 	PacketUInt obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
-	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	this->getFramework()->sendTo(data, size, &mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }

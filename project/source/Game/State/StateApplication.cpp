@@ -54,7 +54,7 @@ StateNetwork::UserID StateNetwork::getNextFreeID()
 	size_t count = this->networkInfo.maxClients;
 	// look for empty slots in the map
 	for (nextID = 0; nextID < count; nextID++) {
-		if (this->mMapIDToAddress[nextID] == NULL) {
+		if (this->mMapIDToName[nextID] == "") {
 			// no entry for nextID - empty slot found
 			break;
 		}

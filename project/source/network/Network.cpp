@@ -69,7 +69,7 @@ namespace Network {
 			PacketInfo *info = new PacketInfo;
 			// this, &(packet->systemAddress), packet->data, packet->length
 			info->network = this;
-			info->address = &(packet->systemAddress);
+			info->address = packet->systemAddress;
 			info->length = packet->length;
 
 			unsigned char *test = new unsigned char[packet->length]; // delete in PacketInfo descructor
