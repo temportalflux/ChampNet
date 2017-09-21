@@ -193,9 +193,7 @@ void StateChatroom::sendMessage(const std::string &message) {
 	PacketStringLarge packet;
 	packet.packetID = ID_CHAT_MESSAGE;
 	packet.clientID = this->mData.network->clientID;
-	size_t length = min(message.length(), PACKET_MAX_SIZE_TEXT - 1);
-	strncpy(packet.content, message.c_str(), length);
-	packet.content[length] = '\0';
+	writeToCharData(packet.content, message, PACKET_MAX_SIZE_TEXT);
 	this->sendToServer(&packet);
 }
 
@@ -207,7 +205,7 @@ void StateChatroom::sendMessage(const std::string &username, const std::string &
 	PacketChatMessage packet;
 	packet.packetID = ID_PRIVATE_MESSAGE;
 	packet.clientID = this->mData.network->clientID;
-	strncpy(packet.message, message.c_str(), min(message.length(), PACKET_MAX_SIZE_CONTENT));
-	strncpy(packet.username, username.c_str(), min(username.length(), PACKET_MAX_SIZE_CONTENT));
+	writeToCharData(packet.message, message, PACKET_MAX_SIZE_CONTENT);
+	writeToCharData(packet.username, username, PACKET_MAX_SIZE_CONTENT);
 	this->sendToServer(&packet);
 }

@@ -80,8 +80,8 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
 
-				strncpy(packet->username, sourceName.c_str(), min(sourceName.length(), PACKET_MAX_SIZE_CONTENT));
-				
+				writeToCharData(packet->username, sourceName, PACKET_MAX_SIZE_CONTENT);
+
 				this->sendTo(packet, targetAddress);
 
 			}

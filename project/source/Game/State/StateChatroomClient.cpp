@@ -61,9 +61,12 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 		//Author: Jon Trusheim
 		case ID_PRIVATE_MESSAGE: //Handle incoming private message
 			{
+				PacketChatMessage *packet = (PacketChatMessage*)info->data;
+
 				stringstream msg;
-				msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
+				msg << packet->username << ": " << packet->message;
 				this->pushMessage(msg.str());
+
 				break;
 			}
 		case ID_CLIENT_LEFT:

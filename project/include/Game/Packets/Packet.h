@@ -104,4 +104,4 @@ struct PacketStringLargeUsername {
 
 #pragma pack(pop)
 
-void writeToCharData(char *data, std::string &string, size_t maxSizeOfData);
+void writeToCharData(char *data, const std::string &string, size_t maxSizeOfData);
