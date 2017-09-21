@@ -27,6 +27,7 @@ class ServerPackets : public Network::PacketHandler {
 	typedef std::map<UserID, UserAddress> UserIDToAddress;
 	typedef std::map<UserAddress, UserID> UserAddressToID;
 	typedef std::map<UserID, UserName> UserIDToName;
+	typedef std::map<UserName, UserID> UserNameToAddress;
 
 private:
 	Network::Network* mpNetwork;
@@ -36,6 +37,8 @@ private:
 	UserAddressToID mMapAddressToID;
 	// Author: Dustin Yost
 	UserIDToName mMapIDToName;
+
+	UserNameToAddress mUserNameToAddress;
 
 	MessageHandler *mpMessageHandler;
 

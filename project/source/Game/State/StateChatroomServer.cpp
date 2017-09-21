@@ -45,5 +45,5 @@ void StateChatroomServer::sendTo(PacketChatMessage packet)
 {
 	char *data = (char*)(&packet);
 	unsigned int size = sizeof(packet);
-	this->getFramework()->sendTo(data, size, /*RakNet stuff*/, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false)
+	this->getFramework()->sendTo(data, size, /*RakNet stuff*/, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }
