@@ -58,6 +58,10 @@ void StateChatroom::onEnterFrom(StateApplication *previous) {
 
 }
 
+void StateChatroom::onExit() {
+	this->mData.display->textRecord.clear();
+}
+
 void StateChatroom::updateNetwork() {
 	this->mpNetworkFramework->update();
 }
@@ -172,6 +176,7 @@ bool StateChatroom::chatCommands(const std::string & latestLine)
 		// lets you exit the current server and join a different one instead
 		else if (latestLine.find("/exit") == 0)
 		{
+			this->mEscape = true;
 			this->mNext = new StateLobby();
 		}
 		else

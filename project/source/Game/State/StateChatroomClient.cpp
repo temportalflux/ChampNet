@@ -63,7 +63,13 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			this->mData.network->clientID = ((PacketUInt*)info->data)->clientID;
 			this->pushMessage("Welcome to the server");
 			break;
-
+		case ID_USER_LISTING:
+			{
+				std::stringstream msg;
+				msg << "User " << ((PacketString*)info->data)->content << " is online.";
+				this->pushMessage(msg.str());
+			}
+			break;
 		//Author: Jon Trusheim
 		case ID_CHAT_MESSAGE:  //Handle incomeing messages that are ment for all users
 			{

@@ -64,6 +64,15 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketUInt packetID = PacketUInt{ ID_CLIENT_NUMBER, userId };
 				this->sendTo(&packetID, &systemAddress);
 
+				for (int i = 0; i < this->mData.network->networkInfo.maxClients; i++) {
+					if (this->mData.network->mMapIDToName[i] != "") {
+						PacketString packet;
+						packet.packetID = ID_USER_LISTING;
+						writeToCharData(packet.content, this->mData.network->mMapIDToName[i], PACKET_MAX_SIZE_CONTENT);
+						this->sendTo(&packet, &systemAddress);
+					}
+				}
+
 			}
 			break;
 		case ID_CHAT_MESSAGE:
@@ -103,6 +112,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				writeToCharData(packet->username, sourceName, PACKET_MAX_SIZE_CONTENT);
 
 				this->sendTo(packet, &targetAddress);
+				this->sendTo(packet, &info->address);
 
 			}
 			break;
@@ -118,7 +128,7 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				std::string msgStr = msg.str();
 				this->pushMessage(msgStr);
 
-				this->mData.network->mMapIDToAddress[id] = NULL;
+				//this->mData.network->mMapIDToAddress[id] = NULL;
 				this->mData.network->mMapIDToName[id] = "";
 
 				PacketString packetOut;

@@ -41,6 +41,8 @@ protected:
 	
 	virtual void onEnterFrom(StateApplication *previous);
 
+	virtual void onExit();
+
 	/* Author: Dustin Yost
 	Handles the queue of packets to later be processed
 	*/

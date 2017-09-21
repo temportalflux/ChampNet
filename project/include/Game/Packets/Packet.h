@@ -43,6 +43,7 @@ enum GameMessages
 	ID_PRIVATE_MESSAGE,
 	// Misc
 	ID_SEND_ALL, // used to notify incoming users of a list of current usernames active
+	ID_USER_LISTING,
 
 };
 

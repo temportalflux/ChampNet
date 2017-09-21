@@ -40,6 +40,7 @@ void ClientPackets::subscribeTo(Network::Network* network) {
 	network->addPacketHandler(ID_PRIVATE_MESSAGE, this);
 	network->addPacketHandler(ID_CHAT_MESSAGE, this);
 	network->addPacketHandler(ID_CLIENT_LEFT, this);
+	network->addPacketHandler(ID_USER_LISTING, this);
 }
 
 // AUTHOR: Dustin Yost
