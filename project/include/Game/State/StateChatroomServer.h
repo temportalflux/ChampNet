@@ -29,6 +29,7 @@ private:
 	virtual void sendToServer(PacketString *packet) override;
 	virtual void sendToServer(PacketChatMessage *packet) override;
 	virtual void sendToServer(PacketStringLarge *packet) override;
+	virtual void sendToServer(PacketUsername *packet) override;
 
 	virtual void sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast = false);
 	virtual void sendTo(PacketUInt *packet, RakNet::SystemAddress *address, bool broadcast = false);

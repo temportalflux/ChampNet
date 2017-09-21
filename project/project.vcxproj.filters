@@ -52,6 +52,9 @@
     <Filter Include="Source Files\Network\Packets">
       <UniqueIdentifier>{60f385e8-a6e2-46b2-a02c-49a3e4bf8233}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Packets">
+      <UniqueIdentifier>{8574ee0c-64e5-4b97-94f6-bb86e9bf2312}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="source\Game\State\StateChatroomServer.cpp">
       <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\Packets\Packets.cpp">
+      <Filter>Source Files\Game\Packets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

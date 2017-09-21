@@ -32,6 +32,10 @@ void Framework::queryAddress(RakNet::SystemAddress &address) {
 	this->mpNetwork->queryAddress(address);
 }
 
+std::string Framework::getIP() {
+	return this->mpNetwork->getIP();
+}
+
 void Framework::startup() {
 
 	// Create the network and a packethandler for the network

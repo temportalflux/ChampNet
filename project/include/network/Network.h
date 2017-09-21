@@ -60,6 +60,7 @@ namespace Network {
 		virtual ~Network();
 
 		void queryAddress(RakNet::SystemAddress &address);
+		std::string getIP();
 
 		// Abstract method to startup the peer interface
 		virtual void startup() = 0;

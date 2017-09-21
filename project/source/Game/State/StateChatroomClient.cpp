@@ -28,12 +28,12 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			{
 				this->pushMessage("Connected.");
 
-				PacketString packet;
-				packet.packetID = GameMessages::ID_USERNAME;
 				std::string username = this->mData.network->networkInfo.username;
-				size_t length = username.length();
-				strncpy(packet.content, username.c_str(), length);
-				packet.content[length] = '\0';
+
+				PacketUsername packet;
+				packet.packetID = GameMessages::ID_USERNAME;
+				writeToCharData(packet.address, this->getFramework()->getIP(), PACKET_SIZE_IPV4);
+				writeToCharData(packet.content, username, PACKET_USERNAME_SIZE_CONTENT);
 
 				this->sendToServer(&packet);
 			}
@@ -99,6 +99,13 @@ void StateChatroomClient::sendToServer(PacketChatMessage *packet) {
 
 void StateChatroomClient::sendToServer(PacketStringLarge *packet) {
 	PacketStringLarge obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+}
+
+void StateChatroomClient::sendToServer(PacketUsername *packet) {
+	PacketUsername obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);

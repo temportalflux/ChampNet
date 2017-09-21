@@ -26,6 +26,7 @@ struct PacketChatMessage;
 struct PacketUInt;
 struct PacketStringLarge;
 struct PacketStringLargeUsername;
+struct PacketUsername;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 
@@ -68,6 +69,7 @@ protected:
 	virtual void sendToServer(PacketString *packet) = 0;
 	virtual void sendToServer(PacketChatMessage *packet) = 0;
 	virtual void sendToServer(PacketStringLarge *packet) = 0;
+	virtual void sendToServer(PacketUsername *packet) = 0;
 
 public:
 	StateChatroom();

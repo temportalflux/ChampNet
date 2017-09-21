@@ -13,6 +13,7 @@
 #pragma once
 
 #include "Network\NetworkDefines.h"
+#include <string>
 
 // Author: Dustin Yost
 // A list of user implemented methods outside of RakNet
@@ -47,6 +48,8 @@ enum GameMessages
 
 static const unsigned int PACKET_MAX_SIZE_CONTENT = 31;
 static const unsigned int PACKET_MAX_SIZE_TEXT = 63;
+static const unsigned int PACKET_SIZE_IPV4 = 15;
+static const unsigned int PACKET_USERNAME_SIZE_CONTENT = 48;
 
 #pragma pack(push, 1)
 
@@ -55,10 +58,16 @@ struct PacketNotification {
 };
 
 // Author: Dustin Yost
-// GameMessages::ID_USERNAME
 struct PacketString {
 	unsigned char packetID;
 	char content[PACKET_MAX_SIZE_CONTENT];
+};
+
+// GameMessages::ID_USERNAME
+struct PacketUsername { // total: 64
+	unsigned char packetID; // 1
+	char address[PACKET_SIZE_IPV4]; // 15
+	char content[PACKET_USERNAME_SIZE_CONTENT]; // 48
 };
 
 // Author: Dustin Yost
@@ -94,3 +103,5 @@ struct PacketStringLargeUsername {
 };
 
 #pragma pack(pop)
+
+void writeToCharData(char *data, std::string &string, size_t maxSizeOfData);

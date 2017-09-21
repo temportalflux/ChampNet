@@ -22,14 +22,15 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	switch (id) {
 		case ID_USERNAME: // Handle connections
 			{
-				PacketString* packetUsername = (PacketString*)(info->data);
+				PacketUsername* packetUsername = (PacketUsername*)(info->data);
 				//gets the username that the user inputed
 				StateNetwork::UserName username = std::string(packetUsername->content);
+				std::string addressIPv4 = std::string(packetUsername->address);
 				StateNetwork::UserAddress systemAddress = info->address;
 
 				std::stringstream msg;
 				// TODO: Use peer->getLocalIP(0)
-				msg << "User " << username << " has joined at IP ";// << *systemAddress << ".";
+				msg << "User " << username << " has joined at IP " << addressIPv4 << ".";
 				this->pushMessage(msg.str());
 
 				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
@@ -118,6 +119,10 @@ void StateChatroomServer::sendToServer(PacketStringLarge *packet) {
 	RakNet::SystemAddress me;
 	this->getFramework()->queryAddress(me);
 	this->sendTo(packet, &me, true);
+}
+
+void StateChatroomServer::sendToServer(PacketUsername *packet) {
+	// STUB: Unused
 }
 
 void StateChatroomServer::sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast)

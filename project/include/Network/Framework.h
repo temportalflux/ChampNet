@@ -42,6 +42,7 @@ public:
 	virtual ~Framework();
 
 	void queryAddress(RakNet::SystemAddress &address);
+	std::string getIP();
 
 	void startup();
 

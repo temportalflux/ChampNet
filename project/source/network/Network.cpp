@@ -38,6 +38,10 @@ namespace Network {
 		address = this->peerInterface->GetMyBoundAddress();
 	}
 
+	std::string Network::getIP() {
+		return this->peerInterface->GetLocalIP(0); // note: this can be finicky if there are multiple network addapters
+	}
+
 	// Register a packet handler to an ID
 	void Network::addPacketHandler(PacketManager::PacketID packet, PacketHandler *handler) {
 		this->packetManager->registerHandler(packet, handler);
@@ -68,9 +72,8 @@ namespace Network {
 			info->address = &(packet->systemAddress);
 			info->length = packet->length;
 
-			unsigned int size = sizeof(packet->data);
 			unsigned char *test = new unsigned char[packet->length]; // delete in PacketInfo descructor
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < info->length; i++) {
 				test[i] = packet->data[i];
 			}
 			info->data = test;

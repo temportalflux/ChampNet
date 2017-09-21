@@ -22,6 +22,7 @@
     <ClCompile Include="source\Game\Game.cpp" />
     <ClCompile Include="source\Game\Network\ClientPackets.cpp" />
     <ClCompile Include="source\Game\Network\ServerPackets.cpp" />
+    <ClCompile Include="source\Game\Packets\Packets.cpp" />
     <ClCompile Include="source\Game\State\StateApplication.cpp" />
     <ClCompile Include="source\Game\State\StateChatroom.cpp" />
     <ClCompile Include="source\Game\State\StateChatroomClient.cpp" />
