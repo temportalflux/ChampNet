@@ -27,17 +27,17 @@ void StateInput::copyFrom(StateInput *other) {
 }
 
 StateNetwork::StateNetwork() {
-	this->mMapIDToAddress = new UserAddress[this->networkInfo.maxClients];
-	this->mMapIDToName = new UserName[this->networkInfo.maxClients];
-	for (unsigned int i = 0; i < this->networkInfo.maxClients; i++) {
-		this->mMapIDToAddress[i] = NULL;
-		this->mMapIDToName[i] = "";
-	}
+	this->mMapIDToAddress = NULL;
+	this->mMapIDToName = NULL;
 }
 
 StateNetwork::~StateNetwork() {
-	delete[] this->mMapIDToAddress;
-	delete[] this->mMapIDToName;
+	if (this->mMapIDToAddress != NULL) {
+		delete[] this->mMapIDToAddress;
+	}
+	if (this->mMapIDToName != NULL) {
+		delete[] this->mMapIDToName;
+	}
 }
 
 void StateNetwork::copyFrom(StateNetwork *other) {

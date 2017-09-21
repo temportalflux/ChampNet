@@ -83,8 +83,5 @@ void ClientPackets::handlePacketData(Network::PacketInfo *info) {
 }
 
 void ClientPackets::onExit() {
-	PacketUInt packet;
-	packet.packetID = ID_CLIENT_LEFT;
-	packet.clientID = this->mpMessageHandler->getClientID();
-	this->mpNetwork->disconnect(packet);
+	this->mpNetwork->disconnect();
 }

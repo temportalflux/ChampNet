@@ -23,7 +23,6 @@ the project on its database.
 #include "Game\Packets\Packet.h"
 #include "Network\Packets\PacketInfo.h"
 
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -36,7 +35,6 @@ StateChatroom::StateChatroom() : StateApplication() {
 
 StateChatroom::~StateChatroom() {
 	if (mpNetworkFramework != NULL) {
-		mpNetworkFramework->onExit();
 		delete mpNetworkFramework;
 		mpNetworkFramework = NULL;
 	}

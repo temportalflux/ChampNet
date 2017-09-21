@@ -22,16 +22,17 @@ namespace RakNet {
 class StateChatroomServer : public StateChatroom {
 
 private:
+	void onEnterFrom(StateApplication *previous) override;
+
 	//void updateGame();
 	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
-
-	int getClientID() override { return -1; }
 
 	virtual void sendToServer(PacketString *packet) override;
 	virtual void sendToServer(PacketChatMessage *packet) override;
 	virtual void sendToServer(PacketStringLarge *packet) override;
 	virtual void sendToServer(PacketUsername *packet) override;
+	virtual void sendToServer(PacketUInt *packet) override;
 
 	virtual void sendTo(PacketString *packet, RakNet::SystemAddress *address, bool broadcast = false);
 	virtual void sendTo(PacketUInt *packet, RakNet::SystemAddress *address, bool broadcast = false);

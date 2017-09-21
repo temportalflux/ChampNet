@@ -17,6 +17,20 @@ the project on its database.
 #include "Network\Framework.h"
 #include <RakNet\RakNetTypes.h>
 
+void StateChatroomServer::onEnterFrom(StateApplication *previous) {
+	StateChatroom::onEnterFrom(previous);
+
+	if (this->mData.network->networkInfo.maxClients > 0) {
+		this->mData.network->mMapIDToAddress = new StateNetwork::UserAddress[this->mData.network->networkInfo.maxClients];
+		this->mData.network->mMapIDToName = new StateNetwork::UserName[this->mData.network->networkInfo.maxClients];
+		for (unsigned int i = 0; i < this->mData.network->networkInfo.maxClients; i++) {
+			this->mData.network->mMapIDToAddress[i] = NULL;
+			this->mData.network->mMapIDToName[i] = "";
+		}
+	}
+
+}
+
 void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	unsigned int id = info->getPacketType();
 	switch (id) {
@@ -131,6 +145,10 @@ void StateChatroomServer::sendToServer(PacketStringLarge *packet) {
 }
 
 void StateChatroomServer::sendToServer(PacketUsername *packet) {
+	// STUB: Unused
+}
+
+void StateChatroomServer::sendToServer(PacketUInt *packet) {
 	// STUB: Unused
 }
 

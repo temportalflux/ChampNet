@@ -117,11 +117,7 @@ namespace Network {
 		}
 
 		// Handle disconnecting from the networked inferface
-		// packet - some bit aligned struct containing information to send to all connections disconnecting from
-		template <typename T>
-		void disconnect(T &packet) {
-			// Send message to all connections
-			this->sendToAll(packet);
+		void disconnect() {
 			// Disconnect the interface
 			this->peerInterface->Shutdown(500, 0);
 		}

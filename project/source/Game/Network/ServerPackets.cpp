@@ -29,10 +29,10 @@ ServerPackets::~ServerPackets() {
 void ServerPackets::subscribeTo(Network::Network* network) {
 	// Author: Dustin Yost
 	this->mpNetwork = network;
-	network->addPacketHandler(ID_CLIENT_LEFT, this);
 	network->addPacketHandler(ID_USERNAME, this);
 	network->addPacketHandler(ID_CHAT_MESSAGE, this);
 	network->addPacketHandler(ID_PRIVATE_MESSAGE, this);
+	network->addPacketHandler(ID_CLIENT_LEFT, this);
 }
 
 void ServerPackets::handlePacketData(Network::PacketInfo *info) {

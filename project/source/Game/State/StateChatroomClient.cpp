@@ -19,6 +19,10 @@ the project on its database.
 
 using std::stringstream;
 
+StateChatroomClient::~StateChatroomClient() {
+	this->onExit();
+}
+
 // AUTHOR: Dustin Yost
 void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 	unsigned char id = info->getPacketType();
@@ -82,8 +86,11 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 	}
 }
 
-int StateChatroomClient::getClientID() {
-	return this->mData.network->clientID;
+void StateChatroomClient::onExit() {
+	PacketUInt packet;
+	packet.packetID = ID_CLIENT_LEFT;
+	packet.clientID = this->mData.network->clientID;
+	this->sendToServer(&packet);
 }
 
 void StateChatroomClient::render() {
@@ -113,6 +120,13 @@ void StateChatroomClient::sendToServer(PacketStringLarge *packet) {
 
 void StateChatroomClient::sendToServer(PacketUsername *packet) {
 	PacketUsername obj = *packet;
+	char *data = (char*)(&obj);
+	unsigned int size = sizeof(obj);
+	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+}
+
+void StateChatroomClient::sendToServer(PacketUInt *packet) {
+	PacketUInt obj = *packet;
 	char *data = (char*)(&obj);
 	unsigned int size = sizeof(obj);
 	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);

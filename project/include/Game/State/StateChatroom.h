@@ -34,11 +34,13 @@ private:
 	Framework* mpNetworkFramework;
 	std::deque<Network::PacketInfo*> mPacketInputQueue;
 
-	virtual void onEnterFrom(StateApplication *previous);
 	void updateNetwork();
 	void updateGame();
 
 protected:
+	
+	virtual void onEnterFrom(StateApplication *previous);
+
 	/* Author: Dustin Yost
 	Handles the queue of packets to later be processed
 	*/
@@ -70,6 +72,7 @@ protected:
 	virtual void sendToServer(PacketChatMessage *packet) = 0;
 	virtual void sendToServer(PacketStringLarge *packet) = 0;
 	virtual void sendToServer(PacketUsername *packet) = 0;
+	virtual void sendToServer(PacketUInt *packet) = 0;
 
 public:
 	StateChatroom();

@@ -22,6 +22,5 @@ class MessageHandler abstract {
 public:
 
 	virtual void handlePacket(Network::PacketInfo *info) = 0;
-	virtual int getClientID() = 0;
 
 };
