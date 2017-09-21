@@ -60,6 +60,9 @@ Network::Network* Framework::getNetwork() {
 	return mpNetwork;
 }
 
-void Framework::sendPacket(Packet packet, RakNet::SystemAddress *address) {
-	this->getNetwork()->sendTo(packet, *address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, true);
+void Framework::sendTo(char *data, unsigned int size, RakNet::SystemAddress *address,
+	PacketPriority priority, PacketReliability reliability,
+	char channel, bool broadcast
+) {
+	this->mpNetwork->sendTo(data, size, address, priority, reliability, channel, broadcast);
 }

@@ -33,7 +33,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 				std::string username = this->mData.network->networkInfo.username;
 				strncpy(packet.content, username.c_str(), username.length());
 
-				this->sendPacket(packet);
+				this->sendTo(packet);
 			}
 			break;
 		case ID_NEW_CLIENT_JOINED: // Handle the message saying some client has joined
@@ -56,6 +56,8 @@ void StateChatroomClient::render() {
 	this->renderConsole();
 }
 
-void StateChatroomClient::sendPacket(Packet packet) {
-	this->getFramework()->sendPacket(packet, this->mAddressServer);
+void StateChatroomClient::sendTo(PacketString packet) {
+	char *data = (char*)(&packet);
+	unsigned int size = sizeof(packet);
+	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 }

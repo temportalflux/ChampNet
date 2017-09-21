@@ -20,7 +20,7 @@ the project on its database.
 
 class Framework;
 struct FrameworkData;
-struct Packet;
+struct PacketString;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 
@@ -42,6 +42,7 @@ protected:
 		Handle packets which have been recieved since last update
 	*/
 	virtual void doHandlePacket(Network::PacketInfo *info) = 0;
+
 	/* Author: Dustin Yost
 		Pushes a text message to the record of messages to display
 	*/
@@ -58,9 +59,9 @@ protected:
 
 	virtual void sendMessage(const std::string &message);
 	virtual void sendMessage(const std::string &username, const std::string &message);
-	virtual void sendPacket(Packet packet) = 0;
 
-
+	virtual void sendTo(PacketString packet) = 0;
+	
 public:
 	StateChatroom();
 	virtual ~StateChatroom();

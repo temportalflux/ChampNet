@@ -70,6 +70,14 @@ namespace Network {
 		// Handles updates for the network, specifically searching for new packets
 		void update();
 
+		void sendTo(char *data, unsigned int size, RakNet::SystemAddress *address,
+			PacketPriority priority, PacketReliability reliability,
+			char channel, bool broadcast
+		) {
+			// Send via RakNet
+			this->peerInterface->Send(data, size, priority, reliability, channel, RakNet::AddressOrGUID(*address), broadcast);
+		}
+
 		// Handle sending struct packets to raknet address
 		// TODO: Encapsulation Leek
 		template <typename T>

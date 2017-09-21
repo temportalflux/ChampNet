@@ -129,6 +129,10 @@ void StateApplication::onEnterFrom(StateApplication *previous) {
 		delete previous;
 	}
 
+	std::fill_n(this->mData.input->previous, StateInput::SIZE_KEYBOARD, false);
+	std::fill_n(this->mData.input->keyboard, StateInput::SIZE_KEYBOARD, false);
+	this->mData.input->currentLine = "";
+
 }
 
 /* Author: Dustin Yost
@@ -249,20 +253,20 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 				case VK_F22:
 				case VK_F23:
 				case VK_F24:
+				case VK_LBUTTON:
+				case VK_RBUTTON:
 					break;
 					// Handle all remaining cases (letters and specials)
 				default:
-					if (('A' <= i && i <= 'Z') || ('0' <= i && i <= '9'))
-					{
-						// get the character from the virtual key index
-						char character = (char)MapVirtualKey(i, MAPVK_VK_TO_CHAR);
-						// handle upper/lower case letters: check to see if the shift key is down
-						if (!(current[VK_SHIFT] || current[VK_LSHIFT] || current[VK_RSHIFT] || this->mData.input->isCaps)) {
-							character = tolower(character);
-						}
-						// push the character onto the text buffer
-						this->mData.input->currentLine.push_back(character);
+					//this->mData.display->textRecord.push_back(std::string());
+					// get the character from the virtual key index
+					char character = (char)MapVirtualKey(i, MAPVK_VK_TO_CHAR);
+					// handle upper/lower case letters: check to see if the shift key is down
+					if (!(current[VK_SHIFT] || current[VK_LSHIFT] || current[VK_RSHIFT] || this->mData.input->isCaps)) {
+						character = tolower(character);
 					}
+					// push the character onto the text buffer
+					this->mData.input->currentLine.push_back(character);
 					break;
 			}
 		}

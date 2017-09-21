@@ -14,6 +14,7 @@ the project on its database.
 
 #include "Network\FrameworkDefines.h"
 #include "Network\NetworkDefines.h"
+#include <RakNet\PacketPriority.h>
 
 namespace Network {
 	class Network;
@@ -47,6 +48,9 @@ public:
 	void onExit();
 
 	Network::Network *getNetwork();
-	void sendPacket(Packet packet, RakNet::SystemAddress *address);
+	void sendTo(char *data, unsigned int size, RakNet::SystemAddress *address,
+		PacketPriority priority, PacketReliability reliability,
+		char channel, bool broadcast
+	);
 
 };

@@ -32,12 +32,5 @@ void StateChatroomServer::render() {
 	this->renderConsole();
 }
 
-void StateChatroomServer::sendPacket(Packet packet) {
-	Network::PacketInfo *i = new Network::PacketInfo;
-	i->address = NULL;
-	i->network = NULL;
-	i->data = (unsigned char*)(&packet);
-	i->length = sizeof(packet);
-	this->handlePacket(i);
+void StateChatroomServer::sendTo(PacketString packet) {
 }
-

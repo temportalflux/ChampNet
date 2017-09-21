@@ -14,6 +14,7 @@ the project on its database.
 #pragma once
 
 #include "Game\State\StateChatroom.h"
+#include "Network\Framework.h"
 
 class StateChatroomClient : public StateChatroom {
 
@@ -24,6 +25,6 @@ private:
 	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
 	
-	void sendPacket(Packet packet) override;
+	virtual void sendTo(PacketString packet) override;
 
 };

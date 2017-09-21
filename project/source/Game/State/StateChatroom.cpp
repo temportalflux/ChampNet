@@ -180,7 +180,7 @@ void StateChatroom::sendMessage(const std::string &message) {
 	PacketString packet;
 	packet.packetID = ID_CHAT_MESSAGE;
 	strncpy(packet.content, message.c_str(), min(message.length(), PacketString::MAX_SIZE_CONTENT));
-	this->sendPacket(packet);
+	this->sendTo(packet);
 }
 
 /* Author: Dustin Yost
