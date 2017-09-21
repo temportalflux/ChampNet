@@ -18,10 +18,6 @@ the project on its database.
 
 // Author: Dustin Yost
 ServerPackets::ServerPackets(MessageHandler *messageHandler) {
-	mMapIDToAddress = UserIDToAddress();
-	mMapAddressToID = UserAddressToID();
-	mMapIDToName = UserIDToName();
-	mUserNameToAddress = UserNameToAddress();
 	mpMessageHandler = messageHandler;
 }
 

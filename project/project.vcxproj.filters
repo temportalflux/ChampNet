@@ -116,9 +116,6 @@
     <ClInclude Include="include\Game\Packets\Packet.h">
       <Filter>Header Files\Game\Packets</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game\Game.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="source\mainSample.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -163,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="include\Network\NetworkDefines.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Game.h">
+      <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

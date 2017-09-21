@@ -21,28 +21,30 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	unsigned int id = info->getPacketType();
 	switch (id) {
 		case ID_USERNAME: // Handle connections
+			{
+				PacketString* packetUsername = (PacketString*)(info->data);
+				//gets the username that the user inputed
+				StateNetwork::UserName username = packetUsername->content;
 
-			PacketString* packetUsername = (PacketString*)(info->data);
-			//gets the username that the user inputed
-			StateNetwork::UserName username = packetUsername->content;
+				//this->pushMessage(std::string("User ") + username + " joined.");
+				this->pushMessage(username);
 
-			this->pushMessage(std::string("User ") + username + " joined.");
+				//gets the systemAdress of the 
+				StateNetwork::UserAddress systemAddress = info->address;
 
-			//gets the systemAdress of the 
-			StateNetwork::UserAddress systemAddress = info->address;
+				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
 
-			StateNetwork::UserID userId = this->mData.network->getNextFreeID();
+				//inputs that information into a pair of maps so the server has access to them
+				this->mData.network->mMapIDToAddress[userId] = systemAddress;
+				this->mData.network->mMapAddressToID[systemAddress] = userId;
+				this->mData.network->mMapIDToName[userId] = username;
 
-			//inputs that information into a pair of maps so the server has access to them
-			this->mData.network->mMapIDToAddress[userId] = systemAddress;
-			this->mData.network->mMapAddressToID[systemAddress] = userId;
-			this->mData.network->mMapIDToName[userId] = username;
+				PacketString notifyNewUser;
+				notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
+				strncpy(notifyNewUser.content, username, 31);
+				this->sendTo(notifyNewUser, systemAddress, true);
 
-			PacketString notifyNewUser;
-			notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
-			strncpy(notifyNewUser.content, username, 31);
-			this->sendTo(notifyNewUser, systemAddress, true);
-
+			}
 			break;
 		case ID_PRIVATE_MESSAGE:
 			info->address;
