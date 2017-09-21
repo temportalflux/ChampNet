@@ -66,23 +66,28 @@ struct StateConsole {
 
 // Author: Dustin Yost
 struct StateNetwork {
-	typedef unsigned int UserID;
+	typedef int UserID;
 	typedef RakNet::SystemAddress* UserAddress;
 	//typedef char* UserName;
 	typedef std::string UserName;
-	typedef std::map<UserID, UserAddress> UserIDToAddress;
-	typedef std::map<UserAddress, UserID> UserAddressToID;
-	typedef std::map<UserID, UserName> UserIDToName;
-	typedef std::map<UserName, UserID> UserNameToID;
+	//typedef std::map<UserID, UserAddress> UserIDToAddress;
+	//typedef std::map<UserAddress, UserID> UserAddressToID;
+	//typedef std::map<UserID, UserName> UserIDToName;
+	//typedef std::map<UserName, UserID> UserNameToID;
 
 	// If this is a server (false for clients)
 	bool isServer;
 	UserID clientID;
 	FrameworkData networkInfo;
-	UserIDToAddress mMapIDToAddress;
-	UserAddressToID mMapAddressToID;
-	UserIDToName mMapIDToName;
-	UserNameToID mMapNameToID;
+	//UserIDToAddress mMapIDToAddress;
+	//UserAddressToID mMapAddressToID;
+	//UserIDToName mMapIDToName;
+	//UserNameToID mMapNameToID;
+	UserAddress *mMapIDToAddress;
+	UserName *mMapIDToName;
+
+	StateNetwork();
+	~StateNetwork();
 
 	void copyFrom(StateNetwork *other);
 
@@ -92,6 +97,9 @@ struct StateNetwork {
 
 	// Returnst the user name for the user id
 	UserName getNameFromID(UserID id);
+
+	// Returnst the user name for the user id
+	UserID getIDFromName(UserName id);
 
 };
 

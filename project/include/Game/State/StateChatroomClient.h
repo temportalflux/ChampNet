@@ -24,6 +24,8 @@ private:
 	//void updateGame();
 	void doHandlePacket(Network::PacketInfo *info) override;
 	void render();
+
+	int getClientID() override;
 	
 	virtual void sendToServer(PacketString *packet) override;
 	virtual void sendToServer(PacketChatMessage *packet) override;

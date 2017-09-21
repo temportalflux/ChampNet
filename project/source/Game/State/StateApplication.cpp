@@ -26,6 +26,20 @@ void StateInput::copyFrom(StateInput *other) {
 	this->currentLine = other->currentLine;
 }
 
+StateNetwork::StateNetwork() {
+	this->mMapIDToAddress = new UserAddress[this->networkInfo.maxClients];
+	this->mMapIDToName = new UserName[this->networkInfo.maxClients];
+	for (unsigned int i = 0; i < this->networkInfo.maxClients; i++) {
+		this->mMapIDToAddress[i] = NULL;
+		this->mMapIDToName[i] = "";
+	}
+}
+
+StateNetwork::~StateNetwork() {
+	delete[] this->mMapIDToAddress;
+	delete[] this->mMapIDToName;
+}
+
 void StateNetwork::copyFrom(StateNetwork *other) {
 	this->isServer = other->isServer;
 	this->networkInfo = other->networkInfo;
@@ -36,10 +50,11 @@ void StateNetwork::copyFrom(StateNetwork *other) {
 StateNetwork::UserID StateNetwork::getNextFreeID()
 {
 	UserID nextID;
-	size_t count = this->mMapIDToName.size();
+	//size_t count = this->mMapIDToName.size();
+	size_t count = this->networkInfo.maxClients;
 	// look for empty slots in the map
 	for (nextID = 0; nextID < count; nextID++) {
-		if (this->mMapIDToName.find(nextID) == this->mMapIDToName.end()) {
+		if (this->mMapIDToAddress[nextID] == NULL) {
 			// no entry for nextID - empty slot found
 			break;
 		}
@@ -55,6 +70,15 @@ StateNetwork::UserName StateNetwork::getNameFromID(UserID id)
 	return this->mMapIDToName[id];
 }
 
+StateNetwork::UserID StateNetwork::getIDFromName(UserName name) {
+	UserID id = -1;
+	for (id = 0; id < (int)this->networkInfo.maxClients; id++) {
+		if (this->mMapIDToName[id] == name) {
+			return id;
+		}
+	}
+	return -1;
+}
 
 void StateConsole::copyFrom(StateConsole *other) {
 	this->size = other->size;

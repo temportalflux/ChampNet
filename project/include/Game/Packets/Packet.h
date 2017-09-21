@@ -74,7 +74,7 @@ struct PacketUsername { // total: 64
 // GameMessages::ID_NEW_CLIENT_JOINED
 struct PacketStringLarge {
 	unsigned char packetID;
-	unsigned int clientID;
+	int clientID;
 	char content[PACKET_MAX_SIZE_TEXT];
 };
 
@@ -82,14 +82,14 @@ struct PacketStringLarge {
 // GameMessages::ID_CLIENT_NUMBER
 struct PacketUInt {
 	unsigned char packetID;
-	unsigned int clientID;
+	int clientID;
 };
 
 // Author: Dustin Yost
 // GameMessages::ID_CHAT_MESSAGE
 struct PacketChatMessage {
 	unsigned char packetID;
-	unsigned int clientID;
+	int clientID;
 	char username[PACKET_MAX_SIZE_CONTENT];
 	char message[PACKET_MAX_SIZE_TEXT + 1];
 };

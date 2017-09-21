@@ -29,21 +29,22 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				StateNetwork::UserAddress systemAddress = info->address;
 
 				std::stringstream msg;
-				// TODO: Use peer->getLocalIP(0)
 				msg << "User " << username << " has joined at IP " << addressIPv4 << ".";
 				this->pushMessage(msg.str());
 
 				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
 
 				//inputs that information into a pair of maps so the server has access to them
+				//this->mData.network->mMapIDToAddress[userId] = systemAddress;
+				//this->mData.network->mMapAddressToID[systemAddress] = userId;
+				//this->mData.network->mMapIDToName[userId] = username;
+				//this->mData.network->mMapNameToID[username] = userId;
 				this->mData.network->mMapIDToAddress[userId] = systemAddress;
-				this->mData.network->mMapAddressToID[systemAddress] = userId;
 				this->mData.network->mMapIDToName[userId] = username;
-				this->mData.network->mMapNameToID[username] = userId;
 
 				PacketString notifyNewUser;
 				notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
-				strncpy(notifyNewUser.content, username.c_str(), 31);
+				writeToCharData(notifyNewUser.content, username, PACKET_MAX_SIZE_CONTENT);
 				this->sendTo(&notifyNewUser, systemAddress, true);
 
 				PacketUInt packetID = PacketUInt{ ID_CLIENT_NUMBER, userId };
@@ -75,7 +76,8 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 			{
 				PacketChatMessage *packet = ((PacketChatMessage*)info->data);
 
-				StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
+				StateNetwork::UserID targetID = this->mData.network->getIDFromName(packet->username);
+				//StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
 				StateNetwork::UserID sourceID = packet->clientID;// this->mData.network->mMapAddressToID[info->address];
 				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
@@ -87,14 +89,21 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 			}
 			break;
 		case ID_CLIENT_LEFT:
-		{
-			std::stringstream msg;
-			StateNetwork::UserID id = this->mData.network->mMapAddressToID[info->address];
-			StateNetwork::UserName username = this->mData.network->mMapIDToName[id];
-			msg << "User " << std::string(username) << " has left.";
-			this->pushMessage(msg.str());
-			break;
-		}
+			{
+				PacketUInt *packet = (PacketUInt*)info->data;
+
+				std::stringstream msg;
+				//StateNetwork::UserID id = this->mData.network->mMapAddressToID[info->address];
+				StateNetwork::UserID id = packet->clientID;
+				StateNetwork::UserName username = this->mData.network->mMapIDToName[id];
+				msg << "User " << std::string(username) << " has left.";
+				this->pushMessage(msg.str());
+
+				this->mData.network->mMapIDToAddress[id] = NULL;
+				this->mData.network->mMapIDToName[id] = "";
+
+				break;
+			}
 		default:
 			this->pushMessage("Recieved message id " + id);
 			break;
@@ -110,7 +119,7 @@ void StateChatroomServer::sendToServer(PacketString *packet) {
 }
 
 void StateChatroomServer::sendToServer(PacketChatMessage *packet) {
-	StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
+	StateNetwork::UserID targetID = this->mData.network->getIDFromName(packet->username);
 	StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 	this->sendTo(packet, targetAddress, true);
 }

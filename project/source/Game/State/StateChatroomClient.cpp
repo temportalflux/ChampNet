@@ -82,6 +82,10 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 	}
 }
 
+int StateChatroomClient::getClientID() {
+	return this->mData.network->clientID;
+}
+
 void StateChatroomClient::render() {
 	this->renderConsole();
 }
