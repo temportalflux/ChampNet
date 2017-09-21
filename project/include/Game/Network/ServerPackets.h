@@ -20,25 +20,9 @@ class MessageHandler;
 
 // Author: Dustin Yost
 class ServerPackets : public Network::PacketHandler {
-	// Author: Dustin Yost
-	typedef unsigned int UserID;
-	typedef RakNet::SystemAddress UserAddress;
-	typedef char* UserName;
-	typedef std::map<UserID, UserAddress> UserIDToAddress;
-	typedef std::map<UserAddress, UserID> UserAddressToID;
-	typedef std::map<UserID, UserName> UserIDToName;
-	typedef std::map<UserName, UserID> UserNameToAddress;
 
 private:
 	Network::Network* mpNetwork;
-	// Author: Dustin Yost
-	UserIDToAddress mMapIDToAddress;
-	// Author: Dustin Yost
-	UserAddressToID mMapAddressToID;
-	// Author: Dustin Yost
-	UserIDToName mMapIDToName;
-
-	UserNameToAddress mUserNameToAddress;
 
 	MessageHandler *mpMessageHandler;
 
@@ -52,11 +36,5 @@ public:
 	virtual void handlePacketData(Network::PacketInfo *info);
 
 	virtual void onExit() {}
-
-	// Find the next available ID in the mMapIDToName map (seraches for empty slots)
-	// Returns the first available empty slot, or the number of entries in the map if there are no empty slots
-	UserID getNextFreeID();
-	// Returnst the user name for the user id
-	UserName getNameFromID(UserID id);
 
 };

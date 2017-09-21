@@ -65,18 +65,31 @@ struct StateConsole {
 
 // Author: Dustin Yost
 struct StateNetwork {
-
-	// If this is a server (false for clients)
-	bool isServer;
-	FrameworkData networkInfo;
 	typedef unsigned int UserID;
 	typedef RakNet::SystemAddress* UserAddress;
 	typedef char* UserName;
 	typedef std::map<UserID, UserAddress> UserIDToAddress;
 	typedef std::map<UserAddress, UserID> UserAddressToID;
 	typedef std::map<UserID, UserName> UserIDToName;
+	typedef std::map<UserName, UserID> UserNameToAddress;
+
+	// If this is a server (false for clients)
+	bool isServer;
+	FrameworkData networkInfo;
+	UserIDToAddress mMapIDToAddress;
+	UserAddressToID mMapAddressToID;
+	UserIDToName mMapIDToName;
+
+	UserNameToAddress mUserNameToAddress;
 
 	void copyFrom(StateNetwork *other);
+
+	// Find the next available ID in the mMapIDToName map (seraches for empty slots)
+	// Returns the first available empty slot, or the number of entries in the map if there are no empty slots
+	UserID getNextFreeID();
+
+	// Returnst the user name for the user id
+	UserName getNameFromID(UserID id);
 
 };
 

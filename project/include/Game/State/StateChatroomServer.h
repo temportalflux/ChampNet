@@ -15,6 +15,10 @@ the project on its database.
 
 #include "Game\State\StateChatroom.h"
 
+namespace RakNet {
+	struct SystemAddress;
+}
+
 class StateChatroomServer : public StateChatroom {
 
 private:
@@ -24,5 +28,7 @@ private:
 
 	virtual void sendTo(PacketString packet) override;
 	virtual void sendTo(PacketChatMessage packet) override;
+	virtual void sendTo(PacketString packet, RakNet::SystemAddress *address, bool broadcast = false);
+	virtual void sendTo(PacketUInt packet, RakNet::SystemAddress *address, bool broadcast = false);
 
 };

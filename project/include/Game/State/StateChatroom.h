@@ -22,6 +22,7 @@ class Framework;
 struct FrameworkData;
 struct PacketString;
 struct PacketChatMessage;
+struct PacketUInt;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 

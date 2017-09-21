@@ -30,6 +30,31 @@ void StateNetwork::copyFrom(StateNetwork *other) {
 	this->networkInfo = other->networkInfo;
 }
 
+// Author: Dustin Yost
+// Performance: O(n^2)
+StateNetwork::UserID StateNetwork::getNextFreeID()
+{
+	UserID nextID;
+	size_t count = this->mMapIDToName.size();
+	// look for empty slots in the map
+	for (nextID = 0; nextID < count; nextID++) {
+		if (this->mMapIDToName.find(nextID) == this->mMapIDToName.end()) {
+			// no entry for nextID - empty slot found
+			break;
+		}
+		// nextID found in the map, find the next
+	}
+	// map has no empty slots, use the last value (which is the size of the map)
+	return nextID;
+}
+
+// Author: Dustin Yost
+StateNetwork::UserName StateNetwork::getNameFromID(UserID id)
+{
+	return this->mMapIDToName[id];
+}
+
+
 void StateConsole::copyFrom(StateConsole *other) {
 	this->size = other->size;
 	this->consoleWindow = other->consoleWindow;

@@ -81,27 +81,3 @@ void ServerPackets::handlePacketData(Network::PacketInfo *info) {
 
 	this->mpMessageHandler->handlePacket(info);
 }
-
-// Author: Dustin Yost
-// Performance: O(n^2)
-ServerPackets::UserID ServerPackets::getNextFreeID()
-{
-	UserID nextID;
-	size_t count = this->mMapIDToName.size();
-	// look for empty slots in the map
-	for (nextID = 0; nextID < count; nextID++) {
-		if (this->mMapIDToName.find(nextID) == this->mMapIDToName.end()) {
-			// no entry for nextID - empty slot found
-			break;
-		}
-		// nextID found in the map, find the next
-	}
-	// map has no empty slots, use the last value (which is the size of the map)
-	return nextID;
-}
-
-// Author: Dustin Yost
-ServerPackets::UserName ServerPackets::getNameFromID(UserID id)
-{
-	return this->mMapIDToName[id];
-}
