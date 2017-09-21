@@ -25,9 +25,9 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				PacketString* packetUsername = (PacketString*)(info->data);
 				//gets the username that the user inputed
 				StateNetwork::UserName username = packetUsername->content;
+				std::string usernameStr = std::string(username);
 
-				//this->pushMessage(std::string("User ") + username + " joined.");
-				this->pushMessage(username);
+				this->pushMessage(std::string("User ") + usernameStr + " joined.");
 
 				//gets the systemAdress of the 
 				StateNetwork::UserAddress systemAddress = info->address;

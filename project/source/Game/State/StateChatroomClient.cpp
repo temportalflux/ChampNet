@@ -31,7 +31,9 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 				PacketString packet;
 				packet.packetID = GameMessages::ID_USERNAME;
 				std::string username = this->mData.network->networkInfo.username;
-				strncpy(packet.content, username.c_str(), username.length());
+				size_t length = username.length();
+				strncpy(packet.content, username.c_str(), length);
+				packet.content[length] = '\0';
 
 				this->sendTo(packet);
 			}
