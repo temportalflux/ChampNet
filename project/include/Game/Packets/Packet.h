@@ -37,7 +37,6 @@ enum GameMessages
 	// Messaging
 	// Client->Client; Client broadcast to some username (or all)
 	ID_CHAT_MESSAGE,
-	ID_COMMAND_REQUEST,
 
 	//sends a message to a single other client 
 	ID_PRIVATE_MESSAGE,
