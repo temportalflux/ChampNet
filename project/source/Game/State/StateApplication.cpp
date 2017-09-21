@@ -316,6 +316,50 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 					// handle upper/lower case letters: check to see if the shift key is down
 					if (!(current[VK_SHIFT] || current[VK_LSHIFT] || current[VK_RSHIFT] || this->mData.input->isCaps)) {
 						character = tolower(character);
+						
+					}
+					else
+					{
+						if (i == '1')
+						{
+							character = '!';
+						}
+						else if (i == '2')
+						{
+							character = '@';
+						}
+						else if (i == '3')
+						{
+							character = '#';
+						}
+						else if (i == '4')
+						{
+							character = '$';
+						}
+						else if (i == '5')
+						{
+							character = '%';
+						}
+						else if (i == '6')
+						{
+							character = '^';
+						}
+						else if (i == '7')
+						{
+							character = '&';
+						}
+						else if (i == '8')
+						{
+							character = '*';
+						}
+						else if (i == '9')
+						{
+							character = '(';
+						}
+						else if (i == '0')
+						{
+							character = ')';
+						}
 					}
 					// push the character onto the text buffer
 					this->mData.input->currentLine.push_back(character);
