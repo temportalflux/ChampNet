@@ -50,9 +50,9 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 
 			break;
 		case ID_PRIVATE_MESSAGE:
-			PacketChatMessage packet;
-			
-			
+			stringstream msg;
+			msg << ((PacketChatMessage*)info->data)->username << ": " <<((PacketChatMessage*)info->data)->message;
+			this->pushMessage(msg.str());
 			break;
 		default:
 			this->pushMessage("Recieved message id " + id);
