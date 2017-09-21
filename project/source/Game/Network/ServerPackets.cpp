@@ -21,6 +21,7 @@ ServerPackets::ServerPackets(MessageHandler *messageHandler) {
 	mMapIDToAddress = UserIDToAddress();
 	mMapAddressToID = UserAddressToID();
 	mMapIDToName = UserIDToName();
+	mUserNameToAddress = UserNameToAddress();
 	mpMessageHandler = messageHandler;
 }
 
