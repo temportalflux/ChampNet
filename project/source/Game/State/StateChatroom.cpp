@@ -147,7 +147,7 @@ bool StateChatroom::chatCommands(const std::string & latestLine)
 					i++;
 				}
 				//starts of the message
-				else if (i == 3)
+				else if (i == 2)
 				{
 					split >> message;
 				}

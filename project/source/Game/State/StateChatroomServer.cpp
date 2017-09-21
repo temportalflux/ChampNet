@@ -90,11 +90,16 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 			{
 				PacketChatMessage *packet = ((PacketChatMessage*)info->data);
 
-				StateNetwork::UserID targetID = this->mData.network->getIDFromName(packet->username);
+				StateNetwork::UserName targetName = packet->username;
+				StateNetwork::UserID targetID = this->mData.network->getIDFromName(targetName);
 				//StateNetwork::UserID targetID = this->mData.network->mMapNameToID[packet->username];
 				StateNetwork::UserID sourceID = packet->clientID;// this->mData.network->mMapAddressToID[info->address];
 				StateNetwork::UserAddress targetAddress = this->mData.network->mMapIDToAddress[targetID];
 				StateNetwork::UserName sourceName = this->mData.network->mMapIDToName[sourceID];
+
+				std::stringstream msg;
+				msg << sourceName << "->" << targetName << ": " << std::string(packet->message);
+				this->pushMessage(msg.str());
 
 				writeToCharData(packet->username, sourceName, PACKET_MAX_SIZE_CONTENT);
 

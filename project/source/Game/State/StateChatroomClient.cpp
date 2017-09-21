@@ -78,7 +78,7 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 				PacketChatMessage *packet = (PacketChatMessage*)info->data;
 
 				stringstream msg;
-				msg << packet->username << ": " << packet->message;
+				msg << "PM | " << packet->username << ": " << packet->message;
 				this->pushMessage(msg.str());
 
 				break;
