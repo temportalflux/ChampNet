@@ -46,6 +46,14 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 			this->pushMessage("Welcome to the server");
 			break;
+		case ID_SEND_ALL:
+
+			break;
+		case ID_PRIVATE_MESSAGE:
+			PacketChatMessage packet;
+			
+			
+			break;
 		default:
 			this->pushMessage("Recieved message id " + id);
 			break;
@@ -57,6 +65,13 @@ void StateChatroomClient::render() {
 }
 
 void StateChatroomClient::sendTo(PacketString packet) {
+	char *data = (char*)(&packet);
+	unsigned int size = sizeof(packet);
+	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+}
+
+void StateChatroomClient::sendTo(PacketChatMessage packet)
+{
 	char *data = (char*)(&packet);
 	unsigned int size = sizeof(packet);
 	this->getFramework()->sendTo(data, size, this->mAddressServer, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);

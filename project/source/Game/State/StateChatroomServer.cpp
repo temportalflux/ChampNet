@@ -15,12 +15,16 @@ the project on its database.
 
 #include "Game\Packets\Packet.h"
 #include "Network\Packets\PacketInfo.h"
+#include "Network\Framework.h"
 
 void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 	unsigned int id = info->getPacketType();
 	switch (id) {
 		case ID_USERNAME: // Handle connections
 			this->pushMessage("User joined.");
+			break;
+		case ID_PRIVATE_MESSAGE:
+			info->address;
 			break;
 		default:
 			this->pushMessage("Recieved message id " + id);
@@ -32,5 +36,14 @@ void StateChatroomServer::render() {
 	this->renderConsole();
 }
 
-void StateChatroomServer::sendTo(PacketString packet) {
+void StateChatroomServer::sendTo(PacketString packet) 
+{
+
+}
+
+void StateChatroomServer::sendTo(PacketChatMessage packet)
+{
+	char *data = (char*)(&packet);
+	unsigned int size = sizeof(packet);
+	this->getFramework()->sendTo(data, size, /*RakNet stuff*/, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false)
 }

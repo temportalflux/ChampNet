@@ -23,5 +23,6 @@ private:
 	void render();
 
 	virtual void sendTo(PacketString packet) override;
+	virtual void sendTo(PacketChatMessage packet) override;
 
 };

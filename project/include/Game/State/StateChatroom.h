@@ -21,6 +21,7 @@ the project on its database.
 class Framework;
 struct FrameworkData;
 struct PacketString;
+struct PacketChatMessage;
 
 class StateChatroom abstract : public StateApplication, public MessageHandler {
 
@@ -61,7 +62,7 @@ protected:
 	virtual void sendMessage(const std::string &username, const std::string &message);
 
 	virtual void sendTo(PacketString packet) = 0;
-	
+	virtual void sendTo(PacketChatMessage packet) = 0;
 public:
 	StateChatroom();
 	virtual ~StateChatroom();

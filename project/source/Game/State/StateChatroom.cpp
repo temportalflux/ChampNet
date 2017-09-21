@@ -153,7 +153,7 @@ void StateChatroom::chatCommands(const std::string & latestLine)
 					message.append(" " + temp);
 				}
 			}
-			//sendMessage(username, message);
+			sendMessage(username, message);
 		}
 		// gives a command for users to choose when they would like to clear the screen
 		else if (latestLine.find("/clear") == 0)
@@ -183,11 +183,14 @@ void StateChatroom::sendMessage(const std::string &message) {
 	this->sendTo(packet);
 }
 
-/* Author: Dustin Yost
+/* Author: Jon Trusheim
 Sends a packet to the server indicating a private message
 */
-void StateChatroom::sendMessage(const std::string &username, const std::string &message) {
-	PacketString packet;
-	packet.packetID = ID_SEND_ALL;
-
+void StateChatroom::sendMessage(const std::string &username, const std::string &message) 
+{
+	PacketChatMessage packet;
+	packet.packetID = ID_PRIVATE_MESSAGE;
+	strncpy(packet.message, message.c_str(), min(message.length(), PacketString::MAX_SIZE_CONTENT));
+	strncpy(packet.username, username.c_str(), min(username.length(), PacketString::MAX_SIZE_CONTENT));
+	this->sendTo(packet);
 }

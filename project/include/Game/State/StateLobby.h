@@ -25,8 +25,7 @@ private:
 		NETWORK_PORT, // Port #
 		ADDRESS, // Client: The address string
 		MAX_CLIENTS, // Server: Max Clients
-		USERNAME, // users username
-		WAIT_FOR_USERNAME_VALIDATION
+		USERNAME, // users usernam
 	} mPhase;
 
 	virtual void onEnterFrom(StateApplication *previous);
