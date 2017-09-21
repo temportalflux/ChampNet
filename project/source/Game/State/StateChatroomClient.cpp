@@ -46,14 +46,19 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 		case ID_CLIENT_NUMBER: // Handle incoming assignment to the user id
 			this->pushMessage("Welcome to the server");
 			break;
+
 		case ID_SEND_ALL:
 
 			break;
-		case ID_PRIVATE_MESSAGE:
+
+			//Author: Jon Trusheim
+		case ID_PRIVATE_MESSAGE: //Handle incoming private message
+		{
 			stringstream msg;
-			msg << ((PacketChatMessage*)info->data)->username << ": " <<((PacketChatMessage*)info->data)->message;
+			msg << ((PacketChatMessage*)info->data)->username << ": " << ((PacketChatMessage*)info->data)->message;
 			this->pushMessage(msg.str());
 			break;
+		}
 		default:
 			this->pushMessage("Recieved message id " + id);
 			break;
