@@ -67,11 +67,12 @@ struct StateConsole {
 struct StateNetwork {
 	typedef unsigned int UserID;
 	typedef RakNet::SystemAddress* UserAddress;
-	typedef char* UserName;
+	//typedef char* UserName;
+	typedef std::string UserName;
 	typedef std::map<UserID, UserAddress> UserIDToAddress;
 	typedef std::map<UserAddress, UserID> UserAddressToID;
 	typedef std::map<UserID, UserName> UserIDToName;
-	typedef std::map<UserName, UserID> UserNameToAddress;
+	typedef std::map<UserName, UserID> UserNameToID;
 
 	// If this is a server (false for clients)
 	bool isServer;
@@ -79,8 +80,7 @@ struct StateNetwork {
 	UserIDToAddress mMapIDToAddress;
 	UserAddressToID mMapAddressToID;
 	UserIDToName mMapIDToName;
-
-	UserNameToAddress mUserNameToAddress;
+	UserNameToID mUserNameToID;
 
 	void copyFrom(StateNetwork *other);
 

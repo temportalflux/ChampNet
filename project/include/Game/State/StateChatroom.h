@@ -20,7 +20,6 @@ the project on its database.
 
 class Framework;
 struct FrameworkData;
-struct PacketString;
 struct PacketChatMessage;
 struct PacketUInt;
 
@@ -64,6 +63,7 @@ protected:
 
 	virtual void sendTo(PacketString packet) = 0;
 	virtual void sendTo(PacketChatMessage packet) = 0;
+
 public:
 	StateChatroom();
 	virtual ~StateChatroom();

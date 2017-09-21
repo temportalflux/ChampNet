@@ -47,6 +47,10 @@ enum GameMessages
 
 #pragma pack(push, 1)
 
+struct PacketNotification {
+	unsigned char packetID;
+};
+
 // Author: Dustin Yost
 // GameMessages::ID_USERNAME
 struct PacketString : Packet {

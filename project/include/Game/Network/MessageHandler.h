@@ -15,6 +15,8 @@ the project on its database.
 
 #include "Network\Packets\PacketInfo.h"
 
+struct PacketString;
+
 class MessageHandler abstract {
 
 public:

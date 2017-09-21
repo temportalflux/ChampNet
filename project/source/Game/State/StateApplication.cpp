@@ -280,6 +280,8 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 				case VK_F24:
 				case VK_LBUTTON:
 				case VK_RBUTTON:
+				case VK_LCONTROL:
+				case VK_RCONTROL:
 					break;
 					// Handle all remaining cases (letters and specials)
 				default:

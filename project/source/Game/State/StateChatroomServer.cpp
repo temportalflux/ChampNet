@@ -24,10 +24,9 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 			{
 				PacketString* packetUsername = (PacketString*)(info->data);
 				//gets the username that the user inputed
-				StateNetwork::UserName username = packetUsername->content;
-				std::string usernameStr = std::string(username);
+				StateNetwork::UserName username = std::string(packetUsername->content);
 
-				this->pushMessage(std::string("User ") + usernameStr + " joined.");
+				this->pushMessage(std::string("User ") + username + " joined.");
 
 				//gets the systemAdress of the 
 				StateNetwork::UserAddress systemAddress = info->address;
@@ -38,10 +37,11 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				this->mData.network->mMapIDToAddress[userId] = systemAddress;
 				this->mData.network->mMapAddressToID[systemAddress] = userId;
 				this->mData.network->mMapIDToName[userId] = username;
+				this->mData.network->mUserNameToID[username] = userId;
 
 				PacketString notifyNewUser;
 				notifyNewUser.packetID = ID_NEW_CLIENT_JOINED;
-				strncpy(notifyNewUser.content, username, 31);
+				strncpy(notifyNewUser.content, username.c_str(), 31);
 				this->sendTo(notifyNewUser, systemAddress, true);
 
 			}
@@ -49,6 +49,15 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 		case ID_PRIVATE_MESSAGE:
 			info->address;
 			break;
+		case ID_CLIENT_LEFT:
+		{
+			std::stringstream msg;
+			StateNetwork::UserID id = this->mData.network->mMapAddressToID[info->address];
+			StateNetwork::UserName username = this->mData.network->mMapIDToName[id];
+			msg << "User " << std::string(username) << " has left.";
+			this->pushMessage(msg.str());
+			break;
+		}
 		default:
 			this->pushMessage("Recieved message id " + id);
 			break;

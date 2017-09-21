@@ -79,9 +79,6 @@ void ClientPackets::handlePacketData(Network::PacketInfo *info) {
 }
 
 void ClientPackets::onExit() {
-	PacketString packet;
-	packet.packetID = (unsigned char)GameMessages::ID_CLIENT_LEFT;
-	std::string msg = "Client is leaving.\0";
-	strncpy(packet.content, msg.c_str(), msg.length());
+	PacketNotification packet = { ID_CLIENT_LEFT };
 	this->mpNetwork->disconnect(packet);
 }
