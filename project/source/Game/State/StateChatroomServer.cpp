@@ -12,7 +12,6 @@ the project on its database.
 */
 
 #include "Game\State\StateChatroomServer.h"
-
 #include "Game\Packets\Packet.h"
 #include "Network\Packets\PacketInfo.h"
 #include "Network\Framework.h"
@@ -31,7 +30,9 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 
 				//gets the systemAdress of the 
 				StateNetwork::UserAddress systemAddress = info->address;
-
+				std::stringstream msg;
+				msg << systemAddress;
+				this->pushMessage(msg.str());
 				StateNetwork::UserID userId = this->mData.network->getNextFreeID();
 
 				//inputs that information into a pair of maps so the server has access to them
