@@ -146,6 +146,7 @@ protected:
 public:
 	// If the update loop should continue
 	bool mRunning = true;
+	bool mEscape = false;
 
 	StateApplication();
 	virtual ~StateApplication();

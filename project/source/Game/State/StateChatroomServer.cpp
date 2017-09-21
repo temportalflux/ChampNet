@@ -110,11 +110,17 @@ void StateChatroomServer::doHandlePacket(Network::PacketInfo *info) {
 				//StateNetwork::UserID id = this->mData.network->mMapAddressToID[info->address];
 				StateNetwork::UserID id = packet->clientID;
 				StateNetwork::UserName username = this->mData.network->mMapIDToName[id];
-				msg << "User " << std::string(username) << " has left.";
-				this->pushMessage(msg.str());
+				msg << "User " << std::string(username) << " has disconnected.";
+				std::string msgStr = msg.str();
+				this->pushMessage(msgStr);
 
 				this->mData.network->mMapIDToAddress[id] = NULL;
 				this->mData.network->mMapIDToName[id] = "";
+
+				PacketString packetOut;
+				packetOut.packetID = ID_CLIENT_LEFT;
+				writeToCharData(packetOut.content, msgStr, PACKET_MAX_SIZE_CONTENT);
+				this->sendTo(&packetOut, info->address, true);
 
 				break;
 			}

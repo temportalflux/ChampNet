@@ -241,7 +241,8 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 			// Check all keys that were pressed
 			switch (i) {
 				case VK_ESCAPE: // special effect, set the application to stop running
-					this->mRunning = false;
+					//this->mRunning = false;
+					this->mEscape = true;
 					break;
 				case VK_RETURN: // special effect, push the text line into the records buffer
 								// only if there is text in the buffer

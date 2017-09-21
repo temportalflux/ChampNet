@@ -35,9 +35,9 @@ private:
 	std::deque<Network::PacketInfo*> mPacketInputQueue;
 
 	void updateNetwork();
-	void updateGame();
 
 protected:
+	void updateGame();
 	
 	virtual void onEnterFrom(StateApplication *previous);
 

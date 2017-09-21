@@ -19,8 +19,18 @@ the project on its database.
 
 using std::stringstream;
 
-StateChatroomClient::~StateChatroomClient() {
-	this->onExit();
+void StateChatroomClient::updateGame() {
+	StateChatroom::updateGame();
+
+	if (this->mEscape) {
+		PacketUInt packet;
+		packet.packetID = ID_CLIENT_LEFT;
+		packet.clientID = this->mData.network->clientID;
+		this->sendToServer(&packet);
+
+		this->mRunning = false;
+	}
+
 }
 
 // AUTHOR: Dustin Yost
@@ -75,22 +85,13 @@ void StateChatroomClient::doHandlePacket(Network::PacketInfo *info) {
 			}
 		case ID_CLIENT_LEFT:
 		{
-			stringstream msg;
-			msg << "User " << ((PacketString*)info->data)->content << " has left.";
-			this->pushMessage(msg.str());
+			this->pushMessage(std::string(((PacketString*)info->data)->content));
 			break;
 		}
 		default:
 			this->pushMessage("Recieved message id " + id);
 			break;
 	}
-}
-
-void StateChatroomClient::onExit() {
-	PacketUInt packet;
-	packet.packetID = ID_CLIENT_LEFT;
-	packet.clientID = this->mData.network->clientID;
-	this->sendToServer(&packet);
 }
 
 void StateChatroomClient::render() {
