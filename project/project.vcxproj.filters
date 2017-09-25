@@ -34,24 +34,6 @@
     <Filter Include="Source Files\Game\State">
       <UniqueIdentifier>{b58234f9-e8d9-478c-ae3c-66278cf38718}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game\Network">
-      <UniqueIdentifier>{0c69df97-6469-45d8-8bde-8e557ee972de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game\Network">
-      <UniqueIdentifier>{206e4d5e-6f12-40eb-9ec1-0b42a52e1596}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game\Input">
-      <UniqueIdentifier>{c4fd1617-3380-4eb8-a0b7-6e50e1c9bba8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\Input">
-      <UniqueIdentifier>{4a2804bd-fbbd-4bfe-984f-d0c9e463e4c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Network\Packets">
-      <UniqueIdentifier>{bd5a0af0-19e7-4be5-bf9e-e629ca225e4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Network\Packets">
-      <UniqueIdentifier>{60f385e8-a6e2-46b2-a02c-49a3e4bf8233}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game\Packets">
       <UniqueIdentifier>{8574ee0c-64e5-4b97-94f6-bb86e9bf2312}</UniqueIdentifier>
     </Filter>
@@ -63,18 +45,6 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\network\Network.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="source\network\Client.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="source\network\Framework.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="source\network\Server.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -83,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="source\Game\State\StateApplication.cpp">
       <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Network\Packets\PacketManager.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
     </ClCompile>
     <ClCompile Include="source\Game\Packets\Packets.cpp">
       <Filter>Source Files\Game\Packets</Filter>
@@ -98,18 +65,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\network\Network.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\network\Client.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\network\Framework.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\network\Server.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game\Packets\Packet.h">
       <Filter>Header Files\Game\Packets</Filter>
     </ClInclude>
@@ -122,29 +77,23 @@
     <ClInclude Include="include\Network\FrameworkDefines.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\Network\Packets\PacketInfo.h">
-      <Filter>Header Files\Network\Packets</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Network\Packets\PacketHandler.h">
-      <Filter>Header Files\Network\Packets</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Network\Packets\PacketManager.h">
-      <Filter>Header Files\Network\Packets</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\Network\MessageHandler.h">
-      <Filter>Header Files\Game\Network</Filter>
-    </ClInclude>
     <ClInclude Include="include\Network\NetworkDefines.h">
       <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\Game.h">
-      <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
     <ClInclude Include="include\Network\Net.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
     <ClInclude Include="include\lib\LibWindows.h">
       <Filter>Header Files\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\Game.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\MessageHandler.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\PacketInfo.h">
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
