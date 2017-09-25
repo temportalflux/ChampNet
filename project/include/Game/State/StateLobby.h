@@ -20,12 +20,10 @@ class StateLobby : public StateApplication {
 
 private:
 
-	enum EnumLoginPhase {
-		NETWORK_TYPE, // Server or Client
-		NETWORK_PORT, // Port #
-		ADDRESS, // Client: The address string
-		MAX_CLIENTS, // Server: Max Clients
-		USERNAME, // users usernam
+	enum LobbyPhase {
+		NETWORK_TYPE, // Local, Host, or Peer
+		NETWORK_PORT, // PEER: Port #
+		ADDRESS, // PEER: The address string
 	} mPhase;
 
 	virtual void onEnterFrom(StateApplication *previous);
@@ -33,6 +31,8 @@ private:
 	void updateGame();
 	void render();
 
-	void queueStateChatroom();
+	void handlePhaseInput(LobbyPhase phase, const std::string &line, LobbyPhase &next);
+	void promptPhase(LobbyPhase phase);
+	virtual void queueNextGameState() override;
 
 };

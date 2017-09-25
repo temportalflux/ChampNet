@@ -13,10 +13,7 @@ the project on its database.
 
 #include "Game\State\StateLobby.h"
 
-#include <Windows.h>
-
-#include "Game\State\StateChatroomClient.h"
-#include "Game\State\StateChatroomServer.h"
+#include "lib\LibWindows.h"
 
 void StateLobby::updateNetwork() {
 	// STUB: no network checks while in lobby
@@ -24,9 +21,7 @@ void StateLobby::updateNetwork() {
 
 void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
-	// prep the state to be in the login phase
-	mPhase = EnumLoginPhase::NETWORK_TYPE;
-	this->mData.display->textRecord.push_back("(C) or (S)erver? ");
+	mPhase = LobbyPhase::NETWORK_TYPE;
 }
 
 /* Author: Dustin Yost
@@ -37,69 +32,14 @@ void StateLobby::updateGame() {
 	// varaible to cache the last entry (if a new line was entered) from the recorded text
 	std::string latestLine;
 	// update for input state changes, will be true if a new line was entered
-	if (this->updateForInput(latestLine, mPhase == EnumLoginPhase::ADDRESS)) {
+	if (this->updateForInput(latestLine, mPhase == LobbyPhase::ADDRESS)) {
 		// new line has been entered
 		
 		size_t last = this->mData.display->textRecord.size() - 1;
 		this->mData.display->textRecord[last] = this->mData.display->textRecord[last] + latestLine;
 
-		switch (mPhase) {
-			case EnumLoginPhase::NETWORK_TYPE: // Client and Server
-				// Log user input
-				this->mData.network->isServer = latestLine[0] == 's' || latestLine[0] == 'S';
-				
-				// Prompt user for next info part
-				mPhase = EnumLoginPhase::NETWORK_PORT;
-				this->mData.display->textRecord.push_back("Server Port: ");
-				
-				break;
-			case EnumLoginPhase::NETWORK_PORT: // Client and Server
-				// Log user input
-				this->mData.network->networkInfo.port = std::stoi(latestLine);
-
-				// Prompt user for next info part
-				if (this->mData.network->isServer) {
-					mPhase = EnumLoginPhase::MAX_CLIENTS;
-					this->mData.display->textRecord.push_back("Max Clients: ");
-				}
-				else {
-					mPhase = EnumLoginPhase::ADDRESS;
-					this->mData.display->textRecord.push_back("Enter server IP or hit enter for 127.0.0.1... ");
-				}
-
-				break;
-			case EnumLoginPhase::MAX_CLIENTS: // Server
-											  // Log user input
-				this->mData.network->networkInfo.maxClients = std::stoi(latestLine);
-
-				this->mData.display->textRecord.clear();
-
-				// Startup the server
-				this->queueStateChatroom();
-
-				break;
-			case EnumLoginPhase::ADDRESS: // Client
-				// Log user input
-				strcpy(this->mData.network->networkInfo.serverAddress, latestLine.length() == 0 ? "127.0.0.1" : latestLine.c_str());
-
-				// Prompt user for next info part
-				mPhase = EnumLoginPhase::USERNAME;
-				this->mData.display->textRecord.push_back("Username: ");
-
-				break;
-			case EnumLoginPhase::USERNAME: // CLIENT
-				// Set username of client
-				this->mData.network->networkInfo.username.assign(latestLine);
-
-				this->mData.display->textRecord.clear();
-
-				// Startup the server
-				this->queueStateChatroom();
-
-				break;
-			default:
-				break;
-		}
+		this->handlePhaseInput(mPhase, latestLine, mPhase);
+		this->promptPhase(mPhase);
 
 	}
 
@@ -112,14 +52,61 @@ void StateLobby::render() {
 	this->renderConsole();
 }
 
-/* Author: Dustin Yost
-Queues the chatroom state
-*/
-void StateLobby::queueStateChatroom() {
-	if (this->mData.network->isServer) {
-		this->mNext = new StateChatroomServer();
+void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, LobbyPhase &next) {
+	switch (phase) {
+		case LobbyPhase::NETWORK_TYPE: // ALL
+			this->mData.network->networkType = (StateNetwork::NetworkType)(std::stoi(line) + 1);
+			if (this->mData.network->networkType == StateNetwork::PEER) {
+				next = LobbyPhase::ADDRESS;
+			}
+			else {
+				this->queueNextGameState();
+			}
+			break;
+		case LobbyPhase::ADDRESS: // PEER
+			// Log user input
+			{
+				bool emptyLine = line.length() == 0;
+				if (emptyLine) {
+					this->pushMessage("127.0.0.1");
+					strcpy(this->mData.network->networkInfo.serverAddress, "127.0.0.1");
+				}
+				else {
+					strcpy(this->mData.network->networkInfo.serverAddress, line.c_str());
+				}
+			}
+			next = LobbyPhase::NETWORK_PORT;
+			break;
+		case LobbyPhase::NETWORK_PORT: // PEER
+			// Log user input
+			this->mData.network->networkInfo.port = std::stoi(line);
+			this->queueNextGameState();
+			break;
+		default:
+			break;
 	}
-	else {
-		this->mNext = new StateChatroomClient();
+}
+
+void StateLobby::promptPhase(LobbyPhase phase) {
+	switch (phase) {
+		case LobbyPhase::NETWORK_TYPE: // ALL
+			this->pushMessage("Game Types:");
+			this->pushMessage("1) Local");
+			this->pushMessage("2) Online Host");
+			this->pushMessage("2) Online Peer");
+			this->pushMessage("Select game type: ");
+			break;
+		case LobbyPhase::ADDRESS: // PEER
+			this->pushMessage("Enter host IP or hit enter for 127.0.0.1... ");
+			break;
+		case LobbyPhase::NETWORK_PORT: // PEER
+			this->pushMessage("Host Port: ");
+			break;
+		default:
+			break;
 	}
+}
+
+void StateLobby::queueNextGameState() {
+	// TODO: Queue next game state
 }

@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Game\Packets">
       <UniqueIdentifier>{8574ee0c-64e5-4b97-94f6-bb86e9bf2312}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lib">
+      <UniqueIdentifier>{cf4f7b35-a3ba-4a8b-b791-bdece0652a63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -75,35 +78,20 @@
     <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\Network\ClientPackets.cpp">
-      <Filter>Source Files\Game\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\Network\ServerPackets.cpp">
-      <Filter>Source Files\Game\Network</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\State\StateLobby.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\State\StateGameLocal.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="source\Game\State\StateApplication.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\State\StateChatroom.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
     <ClCompile Include="source\Network\Packets\PacketManager.cpp">
       <Filter>Source Files\Network\Packets</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\State\StateChatroomClient.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game\State\StateChatroomServer.cpp">
-      <Filter>Source Files\Game\State</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\Packets\Packets.cpp">
       <Filter>Source Files\Game\Packets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Network\Net.cpp">
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,29 +110,14 @@
     <ClInclude Include="include\Game\Packets\Packet.h">
       <Filter>Header Files\Game\Packets</Filter>
     </ClInclude>
-    <ClInclude Include="source\mainSample.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\Network\ClientPackets.h">
-      <Filter>Header Files\Game\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\Network\ServerPackets.h">
-      <Filter>Header Files\Game\Network</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game\State\StateApplication.h">
       <Filter>Header Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="include\Game\State\StateLobby.h">
       <Filter>Header Files\Game\State</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game\State\StateGameLocal.h">
-      <Filter>Header Files\Game\State</Filter>
-    </ClInclude>
     <ClInclude Include="include\Network\FrameworkDefines.h">
       <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\StateChatroom.h">
-      <Filter>Header Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="include\Network\Packets\PacketInfo.h">
       <Filter>Header Files\Network\Packets</Filter>
@@ -158,17 +131,17 @@
     <ClInclude Include="include\Game\Network\MessageHandler.h">
       <Filter>Header Files\Game\Network</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game\State\StateChatroomClient.h">
-      <Filter>Header Files\Game\State</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game\State\StateChatroomServer.h">
-      <Filter>Header Files\Game\State</Filter>
-    </ClInclude>
     <ClInclude Include="include\Network\NetworkDefines.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
     <ClInclude Include="include\Game\Game.h">
       <Filter>Header Files\Network\Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lib\LibWindows.h">
+      <Filter>Header Files\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Net.h">
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

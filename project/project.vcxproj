@@ -20,14 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Game\Game.cpp" />
-    <ClCompile Include="source\Game\Network\ClientPackets.cpp" />
-    <ClCompile Include="source\Game\Network\ServerPackets.cpp" />
     <ClCompile Include="source\Game\Packets\Packets.cpp" />
     <ClCompile Include="source\Game\State\StateApplication.cpp" />
-    <ClCompile Include="source\Game\State\StateChatroom.cpp" />
-    <ClCompile Include="source\Game\State\StateChatroomClient.cpp" />
-    <ClCompile Include="source\Game\State\StateChatroomServer.cpp" />
-    <ClCompile Include="source\Game\State\StateGameLocal.cpp" />
     <ClCompile Include="source\Game\State\StateLobby.cpp" />
     <ClCompile Include="source\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -37,37 +31,28 @@
     </ClCompile>
     <ClCompile Include="source\network\Client.cpp" />
     <ClCompile Include="source\network\Framework.cpp" />
+    <ClCompile Include="source\Network\Net.cpp" />
     <ClCompile Include="source\network\Network.cpp" />
     <ClCompile Include="source\Network\Packets\PacketManager.cpp" />
     <ClCompile Include="source\network\Server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game\Game.h" />
-    <ClInclude Include="include\Game\Network\ClientPackets.h" />
     <ClInclude Include="include\Game\Network\MessageHandler.h" />
-    <ClInclude Include="include\Game\Network\ServerPackets.h" />
     <ClInclude Include="include\Game\Packets\Packet.h" />
     <ClInclude Include="include\Game\State\StateApplication.h" />
-    <ClInclude Include="include\Game\State\StateChatroom.h" />
-    <ClInclude Include="include\Game\State\StateChatroomClient.h" />
-    <ClInclude Include="include\Game\State\StateChatroomServer.h" />
-    <ClInclude Include="include\Game\State\StateGameLocal.h" />
     <ClInclude Include="include\Game\State\StateLobby.h" />
+    <ClInclude Include="include\lib\LibWindows.h" />
     <ClInclude Include="include\network\Client.h" />
     <ClInclude Include="include\network\Framework.h" />
     <ClInclude Include="include\Network\FrameworkDefines.h" />
+    <ClInclude Include="include\Network\Net.h" />
     <ClInclude Include="include\network\Network.h" />
     <ClInclude Include="include\Network\NetworkDefines.h" />
     <ClInclude Include="include\Network\Packets\PacketHandler.h" />
     <ClInclude Include="include\Network\Packets\PacketInfo.h" />
     <ClInclude Include="include\Network\Packets\PacketManager.h" />
     <ClInclude Include="include\network\Server.h" />
-    <ClInclude Include="source\mainSample.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

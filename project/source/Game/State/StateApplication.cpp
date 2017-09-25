@@ -13,8 +13,7 @@ the project on its database.
 
 #include "Game\State\StateApplication.h"
 #include <cstdlib>
-#include <RakNet\WindowsIncludes.h>
-#include <Windows.h>
+#include "lib\LibWindows.h"
 #include <iostream>
 
 void StateInput::copyFrom(StateInput *other) {
@@ -27,57 +26,14 @@ void StateInput::copyFrom(StateInput *other) {
 }
 
 StateNetwork::StateNetwork() {
-	this->mMapIDToAddress = NULL;
-	this->mMapIDToName = NULL;
 }
 
 StateNetwork::~StateNetwork() {
-	if (this->mMapIDToAddress != NULL) {
-		delete[] this->mMapIDToAddress;
-	}
-	if (this->mMapIDToName != NULL) {
-		delete[] this->mMapIDToName;
-	}
 }
 
 void StateNetwork::copyFrom(StateNetwork *other) {
-	this->isServer = other->isServer;
+	this->networkType = other->networkType;
 	this->networkInfo = other->networkInfo;
-}
-
-// Author: Dustin Yost
-// Performance: O(n^2)
-StateNetwork::UserID StateNetwork::getNextFreeID()
-{
-	UserID nextID;
-	//size_t count = this->mMapIDToName.size();
-	size_t count = this->networkInfo.maxClients;
-	// look for empty slots in the map
-	for (nextID = 0; nextID < count; nextID++) {
-		if (this->mMapIDToName[nextID] == "") {
-			// no entry for nextID - empty slot found
-			break;
-		}
-		// nextID found in the map, find the next
-	}
-	// map has no empty slots, use the last value (which is the size of the map)
-	return nextID;
-}
-
-// Author: Dustin Yost
-StateNetwork::UserName StateNetwork::getNameFromID(UserID id)
-{
-	return this->mMapIDToName[id];
-}
-
-StateNetwork::UserID StateNetwork::getIDFromName(UserName name) {
-	UserID id = -1;
-	for (id = 0; id < (int)this->networkInfo.maxClients; id++) {
-		if (this->mMapIDToName[id] == name) {
-			return id;
-		}
-	}
-	return -1;
 }
 
 void StateConsole::copyFrom(StateConsole *other) {
@@ -414,4 +370,12 @@ void StateApplication::renderConsole() {
 	std::string currentText = this->mData.input->currentLine;
 	std::string postSpaces = this->console()->spaceCount((int)max(0, maxColumns - currentText.length()));
 	std::cout << "> " << currentText << postSpaces;
+}
+
+/* Author: Dustin Yost
+Pushes a text message to the record of messages to display
+*/
+void StateApplication::pushMessage(const std::string &msg) {
+	// Push the message into the buffer
+	this->mData.display->textRecord.push_back(std::string(msg.c_str()));
 }

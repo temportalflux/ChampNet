@@ -63,40 +63,17 @@ struct StateConsole {
 
 // Author: Dustin Yost
 struct StateNetwork {
-	typedef int UserID;
-	typedef RakNet::SystemAddress UserAddress;
-	//typedef char* UserName;
-	typedef std::string UserName;
-	//typedef std::map<UserID, UserAddress> UserIDToAddress;
-	//typedef std::map<UserAddress, UserID> UserAddressToID;
-	//typedef std::map<UserID, UserName> UserIDToName;
-	//typedef std::map<UserName, UserID> UserNameToID;
 
-	// If this is a server (false for clients)
-	bool isServer;
-	UserID clientID;
+	enum NetworkType {
+		LOCAL, HOST, PEER
+	} networkType;
+
 	FrameworkData networkInfo;
-	//UserIDToAddress mMapIDToAddress;
-	//UserAddressToID mMapAddressToID;
-	//UserIDToName mMapIDToName;
-	//UserNameToID mMapNameToID;
-	UserAddress *mMapIDToAddress;
-	UserName *mMapIDToName;
 
 	StateNetwork();
 	~StateNetwork();
 
 	void copyFrom(StateNetwork *other);
-
-	// Find the next available ID in the mMapIDToName map (seraches for empty slots)
-	// Returns the first available empty slot, or the number of entries in the map if there are no empty slots
-	UserID getNextFreeID();
-
-	// Returnst the user name for the user id
-	UserName getNameFromID(UserID id);
-
-	// Returnst the user name for the user id
-	UserID getIDFromName(UserName id);
 
 };
 
@@ -171,5 +148,12 @@ public:
 
 	bool updateForInput(std::string &latestLine, bool allowEmptyLines);
 	void renderConsole();
+
+	/* Author: Dustin Yost
+	Pushes a text message to the record of messages to display
+	*/
+	void pushMessage(const std::string &msg);
+
+	virtual void queueNextGameState() = 0;
 
 };
