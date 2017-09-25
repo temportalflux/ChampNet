@@ -31,6 +31,7 @@ Net::~Net() {
 	RakNet::RakPeerInterface::DestroyInstance(mpPeerInterface);
 }
 
+// Startup the server interface
 void Net::initServer(int port, int maxClients) {
 	// Startup the server by reserving a port
 	RakNet::SocketDescriptor sd = RakNet::SocketDescriptor(port, 0);
@@ -38,26 +39,31 @@ void Net::initServer(int port, int maxClients) {
 	this->mpPeerInterface->SetMaximumIncomingConnections(maxClients);
 }
 
+// Startup the client interface
 void Net::initClient() {
 	// Startup the client by starting on an empty socket
 	RakNet::SocketDescriptor sd;
 	this->mpPeerInterface->Startup(1, &sd, 1);
 }
 
+// Connect the interface to its destination
 void Net::connectToServer(std::string &address, int port)
 {
 	// Connect to the server using the specified address and port
 	this->mpPeerInterface->Connect(address.c_str(), port, 0, 0);
 }
 
+// Fetch the address the peer is bound to
 void Net::queryAddress(RakNet::SystemAddress &address) {
 	address = this->mpPeerInterface->GetMyBoundAddress();
 }
 
+// Return the IP string from the peer
 std::string Net::getIP() {
 	return this->mpPeerInterface->GetLocalIP(0); // note: this can be finicky if there are multiple network addapters
 }
 
+// Handles updates for the network, specifically searching for new packets
 void Net::update() {
 	// Packet pointer
 	RakNet::Packet *packet;
@@ -86,9 +92,9 @@ void Net::handlePacket(RakNet::Packet *packet) {
 	unsigned char id = packet->data[0];
 	if (mpPacketHandler != NULL) {
 		// Create encapsulation struct containing packet info
-		Network::PacketInfo *info = new Network::PacketInfo;
+		PacketInfo *info = new PacketInfo;
 		// this, &(packet->systemAddress), packet->data, packet->length
-		info->network = NULL; // TODO: this;
+		info->network = this;
 		info->address = packet->systemAddress;
 		info->length = packet->length;
 
