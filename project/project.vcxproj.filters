@@ -93,6 +93,9 @@
     <ClCompile Include="source\Network\Net.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
+    <ClCompile Include="source\mainSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\network\Network.h">
@@ -137,11 +140,11 @@
     <ClInclude Include="include\Game\Game.h">
       <Filter>Header Files\Network\Packets</Filter>
     </ClInclude>
-    <ClInclude Include="include\lib\LibWindows.h">
-      <Filter>Header Files\lib</Filter>
-    </ClInclude>
     <ClInclude Include="include\Network\Net.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lib\LibWindows.h">
+      <Filter>Header Files\lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

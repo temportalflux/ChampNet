@@ -18,104 +18,94 @@ the project on its database.
 #include "Game\Network\MessageHandler.h"
 
 // Base level networking / handling peer interfaces
-namespace Network {
+Net::Net(MessageHandler *handler, bool server) : mIsServer(server) {
+	this->mpPacketHandler = handler;
+	// instantiate the peer inferface and packetmanager
+	mpPeerInterface = RakNet::RakPeerInterface::GetInstance();
+}
 
-	Net::Net(MessageHandler *handler, bool server) : mIsServer(server) {
-		this->mpPacketHandler = handler;
-		// instantiate the peer inferface and packetmanager
-		mpPeerInterface = RakNet::RakPeerInterface::GetInstance();
-		//this->packetManager = new PacketManager();
+Net::~Net() {
+	// not owned by us
+	this->mpPacketHandler = NULL; 
+	 // delete the peer interface
+	RakNet::RakPeerInterface::DestroyInstance(mpPeerInterface);
+}
+
+void Net::initServer(int port, int maxClients) {
+	// Startup the server by reserving a port
+	RakNet::SocketDescriptor sd = RakNet::SocketDescriptor(port, 0);
+	this->mpPeerInterface->Startup(maxClients, &sd, 1);
+	this->mpPeerInterface->SetMaximumIncomingConnections(maxClients);
+}
+
+void Net::initClient() {
+	// Startup the client by starting on an empty socket
+	RakNet::SocketDescriptor sd;
+	this->mpPeerInterface->Startup(1, &sd, 1);
+}
+
+void Net::connectToServer(std::string &address, int port)
+{
+	// Connect to the server using the specified address and port
+	this->mpPeerInterface->Connect(address.c_str(), port, 0, 0);
+}
+
+void Net::queryAddress(RakNet::SystemAddress &address) {
+	address = this->mpPeerInterface->GetMyBoundAddress();
+}
+
+std::string Net::getIP() {
+	return this->mpPeerInterface->GetLocalIP(0); // note: this can be finicky if there are multiple network addapters
+}
+
+void Net::update() {
+	// Packet pointer
+	RakNet::Packet *packet;
+	// Iterate over all packets in the interface
+	for (packet = this->mpPeerInterface->Receive();
+		packet;
+		// DEALLOCATE PACKET WHEN FINISHED ITERATION
+		this->mpPeerInterface->DeallocatePacket(packet), packet = this->mpPeerInterface->Receive())
+	{
+		// Handle the packets accordingly
+		this->handlePacket(packet);
 	}
+}
 
-	Net::~Net() {
-		this->mpPacketHandler = NULL; // not owned by us
-		// delete the peer interface and packetmanager
-		RakNet::RakPeerInterface::DestroyInstance(mpPeerInterface);
-		//delete packetManager;
-	}
+// Send packet data over RakNet
+void Net::sendTo(Data data, DataSize size,
+	RakNet::SystemAddress address,
+	PacketPriority priority, PacketReliability reliability,
+	char channel, bool broadcast)
+{
+	this->mpPeerInterface->Send(data, size, priority, reliability, channel, address, broadcast);
+}
 
-	void Net::queryAddress(RakNet::SystemAddress &address) {
-		address = this->mpPeerInterface->GetMyBoundAddress();
-	}
+// Forwarding method to handle packets
+void Net::handlePacket(RakNet::Packet *packet) {
+	unsigned char id = packet->data[0];
+	if (mpPacketHandler != NULL) {
+		// Create encapsulation struct containing packet info
+		Network::PacketInfo *info = new Network::PacketInfo;
+		// this, &(packet->systemAddress), packet->data, packet->length
+		info->network = NULL; // TODO: this;
+		info->address = packet->systemAddress;
+		info->length = packet->length;
 
-	std::string Net::getIP() {
-		return this->mpPeerInterface->GetLocalIP(0); // note: this can be finicky if there are multiple network addapters
-	}
-
-	void Net::update() {
-		// Packet pointer
-		RakNet::Packet *packet;
-		// Iterate over all packets in the interface
-		for (packet = this->mpPeerInterface->Receive();
-			packet;
-			this->mpPeerInterface->DeallocatePacket(packet), packet = this->mpPeerInterface->Receive())
-		{
-			// Handle the packets accordingly
-			this->handlePacket(packet);
+		unsigned char *test = new unsigned char[packet->length]; // delete in PacketInfo descructor
+		for (unsigned int i = 0; i < info->length; i++) {
+			test[i] = packet->data[i];
 		}
+		info->data = test;
+
+		// Pass off to be handled by the handler
+		mpPacketHandler->handlePacket(info);
+
+		delete info;
 	}
+}
 
-	void Net::handlePacket(RakNet::Packet *packet) {
-		unsigned char id = packet->data[0];
-		if (mpPacketHandler != NULL) {
-			// Create encapsulation struct containing packet info
-			PacketInfo *info = new PacketInfo;
-			// this, &(packet->systemAddress), packet->data, packet->length
-			info->network = NULL; // TODO: this;
-			info->address = packet->systemAddress;
-			info->length = packet->length;
-
-			unsigned char *test = new unsigned char[packet->length]; // delete in PacketInfo descructor
-			for (int i = 0; i < info->length; i++) {
-				test[i] = packet->data[i];
-			}
-			info->data = test;
-
-			// Pass off to be handled by the handler
-			mpPacketHandler->handlePacket(info);
-		}
-	}
-
-	void Net::disconnect() {
-		this->mpPeerInterface->Shutdown(500);
-	}
-
-	/*
-	// ~~~~~~~~~~ SERVER ~~~~~~~~~~
-
-	NetworkServer::NetworkServer(unsigned int port, unsigned int maxClients)
-		: Network(true) {
-		this->port = port;
-		this->maxClients = maxClients;
-	}
-
-	void NetworkServer::startup() {
-		// Startup the server by reserving a port
-		RakNet::SocketDescriptor sd = RakNet::SocketDescriptor(this->port, 0);
-		this->peerInterface->Startup(this->maxClients, &sd, 1);
-	}
-
-	void NetworkServer::connect() {
-		this->peerInterface->SetMaximumIncomingConnections(this->maxClients);
-	}
-
-	// ~~~~~~~~~~ CLIENT ~~~~~~~~~~
-
-	NetworkClient::NetworkClient(std::string address, unsigned int port) : Network(false) {
-		this->address = address;
-		this->port = port;
-	}
-
-	void NetworkClient::startup() {
-		// Startup the client by starting on an empty socket
-		RakNet::SocketDescriptor sd;
-		this->peerInterface->Startup(1, &sd, 1);
-	}
-
-	void NetworkClient::connect() {
-		// Connect to the server using the specified address and port
-		this->peerInterface->Connect(address.c_str(), this->port, 0, 0);
-	}
-	*/
-
+// Shutdown the peer interface
+void Net::disconnect() {
+	this->mpPeerInterface->Shutdown(500);
 }
