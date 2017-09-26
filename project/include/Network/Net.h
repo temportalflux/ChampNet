@@ -44,6 +44,11 @@ public:
 	// Connect the interface to its destination
 	void connectToServer(std::string &address, int port);
 
+	void setHandler(MessageHandler *handler);
+
+	// Returns true if the network is initialized as a server
+	bool isServer();
+
 	// Fetch the address the peer is bound to
 	// TODO: Encapsulation Leek
 	void queryAddress(RakNet::SystemAddress &address);
@@ -75,6 +80,13 @@ public:
 		DataSize size = sizeof(packet);
 		// Send via RakNet
 		this->sendTo(data, size, address, priority, reliability, channel, broadcast);
+	}
+
+	// Handle sending struct packets to RakNet address
+	// TODO: Encapsulation Leek
+	template <typename T>
+	void sendTo(T packet, RakNet::SystemAddress address) {
+		this->sendTo(packet, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
 	}
 
 	// Shutdown the peer interface

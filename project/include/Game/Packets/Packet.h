@@ -21,6 +21,12 @@ enum GameMessages
 {
 	ID_PLACEHOLDER = Network::BASE_PACKET_ENUM,
 
+	// Host->Peer: ID_CONNECTION_REQUEST_ACCEPTED - server has accepted the client
+	// Peer->Host: ID_USER_CONNECTED - client as recieved the connection, and is ready to start
+	ID_USER_CONNECTED,
+	// Host->Peer: ID_START_GAME - server has acknowledged client, and the game is starting
+	ID_START_GAME,
+
 	// ID Messages for valid move submitions
 	ID_MOVE_SUBMIT_0, ID_MOVE_SUBMIT_1, ID_MOVE_SUBMIT_2,
 	ID_MOVE_SUBMIT_3, ID_MOVE_SUBMIT_4, ID_MOVE_SUBMIT_5,
