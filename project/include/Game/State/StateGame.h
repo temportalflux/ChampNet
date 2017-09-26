@@ -35,7 +35,17 @@ private:
 	/* Author: Jake Ruth
 	 * Draw Game Board flag
 	 */
-	bool mDrawBoard;
+	bool mDrawBoardFlag;
+
+	/* Author: Jake Ruth
+	* Draw Game Board flag
+	*/
+	bool mUpdateBoardFlag;
+
+	/* Author: Jake Ruth
+	* Draw Game Board flag
+	*/
+	bool mUpdateSelectionFlag;
 
 	virtual void queueNextGameState() override;
 
