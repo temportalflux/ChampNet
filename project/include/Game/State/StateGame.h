@@ -39,11 +39,6 @@ public:
 	virtual ~StateGame();
 
 	/* Author: Dustin Yost
-		Creates a local/network game state
-	*/
-	static StateGame* create(bool isLocalGame);
-
-	/* Author: Dustin Yost
 		Validate the player's selection of a slot
 	*/
 	bool validate(int slot, PlayerIdentifier player);

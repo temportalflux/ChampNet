@@ -15,7 +15,7 @@ the project on its database.
 
 #include "lib\LibWindows.h"
 
-#include "Game\State\StateGame.h"
+#include "Game\State\StateGameLocal.h"
 #include "Game\State\StateConnecting.h"
 
 void StateLobby::updateNetwork() {
@@ -66,19 +66,31 @@ void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, Lob
 			{
 				int input = std::stoi(line);
 				this->mData.network->networkType = (StateNetwork::NetworkType)(input);
-				switch (this->mData.network->networkType) {
-					case StateNetwork::PEER:
-						next = LobbyPhase::ADDRESS;
-						break;
-					default:
-						this->queueNextGameState();
-						break;
+				if (this->mData.network->networkType != StateNetwork::LOCAL) {
+					next = LobbyPhase::NETWORK_PORT;
+				}
+				else {
+					this->queueNextGameState();
 				}
 			}
 			break;
-		case LobbyPhase::ADDRESS: // PEER
+		case LobbyPhase::NETWORK_PORT: // HOST or PEER
 			// Log user input
+			this->mData.network->networkInfo.port = std::stoi(line);
+			
+			if (this->mData.network->networkType == StateNetwork::PEER) {
+				// Peer state, need address + port
+				next = LobbyPhase::ADDRESS;
+			}
+			else {
+				// Host state, ready for connection
+				this->queueNextGameState();
+			}
+
+			break;
+		case LobbyPhase::ADDRESS: // PEER 
 			{
+				// Log user input
 				bool emptyLine = line.length() == 0;
 				if (emptyLine) {
 					this->pushMessage("127.0.0.1");
@@ -87,15 +99,10 @@ void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, Lob
 				else {
 					strcpy(this->mData.network->networkInfo.serverAddress, line.c_str());
 				}
+				// Peer state, ready for connection
+				this->queueNextGameState();
 			}
-			next = LobbyPhase::NETWORK_PORT;
 			break;
-		case LobbyPhase::NETWORK_PORT: // PEER
-			// Log user input
-			this->mData.network->networkInfo.port = std::stoi(line);
-			this->queueNextGameState();
-			break;
-		case LobbyPhase::WAIT_FOR_PEER: // drop to break
 		default:
 			break;
 	}
@@ -110,14 +117,11 @@ void StateLobby::promptPhase(LobbyPhase phase) {
 			this->pushMessage("3) Online Peer");
 			this->pushMessage("Select game type: ");
 			break;
-		case LobbyPhase::ADDRESS: // PEER
-			this->pushMessage("Enter host IP or hit enter for 127.0.0.1... ");
-			break;
-		case LobbyPhase::NETWORK_PORT: // PEER
+		case LobbyPhase::NETWORK_PORT: // HOST orPEER
 			this->pushMessage("Host Port: ");
 			break;
-		case LobbyPhase::WAIT_FOR_PEER:
-			this->pushMessage("Waiting for peer...");
+		case LobbyPhase::ADDRESS: // PEER
+			this->pushMessage("Enter host IP or hit enter for 127.0.0.1... ");
 			break;
 		default:
 			break;
@@ -132,6 +136,6 @@ void StateLobby::queueNextGameState() {
 	}
 	else {
 		// This should run the game locally
-		mNext = StateGame::create(true);
+		mNext = new StateGameLocal();
 	}
 }

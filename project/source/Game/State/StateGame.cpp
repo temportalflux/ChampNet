@@ -4,18 +4,6 @@
 #include "Game\State\StateGameNetwork.h"
 #include "Game\State\StateLobby.h"
 
-/* Author: Dustin Yost
-	Creates a local/network game state
-*/
-StateGame* StateGame::create(bool isLocalGame) {
-	if (isLocalGame) {
-		return new StateGameLocal();
-	}
-	else {
-		return new StateGameNetwork();
-	}
-}
-
 StateGame::StateGame() {
 	// mBoardState = array; created already b/c object
 	for (int slot = 0; slot < BOARD_SLOTS; slot++) {

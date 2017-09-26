@@ -57,6 +57,10 @@ void Net::setHandler(MessageHandler *handler) {
 	mpPacketHandler = handler;
 }
 
+bool Net::isServer() {
+	return mIsServer;
+}
+
 // Fetch the address the peer is bound to
 void Net::queryAddress(RakNet::SystemAddress &address) {
 	address = this->mpPeerInterface->GetMyBoundAddress();

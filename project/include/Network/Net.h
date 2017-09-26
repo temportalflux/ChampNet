@@ -46,6 +46,9 @@ public:
 
 	void setHandler(MessageHandler *handler);
 
+	// Returns true if the network is initialized as a server
+	bool isServer();
+
 	// Fetch the address the peer is bound to
 	// TODO: Encapsulation Leek
 	void queryAddress(RakNet::SystemAddress &address);
