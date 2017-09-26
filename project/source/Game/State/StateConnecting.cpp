@@ -20,15 +20,15 @@ void StateConnecting::onEnterFrom(StateApplication *previous) {
 	bool isHost = this->mData.network->networkType == StateNetwork::HOST; 
 
 	// We are not waiting for more input, so init the networks
-	Net *network = network = new Net(this, isHost);
+	this->mpNetwork = new Net(this, isHost);
 	if (isHost) { 
 		// Create a server, referencing this state as the handler
-		network->initServer(this->mData.network->networkInfo.port, 1); // only 1 may connect
+		this->mpNetwork->initServer(this->mData.network->networkInfo.port, 1); // only 1 may connect
 	}
 	else {
 		// Create a client (peer), referencing this state as the handler
-		network->initClient();
-		network->connectToServer(std::string(this->mData.network->networkInfo.serverAddress), this->mData.network->networkInfo.port);
+		this->mpNetwork->initClient();
+		this->mpNetwork->connectToServer(std::string(this->mData.network->networkInfo.serverAddress), this->mData.network->networkInfo.port);
 	}
 
 }
