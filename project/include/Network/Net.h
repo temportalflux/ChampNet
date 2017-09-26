@@ -82,6 +82,13 @@ public:
 		this->sendTo(data, size, address, priority, reliability, channel, broadcast);
 	}
 
+	// Handle sending struct packets to RakNet address
+	// TODO: Encapsulation Leek
+	template <typename T>
+	void sendTo(T packet, RakNet::SystemAddress address) {
+		this->sendTo(packet, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+	}
+
 	// Shutdown the peer interface
 	void disconnect();
 

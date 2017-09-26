@@ -12,20 +12,6 @@ StateConnecting::~StateConnecting() {
 
 }
 
-void StateConnecting::queueNextGameState() {
-	// Create the next state
-	StateGameNetwork *next = new StateGameNetwork(this->mpNetwork);
-	
-	// Set the handler of the network to be the next state (not the current state)
-	this->mpNetwork->setHandler(next);
-
-	// Remove reference to the network
-	this->mpNetwork = NULL;
-
-	// Set the next state
-	mNext = next;
-}
-
 void StateConnecting::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
@@ -48,7 +34,7 @@ void StateConnecting::onEnterFrom(StateApplication *previous) {
 }
 
 void StateConnecting::updateNetwork() {
-
+	this->mpNetwork->update();
 }
 
 /* Author: Dustin Yost
@@ -68,7 +54,15 @@ void StateConnecting::handlePacket(PacketInfo *info) {
 */
 void StateConnecting::handlePacketServer(PacketInfo *info) {
 	switch (info->getPacketType()) {
+		case ID_USER_CONNECTED:
+			// Peer has joined...
 
+			// Notify them that we, the host, are ready to play
+			this->mpNetwork->sendTo(PacketNotification{ ID_START_GAME }, info->address);
+
+			// Start the game
+			this->queueNextGameState();
+			break;
 		default:
 			break;
 	}
@@ -82,16 +76,36 @@ void StateConnecting::handlePacketClient(PacketInfo *info) {
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			// We HAVE connected
 			// Notify HOST that we are ready
+			this->mpNetwork->sendTo(PacketNotification{ ID_USER_CONNECTED }, info->address);
+			break;
+		case ID_START_GAME:
+			// Host has acknowledged and the game is starting
+			this->queueNextGameState();
 			break;
 		default:
 			break;
 	}
 }
 
-void StateConnecting::updateGame() {
+void StateConnecting::queueNextGameState() {
+	// Create the next state
+	StateGameNetwork *next = new StateGameNetwork(this->mpNetwork);
 
+	// Set the handler of the network to be the next state (not the current state)
+	this->mpNetwork->setHandler(next);
+
+	// Remove reference to the network
+	this->mpNetwork = NULL;
+
+	// Set the next state
+	mNext = next;
+}
+
+void StateConnecting::updateGame() {
+	// STUB: Unneeded
 }
 
 void StateConnecting::render() {
-	this->renderConsole();
+	// STUB: Unneeded
+	//this->renderConsole();
 }
