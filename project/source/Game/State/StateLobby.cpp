@@ -64,7 +64,7 @@ void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, Lob
 	switch (phase) {
 		case LobbyPhase::NETWORK_TYPE: // ALL
 			{
-				int input = std::stoi(line);
+				int input = std::stoi(line) - 1;
 				this->mData.network->networkType = (StateNetwork::NetworkType)(input);
 				if (this->mData.network->networkType != StateNetwork::LOCAL) {
 					next = LobbyPhase::NETWORK_PORT;
