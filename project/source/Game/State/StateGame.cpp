@@ -4,7 +4,10 @@
 #include "Game\State\StateGameNetwork.h"
 #include "Game\State\StateLobby.h"
 
-StateApplication* StateGame::create(bool isLocalGame) {
+/* Author: Dustin Yost
+	Creates a local/network game state
+*/
+StateGame* StateGame::create(bool isLocalGame) {
 	if (isLocalGame) {
 		return new StateGameLocal();
 	}
@@ -39,4 +42,15 @@ void StateGame::updateGame() {
 
 void StateGame::render() {
 
+}
+
+/* Author: Dustin Yost
+Validate the player's selection of a slot
+*/
+bool StateGame::validate(int slot, PlayerIdentifier player) {
+	// False if:
+	// - invalid slot
+	// - slot not empty
+	return (slot >= 0 && slot < BOARD_SLOTS) &&
+		mBoardState[slot] == PlayerIdentifier::NONE;
 }

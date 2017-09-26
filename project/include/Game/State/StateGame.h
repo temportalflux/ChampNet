@@ -37,6 +37,14 @@ public:
 	StateGame();
 	virtual ~StateGame();
 
-	static StateApplication* create(bool isLocalGame);
+	/* Author: Dustin Yost
+		Creates a local/network game state
+	*/
+	static StateGame* create(bool isLocalGame);
+
+	/* Author: Dustin Yost
+		Validate the player's selection of a slot
+	*/
+	virtual bool validate(int slot, PlayerIdentifier player);
 
 };
