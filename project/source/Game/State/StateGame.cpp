@@ -33,36 +33,48 @@ void StateGame::updateGame() {
 	bool *current = this->mData.input->keyboard;
 	bool *previous = this->mData.input->previous;
 
-	if (current[38] && !previous[37]) // Left
+	for (int i = 0; i < StateInput::SIZE_KEYBOARD; ++i)
 	{
-		if (mSelectionIndex - 1 <= 0)
-			mSelectionIndex -= 1;
+		if(current[i] && !previous[i])
+		{
+			//if(i == 37)
+			if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 37) // Left
+			{
+				if (mSelectionIndex - 1 <= 0)
+					mSelectionIndex -= 1;
 
-		mUpdateSelectionFlag = true;
+				mUpdateSelectionFlag = true;
+			}
+
+			if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 38) // Up
+			{
+				if (mSelectionIndex + 3 < BOARD_SLOTS)
+					mSelectionIndex += 3;
+
+				mUpdateSelectionFlag = true;
+			}
+
+			if ((char)MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 'D') // Right
+			{
+				if (mSelectionIndex + 1 < BOARD_SLOTS)
+					mSelectionIndex += 1;
+
+				mUpdateSelectionFlag = true;
+			}
+
+			if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 40) // Down
+			{
+				if (mSelectionIndex - 3 <= 0)
+					mSelectionIndex -= 3;
+
+				mUpdateSelectionFlag = true;
+			}
+		}
 	}
 	
-	if (current[38] && !previous[38]) // Up
+	if (current[VK_ESCAPE])
 	{
-		if (mSelectionIndex + 3 < BOARD_SLOTS)
-			mSelectionIndex += 3;
-
-		mUpdateSelectionFlag = true;
-	}
-
-	if (current[38] && !previous[39]) // Right
-	{
-		if (mSelectionIndex + 1 < BOARD_SLOTS)
-			mSelectionIndex += 1;
-
-		mUpdateSelectionFlag = true;
-	}
-
-	if (current[38] && !previous[40]) // Down
-	{
-		if (mSelectionIndex - 3 <= 0)
-			mSelectionIndex -= 3;
-
-		mUpdateSelectionFlag = true;
+		std::cout << "here";
 	}
 }
 
@@ -87,6 +99,9 @@ void StateGame::render() {
 	{
 
 		mDrawBoardFlag = false;
+
+		mUpdateBoardFlag = true;
+		mUpdateSelectionFlag = true;
 
 		const HANDLE stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 		CONSOLE_SCREEN_BUFFER_INFO csbi;
