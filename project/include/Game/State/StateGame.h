@@ -9,7 +9,8 @@ class StateGame abstract : public StateApplication {
 
 private:
 
-	static const int BOARD_SLOTS = 9;
+	static const int BOARD_N = 3;
+	static const int BOARD_SLOTS = BOARD_N * BOARD_N;
 
 	/* Author: Dustin Yost
 		All the possible identifiers in the game board
@@ -45,6 +46,17 @@ public:
 	/* Author: Dustin Yost
 		Validate the player's selection of a slot
 	*/
-	virtual bool validate(int slot, PlayerIdentifier player);
+	bool validate(int slot, PlayerIdentifier player);
+
+	/* Author: Dustin Yost
+		Sets the player's icon in a specfied slot,
+		and sets the next player.
+	*/
+	virtual void commitMove(int slot, PlayerIdentifier player);
+
+	/* Author: Dustin Yost
+		Checks to see if either player has won
+	*/
+	PlayerIdentifier checkWinstate(int slot);
 
 };
