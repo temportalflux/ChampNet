@@ -13,6 +13,18 @@ StateApplication* StateGame::create(bool isLocalGame) {
 	}
 }
 
+StateGame::StateGame() {
+	// mBoardState = array; created already b/c object
+	for (int slot = 0; slot < BOARD_SLOTS; slot++) {
+		mBoardState[slot] = PlayerIdentifier::NONE;
+	}
+	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
+}
+
+StateGame::~StateGame() {
+
+}
+
 void StateGame::queueNextGameState() {
 	this->mNext = new StateLobby();
 }

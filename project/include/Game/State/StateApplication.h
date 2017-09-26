@@ -77,6 +77,7 @@ struct StateNetwork {
 
 };
 
+// Author: Dustin Yost
 struct StateDisplay {
 
 	// A record of all text inputs

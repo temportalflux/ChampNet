@@ -42,7 +42,9 @@ void StateLobby::updateGame() {
 		this->mData.display->textRecord[last] = this->mData.display->textRecord[last] + latestLine;
 
 		this->handlePhaseInput(mPhase, latestLine, mPhase);
-		this->promptPhase(mPhase);
+		if (mPhase == NULL) {
+			this->promptPhase(mPhase);
+		}
 
 	}
 
@@ -58,12 +60,15 @@ void StateLobby::render() {
 void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, LobbyPhase &next) {
 	switch (phase) {
 		case LobbyPhase::NETWORK_TYPE: // ALL
-			this->mData.network->networkType = (StateNetwork::NetworkType)(std::stoi(line) + 1);
-			if (this->mData.network->networkType == StateNetwork::PEER) {
-				next = LobbyPhase::ADDRESS;
-			}
-			else {
-				this->queueNextGameState();
+			{
+				int input = std::stoi(line);
+				this->mData.network->networkType = (StateNetwork::NetworkType)(input);
+				if (this->mData.network->networkType == StateNetwork::PEER) {
+					next = LobbyPhase::ADDRESS;
+				}
+				else {
+					this->queueNextGameState();
+				}
 			}
 			break;
 		case LobbyPhase::ADDRESS: // PEER
@@ -96,7 +101,7 @@ void StateLobby::promptPhase(LobbyPhase phase) {
 			this->pushMessage("Game Types:");
 			this->pushMessage("1) Local");
 			this->pushMessage("2) Online Host");
-			this->pushMessage("2) Online Peer");
+			this->pushMessage("3) Online Peer");
 			this->pushMessage("Select game type: ");
 			break;
 		case LobbyPhase::ADDRESS: // PEER
