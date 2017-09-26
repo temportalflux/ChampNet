@@ -53,6 +53,10 @@ void Net::connectToServer(std::string &address, int port)
 	this->mpPeerInterface->Connect(address.c_str(), port, 0, 0);
 }
 
+void Net::setHandler(MessageHandler *handler) {
+	mpPacketHandler = handler;
+}
+
 // Fetch the address the peer is bound to
 void Net::queryAddress(RakNet::SystemAddress &address) {
 	address = this->mpPeerInterface->GetMyBoundAddress();

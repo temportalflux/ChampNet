@@ -24,6 +24,7 @@ private:
 		NETWORK_TYPE, // Local, Host, or Peer
 		NETWORK_PORT, // PEER: Port #
 		ADDRESS, // PEER: The address string
+		WAIT_FOR_PEER, // HOST: Waiting for a peer
 	} mPhase;
 
 	virtual void onEnterFrom(StateApplication *previous);

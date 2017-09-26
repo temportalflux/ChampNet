@@ -44,6 +44,8 @@ public:
 	// Connect the interface to its destination
 	void connectToServer(std::string &address, int port);
 
+	void setHandler(MessageHandler *handler);
+
 	// Fetch the address the peer is bound to
 	// TODO: Encapsulation Leek
 	void queryAddress(RakNet::SystemAddress &address);

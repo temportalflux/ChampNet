@@ -16,6 +16,7 @@ the project on its database.
 #include "lib\LibWindows.h"
 
 #include "Game\State\StateGame.h"
+#include "Game\State\StateConnecting.h"
 
 void StateLobby::updateNetwork() {
 	// STUB: no network checks while in lobby
@@ -42,7 +43,9 @@ void StateLobby::updateGame() {
 		this->mData.display->textRecord[last] = this->mData.display->textRecord[last] + latestLine;
 
 		this->handlePhaseInput(mPhase, latestLine, mPhase);
-		if (mPhase == NULL) {
+
+		// No next state, so print the next prompt
+		if (mNext == NULL) {
 			this->promptPhase(mPhase);
 		}
 
@@ -63,11 +66,13 @@ void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, Lob
 			{
 				int input = std::stoi(line);
 				this->mData.network->networkType = (StateNetwork::NetworkType)(input);
-				if (this->mData.network->networkType == StateNetwork::PEER) {
-					next = LobbyPhase::ADDRESS;
-				}
-				else {
-					this->queueNextGameState();
+				switch (this->mData.network->networkType) {
+					case StateNetwork::PEER:
+						next = LobbyPhase::ADDRESS;
+						break;
+					default:
+						this->queueNextGameState();
+						break;
 				}
 			}
 			break;
@@ -90,6 +95,7 @@ void StateLobby::handlePhaseInput(LobbyPhase phase, const std::string &line, Lob
 			this->mData.network->networkInfo.port = std::stoi(line);
 			this->queueNextGameState();
 			break;
+		case LobbyPhase::WAIT_FOR_PEER: // drop to break
 		default:
 			break;
 	}
@@ -110,11 +116,22 @@ void StateLobby::promptPhase(LobbyPhase phase) {
 		case LobbyPhase::NETWORK_PORT: // PEER
 			this->pushMessage("Host Port: ");
 			break;
+		case LobbyPhase::WAIT_FOR_PEER:
+			this->pushMessage("Waiting for peer...");
+			break;
 		default:
 			break;
 	}
 }
 
 void StateLobby::queueNextGameState() {
-	mNext = StateGame::create(this->mData.network->networkType == StateNetwork::NetworkType::LOCAL);
+	StateNetwork::NetworkType type = this->mData.network->networkType;
+	if (type == StateNetwork::HOST || type == StateNetwork::PEER) {
+		// Both should run the connecting state
+		mNext = new StateConnecting();
+	}
+	else {
+		// This should run the game locally
+		mNext = StateGame::create(true);
+	}
 }
