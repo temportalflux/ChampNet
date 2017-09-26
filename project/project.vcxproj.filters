@@ -60,9 +60,6 @@
     <ClCompile Include="source\Network\Net.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="source\mainSample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Game\State\StateGame.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
@@ -71,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="source\Game\State\StateGameNetwork.cpp">
       <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mainSample.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

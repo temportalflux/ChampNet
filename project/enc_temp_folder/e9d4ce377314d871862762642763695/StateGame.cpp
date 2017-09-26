@@ -46,10 +46,7 @@ void StateGame::updateGame() {
 	bool *previous = this->mData.input->previous;
 
 	if (current[38] && !previous[38])
-	{
 		mSelectionIndex++;
-		mDrawBoard = true;
-	}
 }
 
 void StateGame::render() {

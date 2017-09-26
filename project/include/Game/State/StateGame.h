@@ -26,11 +26,23 @@ private:
 	PlayerIdentifier mBoardState[BOARD_SLOTS];
 	PlayerIdentifier mCurrentPlayer;
 
+	/* Author: Jake Ruth
+	 * Current position of selection
+	 */
+	int mSelectionIndex;
+
+	/* Author: Jake Ruth
+	 * Draw Game Board flag
+	 */
+	bool mDrawBoard;
+
 	virtual void queueNextGameState() override;
 
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
+
+
 
 public:
 
