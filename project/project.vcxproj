@@ -22,6 +22,9 @@
     <ClCompile Include="source\Game\Game.cpp" />
     <ClCompile Include="source\Game\Packets\Packets.cpp" />
     <ClCompile Include="source\Game\State\StateApplication.cpp" />
+    <ClCompile Include="source\Game\State\StateGame.cpp" />
+    <ClCompile Include="source\Game\State\StateGameLocal.cpp" />
+    <ClCompile Include="source\Game\State\StateGameNetwork.cpp" />
     <ClCompile Include="source\Game\State\StateLobby.cpp" />
     <ClCompile Include="source\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -39,6 +42,9 @@
     <ClInclude Include="include\Game\Game.h" />
     <ClInclude Include="include\Game\Packets\Packet.h" />
     <ClInclude Include="include\Game\State\StateApplication.h" />
+    <ClInclude Include="include\Game\State\StateGame.h" />
+    <ClInclude Include="include\Game\State\StateGameLocal.h" />
+    <ClInclude Include="include\Game\State\StateGameNetwork.h" />
     <ClInclude Include="include\Game\State\StateLobby.h" />
     <ClInclude Include="include\lib\LibWindows.h" />
     <ClInclude Include="include\Network\FrameworkDefines.h" />

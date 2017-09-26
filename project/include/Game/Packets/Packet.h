@@ -20,30 +20,11 @@
 enum GameMessages
 {
 	ID_PLACEHOLDER = Network::BASE_PACKET_ENUM,
-	// CLIENT->SERVER, notify server that a client has successfully joined
-	//ID_CLIENT_JOINED,
-	// SERVER->CLIENT, confirm that the server recognizes the client has joined
-	//ID_CLIENT_JOINED_CONFIRM,
-	// CLIENT->SERVER, notify server that a client has left
-	ID_CLIENT_LEFT,
 
-	// Handshake exchange
-	// Client->Server; client responds to connection by sendings its username
-	ID_USERNAME,
-	// Server->Client; broadcast welcome message to all clients (a new client has joined)
-	ID_NEW_CLIENT_JOINED,
-	// Server->Client; server tells client its ID number
-	ID_CLIENT_NUMBER,
-
-	// Messaging
-	// Client->Client; Client broadcast to some username (or all)
-	ID_CHAT_MESSAGE,
-
-	//sends a message to a single other client 
-	ID_PRIVATE_MESSAGE,
-	// Misc
-	ID_SEND_ALL, // used to notify incoming users of a list of current usernames active
-	ID_USER_LISTING,
+	// ID Messages for valid move submitions
+	ID_MOVE_SUBMIT_0, ID_MOVE_SUBMIT_1, ID_MOVE_SUBMIT_2,
+	ID_MOVE_SUBMIT_3, ID_MOVE_SUBMIT_4, ID_MOVE_SUBMIT_5,
+	ID_MOVE_SUBMIT_6, ID_MOVE_SUBMIT_7, ID_MOVE_SUBMIT_8,
 
 };
 

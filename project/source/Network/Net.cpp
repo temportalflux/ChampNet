@@ -13,9 +13,9 @@ the project on its database.
 #include "Network\Net.h"
 
 #include <RakNet\BitStream.h>
-#include "Network\Packets\PacketInfo.h"
+#include "Network\PacketInfo.h"
 #include <RakNet\RakPeerInterface.h>
-#include "Game\Network\MessageHandler.h"
+#include "Network\MessageHandler.h"
 
 // Base level networking / handling peer interfaces
 Net::Net(MessageHandler *handler, bool server) : mIsServer(server) {

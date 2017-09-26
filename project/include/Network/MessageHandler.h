@@ -13,14 +13,14 @@ the project on its database.
 
 #pragma once
 
-#include "Network\Packets\PacketInfo.h"
+#include "Network\PacketInfo.h"
 
-struct PacketString;
+struct PacketInfo;
 
 class MessageHandler abstract {
 
 public:
 
-	virtual void handlePacket(Network::PacketInfo *info) = 0;
+	virtual void handlePacket(PacketInfo *info) = 0;
 
 };

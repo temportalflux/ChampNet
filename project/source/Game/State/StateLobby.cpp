@@ -15,6 +15,8 @@ the project on its database.
 
 #include "lib\LibWindows.h"
 
+#include "Game\State\StateGame.h"
+
 void StateLobby::updateNetwork() {
 	// STUB: no network checks while in lobby
 }
@@ -22,6 +24,7 @@ void StateLobby::updateNetwork() {
 void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 	mPhase = LobbyPhase::NETWORK_TYPE;
+	this->promptPhase(mPhase);
 }
 
 /* Author: Dustin Yost
@@ -108,5 +111,5 @@ void StateLobby::promptPhase(LobbyPhase phase) {
 }
 
 void StateLobby::queueNextGameState() {
-	// TODO: Queue next game state
+	mNext = StateGame::create(this->mData.network->networkType == StateNetwork::NetworkType::LOCAL);
 }
