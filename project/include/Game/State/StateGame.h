@@ -51,11 +51,13 @@ public:
 	/* Author: Dustin Yost
 		Sets the player's icon in a specfied slot,
 		and sets the next player.
+		Returns the player that won, NONE if no one has won yet
 	*/
-	virtual void commitMove(int slot, PlayerIdentifier player);
+	virtual PlayerIdentifier commitMove(int slot, PlayerIdentifier player);
 
 	/* Author: Dustin Yost
-		Checks to see if either player has won
+		Checks to see if either player has won.
+		Returns the Player ID of the winner, NONE if there was none;
 	*/
 	PlayerIdentifier checkWinstate(int slot);
 

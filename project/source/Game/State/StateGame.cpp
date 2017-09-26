@@ -59,17 +59,19 @@ bool StateGame::validate(int slot, PlayerIdentifier player) {
 	Sets the player's icon in a specfied slot,
 	and sets the next player.
 */
-void StateGame::commitMove(int slot, PlayerIdentifier player) {
+StateGame::PlayerIdentifier StateGame::commitMove(int slot, PlayerIdentifier player) {
 	mBoardState[slot] = player;
-	if (!this->checkWinstate()) {
+	PlayerIdentifier winner = this->checkWinstate(slot);
+	if (winner == NONE) {
 		mCurrentPlayer = player == PLAYER_1 ? PLAYER_2 : PLAYER_1;
 	}
+	return winner;
 }
 
 /* Author: Dustin Yost
 	Checks to see if either player has won
 */
-bool StateGame::checkWinstate(int slot) {
+StateGame::PlayerIdentifier StateGame::checkWinstate(int slot) {
 
 	PlayerIdentifier playerID;
 	int i, j;
