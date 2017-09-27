@@ -39,70 +39,75 @@ void StateGame::updateGame() {
 
 	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++)
 	{
-		if(current[i] && !previous[i])
+		if (current[i] && !previous[i])
 		{
 			// TODO: This can be a switch of i to VK_*
 
-			
-			if(i == VK_LEFT) // Move the Selection Cursor
+			switch (i)
 			{
+			case VK_LEFT: // Move the Selection Cursor
+				
 				if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 1;
 				}
-				mUpdateSelectionFlag = true;
-			}
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-			if (i == VK_UP) // Move the Selection Cursor
-			{
+				break;
+			case VK_UP: // Move the Selection Cursor
+
 				if (mSelectionIndex - 3 >= 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 3;
 				}
-				mUpdateSelectionFlag = true;
-			}
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-			if (i == VK_RIGHT) // Move the Selection Cursor
-			{
+				break;
+			case VK_RIGHT: // Move the Selection Cursor
+
 				if ((mSelectionIndex + 1) % 3 != 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 1;
 				}
-				// Set the flag to draw the selection
-				mUpdateSelectionFlag = true;
-			}
+				
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-			if (i == 40) // Move the Selection Cursor
-			{
+				break;
+			case VK_DOWN: // Move the Selection Cursor
+
 				if (mSelectionIndex + 3 < BOARD_SLOTS)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 3;
 				}
-				// Set the flag to draw the selection
-				mUpdateSelectionFlag = true;
-			}
+				
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-			if (i == VK_SPACE) // Place a move
-			{
+				break;
+			case VK_SPACE: // Place a move
+
 				// Chack to see if the move is a valid spot
 				if (this->validate(mSelectionIndex, mCurrentPlayer))
 				{
 					// Set the flag to redraw the placed X's and O's
 					mUpdateBoardFlag = true;
-					
+
 					// Set to see if there is a winner
 					// return is NONE if there is no winner
 					mWinner = this->commitMove(mSelectionIndex, mCurrentPlayer);
 				}
-			}
 
-			if (i == VK_ESCAPE) // Escape to the game lobby
-			{
-				// ****
+				break;
+			case VK_ESCAPE: // Escape to the game lobby
+
+					// ****
+
+				break;
+			default:
+				break;
 			}
 		}
 	}
