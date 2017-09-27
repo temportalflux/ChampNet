@@ -59,8 +59,6 @@ private:
 	 */
 	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	virtual void queueNextGameState() override;
-
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
@@ -72,6 +70,8 @@ protected:
 	* if NONE then no winner
 	*/
 	PlayerIdentifier mWinner;
+
+	virtual void queueNextGameState() override;
 
 public:
 

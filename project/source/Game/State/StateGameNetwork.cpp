@@ -3,6 +3,7 @@
 #include "Network\PacketInfo.h"
 #include "Network\Net.h"
 #include "Game\Packets\Packet.h"
+#include "Game\State\StateConnecting.h"
 
 StateGameNetwork::StateGameNetwork(Net *network, NetAddress *peerAddress) : StateGame(), mpNetwork(network), mpAddressPeer(peerAddress) {
 	mPlayerID = PlayerIdentifier::PLAYER_2;
@@ -18,6 +19,22 @@ StateGameNetwork::~StateGameNetwork() {
 		delete mpAddressPeer;
 		mpAddressPeer = NULL;
 	}
+}
+
+void StateGameNetwork::queueNextGameState() {
+	// If we have stayed but the opponent has left
+	if (mIsPlayingAgain) { // setup a HOST using the already defined parameters
+		this->mData.network->networkType = StateNetwork::NetworkType::HOST;
+		mNext = new StateConnecting();
+	}
+	else {
+		// We have left - do default behavior
+		StateGame::queueNextGameState();
+	}
+}
+
+void StateGameNetwork::onExit() {
+	this->mpNetwork->disconnect();
 }
 
 void StateGameNetwork::updateNetwork() {
@@ -56,7 +73,7 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 			this->startNewGame();
 			break;
 		case ID_PLAYER_LEFT:
-
+			this->queueNextGameState(); // Queue waiting state
 			break;
 		default:
 			break;
@@ -88,5 +105,5 @@ StateGame::PlayerIdentifier StateGameNetwork::commitMove(int slot, PlayerIdentif
 * Handles setting a wait flag when the user has committed their turn
 */
 void StateGameNetwork::onMoveCommitted() {
-
+	mIsWaitingForMove = true;
 }
