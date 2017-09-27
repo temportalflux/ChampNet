@@ -48,6 +48,7 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 			}
 			break;
 		case ID_PLAY_AGAIN:
+
 			break;
 		case ID_PLAYER_LEFT:
 			break;
