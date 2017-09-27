@@ -11,10 +11,10 @@ StateGame::StateGame() {
 		mBoardState[slot] = PlayerIdentifier::NONE;
 	}
 	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
-	mWinner = NONE;
+
+	this->startNewGame();
 
 	mDrawBoardFlag = true;
-	
 
 }
 
@@ -29,6 +29,11 @@ void StateGame::queueNextGameState() {
 void StateGame::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
+}
+
+void StateGame::startNewGame() {
+	// TODO: Start a new game
+	mWinner = NONE;
 }
 
 /* Author: Jake Ruth

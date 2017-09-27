@@ -49,13 +49,13 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 				this->sendToPeer(ID_START_GAME);
 				// Switch player ID
 				mPlayerID = this->getInvertID();
-				// TODO: Start game
+				this->startNewGame();
 			}
 			break;
-		case ID_PLAYER_LEFT:
-
-			break;
 		case ID_START_GAME:
+			this->startNewGame();
+			break;
+		case ID_PLAYER_LEFT:
 
 			break;
 		default:

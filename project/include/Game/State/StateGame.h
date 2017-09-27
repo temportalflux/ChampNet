@@ -78,6 +78,8 @@ public:
 	StateGame();
 	virtual ~StateGame();
 
+	void startNewGame();
+
 	/* Author: Dustin Yost
 		Validate the player's selection of a slot
 	*/
