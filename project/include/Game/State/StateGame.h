@@ -33,11 +33,6 @@ private:
 	int mSelectionIndex;
 
 	/* Author: Jake Ruth
-	 * Previous position of selection
-	 */
-	int mPreviousSelectionIndex;
-
-	/* Author: Jake Ruth
 	 * Draw Game Board flag
 	 */
 	bool mDrawBoardFlag;
