@@ -24,6 +24,7 @@ void StateLobby::updateNetwork() {
 
 void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
+	this->mData.display->textRecord.clear();
 	mPhase = LobbyPhase::NETWORK_TYPE;
 	this->promptPhase(mPhase);
 }

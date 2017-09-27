@@ -71,5 +71,13 @@ void StateGameNetwork::sendToPeer(unsigned char id) {
 StateGame::PlayerIdentifier StateGameNetwork::commitMove(int slot, PlayerIdentifier player) {
 	PlayerIdentifier winner = StateGame::commitMove(slot, player);
 	this->sendToPeer(ID_MOVE_SUBMIT_0 + slot); // NOTE: Assumes the submition packet ids are in order from 0->8
+	this->onMoveCommitted();
 	return winner;
+}
+
+/*
+* Handles setting a wait flag when the user has committed their turn
+*/
+void StateGameNetwork::onMoveCommitted() {
+
 }

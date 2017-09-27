@@ -35,4 +35,9 @@ public:
 	*/
 	virtual PlayerIdentifier commitMove(int slot, PlayerIdentifier player);
 
+	/*
+	* Handles setting a wait flag when the user has committed their turn 
+	*/
+	void onMoveCommitted();
+
 };

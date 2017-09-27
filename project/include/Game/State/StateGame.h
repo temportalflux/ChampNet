@@ -60,12 +60,6 @@ private:
 	const COORD mOffSet = { 3,3 };
 
 	/* Author: Jake Ruth
-	 * Used to determine if there is a winner
-	 * if NONE then no winner
-	 */
-	PlayerIdentifier mWinner;
-
-	/* Author: Jake Ruth
 	 * Use to get the console's output handle
 	 */
 	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -75,6 +69,14 @@ private:
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
+
+protected:
+
+	/* Author: Jake Ruth
+	* Used to determine if there is a winner
+	* if NONE then no winner
+	*/
+	PlayerIdentifier mWinner;
 
 public:
 
