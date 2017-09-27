@@ -11,6 +11,10 @@ namespace RakNet {
 
 class MessageHandler;
 
+struct NetAddress {
+	RakNet::SystemAddress address;
+};
+
 /* Author: Dustin Yost
 	Handles management of RakNet packets
 */

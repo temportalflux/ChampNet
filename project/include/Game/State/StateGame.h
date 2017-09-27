@@ -7,19 +7,21 @@
 // Author: Dustin Yost
 class StateGame abstract : public StateApplication {
 
-private:
+protected:
 
 	static const int BOARD_N = 3;
 	static const int BOARD_SLOTS = BOARD_N * BOARD_N;
 
 	/* Author: Dustin Yost
-		All the possible identifiers in the game board
+	All the possible identifiers in the game board
 	*/
 	enum PlayerIdentifier {
 		NONE = ' ',
 		PLAYER_1 = 'X',
 		PLAYER_2 = 'O',
 	};
+
+private:
 
 	/* Author: Dustin Yost
 		An array of 9 positions on the game board
@@ -62,8 +64,6 @@ private:
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
-
-
 
 public:
 

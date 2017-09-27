@@ -4,12 +4,15 @@
 #include "Network\MessageHandler.h"
 
 class Net;
+struct NetAddress;
 
 class StateConnecting : public StateApplication, public MessageHandler {
 
 private:
 	// The network to be handed over on exit
 	Net *mpNetwork;
+	// The address of the other player
+	NetAddress *mpAddressPeer;
 
 	virtual void queueNextGameState() override;
 
