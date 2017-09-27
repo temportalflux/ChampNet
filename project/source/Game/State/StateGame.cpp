@@ -25,6 +25,7 @@ void StateGame::queueNextGameState() {
 }
 
 void StateGame::onEnterFrom(StateApplication *previous) {
+	StateApplication::onEnterFrom(previous);
 
 }
 
@@ -33,10 +34,12 @@ void StateGame::updateGame() {
 	bool *current = this->mData.input->keyboard;
 	bool *previous = this->mData.input->previous;
 
-	for (int i = 0; i < StateInput::SIZE_KEYBOARD; ++i)
+	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++)
 	{
 		if(current[i] && !previous[i])
 		{
+			// TODO: This can be a switch of i to VK_*
+
 			//if(i == 37)
 			if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 37) // Left
 			{
@@ -69,13 +72,13 @@ void StateGame::updateGame() {
 
 				mUpdateSelectionFlag = true;
 			}
+
+			if (i == VK_ESCAPE) {
+				std::cout << "TEST\n";
+			}
 		}
 	}
-	
-	if (current[VK_ESCAPE])
-	{
-		std::cout << "here";
-	}
+
 }
 
 void StateGame::render() {
