@@ -11,8 +11,10 @@ StateGame::StateGame() {
 		mBoardState[slot] = PlayerIdentifier::NONE;
 	}
 	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
+	mWinner = NONE;
 
 	mDrawBoardFlag = true;
+	
 
 }
 
@@ -49,7 +51,6 @@ void StateGame::updateGame() {
 				
 				if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
 				{
-					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 1;
 				}
 				mUpdateSelectionFlag = true; // Set the flag to draw the selection
@@ -59,7 +60,6 @@ void StateGame::updateGame() {
 
 				if (mSelectionIndex - 3 >= 0)
 				{
-					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 3;
 				}
 				mUpdateSelectionFlag = true; // Set the flag to draw the selection
@@ -69,7 +69,6 @@ void StateGame::updateGame() {
 
 				if ((mSelectionIndex + 1) % 3 != 0)
 				{
-					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 1;
 				}
 				
@@ -80,7 +79,6 @@ void StateGame::updateGame() {
 
 				if (mSelectionIndex + 3 < BOARD_SLOTS)
 				{
-					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 3;
 				}
 				
@@ -103,7 +101,8 @@ void StateGame::updateGame() {
 				break;
 			case VK_ESCAPE: // Escape to the game lobby
 
-					// ****
+				// ****
+				this->queueNextGameState();
 
 				break;
 			default:
