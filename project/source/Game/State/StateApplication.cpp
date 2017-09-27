@@ -25,6 +25,13 @@ void StateInput::copyFrom(StateInput *other) {
 	this->currentLine = other->currentLine;
 }
 
+void StateInput::resetInput() {
+	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++) {
+		this->previous[i] = false;
+		this->keyboard[i] = false;
+	}
+}
+
 StateNetwork::StateNetwork() {
 }
 

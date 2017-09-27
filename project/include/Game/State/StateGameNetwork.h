@@ -23,6 +23,8 @@ private:
 
 	void sendToPeer(unsigned char id);
 
+	PlayerIdentifier getInvertID();
+
 public:
 
 	StateGameNetwork(Net *network, NetAddress *peerAddress);

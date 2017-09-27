@@ -30,30 +30,33 @@ void StateGameNetwork::updateNetwork() {
 void StateGameNetwork::handlePacket(PacketInfo *info) {
 	switch (info->getPacketType()) {
 		// Fall down cases
-		case ID_MOVE_SUBMIT_0:
-		case ID_MOVE_SUBMIT_1:
-		case ID_MOVE_SUBMIT_2:
-		case ID_MOVE_SUBMIT_3:
-		case ID_MOVE_SUBMIT_4:
-		case ID_MOVE_SUBMIT_5:
-		case ID_MOVE_SUBMIT_6:
-		case ID_MOVE_SUBMIT_7:
-		case ID_MOVE_SUBMIT_8:
+		case ID_MOVE_SUBMIT_0: case ID_MOVE_SUBMIT_1: case ID_MOVE_SUBMIT_2:
+		case ID_MOVE_SUBMIT_3: case ID_MOVE_SUBMIT_4: case ID_MOVE_SUBMIT_5:
+		case ID_MOVE_SUBMIT_6: case ID_MOVE_SUBMIT_7: case ID_MOVE_SUBMIT_8:
 			{
 				// Get the slot by shifting down from the current packet ID
 				int slot = info->getPacketType() - ID_MOVE_SUBMIT_0;
 				// Case map the player ID
-				PlayerIdentifier opponent = mPlayerID == PLAYER_1 ? PLAYER_2 : PLAYER_1;
+				PlayerIdentifier opponent = this->getInvertID();
 				// Call super to avoid network call
 				mWinner = StateGame::commitMove(slot, opponent);
 			}
 			break;
 		case ID_PLAY_AGAIN:
-
+			// If local use is ready to play again (otherwise we have not selected yet)
+			if (mIsPlayingAgain) {
+				// Tell opponent to start
+				this->sendToPeer(ID_START_GAME);
+				// Switch player ID
+				mPlayerID = this->getInvertID();
+				// TODO: Start game
+			}
 			break;
 		case ID_PLAYER_LEFT:
+
 			break;
 		case ID_START_GAME:
+
 			break;
 		default:
 			break;
@@ -62,6 +65,10 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 
 void StateGameNetwork::sendToPeer(unsigned char id) {
 	this->mpNetwork->sendTo(PacketNotification{ id }, this->mpAddressPeer->address);
+}
+
+StateGame::PlayerIdentifier StateGameNetwork::getInvertID() {
+	return mPlayerID == PLAYER_1 ? PLAYER_2 : PLAYER_1;
 }
 
 /* Author: Dustin Yost

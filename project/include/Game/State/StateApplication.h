@@ -38,6 +38,8 @@ struct StateInput {
 
 	void copyFrom(StateInput *other);
 
+	void resetInput();
+
 };
 
 // Author: Dustin Yost
