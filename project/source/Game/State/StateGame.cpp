@@ -12,10 +12,10 @@ StateGame::StateGame() {
 	}
 
 	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
-	mWinner = NONE;
+
+	this->startNewGame();
 
 	mDrawBoardFlag = true;
-	
 
 }
 
@@ -36,6 +36,11 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 	mWinner = NONE;
 
 	mDrawBoardFlag = true;
+}
+
+void StateGame::startNewGame() {
+	// TODO: Start a new game
+	mWinner = NONE;
 }
 
 /* Author: Jake Ruth

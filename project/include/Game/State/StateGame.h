@@ -59,8 +59,6 @@ private:
 	 */
 	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	virtual void queueNextGameState() override;
-
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
@@ -73,10 +71,14 @@ protected:
 	*/
 	PlayerIdentifier mWinner;
 
+	virtual void queueNextGameState() override;
+
 public:
 
 	StateGame();
 	virtual ~StateGame();
+
+	void startNewGame();
 
 	/* Author: Dustin Yost
 		Validate the player's selection of a slot

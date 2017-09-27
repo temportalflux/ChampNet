@@ -13,6 +13,10 @@ private:
 	NetAddress *mpAddressPeer;
 	PlayerIdentifier mPlayerID;
 	bool mIsPlayingAgain;
+	bool mIsWaitingForMove;
+
+	void queueNextGameState() override;
+	void onExit() override;
 
 	void updateNetwork();
 
