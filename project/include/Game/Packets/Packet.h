@@ -32,6 +32,11 @@ enum GameMessages
 	ID_MOVE_SUBMIT_3, ID_MOVE_SUBMIT_4, ID_MOVE_SUBMIT_5,
 	ID_MOVE_SUBMIT_6, ID_MOVE_SUBMIT_7, ID_MOVE_SUBMIT_8,
 
+	// When a player has accepted a rematch
+	ID_PLAY_AGAIN,
+	// When a player leaves
+	ID_PLAYER_LEFT,
+
 };
 
 static const unsigned int PACKET_MAX_SIZE_CONTENT = 31;

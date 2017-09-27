@@ -57,6 +57,9 @@ void StateConnecting::handlePacketServer(PacketInfo *info) {
 		case ID_USER_CONNECTED:
 			// Peer has joined...
 
+			this->mpAddressPeer = new NetAddress;
+			this->mpAddressPeer->address = info->address;
+
 			// Notify them that we, the host, are ready to play
 			this->mpNetwork->sendTo(PacketNotification{ ID_START_GAME }, info->address);
 
@@ -75,8 +78,13 @@ void StateConnecting::handlePacketClient(PacketInfo *info) {
 	switch (info->getPacketType()) {
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			// We HAVE connected
+
+			this->mpAddressPeer = new NetAddress;
+			this->mpAddressPeer->address = info->address;
+
 			// Notify HOST that we are ready
 			this->mpNetwork->sendTo(PacketNotification{ ID_USER_CONNECTED }, info->address);
+
 			break;
 		case ID_START_GAME:
 			// Host has acknowledged and the game is starting
@@ -89,7 +97,7 @@ void StateConnecting::handlePacketClient(PacketInfo *info) {
 
 void StateConnecting::queueNextGameState() {
 	// Create the next state
-	StateGameNetwork *next = new StateGameNetwork(this->mpNetwork);
+	StateGameNetwork *next = new StateGameNetwork(this->mpNetwork, this->mpAddressPeer);
 
 	// Set the handler of the network to be the next state (not the current state)
 	this->mpNetwork->setHandler(next);
