@@ -10,6 +10,7 @@ StateGame::StateGame() {
 	for (int slot = 0; slot < BOARD_SLOTS; slot++) {
 		mBoardState[slot] = PlayerIdentifier::NONE;
 	}
+
 	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
 	mWinner = NONE;
 
@@ -29,6 +30,12 @@ void StateGame::queueNextGameState() {
 void StateGame::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
+	mData.input->resetInput();
+
+	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
+	mWinner = NONE;
+
+	mDrawBoardFlag = true;
 }
 
 /* Author: Jake Ruth
@@ -45,7 +52,7 @@ void StateGame::updateGame() {
 		{
 			// TODO: This can be a switch of i to VK_*
 
-			switch (i)
+			switch (i) // 
 			{
 			case VK_LEFT: // Move the Selection Cursor
 				
@@ -85,7 +92,7 @@ void StateGame::updateGame() {
 				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
 				break;
-			case VK_SPACE: // Place a move
+			case VK_RETURN: // Place a move
 
 				// Chack to see if the move is a valid spot
 				if (this->validate(mSelectionIndex, mCurrentPlayer))
@@ -280,6 +287,7 @@ StateGame::PlayerIdentifier StateGame::commitMove(int slot, PlayerIdentifier pla
 	mBoardState[slot] = player;
 	PlayerIdentifier winner = this->checkWinstate(slot);
 	if (winner == NONE) {
+		mSelectionIndex = 4;
 		mCurrentPlayer = player == PLAYER_1 ? PLAYER_2 : PLAYER_1;
 	}
 	return winner;
