@@ -55,9 +55,20 @@ private:
 	bool mUpdateSelectionFlag;
 
 	/* Author: Jake Ruth
-	 * Used to determine if there is a winner
+	 * Set the offset of the board
 	 */
-	bool mIsWinner;
+	const COORD mOffSet = { 3,3 };
+
+	/* Author: Jake Ruth
+	 * Used to determine if there is a winner
+	 * if NONE then no winner
+	 */
+	PlayerIdentifier mWinner;
+
+	/* Author: Jake Ruth
+	 * Use to get the console's output handle
+	 */
+	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	virtual void queueNextGameState() override;
 

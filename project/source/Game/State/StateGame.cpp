@@ -29,6 +29,9 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 
 }
 
+/* Author: Jake Ruth
+*  Worked on handleing the input
+*/
 void StateGame::updateGame() {
 
 	bool *current = this->mData.input->keyboard;
@@ -36,83 +39,84 @@ void StateGame::updateGame() {
 
 	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++)
 	{
-		if(current[i] && !previous[i])
+		if (current[i] && !previous[i])
 		{
 			// TODO: This can be a switch of i to VK_*
 
-			if(i == VK_LEFT)
-			//if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 37) // Left
+			switch (i)
 			{
+			case VK_LEFT: // Move the Selection Cursor
+				
 				if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 1;
 				}
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-				mUpdateSelectionFlag = true;
-			}
+				break;
+			case VK_UP: // Move the Selection Cursor
 
-
-			if (i == VK_UP)
-			//if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 38) // Up
-			{
 				if (mSelectionIndex - 3 >= 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex -= 3;
 				}
-				mUpdateSelectionFlag = true;
-			}
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-			if (i == VK_RIGHT)
-			//if ((char)MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 39) // Right
-			{
+				break;
+			case VK_RIGHT: // Move the Selection Cursor
+
 				if ((mSelectionIndex + 1) % 3 != 0)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 1;
 				}
+				
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-				mUpdateSelectionFlag = true;
-			}
+				break;
+			case VK_DOWN: // Move the Selection Cursor
 
-			if (i == 40)
-			//if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 40) // Down
-			{
 				if (mSelectionIndex + 3 < BOARD_SLOTS)
 				{
 					mPreviousSelectionIndex = mSelectionIndex;
 					mSelectionIndex += 3;
 				}
+				
+				mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
-				mUpdateSelectionFlag = true;
-			}
+				break;
+			case VK_SPACE: // Place a move
 
-			if (i == VK_SPACE)
-			{
-				// Confirm a move
+				// Chack to see if the move is a valid spot
 				if (this->validate(mSelectionIndex, mCurrentPlayer))
 				{
+					// Set the flag to redraw the placed X's and O's
 					mUpdateBoardFlag = true;
-					if (this->commitMove(mSelectionIndex, mCurrentPlayer) != PlayerIdentifier::NONE)
-					{
-						// There was a winner!
-						// Handle that here
-						mIsWinner = true;
 
-					}
+					// Set to see if there is a winner
+					// return is NONE if there is no winner
+					mWinner = this->commitMove(mSelectionIndex, mCurrentPlayer);
 				}
-			}
 
-			if (i == VK_ESCAPE) 
-			{
-				// Escape the game to the lobby
+				break;
+			case VK_ESCAPE: // Escape to the game lobby
+
+					// ****
+
+				break;
+			default:
+				break;
 			}
 		}
 	}
 
 }
 
+/* Author: Jake Ruth
+ * Worked on the render function
+ */
 void StateGame::render() {
 	/*
 	// For Testing Drawing
@@ -129,55 +133,55 @@ void StateGame::render() {
 	mSelectionIndex = 3;
 	//*/
 
-	const COORD offSet = { 3,3 };
-	
-	if (mDrawBoardFlag)
+	if (mDrawBoardFlag) // Flag to redraw the board
 	{
 		mDrawBoardFlag = false;
 
+		// flag the rest of the board
 		mUpdateBoardFlag = true;
 		mUpdateSelectionFlag = true;
-
-		const HANDLE stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+		
+		// initialize variables
 		CONSOLE_SCREEN_BUFFER_INFO csbi;
 		DWORD count;
 		COORD pos;
 		const DWORD numBytes = 1;
-		char buffer[3];
+		char buffer[numBytes];
 
-		GetConsoleScreenBufferInfo(stdHandle, &csbi);
-		if (!FillConsoleOutputCharacter(stdHandle, static_cast<TCHAR>(' '), csbi.dwSize.X * csbi.dwSize.Y, { 0, 0 }, &count))
+		// fill the entire screen with ' '
+		GetConsoleScreenBufferInfo(mStdHandle, &csbi);
+		if (!FillConsoleOutputCharacter(mStdHandle, static_cast<TCHAR>(' '), csbi.dwSize.X * csbi.dwSize.Y, { 0, 0 }, &count))
 			return;
 
 		// Draw Board
 		for (int y = 0; y < 11; ++y)
 		{
-			pos.Y = y + offSet.Y;
+			pos.Y = y + mOffSet.Y;
 			for (int x = 0; x < 11; x++)
 			{
-				pos.X = x + offSet.X;
+				pos.X = x + mOffSet.X;
 
 				buffer[0] = ' ';
 
-				if (x % 4 == 3)
+				if (x % 4 == 3) // is part of the verticle pipes
 					buffer[0] = '|';
-				if (y % 4 == 3)
+				if (y % 4 == 3) // is part of the horizontal pipes
 					buffer[0] = '-';
-				if (x % 4 == 3 && y % 4 == 3)
+				if (x % 4 == 3 && y % 4 == 3) // is part of both the horizontal and verticle pipes
 					buffer[0] = '+';
 
-				SetConsoleCursorPosition(stdHandle, pos);
-				WriteFile(stdHandle, buffer, numBytes, nullptr, nullptr);
+				// Write out to the console the buffer
+				SetConsoleCursorPosition(mStdHandle, pos);
+				WriteFile(mStdHandle, buffer, numBytes, nullptr, nullptr);
 			}
 		}
 	}
 
-	if (mUpdateBoardFlag)
+	if (mUpdateBoardFlag) // flag to redraw the placed moves
 	{
 		mUpdateBoardFlag = false;
 
-		const HANDLE stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-		DWORD count;
+		// initialize variables
 		COORD pos;
 		const DWORD numBytes = 1;
 		char buffer[numBytes];
@@ -186,32 +190,36 @@ void StateGame::render() {
 		const COORD firstCenter = { 1,1 };
 		for (int i = 0; i < BOARD_SLOTS; ++i)
 		{
-
-			pos.X = offSet.X + firstCenter.X + (i % 3) * 4;
-			pos.Y = offSet.Y + firstCenter.Y + (i / 3) * 4;
+			// Convert 1D index to 2D coordinate
+			pos.X = mOffSet.X + firstCenter.X + (i % 3) * 4;
+			pos.Y = mOffSet.Y + firstCenter.Y + (i / 3) * 4;
 
 			buffer[0] = (mBoardState[i]);
 
-			SetConsoleCursorPosition(stdHandle, pos);
-			WriteFile(stdHandle, buffer, numBytes, nullptr, nullptr);
+			// Write out to the console the buffer
+			SetConsoleCursorPosition(mStdHandle, pos);
+			WriteFile(mStdHandle, buffer, numBytes, nullptr, nullptr);
 		}
 
-		pos.X = 14 + offSet.X;
-		pos.Y = 1 + offSet.Y;
+		// move the cursor location to display the current player
+		pos = { 14 + mOffSet.X, 1 + mOffSet.Y };
 
 		char turn[25] = "The Current Player is: *";
-		//char wi[25] = "     ~~~ WINNER ~~~     ";
 		turn[23] = mCurrentPlayer;
 		
-		SetConsoleCursorPosition(stdHandle, pos);
-		WriteFile(stdHandle, turn, 25, nullptr, nullptr);
+		// Write out to the console the buffer
+		SetConsoleCursorPosition(mStdHandle, pos);
+		WriteFile(mStdHandle, turn, 25, nullptr, nullptr);
 
-		if(mIsWinner)
+		// if there is a winner, display the winner
+		if(mWinner != NONE)
 		{
 			char winner[15] = "~*~ WINNER ~*~";
-			pos = { 18 + offSet.X, 5 + offSet.Y };
-			SetConsoleCursorPosition(stdHandle, pos);
-			WriteFile(stdHandle, winner, 15, nullptr, nullptr);
+			pos = { 18 + mOffSet.X, 5 + mOffSet.Y };
+
+			// Write out to the console the buffer
+			SetConsoleCursorPosition(mStdHandle, pos);
+			WriteFile(mStdHandle, winner, 15, nullptr, nullptr);
 		}
 	}
 
@@ -219,51 +227,36 @@ void StateGame::render() {
 	{
 		mUpdateSelectionFlag = false;
 
-		const HANDLE stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-		DWORD count;
+		// initialize variables
 		COORD pos;
 		const DWORD numBytes = 1;
 		char buffer[numBytes];
 		const COORD firstCenter = { 1,1 };
+		COORD boardSlotPosition;
 
-		// Erase Previous Selection
-		COORD selectionPos;
-		selectionPos.X = offSet.X + firstCenter.X + (mPreviousSelectionIndex % 3) * 4;
-		selectionPos.Y = offSet.Y + firstCenter.Y + (mPreviousSelectionIndex / 3) * 4;
-
-		for (int x = -1; x <= 1; ++x)
+		for (int i = 0; i < BOARD_SLOTS; ++i)
 		{
-			pos.X = selectionPos.X + x;
-			for (int y = -1; y <= 1; ++y)
+			// Convert 1D index to 2D coordinate
+			boardSlotPosition.X = mOffSet.X + firstCenter.X + (i % 3) * 4;
+			boardSlotPosition.Y = mOffSet.Y + firstCenter.Y + (i / 3) * 4;
+
+			// Detirme what char to display around the board slot
+			buffer[0] = i == mSelectionIndex ? '*' : ' '; 
+
+			// Place that char in every spot, except the center
+			for (int x1 = -1; x1 <= 1; ++x1)
 			{
-				pos.Y = selectionPos.Y + y;
-				if (x == 0 && y == 0)
-					continue;
+				pos.X = boardSlotPosition.X + x1;
+				for (int y1 = -1; y1 <= 1; ++y1)
+				{
+					pos.Y = boardSlotPosition.Y + y1;
+					if (x1 == 0 && y1 == 0) // Skip the center
+						continue;
 
-				buffer[0] = ' ';
-
-				SetConsoleCursorPosition(stdHandle, pos);
-				WriteFile(stdHandle, buffer, numBytes, nullptr, nullptr);
-			}
-		}
-
-		// Show Current Selection
-		selectionPos.X = offSet.X + firstCenter.X + (mSelectionIndex % 3) * 4;
-		selectionPos.Y = offSet.Y + firstCenter.Y + (mSelectionIndex / 3) * 4;
-
-		for (int x1 = -1; x1 <= 1; ++x1)
-		{
-			pos.X = selectionPos.X + x1;
-			for (int y1 = -1; y1 <= 1; ++y1)
-			{
-				pos.Y = selectionPos.Y + y1;
-				if (x1 == 0 && y1 == 0)
-					continue;
-
-				buffer[0] = '*';
-
-				SetConsoleCursorPosition(stdHandle, pos);
-				WriteFile(stdHandle, buffer, numBytes, nullptr, nullptr);
+					// Write out to the console the buffer
+					SetConsoleCursorPosition(mStdHandle, pos);
+					WriteFile(mStdHandle, buffer, numBytes, nullptr, nullptr);
+				}
 			}
 		}
 	}
