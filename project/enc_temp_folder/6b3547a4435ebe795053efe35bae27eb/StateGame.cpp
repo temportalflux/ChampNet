@@ -40,7 +40,7 @@ void StateGame::updateGame() {
 		{
 			// TODO: This can be a switch of i to VK_*
 
-			if(i == VK_LEFT)
+			if(i == 37)
 			//if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 37) // Left
 			{
 				if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
@@ -53,7 +53,7 @@ void StateGame::updateGame() {
 			}
 
 
-			if (i == VK_UP)
+			if (i == 38)
 			//if (MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 38) // Up
 			{
 				if (mSelectionIndex - 3 >= 0)
@@ -64,7 +64,7 @@ void StateGame::updateGame() {
 				mUpdateSelectionFlag = true;
 			}
 
-			if (i == VK_RIGHT)
+			if (i == 39)
 			//if ((char)MapVirtualKey(i, MAPVK_VK_TO_CHAR) == 39) // Right
 			{
 				if ((mSelectionIndex + 1) % 3 != 0)
@@ -251,13 +251,13 @@ void StateGame::render() {
 		selectionPos.X = offSet.X + firstCenter.X + (mSelectionIndex % 3) * 4;
 		selectionPos.Y = offSet.Y + firstCenter.Y + (mSelectionIndex / 3) * 4;
 
-		for (int x1 = -1; x1 <= 1; ++x1)
+		for (int x = -1; x <= 1; ++x)
 		{
-			pos.X = selectionPos.X + x1;
-			for (int y1 = -1; y1 <= 1; ++y1)
+			pos.X = selectionPos.X + x;
+			for (int y = -1; y <= 1; ++y)
 			{
-				pos.Y = selectionPos.Y + y1;
-				if (x1 == 0 && y1 == 0)
+				pos.Y = selectionPos.Y + y;
+				if (x == 0 && y == 0)
 					continue;
 
 				buffer[0] = '*';

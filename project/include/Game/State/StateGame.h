@@ -33,6 +33,11 @@ private:
 	int mSelectionIndex;
 
 	/* Author: Jake Ruth
+	 * Previous position of selection
+	 */
+	int mPreviousSelectionIndex;
+
+	/* Author: Jake Ruth
 	 * Draw Game Board flag
 	 */
 	bool mDrawBoardFlag;
@@ -46,6 +51,11 @@ private:
 	* Draw Game Board flag
 	*/
 	bool mUpdateSelectionFlag;
+
+	/* Author: Jake Ruth
+	 * Used to determine if there is a winner
+	 */
+	bool mIsWinner;
 
 	virtual void queueNextGameState() override;
 
