@@ -12,6 +12,7 @@ private:
 	Net *mpNetwork;
 	NetAddress *mpAddressPeer;
 	PlayerIdentifier mPlayerID;
+	bool mIsPlayingAgain;
 
 	void updateNetwork();
 

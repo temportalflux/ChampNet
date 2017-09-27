@@ -6,6 +6,7 @@
 
 StateGameNetwork::StateGameNetwork(Net *network, NetAddress *peerAddress) : StateGame(), mpNetwork(network), mpAddressPeer(peerAddress) {
 	mPlayerID = PlayerIdentifier::PLAYER_2;
+	mIsPlayingAgain = false;
 }
 
 StateGameNetwork::~StateGameNetwork() {
