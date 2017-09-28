@@ -25,6 +25,8 @@ void StateLobby::updateNetwork() {
 void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
+	SetConsoleTitle("Lobby");
+
 	this->mData.display->textRecord.clear();
 	this->mEscape = false;
 
