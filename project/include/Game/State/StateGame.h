@@ -20,6 +20,11 @@ protected:
 		PLAYER_1 = 'X',
 		PLAYER_2 = 'O',
 	};
+	enum EnumPlayAgain {
+		UNDECIDED = 0,
+		PLAY,
+		QUIT,
+	};
 
 private:
 
@@ -100,9 +105,9 @@ protected:
 	PlayerIdentifier mCurrentPlayer;
 
 	/* Author: jake Ruth
-	 * used to set play again
-	 */
-	virtual void setPlayAgain();
+	* used to set play again
+	*/
+	virtual void selectPlayAgain(bool playAgain);
 
 	virtual void queueNextGameState() override;
 

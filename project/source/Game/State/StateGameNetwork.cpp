@@ -25,7 +25,8 @@ StateGameNetwork::~StateGameNetwork() {
 void StateGameNetwork::onEnterFrom(StateApplication *previous) {
 	StateGame::onEnterFrom(previous);
 
-	this->mIsPlayingAgain = false;
+	this->mIsPlayingAgain = EnumPlayAgain::UNDECIDED;
+	this->mOpponentLeft = false;
 
 	SetConsoleTitle(this->mpNetwork->isServer() ? "Host" : "Peer");
 
@@ -36,7 +37,7 @@ void StateGameNetwork::onEnterFrom(StateApplication *previous) {
  */
 void StateGameNetwork::queueNextGameState() {
 	// If we have stayed but the opponent has left
-	if (mIsPlayingAgain) { // setup a HOST using the already defined parameters
+	if (mIsPlayingAgain == PLAY) { // setup a HOST using the already defined parameters
 		this->mData.network->networkType = StateNetwork::NetworkType::HOST;
 		mNext = new StateConnecting();
 	}
@@ -50,6 +51,7 @@ void StateGameNetwork::queueNextGameState() {
  * Handles prep for when the state is exitting
  */
 void StateGameNetwork::onExit() {
+	this->sendToPeer(ID_PLAYER_LEFT);
 	this->mpNetwork->disconnect();
 }
 
@@ -80,7 +82,7 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 			break;
 		case ID_PLAY_AGAIN:
 			// If local use is ready to play again (otherwise we have not selected yet)
-			if (mIsPlayingAgain) {
+			if (mIsPlayingAgain == PLAY) {
 				// Tell opponent to start
 				this->sendToPeer(ID_START_GAME);
 				// Switch player ID
@@ -96,7 +98,10 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 			this->startNewGame();
 			break;
 		case ID_PLAYER_LEFT:
-			this->queueNextGameState(); // Queue waiting state
+			mOpponentLeft = true;
+			if (mIsPlayingAgain != UNDECIDED) {
+				this->queueNextGameState(); // Queue waiting state
+			}
 			break;
 		default:
 			break;
@@ -137,9 +142,14 @@ void StateGameNetwork::onMoveCommitted() {
 	mIsWaitingForMove = true;
 }
 
-void StateGameNetwork::setPlayAgain() {
-	this->mIsPlayingAgain = true;
-	this->sendToPeer(ID_PLAY_AGAIN);
+void StateGameNetwork::selectPlayAgain(bool playAgain) {
+	this->mIsPlayingAgain = playAgain ? EnumPlayAgain::PLAY : EnumPlayAgain::QUIT;
+	if (!mOpponentLeft && playAgain) {
+		this->sendToPeer(ID_PLAY_AGAIN);
+	}
+	else {
+		this->queueNextGameState();
+	}
 }
 
 bool StateGameNetwork::validate(int slot, PlayerIdentifier player)
