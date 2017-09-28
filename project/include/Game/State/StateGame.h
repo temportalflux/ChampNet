@@ -55,11 +55,6 @@ private:
 	const COORD mOffSet = { 3,3 };
 
 	/* Author: Jake Ruth
-	 * Use to get the console's output handle
-	 */
-	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	/* Author: Jake Ruth
 	 * Use to count the number of games
 	 */
 	int mGameCounter;

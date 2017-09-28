@@ -408,13 +408,11 @@ void StateApplication::pushMessage(const std::string &msg) {
 /* Author: Dustin Yost
  * Clear all characters off the screen
  */
-void clearDisplay() {
-	// Use to get the console's output handle
-	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+void StateApplication::clearDisplay() {
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	DWORD count;
 	// fill the entire screen with ' '
-	GetConsoleScreenBufferInfo(mStdHandle, &csbi);
+	GetConsoleScreenBufferInfo(this->mStdHandle, &csbi);
 	if (!FillConsoleOutputCharacter(mStdHandle, static_cast<TCHAR>(' '), csbi.dwSize.X * csbi.dwSize.Y, { 0, 0 }, &count))
 		return;
 }

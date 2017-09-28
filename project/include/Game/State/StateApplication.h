@@ -119,6 +119,11 @@ public:
 
 	};
 
+	/* Author: Jake Ruth
+	 * Use to get the console's output handle
+	 */
+	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
 protected:
 
 	// The previous and next state
