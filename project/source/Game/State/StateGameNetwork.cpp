@@ -11,7 +11,7 @@ StateGameNetwork::StateGameNetwork(Net *network, NetAddress *peerAddress) : Stat
 	// Reset play again flag
 	mIsPlayingAgain = false;
 
-	//SetConsoleTitle(network->isServer() ? "Host" : "Peer");
+	SetConsoleTitle(network->isServer() ? "Host" : "Peer");
 }
 
 StateGameNetwork::~StateGameNetwork() {

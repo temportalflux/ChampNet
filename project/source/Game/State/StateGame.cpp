@@ -75,7 +75,6 @@ void StateGame::updateGame() {
 					{
 						mSelectionIndex -= 1;
 					}
-					mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
 					break;
 				case VK_UP: // Move the Selection Cursor
@@ -84,7 +83,7 @@ void StateGame::updateGame() {
 					{
 						mSelectionIndex -= 3;
 					}
-					mUpdateSelectionFlag = true; // Set the flag to draw the selection
+					
 
 					break;
 				case VK_RIGHT: // Move the Selection Cursor
@@ -94,8 +93,6 @@ void StateGame::updateGame() {
 						mSelectionIndex += 1;
 					}
 
-					mUpdateSelectionFlag = true; // Set the flag to draw the selection
-
 					break;
 				case VK_DOWN: // Move the Selection Cursor
 
@@ -103,8 +100,6 @@ void StateGame::updateGame() {
 					{
 						mSelectionIndex += 3;
 					}
-
-					mUpdateSelectionFlag = true; // Set the flag to draw the selection
 
 					break;
 				case VK_RETURN: // Place a move
@@ -385,6 +380,9 @@ StateGame::PlayerIdentifier StateGame::commitMove(int slot, PlayerIdentifier pla
 	mBoardState[slot] = player;
 	PlayerIdentifier winner = this->checkWinstate(slot);
 	mSelectionIndex = 4;
+
+	mUpdateSelectionFlag = true; // Set the flag to draw the selection
+
 	if (winner == NONE) {
 		mCurrentPlayer = player == PLAYER_1 ? PLAYER_2 : PLAYER_1;
 	} 
