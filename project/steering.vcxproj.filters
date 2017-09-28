@@ -145,6 +145,9 @@
     <ClCompile Include="source\Messaging\MessageMusic.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="source\Network\Net.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Messaging\MessageInput.h">
@@ -294,6 +297,24 @@
     <ClInclude Include="include\Messaging\MessageMusic.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="include\Network\FrameworkDefines.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\LibWindows.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\MessageHandler.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Net.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\NetworkDefines.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\PacketInfo.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -352,6 +373,12 @@
     </Filter>
     <Filter Include="Source Files\Data">
       <UniqueIdentifier>{0bbcc0e1-f2fb-49a2-a307-bb3556de3710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{f61972e3-e018-4cb4-ad9c-7ede1b4476e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{dfbf39b3-9566-4864-80d6-1b1953db6dd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
