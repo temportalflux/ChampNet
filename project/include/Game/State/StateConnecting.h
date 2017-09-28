@@ -29,15 +29,19 @@ private:
 	/* Author: Dustin Yost
 	 * Handles all incoming packets - as BOTH a Host (Server) or Peer (Client)
 	 */
+
 	void handlePacket(PacketInfo *info) override;
+
 	/* Author: Dustin Yost
 	 * Handles all incoming packets - as a Host (Server)
 	 */
 	void handlePacketServer(PacketInfo *info);
+
 	/* Author: Dustin Yost
 	 * Handles all incoming packets - as a Peer (Client)
 	 */
 	void handlePacketClient(PacketInfo *info);
+
 	void updateGame();
 	void render();
 

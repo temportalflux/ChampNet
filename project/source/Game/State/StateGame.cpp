@@ -34,7 +34,6 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 }
 
 void StateGame::startNewGame() {
-	// TODO: Start a new game
 	mLastWinner = mWinner;
 	mWinner = NONE;
 
@@ -438,7 +437,7 @@ StateGame::PlayerIdentifier StateGame::checkWinstate(int slot) {
 	playerID = NONE;
 	valid = true;
 	// Calculate offset for the row
-	int offset = slot - row * BOARD_N;
+	int offset = row * BOARD_N;
 	// Iterate over row
 	for (i = 0; i < 3; i++) {
 		// Find each slot
@@ -508,7 +507,7 @@ StateGame::PlayerIdentifier StateGame::checkWinstate(int slot) {
 		}
 
 		// Top Right -> Bottom Left = 2, 4, 6
-		if (slot % 4 != 0 || slot == 4) {
+		if (slot % 2 == 0 || slot == 4) {
 			
 			// Reset vars
 			playerID = NONE;
@@ -516,7 +515,7 @@ StateGame::PlayerIdentifier StateGame::checkWinstate(int slot) {
 			// Iterate over diagonal
 			for (i = 2; i <= 6; i += 2) {
 				// If first slot, set the ID
-				if (i == 0) playerID = mBoardState[i];
+				if (i == 2) playerID = mBoardState[i];
 				// else check for matching ID
 				else if (playerID != mBoardState[i]) {
 					// If not matching, set is not valid for win
