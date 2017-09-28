@@ -31,7 +31,6 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 }
 
 void StateGame::startNewGame() {
-	// TODO: Start a new game
 	mLastWinner = mWinner;
 	mWinner = NONE;
 

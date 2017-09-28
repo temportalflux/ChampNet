@@ -26,10 +26,14 @@ void StateInput::copyFrom(StateInput *other) {
 }
 
 void StateInput::resetInput() {
+	/*
 	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++) {
 		this->previous[i] = false;
 		this->keyboard[i] = false;
 	}
+	*/
+	std::fill_n(previous, StateInput::SIZE_KEYBOARD, false);
+	std::fill_n(keyboard, StateInput::SIZE_KEYBOARD, false);
 }
 
 StateNetwork::StateNetwork() {
@@ -142,8 +146,7 @@ void StateApplication::onEnterFrom(StateApplication *previous) {
 		delete previous;
 	}
 
-	std::fill_n(this->mData.input->previous, StateInput::SIZE_KEYBOARD, false);
-	std::fill_n(this->mData.input->keyboard, StateInput::SIZE_KEYBOARD, false);
+	this->mData.input->resetInput();
 	this->mData.input->currentLine = "";
 
 }
