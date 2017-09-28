@@ -20,6 +20,8 @@ private:
 	// If we are ready to play again
 	bool mIsPlayingAgain;
 
+	virtual void onEnterFrom(StateApplication *previous);
+
 	/* Author: Dustin Yost
 	 * Handles switch from this state, to either Connecting or Lobby states
 	 */

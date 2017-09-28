@@ -89,7 +89,6 @@ private:
 	 */
 	bool mWinInfoFlag;
 
-	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
 
@@ -109,6 +108,8 @@ protected:
 	virtual void setPlayAgain();
 
 	virtual void queueNextGameState() override;
+
+	virtual void onEnterFrom(StateApplication *previous);
 
 public:
 

@@ -31,6 +31,8 @@ void StateConnecting::onEnterFrom(StateApplication *previous) {
 		this->mpNetwork->connectToServer(std::string(this->mData.network->networkInfo.serverAddress), this->mData.network->networkInfo.port);
 	}
 
+	this->clearDisplay();
+
 }
 
 void StateConnecting::updateNetwork() {

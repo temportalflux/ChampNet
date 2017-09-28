@@ -8,10 +8,6 @@
 StateGameNetwork::StateGameNetwork(Net *network, NetAddress *peerAddress) : StateGame(), mpNetwork(network), mpAddressPeer(peerAddress) {
 	// Set the current ID to player 2
 	mPlayerID = network->isServer() ? PLAYER_1 : PLAYER_2;
-	// Reset play again flag
-	mIsPlayingAgain = false;
-
-	SetConsoleTitle(network->isServer() ? "Host" : "Peer");
 }
 
 StateGameNetwork::~StateGameNetwork() {
@@ -24,6 +20,15 @@ StateGameNetwork::~StateGameNetwork() {
 		delete mpAddressPeer;
 		mpAddressPeer = NULL;
 	}
+}
+
+void StateGameNetwork::onEnterFrom(StateApplication *previous) {
+	StateGame::onEnterFrom(previous);
+
+	this->mIsPlayingAgain = false;
+
+	SetConsoleTitle(this->mpNetwork->isServer() ? "Host" : "Peer");
+
 }
 
 /* Author: Dustin Yost

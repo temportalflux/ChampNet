@@ -160,10 +160,15 @@ public:
 	void renderConsole();
 
 	/* Author: Dustin Yost
-	Pushes a text message to the record of messages to display
-	*/
+	 * Pushes a text message to the record of messages to display
+	 */
 	void pushMessage(const std::string &msg);
 
 	virtual void queueNextGameState() = 0;
+
+	/* Author: Dustin Yost
+	 * Clear all characters off the screen
+	 */
+	void clearDisplay();
 
 };
