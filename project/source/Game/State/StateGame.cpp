@@ -11,12 +11,7 @@ StateGame::StateGame() {
 		mBoardState[slot] = PlayerIdentifier::NONE;
 	}
 
-	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
-
-	this->startNewGame();
-
-	mDrawBoardFlag = true;
-
+	mGameCounter = -1;
 }
 
 StateGame::~StateGame() {
@@ -29,18 +24,26 @@ void StateGame::queueNextGameState() {
 
 void StateGame::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
+	
+	this->startNewGame();
 
 	mData.input->resetInput();
-
-	mCurrentPlayer = PlayerIdentifier::PLAYER_1;
-	mWinner = NONE;
-
-	mDrawBoardFlag = true;
 }
 
 void StateGame::startNewGame() {
 	// TODO: Start a new game
+	mLastWinner = mWinner;
 	mWinner = NONE;
+
+	mGameCounter++;
+
+	for (int i = 0; i < BOARD_SLOTS; ++i)
+		mBoardState[i] = NONE;
+
+	// Set the current player
+	mCurrentPlayer = mGameCounter % 2 == 0 ? PLAYER_1 : PLAYER_2;
+
+	mDrawBoardFlag = true;
 }
 
 /* Author: Jake Ruth
@@ -55,74 +58,99 @@ void StateGame::updateGame() {
 	{
 		if (current[i] && !previous[i])
 		{
-			// TODO: This can be a switch of i to VK_*
-
-			switch (i) // 
+			if (i == VK_ESCAPE)
 			{
-			case VK_LEFT: // Move the Selection Cursor
-				
-				if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
-				{
-					mSelectionIndex -= 1;
-				}
-				mUpdateSelectionFlag = true; // Set the flag to draw the selection
-
-				break;
-			case VK_UP: // Move the Selection Cursor
-
-				if (mSelectionIndex - 3 >= 0)
-				{
-					mSelectionIndex -= 3;
-				}
-				mUpdateSelectionFlag = true; // Set the flag to draw the selection
-
-				break;
-			case VK_RIGHT: // Move the Selection Cursor
-
-				if ((mSelectionIndex + 1) % 3 != 0)
-				{
-					mSelectionIndex += 1;
-				}
-				
-				mUpdateSelectionFlag = true; // Set the flag to draw the selection
-
-				break;
-			case VK_DOWN: // Move the Selection Cursor
-
-				if (mSelectionIndex + 3 < BOARD_SLOTS)
-				{
-					mSelectionIndex += 3;
-				}
-				
-				mUpdateSelectionFlag = true; // Set the flag to draw the selection
-
-				break;
-			case VK_RETURN: // Place a move
-
-				// Chack to see if the move is a valid spot
-				if (this->validate(mSelectionIndex, mCurrentPlayer))
-				{
-					// Set the flag to redraw the placed X's and O's
-					mUpdateBoardFlag = true;
-
-					// Set to see if there is a winner
-					// return is NONE if there is no winner
-					mWinner = this->commitMove(mSelectionIndex, mCurrentPlayer);
-				}
-
-				break;
-			case VK_ESCAPE: // Escape to the game lobby
-
-				// ****
 				this->queueNextGameState();
+			}
 
-				break;
-			default:
-				break;
+			if (mWinner == NONE)
+			{
+				switch (i) // 
+				{
+				case VK_LEFT: // Move the Selection Cursor
+
+					if ((mSelectionIndex - 1) % 3 != 2 && mSelectionIndex - 1 >= 0)
+					{
+						mSelectionIndex -= 1;
+					}
+					mUpdateSelectionFlag = true; // Set the flag to draw the selection
+
+					break;
+				case VK_UP: // Move the Selection Cursor
+
+					if (mSelectionIndex - 3 >= 0)
+					{
+						mSelectionIndex -= 3;
+					}
+					mUpdateSelectionFlag = true; // Set the flag to draw the selection
+
+					break;
+				case VK_RIGHT: // Move the Selection Cursor
+
+					if ((mSelectionIndex + 1) % 3 != 0)
+					{
+						mSelectionIndex += 1;
+					}
+
+					mUpdateSelectionFlag = true; // Set the flag to draw the selection
+
+					break;
+				case VK_DOWN: // Move the Selection Cursor
+
+					if (mSelectionIndex + 3 < BOARD_SLOTS)
+					{
+						mSelectionIndex += 3;
+					}
+
+					mUpdateSelectionFlag = true; // Set the flag to draw the selection
+
+					break;
+				case VK_RETURN: // Place a move
+
+					// Chack to see if the move is a valid spot
+					if (this->validate(mSelectionIndex, mCurrentPlayer))
+					{
+						// Set the flag to redraw the placed X's and O's
+						mUpdateBoardFlag = true;
+						mUpdateSelectionFlag = true;
+
+						// Set to see if there is a winner
+						// return is NONE if there is no winner
+						mWinner = this->commitMove(mSelectionIndex, mCurrentPlayer);
+					}
+
+					break;
+				default:
+					break;
+				}
+			}
+			else // If the game is at the play again screen
+			{
+				switch (i)
+				{
+				case VK_LEFT: // Move the Selection Cursor
+				case VK_RIGHT: 
+					mSelectionIndex = (mSelectionIndex + 1) % 2;
+					mUpdateSelectionFlag = true;
+					break;
+				case VK_RETURN: // Handle the selection
+
+					if(mSelectionIndex % 2 == 0) // On yes
+					{
+						this->startNewGame();
+					}
+					else // On no
+					{
+						this->queueNextGameState();
+					}
+
+					break;
+				default: 
+					break;
+				}
 			}
 		}
 	}
-
 }
 
 /* Author: Jake Ruth
@@ -151,6 +179,7 @@ void StateGame::render() {
 		// flag the rest of the board
 		mUpdateBoardFlag = true;
 		mUpdateSelectionFlag = true;
+		mWinInfoFlag = true;
 		
 		// initialize variables
 		CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -237,32 +266,81 @@ void StateGame::render() {
 	if(mUpdateSelectionFlag)
 	{
 		mUpdateSelectionFlag = false;
-
-		// initialize variables
 		COORD pos;
 		const DWORD numBytes = 1;
 		char buffer[numBytes];
-		const COORD firstCenter = { 1,1 };
-		COORD boardSlotPosition;
 
-		for (int i = 0; i < BOARD_SLOTS; ++i)
+		if (mWinner == NONE)
 		{
-			// Convert 1D index to 2D coordinate
-			boardSlotPosition.X = mOffSet.X + firstCenter.X + (i % 3) * 4;
-			boardSlotPosition.Y = mOffSet.Y + firstCenter.Y + (i / 3) * 4;
+			// initialize variables
+			const COORD firstCenter = { 1,1 };
+			COORD boardSlotPosition;
 
-			// Detirme what char to display around the board slot
-			buffer[0] = i == mSelectionIndex ? '*' : ' '; 
-
-			// Place that char in every spot, except the center
-			for (int x1 = -1; x1 <= 1; ++x1)
+			for (int i = 0; i < BOARD_SLOTS; ++i)
 			{
-				pos.X = boardSlotPosition.X + x1;
-				for (int y1 = -1; y1 <= 1; ++y1)
+				// Convert 1D index to 2D coordinate
+				boardSlotPosition.X = mOffSet.X + firstCenter.X + (i % 3) * 4;
+				boardSlotPosition.Y = mOffSet.Y + firstCenter.Y + (i / 3) * 4;
+
+				// Detirme what char to display around the board slot
+				buffer[0] = i == mSelectionIndex ? '*' : ' ';
+
+				// Place that char in every spot, except the center
+				for (int x = -1; x <= 1; ++x)
 				{
-					pos.Y = boardSlotPosition.Y + y1;
-					if (x1 == 0 && y1 == 0) // Skip the center
+					pos.X = boardSlotPosition.X + x;
+					for (int y = -1; y <= 1; ++y)
+					{
+						pos.Y = boardSlotPosition.Y + y;
+						if (x == 0 && y == 0) // Skip the center
+							continue;
+
+						// Write out to the console the buffer
+						SetConsoleCursorPosition(mStdHandle, pos);
+						WriteFile(mStdHandle, buffer, numBytes, nullptr, nullptr);
+					}
+				}
+			}
+		}
+		else
+		{
+			pos = { 5 + mOffSet.X, 13 + mOffSet.Y };
+			const COORD posYes = { pos.X + 2, pos.Y + 3 };
+			const COORD posNO = { posYes.X + 6, posYes.Y };
+
+			SetConsoleCursorPosition(mStdHandle, pos);
+			WriteFile(mStdHandle, "Play Again?", 12, nullptr, nullptr);
+
+			SetConsoleCursorPosition(mStdHandle, posYes);
+			WriteFile(mStdHandle, "Y     N", 7, nullptr, nullptr);
+
+			for (int x = -1; x <= 1; ++x)
+			{
+				pos.X = posYes.X + x;
+				for (int y = -1; y <= 1; ++y)
+				{
+					pos.Y = posYes.Y + y;
+					if (x == 0 && y == 0) // Skip the center
 						continue;
+
+					buffer[0] = mSelectionIndex % 2 == 0 ? '*' : ' ';
+
+					// Write out to the console the buffer
+					SetConsoleCursorPosition(mStdHandle, pos);
+					WriteFile(mStdHandle, buffer, numBytes, nullptr, nullptr);
+				}
+			}
+
+			for (int x = -1; x <= 1; ++x)
+			{
+				pos.X = posNO.X + x;
+				for (int y = -1; y <= 1; ++y)
+				{
+					pos.Y = posNO.Y + y;
+					if (x == 0 && y == 0) // Skip the center
+						continue;
+
+					buffer[0] = mSelectionIndex % 2 == 1 ? '*' : ' ';
 
 					// Write out to the console the buffer
 					SetConsoleCursorPosition(mStdHandle, pos);
@@ -270,6 +348,17 @@ void StateGame::render() {
 				}
 			}
 		}
+	}
+
+	if(mWinInfoFlag)
+	{
+		/*COORD pos;
+
+		pos = { 14 + mOffSet.X, 7 + mOffSet.Y };
+
+		char *bufferX = "Player X wins: ";
+		char *bufferY = "Player Y wins: ";*/
+
 	}
 }
 
@@ -291,9 +380,23 @@ bool StateGame::validate(int slot, PlayerIdentifier player) {
 StateGame::PlayerIdentifier StateGame::commitMove(int slot, PlayerIdentifier player) {
 	mBoardState[slot] = player;
 	PlayerIdentifier winner = this->checkWinstate(slot);
+	mSelectionIndex = 4;
 	if (winner == NONE) {
-		mSelectionIndex = 4;
 		mCurrentPlayer = player == PLAYER_1 ? PLAYER_2 : PLAYER_1;
+	} 
+	else if (winner == PLAYER_1) {
+		mPlayer1WinCount++;
+		if (mLastWinner == winner)
+			mWinStreak++;
+		else
+			mWinStreak = 0;
+	}
+	else if (winner == PLAYER_2) {
+		mPlayer2WinCount++;
+		if (mLastWinner == winner)
+			mWinStreak++;
+		else
+			mWinStreak = 0;
 	}
 	return winner;
 }

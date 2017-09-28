@@ -59,6 +59,36 @@ private:
 	 */
 	const HANDLE mStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
+	/* Author: Jake Ruth
+	 * Use to count the number of games
+	 */
+	int mGameCounter;
+
+	/* Author: Jake Ruth
+	 * Use to count the number of wins player 1 has
+	 */
+	int mPlayer1WinCount;
+
+	/* Author: jake Ruth
+	 * Use to count the number of wins player 2 has
+	 */
+	int mPlayer2WinCount;
+
+	/* Author: Jake Ruht
+	 * Use to store the last winner
+	 */
+	PlayerIdentifier mLastWinner;
+
+	/* Author: Jake Ruth
+	 * Use to store the win streak
+	 */
+	int mWinStreak;
+
+	/* Author: Jake Ruth
+	 * Draw Win info flag
+	 */
+	bool mWinInfoFlag;
+
 	virtual void onEnterFrom(StateApplication *previous);
 	void updateGame();
 	void render();
