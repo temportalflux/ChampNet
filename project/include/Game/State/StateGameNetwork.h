@@ -18,7 +18,8 @@ private:
 	// If we are waiting for a move from the opponent
 	bool mIsWaitingForMove;
 	// If we are ready to play again
-	bool mIsPlayingAgain;
+	EnumPlayAgain mIsPlayingAgain;
+	bool mOpponentLeft = false;
 
 	virtual void onEnterFrom(StateApplication *previous);
 
@@ -55,7 +56,7 @@ private:
 	/* Author: Dustin Yost
 	 * Sets the network to play again
 	 */
-	void setPlayAgain() override;
+	void selectPlayAgain(bool playAgain) override;
 
 	bool validate(int slot, PlayerIdentifier player) override;
 

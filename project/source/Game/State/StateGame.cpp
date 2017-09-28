@@ -20,9 +20,16 @@ StateGame::~StateGame() {
 
 }
 
-void StateGame::setPlayAgain()
+void StateGame::selectPlayAgain(bool playAgain)
 {
-	this->startNewGame();
+	if (playAgain) // On yes
+	{
+		this->startNewGame();
+	}
+	else // On no
+	{
+		this->queueNextGameState();
+	}
 }
 
 void StateGame::queueNextGameState() {
@@ -134,16 +141,7 @@ void StateGame::updateGame() {
 					mUpdateSelectionFlag = true;
 					break;
 				case VK_RETURN: // Handle the selection
-
-					if(mSelectionIndex % 2 == 0) // On yes
-					{
-						this->setPlayAgain();
-					}
-					else // On no
-					{
-						this->queueNextGameState();
-					}
-
+					this->selectPlayAgain(mSelectionIndex % 2 == 0);
 					break;
 				default: 
 					break;
