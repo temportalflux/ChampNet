@@ -411,6 +411,7 @@ void StateApplication::pushMessage(const std::string &msg) {
 void StateApplication::clearDisplay() {
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	DWORD count;
+	
 	// fill the entire screen with ' '
 	GetConsoleScreenBufferInfo(this->mStdHandle, &csbi);
 	if (!FillConsoleOutputCharacter(mStdHandle, static_cast<TCHAR>(' '), csbi.dwSize.X * csbi.dwSize.Y, { 0, 0 }, &count))

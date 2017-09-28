@@ -180,16 +180,12 @@ void StateGame::render() {
 		mWinInfoFlag = true;
 		
 		// initialize variables
-		CONSOLE_SCREEN_BUFFER_INFO csbi;
-		DWORD count;
 		COORD pos;
 		const DWORD numBytes = 1;
 		char buffer[numBytes];
 
 		// fill the entire screen with ' '
-		GetConsoleScreenBufferInfo(mStdHandle, &csbi);
-		if (!FillConsoleOutputCharacter(mStdHandle, static_cast<TCHAR>(' '), csbi.dwSize.X * csbi.dwSize.Y, { 0, 0 }, &count))
-			return;
+		this->clearDisplay();
 
 		// Draw Board
 		for (int y = 0; y < 11; ++y)
