@@ -238,7 +238,15 @@ void StateGame::render() {
 		}
 
 		// move the cursor location to display the current player
+
 		pos = { 14 + mOffSet.X, 1 + mOffSet.Y };
+		char userID[12] = "You are *'s";
+		userID[8] = getCurrentPlayerID();
+
+		SetConsoleCursorPosition(mStdHandle, pos);
+		WriteFile(mStdHandle, userID, 12, nullptr, nullptr);
+
+		pos = { 14 + mOffSet.X, 3 + mOffSet.Y };
 
 		char turn[25] = "The Current Player is: *";
 		turn[23] = mCurrentPlayer;
@@ -251,7 +259,7 @@ void StateGame::render() {
 		if(mWinner != NONE)
 		{
 			char winner[15] = "~*~ WINNER ~*~";
-			pos = { 18 + mOffSet.X, 5 + mOffSet.Y };
+			pos = { 18 + mOffSet.X, 8 + mOffSet.Y };
 
 			// Write out to the console the buffer
 			SetConsoleCursorPosition(mStdHandle, pos);

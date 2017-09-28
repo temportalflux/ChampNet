@@ -13,12 +13,13 @@ private:
 	Net *mpNetwork;
 	// The connect peer address
 	NetAddress *mpAddressPeer;
-	// The ID of the current player
-	PlayerIdentifier mPlayerID;
+	
 	// If we are waiting for a move from the opponent
 	bool mIsWaitingForMove;
 	// If we are ready to play again
 	bool mIsPlayingAgain;
+	// The ID of the current player
+	PlayerIdentifier mPlayerID;
 
 	virtual void onEnterFrom(StateApplication *previous);
 
@@ -58,6 +59,8 @@ private:
 	void setPlayAgain() override;
 
 	bool validate(int slot, PlayerIdentifier player) override;
+
+	char getCurrentPlayerID() override { return mPlayerID; }
 
 public:
 

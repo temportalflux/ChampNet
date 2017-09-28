@@ -84,6 +84,8 @@ private:
 	 */
 	bool mWinInfoFlag;
 
+	
+
 	void updateGame();
 	void render();
 
@@ -105,6 +107,8 @@ protected:
 	virtual void queueNextGameState() override;
 
 	virtual void onEnterFrom(StateApplication *previous);
+
+	virtual char getCurrentPlayerID() { return mCurrentPlayer; }
 
 public:
 
