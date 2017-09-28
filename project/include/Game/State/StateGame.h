@@ -27,7 +27,7 @@ private:
 		An array of 9 positions on the game board
 	*/
 	PlayerIdentifier mBoardState[BOARD_SLOTS];
-	PlayerIdentifier mCurrentPlayer;
+	
 
 	/* Author: Jake Ruth
 	 * Current position of selection
@@ -101,6 +101,8 @@ protected:
 	*/
 	PlayerIdentifier mWinner;
 
+	PlayerIdentifier mCurrentPlayer;
+
 	/* Author: jake Ruth
 	 * used to set play again
 	 */
@@ -118,7 +120,7 @@ public:
 	/* Author: Dustin Yost
 		Validate the player's selection of a slot
 	*/
-	bool validate(int slot, PlayerIdentifier player);
+	virtual bool validate(int slot, PlayerIdentifier player);
 
 	/* Author: Dustin Yost
 		Sets the player's icon in a specfied slot,

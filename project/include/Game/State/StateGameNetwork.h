@@ -55,6 +55,8 @@ private:
 	 */
 	void setPlayAgain() override;
 
+	bool validate(int slot, PlayerIdentifier player) override;
+
 public:
 
 	StateGameNetwork(Net *network, NetAddress *peerAddress);

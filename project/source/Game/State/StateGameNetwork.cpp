@@ -79,14 +79,14 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 				// Tell opponent to start
 				this->sendToPeer(ID_START_GAME);
 				// Switch player ID
-				mPlayerID = this->getInvertID();
+				//mPlayerID = this->getInvertID();
 				// Start a new game
 				this->startNewGame();
 			}
 			break;
 		case ID_START_GAME:
 			// Switch player ID
-			mPlayerID = this->getInvertID();
+			//mPlayerID = this->getInvertID();
 			// Start a new game
 			this->startNewGame();
 			break;
@@ -135,4 +135,9 @@ void StateGameNetwork::onMoveCommitted() {
 void StateGameNetwork::setPlayAgain() {
 	this->mIsPlayingAgain = true;
 	this->sendToPeer(ID_PLAY_AGAIN);
+}
+
+bool StateGameNetwork::validate(int slot, PlayerIdentifier player)
+{
+	return mPlayerID == mCurrentPlayer && StateGame::validate(slot, player);
 }
