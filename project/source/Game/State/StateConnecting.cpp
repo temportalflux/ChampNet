@@ -118,4 +118,8 @@ void StateConnecting::updateGame() {
 void StateConnecting::render() {
 	// STUB: Unneeded
 	//this->renderConsole();
+	
+	// Write out to the console the buffer
+	SetConsoleCursorPosition(mStdHandle, {41,6});
+	WriteFile(mStdHandle, "Connecting...", 14, nullptr, nullptr);
 }
