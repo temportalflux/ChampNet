@@ -26,8 +26,9 @@ void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
 
 	this->mData.display->textRecord.clear();
-	this->mData.input->resetInput();
 	this->mEscape = false;
+
+	this->mData.input->fillKeyboard();
 
 	mPhase = LobbyPhase::NETWORK_TYPE;
 	this->promptPhase(mPhase);
@@ -55,8 +56,8 @@ void StateLobby::updateGame() {
 		}
 
 	}
-	if (mEscape) {
-		//this->mRunning = false;
+	if (this->mEscape) {
+		this->mRunning = false;
 	}
 
 }

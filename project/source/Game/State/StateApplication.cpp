@@ -36,6 +36,15 @@ void StateInput::resetInput() {
 	std::fill_n(keyboard, StateInput::SIZE_KEYBOARD, false);
 }
 
+/* Author: Dustin Yost
+* Fills the keyboard buffer with true values - making it look like all the keys were pressed in this tick.
+* It is required that the update input function be called after this, so to fix the current buffer and push the true values into the previous buffer.
+* This is a temporary/scoped fix to accomodate for states transitioning while a user holds a button.
+*/
+void StateInput::fillKeyboard() {
+	std::fill_n(keyboard, StateInput::SIZE_KEYBOARD, true);
+}
+
 StateNetwork::StateNetwork() {
 }
 
