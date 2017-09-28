@@ -2,7 +2,7 @@
 	"maxUnits": 2000,
 	"controls": {
 		"spawnAmount": 10,
-		"killAmount": 1
+		"killAmount": 10
 	},
 	"spawnVelocity": {
 		"randomInBatch": false,

@@ -380,5 +380,13 @@
     <Filter Include="Source Files\Network">
       <UniqueIdentifier>{dfbf39b3-9566-4864-80d6-1b1953db6dd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{436e7f41-6127-4b68-bb38-499744690c2d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\data.json">
+      <Filter>Resource</Filter>
+    </None>
   </ItemGroup>
 </Project>
