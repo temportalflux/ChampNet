@@ -29,7 +29,7 @@ private:
 	/* Author: Dustin Yost
 	 * Handles all incoming packets - as BOTH a Host (Server) or Peer (Client)
 	 */
-	void handlePacket(PacketInfo *info);
+	void handlePacket(PacketInfo *info) override;
 	/* Author: Dustin Yost
 	 * Handles all incoming packets - as a Host (Server)
 	 */

@@ -12,6 +12,9 @@ StateGame::StateGame() {
 	}
 
 	mGameCounter = -1;
+
+
+	//SetConsoleTitle("Local Game");
 }
 
 StateGame::~StateGame() {
@@ -352,6 +355,8 @@ void StateGame::render() {
 
 	if(mWinInfoFlag)
 	{
+		mWinInfoFlag = false;
+
 		/*COORD pos;
 
 		pos = { 14 + mOffSet.X, 7 + mOffSet.Y };
