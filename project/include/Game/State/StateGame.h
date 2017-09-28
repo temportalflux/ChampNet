@@ -64,6 +64,8 @@ private:
 	 */
 	int mGameCounter;
 
+	int mMoves;
+
 	/* Author: Jake Ruth
 	 * Use to count the number of wins player 1 has
 	 */

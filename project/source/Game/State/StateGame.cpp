@@ -41,7 +41,7 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 	
 	this->startNewGame();
 
-	mData.input->resetInput();
+	mData.input->fillKeyboard();
 }
 
 void StateGame::startNewGame() {
@@ -49,6 +49,7 @@ void StateGame::startNewGame() {
 	mWinner = NONE;
 
 	mGameCounter++;
+	mMoves = 0;
 
 	for (int i = 0; i < BOARD_SLOTS; ++i)
 		mBoardState[i] = NONE;
@@ -76,7 +77,7 @@ void StateGame::updateGame() {
 				this->queueNextGameState();
 			}
 
-			if (mWinner == NONE)
+			if (mWinner == NONE && mMoves < 9)
 			{
 				switch (i) // 
 				{
@@ -255,6 +256,15 @@ void StateGame::render() {
 			SetConsoleCursorPosition(mStdHandle, pos);
 			WriteFile(mStdHandle, winner, 15, nullptr, nullptr);
 		}
+		else if (mMoves >= 9)
+		{
+			char message[12] = "~*~ TIE ~*~";
+			pos = { 18 + mOffSet.X, 5 + mOffSet.Y };
+
+			// Write out to the console the buffer
+			SetConsoleCursorPosition(mStdHandle, pos);
+			WriteFile(mStdHandle, message, sizeof(message), nullptr, nullptr);
+		}
 	}
 
 	if(mUpdateSelectionFlag)
@@ -264,7 +274,7 @@ void StateGame::render() {
 		const DWORD numBytes = 1;
 		char buffer[numBytes];
 
-		if (mWinner == NONE)
+		if (mWinner == NONE && mMoves < 9)
 		{
 			// initialize variables
 			const COORD firstCenter = { 1,1 };
@@ -375,6 +385,7 @@ bool StateGame::validate(int slot, PlayerIdentifier player) {
 */
 StateGame::PlayerIdentifier StateGame::commitMove(int slot, PlayerIdentifier player) {
 	mBoardState[slot] = player;
+	mMoves++;
 	PlayerIdentifier winner = this->checkWinstate(slot);
 	mSelectionIndex = 4;
 
