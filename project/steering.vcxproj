@@ -174,7 +174,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\DeanLib\include;..\External Libs\SDL2\SDL\include;..\External Libs\SDL2_mixer-2.0.1\include;..\External Libs\SimpleJSON\src\;.\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\DeanLib\include;..\External Libs\SDL2\SDL\include;..\External Libs\SDL2_mixer-2.0.1\include;..\External Libs\SimpleJSON\src\;$(DEV_SDK_DIR)include\;.\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;RakNet.lib;DeanLibDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -196,7 +196,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\DeanLib\include;..\External Libs\SDL2\SDL\include;..\External Libs\SDL2_mixer-2.0.1\include;..\External Libs\SimpleJSON\src\;.\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\DeanLib\include;..\External Libs\SDL2\SDL\include;..\External Libs\SDL2_mixer-2.0.1\include;..\External Libs\SimpleJSON\src\;$(DEV_SDK_DIR)include\;.\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
