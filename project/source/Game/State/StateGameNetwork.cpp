@@ -131,3 +131,8 @@ StateGame::PlayerIdentifier StateGameNetwork::commitMove(int slot, PlayerIdentif
 void StateGameNetwork::onMoveCommitted() {
 	mIsWaitingForMove = true;
 }
+
+void StateGameNetwork::setPlayAgain() {
+	this->mIsPlayingAgain = true;
+	this->sendToPeer(ID_PLAY_AGAIN);
+}

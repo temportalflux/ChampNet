@@ -50,6 +50,11 @@ private:
 	 */
 	PlayerIdentifier getInvertID();
 
+	/* Author: Dustin Yost
+	 * Sets the network to play again
+	 */
+	void setPlayAgain() override;
+
 public:
 
 	StateGameNetwork(Net *network, NetAddress *peerAddress);
