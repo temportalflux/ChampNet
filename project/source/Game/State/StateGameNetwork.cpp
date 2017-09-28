@@ -6,11 +6,14 @@
 #include "Game\State\StateConnecting.h"
 
 StateGameNetwork::StateGameNetwork(Net *network, NetAddress *peerAddress) : StateGame(), mpNetwork(network), mpAddressPeer(peerAddress) {
-	mPlayerID = PlayerIdentifier::PLAYER_2;
+	// Set the current ID to player 2
+	mPlayerID = network->isServer() ? PLAYER_1 : PLAYER_2;
+	// Reset play again flag
 	mIsPlayingAgain = false;
 }
 
 StateGameNetwork::~StateGameNetwork() {
+	// Clean-up network and address vars
 	if (mpNetwork != NULL) {
 		delete mpNetwork;
 		mpNetwork = NULL;
@@ -21,6 +24,9 @@ StateGameNetwork::~StateGameNetwork() {
 	}
 }
 
+/* Author: Dustin Yost
+ * Handles switch from this state, to either Connecting or Lobby states
+ */
 void StateGameNetwork::queueNextGameState() {
 	// If we have stayed but the opponent has left
 	if (mIsPlayingAgain) { // setup a HOST using the already defined parameters
@@ -33,17 +39,23 @@ void StateGameNetwork::queueNextGameState() {
 	}
 }
 
+/* Author: Dustin Yost
+ * Handles prep for when the state is exitting
+ */
 void StateGameNetwork::onExit() {
 	this->mpNetwork->disconnect();
 }
 
+/* Author: Dustin Yost
+ * Update the network interface
+ */
 void StateGameNetwork::updateNetwork() {
 	this->mpNetwork->update();
 }
 
 /* Author: Dustin Yost
-	Handles all incoming packets - as BOTH a Host (Server) or Peer (Client)
-*/
+ * Handles all incoming packets - as BOTH a Host (Server) or Peer (Client)
+ */
 void StateGameNetwork::handlePacket(PacketInfo *info) {
 	switch (info->getPacketType()) {
 		// Fall down cases
@@ -66,10 +78,14 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 				this->sendToPeer(ID_START_GAME);
 				// Switch player ID
 				mPlayerID = this->getInvertID();
+				// Start a new game
 				this->startNewGame();
 			}
 			break;
 		case ID_START_GAME:
+			// Switch player ID
+			mPlayerID = this->getInvertID();
+			// Start a new game
 			this->startNewGame();
 			break;
 		case ID_PLAYER_LEFT:
@@ -80,20 +96,26 @@ void StateGameNetwork::handlePacket(PacketInfo *info) {
 	}
 }
 
+/* Author: Dustin Yost
+ * Sends some packet ID to the connected peer
+ */
 void StateGameNetwork::sendToPeer(unsigned char id) {
 	this->mpNetwork->sendTo(PacketNotification{ id }, this->mpAddressPeer->address);
 }
 
+/* Author: Dustin Yost
+ * Return the opposite ID of mPlayerID
+ */
 StateGame::PlayerIdentifier StateGameNetwork::getInvertID() {
 	return mPlayerID == PLAYER_1 ? PLAYER_2 : PLAYER_1;
 }
 
 /* Author: Dustin Yost
-	Sets the player's icon in a specfied slot,
-	and sets the next player.
-	Returns the player that won, NONE if no one has won yet.
-	Sends a packet to the peer that we have committed a move.
-*/
+ * Sets the player's icon in a specfied slot,
+ * and sets the next player.
+ * Returns the player that won, NONE if no one has won yet.
+ * Sends a packet to the peer that we have committed a move.
+ */
 StateGame::PlayerIdentifier StateGameNetwork::commitMove(int slot, PlayerIdentifier player) {
 	PlayerIdentifier winner = StateGame::commitMove(slot, player);
 	this->sendToPeer(ID_MOVE_SUBMIT_0 + slot); // NOTE: Assumes the submition packet ids are in order from 0->8
@@ -102,8 +124,8 @@ StateGame::PlayerIdentifier StateGameNetwork::commitMove(int slot, PlayerIdentif
 }
 
 /*
-* Handles setting a wait flag when the user has committed their turn
-*/
+ * Handles setting a wait flag when the user has committed their turn
+ */
 void StateGameNetwork::onMoveCommitted() {
 	mIsWaitingForMove = true;
 }
