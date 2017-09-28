@@ -24,7 +24,11 @@ void StateLobby::updateNetwork() {
 
 void StateLobby::onEnterFrom(StateApplication *previous) {
 	StateApplication::onEnterFrom(previous);
+
 	this->mData.display->textRecord.clear();
+	this->mData.input->resetInput();
+	this->mEscape = false;
+
 	mPhase = LobbyPhase::NETWORK_TYPE;
 	this->promptPhase(mPhase);
 }
@@ -50,6 +54,9 @@ void StateLobby::updateGame() {
 			this->promptPhase(mPhase);
 		}
 
+	}
+	if (mEscape) {
+		//this->mRunning = false;
 	}
 
 }
