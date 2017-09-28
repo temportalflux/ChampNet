@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Components\Component.h" />
+    <ClInclude Include="include\Components\ComponentManager.h" />
+    <ClInclude Include="include\Components\PhysicsComponent.h" />
+    <ClInclude Include="include\Components\PositionComponent.h" />
+    <ClInclude Include="include\Components\SteeringComponent.h" />
+    <ClInclude Include="include\Data\GameData.h" />
+    <ClInclude Include="include\Graphics\Audio.h" />
+    <ClInclude Include="include\Graphics\Color.h" />
+    <ClInclude Include="include\Graphics\Font.h" />
+    <ClInclude Include="include\Graphics\GraphicsBuffer.h" />
+    <ClInclude Include="include\Graphics\GraphicsBufferManager.h" />
+    <ClInclude Include="include\Graphics\GraphicsSystem.h" />
+    <ClInclude Include="include\Graphics\Renderer.h" />
+    <ClInclude Include="include\Graphics\Sprite.h" />
+    <ClInclude Include="include\Graphics\SpriteManager.h" />
+    <ClInclude Include="include\Input\InputSystem.h" />
+    <ClInclude Include="include\Messaging\GameMessage.h" />
+    <ClInclude Include="include\Messaging\GameMessageManager.h" />
+    <ClInclude Include="include\Messaging\MessageDelete.h" />
+    <ClInclude Include="include\Messaging\MessageLoadData.h" />
+    <ClInclude Include="include\Messaging\MessageMusic.h" />
+    <ClInclude Include="include\Messaging\MessageSpawn.h" />
+    <ClInclude Include="include\Messaging\MessageGameExit.h" />
+    <ClInclude Include="include\Messaging\MessageInput.h" />
+    <ClInclude Include="include\Messaging\PlayerMoveToMessage.h" />
+    <ClInclude Include="include\Steering\AlignSteering.h" />
+    <ClInclude Include="include\Steering\ArriveAndFaceSteering.h" />
+    <ClInclude Include="include\Steering\ArriveSteering.h" />
+    <ClInclude Include="include\Steering\FaceSteering.h" />
+    <ClInclude Include="include\Steering\PursueSteering.h" />
+    <ClInclude Include="include\Steering\SeekSteering.h" />
+    <ClInclude Include="include\Steering\Steering.h" />
+    <ClInclude Include="include\Steering\SteeringNeighborhood.h" />
+    <ClInclude Include="include\Steering\SteeringCohesion.h" />
+    <ClInclude Include="include\Steering\SteeringDefines.h" />
+    <ClInclude Include="include\Steering\SteeringEnemyFind.h" />
+    <ClInclude Include="include\Steering\SteeringFlocking.h" />
+    <ClInclude Include="include\Steering\SteeringGroupAlignment.h" />
+    <ClInclude Include="include\Steering\SteeringMatchAlignment.h" />
+    <ClInclude Include="include\Steering\SteeringMatchVelocity.h" />
+    <ClInclude Include="include\Steering\SteeringSeparation.h" />
+    <ClInclude Include="include\Steering\SteeringWeighted.h" />
+    <ClInclude Include="include\Steering\WanderAndChaseSteering.h" />
+    <ClInclude Include="include\Steering\WanderSteering.h" />
+    <ClInclude Include="include\Units\Unit.h" />
+    <ClInclude Include="include\Units\UnitManager.h" />
+    <ClInclude Include="include\Util\DataRepository.h" />
+    <ClInclude Include="include\Util\Defines.h" />
+    <ClInclude Include="include\Util\Game.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Components\Component.cpp" />
+    <ClCompile Include="source\Components\ComponentManager.cpp" />
+    <ClCompile Include="source\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="source\Components\PositionComponent.cpp" />
+    <ClCompile Include="source\Components\SteeringComponent.cpp" />
+    <ClCompile Include="source\Data\GameData.cpp" />
+    <ClCompile Include="source\Graphics\Audio.cpp" />
+    <ClCompile Include="source\Graphics\Color.cpp" />
+    <ClCompile Include="source\Graphics\Font.cpp" />
+    <ClCompile Include="source\Graphics\GraphicsBuffer.cpp" />
+    <ClCompile Include="source\Graphics\GraphicsBufferManager.cpp" />
+    <ClCompile Include="source\Graphics\GraphicsSystem.cpp" />
+    <ClCompile Include="source\Graphics\Renderer.cpp" />
+    <ClCompile Include="source\Graphics\Sprite.cpp" />
+    <ClCompile Include="source\Graphics\SpriteManager.cpp" />
+    <ClCompile Include="source\Input\InputSystem.cpp" />
+    <ClCompile Include="source\Messaging\GameMessage.cpp" />
+    <ClCompile Include="source\Messaging\GameMessageManager.cpp" />
+    <ClCompile Include="source\Messaging\MessageDelete.cpp" />
+    <ClCompile Include="source\Messaging\MessageLoadData.cpp" />
+    <ClCompile Include="source\Messaging\MessageMusic.cpp" />
+    <ClCompile Include="source\Messaging\MessageSpawn.cpp" />
+    <ClCompile Include="source\Messaging\MessageGameExit.cpp" />
+    <ClCompile Include="source\Messaging\MessageInput.cpp" />
+    <ClCompile Include="source\Messaging\PlayerMoveToMessage.cpp" />
+    <ClCompile Include="source\Steering\AlignSteering.cpp" />
+    <ClCompile Include="source\Steering\ArriveAndFaceSteering.cpp" />
+    <ClCompile Include="source\Steering\ArriveSteering.cpp" />
+    <ClCompile Include="source\Steering\FaceSteering.cpp" />
+    <ClCompile Include="source\Steering\PursueSteering.cpp" />
+    <ClCompile Include="source\Steering\SeekSteering.cpp" />
+    <ClCompile Include="source\Steering\Steering.cpp" />
+    <ClCompile Include="source\Steering\SteeringCohesion.cpp" />
+    <ClCompile Include="source\Steering\SteeringEnemyFind.cpp" />
+    <ClCompile Include="source\Steering\SteeringFlocking.cpp" />
+    <ClCompile Include="source\Steering\SteeringGroupAlignment.cpp" />
+    <ClCompile Include="source\Steering\SteeringMatchAlignment.cpp" />
+    <ClCompile Include="source\Steering\SteeringMatchVelocity.cpp" />
+    <ClCompile Include="source\Steering\SteeringNeighborhood.cpp" />
+    <ClCompile Include="source\Steering\SteeringSeparation.cpp" />
+    <ClCompile Include="source\Steering\SteeringWeighted.cpp" />
+    <ClCompile Include="source\Steering\WanderAndChaseSteering.cpp" />
+    <ClCompile Include="source\Steering\WanderSteering.cpp" />
+    <ClCompile Include="source\Units\Unit.cpp" />
+    <ClCompile Include="source\Units\UnitManager.cpp" />
+    <ClCompile Include="source\Util\DataRepository.cpp" />
+    <ClCompile Include="source\Util\Game.cpp" />
+    <ClCompile Include="source\Util\main.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>
+    <RootNamespace>allegrotest</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>steering</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
+    <SourcePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <SourcePath>$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\DeanLib\include;..\..\External Libs\SDL2\SDL\include;..\..\External Libs\SDL2_mixer-2.0.1\include;.\include;..\..\External Libs\SimpleJSON\src\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;DeanLibDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\external libs\SDL2\SDL\lib\win32;..\..\External Libs\SDL2_mixer-2.0.1\lib\x86;..\..\DeanLib\lib</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\DeanLib\include;..\..\External Libs\SDL2\SDL\include;..\..\External Libs\SDL2_mixer-2.0.1\include;.\include;..\..\External Libs\SimpleJSON\src\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\external libs\SDL2\SDL\lib\win32;..\..\External Libs\SDL2_mixer-2.0.1\lib\x86;..\..\DeanLib\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;DeanLibRelease.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

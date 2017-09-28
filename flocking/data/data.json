@@ -1,0 +1,20 @@
+{
+	"maxUnits": 2000,
+	"controls": {
+		"spawnAmount": 10,
+		"killAmount": 1
+	},
+	"spawnVelocity": {
+		"randomInBatch": false,
+		"min": -0.15,
+		"max": 0.35
+	},
+	"flocking": {
+		"alignment-radius": 50,
+		"alignment-weight": 0.16,
+		"cohesion-radius": 20,
+		"cohesion-weight": 0.16,
+		"separation-radius": 15,
+		"separation-weight": 0.68
+	}
+}
