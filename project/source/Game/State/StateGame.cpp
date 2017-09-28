@@ -13,12 +13,16 @@ StateGame::StateGame() {
 
 	mGameCounter = -1;
 
-
-	//SetConsoleTitle("Local Game");
+	SetConsoleTitle("Local Game");
 }
 
 StateGame::~StateGame() {
 
+}
+
+void StateGame::setPlayAgain()
+{
+	this->startNewGame();
 }
 
 void StateGame::queueNextGameState() {
@@ -134,7 +138,7 @@ void StateGame::updateGame() {
 
 					if(mSelectionIndex % 2 == 0) // On yes
 					{
-						this->startNewGame();
+						this->setPlayAgain();
 					}
 					else // On no
 					{
