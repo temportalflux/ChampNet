@@ -34,8 +34,7 @@ void StateGame::onEnterFrom(StateApplication *previous) {
 	
 	this->startNewGame();
 
-	this->mData.input->fillKeyboard();
-
+	mData.input->resetInput();
 }
 
 void StateGame::startNewGame() {

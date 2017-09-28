@@ -101,6 +101,11 @@ protected:
 	*/
 	PlayerIdentifier mWinner;
 
+	/* Author: jake Ruth
+	 * used to set play again
+	 */
+	virtual void setPlayAgain();
+
 	virtual void queueNextGameState() override;
 
 public:
