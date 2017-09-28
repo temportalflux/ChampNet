@@ -238,7 +238,13 @@ bool StateApplication::updateForInput(std::string &latestLine, bool allowEmptyLi
 				case VK_CAPITAL: // special effect, toggle the capslock
 					this->mData.input->isCaps = !this->mData.input->isCaps;
 					break;
+				case VK_SPACE:
+					if (!this->mData.input->currentLine.empty()) {
+						this->mData.input->currentLine.push_back((char)MapVirtualKey(i, MAPVK_VK_TO_CHAR));
+					}
+					break;
 					// These should not have an input effect
+				case VK_TAB:
 				case VK_SHIFT:
 				case VK_LSHIFT:
 				case VK_RSHIFT:
@@ -374,7 +380,7 @@ void StateApplication::renderConsole() {
 	}
 
 	// Render text incoming from user
-	std::string currentText = this->mData.input->currentLine;
+	std::string currentText = '"' + this->mData.input->currentLine + '"';
 	std::string postSpaces = this->console()->spaceCount((int)max(0, maxColumns - currentText.length()));
 	std::cout << "> " << currentText << postSpaces;
 }
