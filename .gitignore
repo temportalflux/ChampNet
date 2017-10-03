@@ -40,3 +40,5 @@ DevSDKs/DevSDKs/
 DevSDKs/readme.txt
 /ZIPs
 /project/enc_temp_folder
+Unity/Temp/
+Unity/.vs/
