@@ -42,3 +42,4 @@ DevSDKs/readme.txt
 /project/enc_temp_folder
 Unity/Temp/
 Unity/.vs/
+*.vs/
