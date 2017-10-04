@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{81A6E58E-BFF2-F1C8-1C4E-6316985F642C}</ProjectGuid>
+    <ProjectGuid>{C17F48D3-964E-E97C-3D2E-966F7A6C6D93}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>EditorPlugins:7</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -134,10 +134,13 @@
       <Project>{CF118143-7E37-744F-BE45-3F55345FEC40}</Project>
       <Name>Unity</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Editor.Plugins.csproj">
+      <Project>{81A6E58E-BFF2-F1C8-1C4E-6316985F642C}</Project>
+      <Name>Unity.Editor.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\UnIput\UnIput\Editor\InputResponseEditor.cs" />
-    <Compile Include="Assets\Plugins\UnIput\UnityInput2017\MappedInput\Scripts\Editor\InputDeviceEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\AttackObjectEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\Docs.txt" />
