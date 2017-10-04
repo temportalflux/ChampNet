@@ -140,7 +140,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Editor\AttackObjectEditor.cs" />
+    <Compile Include="Assets\Scripts\MonsterScriptableObjects\Editor\AttackObjectEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\Docs.txt" />

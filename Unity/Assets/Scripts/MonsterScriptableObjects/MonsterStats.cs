@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* Author: Jake Ruth
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +12,14 @@ public class MonsterStats : ScriptableObject
 {
     [Header("Monster Stats")]
     public string monsterName;
+    public MonsterType[] types;
+    [Header("")] // used to create a space in the inspector to space things apart
     public int maxHp;
     public int attack;
     public int defense;
     public int specialAttack;
     public int specialDefense;
     public int speed;
-
+    [Header("")] // used to create a space in the inspector to space things apart
     public AttackObject[] availableAttacks;
 }

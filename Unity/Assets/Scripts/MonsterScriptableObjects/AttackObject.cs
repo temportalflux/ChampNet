@@ -1,9 +1,12 @@
-﻿using System;
+﻿/* Author: Jake Ruth
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType
+public enum MonsterType
 {
     NORMAL,
     FIRE,
@@ -15,12 +18,13 @@ public enum AttackType
 [CreateAssetMenu(menuName = "Asset/ Create New Attack", order = 100)]
 public class AttackObject : ScriptableObject
 {
-    public AttackType type;
+    public string attackName;
+    public MonsterType type;
     public bool doesDamage;
     public int power;
 
     public bool doesModifiesStats;
-    public bool doesModifyOpponentStats;
+    public bool doesModifyOpponentStats; // if true, affect opponent, else affect user
     public int modifyAttackValue;
     public int modifyDefenseValue;
     public int modifySpecialAttackValue;
