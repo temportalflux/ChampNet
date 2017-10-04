@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Firemon
   m_EditorClassIdentifier: 
   monsterName: Charizard
-  type: 01000000
+  types: 01000000
   maxHp: 78
   attack: 130
   defense: 111
