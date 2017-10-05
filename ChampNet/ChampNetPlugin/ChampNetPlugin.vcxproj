@@ -74,23 +74,29 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>.\include;.\ChampNet\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>.\source;$(VC_SourcePath);</SourcePath>
-    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>.\include;.\ChampNet\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>.\source;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>.\include;.\ChampNet\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>.\source;$(VC_SourcePath);</SourcePath>
-    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>.\include;.\ChampNet\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>.\source;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -100,16 +106,16 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>CHAMPNET_PLUGIN_EXPORT;WIN32;_DEBUG;ChampNetPlugin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;$(SolutionDir)Libs\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ChampNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(PlatformTarget)\$(Configuration);$(SolutionDir)Libs\lib\$(PlatformTarget)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ChampNet.lib;RakNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(Platform)\</Command>
+      <Command>copy $(SolutionDir)$(PlatformTarget)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(PlatformTarget)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,16 +126,16 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>CHAMPNET_PLUGIN_EXPORT;_DEBUG;ChampNetPlugin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;$(SolutionDir)Libs\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ChampNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(PlatformTarget)\$(Configuration);$(SolutionDir)Libs\lib\$(PlatformTarget)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ChampNet.lib;RakNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(Platform)\</Command>
+      <Command>copy $(SolutionDir)$(PlatformTarget)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(PlatformTarget)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,18 +148,18 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>CHAMPNET_PLUGIN_EXPORT;WIN32;NDEBUG;ChampNetPlugin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;$(SolutionDir)Libs\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ChampNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(PlatformTarget)\$(Configuration);$(SolutionDir)Libs\lib\$(PlatformTarget)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ChampNet.lib;RakNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(Platform)\</Command>
+      <Command>copy $(SolutionDir)$(PlatformTarget)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(PlatformTarget)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,18 +172,18 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>CHAMPNET_PLUGIN_EXPORT;NDEBUG;ChampNetPlugin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ChampNet\include;$(SolutionDir)Libs\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ChampNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(PlatformTarget)\$(Configuration);$(SolutionDir)Libs\lib\$(PlatformTarget)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ChampNet.lib;RakNet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(Platform)\</Command>
+      <Command>copy $(SolutionDir)$(PlatformTarget)\$(Configuration)\*.dll $(SolutionDir)..\Unity\Assets\Plugins\ChampNet\$(PlatformTarget)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

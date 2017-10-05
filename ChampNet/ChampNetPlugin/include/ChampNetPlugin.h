@@ -18,7 +18,7 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG int Destroy();
 
 		// TEMPORARY
-		CHAMPNET_PLUGIN_SYMTAG int GetRandom();
+		//CHAMPNET_PLUGIN_SYMTAG int GetRandom();
 
 	};
 
