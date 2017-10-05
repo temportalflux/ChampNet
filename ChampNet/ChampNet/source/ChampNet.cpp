@@ -1,106 +1,120 @@
 #include "ChampNet.h"
 
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <RakNet\RakPeerInterface.h>
 
-namespace ChampNet {
+#include "Packet.h"
 
-	Packet::Packet(const unsigned int lengthAddress, char* address, const unsigned int dataLength, const unsigned char* data)
+namespace ChampNet
+{
+
+	Network::Network()
 	{
-		mAddressLength = lengthAddress;
-		mAddress = address;
-		copy(data, mData, dataLength);
+		// instantiate the peer inferface
+		mpPeerInterface = RakNet::RakPeerInterface::GetInstance();
+		mpPackets = new PacketQueue();
 	}
 
-	Packet::~Packet()
+	Network::~Network()
 	{
-		mAddressLength = 0;
-		mDataLength = 0;
-		mAddress = NULL;
-		delete[] mData;
-		mData = NULL;
+		// delete the peer interface
+		RakNet::RakPeerInterface::DestroyInstance(mpPeerInterface);
+		mpPeerInterface = NULL;
+		
+		delete mpPackets;
+		mpPackets = NULL;
+
 	}
 
-	void Packet::copy(const unsigned char* source, unsigned char* dest, unsigned int length)
+	// Startup the server interface
+	void Network::initServer(const int port, const int maxClients)
 	{
-		dest = new unsigned char[length];
-		for (unsigned int i = 0; i < length; i++)
+		// Startup the server by reserving a port
+		RakNet::SocketDescriptor sd = RakNet::SocketDescriptor(port, 0);
+		this->mpPeerInterface->Startup(maxClients, &sd, 1);
+		this->mpPeerInterface->SetMaximumIncomingConnections(maxClients);
+	}
+
+	// Startup the client interface
+	void Network::initClient()
+	{
+		// Startup the client by starting on an empty socket
+		RakNet::SocketDescriptor sd;
+		this->mpPeerInterface->Startup(1, &sd, 1);
+	}
+
+	// Connect the interface to its destination
+	void Network::connectToServer(const std::string &address, const int port)
+	{
+		// Connect to the server using the specified address and port
+		this->mpPeerInterface->Connect(address.c_str(), port, 0, 0);
+	}
+
+	// Fetch the address the peer is bound to
+	void Network::queryAddress(RakNet::SystemAddress *address)
+	{
+		address = &this->mpPeerInterface->GetMyBoundAddress();
+	}
+
+	// Return the IP string from the peer
+	std::string Network::getIP()
+	{
+		return this->mpPeerInterface->GetLocalIP(0); // note: this can be finicky if there are multiple network addapters
+	}
+
+	// Returns true if the network interface (RakNet thread) is active
+	bool Network::isActive()
+	{
+		return this->mpPeerInterface->IsActive();
+	}
+
+	// Shutdown the peer interface
+	void Network::disconnect()
+	{
+		this->mpPeerInterface->Shutdown(500);
+	}
+
+	// Send packet data over RakNet
+	void Network::sendTo(Data data, DataSize size,
+		RakNet::SystemAddress *address,
+		PacketPriority *priority, PacketReliability *reliability,
+		char channel, bool broadcast)
+	{
+		this->mpPeerInterface->Send(data, size, *priority, *reliability, channel, *address, broadcast);
+	}
+
+	// Cache all incoming packets (should be run regularly)
+	void Network::fetchAllPackets()
+	{
+		// RakNet Packet pointer
+		RakNet::Packet *packet;
+		// Wrapper Packet pointer
+		ChampNet::Packet* pCurrentPacket;
+
+		// Iterate over all packets in the interface
+		for (packet = mpPeerInterface->Receive();
+			packet;
+			// DEALLOCATE PACKET WHEN FINISHED ITERATION
+			mpPeerInterface->DeallocatePacket(packet), packet = mpPeerInterface->Receive())
 		{
-			dest[i] = source[i];
+			// Process the packet
+
+			// Copy out the addresss
+			char* address = NULL;
+			packet->systemAddress.ToString(true, address);
+			// Send address, and packet data to copy, to a packet wrapper
+			pCurrentPacket = new ChampNet::Packet((unsigned int)std::strlen(address), address, packet->length, packet->data);
+
+			// Save packet for processing later
+			mpPackets->enqueue(pCurrentPacket);
 		}
 	}
 
-	PacketQueue::PacketQueue()
+	// Poll the next cached packet
+	// Returns true if a packet was found;
+	bool Network::pollPackets(Packet *nextPacket)
 	{
-		mHead = NULL;
-		mTail = NULL;
-	}
-
-	PacketQueue::~PacketQueue()
-	{
-		this->clear();
-	}
-
-	void PacketQueue::enqueue(Packet* data)
-	{
-		// Add node to end of list
-
-		// If list empty, make the first node
-		if (mHead == NULL)
-		{
-			// Set to both beginning and end
-			mHead = data;
-			mTail = data;
-		}
-		else
-		{
-			// Not the first, add to last node and set as last
-			mTail->mNext = data;
-			mTail = data;
-		}
-
-	}
-
-	void PacketQueue::dequeue(Packet *&data)
-	{
-		// Always ensure data is wiped on entrance
-		data = NULL;
-
-		// Check if the list is empty
-		if (!isEmpty())
-		{
-			// Get the first element in the queue
-			data = mHead;
-
-			// Set the first element to the next element
-			mHead = mHead->mNext;
-
-			// Set the next element of the previous start to NULL (no longer a part of the list)
-			data->mNext = NULL;
-
-			// If the head is now empty, make sure to empty the tail
-			if (mHead == NULL)
-			{
-				mTail = NULL;
-			}
-
-		}
-
-	}
-
-	void PacketQueue::clear()
-	{
-		Packet* data;
-		while (!isEmpty())
-		{
-			dequeue(data);
-			delete data;
-		}
-	}
-
-	bool PacketQueue::isEmpty()
-	{
-		return mHead == NULL;
+		mpPackets->dequeue(nextPacket);
+		return nextPacket != NULL;
 	}
 
 }

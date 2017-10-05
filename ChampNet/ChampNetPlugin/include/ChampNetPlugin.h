@@ -17,9 +17,6 @@ extern "C"
 		// Clean the framework
 		CHAMPNET_PLUGIN_SYMTAG int Destroy();
 
-		// TEMPORARY
-		//CHAMPNET_PLUGIN_SYMTAG int GetRandom();
-
 	};
 
 #ifdef __cplusplus
