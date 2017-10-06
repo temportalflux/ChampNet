@@ -7,7 +7,6 @@
 *.LOCAL.txt
 *.REMOTE.txt
 bin*/
-lib*/
 gen*/
 build*/
 [dD]ebug*/
@@ -43,3 +42,4 @@ DevSDKs/readme.txt
 Unity/Temp/
 Unity/.vs/
 *.vs/
+Unity/Library/
