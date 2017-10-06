@@ -9,8 +9,8 @@ int main() {
 
 	ChampNetPlugin::Create();
 
-	for (int i = 0; i < 10; i++)
-		cout << ChampNetPlugin::GetRandom() % 1000 << '\n';
+	//for (int i = 0; i < 10; i++)
+	//	cout << ChampNetPlugin::GetRandom() % 1000 << '\n';
 
 	ChampNetPlugin::Destroy();
 
