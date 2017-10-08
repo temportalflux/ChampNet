@@ -24,7 +24,10 @@ public class Player : MonoBehaviour {
     public void doAction(ActionType type, string action, float value)
     {
         //Debug.Log(type + ": " + action + " " + value);
-        Debug.Log(ChampNetPlugin.Network.GetRandom() % 1000);
+        //Debug.Log(ChampNetPlugin.Network.GetRandom() % 1000);
+
+        
+
     }
 
 }

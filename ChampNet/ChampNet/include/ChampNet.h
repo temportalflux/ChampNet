@@ -51,6 +51,8 @@ namespace ChampNet
 		// Returns true if the network interface (RakNet thread) is active
 		bool isActive();
 
+		int getPacketCount() const;
+
 		// Shutdown the peer interface
 		void disconnect();
 

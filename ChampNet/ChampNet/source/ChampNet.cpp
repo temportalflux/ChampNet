@@ -67,6 +67,11 @@ namespace ChampNet
 		return this->mpPeerInterface->IsActive();
 	}
 
+	int Network::getPacketCount() const
+	{
+		return this->mpPackets->getCount();
+	}
+
 	// Shutdown the peer interface
 	void Network::disconnect()
 	{

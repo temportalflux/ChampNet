@@ -31,6 +31,18 @@ namespace ChampNet
 		}
 	}
 
+	void Packet::getAddress(char* &address, unsigned int &length)
+	{
+		address = this->mAddress;
+		length = this->mAddressLength;
+	}
+
+	void Packet::getData(unsigned char* &data, unsigned int &length)
+	{
+		data = this->mData;
+		length = this->mDataLength;
+	}
+
 	PacketQueue::PacketQueue()
 	{
 		mHead = NULL;
@@ -60,6 +72,8 @@ namespace ChampNet
 			mTail = data;
 		}
 
+		mCount++;
+
 	}
 
 	void PacketQueue::dequeue(Packet *&data)
@@ -84,6 +98,8 @@ namespace ChampNet
 			{
 				mTail = NULL;
 			}
+
+			mCount--;
 
 		}
 

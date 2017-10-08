@@ -24,6 +24,9 @@ namespace ChampNet
 
 		void copy(const unsigned char* source, unsigned char* dest, unsigned int length);
 
+		void getAddress(char* &address, unsigned int &length);
+		void getData(unsigned char* &data, unsigned int &length);
+
 	};
 
 	class PacketQueue
@@ -32,6 +35,7 @@ namespace ChampNet
 	private:
 		Packet* mHead;
 		Packet* mTail;
+		int mCount;
 
 	public:
 		PacketQueue();
@@ -48,6 +52,8 @@ namespace ChampNet
 		void clear();
 
 		bool isEmpty();
+
+		inline int getCount() const { return mCount; };
 
 	};
 

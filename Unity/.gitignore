@@ -34,12 +34,6 @@ _WORKSPACE/
 *.idea
 *.gradle
 *.tmp
-project/.vs/
-DevSDKs/DevSDKs/
-DevSDKs/readme.txt
-/ZIPs
-/project/enc_temp_folder
-Unity/Temp/
-Unity/.vs/
+Temp/
+Library/
 *.vs/
-Unity/Library/
