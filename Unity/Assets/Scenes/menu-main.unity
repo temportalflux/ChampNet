@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149294046}
   - component: {fileID: 149294048}
+  - component: {fileID: 149294047}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -137,6 +138,24 @@ Transform:
   m_Father: {fileID: 761789841}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149294047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 149294045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &149294048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,6 +595,7 @@ GameObject:
   - component: {fileID: 761789839}
   - component: {fileID: 761789838}
   - component: {fileID: 761789837}
+  - component: {fileID: 761789842}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -654,6 +674,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &761789842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761789836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e38894c9f4343646b8c1f237528fb6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &919857853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,6 +1071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1471137771}
   - component: {fileID: 1471137772}
+  - component: {fileID: 1471137773}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -1080,6 +1112,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: example
+--- !u!114 &1471137773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471137770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d70ac68b4da8344afcde627c3d000d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionMaterial: {fileID: 2100000, guid: f2ffdc0caad26f749846d740cfb845ae, type: 2}
+  start: 0
+  end: 1
+  time: 0.75
+  useTransition: 1
+  useFade: 0
 --- !u!1 &1783055511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,8 +1192,8 @@ Canvas:
   m_GameObject: {fileID: 1783055511}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 761789840}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

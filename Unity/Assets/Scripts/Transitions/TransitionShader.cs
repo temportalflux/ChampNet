@@ -15,13 +15,15 @@ public class TransitionShader : MonoBehaviour
         this.currentTransition = null;    
     }
 
-    protected bool isAnimating()
+    public bool isAnimating()
     {
         return this.currentTransition != null;
     }
 
     protected void startAnimation(float start, float end, float time)
     {
+        this.setCutoff(0);
+        this.setFade(1);
         this.currentTransition = StartCoroutine(this.runLoop(start, end, time));
     }
 
@@ -45,6 +47,7 @@ public class TransitionShader : MonoBehaviour
 
             // Add (end-start)x to delta
             delta += (Time.deltaTime * direction) / time;
+
             yield return null;
         }
         while (direction * (end - delta) > 0);
@@ -60,6 +63,7 @@ public class TransitionShader : MonoBehaviour
 
     virtual protected void updateShader(float delta)
     {
+        CameraBlit.setMaterial(this.transitionMaterial);
     }
 
     protected void setCutoff(float value)
@@ -75,14 +79,6 @@ public class TransitionShader : MonoBehaviour
         if (this.transitionMaterial != null)
         {
             this.transitionMaterial.SetFloat("_Fade", value);
-        }
-    }
-
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        if (this.transitionMaterial != null)
-        {
-            Graphics.Blit(source, destination, this.transitionMaterial);
         }
     }
 
