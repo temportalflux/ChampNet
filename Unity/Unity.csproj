@@ -98,6 +98,8 @@
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStats.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Transitions\ManagerTransitions.cs" />
+    <Compile Include="Assets\Scripts\Transitions\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
     <Compile Include="Assets\Scripts\UI\UIInputField.cs" />
   </ItemGroup>
