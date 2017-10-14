@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(InputResponse))]
+//[CustomEditor(typeof(InputResponse))]
 public class InputResponseEditor : Editor {
 
     bool showBindings = false;
@@ -12,10 +12,10 @@ public class InputResponseEditor : Editor {
     {
         serializedObject.Update();
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("input"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("inputId"));
+        //EditorGUILayout.PropertyField(serializedObject.FindProperty("input"));
+        //EditorGUILayout.PropertyField(serializedObject.FindProperty("inputId"));
 
-        this.drawBindings();
+        //this.drawBindings();
 
         serializedObject.ApplyModifiedProperties();
     }

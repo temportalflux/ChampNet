@@ -3,130 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/**
+ * Searches for updates from input controllers and sends to listeners
+ */
 public class InputResponse : MonoBehaviour {
 
+    // The different types of updates available
     [System.Serializable]
-    public struct GamepadBinding
+    public enum UpdateEvent
+    {
+        // Never triggered, do not use unless indicating null
+        NONE,
+        // When a button is initially pressed
+        DOWN,
+        // When a button is initially released
+        UP,
+        // When a button or axis/trigger is being held
+        TICK,
+    }
+
+    // The listener class for handling all button effects
+    [System.Serializable]
+    public class Listener<T>
+    {
+        [Tooltip("The type of update desired (not None)")]
+        public UpdateEvent type;
+
+        [Tooltip("The button or axis being pressed")]
+        public T key;
+    }
+
+    // The listener class for buttons (required for UnityEvents)
+    [System.Serializable]
+    public class ListenerButton : Listener<MappedButton>
     {
 
         [System.Serializable]
-        public enum Type
-        {
-            BUTTON, AXIS, TRIGGER
-        }
+        public class InputEvent : UnityEvent<UpdateEvent, MappedButton> { }
 
-        [System.Serializable]
-        public enum UpdateEvent
-        {
-            DOWN, UP, TICK
-        }
-
-        [Tooltip("The mapping for the binding")]
-        public string action;
-
-        public Type type;
-
-        [Tooltip("The button binding")]
-        public GamepadButton gamepadButton;
-
-        [Tooltip("The button binding")]
-        public MappedButton mappedButton;
-
-        [Tooltip("The button binding")]
-        public GamepadAxis gamepadAxis;
-
-        [Tooltip("The button binding")]
-        public MappedAxis mappedAxis;
-
-        [Tooltip("The button binding")]
-        public GamepadTrigger gamepadTrigger;
-
-        public void Update(GamepadDevice gamepad, System.Action<UpdateEvent, string, float> fireUpdateEvent)
-        {
-            switch (this.type)
-            {
-                case Type.BUTTON:
-                    if (gamepad.GetButtonDown(this.gamepadButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.DOWN, this.action, 0f);
-                    }
-                    if (gamepad.GetButton(this.gamepadButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.TICK, this.action, 0f);
-                    }
-                    if (gamepad.GetButtonUp(this.gamepadButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.UP, this.action, 0f);
-                    }
-                    break;
-                case Type.AXIS:
-                    fireUpdateEvent(UpdateEvent.TICK, this.action, gamepad.GetAxis(this.gamepadAxis));
-                    break;
-                case Type.TRIGGER:
-                    fireUpdateEvent(UpdateEvent.TICK, this.action, gamepad.GetTrigger(this.gamepadTrigger));
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void Update(InputDevice gamepad, System.Action<UpdateEvent, string, float> fireUpdateEvent)
-        {
-            switch (this.type)
-            {
-                case Type.BUTTON:
-                    if (gamepad.GetButtonDown(this.mappedButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.DOWN, this.action, 0f);
-                    }
-                    if (gamepad.GetButton(this.mappedButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.TICK, this.action, 0f);
-                    }
-                    if (gamepad.GetButtonUp(this.mappedButton))
-                    {
-                        fireUpdateEvent(UpdateEvent.UP, this.action, 0f);
-                    }
-                    break;
-                case Type.AXIS:
-                    fireUpdateEvent(UpdateEvent.TICK, this.action, gamepad.GetAxis(this.mappedAxis));
-                    break;
-                default:
-                    break;
-            }
-        }
+        [Tooltip("The action to perform when a button is changed")]
+        public InputEvent action;
 
     }
 
+    // The listener class for axes (required for UnityEvents)
     [System.Serializable]
-    public struct EventType
+    public class ListenerAxis : Listener<MappedAxis>
     {
-        public GamepadBinding.UpdateEvent type;
-        public string action;
-    }
 
-    [System.Serializable]
-    public struct Listener
-    {
         [System.Serializable]
-        public class Event : UnityEvent<GamepadBinding.UpdateEvent, string, float> { }
+        public class InputEvent : UnityEvent<UpdateEvent, MappedAxis, float> { }
 
-        public EventType[] events;
-        public Event action;
-
-        public bool listensTo(GamepadBinding.UpdateEvent type, string action)
-        {
-            // O(n)
-            foreach (EventType evt in this.events)
-            {
-                if (evt.type == type && evt.action == action)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        [Tooltip("The action to perform when a axis is changed")]
+        public InputEvent action;
 
     }
 
@@ -135,76 +64,124 @@ public class InputResponse : MonoBehaviour {
 
     [Range(1, 4)]
     [Tooltip("The controller number")]
-    public int inputId;
+    public int inputId = 1;
 
-    [Tooltip("The action bindings")]
-    public GamepadBinding[] bindings;
+    [Tooltip("The list of listeners for buttons")]
+    public ListenerButton[] listenerButtons;
+    [Tooltip("The list of listeners for axes")]
+    public ListenerAxis[] listenerAxes;
+    
+    // The dictionary mapping of listeners for buttons from Update type -> Button -> Listener action
+    private Dictionary<UpdateEvent, Dictionary<MappedButton, List<ListenerButton>>> dictListenerButtons;
+    // The dictionary mapping of listeners for axes from Update type -> Button -> Listener action
+    private Dictionary<UpdateEvent, Dictionary<MappedAxis, List<ListenerAxis>>> dictListenerAxes;
 
-    public Listener[] listeners;
-
-    public InputResponse()
+    private void Start()
     {
+        // Create the dictionaries
+        this.dictListenerButtons = new Dictionary<UpdateEvent, Dictionary<MappedButton, List<ListenerButton>>>();
+        this.dictListenerAxes = new Dictionary<UpdateEvent, Dictionary<MappedAxis, List<ListenerAxis>>>();
+
+        // Populate the dictionaries from the arrays
+        this.forSet(this.listenerButtons,
+            (ListenerButton listener) =>
+            {
+                // ensure there is a mapping for the update type
+                if (!this.dictListenerButtons.ContainsKey(listener.type))
+                    this.dictListenerButtons.Add(listener.type, new Dictionary<MappedButton, List<ListenerButton>>());
+                // ensure there is a mapping for the button
+                if (!this.dictListenerButtons[listener.type].ContainsKey(listener.key))
+                    this.dictListenerButtons[listener.type].Add(listener.key, new List<ListenerButton>());
+                // ensure there is a mapping for the action
+                if (!this.dictListenerButtons[listener.type][listener.key].Contains(listener))
+                    this.dictListenerButtons[listener.type][listener.key].Add(listener);
+            }
+        );
+        this.forSet(this.listenerAxes,
+            (ListenerAxis listener) =>
+            {
+                // ensure there is a mapping for the update type
+                if (!this.dictListenerAxes.ContainsKey(listener.type))
+                    this.dictListenerAxes.Add(listener.type, new Dictionary<MappedAxis, List<ListenerAxis>>());
+                // ensure there is a mapping for the axis
+                if (!this.dictListenerAxes[listener.type].ContainsKey(listener.key))
+                    this.dictListenerAxes[listener.type].Add(listener.key, new List<ListenerAxis>());
+                // ensure there is a mapping for the action
+                if (!this.dictListenerAxes[listener.type][listener.key].Contains(listener))
+                    this.dictListenerAxes[listener.type][listener.key].Add(listener);
+            }
+        );
     }
 
-    public InputResponse(GamepadInput input, int inputId)
-    {
-        this.input = input;
-        this.inputId = inputId;
-    }
-
-    public void addBinding(GamepadBinding obj)
-    {
-        this.bindings = this.add(obj, this.bindings);
-    }
-
-    private T[] add<T>(T obj, T[] old)
-    {
-        List<T> newObjs = new List<T>(old);
-        newObjs.Add(obj);
-        return newObjs.ToArray();
+    /**
+     * Iterate through any set and do some action
+     */
+    private void forSet<T>(IEnumerable<T> set, UnityAction<T> iteration) {
+        foreach (T item in set)
+        {
+            iteration.Invoke(item);
+        }
     }
 
     public void Update()
     {
+        // Check for all inputs
+        MappedInput.inputDevices.ForEach(this.updateInput);
+    }
 
-        InputDevice active = MappedInput.activeDevice;
-        GamepadDevice gamepad = this.getGamepad();
-        if (this.bindings.Length > 0)
+    // Check for updates in some input
+    void updateInput(InputDevice device)
+    {
+        UpdateEvent eventType;
+        float value;
+
+        // check all mappings currently being tracked
+        foreach (MappedButton mapping in this.dictListenerButtons.Keys)
         {
-            foreach (GamepadBinding binding in this.bindings)
+            eventType = UpdateEvent.NONE;
+
+            // Get the appropriate event
+            if (device.GetButtonDown(mapping))
             {
+                eventType = UpdateEvent.DOWN;
+            }
+            else if (device.GetButtonUp(mapping))
+            {
+                eventType = UpdateEvent.UP;
+            }
+            else if (device.GetButton(mapping))
+            {
+                eventType = UpdateEvent.TICK;
+            }
 
-                // Update for gamepads
-                if (gamepad != null)
-                {
-                    binding.Update(gamepad, this.onBindingUpdate);
-                }
-
-                // Update for the active device
-                if (active != null)
-                {
-                    binding.Update(active, this.onBindingUpdate);
-                }
-
+            // Send the event to the listeners for said update type and mapping
+            if (eventType != UpdateEvent.NONE &&
+                this.dictListenerButtons.ContainsKey(eventType) &&
+                this.dictListenerButtons[eventType].ContainsKey(mapping))
+            {
+                this.forSet(this.dictListenerButtons[eventType][mapping],
+                    (ListenerButton listener) => { listener.action.Invoke(eventType, mapping); }
+                );
             }
         }
 
-    }
-
-    private GamepadDevice getGamepad()
-    {
-        return this.inputId > 0 && this.inputId <= input.gamepads.Count ? input.gamepads[this.inputId - 1] : null;
-    }
-
-    private void onBindingUpdate(GamepadBinding.UpdateEvent type, string action, float value)
-    {
-        foreach (Listener listener in this.listeners)
+        // check all mappings currently being tracked
+        foreach (MappedAxis mapping in this.dictListenerAxes.Keys)
         {
-            if (listener.listensTo(type, action))
+            eventType = UpdateEvent.TICK;
+            value = device.GetAxis(mapping);
+
+            // Send the event to the listeners for said update type and mapping
+            if (eventType != UpdateEvent.NONE &&
+               this.dictListenerAxes.ContainsKey(eventType) &&
+               this.dictListenerAxes[eventType].ContainsKey(mapping))
             {
-                listener.action.Invoke(type, action, value);
+                this.forSet(this.dictListenerAxes[eventType][mapping],
+                    (ListenerAxis listener) => { listener.action.Invoke(eventType, mapping, value); }
+                );
             }
         }
+
     }
 
 }

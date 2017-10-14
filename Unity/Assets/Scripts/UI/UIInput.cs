@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using GamepadBinding = InputResponse.GamepadBinding;
+//using GamepadBinding = InputResponse.GamepadBinding;
 
 public class UIInput : MonoBehaviour {
 
@@ -21,6 +21,7 @@ public class UIInput : MonoBehaviour {
 
 	}
 	
+    /*
 	public void down(GamepadBinding.UpdateEvent type, string action, float value)
     {
         Debug.Log("Down");
@@ -30,5 +31,6 @@ public class UIInput : MonoBehaviour {
     {
         Debug.Log("Up");
     }
+    //*/
 
 }

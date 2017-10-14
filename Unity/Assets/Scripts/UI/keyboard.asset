@@ -13,9 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardButtonMapping:
   - target: 1
-    buttons: 7700000011010000
+    buttons: 0d000000
   - target: 2
-    buttons: 7300000012010000
+    buttons: 5c000000
+  - target: 3
+    buttons: 78000000
+  - target: 4
+    buttons: 7a000000
+  - target: 5
+    buttons: 1b000000
+  - target: 6
+    buttons: 09000000
   keyboardAxisMapping:
   - target: 0
     buttonsPositive: 14010000
@@ -23,3 +31,9 @@ MonoBehaviour:
   - target: 1
     buttonsPositive: 11010000
     buttonsNegative: 12010000
+  - target: 2
+    buttonsPositive: 
+    buttonsNegative: 
+  - target: 3
+    buttonsPositive: 
+    buttonsNegative: 
