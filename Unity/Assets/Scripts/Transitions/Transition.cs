@@ -54,6 +54,7 @@ public class Transition : TransitionShader {
             this.setCutoff(delta);
         if (this.useFade)
             this.setFade(delta);
+        base.updateShader(delta);
     }
 
 }
