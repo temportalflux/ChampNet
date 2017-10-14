@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
-  m_Name: Firemon
+  m_Name: Watermon
   m_EditorClassIdentifier: 
-  monsterName: Charizard
-  types: 01000000
-  maxHp: 78
-  attack: 104
-  defense: 78
-  specialAttack: 159
+  monsterName: Blastoise
+  types: 02000000
+  maxHp: 79
+  attack: 103
+  defense: 120
+  specialAttack: 135
   specialDefense: 115
-  speed: 100
+  speed: 78
   availableAttacks:
   - {fileID: 11400000, guid: c7a2934f86dec29479e5e257fbc88d9d, type: 2}
