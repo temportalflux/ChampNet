@@ -21,16 +21,9 @@ public class UIInput : MonoBehaviour {
 
 	}
 	
-    /*
-	public void down(GamepadBinding.UpdateEvent type, string action, float value)
+	public void down(InputDevice device, InputResponse.UpdateEvent type, MappedAxis action, float value)
     {
-        Debug.Log("Down");
+        
     }
-
-    public void up(GamepadBinding.UpdateEvent type, string action, float value)
-    {
-        Debug.Log("Up");
-    }
-    //*/
 
 }

@@ -31,6 +31,10 @@ public class InputResponse : MonoBehaviour {
 
         [Tooltip("The button or axis being pressed")]
         public T key;
+
+        [Tooltip("Indicates if certain input types should be filtered out")]
+        public bool useKeyboard = true, useMouse = false, useGamepad = true;
+
     }
 
     // The listener class for buttons (required for UnityEvents)
@@ -39,7 +43,7 @@ public class InputResponse : MonoBehaviour {
     {
 
         [System.Serializable]
-        public class InputEvent : UnityEvent<UpdateEvent, MappedButton> { }
+        public class InputEvent : UnityEvent<InputDevice, UpdateEvent, MappedButton> { }
 
         [Tooltip("The action to perform when a button is changed")]
         public InputEvent action;
@@ -52,7 +56,7 @@ public class InputResponse : MonoBehaviour {
     {
 
         [System.Serializable]
-        public class InputEvent : UnityEvent<UpdateEvent, MappedAxis, float> { }
+        public class InputEvent : UnityEvent<InputDevice, UpdateEvent, MappedAxis, float> { }
 
         [Tooltip("The action to perform when a axis is changed")]
         public InputEvent action;
@@ -126,60 +130,77 @@ public class InputResponse : MonoBehaviour {
     public void Update()
     {
         // Check for all inputs
-        MappedInput.inputDevices.ForEach(this.updateInput);
+        //MappedInput.inputDevices.ForEach(this.updateInput);
+        this.updateInput(MappedInput.activeDevice);
     }
 
     // Check for updates in some input
     void updateInput(InputDevice device)
     {
-        UpdateEvent eventType;
+        bool isMouse = device is MouseInputDevice;
+        bool isKeyboard = device is KeyboardInputDevice;
+        bool isGamepad = device is GamepadInputDevice;
+
         float value;
 
+        bool active;
         // check all mappings currently being tracked
-        foreach (MappedButton mapping in this.dictListenerButtons.Keys)
+        foreach (UpdateEvent eventType in this.dictListenerButtons.Keys)
         {
-            eventType = UpdateEvent.NONE;
+            foreach (MappedButton mapping in this.dictListenerButtons[eventType].Keys)
+            {
+                // Get the appropriate event
+                switch (eventType)
+                {
+                    case UpdateEvent.DOWN:
+                        active = device.GetButtonDown(mapping);
+                        break;
+                    case UpdateEvent.TICK:
+                        active = device.GetButtonUp(mapping);
+                        break;
+                    case UpdateEvent.UP:
+                        active = device.GetButton(mapping);
+                        break;
+                    default:
+                        active = false;
+                        break;
+                }
 
-            // Get the appropriate event
-            if (device.GetButtonDown(mapping))
-            {
-                eventType = UpdateEvent.DOWN;
+                // Send the event to the listeners for said update type and mapping
+                if (active)
+                {
+                    this.forSet(this.dictListenerButtons[eventType][mapping],
+                        (ListenerButton listener) => {
+                            if (listener.useMouse && isMouse || listener.useKeyboard && isKeyboard || listener.useGamepad && isGamepad)
+                            {
+                                listener.action.Invoke(device, eventType, mapping);
+                            }
+                        }
+                    );
+                }
             }
-            else if (device.GetButtonUp(mapping))
-            {
-                eventType = UpdateEvent.UP;
-            }
-            else if (device.GetButton(mapping))
-            {
-                eventType = UpdateEvent.TICK;
-            }
-
-            // Send the event to the listeners for said update type and mapping
-            if (eventType != UpdateEvent.NONE &&
-                this.dictListenerButtons.ContainsKey(eventType) &&
-                this.dictListenerButtons[eventType].ContainsKey(mapping))
-            {
-                this.forSet(this.dictListenerButtons[eventType][mapping],
-                    (ListenerButton listener) => { listener.action.Invoke(eventType, mapping); }
-                );
-            }
+            
+           
         }
-
+        
         // check all mappings currently being tracked
-        foreach (MappedAxis mapping in this.dictListenerAxes.Keys)
+        foreach (UpdateEvent eventType in this.dictListenerAxes.Keys)
         {
-            eventType = UpdateEvent.TICK;
-            value = device.GetAxis(mapping);
-
-            // Send the event to the listeners for said update type and mapping
-            if (eventType != UpdateEvent.NONE &&
-               this.dictListenerAxes.ContainsKey(eventType) &&
-               this.dictListenerAxes[eventType].ContainsKey(mapping))
+            foreach (MappedAxis mapping in this.dictListenerAxes[eventType].Keys)
             {
+                value = device.GetAxis(mapping);
+                // Send the event to the listeners for said update type and mapping
                 this.forSet(this.dictListenerAxes[eventType][mapping],
-                    (ListenerAxis listener) => { listener.action.Invoke(eventType, mapping, value); }
+                    (ListenerAxis listener) =>
+                    {
+                        if (listener.useMouse && isMouse || listener.useKeyboard && isKeyboard || listener.useGamepad && isGamepad)
+                        {
+                            listener.action.Invoke(device, eventType, mapping, value);
+                        }
+                    }
                 );
             }
+            
         }
 
     }
