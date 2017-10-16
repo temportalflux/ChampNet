@@ -1,18 +1,22 @@
 
 #include <iostream>
-#include "ChampNetPlugin.h"
+
+#include "Server.h"
 
 using namespace std;
 
 int main() {
-	cout << "Starting ChampNet plugin test environment...\n";
+	cout << "Starting ChampNet server...\n";
 
-	ChampNetPlugin::Create();
+	Server *pServer = new Server();
 
-	//for (int i = 0; i < 10; i++)
-	//	cout << ChampNetPlugin::GetRandom() % 1000 << '\n';
+	while (pServer->isRunning())
+	{
 
-	ChampNetPlugin::Destroy();
+	}
+
+	delete pServer;
+	pServer = NULL;
 
 	system("pause");
 	return 0;

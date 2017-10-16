@@ -115,4 +115,9 @@ namespace ChampNetPlugin {
 		delete (ChampNet::Packet*)packetPtr;
 	}
 
+	void Disconnect()
+	{
+		gpNetwork->disconnect();
+	}
+
 }
