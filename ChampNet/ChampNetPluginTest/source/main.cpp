@@ -12,7 +12,7 @@ int main() {
 
 	while (pServer->isRunning())
 	{
-
+		pServer->update();
 	}
 
 	delete pServer;
