@@ -1,22 +1,26 @@
 
 #include <iostream>
 
-#include "Server.h"
+#include "Game.h"
+#include "StateServer.h"
 
 using namespace std;
 
 int main() {
 	cout << "Starting ChampNet server...\n";
 
-	Server *pServer = new Server();
+	// Create a server
+	Game *pGame = new Game(new StateServer());
 
-	while (pServer->isRunning())
+	// Run the loop for the game
+	while (pGame->isRunning())
 	{
-		pServer->update();
+		pGame->update();
 	}
 
-	delete pServer;
-	pServer = NULL;
+	// Delete the server
+	delete pGame;
+	pGame = NULL;
 
 	system("pause");
 	return 0;

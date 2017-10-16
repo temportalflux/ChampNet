@@ -177,11 +177,14 @@
   <ItemGroup>
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Server.cpp" />
+    <ClCompile Include="source\StateServer.cpp" />
+    <ClCompile Include="source\StateApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\Server.h" />
+    <ClInclude Include="include\StateServer.h" />
+    <ClInclude Include="include\StateApplication.h" />
+    <ClInclude Include="include\StateData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

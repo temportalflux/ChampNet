@@ -1,23 +1,27 @@
-#include "Server.h"
+#include "StateServer.h"
 
 #include "ChampNetPlugin.h"
 
+#include "StateData.h"
 #include "Win.h"
 #include <iostream>
 
-Server::Server() : Game()
+StateServer::StateServer() : StateApplication()
 {
 	ChampNetPlugin::Create();
 }
 
-Server::~Server()
+StateServer::~StateServer()
 {
 	ChampNetPlugin::Destroy();
 }
 
-void Server::onKeyDown(int i)
+/** Author: Dustin Yost
+* Called when a key is marked as down this update
+*/
+void StateServer::onKeyDown(int i)
 {
-	Game::onKeyDown(i);
+	StateApplication::onKeyDown(i);
 	char *current = this->mpState->mInput.keyboard;
 
 	// Check to see if the user's input has stopped the game
@@ -26,6 +30,9 @@ void Server::onKeyDown(int i)
 		this->disconnect();
 		return;
 	}
+
+	// Update the line size to track the previous size
+	this->mpState->mInput.lineSizePrevious = this->mpState->mInput.currentLine.length();
 
 	switch (i)
 	{
@@ -85,10 +92,16 @@ void Server::onKeyDown(int i)
 		case VK_RETURN:
 			if (this->mpState->mInput.allowEmptyLines || this->mpState->mInput.currentLine.length() > 0)
 			{
+
 				// Mark the latest line
 				this->onInput(this->mpState->mInput.currentLine);
-				// empty the string
+
+				// The line size should be cleared, as the new line's previous size is DNE
+				this->mpState->mInput.lineSizePrevious = -1;
+
+				// empty the string (size is now 0)
 				this->mpState->mInput.currentLine = "";
+
 			}
 			break;
 		default:
@@ -142,29 +155,47 @@ void Server::onKeyDown(int i)
 					character = tolower(character);
 				}
 
+				// Update the current line with the new character
 				this->mpState->mInput.currentLine += character;
+				
 			}
 			break;
 	}
 
 }
 
-void Server::onInput(std::string &input)
+/** Author: Dustin Yost
+* Called when some input has been entered (ENTER has been pressed)
+*/
+void StateServer::onInput(std::string &input)
 {
 	std::cout << input << '\n';
 }
 
-void Server::start()
+void StateServer::start()
 {
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, 0);
 }
 
-void Server::disconnect()
+void StateServer::disconnect()
 {
 	ChampNetPlugin::Disconnect();
 }
 
-void Server::render()
+void StateServer::render()
 {
+
+	// The current line being typed
+	std::string input = this->mpState->mInput.currentLine;
+	// The previous size of the line being typed
+	// will be the same as input.length() when no input has changed
+	// will be -1 if the line was inputted this update
+	// will be input.length() - 1 if there was a letter added this update
+	// will be input.length() + 1 if there was a letter removed this update
+	unsigned int inputSizePrev = this->mpState->mInput.lineSizePrevious;
+
+	// The current position of the cursor (the next letter will be written here)
+	int cursorPosX = this->mpState->mConsole.cursorPosX;
+	int cursorPosY = this->mpState->mConsole.cursorPosY;
 
 }

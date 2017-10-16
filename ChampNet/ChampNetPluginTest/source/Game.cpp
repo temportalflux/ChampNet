@@ -1,16 +1,33 @@
 #include "Game.h"
 #include <cstdlib>
 
-#include "Win.h"
+#include <iostream>
+#include <cassert>
+
+#include "StateApplication.h"
+
+// initalize as DNE
+Game *Game::gpGame = NULL;
 
 /** Author: Dustin Yost
 * A base class for all update loop based game information (runs the game)
 */
-Game::Game()
+Game::Game(StateApplication *state)
 {
-	mIsRunning = true;
-	mpState = new StateGame();
-	mpState->mConsole.consoleWindow = GetForegroundWindow();
+	if (gpGame != NULL)
+	{
+		std::cout << "ERROR: Multiple game instances, deleting the old one.\n";
+		delete gpGame;
+		gpGame = NULL;
+	}
+	gpGame = this;
+
+	mpState = NULL;
+	mpNext = state;
+}
+
+Game::Game() : Game(NULL)
+{
 }
 
 Game::~Game()
@@ -20,6 +37,14 @@ Game::~Game()
 		delete mpState;
 		mpState = NULL;
 	}
+
+	// we are the instance, so mark as DNE
+	gpGame = NULL;
+}
+
+const bool Game::isRunning() const {
+	// return true if the state has not yet been activated or while the state is running
+	return this->mpState == NULL || this->mpState->isRunning();
 }
 
 /** Author: Dustin Yost
@@ -27,75 +52,51 @@ Game::~Game()
 */
 void Game::update()
 {
-	this->updateInput();
-	this->updateNetwork();
-	this->updateGame();
-	this->render();
-}
-
-/** Author: Dustin Yost
-* Collects all input changes
-*/
-void Game::updateInput()
-{
-	if (GetForegroundWindow() != this->mpState->mConsole.consoleWindow)
+	if (mpState != NULL) // DNE on first tick
 	{
-		return;
+		this->mpState->updateInput();
+		this->mpState->updateNetwork();
+		this->mpState->updateGame();
+		this->mpState->render();
 	}
 
-	byte* mainState = NULL;
-	GetKeyboardState(mainState);
-	// Gather all keyboard states
-	for (int key = 0; key < StateInput::SIZE_KEYBOARD; key++)
+	if (mpNext != NULL) // not DNE on first tick
 	{
-		this->mpState->mInput.previous[key] = this->mpState->mInput.keyboard[key];
-		this->mpState->mInput.keyboard[key] = (GetAsyncKeyState(key) & 0x8000) != 0;
-	}
-
-}
-
-/** Updates the network | STUB */
-void Game::updateNetwork() {}
-
-/** Author: Dustin Yost
-* Handles all game updates and responses to input/network updates
-*/
-void Game::updateGame()
-{
-	this->updateGameForInput(this->mpState->mInput.keyboard, this->mpState->mInput.previous);
-}
-
-/** Author: Dustin Yost
-* Updates states according to input updates
-*/
-void Game::updateGameForInput(const char *current, const char *previous)
-{
-	// Handle updates from the keyboard
-	for (int i = 0; i < StateInput::SIZE_KEYBOARD; i++)
-	{
-		// Check if the key was pressed this update
-		if (!(current[i] && !previous[i]))
-		{
-			// not pressed this update, so skip
-			continue;
-		}
-
-		// Notify that a key has been pressed
-		this->onKeyDown(i);
-
+		this->goToNextState();
 	}
 }
 
-/** Author: Dustin Yost
-* Called when a key is marked as down this update
-*/
-void Game::onKeyDown(int i)
+void Game::queueState(StateApplication *nextState)
 {
-	if (i == VK_ESCAPE)
-	{
-		this->mIsRunning = false;
-	}
+	mpNext = nextState;
 }
 
-/** Renders the game to the display | STUB */
-void Game::render() {}
+void Game::goToNextState()
+{
+	// Can only occur if the next state is not DNE
+	assert(this->mpNext != NULL);
+
+	// Notify the current state that it is exiting
+	if (this->mpState != NULL)
+	{
+		this->mpState->onExitTo(this->mpNext);
+	}
+	
+	// Notify the next state that it is entering
+	// Transfer pertinent data
+	this->mpNext->onEnterFrom(this->mpState);
+
+	// If the current state was non-null
+	if (this->mpState != NULL)
+	{
+		// delete the state from memory (all pertinent data has been transferred)
+		delete mpState;
+		mpState = NULL;
+	}
+
+	// next state is now the current state, change variables accordingly
+	this->mpState = this->mpNext;
+	// Mark next as DNE, the next is now the current
+	this->mpNext = NULL;
+
+}
