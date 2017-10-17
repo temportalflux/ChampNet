@@ -22,7 +22,8 @@ public class SceneTransition : MonoBehaviour {
     
     public void exit()
     {
-        ManagerTransitions.INSTANCE.triggerExit();
+        ManagerTransitions.INSTANCE.triggerLoadAsync(null, this.transition);
+        //ManagerTransitions.INSTANCE.triggerExit();
     }
 
 }

@@ -13,6 +13,10 @@ using System.Collections;
 public enum MappedButton
 {
 	None,
-	UP, DOWN,
-
+	CONFIRM,
+    DENY,
+    INTERACT,
+    SWAP,
+    HOME,
+    BACK,
 }

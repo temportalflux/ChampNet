@@ -26,8 +26,24 @@ public class ManagerTransitions : MonoBehaviour {
     private Coroutine routDisplay, routLoad, routMain;
 
     Transition sceneTransition;
+
     // variable to store the loading of some scene asynchonously - only non-null while inUse is true
     AsyncOperation sceneLoading;
+
+    bool _allowSceneActivation = false;
+    bool allowSceneActivation
+    {
+        set
+        {
+            if (this.sceneLoading != null)
+                this.sceneLoading.allowSceneActivation = value;
+            this._allowSceneActivation = value;
+        }
+        get
+        {
+            return this.sceneLoading != null ? this.sceneLoading.allowSceneActivation : this._allowSceneActivation;
+        }
+    }
 
     /**
      * Handles caching of the class instance to the static variable
@@ -116,20 +132,31 @@ public class ManagerTransitions : MonoBehaviour {
         // Tell debugger the scene is loading
         Debug.Log("Loading next scene");
 
-        // Start the scene loading
-        this.sceneLoading = SceneManager.LoadSceneAsync(nextScene);
+        if (nextScene != null)
+        {
+            // Start the scene loading
+            this.sceneLoading = SceneManager.LoadSceneAsync(nextScene);
+        }
+
         // Prevent scene loading from finishing
-        this.sceneLoading.allowSceneActivation = false;
+        this.allowSceneActivation = false;
 
         do
         {
             //Debug.Log((this.sceneLoading.progress * 100) + "% done");
             yield return null;
-        } while (!this.sceneLoading.isDone);
+        } while (!(this.allowSceneActivation && (this.sceneLoading == null || this.sceneLoading.isDone)));
 
         //Debug.Log((this.sceneLoading.progress * 100) + "% done");
 
-        Debug.Log(nextScene + " is loaded.");
+        if (nextScene != null)
+        {
+            Debug.Log(nextScene + " is loaded.");
+        }
+        else
+        {
+            this.triggerExit();
+        }
 
         this.routLoad = null;
     }
@@ -144,7 +171,7 @@ public class ManagerTransitions : MonoBehaviour {
             if (this.routDisplay == null)
             {
                 // Allow the scene to finish running
-                this.sceneLoading.allowSceneActivation = true;
+                this.allowSceneActivation = true;
 
                 // Display must finish first, then scene activation can be checked
                 if (this.routLoad == null)
