@@ -2,6 +2,7 @@
 #define CHAMPNET_SERVER_GAME_H
 
 class StateApplication;
+struct StateData;
 
 /** Author: Dustin Yost
  * A base class for all update loop based game information (runs the game)
@@ -23,6 +24,7 @@ public:
 	virtual ~Game();
 
 	const bool isRunning() const;
+	StateData* getData() const;
 
 	/** Author: Dustin Yost
 	 * Handles all gameloop updates

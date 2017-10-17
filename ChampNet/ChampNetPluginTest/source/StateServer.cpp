@@ -1,6 +1,7 @@
 #include "StateServer.h"
 
 #include "ChampNetPlugin.h"
+#include "Packet.h"
 
 #include "StateData.h"
 #include "Win.h"
@@ -13,7 +14,14 @@ StateServer::StateServer() : StateApplication()
 
 StateServer::~StateServer()
 {
+	this->disconnect();
 	ChampNetPlugin::Destroy();
+}
+
+void StateServer::onEnterFrom(StateApplication *previous)
+{
+	StateApplication::onEnterFrom(previous);
+	this->start();
 }
 
 /** Author: Dustin Yost
@@ -32,7 +40,7 @@ void StateServer::onKeyDown(int i)
 	}
 
 	// Update the line size to track the previous size
-	this->mpState->mInput.lineSizePrevious = this->mpState->mInput.currentLine.length();
+	this->mpState->mInput.lineSizePrevious = (unsigned int)this->mpState->mInput.currentLine.length();
 
 	switch (i)
 	{
@@ -174,12 +182,42 @@ void StateServer::onInput(std::string &input)
 
 void StateServer::start()
 {
-	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, 0);
+	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
 
 void StateServer::disconnect()
 {
 	ChampNetPlugin::Disconnect();
+}
+
+/** Author: Dustin Yost
+* Updates the network
+*/
+void StateServer::updateNetwork()
+{
+	ChampNetPlugin::FetchPackets();
+	void* pPacket = NULL;
+	bool foundValidPacket = false;
+	do
+	{
+		pPacket = ChampNetPlugin::PollPacket(foundValidPacket);
+		if (foundValidPacket)
+		{
+			this->handlePacket((ChampNet::Packet*)pPacket);
+			ChampNetPlugin::FreePacket(pPacket);
+		}
+	} while (foundValidPacket);
+	
+}
+
+void StateServer::handlePacket(ChampNet::Packet *packet)
+{
+	switch (packet->getID())
+	{
+		default:
+			std::cout << "Received packet with id " << packet->getID() << '\n';
+			break;
+	}
 }
 
 void StateServer::render()

@@ -13,11 +13,32 @@ StateApplication::StateApplication()
 
 StateApplication::~StateApplication()
 {
+	if (mpState != NULL)
+	{
+		delete mpState;
+		mpState = NULL;
+	}
+}
+
+StateData* StateApplication::getData() const
+{
+	return this->mpState;
 }
 
 void StateApplication::onEnterFrom(StateApplication *previous)
 {
+	if (previous != NULL)
+	{
+		if (mpState != NULL)
+		{
+			delete mpState;
+			mpState = NULL;
+		}
 
+		this->mpState = previous->mpState;
+		previous->mpState = NULL;
+	}
+	
 }
 
 void StateApplication::onExitTo(StateApplication *next)

@@ -41,6 +41,8 @@ struct StateNetwork
 	// The port the network is connected to
 	unsigned int port;
 
+	unsigned int maxClients;
+
 };
 
 struct StateData

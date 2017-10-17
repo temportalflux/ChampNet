@@ -5,6 +5,7 @@
 #include <cassert>
 
 #include "StateApplication.h"
+#include "StateData.h"
 
 // initalize as DNE
 Game *Game::gpGame = NULL;
@@ -45,6 +46,11 @@ Game::~Game()
 const bool Game::isRunning() const {
 	// return true if the state has not yet been activated or while the state is running
 	return this->mpState == NULL || this->mpState->isRunning();
+}
+
+StateData* Game::getData() const
+{
+	return (this->mpState != NULL ? this->mpState : this->mpNext)->getData();
 }
 
 /** Author: Dustin Yost
