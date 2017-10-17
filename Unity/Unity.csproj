@@ -221,6 +221,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
     <Compile Include="Assets\Scripts\Misc\Color.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerCharacterController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInputController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
