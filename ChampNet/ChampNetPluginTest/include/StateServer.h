@@ -13,6 +13,8 @@ public:
 	StateServer();
 	virtual ~StateServer();
 
+	virtual void onEnterFrom(StateApplication *previous) override;
+
 	/** Author: Dustin Yost
 	* Called when a key is marked as down this update
 	*/
@@ -23,10 +25,10 @@ public:
 	*/
 	virtual void onInput(std::string &input);
 	
+	virtual void render() override;
+
 	void start();
 	void disconnect();
-
-	virtual void render() override;
 
 };
 

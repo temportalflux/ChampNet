@@ -21,6 +21,8 @@ public:
 
 	inline const bool isRunning() const { return mIsRunning; }
 
+	StateData* getData() const;
+
 	virtual void onEnterFrom(StateApplication *previous);
 
 	virtual void onExitTo(StateApplication *next);

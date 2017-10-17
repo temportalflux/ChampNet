@@ -13,7 +13,14 @@ StateServer::StateServer() : StateApplication()
 
 StateServer::~StateServer()
 {
+	this->disconnect();
 	ChampNetPlugin::Destroy();
+}
+
+void StateServer::onEnterFrom(StateApplication *previous)
+{
+	StateApplication::onEnterFrom(previous);
+	this->start();
 }
 
 /** Author: Dustin Yost
@@ -32,7 +39,7 @@ void StateServer::onKeyDown(int i)
 	}
 
 	// Update the line size to track the previous size
-	this->mpState->mInput.lineSizePrevious = this->mpState->mInput.currentLine.length();
+	this->mpState->mInput.lineSizePrevious = (unsigned int)this->mpState->mInput.currentLine.length();
 
 	switch (i)
 	{
@@ -174,7 +181,7 @@ void StateServer::onInput(std::string &input)
 
 void StateServer::start()
 {
-	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, 0);
+	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
 
 void StateServer::disconnect()
