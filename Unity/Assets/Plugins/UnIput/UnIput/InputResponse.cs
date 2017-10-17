@@ -58,8 +58,14 @@ public class InputResponse : MonoBehaviour {
         [System.Serializable]
         public class InputEvent : UnityEvent<InputDevice, UpdateEvent, MappedAxis, float> { }
 
+        [System.Serializable]
+        public class InputEventButton : UnityEvent<InputDevice, UpdateEvent, MappedAxis, AxisDirection> { }
+
         [Tooltip("The action to perform when a axis is changed")]
         public InputEvent action;
+
+        [Tooltip("The action to perform when a axis is changed")]
+        public InputEventButton actionButton;
 
     }
 
@@ -188,15 +194,46 @@ public class InputResponse : MonoBehaviour {
         {
             foreach (MappedAxis mapping in this.dictListenerAxes[eventType].Keys)
             {
+
                 value = device.GetAxis(mapping);
+
                 // Send the event to the listeners for said update type and mapping
                 this.forSet(this.dictListenerAxes[eventType][mapping],
                     (ListenerAxis listener) =>
                     {
+
+                        foreach (AxisDirection direction in System.Enum.GetValues(typeof(AxisDirection)))
+                        {
+                            // Get the appropriate event
+                            switch (eventType)
+                            {
+                                case UpdateEvent.DOWN:
+                                    active = device.GetAxisButtonDown(mapping, direction);
+                                    break;
+                                case UpdateEvent.TICK:
+                                    active = device.GetAxisButton(mapping, direction);
+                                    break;
+                                case UpdateEvent.UP:
+                                    active = device.GetAxisButtonUp(mapping, direction);
+                                    break;
+                                default:
+                                    active = false;
+                                    break;
+                            }
+                            if (active)
+                            {
+                                if (listener.useMouse && isMouse || listener.useKeyboard && isKeyboard || listener.useGamepad && isGamepad)
+                                {
+                                    listener.actionButton.Invoke(device, eventType, mapping, direction);
+                                }
+                            }
+                        }
+
                         if (listener.useMouse && isMouse || listener.useKeyboard && isKeyboard || listener.useGamepad && isGamepad)
                         {
                             listener.action.Invoke(device, eventType, mapping, value);
                         }
+
                     }
                 );
             }
