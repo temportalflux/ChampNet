@@ -1,6 +1,7 @@
 #include "StateServer.h"
 
 #include "ChampNetPlugin.h"
+#include "Packet.h"
 
 #include "StateData.h"
 #include "Win.h"
@@ -187,6 +188,36 @@ void StateServer::start()
 void StateServer::disconnect()
 {
 	ChampNetPlugin::Disconnect();
+}
+
+/** Author: Dustin Yost
+* Updates the network
+*/
+void StateServer::updateNetwork()
+{
+	ChampNetPlugin::FetchPackets();
+	void* pPacket = NULL;
+	bool foundValidPacket = false;
+	do
+	{
+		pPacket = ChampNetPlugin::PollPacket(foundValidPacket);
+		if (foundValidPacket)
+		{
+			this->handlePacket((ChampNet::Packet*)pPacket);
+			ChampNetPlugin::FreePacket(pPacket);
+		}
+	} while (foundValidPacket);
+	
+}
+
+void StateServer::handlePacket(ChampNet::Packet *packet)
+{
+	switch (packet->getID())
+	{
+		default:
+			std::cout << "Received packet with id " << packet->getID() << '\n';
+			break;
+	}
 }
 
 void StateServer::render()

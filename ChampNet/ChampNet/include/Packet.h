@@ -27,6 +27,8 @@ namespace ChampNet
 		void getAddress(char* &address, unsigned int &length);
 		void getData(unsigned char* &data, unsigned int &length);
 
+		inline unsigned int getID() const { return this->mData[0]; }
+
 	};
 
 	class PacketQueue

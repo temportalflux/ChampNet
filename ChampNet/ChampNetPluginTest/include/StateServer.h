@@ -5,6 +5,11 @@
 
 #include <string>
 
+namespace ChampNet
+{
+	class Packet;
+};
+
 class StateServer : public StateApplication
 {
 
@@ -24,6 +29,13 @@ public:
 	* Called when some input has been entered (ENTER has been pressed)
 	*/
 	virtual void onInput(std::string &input);
+
+	/** Author: Dustin Yost
+	 * Updates the network
+	 */
+	virtual void updateNetwork() override;
+
+	void handlePacket(ChampNet::Packet *packet);
 	
 	virtual void render() override;
 
