@@ -1,18 +1,56 @@
 ﻿using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
+using AOT;
 
 namespace ChampNetPlugin
 {
+
+    enum MessageIDs
+    {
+        // Client-Sent Messages
+        // 1) Sent to server to notify it of an incoming client
+        ID_USER_JOINED = 136,
+    }
 
     public class Network
     {
 
         const string IDENTIFIER = "ChampNetPlugin";
 
+        public delegate void debugCallback(IntPtr request, int color, int size);
+        enum Color { red, green, blue, black, white, yellow, orange };
+
         // Create a network to connect with
         [DllImport(IDENTIFIER)]
         public static extern int Create();
+
+        [DllImport(IDENTIFIER, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void RegisterDebugCallback(debugCallback callback);
+
+        public static void SetDebugCallback()
+        {
+            RegisterDebugCallback(OnDebugCallback);
+        }
+
+        [MonoPInvokeCallback(typeof(debugCallback))]
+        static void OnDebugCallback(IntPtr request, int color, int size)
+        {
+            //Ptr to string
+            string debug_string = Marshal.PtrToStringAnsi(request, size);
+
+            //Add Specified Color
+            debug_string =
+                String.Format("{0}{1}{2}{3}{4}",
+                "<color=",
+                ((Color)color).ToString(),
+                ">",
+                debug_string,
+                "</color>"
+                );
+
+            UnityEngine.Debug.Log(debug_string);
+        }
 
         // Destroy the network (must call Create prior) (must call when owning object is destroyed)
         [DllImport(IDENTIFIER)]
@@ -71,14 +109,14 @@ namespace ChampNetPlugin
             {
                 // Get the address
                 uint addressLength = 0;
-                address = GetPacketAddress(packetRef, ref addressLength);
+                //address = GetPacketAddress(packetRef, ref addressLength);
 
                 // Get the data
                 uint dataLength = 0;
-                IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
+                //IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
 
                 data = new char[dataLength];
-                Marshal.Copy(ptrData, data, 0, (int)dataLength);
+                //Marshal.Copy(ptrData, data, 0, (int)dataLength);
                 // Data is now possessed by C#
                 
                 // Free the packet - all data is copied over
@@ -86,8 +124,12 @@ namespace ChampNetPlugin
             }
 
             // Return if a valid packet was found
-            return foundPacket;
+            return false;// foundPacket;
         }
+
+        // Disconnect from the interface
+        [DllImport(IDENTIFIER)]
+        public static extern void Disconnect();
 
     }
 

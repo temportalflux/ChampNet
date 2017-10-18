@@ -4,10 +4,12 @@
 #include "ChampNet.h"
 
 #include <string>
+#include <sstream>
 
 namespace ChampNetPlugin {
 
 	CHAMPNET_PLUGIN_SYMTAG ChampNet::Network *gpNetwork = 0;
+	static FuncCallBack gDebugFunc = nullptr;
 
 	// Create a network to connect with
 	int Create() {
@@ -17,6 +19,18 @@ namespace ChampNetPlugin {
 			return true;
 		}
 		return 0;
+	}
+
+	void RegisterDebugCallback(FuncCallBack cb)
+	{
+		gDebugFunc = cb;
+		send_log("Initialized debug callback", Color::Black);
+	}
+
+	void send_log(const char *msg, const Color &color)
+	{
+		if (gDebugFunc != nullptr)
+			gDebugFunc(msg, (int)color, (int)strlen(msg));
 	}
 
 	// Destroy the network (must call Create prior) (must call when owning object is destroyed)
@@ -51,6 +65,8 @@ namespace ChampNetPlugin {
 			gpNetwork->initClient();
 			return 0;
 		}
+
+		send_log("test", Color::Blue);
 		return 1;
 	}
 
@@ -89,11 +105,11 @@ namespace ChampNetPlugin {
 	}
 
 	// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
-	char* GetPacketAddress(void* packetPtr, unsigned int &length)
+	const char* GetPacketAddress(void* packetPtr, unsigned int &length)
 	{
 		// copies the REFERENCE (not the actual bytes)
 		// this means data MUST be copied by the caller
-		char* address;
+		const char* address;
 		((ChampNet::Packet*)packetPtr)->getAddress(address, length);
 		return address;
 	}
