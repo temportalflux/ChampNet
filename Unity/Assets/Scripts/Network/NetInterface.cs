@@ -39,8 +39,17 @@ public class NetInterface : MonoBehaviour {
         char[] data;
         while (Netty.PollPacket(out address, out data))
         {
-            Debug.Log("Got packet");
-            
+            //Debug.Log("Got packet");
+            Debug.Log("Packet with data[0] = " + (int)data[0]);
+            switch ((int)data[0])
+            {
+                case (int)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
+                    Debug.Log("Connected");
+                    break;
+                default:
+                    break;
+            }
+
         }
 
     }

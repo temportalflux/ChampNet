@@ -30,6 +30,9 @@ extern "C"
 			// Sender uses to place self, peers use to place a dummy unit
 			ID_USER_SPAWN,
 
+			// RakNet Messages (used for clients)
+			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
+
 			// Client-Sent Messages
 			// 1) Sent to server to notify it of an incoming client
 			ID_USER_JOINED,

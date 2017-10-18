@@ -8,6 +8,10 @@ namespace ChampNetPlugin
 
     enum MessageIDs
     {
+        // RakNet Messages (used for clients)
+        // Send to client from server on client connection
+        ID_CLIENT_CONNECTION_ACCEPTED = 16,
+
         // Client-Sent Messages
         // 1) Sent to server to notify it of an incoming client
         ID_USER_JOINED = 136,
@@ -78,7 +82,7 @@ namespace ChampNetPlugin
 
         // Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
-        public static extern string GetPacketAddress(IntPtr packetRef, ref uint length);
+        public static extern IntPtr GetPacketAddress(IntPtr packetRef, ref uint length);
 
         // Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
@@ -107,16 +111,27 @@ namespace ChampNetPlugin
             // If a valid packet has be dequeued, copy out the data.
             if (foundPacket)
             {
+                //Debug.Log("Got packet ptr " + packetRef);
+
                 // Get the address
                 uint addressLength = 0;
-                //address = GetPacketAddress(packetRef, ref addressLength);
+                try
+                {
+                    IntPtr strPtr = GetPacketAddress(packetRef, ref addressLength);
+                    address = Marshal.PtrToStringAnsi(strPtr);
+                    //Debug.Log("Got address " + address);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
 
                 // Get the data
                 uint dataLength = 0;
-                //IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
+                IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
 
                 data = new char[dataLength];
-                //Marshal.Copy(ptrData, data, 0, (int)dataLength);
+                Marshal.Copy(ptrData, data, 0, (int)dataLength);
                 // Data is now possessed by C#
                 
                 // Free the packet - all data is copied over
@@ -124,7 +139,7 @@ namespace ChampNetPlugin
             }
 
             // Return if a valid packet was found
-            return false;// foundPacket;
+            return foundPacket;
         }
 
         // Disconnect from the interface

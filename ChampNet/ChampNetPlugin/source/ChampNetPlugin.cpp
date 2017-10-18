@@ -9,7 +9,7 @@
 namespace ChampNetPlugin {
 
 	CHAMPNET_PLUGIN_SYMTAG ChampNet::Network *gpNetwork = 0;
-	static FuncCallBack gDebugFunc = nullptr;
+	static FuncCallBack gDebugFunc = 0;
 
 	// Create a network to connect with
 	int Create() {
@@ -29,7 +29,7 @@ namespace ChampNetPlugin {
 
 	void send_log(const char *msg, const Color &color)
 	{
-		if (gDebugFunc != nullptr)
+		if (gDebugFunc != 0)
 			gDebugFunc(msg, (int)color, (int)strlen(msg));
 	}
 
@@ -62,11 +62,11 @@ namespace ChampNetPlugin {
 	{
 		if (gpNetwork != 0)
 		{
+			send_log("Starting the client", Color::Green);
 			gpNetwork->initClient();
 			return 0;
 		}
 
-		send_log("test", Color::Blue);
 		return 1;
 	}
 
@@ -75,6 +75,10 @@ namespace ChampNetPlugin {
 	{
 		if (gpNetwork != 0)
 		{
+			std::stringstream s("Connectint to ");
+			s << address << '|' << port;
+			send_log(s.str().c_str(), Color::Green);
+
 			gpNetwork->connectToServer(address, port);
 			return 0;
 		}
@@ -99,19 +103,52 @@ namespace ChampNetPlugin {
 	{
 		ChampNet::Packet *packet = NULL;
 		validPacket = gpNetwork->pollPackets(packet);
+		if (validPacket)
+		{
+			std::stringstream s;
+			s << "Found valid packet at location " << (void const*)packet;
+			send_log(s.str().c_str(), Color::Green);
+		}
 
 		// Send the packet ptr for usage by FreePacket
-		return packet;
+		return (void *)packet;
 	}
 
 	// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
 	const char* GetPacketAddress(void* packetPtr, unsigned int &length)
 	{
-		// copies the REFERENCE (not the actual bytes)
-		// this means data MUST be copied by the caller
-		const char* address;
-		((ChampNet::Packet*)packetPtr)->getAddress(address, length);
-		return address;
+		/*
+		std::stringstream s;
+		s << "Received packet location " << (void const*)packetPtr;
+		send_log(s.str().c_str(), Color::Yellow);
+		s.str("");
+		//*/
+
+		length = 0;
+
+		ChampNet::Packet *packet = (ChampNet::Packet*)packetPtr;
+		bool valid = packet != NULL;
+
+		char *out = NULL;
+		if (valid)
+		{
+			const char *address;
+			packet->getAddress(address, length);
+
+			out = new char[length + 1];
+			for (int i = 0; i < length; i++)
+			{
+				out[i] = address[i];
+			}
+			out[length] = '\0';
+		}
+		else
+		{
+			out = new char[1];
+			out[length] = '\0';
+		}
+
+		return out;
 	}
 
 	// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
