@@ -97,7 +97,7 @@ namespace ChampNetPlugin
         // Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket
         // Copies out the data from a valid packet, and frees the packet from memory.
         // Returns true if a valid packet was found, else false.
-        public static bool PollPacket(out string address, out char[] data)
+        public static bool PollPacket(out string address, out byte[] data)
         {
 
             // Ensure the out params have some value (invalid at start)
@@ -130,7 +130,7 @@ namespace ChampNetPlugin
                 uint dataLength = 0;
                 IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
 
-                data = new char[dataLength];
+                data = new byte[dataLength];
                 Marshal.Copy(ptrData, data, 0, (int)dataLength);
                 // Data is now possessed by C#
                 
