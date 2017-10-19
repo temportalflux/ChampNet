@@ -214,6 +214,18 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 {
 	switch (packet->getID())
 	{
+		// Some client is connecting (expect a ID_USER_JOINED shortly)
+		case ChampNetPlugin::ID_CLIENT_CONNECTION:
+			std::cout << "User connected\n";
+			break;
+		// Some client has disconnected
+		case ChampNetPlugin::ID_CLIENT_DISCONNECTION:
+			std::cout << "User disconnected\n";
+			break;
+		// A client is joining
+		case ChampNetPlugin::ID_USER_JOINED:
+			std::cout << "User has joined\n";
+			break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << '\n';
 			break;
