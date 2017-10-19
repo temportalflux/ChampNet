@@ -22,6 +22,9 @@ extern "C"
 			ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,
 			ID_CLIENT_MISSING = ID_CONNECTION_LOST,
 
+			// RakNet Messages (used for clients)
+			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
+
 			// placeholder - For tracking in C# script
 			ID_PLACEHOLDER = ID_USER_PACKET_ENUM,
 
@@ -29,9 +32,6 @@ extern "C"
 			// 2) Sent to clients to notify them of the values for some spawning user
 			// Sender uses to place self, peers use to place a dummy unit
 			ID_USER_SPAWN,
-
-			// RakNet Messages (used for clients)
-			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
 
 			// Client-Sent Messages
 			// 1) Sent to server to notify it of an incoming client

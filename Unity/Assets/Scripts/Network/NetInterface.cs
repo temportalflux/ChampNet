@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using ChampNetPlugin;
 using UnityEngine;
 
 using Netty = ChampNetPlugin.Network;
@@ -77,7 +79,22 @@ public class NetInterface : MonoBehaviour {
             }
 
         }
+    }
 
+    /// <summary>
+    /// Used to test sending a byte array to the server
+    /// </summary>
+    /// <remarks>
+    /// Author: Jake Ruth
+    /// </remarks>
+    [ContextMenu("Test Sending a byte array to the server")]
+    public void SendTestByteArray()
+    {
+        char id = (char)MessageIDs.ID_USER_JOINED;
+        string test = id + "jake was here";
+        byte[] byteArray = Encoding.ASCII.GetBytes(test);
+        int size = byteArray.Length;
+        Netty.SendByteArray("127.0.0.1", 425, byteArray, size);
     }
 
 }

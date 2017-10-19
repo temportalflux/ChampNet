@@ -5,6 +5,9 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
+
+#include <RakNet\RakPeerInterface.h>
 
 namespace ChampNetPlugin {
 
@@ -170,7 +173,15 @@ namespace ChampNetPlugin {
 
 	void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize)
 	{
-
+		//gDebugFunc(address, (int)ChampNetPlugin::Color::White, std::strlen(address));
+		//gDebugFunc(byteArray, (int)ChampNetPlugin::Color::White, byteArraySize);
+		std::stringstream s;
+		s << address << '|' << port;
+		RakNet::SystemAddress system_address;
+		system_address.FromString(s.str().c_str());
+		PacketPriority priority = HIGH_PRIORITY;
+		PacketReliability reliability = RELIABLE;
+		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, &priority, &reliability, 0, false);
 	}
 
 	void Disconnect()

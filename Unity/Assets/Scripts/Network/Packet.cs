@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Packet {
@@ -31,7 +32,7 @@ public class Packet {
     /** Author: Dustin Yost
      * Writes a byte[] of data starting at 'end'
      */
-    private void write(byte[] data, byte[] toWrite, ref int end)
+    protected void write(byte[] data, byte[] toWrite, ref int end)
     {
         // copy the source to the data
         // copies all of toWrite [0, length) to data [end, end + length)
@@ -75,4 +76,37 @@ public class Packet {
         this.read(data, 0, out end);
     }
 	
+}
+
+public class PacketString : Packet
+{
+    public string s;
+
+    public new uint getSize()
+    {
+        return base.getSize() + (uint)System.Runtime.InteropServices.Marshal.SizeOf(s);
+    }
+
+    public new void write(byte[] data, int start, out int end)
+    {
+        // Write id data
+        base.write(data, start, out end);
+        
+        // Write the int to the byte array (increments end to the new end of the data)
+        this.write(data, Encoding.ASCII.GetBytes(s), ref end);
+    }
+
+    /** Author: Dustin Yost
+     * Reads all data for this packet from data, starting at start.
+     * When finished, end will equal start + getSize()
+     */
+    public new void read(byte[] data, int start, out int end)
+    {
+        base.read(data, start, out end);
+
+        s = System.BitConverter.ToString(data, start, end);
+
+        end += System.Runtime.InteropServices.Marshal.SizeOf(s);
+    }
+
 }
