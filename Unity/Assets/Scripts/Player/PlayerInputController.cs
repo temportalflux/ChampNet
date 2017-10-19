@@ -58,7 +58,6 @@ public class PlayerInputController : MonoBehaviour
         switch (evt)
         {
             case InputResponse.UpdateEvent.DOWN:
-                Debug.Log("H " + evt + " " + value);
                 latestAxis = 0;
                 isDownX = true;
                 break;
@@ -82,7 +81,6 @@ public class PlayerInputController : MonoBehaviour
         switch (evt)
         {
             case InputResponse.UpdateEvent.DOWN:
-                Debug.Log("V " + evt + " " + value);
                 latestAxis = 1;
                 isDownY = true;
                 break;
