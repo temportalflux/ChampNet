@@ -76,6 +76,8 @@ extern "C"
 		// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
 		CHAMPNET_PLUGIN_SYMTAG void FreePacket(void* packetPtr);
 
+		CHAMPNET_PLUGIN_SYMTAG void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize);
+
 		// Disconnect from the interface
 		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
 
