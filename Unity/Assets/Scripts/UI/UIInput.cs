@@ -1,34 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using GamepadBinding = InputResponse.GamepadBinding;
+using UnityEngine.EventSystems;
 
 public class UIInput : MonoBehaviour {
 
-    public UIInputField[] fields;
+    public UnityEngine.UI.Button[] fields;
+    public RectTransform selector;
 
     private int selected;
     
-	void Start () {
-        this.selected = 0;
-
-
-        for (int i = 0; i < fields.Length; i++)
-        {
-            this.fields[i].index = i;
-        }
-
-	}
-	
-	public void down(GamepadBinding.UpdateEvent type, string action, float value)
+	void Start ()
     {
-        Debug.Log("Down");
+
+        this.selected = 0;
+        
+    }
+	
+	public void down(InputDevice device, InputResponse.UpdateEvent type, MappedButton action)
+    {
+        switch (action)
+        {
+            case MappedButton.CONFIRM:
+                this.fields[this.selected].onClick.Invoke();
+                break;
+            default:
+                break;
+        }
     }
 
-    public void up(GamepadBinding.UpdateEvent type, string action, float value)
+    public void down(InputDevice device, InputResponse.UpdateEvent type, MappedAxis action, AxisDirection value)
     {
-        Debug.Log("Up");
+        if (value != AxisDirection.Centered)
+        {
+
+            switch (action)
+            {
+                case MappedAxis.Vertical:
+                    
+                    // Add value to current selection
+                    this.selected = (this.selected - (int)value);
+                    // Ensure yield is negative
+                    if (this.selected < 0) this.selected += this.fields.Length;
+                    // Find remainder
+                    this.selected %= this.fields.Length;
+
+                    this.selector.position = new Vector3(this.selector.position.x, this.fields[this.selected].gameObject.transform.position.y, 0);
+                    
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
 
 }

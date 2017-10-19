@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using ActionType = InputResponse.GamepadBinding.UpdateEvent;
+//using ActionType = InputResponse.GamepadBinding.UpdateEvent;
 
 public class Player : MonoBehaviour {
 
@@ -21,6 +21,12 @@ public class Player : MonoBehaviour {
 		
 	}
 
+    public void onAction(InputResponse.UpdateEvent evt, MappedButton button)
+    {
+        Debug.Log(evt + ": " + button);
+    }
+
+    /*
     public void doAction(ActionType type, string action, float value)
     {
         //Debug.Log(type + ": " + action + " " + value);
@@ -29,5 +35,6 @@ public class Player : MonoBehaviour {
         
 
     }
+    */
 
 }
