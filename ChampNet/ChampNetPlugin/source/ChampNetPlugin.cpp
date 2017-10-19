@@ -168,6 +168,11 @@ namespace ChampNetPlugin {
 		delete (ChampNet::Packet*)packetPtr;
 	}
 
+	void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize)
+	{
+
+	}
+
 	void Disconnect()
 	{
 		gpNetwork->disconnect();

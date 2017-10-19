@@ -92,6 +92,10 @@ namespace ChampNetPlugin
         [DllImport(IDENTIFIER)]
         public static extern void FreePacket(IntPtr packetRef);
 
+        // Send a byte array to the server
+        [DllImport(IDENTIFIER)]
+        public static extern void SendByteArray(string address, int port, byte[] byteArray, int byteArraySize);
+
         // WRAPPER METHOD
         // Handles polling the network for packets, and returning the address and data of that packet.
         // Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket
