@@ -988,7 +988,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1393906413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 520.59216, z: 0}
+  m_LocalPosition: {x: 0, y: 521, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1783055515}
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28146944e4a8c01448ad1e2dc5f00b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: TestArea
+  nextScene: town
 --- !u!114 &1471137773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,7 +1191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74c44c7891bc994f977acf47ba4ef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 1716200920}
   inputId: 1
   listenerButtons:
   - type: 1
@@ -1324,12 +1323,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5772672cff21e042934898e4d3f978e, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1716200920 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114205472863438048, guid: d5772672cff21e042934898e4d3f978e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1716200919}
-  m_Script: {fileID: 11500000, guid: a4bc7ca6c9568401aa02f1429913a90e, type: 3}
 --- !u!1 &1783055511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,7 +1406,7 @@ RectTransform:
   m_GameObject: {fileID: 1783055511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 90}
-  m_LocalScale: {x: 0.009266258, y: 0.009266258, z: 0.009266258}
+  m_LocalScale: {x: 0.00925926, y: 0.00925926, z: 0.00925926}
   m_Children:
   - {fileID: 1208866513}
   - {fileID: 1393906414}
