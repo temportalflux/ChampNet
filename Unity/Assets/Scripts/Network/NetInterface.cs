@@ -6,8 +6,33 @@ using Netty = ChampNetPlugin.Network;
 
 public class NetInterface : MonoBehaviour {
 
+    private static NetInterface _instance = null;
+    public static NetInterface INSTANCE
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    private static void loadSingleton(NetInterface inst)
+    {
+
+        if (_instance != null)
+        {
+            Destroy(_instance);
+            _instance = null;
+        }
+
+        _instance = inst;
+        DontDestroyOnLoad(_instance);
+
+    }
+
     private void Start()
     {
+        NetInterface.loadSingleton(this);
+
         Debug.Log("Creating network");
         Netty.Create();
         Netty.SetDebugCallback();
