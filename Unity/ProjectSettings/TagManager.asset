@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Transition
+  - Wall
+  - Water
+  - Grass
   layers:
   - Default
   - TransparentFX

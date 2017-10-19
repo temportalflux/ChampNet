@@ -7,7 +7,6 @@ public class PlayerInputController : MonoBehaviour
 {
     private PlayerCharacterController _pcc;
 
-
     // Use this for initialization
 	void Start ()
 	{
@@ -31,6 +30,5 @@ public class PlayerInputController : MonoBehaviour
         input.Normalize();
 
         _pcc.Move(input);
-
     }
 }
