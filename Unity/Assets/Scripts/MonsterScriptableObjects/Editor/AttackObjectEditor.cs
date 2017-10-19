@@ -49,7 +49,8 @@ public class AttackObjectEditor : Editor
         */
 
         ao.type = (MonsterType)EditorGUILayout.EnumPopup("Attack Type", ao.type);
-
+        ao.physicalOrSpecial =
+            (PhysicalOrSpecial) EditorGUILayout.EnumPopup("Physical Or Special", ao.physicalOrSpecial);
         EditorGUILayout.Space(); // used to create spacing in the inspector
 
         ao.doesDamage = EditorGUILayout.Toggle("Does Damage?", ao.doesDamage);
