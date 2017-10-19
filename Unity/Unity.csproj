@@ -235,6 +235,7 @@
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />
     <Compile Include="Assets\Scripts\Network\NetInterface.cs" />
+    <Compile Include="Assets\Scripts\Network\Packet.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Player\KeeperSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacterController.cs" />

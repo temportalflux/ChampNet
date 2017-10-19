@@ -45,7 +45,7 @@ public class NetInterface : MonoBehaviour {
             switch (id)
             {
                 case (int)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
-                    
+                    Debug.Log("Connected");
                     break;
                 default:
                     break;
