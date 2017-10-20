@@ -36,27 +36,27 @@ MonoBehaviour:
   tiles:
   - side: 0
     tile: {fileID: 0}
-  - side: 6
-    tile: {fileID: 0}
-  - side: 10
-    tile: {fileID: 0}
   - side: 1
-    tile: {fileID: 0}
-  - side: 5
-    tile: {fileID: 0}
-  - side: 9
-    tile: {fileID: 0}
-  - side: 3
-    tile: {fileID: 0}
-  - side: 7
-    tile: {fileID: 0}
-  - side: 11
     tile: {fileID: 0}
   - side: 2
     tile: {fileID: 0}
-  - side: 8
-    tile: {fileID: 0}
-  - side: 12
+  - side: 3
     tile: {fileID: 0}
   - side: 4
+    tile: {fileID: 0}
+  - side: 5
+    tile: {fileID: 0}
+  - side: 6
+    tile: {fileID: 0}
+  - side: 7
+    tile: {fileID: 0}
+  - side: 8
+    tile: {fileID: 0}
+  - side: 9
+    tile: {fileID: 0}
+  - side: 10
+    tile: {fileID: 0}
+  - side: 11
+    tile: {fileID: 0}
+  - side: 12
     tile: {fileID: 0}

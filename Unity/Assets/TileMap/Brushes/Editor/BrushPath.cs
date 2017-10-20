@@ -8,20 +8,19 @@ namespace UnityEditor
 
     public enum TileSide
     {
-        CENTER,
-        OUTER_NW,
-        INNER_NW,
-        NORTH,
-        OUTER_NE,
-        INNER_NE,
-        EAST,
-        OUTER_SE,
-        INNER_SE,
-        SOUTH,
-        OUTER_SW,
-        INNER_SW,
-        WEST,
-
+        CENTER = 0,
+        INTER_NW = 5,
+        ANTI_NW = 9,
+        NORTH = 1,
+        INTER_NE = 6,
+        ANTI_NE = 10,
+        EAST = 2,
+        INTER_SE = 7,
+        ANTI_SE = 11,
+        SOUTH = 3,
+        INTER_SW = 8,
+        ANTI_SW = 12,
+        WEST = 4,
     }
 
     [System.Serializable]
@@ -49,6 +48,10 @@ namespace UnityEditor
     public class BrushPath : GridBrush
     {
 
+        public static TileSide[] TILE_SIDE_CARDINAL = new TileSide[] { TileSide.NORTH, TileSide.EAST, TileSide.SOUTH, TileSide.WEST };
+        public static TileSide[] TILE_SIDE_INTER = new TileSide[] { TileSide.INTER_NW, TileSide.INTER_NE, TileSide.INTER_SW, TileSide.INTER_SE };
+        public static TileSide[] TILE_SIDE_ANTI = new TileSide[] { TileSide.ANTI_NW, TileSide.ANTI_NE, TileSide.ANTI_SW, TileSide.ANTI_SE };
+
         // Create the asset for the brush
         [MenuItem("Assets/Create/Asset/Brush - Path")]
         public static void CreateBrush()
@@ -65,42 +68,54 @@ namespace UnityEditor
         public static Vector3Int offset(Vector3Int position, TileSide side, int mult = 1)
         {
             if (side == TileSide.NORTH ||
-                side == TileSide.OUTER_NW ||
-                side == TileSide.OUTER_NE ||
-                side == TileSide.INNER_NW ||
-                side == TileSide.INNER_NE
+                side == TileSide.INTER_NW ||
+                side == TileSide.INTER_NE ||
+                side == TileSide.ANTI_NW ||
+                side == TileSide.ANTI_NE
                 )
             {
                 position += Vector3Int.up * mult;
             }
             if (side == TileSide.SOUTH ||
-                side == TileSide.OUTER_SW ||
-                side == TileSide.OUTER_SE ||
-                side == TileSide.INNER_NW ||
-                side == TileSide.INNER_NE
+                side == TileSide.INTER_SW ||
+                side == TileSide.INTER_SE ||
+                side == TileSide.ANTI_NW ||
+                side == TileSide.ANTI_NE
                 )
             {
                 position += Vector3Int.up * mult * -1;
             }
             if (side == TileSide.EAST ||
-                side == TileSide.OUTER_NE ||
-                side == TileSide.OUTER_SE ||
-                side == TileSide.INNER_NE ||
-                side == TileSide.INNER_SE
+                side == TileSide.INTER_NE ||
+                side == TileSide.INTER_SE ||
+                side == TileSide.ANTI_NE ||
+                side == TileSide.ANTI_SE
                 )
             {
                 position += Vector3Int.right * mult;
             }
             if (side == TileSide.WEST ||
-                side == TileSide.OUTER_NW ||
-                side == TileSide.OUTER_SW ||
-                side == TileSide.INNER_NW ||
-                side == TileSide.INNER_SW
+                side == TileSide.INTER_NW ||
+                side == TileSide.INTER_SW ||
+                side == TileSide.ANTI_NW ||
+                side == TileSide.ANTI_SW
                 )
             {
                 position += Vector3Int.right * mult * -1;
             }
             return position;
+        }
+
+        public static TileSide opposite(TileSide cardinal)
+        {
+            switch (cardinal)
+            {
+                case TileSide.NORTH: return TileSide.SOUTH;
+                case TileSide.SOUTH: return TileSide.NORTH;
+                case TileSide.EAST: return TileSide.WEST;
+                case TileSide.WEST: return TileSide.EAST;
+                default: return TileSide.CENTER;
+            }
         }
 
         public static PathItem[] newTileList(PathItem[] root = null, bool small = false)
@@ -109,17 +124,17 @@ namespace UnityEditor
             {
                 return new PathItem[] {
                     new PathItem(TileSide.CENTER, root),
-                    new PathItem(TileSide.OUTER_NW, root),
-                    new PathItem(TileSide.INNER_NW, root),
+                    new PathItem(TileSide.INTER_NW, root),
+                    new PathItem(TileSide.ANTI_NW, root),
                     new PathItem(TileSide.NORTH, root),
-                    new PathItem(TileSide.OUTER_NE, root),
-                    new PathItem(TileSide.INNER_NE, root),
+                    new PathItem(TileSide.INTER_NE, root),
+                    new PathItem(TileSide.ANTI_NE, root),
                     new PathItem(TileSide.EAST, root),
-                    new PathItem(TileSide.OUTER_SE, root),
-                    new PathItem(TileSide.INNER_SE, root),
+                    new PathItem(TileSide.INTER_SE, root),
+                    new PathItem(TileSide.ANTI_SE, root),
                     new PathItem(TileSide.SOUTH, root),
-                    new PathItem(TileSide.OUTER_SW, root),
-                    new PathItem(TileSide.INNER_SW, root),
+                    new PathItem(TileSide.INTER_SW, root),
+                    new PathItem(TileSide.ANTI_SW, root),
                     new PathItem(TileSide.WEST, root)
                 };
             }
@@ -127,17 +142,17 @@ namespace UnityEditor
             {
                 return new PathItem[] {
                     new PathItem(TileSide.CENTER, root),
-                    new PathItem(TileSide.OUTER_NW, root),
-                    new PathItem(TileSide.INNER_NW, null),
+                    new PathItem(TileSide.INTER_NW, root),
+                    new PathItem(TileSide.ANTI_NW, null),
                     new PathItem(TileSide.NORTH, root),
-                    new PathItem(TileSide.OUTER_NE, root),
-                    new PathItem(TileSide.INNER_NE, null),
+                    new PathItem(TileSide.INTER_NE, root),
+                    new PathItem(TileSide.ANTI_NE, null),
                     new PathItem(TileSide.EAST, root),
-                    new PathItem(TileSide.OUTER_SE, root),
-                    new PathItem(TileSide.INNER_SE, null),
+                    new PathItem(TileSide.INTER_SE, root),
+                    new PathItem(TileSide.ANTI_SE, null),
                     new PathItem(TileSide.SOUTH, root),
-                    new PathItem(TileSide.OUTER_SW, root),
-                    new PathItem(TileSide.INNER_SW, null),
+                    new PathItem(TileSide.INTER_SW, root),
+                    new PathItem(TileSide.ANTI_SW, null),
                     new PathItem(TileSide.WEST, root)
                 };
             }
@@ -149,12 +164,28 @@ namespace UnityEditor
         {
             if (tiles == null)
                 tiles = this.tiles;
-            return tiles[(int)side];
+            for (int i = 0; i < tiles.Length; i++)
+            {
+                if (tiles[i].side == side) return tiles[i];
+            }
+            return tiles[0];
         }
 
         public void set(TileSide side, TileBase tile, ref PathItem[] tiles)
         {
-            tiles[(int)side].tile = tile;
+            for (int i = 0; i < tiles.Length; i++)
+            {
+                if (tiles[i].side == side) tiles[i].tile = tile;
+            }
+        }
+
+        public bool isTile(TileBase tile)
+        {
+            foreach (PathItem item in this.tiles)
+            {
+                if (item.tile == tile) return true;
+            }
+            return false;
         }
 
         public override void Paint(GridLayout gridLayout, GameObject brushTarget, Vector3Int position)
@@ -174,50 +205,164 @@ namespace UnityEditor
 
         public delegate void DoPaint(Vector3Int pos, TileBase tile);
 
-        public void paint(GridLayout gridLayout, GameObject brushTarget,
-            Vector3Int position, Tilemap tilemap, DoPaint doPaint)
+        public TileSide getTileFor(Tilemap tilemap, Vector3Int position, List<TileSide> forceConnected)
         {
-            PathItem[] tilesOut = newTileList(this.tiles, true);
+            bool[] hasConnection = new bool[4];
+            System.Action<TileSide, bool> markConnected = (TileSide side, bool connected) => { hasConnection[(int)side - 1] = connected; };
+            // Checks if a certain side is marked as connected to this position
+            System.Func<TileSide, bool> isConnected = (TileSide side) => { return hasConnection[(int)side - 1]; };
+            // Returns if the tile at the position in some direction matches the tile for some side in the config
+            System.Func<TileSide, TileSide, Vector3Int, bool> isSideFromPos =
+                (TileSide dir, TileSide key, Vector3Int pos) =>
+                {
+                    // Offset position by direction, and get the tile
+                    // compare against the config for some side
+                    return tilemap.GetTile(offset(pos, dir)) == this.at(key).tile;
+                };
+            System.Func<TileSide, TileSide, bool> isSide =
+                (TileSide direction, TileSide key) =>
+                {
+                    // Offset position by direction, and get the tile
+                    // compare against the config for some side
+                    return isSideFromPos(direction, key, position);
+                };
+            TileSide firstUnconnected = TileSide.CENTER, lastConnected = TileSide.CENTER;
+            int count = 0;
+
+            foreach (TileSide cardinal in TILE_SIDE_CARDINAL)
+            {
+                // Check to see if the tile at the position+direction is a valid tile
+                markConnected(cardinal,
+                    forceConnected != null && forceConnected.Contains(cardinal)
+                    ? true
+                    : this.isTile(tilemap.GetTile(offset(position, cardinal)))
+                );
+                if (isConnected(cardinal))
+                {
+                    count++;
+                    lastConnected = cardinal;
+                }
+                else if (firstUnconnected == TileSide.CENTER) firstUnconnected = cardinal;
+            }
+
+            TileSide thisTileType = TileSide.CENTER;
+            // If all directions have a valid tile
+            if (count >= 4)
+            {
+                if (isSide(TileSide.NORTH, TileSide.EAST) && isSide(TileSide.EAST, TileSide.NORTH))
+                {
+                    thisTileType = TileSide.ANTI_NE;
+                }
+                else if (isSide(TileSide.NORTH, TileSide.WEST) && isSide(TileSide.WEST, TileSide.NORTH))
+                {
+                    thisTileType = TileSide.ANTI_NW;
+                }
+                else if (isSide(TileSide.SOUTH, TileSide.EAST) && isSide(TileSide.EAST, TileSide.SOUTH))
+                {
+                    thisTileType = TileSide.ANTI_SE;
+                }
+                else if (isSide(TileSide.SOUTH, TileSide.WEST) && isSide(TileSide.WEST, TileSide.SOUTH))
+                {
+                    thisTileType = TileSide.ANTI_SW;
+                }
+            }
+            else if (count == 3)
+            {
+                thisTileType = firstUnconnected;
+            }
+            else if (count == 2)
+            {
+                // 2 sides are connected => 2 sides are missing
+                // the 2 connected sides indicate the corner direction
+                if (isConnected(TileSide.NORTH) && isConnected(TileSide.EAST))
+                {
+                    thisTileType = TileSide.INTER_SW;
+                }
+                else if (isConnected(TileSide.NORTH) && isConnected(TileSide.WEST))
+                {
+                    thisTileType = TileSide.INTER_SE;
+                }
+                else if (isConnected(TileSide.SOUTH) && isConnected(TileSide.EAST))
+                {
+                    thisTileType = TileSide.INTER_NW;
+                }
+                else if (isConnected(TileSide.SOUTH) && isConnected(TileSide.WEST))
+                {
+                    thisTileType = TileSide.INTER_NE;
+                }
+                // The two connections are parallel
+                else
+                {
+                    if (isConnected(TileSide.NORTH) && isConnected(TileSide.SOUTH))
+                    {
+                        bool isWestFacing = false;
+                        isWestFacing = isWestFacing || isSide(TileSide.NORTH, TileSide.WEST) || isSide(TileSide.SOUTH, TileSide.WEST);
+                        isWestFacing = isWestFacing || isSide(TileSide.NORTH, TileSide.INTER_NW) || isSide(TileSide.SOUTH, TileSide.INTER_NW);
+                        isWestFacing = isWestFacing || isSide(TileSide.NORTH, TileSide.INTER_SW) || isSide(TileSide.SOUTH, TileSide.INTER_SW);
+                        bool isEastFacing = false;
+                        isEastFacing = isEastFacing || isSide(TileSide.NORTH, TileSide.EAST) || isSide(TileSide.SOUTH, TileSide.EAST);
+                        isEastFacing = isEastFacing || isSide(TileSide.NORTH, TileSide.INTER_NE) || isSide(TileSide.SOUTH, TileSide.INTER_NE);
+                        isEastFacing = isEastFacing || isSide(TileSide.NORTH, TileSide.INTER_SE) || isSide(TileSide.SOUTH, TileSide.INTER_SE);
+                        if (isWestFacing)
+                        {
+                            thisTileType = TileSide.WEST;
+                        }
+                        else if (isEastFacing)
+                        {
+                            thisTileType = TileSide.EAST;
+                        }
+                    }
+                    else if (isConnected(TileSide.EAST) && isConnected(TileSide.WEST))
+                    {
+                        bool isNorthFacing = false;
+                        isNorthFacing = isNorthFacing || isSide(TileSide.WEST, TileSide.NORTH) || isSide(TileSide.EAST, TileSide.NORTH);
+                        isNorthFacing = isNorthFacing || isSide(TileSide.WEST, TileSide.INTER_NW) || isSide(TileSide.EAST, TileSide.INTER_NW);
+                        isNorthFacing = isNorthFacing || isSide(TileSide.WEST, TileSide.INTER_NE) || isSide(TileSide.EAST, TileSide.INTER_NE);
+                        bool isSouthFacing = false;
+                        isSouthFacing = isSouthFacing || isSide(TileSide.WEST, TileSide.SOUTH) || isSide(TileSide.EAST, TileSide.SOUTH);
+                        isSouthFacing = isSouthFacing || isSide(TileSide.WEST, TileSide.INTER_SW) || isSide(TileSide.EAST, TileSide.INTER_SW);
+                        isSouthFacing = isSouthFacing || isSide(TileSide.WEST, TileSide.INTER_SE) || isSide(TileSide.EAST, TileSide.INTER_SE);
+                        if (isNorthFacing)
+                        {
+                            thisTileType = TileSide.NORTH;
+                        }
+                        else if (isSouthFacing)
+                        {
+                            thisTileType = TileSide.SOUTH;
+                        }
+                    }
+                }
+            }
+            else if (count == 1)
+            {
+                thisTileType = opposite(lastConnected);
+            }
+
+            return thisTileType;
+        }
+
+        public void paint(GridLayout gridLayout, GameObject brushTarget,
+            Vector3Int position, Tilemap tilemap, DoPaint doPaint, PathItem[] tilesIn = null)
+        {
+            PathItem[] tilesOut = newTileList(tilesIn, true);
+
             // Cache the center tile to be placed
             TileBase tilesCenter = this.at(TileSide.CENTER).tile;
             TileBase tilesNorth = this.at(TileSide.NORTH).tile;
 
-            Vector3Int pos;
-            TileBase localTile;
+            //Debug.Log("Connections: " + count);
 
-            // Get the current tile at the position 2 units to the west of the current position
-            // this is the predicted center of the last tile area
-            // If this tile is indeed a center tile...
-            if (tilemap.GetTile(offset(position, TileSide.WEST, 2)) == tilesCenter)
+            TileSide thisTileType = this.getTileFor(tilemap, position, null);
+            
+            foreach (TileSide cardinal in TILE_SIDE_CARDINAL)
             {
-                // Set the tile to be placed to the west of the center to be a center tile
-                this.set(TileSide.WEST, tilesCenter, ref tilesOut);
+                List<TileSide> overrides = new List<TileSide>();
+                overrides.Add(opposite(cardinal));
+                TileSide tileType = this.getTileFor(tilemap, offset(position, cardinal), overrides);
+                this.set(cardinal, this.at(tileType).tile, ref tilesOut);
             }
 
-            {
-                pos = position;
-                localTile = null;
-                // Get the tile to the west by 2, and north 1
-                /*
-                  x   _ _ _
-                  - - _ p _
-                      _ _ _
-                */
-                pos = offset(pos, TileSide.WEST, 2);
-                pos = offset(pos, TileSide.NORTH, 1);
-                localTile = tilemap.GetTile(pos);
-                // If this tile is indeed a center tile...
-                if (localTile == tilesCenter)
-                {
-                    // Set the tile to be placed to the west of the center to be a center tile
-                    this.set(TileSide.OUTER_NW, tilesCenter, ref tilesOut);
-                }
-                else if (localTile == tilesNorth)
-                {
-                    // Set the tile to be placed to the west of the center to be a center tile
-                    this.set(TileSide.OUTER_NW, tilesNorth, ref tilesOut);
-                }
-            }
+            this.set(TileSide.CENTER, this.at(thisTileType).tile, ref tilesOut);
 
             foreach (PathItem item in tilesOut)
             {
@@ -267,7 +412,7 @@ namespace UnityEditor
             if (tilemap == null)
                 return;
 
-            tilemap.SetEditorPreviewTile(position, this.theBrush.at(TileSide.CENTER).tile);
+            //tilemap.SetEditorPreviewTile(position, this.theBrush.at(TileSide.CENTER).tile);
 
             this.theBrush.paint(gridLayout, brushTarget, position, tilemap, tilemap.SetEditorPreviewTile);
 
