@@ -1,0 +1,209 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+namespace UnityEditor
+{
+
+    // Basic inspector element for a weighted random tile
+    [System.Serializable]
+    public struct Element
+    {
+        public TileBase tile;
+        public float weight;
+    }
+
+    [CustomGridBrush(false, true, false, "Random Brush")]
+    public class RandomBrush : GridBrush
+    {
+
+        // Create the asset for the brush
+        [MenuItem("Assets/Create/Asset/Random Brush")]
+        public static void CreateBrush()
+        {
+            // Create the save panel
+            string path = EditorUtility.SaveFilePanelInProject("Save Random Brush", "New Random Brush", "asset", "Save Random Brush", "Assets");
+            // Check if path was invalid
+            if (path == "")
+                return;
+            // Create the brush asset
+            AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<RandomBrush>(), path);
+        }
+        
+        [Tooltip("The list of weighted tiles")]
+        public Element[] randomElements;
+
+        public bool hasValidTileList()
+        {
+            return this.randomElements != null && this.randomElements.Length > 0;
+        }
+
+        public float getTotalWeight()
+        {
+            // Calculate the total weight of all elements
+            float totalWeight = 0;
+            foreach (Element e in this.randomElements)
+            {
+                totalWeight += e.weight;
+            }
+            return totalWeight;
+        }
+        
+        // Gets some random tile from the list - O(n), n = length of randomElements
+        public TileBase getRandomTile(float totalWeight)
+        {
+            // Find the random value of the weights
+            float rand = totalWeight * UnityEngine.Random.value;
+            // Find the element for the random value
+            foreach (Element e in this.randomElements)
+            {
+                // If this is the weight (cannot remove the elements weight)
+                if (rand < e.weight)
+                {
+                    // return the tile
+                    return e.tile;
+                }
+                // Else, subtract the current tiles weight
+                rand -= e.weight;
+            }
+            // ERROR: should never be reached
+            // Return the first element
+            return this.randomElements[0].tile;
+        }
+
+        public void fill(Tilemap tilemap, BoundsInt bounds)
+        {
+            // Check if the random list is valid
+            if (this.hasValidTileList())
+            {
+                float totalWeight = this.getTotalWeight();
+                // Iterate over all locations in the bounds
+                foreach (Vector3Int location in bounds.allPositionsWithin)
+                {
+                    tilemap.SetTile(location, this.getRandomTile(totalWeight));
+                }
+            }
+        }
+
+        public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
+        {
+            // Check if the random list is valid
+            if (this.hasValidTileList())
+            {
+                // Do nothing if invalid target
+                if (brushTarget == null)
+                    return;
+
+                // Get the tile map at the target
+                Tilemap tilemap = brushTarget.GetComponent<Tilemap>();
+                // Do nothing if invalid tilemap
+                if (tilemap == null)
+                    return;
+
+                // Calulate the bounds of the target position
+                Vector3Int min = position - pivot;
+                // Calculate the bounds of the selection
+                BoundsInt bounds = new BoundsInt(min, size);
+                // Fill the bounds with random tiles
+                this.fill(tilemap, bounds);
+            }
+            else
+            {
+                base.Paint(grid, brushTarget, position);
+            }
+        }
+
+        public override void BoxFill(GridLayout gridLayout, GameObject brushTarget, BoundsInt bounds)
+        {
+            // Check if the random list is valid
+            if (this.hasValidTileList())
+            {
+                // Do nothing if invalid target
+                if (brushTarget == null)
+                    return;
+
+                // Get the tile map at the target
+                var tilemap = brushTarget.GetComponent<Tilemap>();
+                // Do nothing if invalid tilemap
+                if (tilemap == null)
+                    return;
+
+                // Fill the bounds with random tiles
+                this.fill(tilemap, bounds);
+            }
+            else
+            {
+                base.BoxFill(gridLayout, brushTarget, bounds);
+            }
+        }
+        
+    }
+
+    [CustomEditor(typeof(RandomBrush))]
+    public class RandomBrushEditor : GridBrushEditor
+    {
+        private RandomBrush randomBrush { get { return target as RandomBrush; } }
+        private GameObject lastBrushTarget;
+
+        public override void PaintPreview(GridLayout grid, GameObject brushTarget, Vector3Int position)
+        {
+            if (randomBrush.randomElements != null && randomBrush.randomElements.Length > 0)
+            {
+                base.PaintPreview(grid, null, position);
+
+                if (brushTarget == null)
+                    return;
+
+                var tilemap = brushTarget.GetComponent<Tilemap>();
+                if (tilemap == null)
+                    return;
+
+                Vector3Int min = position - randomBrush.pivot;
+                BoundsInt bounds = new BoundsInt(min, randomBrush.size);
+                foreach (Vector3Int location in bounds.allPositionsWithin)
+                {
+                    tilemap.SetEditorPreviewTile(location, randomBrush.randomElements[0].tile);
+                }
+
+                lastBrushTarget = brushTarget;
+            }
+            else
+            {
+                base.PaintPreview(grid, brushTarget, position);
+            }
+        }
+
+        public override void ClearPreview()
+        {
+            if (lastBrushTarget != null)
+            {
+                var tilemap = lastBrushTarget.GetComponent<Tilemap>();
+                if (tilemap == null)
+                    return;
+
+                tilemap.ClearAllEditorPreviewTiles();
+
+                lastBrushTarget = null;
+            }
+            else
+            {
+                base.ClearPreview();
+            }
+        }
+
+        public override void OnPaintInspectorGUI()
+        {
+            EditorGUI.BeginChangeCheck();
+
+            SerializedObject target = new SerializedObject(this.randomBrush);
+            SerializedProperty prop = target.FindProperty("randomElements");
+            EditorGUILayout.PropertyField(prop, true);
+            target.ApplyModifiedProperties();
+            
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(randomBrush);
+        }
+    }
+}
