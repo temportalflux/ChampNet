@@ -23,17 +23,27 @@ namespace UnityEditor
         [MenuItem("Assets/Create/Asset/Random Brush")]
         public static void CreateBrush()
         {
+            // Get the path to the selected asset
+            string selectedPath = "Assets";
+            UnityEngine.Object selectedObj = Selection.activeObject;
+            if (selectedObj != null) selectedPath = AssetDatabase.GetAssetPath(selectedObj.GetInstanceID());
+
             // Create the save panel
-            string path = EditorUtility.SaveFilePanelInProject("Save Random Brush", "New Random Brush", "asset", "Save Random Brush", "Assets");
+            string path = EditorUtility.SaveFilePanelInProject("Save Random Brush", "New Random Brush", "asset", "Save Random Brush", selectedPath);
             // Check if path was invalid
             if (path == "")
                 return;
             // Create the brush asset
             AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<RandomBrush>(), path);
         }
-        
+
+        public const int brushRadiusMin = 1, brushRadiusMax = 10;
+        public int brushRadius = brushRadiusMin;
+
         [Tooltip("The list of weighted tiles")]
         public Element[] randomElements;
+
+        public delegate void DoPaint(Vector3Int position, TileBase tile);
 
         public bool hasValidTileList()
         {
@@ -73,7 +83,25 @@ namespace UnityEditor
             return this.randomElements[0].tile;
         }
 
-        public void fill(Tilemap tilemap, BoundsInt bounds)
+        public Vector3Int getSize()
+        {
+            return this.size * this.brushRadius;
+        }
+
+        public BoundsInt getBounds(Vector3Int center)
+        {
+            // Calculate the bounds of the selection
+            Vector3Int size = this.getSize();
+            Vector3Int offset = new Vector3Int(
+                Mathf.FloorToInt(size.x / 2),
+                Mathf.FloorToInt(size.y / 2),
+                0
+            );
+            BoundsInt bounds = new BoundsInt(center - offset, size);
+            return bounds;
+        }
+
+        public void fill(Tilemap tilemap, BoundsInt bounds, DoPaint doPaint)
         {
             // Check if the random list is valid
             if (this.hasValidTileList())
@@ -82,9 +110,20 @@ namespace UnityEditor
                 // Iterate over all locations in the bounds
                 foreach (Vector3Int location in bounds.allPositionsWithin)
                 {
-                    tilemap.SetTile(location, this.getRandomTile(totalWeight));
+                    doPaint(location, this.getRandomTile(totalWeight));
                 }
             }
+        }
+
+        public void paint(GridLayout grid, GameObject brushTarget, Vector3Int position, Tilemap tilemap, DoPaint doPaint)
+        {
+
+            // Calulate the bounds of the target position
+            Vector3Int min = position - pivot;
+            
+            // Fill the bounds with random tiles
+            this.fill(tilemap, this.getBounds(min), doPaint);
+
         }
 
         public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
@@ -102,12 +141,7 @@ namespace UnityEditor
                 if (tilemap == null)
                     return;
 
-                // Calulate the bounds of the target position
-                Vector3Int min = position - pivot;
-                // Calculate the bounds of the selection
-                BoundsInt bounds = new BoundsInt(min, size);
-                // Fill the bounds with random tiles
-                this.fill(tilemap, bounds);
+                this.paint(grid, brushTarget, position, tilemap, tilemap.SetTile);
             }
             else
             {
@@ -120,6 +154,7 @@ namespace UnityEditor
             // Check if the random list is valid
             if (this.hasValidTileList())
             {
+
                 // Do nothing if invalid target
                 if (brushTarget == null)
                     return;
@@ -131,7 +166,7 @@ namespace UnityEditor
                     return;
 
                 // Fill the bounds with random tiles
-                this.fill(tilemap, bounds);
+                this.fill(tilemap, bounds, tilemap.SetTile);
             }
             else
             {
@@ -149,7 +184,7 @@ namespace UnityEditor
 
         public override void PaintPreview(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
-            if (randomBrush.randomElements != null && randomBrush.randomElements.Length > 0)
+            if (randomBrush.hasValidTileList())
             {
                 base.PaintPreview(grid, null, position);
 
@@ -161,11 +196,13 @@ namespace UnityEditor
                     return;
 
                 Vector3Int min = position - randomBrush.pivot;
-                BoundsInt bounds = new BoundsInt(min, randomBrush.size);
+                BoundsInt bounds = this.randomBrush.getBounds(min);
                 foreach (Vector3Int location in bounds.allPositionsWithin)
                 {
                     tilemap.SetEditorPreviewTile(location, randomBrush.randomElements[0].tile);
                 }
+
+                //this.randomBrush.paint(grid, brushTarget, position, tilemap, tilemap.SetEditorPreviewTile);
 
                 lastBrushTarget = brushTarget;
             }
@@ -173,6 +210,25 @@ namespace UnityEditor
             {
                 base.PaintPreview(grid, brushTarget, position);
             }
+        }
+
+        public override void BoxFillPreview(GridLayout gridLayout, GameObject brushTarget, BoundsInt position)
+        {
+
+            if (brushTarget == null)
+                return;
+
+            var tilemap = brushTarget.GetComponent<Tilemap>();
+            if (tilemap == null)
+                return;
+
+            foreach (Vector3Int location in position.allPositionsWithin)
+            {
+                tilemap.SetEditorPreviewTile(location, randomBrush.randomElements[0].tile);
+            }
+
+            lastBrushTarget = brushTarget;
+            //base.BoxFillPreview(gridLayout, brushTarget, position);
         }
 
         public override void ClearPreview()
@@ -193,13 +249,27 @@ namespace UnityEditor
             }
         }
 
-        public override void OnPaintInspectorGUI()
+        public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
 
+            // Draw script line
+            GUI.enabled = false;
+            MonoScript script = EditorGUILayout.ObjectField(
+                "Script",
+                MonoScript.FromScriptableObject(this.randomBrush),
+                typeof(MonoScript), false
+            ) as MonoScript;
+            GUI.enabled = true;
+
             SerializedObject target = new SerializedObject(this.randomBrush);
+
+            SerializedProperty propRadius = target.FindProperty("brushRadius");
+            EditorGUILayout.IntSlider(propRadius, RandomBrush.brushRadiusMin, RandomBrush.brushRadiusMax);
+
             SerializedProperty prop = target.FindProperty("randomElements");
             EditorGUILayout.PropertyField(prop, true);
+
             target.ApplyModifiedProperties();
             
             if (EditorGUI.EndChangeCheck())
