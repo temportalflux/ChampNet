@@ -56,8 +56,13 @@ namespace UnityEditor
         [MenuItem("Assets/Create/Asset/Brush - Path")]
         public static void CreateBrush()
         {
+            // Get the path to the selected asset
+            string selectedPath = "Assets";
+            Object selectedObj = Selection.activeObject;
+            if (selectedObj != null) selectedPath = AssetDatabase.GetAssetPath(selectedObj.GetInstanceID());
+
             // Create the save panel
-            string path = EditorUtility.SaveFilePanelInProject("Save Brush (Path)", "New Brush (Path)", "asset", "Save Brush (Path)", "Assets");
+            string path = EditorUtility.SaveFilePanelInProject("Save Brush (Path)", "New Brush (Path)", "asset", "Save Brush (Path)", selectedPath);
             // Check if path was invalid
             if (path == "")
                 return;
@@ -460,12 +465,7 @@ namespace UnityEditor
                     default:
                         continue;
                 }
-                TileSide tile = this.getTileFor(tilemap, pos, overrides,
-                    (TileSide localSide) =>
-                    {
-                        return localSide;
-                    }
-                );
+                TileSide tile = this.getTileFor(tilemap, pos, overrides, null);
                 this.set(corner, this.at(tile).tile, ref tilesOut);
             }
 
@@ -491,6 +491,8 @@ namespace UnityEditor
 
         public override void OnInspectorGUI()
         {
+            EditorGUI.BeginChangeCheck();
+
             // Draw script line
             GUI.enabled = false;
             MonoScript script = EditorGUILayout.ObjectField(
@@ -505,7 +507,11 @@ namespace UnityEditor
             {
                 this.theBrush.tiles[i].tile = (TileBase)EditorGUILayout.ObjectField(this.theBrush.tiles[i].side.ToString(), this.theBrush.tiles[i].tile, typeof(TileBase), false);
             }
-            
+
+            new SerializedObject(this.theBrush).ApplyModifiedProperties();
+
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(this.theBrush);
         }
 
         public override void PaintPreview(GridLayout gridLayout, GameObject brushTarget, Vector3Int position)

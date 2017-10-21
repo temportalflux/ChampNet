@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ba5f776673c0f434f9727441e108d779
-timeCreated: 1508519815
+timeCreated: 1508544279
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -311,8 +311,8 @@ TextureImporter:
     21300608: TileMap-modified_304
     21300610: TileMap-modified_305
     21300612: TileMap-modified_306
-    21300614: TileMap-modified_307
-    21300616: TileMap-modified_308
+    21300614: Map-Poke-Path-Hill-Dirt-ASE
+    21300616: Map-Poke-Path-Hill-Dirt-ASW
     21300618: TileMap-modified_309
     21300620: TileMap-modified_310
     21300622: TileMap-modified_311
@@ -348,8 +348,8 @@ TextureImporter:
     21300682: TileMap-modified_341
     21300684: TileMap-modified_342
     21300686: TileMap-modified_343
-    21300688: TileMap-modified_344
-    21300690: TileMap-modified_345
+    21300688: Map-Poke-Path-Hill-Dirt-ANE
+    21300690: Map-Poke-Path-Hill-Dirt-ANW
     21300692: TileMap-modified_346
     21300694: TileMap-modified_347
     21300696: TileMap-modified_348
@@ -386,8 +386,8 @@ TextureImporter:
     21300758: TileMap-modified_379
     21300760: TileMap-modified_380
     21300762: TileMap-modified_381
-    21300764: TileMap-modified_382
-    21300766: TileMap-modified_383
+    21300764: Map-Poke-Path-Hill-Dirt-NORTH
+    21300766: Map-Poke-Path-Hill-Dirt-INE
     21300768: TileMap-modified_384
     21300770: TileMap-modified_385
     21300772: TileMap-modified_386
@@ -422,9 +422,9 @@ TextureImporter:
     21300830: TileMap-modified_415
     21300832: TileMap-modified_416
     21300834: TileMap-modified_417
-    21300836: TileMap-modified_418
-    21300838: TileMap-modified_419
-    21300840: TileMap-modified_420
+    21300836: Map-Poke-Path-Hill-Dirt-WEST
+    21300838: Map-Poke-Path-Hill-Dirt-CENTER
+    21300840: Map-Poke-Path-Hill-Dirt-EAST
     21300842: TileMap-modified_421
     21300844: TileMap-modified_422
     21300846: TileMap-modified_423
@@ -459,9 +459,9 @@ TextureImporter:
     21300904: TileMap-modified_452
     21300906: TileMap-modified_453
     21300908: TileMap-modified_454
-    21300910: TileMap-modified_455
-    21300912: TileMap-modified_456
-    21300914: TileMap-modified_457
+    21300910: Map-Poke-Path-Hill-Dirt-ISW
+    21300912: Map-Poke-Path-Hill-Dirt-SOUTH
+    21300914: Map-Poke-Path-Hill-Dirt-ISE
     21300916: TileMap-modified_458
     21300918: TileMap-modified_459
     21300920: TileMap-modified_460
@@ -5477,7 +5477,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_307
+      name: Map-Poke-Path-Hill-Dirt-ASE
       rect:
         serializedVersion: 2
         x: 209
@@ -5491,7 +5491,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_308
+      name: Map-Poke-Path-Hill-Dirt-ASW
       rect:
         serializedVersion: 2
         x: 225
@@ -5995,7 +5995,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_344
+      name: Map-Poke-Path-Hill-Dirt-ANE
       rect:
         serializedVersion: 2
         x: 209
@@ -6009,7 +6009,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_345
+      name: Map-Poke-Path-Hill-Dirt-ANW
       rect:
         serializedVersion: 2
         x: 225
@@ -6527,7 +6527,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_382
+      name: Map-Poke-Path-Hill-Dirt-NORTH
       rect:
         serializedVersion: 2
         x: 225
@@ -6541,7 +6541,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_383
+      name: Map-Poke-Path-Hill-Dirt-INE
       rect:
         serializedVersion: 2
         x: 241
@@ -7031,7 +7031,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_418
+      name: Map-Poke-Path-Hill-Dirt-WEST
       rect:
         serializedVersion: 2
         x: 209
@@ -7045,7 +7045,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_419
+      name: Map-Poke-Path-Hill-Dirt-CENTER
       rect:
         serializedVersion: 2
         x: 225
@@ -7059,7 +7059,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_420
+      name: Map-Poke-Path-Hill-Dirt-EAST
       rect:
         serializedVersion: 2
         x: 241
@@ -7549,7 +7549,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_455
+      name: Map-Poke-Path-Hill-Dirt-ISW
       rect:
         serializedVersion: 2
         x: 209
@@ -7563,7 +7563,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_456
+      name: Map-Poke-Path-Hill-Dirt-SOUTH
       rect:
         serializedVersion: 2
         x: 225
@@ -7577,7 +7577,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_457
+      name: Map-Poke-Path-Hill-Dirt-ISE
       rect:
         serializedVersion: 2
         x: 241
