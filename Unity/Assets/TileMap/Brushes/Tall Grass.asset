@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d240a83d7fa937243bcdffb6afe2451d, type: 3}
+  m_Name: Tall Grass
+  m_EditorClassIdentifier: 
+  m_Cells:
+  - m_Tile: {fileID: 0}
+    m_Matrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Pivot: {x: 0, y: 0, z: 0}
+  tiles:
+  - side: 0
+    tile: {fileID: 11400000, guid: 652fc5fd48ef817468f63257e0a06001, type: 2}
+  - side: 5
+    tile: {fileID: 11400000, guid: 95e479446c4961b4a9730cde86e2a315, type: 2}
+  - side: 9
+    tile: {fileID: 11400000, guid: c33c45a4ce122ce40baf356e1bf1e02c, type: 2}
+  - side: 1
+    tile: {fileID: 11400000, guid: 1b22079beb4876d4aa42fb62bfb8e86c, type: 2}
+  - side: 6
+    tile: {fileID: 11400000, guid: 2856b001c92a96c4581958d874cf2c86, type: 2}
+  - side: 10
+    tile: {fileID: 11400000, guid: 40101c4f219372e449428879b5f28b57, type: 2}
+  - side: 2
+    tile: {fileID: 11400000, guid: 0318aac5e98846942a35e23edadb36d7, type: 2}
+  - side: 7
+    tile: {fileID: 11400000, guid: 7d8def5a71c2eb34386b23878c4b22e4, type: 2}
+  - side: 11
+    tile: {fileID: 11400000, guid: 6b18c9c843e160a48b9f7d69262907c5, type: 2}
+  - side: 3
+    tile: {fileID: 11400000, guid: cfaff3158e440424a9b60c4e38594cce, type: 2}
+  - side: 8
+    tile: {fileID: 11400000, guid: 45a01de961808944e95afcfe1633e50a, type: 2}
+  - side: 12
+    tile: {fileID: 11400000, guid: 3dd1dedf7e60edc48bc60a71e09ea8a4, type: 2}
+  - side: 4
+    tile: {fileID: 11400000, guid: c47cf3f8350cba349a9d89cbfde67986, type: 2}
