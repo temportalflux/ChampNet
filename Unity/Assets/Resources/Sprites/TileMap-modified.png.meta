@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ba5f776673c0f434f9727441e108d779
-timeCreated: 1508544279
+timeCreated: 1508620252
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -42,7 +42,7 @@ TextureImporter:
     21300070: TileMap-modified_35
     21300072: TileMap-modified_36
     21300074: TileMap-modified_37
-    21300076: TileMap-modified_38
+    21300076: Map-Poke-TallGrass-CENTER
     21300078: TileMap-modified_39
     21300080: TileMap-modified_40
     21300082: TileMap-modified_41
@@ -1711,7 +1711,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TileMap-modified_38
+      name: Map-Poke-TallGrass-CENTER
       rect:
         serializedVersion: 2
         x: 17

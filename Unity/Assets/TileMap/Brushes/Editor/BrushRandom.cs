@@ -16,7 +16,7 @@ namespace UnityEditor
     }
 
     [CustomGridBrush(false, true, false, "Random Brush")]
-    public class RandomBrush : GridBrush
+    public class BrushRandom : GridBrush
     {
 
         // Create the asset for the brush
@@ -34,7 +34,7 @@ namespace UnityEditor
             if (path == "")
                 return;
             // Create the brush asset
-            AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<RandomBrush>(), path);
+            AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BrushRandom>(), path);
         }
 
         public const int brushRadiusMin = 1, brushRadiusMax = 10;
@@ -110,7 +110,8 @@ namespace UnityEditor
                 // Iterate over all locations in the bounds
                 foreach (Vector3Int location in bounds.allPositionsWithin)
                 {
-                    doPaint(location, this.getRandomTile(totalWeight));
+                    TileBase tile = this.getRandomTile(totalWeight);
+                    doPaint(location, tile);
                 }
             }
         }
@@ -176,14 +177,21 @@ namespace UnityEditor
         
     }
 
-    [CustomEditor(typeof(RandomBrush))]
+    [CustomEditor(typeof(BrushRandom))]
     public class RandomBrushEditor : GridBrushEditor
     {
-        private RandomBrush randomBrush { get { return target as RandomBrush; } }
+        private BrushRandom randomBrush { get { return target as BrushRandom; } }
         private GameObject lastBrushTarget;
+        private TileBase tilePlaceholder;
 
         public override void PaintPreview(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
+            int i = 0;
+            while (this.tilePlaceholder == null)
+            {
+                this.tilePlaceholder = randomBrush.randomElements[i++].tile;
+            }
+
             if (randomBrush.hasValidTileList())
             {
                 base.PaintPreview(grid, null, position);
@@ -199,7 +207,7 @@ namespace UnityEditor
                 BoundsInt bounds = this.randomBrush.getBounds(min);
                 foreach (Vector3Int location in bounds.allPositionsWithin)
                 {
-                    tilemap.SetEditorPreviewTile(location, randomBrush.randomElements[0].tile);
+                    tilemap.SetEditorPreviewTile(location, tilePlaceholder);
                 }
 
                 //this.randomBrush.paint(grid, brushTarget, position, tilemap, tilemap.SetEditorPreviewTile);
@@ -265,7 +273,7 @@ namespace UnityEditor
             SerializedObject target = new SerializedObject(this.randomBrush);
 
             SerializedProperty propRadius = target.FindProperty("brushRadius");
-            EditorGUILayout.IntSlider(propRadius, RandomBrush.brushRadiusMin, RandomBrush.brushRadiusMax);
+            EditorGUILayout.IntSlider(propRadius, BrushRandom.brushRadiusMin, BrushRandom.brushRadiusMax);
 
             SerializedProperty prop = target.FindProperty("randomElements");
             EditorGUILayout.PropertyField(prop, true);
