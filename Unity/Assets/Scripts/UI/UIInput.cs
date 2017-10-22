@@ -53,7 +53,7 @@ public class UIInput : MonoBehaviour {
                 case MappedAxis.Horizontal:
 
                     // Add value to current selection
-                    this.selected = (this.selected - (int)value);
+                    this.selected = (this.selected + (int)value);
                     // Ensure yield is negative
                     if (this.selected < 0) this.selected += this.fields.Length;
                     // Find remainder
