@@ -4,10 +4,15 @@
 #include "ChampNet.h"
 
 #include <string>
+#include <sstream>
+#include <iostream>
+
+#include <RakNet\RakPeerInterface.h>
 
 namespace ChampNetPlugin {
 
 	CHAMPNET_PLUGIN_SYMTAG ChampNet::Network *gpNetwork = 0;
+	static FuncCallBack gDebugFunc = 0;
 
 	// Create a network to connect with
 	int Create() {
@@ -17,6 +22,18 @@ namespace ChampNetPlugin {
 			return true;
 		}
 		return 0;
+	}
+
+	void RegisterDebugCallback(FuncCallBack cb)
+	{
+		gDebugFunc = cb;
+		send_log("Initialized debug callback", Color::Black);
+	}
+
+	void send_log(const char *msg, const Color &color)
+	{
+		if (gDebugFunc != 0)
+			gDebugFunc(msg, (int)color, (int)strlen(msg));
 	}
 
 	// Destroy the network (must call Create prior) (must call when owning object is destroyed)
@@ -48,9 +65,11 @@ namespace ChampNetPlugin {
 	{
 		if (gpNetwork != 0)
 		{
+			send_log("Starting the client", Color::Green);
 			gpNetwork->initClient();
 			return 0;
 		}
+
 		return 1;
 	}
 
@@ -59,6 +78,10 @@ namespace ChampNetPlugin {
 	{
 		if (gpNetwork != 0)
 		{
+			std::stringstream s("Connectint to ");
+			s << address << '|' << port;
+			send_log(s.str().c_str(), Color::Green);
+
 			gpNetwork->connectToServer(address, port);
 			return 0;
 		}
@@ -83,19 +106,52 @@ namespace ChampNetPlugin {
 	{
 		ChampNet::Packet *packet = NULL;
 		validPacket = gpNetwork->pollPackets(packet);
+		if (validPacket)
+		{
+			std::stringstream s;
+			s << "Found valid packet at location " << (void const*)packet;
+			send_log(s.str().c_str(), Color::Green);
+		}
 
 		// Send the packet ptr for usage by FreePacket
-		return packet;
+		return (void *)packet;
 	}
 
 	// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
-	char* GetPacketAddress(void* packetPtr, unsigned int &length)
+	const char* GetPacketAddress(void* packetPtr, unsigned int &length)
 	{
-		// copies the REFERENCE (not the actual bytes)
-		// this means data MUST be copied by the caller
-		char* address;
-		((ChampNet::Packet*)packetPtr)->getAddress(address, length);
-		return address;
+		/*
+		std::stringstream s;
+		s << "Received packet location " << (void const*)packetPtr;
+		send_log(s.str().c_str(), Color::Yellow);
+		s.str("");
+		//*/
+
+		length = 0;
+
+		ChampNet::Packet *packet = (ChampNet::Packet*)packetPtr;
+		bool valid = packet != NULL;
+
+		char *out = NULL;
+		if (valid)
+		{
+			const char *address;
+			packet->getAddress(address, length);
+
+			out = new char[length + 1];
+			for (int i = 0; i < length; i++)
+			{
+				out[i] = address[i];
+			}
+			out[length] = '\0';
+		}
+		else
+		{
+			out = new char[1];
+			out[length] = '\0';
+		}
+
+		return out;
 	}
 
 	// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
@@ -113,6 +169,24 @@ namespace ChampNetPlugin {
 	void FreePacket(void* packetPtr)
 	{
 		delete (ChampNet::Packet*)packetPtr;
+	}
+
+	void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize)
+	{
+		//gDebugFunc(address, (int)ChampNetPlugin::Color::White, std::strlen(address));
+		//gDebugFunc(byteArray, (int)ChampNetPlugin::Color::White, byteArraySize);
+		std::stringstream s;
+		s << address << '|' << port;
+		RakNet::SystemAddress system_address;
+		system_address.FromString(s.str().c_str());
+		PacketPriority priority = HIGH_PRIORITY;
+		PacketReliability reliability = RELIABLE;
+		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, &priority, &reliability, 0, false);
+	}
+
+	void Disconnect()
+	{
+		gpNetwork->disconnect();
 	}
 
 }

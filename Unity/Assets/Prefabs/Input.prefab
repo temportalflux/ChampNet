@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114205472863438048}
   - component: {fileID: 114291871914207170}
   - component: {fileID: 114221451604118768}
+  - component: {fileID: 114432336657682046}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -29,35 +30,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1532844825925474
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4015971318991052}
-  - component: {fileID: 114809690772080856}
-  m_Layer: 0
-  m_Name: Player-1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4015971318991052
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1532844825925474}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4996809101935440}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4996809101935440
 Transform:
   m_ObjectHideFlags: 1
@@ -67,8 +39,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4015971318991052}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,49 +84,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f3b5231fb044acca971aacf0793bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamepadInputMapping: {fileID: 11400000, guid: 4f086e47f5302419dab1a229f0fa0f8d,
+  gamepadInputMapping: {fileID: 11400000, guid: 5f071f3777bf9a440bf7c04e8dc8932d,
     type: 2}
-  keyboardInputMapping: {fileID: 11400000, guid: 4e9908c3656944bc1a051f755f9284be,
+  keyboardInputMapping: {fileID: 11400000, guid: 7d255239f1e68894e8a004fe3f38588b,
     type: 2}
-  mouseInputMapping: {fileID: 11400000, guid: 99acd2c1a71d543ab92e29ab1d644214, type: 2}
---- !u!114 &114809690772080856
+  mouseInputMapping: {fileID: 11400000, guid: 20acf38c185c5e94b9492e69388c2484, type: 2}
+--- !u!114 &114432336657682046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1532844825925474}
+  m_GameObject: {fileID: 1424482014750404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b74c44c7891bc994f977acf47ba4ef39, type: 3}
+  m_Script: {fileID: 11500000, guid: cac35e636b1c31c40a062892a9b18fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 114205472863438048}
-  inputId: 1
-  bindings:
-  - action: JUMP
-    type: 0
-    gamepadButton: 0
-    mappedButton: 1
-    gamepadAxis: 0
-    mappedAxis: 0
-    gamepadTrigger: 0
-  listeners:
-  - events:
-    - type: 0
-      action: JUMP
-    action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: doAction
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InputResponse+Listener+Event, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null

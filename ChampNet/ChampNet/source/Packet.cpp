@@ -6,10 +6,11 @@
 namespace ChampNet
 {
 
-	Packet::Packet(const unsigned int lengthAddress, char* address, const unsigned int dataLength, const unsigned char* data)
+	Packet::Packet(const unsigned int lengthAddress, const char* address, const unsigned int dataLength, const unsigned char* data)
 	{
 		mAddressLength = lengthAddress;
 		mAddress = address;
+		mDataLength = dataLength;
 		copy(data, mData, dataLength);
 	}
 
@@ -22,7 +23,7 @@ namespace ChampNet
 		mData = NULL;
 	}
 
-	void Packet::copy(const unsigned char* source, unsigned char* dest, unsigned int length)
+	void Packet::copy(const unsigned char* &source, unsigned char* &dest, unsigned int length)
 	{
 		dest = new unsigned char[length];
 		for (unsigned int i = 0; i < length; i++)
@@ -31,7 +32,7 @@ namespace ChampNet
 		}
 	}
 
-	void Packet::getAddress(char* &address, unsigned int &length)
+	void Packet::getAddress(const char* &address, unsigned int &length)
 	{
 		address = this->mAddress;
 		length = this->mAddressLength;

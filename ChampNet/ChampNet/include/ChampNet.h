@@ -93,7 +93,7 @@ namespace ChampNet
 
 		// Poll the next cached packet
 		// Returns true if a packet was found;
-		bool pollPackets(Packet *nextPacket);
+		bool pollPackets(Packet *&nextPacket);
 
 	};
 

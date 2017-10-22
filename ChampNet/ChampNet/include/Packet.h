@@ -12,20 +12,22 @@ namespace ChampNet
 
 	private:
 		unsigned int mAddressLength;
-		char* mAddress;
+		const char* mAddress;
 		unsigned int mDataLength;
 		unsigned char* mData;
 
 		Packet* mNext;
 
 	public:
-		Packet(const unsigned int lengthAddress, char* address, const unsigned int dataLength, const unsigned char* data);
+		Packet(const unsigned int lengthAddress, const char* address, const unsigned int dataLength, const unsigned char* data);
 		~Packet();
 
-		void copy(const unsigned char* source, unsigned char* dest, unsigned int length);
+		void copy(const unsigned char* &source, unsigned char* &dest, unsigned int length);
 
-		void getAddress(char* &address, unsigned int &length);
+		void getAddress(const char* &address, unsigned int &length);
 		void getData(unsigned char* &data, unsigned int &length);
+
+		inline unsigned int getID() const { return this->mData[0]; }
 
 	};
 

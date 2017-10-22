@@ -4,6 +4,9 @@
 // defines CHAMPNET_PLUGIN_SYMTAG
 #include "lib.h"
 
+// Include raknet message identifiers
+#include <RakNet\MessageIdentifiers.h>
+
 // tell compiler to link as if all function are C not C++
 #ifdef __cplusplus
 extern "C"
@@ -12,8 +15,39 @@ extern "C"
 
 	namespace ChampNetPlugin {
 
+		enum MessageIDs
+		{
+			// RakNet messages (unsued for clients)
+			ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,
+			ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,
+			ID_CLIENT_MISSING = ID_CONNECTION_LOST,
+
+			// RakNet Messages (used for clients)
+			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
+
+			// placeholder - For tracking in C# script
+			ID_PLACEHOLDER = ID_USER_PACKET_ENUM,
+
+			// Server-Sent Messages
+			// 2) Sent to clients to notify them of the values for some spawning user
+			// Sender uses to place self, peers use to place a dummy unit
+			ID_USER_SPAWN,
+
+			// Client-Sent Messages
+			// 1) Sent to server to notify it of an incoming client
+			ID_USER_JOINED,
+
+		};
+
 		// Create a network to connect with
 		CHAMPNET_PLUGIN_SYMTAG int Create();
+
+		typedef void(*FuncCallBack)(const char* message, int color, int size);
+		enum class Color { Red, Green, Blue, Black, White, Yellow, Orange };
+
+		CHAMPNET_PLUGIN_SYMTAG void RegisterDebugCallback(FuncCallBack callBack);
+
+		static void send_log(const char *msg, const Color &color);
 
 		// Destroy the network (must call Create prior) (must call when owning object is destroyed)
 		CHAMPNET_PLUGIN_SYMTAG int Destroy();
@@ -34,13 +68,18 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG void* PollPacket(bool &validPacket);
 
 		// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
-		CHAMPNET_PLUGIN_SYMTAG char* GetPacketAddress(void* packetPtr, unsigned int &length);
+		CHAMPNET_PLUGIN_SYMTAG const char* GetPacketAddress(void* packetPtr, unsigned int &length);
 
 		// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
 		CHAMPNET_PLUGIN_SYMTAG unsigned char* GetPacketData(void* packetPtr, unsigned int &length);
 
 		// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
 		CHAMPNET_PLUGIN_SYMTAG void FreePacket(void* packetPtr);
+
+		CHAMPNET_PLUGIN_SYMTAG void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize);
+
+		// Disconnect from the interface
+		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
 
 	};
 

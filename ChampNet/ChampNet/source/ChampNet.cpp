@@ -104,19 +104,21 @@ namespace ChampNet
 			// Process the packet
 
 			// Copy out the addresss
-			char* address = NULL;
-			packet->systemAddress.ToString(true, address);
+			const char* address = packet->systemAddress.ToString();
+			unsigned int addressLength = (unsigned int)std::strlen(address);
+
 			// Send address, and packet data to copy, to a packet wrapper
-			pCurrentPacket = new ChampNet::Packet((unsigned int)std::strlen(address), address, packet->length, packet->data);
+			pCurrentPacket = new ChampNet::Packet(addressLength, address, packet->length, packet->data);
 
 			// Save packet for processing later
+
 			mpPackets->enqueue(pCurrentPacket);
 		}
 	}
 
 	// Poll the next cached packet
 	// Returns true if a packet was found;
-	bool Network::pollPackets(Packet *nextPacket)
+	bool Network::pollPackets(Packet *&nextPacket)
 	{
 		mpPackets->dequeue(nextPacket);
 		return nextPacket != NULL;

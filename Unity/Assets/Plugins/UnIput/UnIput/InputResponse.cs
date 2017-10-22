@@ -69,9 +69,6 @@ public class InputResponse : MonoBehaviour {
 
     }
 
-    [Tooltip("The main input manager")]
-    public GamepadInput input;
-
     [Range(1, 4)]
     [Tooltip("The controller number")]
     public int inputId = 1;
@@ -137,7 +134,8 @@ public class InputResponse : MonoBehaviour {
     {
         // Check for all inputs
         //MappedInput.inputDevices.ForEach(this.updateInput);
-        this.updateInput(MappedInput.activeDevice);
+        if (MappedInput.activeDevice != null)
+            this.updateInput(MappedInput.activeDevice);
     }
 
     // Check for updates in some input
@@ -153,6 +151,8 @@ public class InputResponse : MonoBehaviour {
         // check all mappings currently being tracked
         foreach (UpdateEvent eventType in this.dictListenerButtons.Keys)
         {
+
+
             foreach (MappedButton mapping in this.dictListenerButtons[eventType].Keys)
             {
                 // Get the appropriate event
