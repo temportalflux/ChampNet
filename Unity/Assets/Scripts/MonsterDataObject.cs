@@ -26,6 +26,11 @@ public class MonsterDataObject //: MonoBehaviour
         set { _hp = Mathf.Clamp(value, 0, GetMaxHp); }
     }
 
+    public void Heal()
+    {
+        _hp = GetMaxHp;
+    }
+
     MonsterDataObject()
     {
         //_hp = GetMaxHp;
