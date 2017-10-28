@@ -224,7 +224,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			break;
 		// A client is joining
 		case ChampNetPlugin::ID_USER_JOINED:
-			std::cout << "User has joined\n";
+			{
+				std::cout << "User has joined\n";
+
+			}
 			break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << '\n';

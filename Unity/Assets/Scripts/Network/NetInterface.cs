@@ -6,6 +6,7 @@ using UnityEngine;
 
 using Netty = ChampNetPlugin.Network;
 
+[RequireComponent(typeof(EventManager))]
 public class NetInterface : MonoBehaviour {
 
     private static NetInterface _instance = null;
@@ -31,13 +32,18 @@ public class NetInterface : MonoBehaviour {
 
     }
 
+    private EventManager events;
+    private string serverAddress = "127.0.0.1";
+    private int serverPort = 425;
+
     private void Start()
     {
         NetInterface.loadSingleton(this);
+        this.events = this.GetComponent<EventManager>();
 
         Debug.Log("Creating network");
         Netty.Create();
-        Netty.SetDebugCallback();
+        //Netty.SetDebugCallback();
         this.connect();
     }
 
@@ -50,7 +56,7 @@ public class NetInterface : MonoBehaviour {
 	public void connect()
     {
         Netty.StartClient();
-        Netty.ConnectToServer("127.0.0.1", 425);
+        Netty.ConnectToServer(this.serverAddress, this.serverPort);
     }
 
     public void disconnect()
@@ -68,7 +74,9 @@ public class NetInterface : MonoBehaviour {
         while (Netty.PollPacket(out address, out data))
         {
             int id = (int)data[0];
+            this.events.onReceive(id, address, data);
             
+            /*
             switch (id)
             {
                 case (int)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
@@ -77,8 +85,10 @@ public class NetInterface : MonoBehaviour {
                 default:
                     break;
             }
+            */
 
         }
+        this.events.ProcessEvents();
     }
 
     /// <summary>
@@ -95,6 +105,19 @@ public class NetInterface : MonoBehaviour {
         byte[] byteArray = Encoding.ASCII.GetBytes(test);
         int size = byteArray.Length;
         Netty.SendByteArray("127.0.0.1", 425, byteArray, size);
+    }
+
+    public void Dispatch(EventNetwork evt)
+    {
+        this.Dispatch(evt, this.serverAddress, this.serverPort);
+    }
+
+    public void Dispatch(EventNetwork evt, string address, int port)
+    {
+        byte[] data = new byte[evt.getSize()];
+        int lastIndex = 0;
+        evt.serialize(ref data, ref lastIndex);
+        Netty.SendByteArray(address, port, data, data.Length);
     }
 
 }
