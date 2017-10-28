@@ -1,78 +1,378 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class EventNetwork
 {
+    // https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx
 
-    private char id;
+    // The event identifier (ChampNetPlugin::MessageIds)
+    private byte id;
+    
+    // The address to send the event to
     private string address;
 
-    public EventNetwork(char id)
+    public EventNetwork(byte id)
     {
         this.id = id;
     }
 
+    /**
+     * Set the target address (where is the event going)
+     */
     public void setAddress(string address)
     {
         this.address = address;
     }
 
-    public void deserialize(byte[] data, ref int lastIndex)
+    /**
+     * Returns the size of the packet
+     */
+    virtual public int getSize()
+    {
+        return sizeof(byte); // id
+    }
+
+    /**
+     * Reads data from a byte array into this event's data
+     */
+    virtual public void deserialize(byte[] data, ref int lastIndex)
     {
 
-        this.id = System.BitConverter.ToChar(data, lastIndex);
-        lastIndex += sizeof(char);
+        // Read the event identifier
+        this.id = data[0];
+        lastIndex += sizeof(byte);
+        
+    }
+
+    /**
+     * Writes data from this event into a byte array
+     */
+    virtual public void serialize(ref byte[] data, ref int lastIndex)
+    {
+
+        // Write the event identifier
+        data[lastIndex] = (byte)this.id;
+        lastIndex += sizeof(byte);
 
     }
 
-    public int getSize()
+    /**
+     * Write some byte array into another byte array at some offset
+     */
+    private void writeTo(ref byte[] data, ref int offset, byte[] dataObj)
     {
-        return sizeof(char); // id
+        System.Array.Copy(dataObj, 0, data, offset, dataObj.Length);
+        offset += dataObj.Length;
     }
 
-    public void serialize(ref byte[] data, ref int lastIndex)
-    {
-        this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.id));
-    }
-
-    private void writeTo(ref byte[] data, ref int lastIndex, byte[] dataObj)
-    {
-        System.Array.Copy(dataObj, 0, data, lastIndex, dataObj.Length);
-        lastIndex += dataObj.Length;
-    }
-
+    /**
+     * Processes this event to affect the actual environment
+     */
     virtual public void execute()
     {
         ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
         Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
 
+    /**
+     * Event: Notification that the client has been accepted to the server
+     */
     public class EventConnected : EventNetwork
     {
 
-        public EventConnected() : base((char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED)
+        public EventConnected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED)
         {
         }
 
+        /**
+         * Processes this event to affect the actual environment
+         */
         override public void execute()
         {
-            Debug.Log("Connected");
+            Debug.Log("Connected (" + this.id + ")");
+            // Tell the server we have connected
             NetInterface.INSTANCE.Dispatch(new EventUserJoined());
         }
 
     }
 
+    /**
+     * Event: Notification that some other client has also joined
+     */
     public class EventUserJoined : EventNetwork
     {
 
-        public EventUserJoined() : base((char)ChampNetPlugin.MessageIDs.ID_USER_JOINED)
+        public EventUserJoined() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_JOINED)
         {
         }
 
         override public void execute()
         {
-            Debug.Log("Connected");
+            Debug.Log("Some user has joined");
+        }
+
+    }
+
+    public class EventWithID : EventNetwork
+    {
+
+        // Some user identifier
+        protected uint playerID;
+
+        public EventWithID(byte id) : base(id)
+        {}
+
+        override public int getSize()
+        {
+            return base.getSize() + sizeof(int); // super + playerID
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // uint is 4 bytes (c++ uint is 4 bytes)
+            this.playerID = System.BitConverter.ToUInt32(data, lastIndex);
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
+
+        }
+
+    }
+
+    /**
+     * Event: Notification from server of our user id
+     */
+    public class EventUserID : EventWithID
+    {
+
+        public EventUserID() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_ID)
+        {
+        }
+
+        override public void execute()
+        {
+            Debug.Log("Got user id " + this.playerID);
+        }
+
+    }
+
+    /**
+     * Event: Notification that some user has spawned at some location
+     */
+    public class EventWithLocation : EventWithID
+    {
+
+        protected float posX, posY;
+
+        public EventWithLocation(byte id) : base(id)
+        {
+        }
+
+        override public int getSize()
+        {
+            return base.getSize() + (sizeof(float) * 2); // super + posX + posY
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // float(single) is 4 bytes (c++ float is 4 bytes)
+            this.posX = System.BitConverter.ToSingle(data, lastIndex);
+            this.posY = System.BitConverter.ToSingle(data, lastIndex);
+
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posX));
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posY));
+
+        }
+
+    }
+
+    public class EventUserSpawn : EventWithLocation
+    {
+        public EventUserSpawn() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_SPAWN)
+        {
+        }
+
+        override public void execute()
+        {
+            Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
+        }
+
+    }
+
+    public class EventUpdatePosition : EventWithLocation
+    {
+
+        public EventUpdatePosition() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION)
+        {
+        }
+
+        override public void execute()
+        {
+            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
+        }
+
+    }
+
+    public class EventWithIDTwo : EventWithID
+    {
+
+        protected uint playerID_second;
+
+        public EventWithIDTwo(byte id) : base(id) { }
+
+        override public int getSize()
+        {
+            return base.getSize() + sizeof(int); // super + playerID
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // uint is 4 bytes (c++ uint is 4 bytes)
+            this.playerID_second = System.BitConverter.ToUInt32(data, lastIndex);
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID_second));
+
+        }
+
+    }
+
+    public class EventBattle : EventWithIDTwo
+    {
+
+        protected uint idRequester
+        {
+            get
+            {
+                return this.playerID;
+            }
+        }
+
+        protected uint idReceiver
+        {
+            get
+            {
+                return this.playerID_second;
+            }
+        }
+
+        public EventBattle(byte id) : base(id) { }
+
+    }
+
+    public class EventBattleRequest : EventBattle
+    {
+
+        public EventBattleRequest() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST) {}
+
+        public override void execute()
+        {
+            // Some user (requester) has asked us (receiver) to battle
+            Debug.Log("Received request from battle from " + this.idRequester);
+        }
+
+    }
+
+    public class EventBattleResponse : EventBattle
+    {
+
+        protected bool accepted;
+
+        public EventBattleResponse() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE) { }
+
+        override public int getSize()
+        {
+            // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sizeof
+            return base.getSize() + sizeof(bool); // super + accepted
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // bool is 1 bytes (c++ bool is 1 bytes)
+            this.accepted = System.BitConverter.ToBoolean(data, lastIndex);
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accepted));
+
+        }
+
+        public override void execute()
+        {
+            // This was sent back to the requester to notify them of the other's result, so receiver and requester are flipped
+            Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idRequester);
+        }
+
+    }
+
+    public class EventBattleResult : EventBattle
+    {
+
+        protected uint playerIDWinner;
+
+        public EventBattleResult() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT) { }
+
+        override public int getSize()
+        {
+            return base.getSize() + sizeof(int); // super + playerIDWinner
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // uint is 4 bytes (c++ uint is 4 bytes)
+            this.playerIDWinner = System.BitConverter.ToUInt32(data, lastIndex);
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerIDWinner));
+
+        }
+
+        public override void execute()
+        {
+            Debug.Log("Battle between " + this.idRequester + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
         }
 
     }

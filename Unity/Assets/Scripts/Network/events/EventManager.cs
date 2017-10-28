@@ -28,8 +28,20 @@ public class EventManager : MonoBehaviour {
         {
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
                 return new EventNetwork.EventConnected();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
+                return new EventNetwork.EventUserID();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
+                return new EventNetwork.EventUserSpawn();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION:
+                return new EventNetwork.EventUpdatePosition();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST:
+                return new EventNetwork.EventBattleRequest();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE:
+                return new EventNetwork.EventBattleResponse();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
+                return new EventNetwork.EventBattleResult();
             default:
-                return new EventNetwork((char)id);
+                return new EventNetwork((byte)id);
         }
     }
 

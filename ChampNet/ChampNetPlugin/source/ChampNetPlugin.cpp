@@ -139,7 +139,7 @@ namespace ChampNetPlugin {
 			packet->getAddress(address, length);
 
 			out = new char[length + 1];
-			for (int i = 0; i < length; i++)
+			for (unsigned int i = 0; i < length; i++)
 			{
 				out[i] = address[i];
 			}
@@ -177,11 +177,16 @@ namespace ChampNetPlugin {
 		//gDebugFunc(byteArray, (int)ChampNetPlugin::Color::White, byteArraySize);
 		std::stringstream s;
 		s << address << '|' << port;
-		RakNet::SystemAddress system_address;
-		system_address.FromString(s.str().c_str());
 		PacketPriority priority = HIGH_PRIORITY;
 		PacketReliability reliability = RELIABLE;
-		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, &priority, &reliability, 0, false);
+		SendData(s.str().c_str(), byteArray, byteArraySize, &priority, &reliability, 0, false);
+	}
+
+	void SendData(const char* address, char* byteArray, int byteArraySize, PacketPriority *priority, PacketReliability *reliability, int channel, bool broadcast)
+	{
+		RakNet::SystemAddress system_address;
+		system_address.FromString(address);
+		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, priority, reliability, channel, broadcast);
 	}
 
 	void Disconnect()
