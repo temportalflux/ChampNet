@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIInput : MonoBehaviour {
 
-    public UnityEngine.UI.Button[] fields;
+    public UnityEngine.UI.Selectable[] fields;
     public RectTransform selector;
 
     private int selected;
+
+    private UnityEngine.UI.Selectable selection
+    {
+        get
+        {
+            return this.fields[this.selected];
+        }
+    }
     
 	void Start ()
     {
@@ -22,7 +31,26 @@ public class UIInput : MonoBehaviour {
         switch (action)
         {
             case MappedButton.CONFIRM:
-                this.fields[this.selected].onClick.Invoke();
+                if (this.selection is UnityEngine.UI.Button)
+                {
+                    ((UnityEngine.UI.Button)this.selection).onClick.Invoke();
+                }
+                else
+                if (this.selection is UnityEngine.UI.InputField)
+                {
+                    //this.selection.GetComponent<InputField>().text = "Welcome";
+                    Debug.Log(this.selection);
+                    if (ManagerInput.INSTANCE.isInUse())
+                    {
+                        this.selection.GetComponent<InputField>().DeactivateInputField();
+                        ManagerInput.INSTANCE.Unlock();
+                    }
+                    else
+                    {
+                        ManagerInput.INSTANCE.Lock();
+                        this.selection.GetComponent<InputField>().ActivateInputField();
+                    }
+                }
                 break;
             default:
                 break;

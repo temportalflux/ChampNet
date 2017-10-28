@@ -35,28 +35,28 @@ MonoBehaviour:
   m_Pivot: {x: 0, y: 0, z: 0}
   tiles:
   - side: 0
-    tile: {fileID: 11400000, guid: a996d12c6b82d9a459f57002d86f75a7, type: 2}
+    tile: {fileID: 11400000, guid: df0d068472802724586ef621f50e647f, type: 2}
   - side: 5
-    tile: {fileID: 11400000, guid: 617dc8b8779d61044902012a8421b1b7, type: 2}
+    tile: {fileID: 11400000, guid: ee766c5506407d848a2ed6d8e69209c1, type: 2}
   - side: 9
-    tile: {fileID: 11400000, guid: 82c636332c1931140896bc5426e47004, type: 2}
+    tile: {fileID: 11400000, guid: 6ba0adf7398c3934585b9f028d2a646a, type: 2}
   - side: 1
-    tile: {fileID: 11400000, guid: 395d0d9b5cc18184bb26638b5b58a03a, type: 2}
+    tile: {fileID: 11400000, guid: 4e931cca2d55fab4e9098356fb4af83d, type: 2}
   - side: 6
-    tile: {fileID: 11400000, guid: 8e0c795b1d1251242be8b44c295b6d69, type: 2}
+    tile: {fileID: 11400000, guid: 6ed21f89acb4f964091eab04f021f3a0, type: 2}
   - side: 10
-    tile: {fileID: 11400000, guid: 7fc58dc11894c2a4ca03131195263744, type: 2}
+    tile: {fileID: 11400000, guid: 218b12ead1fef1f4a9f13c0b0a553c81, type: 2}
   - side: 2
-    tile: {fileID: 11400000, guid: d347600cf29b55c4e9c5eb84f8e6e24f, type: 2}
+    tile: {fileID: 11400000, guid: 4140e04c0883c1a41a0e141862ff665b, type: 2}
   - side: 7
-    tile: {fileID: 11400000, guid: f1ccab407c8b49840a26cde22208d56a, type: 2}
+    tile: {fileID: 11400000, guid: 1749e1bf032803f4aa31aaf4d324f1c7, type: 2}
   - side: 11
-    tile: {fileID: 11400000, guid: 1dfbd17d2fc2ab346a97923af2c3f6bd, type: 2}
+    tile: {fileID: 11400000, guid: 81f5db4abeaf8d1479fbb16fdb36ae38, type: 2}
   - side: 3
-    tile: {fileID: 11400000, guid: 729f4741320a3244d810aca8c2566816, type: 2}
+    tile: {fileID: 11400000, guid: 4afb9a5e91fa1e6499aa8e1d38341d33, type: 2}
   - side: 8
-    tile: {fileID: 11400000, guid: 3173b8bb905abe2418508290192c7731, type: 2}
+    tile: {fileID: 11400000, guid: ea107ba8952582e42a5e3b039a28c81d, type: 2}
   - side: 12
-    tile: {fileID: 11400000, guid: 3fc132f319cd4bd468711ca79f74d0be, type: 2}
+    tile: {fileID: 11400000, guid: 66e0c92b4d2fedb46b17027857e79ee8, type: 2}
   - side: 4
-    tile: {fileID: 11400000, guid: aa0f46413d772214bbe83394ca9089ee, type: 2}
+    tile: {fileID: 11400000, guid: 9746847ce4ece6d4487bf420e611bd67, type: 2}

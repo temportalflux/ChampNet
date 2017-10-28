@@ -237,7 +237,6 @@
     <Compile Include="Assets\MonsterDataObject.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
-    <Compile Include="Assets\Scripts\Input\ManagerInput.cs" />
     <Compile Include="Assets\Scripts\Misc\Color.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />

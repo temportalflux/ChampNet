@@ -37,19 +37,19 @@ MonoBehaviour:
   randomElements:
   - tile: {fileID: 0}
     weight: 5000
-  - tile: {fileID: 11400000, guid: 74c1f4f3db925d24c8ae436d167468c4, type: 2}
+  - tile: {fileID: 11400000, guid: bca8def0d60280141aa08161ac7c2d95, type: 2}
     weight: 20
-  - tile: {fileID: 11400000, guid: faeac0f7eb4c9234d9942b48437e38c2, type: 2}
+  - tile: {fileID: 11400000, guid: b164e64a29c126d46890dfca6abba29a, type: 2}
     weight: 20
-  - tile: {fileID: 11400000, guid: 2c5ceb9d3d114024ea24d270cabe4d52, type: 2}
+  - tile: {fileID: 11400000, guid: 03fb070cfd86d654889fc5e78e382fc5, type: 2}
     weight: 20
-  - tile: {fileID: 11400000, guid: 2f5581a73afe8064ab9f706b7fd73614, type: 2}
+  - tile: {fileID: 11400000, guid: 5b0f672bdcaeadf429fe7e2142cb3685, type: 2}
     weight: 20
-  - tile: {fileID: 11400000, guid: 0d386fc7e3af9f04a90dbbce4ccc6d2f, type: 2}
+  - tile: {fileID: 11400000, guid: 5353a5f3016a2054db2806fb3ec1095a, type: 2}
     weight: 10
-  - tile: {fileID: 11400000, guid: ba2bae44d817b0244a62e2cfca719bf7, type: 2}
+  - tile: {fileID: 11400000, guid: f062536138b6c1342812fca19bfed9d0, type: 2}
     weight: 10
-  - tile: {fileID: 11400000, guid: 44dd0c99131a58c4daef0053c72c10bf, type: 2}
+  - tile: {fileID: 11400000, guid: 7928f18d20bc3b7468183cd5779b6f85, type: 2}
     weight: 10
-  - tile: {fileID: 11400000, guid: 115720fe1ffebff479bf2534007c1307, type: 2}
+  - tile: {fileID: 11400000, guid: 47d2b137e4a150646b1cf47beb5fe7f9, type: 2}
     weight: 10

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Rand-Grass-1
   m_EditorClassIdentifier: 
   m_Cells:
-  - m_Tile: {fileID: 0}
+  - m_Tile: {fileID: 11400000, guid: dccf0e5265ef8344daca76c71ebf16e0, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -35,9 +35,9 @@ MonoBehaviour:
   m_Pivot: {x: 0, y: 0, z: 0}
   brushRadius: 1
   randomElements:
-  - tile: {fileID: 11400000, guid: 9b1a05532386e4f42bda76961fbb2437, type: 2}
+  - tile: {fileID: 11400000, guid: dccf0e5265ef8344daca76c71ebf16e0, type: 2}
     weight: 20
-  - tile: {fileID: 11400000, guid: ca07b69f544000f4bab9f28d9af55bb3, type: 2}
+  - tile: {fileID: 11400000, guid: 51ca13ffd9ec6964b931a76e8d770191, type: 2}
     weight: 2
-  - tile: {fileID: 11400000, guid: b98b80467382f9b4088dff59936a1db1, type: 2}
+  - tile: {fileID: 11400000, guid: 65c374ee521b46343bebbba56a7730ba, type: 2}
     weight: 1
