@@ -9,6 +9,8 @@ public class UIInput : MonoBehaviour {
     public UnityEngine.UI.Selectable[] fields;
     public RectTransform selector;
 
+    public int numberOfColumns = 1;
+
     private int selected;
 
     private UnityEngine.UI.Selectable selection
@@ -67,7 +69,7 @@ public class UIInput : MonoBehaviour {
                 case MappedAxis.Vertical:
                     
                     // Add value to current selection
-                    this.selected = (this.selected - (int)value);
+                    this.selected = (this.selected - ((int)value) * numberOfColumns);
                     // Ensure yield is negative
                     if (this.selected < 0) this.selected += this.fields.Length;
                     // Find remainder
@@ -75,6 +77,28 @@ public class UIInput : MonoBehaviour {
 
                     this.selector.position = new Vector3(this.selector.position.x, this.fields[this.selected].gameObject.transform.position.y, 0);
                     
+                    break;
+                case MappedAxis.Horizontal:
+
+                    // Add value to current selection
+                    this.selected = (this.selected + (int)value);
+                    // Ensure yield is negative
+                    if (this.selected < 0) this.selected += this.fields.Length;
+                    // Find remainder
+                    this.selected %= this.fields.Length;
+
+                    this.selector.position = new Vector3(this.selector.position.x, this.fields[this.selected].gameObject.transform.position.y, 0);
+
+
+                    if (this.selector.rotation.z == 0)
+                    {
+                        this.selector.localEulerAngles = new Vector3(this.selector.rotation.x, this.selector.rotation.y, 180);
+                    }
+                    else
+                    {
+                        this.selector.localEulerAngles = new Vector3(this.selector.rotation.x, this.selector.rotation.y, 0);
+                    }
+
                     break;
                 default:
                     break;

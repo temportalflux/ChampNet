@@ -14,12 +14,19 @@ public enum MonsterType
     GRASS
 }
 
+public enum PhysicalOrSpecial
+{
+    PHYSICAL,
+    SPECIAL
+}
+
 [Serializable]
 [CreateAssetMenu(menuName = "Asset/ Create New Attack", order = 100)]
 public class AttackObject : ScriptableObject
 {
     public string attackName;
     public MonsterType type;
+    public PhysicalOrSpecial physicalOrSpecial;
     public bool doesDamage;
     public int power;
 
