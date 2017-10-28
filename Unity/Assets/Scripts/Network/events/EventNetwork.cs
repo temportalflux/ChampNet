@@ -167,7 +167,7 @@ public class EventNetwork
     }
 
     /**
-     * Event: Notification that some user has spawned at some location
+     * A base event to (de)serialize a (float,float) location
      */
     public class EventWithLocation : EventWithID
     {
@@ -206,6 +206,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * Event: Notification that some user has spawned at some location
+     */
     public class EventUserSpawn : EventWithLocation
     {
         public EventUserSpawn() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_SPAWN)
@@ -219,6 +222,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * Some player's character needs to be updated
+     */
     public class EventUpdatePosition : EventWithLocation
     {
 
@@ -233,6 +239,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * A base event to (de)serialize two playerIDs
+     */
     public class EventWithIDTwo : EventWithID
     {
 
@@ -265,6 +274,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * A base event to wrap two player ids into getters
+     */
     public class EventBattle : EventWithIDTwo
     {
 
@@ -288,6 +300,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * Event: Some player requests battle with another
+     */
     public class EventBattleRequest : EventBattle
     {
 
@@ -301,6 +316,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * Event: Some player responds to a battle request from another player
+     */
     public class EventBattleResponse : EventBattle
     {
 
@@ -340,6 +358,9 @@ public class EventNetwork
 
     }
 
+    /**
+     * Event: A battle has finished and the entire world needs to know about it
+     */
     public class EventBattleResult : EventBattle
     {
 
