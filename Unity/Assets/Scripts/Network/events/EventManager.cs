@@ -15,7 +15,7 @@ public class EventManager : MonoBehaviour {
 
 	public void onReceive(int id, string address, byte[] data)
     {
-        Debug.Log("Received: " + data.Length);
+        //Debug.Log("Received: " + data.Length);
         EventNetwork evt = this.createEvent(id);
         
         int lastIndex = 0;
@@ -80,7 +80,7 @@ public class EventManager : MonoBehaviour {
     public void Dispatch(EventNetwork evt, string address, int port)
     {
         byte[] data = new byte[evt.getSize()];
-        Debug.Log("Sending: " + data.Length);
+        //Debug.Log("Sending: " + data.Length);
         int lastIndex = 0;
         evt.serialize(ref data, ref lastIndex);
         Netty.SendByteArray(address, port, data, data.Length);

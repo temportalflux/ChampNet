@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
     public void sendPositionUpdate()
     {
         if (this.netty == null) return;
-        this.netty.getEvents().Dispatch(new EventNetwork.EventUpdatePosition(this.getID(), this.localPlayer.transform.position.x, this.localPlayer.transform.position.y));
+        this.netty.getEvents().Dispatch(this.localPlayer.createUpdateEvent());
     }
 
     private IEnumerator sendPositionUpdates()
@@ -104,7 +104,7 @@ public class GameManager : Singleton<GameManager>
         while (true)
         {
             this.sendPositionUpdate();
-            yield return new WaitForSeconds(this.updateDelay);
+            yield return null;// new WaitForSeconds(this.updateDelay);
         }
     }
 
@@ -122,11 +122,11 @@ public class GameManager : Singleton<GameManager>
         PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
         this.networkPlayerMap.Add(id, player);
 
-        this.updatePlayer(id, posX, posY);
+        this.updatePlayer(id, posX, posY, 0);
 
     }
 
-    public void updatePlayer(uint id, float posX, float posY)
+    public void updatePlayer(uint id, float posX, float posY, float rotZ)
     {
         if (!this.networkPlayerMap.ContainsKey(id))
         {
@@ -139,7 +139,7 @@ public class GameManager : Singleton<GameManager>
         {
             if (player != null)
             {
-                player.updateAt(posX, posY);
+                player.updateAt(posX, posY, rotZ);
             }
             else
             {

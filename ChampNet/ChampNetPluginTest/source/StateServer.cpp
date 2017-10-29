@@ -271,7 +271,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
-				std::cout << "Passing along posUpdate(" << (int)pPacket->id << ") from " << pPacket->playerId << " at " << pPacket->posX << " | " << pPacket->posY << '\n';
+				//std::cout << "Passing along posUpdate(" << (int)pPacket->id << ") from " << pPacket->playerId << " at " << pPacket->posX << " | " << pPacket->posY << '\n';
+				
 				this->sendPacket(addressSender, pPacket, true);
 			}
 			break;

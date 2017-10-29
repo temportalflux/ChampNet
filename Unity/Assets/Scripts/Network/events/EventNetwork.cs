@@ -264,21 +264,49 @@ public class EventNetwork
     public class EventUpdatePosition : EventWithLocation
     {
 
+        private float rotZ;
+
         public EventUpdatePosition() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION)
         {
         }
 
-        public EventUpdatePosition(uint playerID, float posX, float posY) : this()
+        public EventUpdatePosition(uint playerID, float posX, float posY, float rotZ) : this()
         {
             this.playerID = playerID;
             this.posX = posX;
             this.posY = posY;
+            this.rotZ = rotZ;
+        }
+
+        override public int getSize()
+        {
+            return base.getSize() + sizeof(System.Single); // super + rotZ
+        }
+
+        override public void deserialize(byte[] data, ref int lastIndex)
+        {
+            base.deserialize(data, ref lastIndex);
+
+            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
+            // float(single) is 4 bytes (c++ float is 4 bytes)
+            this.rotZ = System.BitConverter.ToSingle(data, lastIndex);
+            lastIndex += sizeof(System.Single);
+
+
+        }
+
+        override public void serialize(ref byte[] data, ref int lastIndex)
+        {
+            base.serialize(ref data, ref lastIndex);
+
+            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rotZ));
+
         }
 
         override public void execute()
         {
-            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
-            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY);
+            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
+            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.rotZ);
         }
 
     }

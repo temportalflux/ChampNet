@@ -17,7 +17,7 @@ struct PacketPlayerPosition
 {
 	unsigned char id;
 	unsigned int playerId;
-	float posX, posY;
+	float posX, posY, rotZ;
 };
 
 #pragma pack(pop)
