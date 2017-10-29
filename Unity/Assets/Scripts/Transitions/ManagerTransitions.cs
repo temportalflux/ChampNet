@@ -23,7 +23,7 @@ public class ManagerTransitions : MonoBehaviour {
     // Mutex for handling if there is a transition in use
     private bool inUse;
 
-    private Coroutine routDisplay, routLoad, routMain;
+    private Coroutine routDisplay, routLoad;
 
     Transition sceneTransition;
 
@@ -101,7 +101,7 @@ public class ManagerTransitions : MonoBehaviour {
             this.routLoad = StartCoroutine(this.loadScene(nextScene));
 
             // Add check for merging routines
-            this.routMain = StartCoroutine(this.checkDisplayLoad());
+            StartCoroutine(this.checkDisplayLoad());
 
             return true;
         }
@@ -189,7 +189,7 @@ public class ManagerTransitions : MonoBehaviour {
         this.inUse = false;
 
         // clean the coroutine
-        this.routMain = null;
+        //this.routMain = null;
     }
 
     public void triggerExit()

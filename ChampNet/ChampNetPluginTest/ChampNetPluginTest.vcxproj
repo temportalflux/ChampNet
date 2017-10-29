@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Packets.h" />
     <ClInclude Include="include\StateServer.h" />
     <ClInclude Include="include\StateApplication.h" />
     <ClInclude Include="include\StateData.h" />

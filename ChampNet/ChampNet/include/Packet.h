@@ -26,8 +26,17 @@ namespace ChampNet
 
 		void getAddress(const char* &address, unsigned int &length);
 		void getData(unsigned char* &data, unsigned int &length);
+		inline unsigned int getDataLength() const { return mDataLength; }
 
 		inline unsigned int getID() const { return this->mData[0]; }
+
+		template <typename T>
+		T* getPacketAs(unsigned int &dataSize)
+		{
+			unsigned char *data;
+			this->getData(data, dataSize);
+			return (T*)data;
+		}
 
 	};
 

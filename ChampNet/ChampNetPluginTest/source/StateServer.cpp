@@ -6,6 +6,8 @@
 #include "StateData.h"
 #include "Win.h"
 #include <iostream>
+#include <RakNet\PacketPriority.h>
+#include "Packets.h"
 
 StateServer::StateServer() : StateApplication()
 {
@@ -216,23 +218,58 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 	{
 		// Some client is connecting (expect a ID_USER_JOINED shortly)
 		case ChampNetPlugin::ID_CLIENT_CONNECTION:
-			std::cout << "User connected\n";
+			{
+				std::cout << "User connected\n";
+				this->mpState->mNetwork.peersConnected++;
+			}
 			break;
 		// Some client has disconnected
 		case ChampNetPlugin::ID_CLIENT_DISCONNECTION:
-			std::cout << "User disconnected\n";
+			{
+				std::cout << "User disconnected\n";
+				this->mpState->mNetwork.peersConnected--; 
+			}
 			break;
 		// A client is joining
 		case ChampNetPlugin::ID_USER_JOINED:
 			{
 				std::cout << "User has joined\n";
 
+				unsigned int pPacketLength = 0;
+				PacketUserJoined* pPacket = packet->getPacketAs<PacketUserJoined>(pPacketLength);
+
+				// Generate ID for user
+				// ID is the current count of players (incremented during ID_CLIENT_CONNECTION)
+				unsigned int id = this->mpState->mNetwork.peersConnected;
+
+				const char *addressSender;
+				unsigned int addressLength;
+				packet->getAddress(addressSender, addressLength);
+
+				// Tell other players of new player
+				pPacket->id = ChampNetPlugin::ID_USER_SPAWN;
+				this->sendPacket(addressSender, pPacket, true);
+
+				// Tell user their player ID
+				PacketUserID packetID[1];
+				packetID->id = ChampNetPlugin::ID_USER_ID;
+				packetID->playerId = id;
+				
+				this->sendPacket(addressSender, packetID, false);
+				
 			}
 			break;
 		default:
-			std::cout << "Received packet with id " << packet->getID() << '\n';
+			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;
 	}
+}
+
+void StateServer::sendPacket(const char *address, char *data, int dataSize, bool broadcast)
+{
+	PacketPriority priority = HIGH_PRIORITY;
+	PacketReliability reliability = RELIABLE;
+	ChampNetPlugin::SendData(address, data, dataSize, &priority, &reliability, 0, broadcast);
 }
 
 void StateServer::render()

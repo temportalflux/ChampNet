@@ -74,19 +74,8 @@ public class NetInterface : MonoBehaviour {
         while (Netty.PollPacket(out address, out data))
         {
             int id = (int)data[0];
+            //Debug.Log("Receiving " + id);
             this.events.onReceive(id, address, data);
-            
-            /*
-            switch (id)
-            {
-                case (int)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
-                    Debug.Log("Connected");
-                    break;
-                default:
-                    break;
-            }
-            */
-
         }
         this.events.ProcessEvents();
     }

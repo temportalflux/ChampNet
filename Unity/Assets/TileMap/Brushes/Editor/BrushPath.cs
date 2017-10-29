@@ -495,11 +495,11 @@ namespace UnityEditor
 
             // Draw script line
             GUI.enabled = false;
-            MonoScript script = EditorGUILayout.ObjectField(
+            EditorGUILayout.ObjectField(
                 "Script",
                 MonoScript.FromScriptableObject(this.theBrush),
                 typeof(MonoScript), false
-            ) as MonoScript;
+            );
             GUI.enabled = true;
 
             // Draw each enum line

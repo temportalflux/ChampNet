@@ -42,6 +42,7 @@ struct StateNetwork
 	unsigned int port;
 
 	unsigned int maxClients;
+	unsigned int peersConnected;
 
 };
 

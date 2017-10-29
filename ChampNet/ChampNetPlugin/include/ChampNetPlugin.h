@@ -13,6 +13,9 @@ extern "C"
 {
 #endif // __cplusplus
 
+	enum PacketPriority;
+	enum PacketReliability;
+
 	namespace ChampNetPlugin {
 
 		enum MessageIDs
@@ -28,14 +31,24 @@ extern "C"
 			// placeholder - For tracking in C# script
 			ID_PLACEHOLDER = ID_USER_PACKET_ENUM,
 
+			// Client-Sent Messages
+			// 1) Sent to server to notify it of an incoming client
+			ID_USER_JOINED,
+			// Sent to server to notify all clients of an updated position
+			ID_USER_UPDATE_POSITION,
+			// Sent to server to request a battle with some other player
+			ID_BATTLE_REQUEST,
+			// Sent to server to accept or deny battle with some requesting player
+			ID_BATTLE_RESPONSE,
+
 			// Server-Sent Messages
 			// 2) Sent to clients to notify them of the values for some spawning user
 			// Sender uses to place self, peers use to place a dummy unit
 			ID_USER_SPAWN,
-
-			// Client-Sent Messages
-			// 1) Sent to server to notify it of an incoming client
-			ID_USER_JOINED,
+			// 3) Sent to clients to mandate their ID
+			ID_USER_ID,
+			// Send to all clients to notify them of a battle result
+			ID_BATTLE_RESULT,
 
 		};
 
@@ -77,6 +90,8 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG void FreePacket(void* packetPtr);
 
 		CHAMPNET_PLUGIN_SYMTAG void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize);
+
+		CHAMPNET_PLUGIN_SYMTAG void SendData(const char* address, char* byteArray, int byteArraySize, PacketPriority *priority, PacketReliability *reliability, int channel, bool broadcast);
 
 		// Disconnect from the interface
 		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
