@@ -194,4 +194,9 @@ namespace ChampNetPlugin {
 		gpNetwork->disconnect();
 	}
 
+	const char* GetAddress()
+	{
+		return gpNetwork->getIP().c_str();
+	}
+
 }

@@ -111,6 +111,24 @@ public class EventNetwork
 
     }
 
+    public class EventDisconnected : EventNetwork
+    {
+
+        public EventDisconnected() : base((byte)ChampNetPlugin.MessageIDs.ID_DISCONNECT)
+        {
+        }
+
+        /**
+         * Processes this event to affect the actual environment
+         */
+        override public void execute()
+        {
+            Debug.Log("Server Disconnected");
+            GameManager.INSTANCE.onExit.Invoke();
+        }
+
+    }
+
     /**
      * Event: Notification that some other client has also joined
      */

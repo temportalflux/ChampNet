@@ -50,6 +50,8 @@ extern "C"
 			// Send to all clients to notify them of a battle result
 			ID_BATTLE_RESULT,
 
+			ID_DISCONNECT,
+
 		};
 
 		// Create a network to connect with
@@ -95,6 +97,8 @@ extern "C"
 
 		// Disconnect from the interface
 		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
+
+		CHAMPNET_PLUGIN_SYMTAG const char* GetAddress();
 
 	};
 

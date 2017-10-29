@@ -189,6 +189,7 @@ void StateServer::start()
 
 void StateServer::disconnect()
 {
+	this->sendPacket(ChampNetPlugin::GetAddress(), PacketGeneral{ ChampNetPlugin::MessageIDs::ID_DISCONNECT }, true);
 	ChampNetPlugin::Disconnect();
 }
 
@@ -236,7 +237,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				std::cout << "User has joined\n";
 
 				unsigned int pPacketLength = 0;
-				PacketUserJoined* pPacket = packet->getPacketAs<PacketUserJoined>(pPacketLength);
+				PacketGeneral* pPacket = packet->getPacketAs<PacketGeneral>(pPacketLength);
 
 				// Generate ID for user
 				// ID is the current count of players (incremented during ID_CLIENT_CONNECTION)
@@ -250,7 +251,6 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				packetID->playerId = id;
 
 				// Tell other players of new player
-				PacketUserID packetSpawn[1];
 				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
 				this->sendPacket(addressSender, packetID, true);
 

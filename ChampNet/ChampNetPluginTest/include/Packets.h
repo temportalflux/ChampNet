@@ -2,7 +2,7 @@
 
 #pragma pack(push, 1)
 
-struct PacketUserJoined
+struct PacketGeneral
 {
 	unsigned char id;
 };

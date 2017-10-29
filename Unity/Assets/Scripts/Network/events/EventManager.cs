@@ -29,6 +29,8 @@ public class EventManager : MonoBehaviour {
                 return new EventNetwork.EventConnected();
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED:
                 return new EventNetwork.EventConnectionRejected();
+            case (char)ChampNetPlugin.MessageIDs.ID_DISCONNECT:
+                return new EventNetwork.EventDisconnected();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
                 return new EventNetwork.EventUserID();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
