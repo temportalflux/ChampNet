@@ -36,11 +36,11 @@ public class GameManager : Singleton<GameManager>
     void Awake()
     {
         this.loadSingleton(this, ref GameManager._instance);
+        this.networkPlayerMap = new Dictionary<uint, PlayerReference>();
     }
 
     void Start()
     {
-
         this.netty = NetInterface.INSTANCE;
 
         this.localPlayer = null;

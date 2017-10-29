@@ -39,9 +39,9 @@ public:
 
 	void sendPacket(const char *address, char *data, int dataSize, bool broadcast);
 	template <typename T>
-	void sendPacket(const char *address, T &packet, bool broadcast)
+	void sendPacket(const char *address, T *packet, bool broadcast)
 	{
-		this->sendPacket(address, (char*)(&packet), sizeof(packet), broadcast);
+		this->sendPacket(address, (char*)(packet), sizeof(packet), broadcast);
 	}
 
 	virtual void render() override;

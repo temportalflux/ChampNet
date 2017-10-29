@@ -189,7 +189,9 @@ void StateServer::start()
 
 void StateServer::disconnect()
 {
-	this->sendPacket(ChampNetPlugin::GetAddress(), PacketGeneral{ ChampNetPlugin::MessageIDs::ID_DISCONNECT }, true);
+	PacketGeneral packet[1];
+	packet->id = ChampNetPlugin::MessageIDs::ID_DISCONNECT;
+	this->sendPacket(ChampNetPlugin::GetAddress(), packet, true);
 	ChampNetPlugin::Disconnect();
 }
 
@@ -269,7 +271,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
-				std::cout << "Passing along posUpdate from " << pPacket->playerId << '\n';
+				std::cout << "Passing along posUpdate(" << (int)pPacket->id << ") from " << pPacket->playerId << " at " << pPacket->posX << " | " << pPacket->posY << '\n';
 				this->sendPacket(addressSender, pPacket, true);
 			}
 			break;
