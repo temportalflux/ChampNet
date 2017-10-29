@@ -13,10 +13,12 @@ public class ConnectMenu : MonoBehaviour {
 
     private string txtAddress = "127.0.0.1", txtPort = "425";
     private string errorPort = null, errorConnect = null;
-    private bool connecting = false;
+    private bool connecting = false, showGui = true;
     
     void OnGUI()
     {
+        if (!this.showGui) return;
+
         int width = 100;
         GUI.Box(new Rect(0, 0, width, Screen.height), "");
 
@@ -72,9 +74,10 @@ public class ConnectMenu : MonoBehaviour {
         GUILayout.EndVertical();
     }
 
-    public void onConnectionHandled()
+    public void onConnectionHandled(bool success)
     {
         this.connecting = false;
+        this.showGui = !success;
     }
 
     public void setConnectionError(string error)

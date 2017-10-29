@@ -80,8 +80,8 @@ public class EventNetwork
          */
         override public void execute()
         {
-            Debug.Log("Connected (" + this.id + ")");
-            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke();
+            //Debug.Log("Connected (" + this.id + ")");
+            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(true);
             // Tell the server we have connected
             NetInterface.INSTANCE.Dispatch(new EventUserJoined());
             GameManager.INSTANCE.PlayNetwork();
@@ -105,7 +105,7 @@ public class EventNetwork
         override public void execute()
         {
             Debug.Log("Connection Rejected");
-            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke();
+            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(false);
             GameManager.INSTANCE.onNetworkRejected.Invoke("Invalid server");
         }
 

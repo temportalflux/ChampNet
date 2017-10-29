@@ -110,7 +110,7 @@ public class ManagerTransitions : MonoBehaviour {
 
     private IEnumerator displayTransition(Transition transition)
     {
-        Debug.Log("Displaying transition");
+        //Debug.Log("Displaying transition");
 
         this.sceneTransition = transition;
 
@@ -130,7 +130,7 @@ public class ManagerTransitions : MonoBehaviour {
     private IEnumerator loadScene(string nextScene)
     {
         // Tell debugger the scene is loading
-        Debug.Log("Loading next scene");
+        //Debug.Log("Loading next scene");
 
         if (nextScene != null)
         {
@@ -151,7 +151,7 @@ public class ManagerTransitions : MonoBehaviour {
 
         if (nextScene != null)
         {
-            Debug.Log(nextScene + " is loaded.");
+            //Debug.Log(nextScene + " is loaded.");
         }
         else
         {

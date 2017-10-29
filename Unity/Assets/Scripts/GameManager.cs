@@ -12,7 +12,11 @@ public class GameManager : Singleton<GameManager>
 
     [Serializable]
     public class GameAction : UnityEvent { }
-    public GameAction onPlay, onPlayNetwork, onExit, onNetworkConnectionHandled;
+    public GameAction onPlay, onPlayNetwork, onExit;
+
+    [Serializable]
+    public class GameActionFlag : UnityEvent<bool> { }
+    public GameActionFlag onNetworkConnectionHandled;
 
     [Serializable]
     public class GameActionMessage : UnityEvent<string> { }
