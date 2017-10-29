@@ -26,7 +26,12 @@ public class PlayerReference : MonoBehaviour {
 
     virtual public EventNetwork createUpdateEvent()
     {
-        return null;
+        return new EventNetwork.EventUpdatePosition(
+            this.getID(),
+            this.transform.position.x,
+            this.transform.position.y,
+            this.sprite.rotation.eulerAngles.z
+        );
     }
 
 }

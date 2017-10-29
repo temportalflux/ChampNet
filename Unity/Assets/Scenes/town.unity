@@ -8978,7 +8978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 574972403}
-  target: {fileID: 0}
+  target: {fileID: 787934041}
   lerpPercentage: 5
 --- !u!114 &574972405
 MonoBehaviour:
@@ -8991,6 +8991,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e38894c9f4343646b8c1f237528fb6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &787934040
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &787934041 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381,
+    type: 2}
+  m_PrefabInternal: {fileID: 787934040}
 --- !u!1 &988090456
 GameObject:
   m_ObjectHideFlags: 0
