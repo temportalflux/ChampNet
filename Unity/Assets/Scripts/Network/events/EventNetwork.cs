@@ -249,7 +249,8 @@ public class EventNetwork
 
         override public void execute()
         {
-            Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
+            //Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
+            GameManager.INSTANCE.spawnPlayer(this.playerID, this.posX, this.posY);
         }
 
     }
@@ -274,6 +275,7 @@ public class EventNetwork
         override public void execute()
         {
             Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
+            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY);
         }
 
     }

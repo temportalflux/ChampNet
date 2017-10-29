@@ -7,38 +7,24 @@ using UnityEngine;
 using Netty = ChampNetPlugin.Network;
 
 [RequireComponent(typeof(EventManager))]
-public class NetInterface : MonoBehaviour {
+public class NetInterface : Singleton<NetInterface>
+{
 
     private static NetInterface _instance = null;
-    public static NetInterface INSTANCE
-    {
-        get
-        {
-            return _instance;
-        }
-    }
-
-    private static void loadSingleton(NetInterface inst)
-    {
-
-        if (_instance != null)
-        {
-            Destroy(_instance);
-            _instance = null;
-        }
-
-        _instance = inst;
-        DontDestroyOnLoad(_instance);
-
-    }
+    public static NetInterface INSTANCE { get {  return _instance; } }
+    
 
     private EventManager events;
     private string serverAddress = "127.0.0.1";
     private int serverPort = 425;
 
+    void Awake()
+    {
+        this.loadSingleton(this, ref NetInterface._instance);
+    }
+
     private void Start()
     {
-        NetInterface.loadSingleton(this);
         this.events = this.GetComponent<EventManager>();
 
         Debug.Log("Creating network");

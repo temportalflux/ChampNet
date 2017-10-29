@@ -3,33 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerReference : MonoBehaviour {
-
-    public float updateDelay = 0.5f;
-
-    private GameManager gm;
-    private NetInterface netty;
-
-    void Start()
+    
+    private uint playerID;
+    
+    public void setID(uint id)
     {
-        this.gm = GameManager.INSTANCE;
-        this.netty = NetInterface.INSTANCE;
-        this.gm.setPlayer(this);
-        StartCoroutine(this.sendPositionUpdates());
+        this.playerID = id;
     }
 
-    public void sendPositionUpdate()
+    public uint getID()
     {
-        if (this.netty == null) return;
-        this.netty.Dispatch(new EventNetwork.EventUpdatePosition(this.gm.getID(), this.transform.position.x, this.transform.position.y));
+        return this.playerID;
     }
-
-    private IEnumerator sendPositionUpdates()
+ 
+    public void updateAt(float posX, float posY)
     {
-        while (true)
-        {
-            this.sendPositionUpdate();
-            yield return new WaitForSeconds(this.updateDelay);
-        }
+        this.transform.position = new Vector3(posX, posY);
     }
 
 }

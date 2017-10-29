@@ -51,3 +51,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17de8712dbdbc9e4d83e1194d6d1fe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+GameAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onPlayNetwork:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+GameAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+GameAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onNetworkConnectionHandled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+GameActionFlag, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onNetworkRejected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+GameActionMessage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  updateDelay: 0.5
+  playerNetworkPrefab: {fileID: 1579936410149914, guid: a6ccc1f5bc2e58444b62e9f866465ca6,
+    type: 2}

@@ -260,6 +260,19 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				
 			}
 			break;
+		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
+			{
+				unsigned int pPacketLength = 0;
+				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
+
+				const char *addressSender;
+				unsigned int addressLength;
+				packet->getAddress(addressSender, addressLength);
+
+				std::cout << "Passing along posUpdate from " << pPacket->playerId << '\n';
+				this->sendPacket(addressSender, pPacket, true);
+			}
+			break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;
