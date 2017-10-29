@@ -195,8 +195,15 @@ public class GameManager : Singleton<GameManager>
     public PlayerReference getRandomPlayer()
     {
         List<PlayerReference> players = new List<PlayerReference>(this.networkPlayerMap.Values);
-        int index = UnityEngine.Random.Range(0, players.Count);
-        return players[index];
+        if (players.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, players.Count);
+            return players[index];
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }

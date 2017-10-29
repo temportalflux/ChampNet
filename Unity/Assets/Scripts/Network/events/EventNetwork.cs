@@ -409,9 +409,9 @@ public class EventNetwork
 
         public EventBattleRequest() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST) { }
 
-        public EventBattleRequest(uint requester, uint receiver) : this()
+        public EventBattleRequest(uint sender, uint receiver) : this()
         {
-            this.idSender = requester;
+            this.idSender = sender;
             this.idReceiver = receiver;
         }
 

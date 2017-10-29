@@ -15,6 +15,7 @@ public class PlayerLocal : PlayerReference
         PlayerReference player = GameManager.INSTANCE.getRandomPlayer();
         if (player != null)
         {
+            Debug.Log("Requesting battle from player " + player.getID());
             this.requestBattle(player);
         }
 
