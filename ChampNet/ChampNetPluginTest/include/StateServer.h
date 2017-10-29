@@ -14,8 +14,10 @@ class StateServer : public StateApplication
 {
 
 private:
+	typedef std::string* PlayerAddress;
 
-	const char* *mUsedPlayerIDs;
+	int mPlayerAddressesLength;
+	PlayerAddress *mpPlayerAddresses;
 
 public:
 

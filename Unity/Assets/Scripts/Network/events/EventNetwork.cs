@@ -418,7 +418,7 @@ public class EventNetwork
         public override void execute()
         {
             // Some user (requester) has asked us (receiver) to battle
-            Debug.Log("Received request from battle from " + this.idSender + " (i am " + this.idReceiver + "=" + GameManager.INSTANCE.getID() + ")... auto accepting");
+            Debug.Log("Received request to battle from " + this.idSender + " (i am " + this.idReceiver + "=" + GameManager.INSTANCE.getID() + ")... auto accepting");
             NetInterface.INSTANCE.getEvents().Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
 
@@ -469,7 +469,7 @@ public class EventNetwork
         public override void execute()
         {
             // This was sent back to the requester to notify them of the other's result, so receiver and requester are flipped
-            Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idSender);
+            //Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idSender);
         }
 
     }

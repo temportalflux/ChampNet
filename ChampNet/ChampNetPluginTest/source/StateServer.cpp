@@ -18,11 +18,16 @@ StateServer::StateServer() : StateApplication()
 
 StateServer::~StateServer()
 {
-	if (this->mUsedPlayerIDs != NULL)
+	if (this->mpPlayerAddresses != NULL)
 	{
-		// dont need to delete each, they are just strings
-		delete[] this->mUsedPlayerIDs;
-		this->mUsedPlayerIDs = NULL;
+		for (int i = 0; i < mPlayerAddressesLength; i++)
+			if (mpPlayerAddresses[i] != NULL)
+			{
+				delete mpPlayerAddresses[i];
+				mpPlayerAddresses[i] = NULL;
+			}
+		delete[] this->mpPlayerAddresses;
+		this->mpPlayerAddresses = NULL;
 	}
 
 	this->disconnect();
@@ -193,9 +198,10 @@ void StateServer::onInput(std::string &input)
 
 void StateServer::start()
 {
-	this->mUsedPlayerIDs = new const char*[this->mpState->mNetwork.maxClients];
+	this->mPlayerAddressesLength = this->mpState->mNetwork.maxClients;
+	this->mpPlayerAddresses = new PlayerAddress[mPlayerAddressesLength];
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
-		this->mUsedPlayerIDs[i] = NULL;
+		this->mpPlayerAddresses[i] = NULL;
 
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
@@ -277,7 +283,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					this->sendDisconnectPacket(addressSender, false);
 					return;
 				}
-				this->mUsedPlayerIDs[id] = addressSender;
+				this->mpPlayerAddresses[id] = new std::string(addressSender);
 
 				std::cout << "User " << id << " has joined from " << addressSender << '\n';
 
@@ -313,7 +319,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
 
-				this->mUsedPlayerIDs[pPacket->playerId] = NULL;
+				delete this->mpPlayerAddresses[pPacket->playerId];
+				this->mpPlayerAddresses[pPacket->playerId] = NULL;
 
 				std::cout << "User " << pPacket->playerId << " has left\n";
 
@@ -334,7 +341,11 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
-				const char *addressReceiver = this->mUsedPlayerIDs[pPacket->playerIdReceiver];
+				const char *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver]->c_str();
+
+				std::cout << "Forwarding battle request from "
+					<< pPacket->playerIdSender << " at " << addressSender << " to "
+					<< pPacket->playerIdReceiver << " at " << addressReceiver << '\n';
 				
 				this->sendPacket(addressReceiver, pPacket, false);
 			}
@@ -349,7 +360,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
-				const char *addressReceiver = this->mUsedPlayerIDs[pPacket->playerIdReceiver];
+				const char *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver]->c_str();
 
 				this->sendPacket(addressReceiver, pPacket, false);
 
@@ -403,7 +414,7 @@ int StateServer::findNextPlayerID()
 {
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
 	{
-		if (this->mUsedPlayerIDs[i] == NULL) return i;
+		if (this->mpPlayerAddresses[i] == NULL) return i;
 	}
 	return -1;
 }
