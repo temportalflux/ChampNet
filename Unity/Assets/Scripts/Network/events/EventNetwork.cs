@@ -373,11 +373,15 @@ public class EventNetwork
     public class EventBattle : EventWithIDTwo
     {
 
-        protected uint idRequester
+        protected uint idSender
         {
             get
             {
                 return this.playerID;
+            }
+            set
+            {
+                this.playerID = value;
             }
         }
 
@@ -386,6 +390,10 @@ public class EventNetwork
             get
             {
                 return this.playerID_second;
+            }
+            set
+            {
+                this.playerID_second = value;
             }
         }
 
@@ -399,12 +407,19 @@ public class EventNetwork
     public class EventBattleRequest : EventBattle
     {
 
-        public EventBattleRequest() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST) {}
+        public EventBattleRequest() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST) { }
+
+        public EventBattleRequest(uint requester, uint receiver) : this()
+        {
+            this.idSender = requester;
+            this.idReceiver = receiver;
+        }
 
         public override void execute()
         {
             // Some user (requester) has asked us (receiver) to battle
-            Debug.Log("Received request from battle from " + this.idRequester);
+            Debug.Log("Received request from battle from " + this.idSender + "... auto accepting");
+            NetInterface.INSTANCE.getEvents().Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
 
     }
@@ -418,6 +433,13 @@ public class EventNetwork
         protected bool accepted;
 
         public EventBattleResponse() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE) { }
+
+        public EventBattleResponse(uint sender, uint receiver, bool accepted) : this()
+        {
+            this.idSender = sender;
+            this.idReceiver = receiver;
+            this.accepted = accepted;
+        }
 
         override public int getSize()
         {
@@ -447,7 +469,7 @@ public class EventNetwork
         public override void execute()
         {
             // This was sent back to the requester to notify them of the other's result, so receiver and requester are flipped
-            Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idRequester);
+            Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idSender);
         }
 
     }
@@ -488,7 +510,7 @@ public class EventNetwork
 
         public override void execute()
         {
-            Debug.Log("Battle between " + this.idRequester + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
+            Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
         }
 
     }

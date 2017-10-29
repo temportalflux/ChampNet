@@ -9,6 +9,8 @@
 #include <RakNet\PacketPriority.h>
 #include "Packets.h"
 
+#include <stdlib.h> // rand
+
 StateServer::StateServer() : StateApplication()
 {
 	ChampNetPlugin::Create();
@@ -18,6 +20,7 @@ StateServer::~StateServer()
 {
 	if (this->mUsedPlayerIDs != NULL)
 	{
+		// dont need to delete each, they are just strings
 		delete[] this->mUsedPlayerIDs;
 		this->mUsedPlayerIDs = NULL;
 	}
@@ -190,9 +193,9 @@ void StateServer::onInput(std::string &input)
 
 void StateServer::start()
 {
-	this->mUsedPlayerIDs = new bool[this->mpState->mNetwork.maxClients];
+	this->mUsedPlayerIDs = new const char*[this->mpState->mNetwork.maxClients];
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
-		this->mUsedPlayerIDs[i] = false;
+		this->mUsedPlayerIDs[i] = NULL;
 
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
@@ -275,7 +278,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					this->sendDisconnectPacket(addressSender, false);
 					return;
 				}
-				this->mUsedPlayerIDs[id] = true;
+				this->mUsedPlayerIDs[id] = addressSender;
 
 				PacketUserID packetID[1];
 				packetID->playerId = id;
@@ -309,13 +312,54 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
 
-				this->mUsedPlayerIDs[pPacket->playerId] = false;
+				this->mUsedPlayerIDs[pPacket->playerId] = NULL;
 
 				const char *addressSender;
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
 				this->sendPacket(addressSender, pPacket, true);
+			}
+			break;
+		case ChampNetPlugin::ID_BATTLE_REQUEST:
+			{
+				// User (playerIdSender) is requesting User (playerIdReceiver) to battle
+				unsigned int pPacketLength = 0;
+				PacketUserIDDouble* pPacket = packet->getPacketAs<PacketUserIDDouble>(pPacketLength);
+
+				const char *addressSender;
+				unsigned int addressLength;
+				packet->getAddress(addressSender, addressLength);
+
+				const char *addressReceiver = this->mUsedPlayerIDs[pPacket->playerIdReceiver];
+
+				this->sendPacket(addressReceiver, pPacket, false);
+			}
+			break;
+		case ChampNetPlugin::ID_BATTLE_RESPONSE:
+			// User (playerIdSender) is responding to User (playerIdReceiver) to battle
+			{
+				unsigned int pPacketLength = 0;
+				PacketBattleResponse* pPacket = packet->getPacketAs<PacketBattleResponse>(pPacketLength);
+
+				const char *addressSender;
+				unsigned int addressLength;
+				packet->getAddress(addressSender, addressLength);
+
+				const char *addressReceiver = this->mUsedPlayerIDs[pPacket->playerIdReceiver];
+
+				this->sendPacket(addressReceiver, pPacket, false);
+
+				// TODO: This will be moved to post-battle
+				if (pPacket->accepted)
+				{
+					// Notify all users of a battle winner
+					PacketUserID packetBattleResule[1];
+					packetBattleResule->id = ChampNetPlugin::ID_BATTLE_RESULT;
+					// get a random winner
+					packetBattleResule->playerId = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
+					this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResule, true);
+				}
 			}
 			break;
 		default:

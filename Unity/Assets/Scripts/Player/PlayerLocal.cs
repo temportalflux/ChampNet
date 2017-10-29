@@ -10,4 +10,19 @@ public class PlayerLocal : PlayerReference
         GameManager.INSTANCE.setPlayer(this);
     }
 
+    public void challengeRandomPlayer()
+    {
+        PlayerReference player = GameManager.INSTANCE.getRandomPlayer();
+        if (player != null)
+        {
+            this.requestBattle(player);
+        }
+
+    }
+
+    public void requestBattle(PlayerReference player)
+    {
+        NetInterface.INSTANCE.getEvents().Dispatch(new EventNetwork.EventBattleRequest(this.getID(), player.getID()));
+    }
+
 }

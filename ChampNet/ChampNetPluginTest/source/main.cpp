@@ -5,10 +5,14 @@
 #include "StateServer.h"
 #include "StateData.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 using namespace std;
 
 int main() {
 	cout << "Starting ChampNet server...\n";
+	srand(time(NULL));
 
 	// Get server information
 	unsigned int port, maxClients;

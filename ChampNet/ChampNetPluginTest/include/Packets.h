@@ -20,4 +20,19 @@ struct PacketPlayerPosition
 	float posX, posY, rotZ;
 };
 
+struct PacketUserIDDouble
+{
+	unsigned char id;
+	unsigned int playerIdSender;
+	unsigned int playerIdReceiver;
+};
+
+struct PacketBattleResponse
+{
+	unsigned char id;
+	unsigned int playerIdSender;
+	unsigned int playerIdReceiver;
+	bool accepted;
+};
+
 #pragma pack(pop)

@@ -15,7 +15,7 @@ class StateServer : public StateApplication
 
 private:
 
-	bool *mUsedPlayerIDs;
+	const char* *mUsedPlayerIDs;
 
 public:
 
