@@ -27,6 +27,14 @@ struct PacketUserIDDouble
 	unsigned int playerIdReceiver;
 };
 
+struct PacketUserIDTriple
+{
+	unsigned char id;
+	unsigned int playerIdSender;
+	unsigned int playerIdReceiver;
+	unsigned int playerIdThird;
+};
+
 struct PacketBattleResponse
 {
 	unsigned char id;
