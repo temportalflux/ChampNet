@@ -10,22 +10,11 @@ public class EventNetwork
     // The event identifier (ChampNetPlugin::MessageIds)
     private byte id;
     
-    // The address to send the event to
-    private string address;
-
     public EventNetwork(byte id)
     {
         this.id = id;
     }
-
-    /**
-     * Set the target address (where is the event going)
-     */
-    public void setAddress(string address)
-    {
-        this.address = address;
-    }
-
+    
     /**
      * Returns the size of the packet
      */
