@@ -16,6 +16,12 @@ StateServer::StateServer() : StateApplication()
 
 StateServer::~StateServer()
 {
+	if (this->mUsedPlayerIDs != NULL)
+	{
+		delete[] this->mUsedPlayerIDs;
+		this->mUsedPlayerIDs = NULL;
+	}
+
 	this->disconnect();
 	ChampNetPlugin::Destroy();
 }
@@ -184,15 +190,24 @@ void StateServer::onInput(std::string &input)
 
 void StateServer::start()
 {
+	this->mUsedPlayerIDs = new bool[this->mpState->mNetwork.maxClients];
+	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
+		this->mUsedPlayerIDs[i] = false;
+
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
 
 void StateServer::disconnect()
 {
+	this->sendDisconnectPacket(NULL, true);
+	ChampNetPlugin::Disconnect();
+}
+
+void StateServer::sendDisconnectPacket(const char *address, bool broadcast)
+{
 	PacketGeneral packet[1];
 	packet->id = ChampNetPlugin::MessageIDs::ID_DISCONNECT;
-	this->sendPacket(ChampNetPlugin::GetAddress(), packet, true);
-	ChampNetPlugin::Disconnect();
+	this->sendPacket(address == NULL ? ChampNetPlugin::GetAddress() : address, packet, broadcast);
 }
 
 /** Author: Dustin Yost
@@ -231,6 +246,13 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			{
 				std::cout << "User disconnected\n";
 				this->mpState->mNetwork.peersConnected--; 
+
+				// TODO: Clients need to send messages with their ID when they leave
+				//PacketUserID packetLeft[1];
+				//packetLeft->id = ChampNetPlugin::ID_USER_LEFT;
+				//packetLeft->playerId = 
+
+
 			}
 			break;
 		// A client is joining
@@ -241,13 +263,18 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketGeneral* pPacket = packet->getPacketAs<PacketGeneral>(pPacketLength);
 
-				// Generate ID for user
-				// ID is the current count of players (incremented during ID_CLIENT_CONNECTION)
-				unsigned int id = this->mpState->mNetwork.peersConnected;
-
 				const char *addressSender;
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
+
+				// Generate ID for user
+				int id = this->findNextPlayerID();
+				if (id < 0)
+				{
+					std::cout << "ERROR: Server is full, but another user has connected - disconnecting new user\n";
+					this->sendDisconnectPacket(addressSender, false);
+					return;
+				}
 
 				PacketUserID packetID[1];
 				packetID->playerId = id;
@@ -273,6 +300,18 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				//std::cout << "Passing along posUpdate(" << (int)pPacket->id << ") from " << pPacket->playerId << " at " << pPacket->posX << " | " << pPacket->posY << '\n';
 				
+				this->sendPacket(addressSender, pPacket, true);
+			}
+			break;
+		case ChampNetPlugin::ID_USER_LEFT:
+			{
+				unsigned int pPacketLength = 0;
+				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+
+				const char *addressSender;
+				unsigned int addressLength;
+				packet->getAddress(addressSender, addressLength);
+
 				this->sendPacket(addressSender, pPacket, true);
 			}
 			break;
@@ -305,4 +344,13 @@ void StateServer::render()
 	int cursorPosX = this->mpState->mConsole.cursorPosX;
 	int cursorPosY = this->mpState->mConsole.cursorPosY;
 
+}
+
+int StateServer::findNextPlayerID()
+{
+	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
+	{
+		if (!this->mUsedPlayerIDs[i]) return i;
+	}
+	return -1;
 }

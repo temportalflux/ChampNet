@@ -198,6 +198,26 @@ public class EventNetwork
         }
 
     }
+    
+    public class EventUserLeft : EventWithID
+    {
+
+        public EventUserLeft() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_LEFT)
+        {
+        }
+
+        public EventUserLeft(uint id) : this()
+        {
+            this.playerID = id;
+        }
+
+        override public void execute()
+        {
+            Debug.Log("User " + this.playerID + " has left");
+            GameManager.INSTANCE.removePlayer(this.playerID);
+        }
+
+    }
 
     /**
      * A base event to (de)serialize a (float,float) location
@@ -305,7 +325,7 @@ public class EventNetwork
 
         override public void execute()
         {
-            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
+            //Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
             GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.rotZ);
         }
 

@@ -13,6 +13,10 @@ namespace ChampNet
 class StateServer : public StateApplication
 {
 
+private:
+
+	bool *mUsedPlayerIDs;
+
 public:
 
 	StateServer();
@@ -48,6 +52,8 @@ public:
 
 	void start();
 	void disconnect();
+	void sendDisconnectPacket(const char *address, bool broadcast);
+	int findNextPlayerID();
 
 };
 

@@ -171,4 +171,25 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    public void Disconnect()
+    {
+        this.netty.getEvents().Dispatch(new EventNetwork.EventUserLeft(this.getID()));
+    }
+
+    public void removePlayer(uint id)
+    {
+        if (this.networkPlayerMap.ContainsKey(id))
+        {
+            PlayerReference player;
+            if (this.networkPlayerMap.TryGetValue(id, out player))
+            {
+                if (player != null)
+                {
+                    Destroy(player.gameObject);
+                }
+            }
+            this.networkPlayerMap.Remove(id);
+        }
+    }
+
 }

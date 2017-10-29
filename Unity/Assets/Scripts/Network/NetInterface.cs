@@ -35,6 +35,7 @@ public class NetInterface : Singleton<NetInterface>
     void OnDestroy()
     {
         Debug.Log("Destroying network");
+        GameManager.INSTANCE.Disconnect();
         Netty.Destroy();
     }
 

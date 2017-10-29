@@ -49,6 +49,7 @@ extern "C"
 			ID_USER_ID,
 			// Send to all clients to notify them of a battle result
 			ID_BATTLE_RESULT,
+			ID_USER_LEFT,
 
 			ID_DISCONNECT,
 
