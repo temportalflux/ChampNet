@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
 
     private uint id;
+    private PlayerReference localPlayer;
 
     void Start()
     {
@@ -48,6 +49,16 @@ public class GameManager : Singleton<GameManager>
     public void setID(uint id)
     {
         this.id = id;
+    }
+
+    public uint getID()
+    {
+        return this.id;
+    }
+
+    public void setPlayer(PlayerReference player)
+    {
+        this.localPlayer = player;
     }
 
 }

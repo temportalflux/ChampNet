@@ -264,6 +264,13 @@ public class EventNetwork
         {
         }
 
+        public EventUpdatePosition(uint playerID, float posX, float posY) : this()
+        {
+            this.playerID = playerID;
+            this.posX = posX;
+            this.posY = posY;
+        }
+
         override public void execute()
         {
             Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
