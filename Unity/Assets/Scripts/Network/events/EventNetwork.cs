@@ -167,6 +167,7 @@ public class EventNetwork
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
             this.playerID = System.BitConverter.ToUInt32(data, lastIndex);
+            lastIndex += sizeof(System.UInt32);
 
         }
 
@@ -222,7 +223,9 @@ public class EventNetwork
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // float(single) is 4 bytes (c++ float is 4 bytes)
             this.posX = System.BitConverter.ToSingle(data, lastIndex);
+            lastIndex += sizeof(System.Single);
             this.posY = System.BitConverter.ToSingle(data, lastIndex);
+            lastIndex += sizeof(System.Single);
 
 
         }
@@ -302,6 +305,7 @@ public class EventNetwork
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
             this.playerID_second = System.BitConverter.ToUInt32(data, lastIndex);
+            lastIndex += sizeof(System.UInt32);
 
         }
 
@@ -380,6 +384,7 @@ public class EventNetwork
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // bool is 1 bytes (c++ bool is 1 bytes)
             this.accepted = System.BitConverter.ToBoolean(data, lastIndex);
+            lastIndex += sizeof(System.Boolean);
 
         }
 
@@ -421,6 +426,7 @@ public class EventNetwork
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
             this.playerIDWinner = System.BitConverter.ToUInt32(data, lastIndex);
+            lastIndex += sizeof(System.UInt32);
 
         }
 
