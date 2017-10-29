@@ -246,15 +246,16 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int addressLength;
 				packet->getAddress(addressSender, addressLength);
 
+				PacketUserID packetID[1];
+				packetID->playerId = id;
+
 				// Tell other players of new player
-				pPacket->id = ChampNetPlugin::ID_USER_SPAWN;
-				this->sendPacket(addressSender, pPacket, true);
+				PacketUserID packetSpawn[1];
+				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
+				this->sendPacket(addressSender, packetID, true);
 
 				// Tell user their player ID
-				PacketUserID packetID[1];
 				packetID->id = ChampNetPlugin::ID_USER_ID;
-				packetID->playerId = id;
-				
 				this->sendPacket(addressSender, packetID, false);
 				
 			}

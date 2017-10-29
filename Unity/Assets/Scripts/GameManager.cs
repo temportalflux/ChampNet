@@ -22,6 +22,9 @@ public class GameManager : Singleton<GameManager>
     public class GameActionMessage : UnityEvent<string> { }
     public GameActionMessage onNetworkRejected;
 
+
+    private uint id;
+
     void Start()
     {
         this.loadSingleton(this, ref GameManager._instance);
@@ -42,11 +45,9 @@ public class GameManager : Singleton<GameManager>
         this.onExit.Invoke();
     }
 
-    /*
-    public void NetworkRejected(string message)
+    public void setID(uint id)
     {
-        
+        this.id = id;
     }
-    //*/
 
 }

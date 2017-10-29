@@ -175,6 +175,7 @@ public class EventNetwork
         override public void execute()
         {
             Debug.Log("Got user id " + this.playerID);
+            GameManager.INSTANCE.setID(this.playerID);
         }
 
     }
