@@ -13,6 +13,7 @@ public class EventManager : MonoBehaviour {
 
 	public void onReceive(int id, string address, byte[] data)
     {
+        Debug.Log(data.Length);
         EventNetwork evt = this.createEvent(id);
         
         int lastIndex = 0;

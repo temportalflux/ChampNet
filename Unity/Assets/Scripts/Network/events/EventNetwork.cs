@@ -157,7 +157,7 @@ public class EventNetwork
 
         override public int getSize()
         {
-            return base.getSize() + sizeof(int); // super + playerID
+            return base.getSize() + sizeof(System.UInt32); // super + playerID
         }
 
         override public void deserialize(byte[] data, ref int lastIndex)
@@ -213,7 +213,7 @@ public class EventNetwork
 
         override public int getSize()
         {
-            return base.getSize() + (sizeof(float) * 2); // super + posX + posY
+            return base.getSize() + (sizeof(System.Single) * 2); // super + posX + posY
         }
 
         override public void deserialize(byte[] data, ref int lastIndex)
