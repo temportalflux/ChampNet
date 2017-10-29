@@ -12,7 +12,6 @@ public class GameManager : Singleton<GameManager>
 
     [Serializable]
     public class GameAction : UnityEvent { }
-    public GameAction onPlay, onPlayNetwork, onExit;
 
     [Serializable]
     public class GameActionFlag : UnityEvent<bool> { }
@@ -22,8 +21,9 @@ public class GameManager : Singleton<GameManager>
     public class GameActionMessage : UnityEvent<string> { }
     public GameActionMessage onNetworkRejected;
 
-
+    public SceneTransition transition;
     public float updateDelay = 0.5f;
+    public GameObject playerPrefab;
     public GameObject playerNetworkPrefab;
 
     private NetInterface netty;
@@ -45,21 +45,30 @@ public class GameManager : Singleton<GameManager>
 
         this.localPlayer = null;
         this.localPlayerUpdates = null;
+        
     }
 	
     public void Play()
     {
-        this.onPlay.Invoke();
+        this.transition.load(
+            () => {
+                this.createPlayer(false);
+            }
+        );
     }
 
     public void PlayNetwork()
     {
-        this.onPlayNetwork.Invoke();
+        this.transition.load(
+            () => {
+                this.createPlayer(true);
+            }
+        );
     }
 
     public void Exit()
     {
-        this.onExit.Invoke();
+        this.transition.exit();
     }
 
     public void setID(uint id)
@@ -70,6 +79,12 @@ public class GameManager : Singleton<GameManager>
     public uint getID()
     {
         return this.id;
+    }
+
+    private void createPlayer(bool networked)
+    {
+        GameObject playerObj = Instantiate(!networked ? this.playerPrefab : this.playerNetworkPrefab);
+        
     }
 
     public void setPlayer(PlayerReference player)
@@ -96,7 +111,11 @@ public class GameManager : Singleton<GameManager>
     public void sendPositionUpdate()
     {
         if (this.netty == null) return;
-        this.netty.getEvents().Dispatch(this.localPlayer.createUpdateEvent());
+        EventNetwork evt = this.localPlayer.createUpdateEvent();
+        if (evt != null)
+        {
+            this.netty.getEvents().Dispatch(evt);
+        }
     }
 
     private IEnumerator sendPositionUpdates()
@@ -116,7 +135,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         // TODO: Need queue of updates; this can be triggered while scenes are in transition
-        // having a queue of updates waiting on the localPlayer to be non null can help solved this
+        // having a queue of updates waiting on (insert indicator that transition has finished) can help solved this
 
         GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
         PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();

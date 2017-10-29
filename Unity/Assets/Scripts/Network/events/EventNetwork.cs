@@ -124,7 +124,7 @@ public class EventNetwork
         override public void execute()
         {
             Debug.Log("Server Disconnected");
-            GameManager.INSTANCE.onExit.Invoke();
+            GameManager.INSTANCE.Exit();
         }
 
     }

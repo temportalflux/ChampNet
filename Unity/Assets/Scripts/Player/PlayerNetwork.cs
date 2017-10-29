@@ -12,7 +12,7 @@ public class PlayerNetwork : PlayerReference
             this.transform.position.x,
             this.transform.position.y,
             this.sprite.rotation.eulerAngles.z
-            );
+        );
     }
 
 }
