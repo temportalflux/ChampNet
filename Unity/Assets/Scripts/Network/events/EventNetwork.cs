@@ -418,7 +418,7 @@ public class EventNetwork
         public override void execute()
         {
             // Some user (requester) has asked us (receiver) to battle
-            Debug.Log("Received request from battle from " + this.idSender + "... auto accepting");
+            Debug.Log("Received request from battle from " + this.idSender + " (i am " + this.idReceiver + "=" + GameManager.INSTANCE.getID() + ")... auto accepting");
             NetInterface.INSTANCE.getEvents().Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
 
@@ -444,7 +444,7 @@ public class EventNetwork
         override public int getSize()
         {
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sizeof
-            return base.getSize() + sizeof(bool); // super + accepted
+            return base.getSize() + sizeof(System.Boolean); // super + accepted
         }
 
         override public void deserialize(byte[] data, ref int lastIndex)
@@ -486,7 +486,7 @@ public class EventNetwork
 
         override public int getSize()
         {
-            return base.getSize() + sizeof(int); // super + playerIDWinner
+            return base.getSize() + sizeof(System.UInt32); // super + playerIDWinner
         }
 
         override public void deserialize(byte[] data, ref int lastIndex)

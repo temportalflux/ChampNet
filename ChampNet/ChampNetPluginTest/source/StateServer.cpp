@@ -332,7 +332,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				packet->getAddress(addressSender, addressLength);
 
 				const char *addressReceiver = this->mUsedPlayerIDs[pPacket->playerIdReceiver];
-
+				
 				this->sendPacket(addressReceiver, pPacket, false);
 			}
 			break;
@@ -397,7 +397,7 @@ int StateServer::findNextPlayerID()
 {
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
 	{
-		if (!this->mUsedPlayerIDs[i]) return i;
+		if (this->mUsedPlayerIDs[i] == NULL) return i;
 	}
 	return -1;
 }
