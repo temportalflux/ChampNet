@@ -143,6 +143,7 @@ public class GameManager : Singleton<GameManager>
         GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
         PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
         this.networkPlayerMap.Add(id, player);
+        player.setID(id);
 
         this.updatePlayer(id, posX, posY, 0);
 
