@@ -11,7 +11,8 @@ namespace ChampNetPlugin
         // RakNet Messages (used for clients)
         // Send to client from server on client connection
         ID_CLIENT_CONNECTION_ACCEPTED = 16,
-        
+        ID_CLIENT_CONNECTION_REJECTED = 17,
+
         // Client-Sent Messages
         // 1) Sent to server to notify it of an incoming client
         ID_USER_JOINED = 135,

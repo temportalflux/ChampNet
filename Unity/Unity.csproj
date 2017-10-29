@@ -234,7 +234,9 @@
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Misc\Color.cs" />
+    <Compile Include="Assets\Scripts\Misc\Singleton.cs" />
     <Compile Include="Assets\Scripts\MonsterDataObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Assets\Scripts\Transitions\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\Transitions\Transition.cs" />
     <Compile Include="Assets\Scripts\Transitions\TransitionShader.cs" />
+    <Compile Include="Assets\Scripts\UI\ConnectMenu.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
   </ItemGroup>
   <ItemGroup>

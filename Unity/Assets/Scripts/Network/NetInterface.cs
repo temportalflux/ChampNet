@@ -44,7 +44,6 @@ public class NetInterface : MonoBehaviour {
         Debug.Log("Creating network");
         Netty.Create();
         //Netty.SetDebugCallback();
-        this.connect();
     }
 
     void OnDestroy()
@@ -53,10 +52,12 @@ public class NetInterface : MonoBehaviour {
         Netty.Destroy();
     }
 
-	public void connect()
+	public void connect(string address, int port)
     {
         Netty.StartClient();
-        Netty.ConnectToServer(this.serverAddress, this.serverPort);
+        this.serverAddress = address;
+        this.serverPort = port;
+        Netty.ConnectToServer(address, port);
     }
 
     public void disconnect()

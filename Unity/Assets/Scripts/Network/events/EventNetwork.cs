@@ -81,8 +81,32 @@ public class EventNetwork
         override public void execute()
         {
             Debug.Log("Connected (" + this.id + ")");
+            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke();
             // Tell the server we have connected
             NetInterface.INSTANCE.Dispatch(new EventUserJoined());
+            GameManager.INSTANCE.PlayNetwork();
+        }
+
+    }
+
+    /**
+     * Event: Notification that the client has been rejected from the server
+     */
+    public class EventConnectionRejected : EventNetwork
+    {
+
+        public EventConnectionRejected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED)
+        {
+        }
+
+        /**
+         * Processes this event to affect the actual environment
+         */
+        override public void execute()
+        {
+            Debug.Log("Connection Rejected");
+            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke();
+            GameManager.INSTANCE.onNetworkRejected.Invoke("Invalid server");
         }
 
     }
