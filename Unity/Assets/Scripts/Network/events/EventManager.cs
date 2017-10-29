@@ -36,6 +36,8 @@ public class EventManager : MonoBehaviour {
                 return new EventNetwork.EventDisconnected();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
                 return new EventNetwork.EventUserID();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_LEFT:
+                return new EventNetwork.EventUserLeft();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
                 return new EventNetwork.EventUserSpawn();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION:

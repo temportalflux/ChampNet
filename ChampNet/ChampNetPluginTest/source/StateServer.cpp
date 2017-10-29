@@ -275,6 +275,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					this->sendDisconnectPacket(addressSender, false);
 					return;
 				}
+				this->mUsedPlayerIDs[id] = true;
 
 				PacketUserID packetID[1];
 				packetID->playerId = id;
@@ -307,6 +308,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			{
 				unsigned int pPacketLength = 0;
 				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+
+				this->mUsedPlayerIDs[pPacket->playerId] = false;
 
 				const char *addressSender;
 				unsigned int addressLength;
