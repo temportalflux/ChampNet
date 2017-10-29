@@ -83,7 +83,7 @@ public class GameManager : Singleton<GameManager>
 
     private void createPlayer(bool networked)
     {
-        GameObject playerObj = Instantiate(!networked ? this.playerPrefab : this.playerNetworkPrefab);
+        GameObject playerObj = Instantiate(this.playerPrefab);
 
         // TODO: THis assumes a lot
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().target = playerObj.transform;
