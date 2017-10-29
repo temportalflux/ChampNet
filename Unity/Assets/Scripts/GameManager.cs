@@ -115,6 +115,9 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
+        // TODO: Need queue of updates; this can be triggered while scenes are in transition
+        // having a queue of updates waiting on the localPlayer to be non null can help solved this
+
         GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
         PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
         this.networkPlayerMap.Add(id, player);
@@ -134,7 +137,14 @@ public class GameManager : Singleton<GameManager>
         PlayerReference player;
         if (this.networkPlayerMap.TryGetValue(id, out player))
         {
-            player.updateAt(posX, posY);
+            if (player != null)
+            {
+                player.updateAt(posX, posY);
+            }
+            else
+            {
+                this.networkPlayerMap.Remove(id);
+            }
         }
 
     }
