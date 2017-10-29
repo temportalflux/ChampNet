@@ -261,7 +261,6 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 		// A client is joining
 		case ChampNetPlugin::ID_USER_JOINED:
 			{
-				std::cout << "User has joined\n";
 
 				unsigned int pPacketLength = 0;
 				PacketGeneral* pPacket = packet->getPacketAs<PacketGeneral>(pPacketLength);
@@ -279,6 +278,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					return;
 				}
 				this->mUsedPlayerIDs[id] = addressSender;
+
+				std::cout << "User " << id << " has joined from " << addressSender << '\n';
 
 				PacketUserID packetID[1];
 				packetID->playerId = id;
@@ -313,6 +314,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
 
 				this->mUsedPlayerIDs[pPacket->playerId] = NULL;
+
+				std::cout << "User " << pPacket->playerId << " has left\n";
 
 				const char *addressSender;
 				unsigned int addressLength;

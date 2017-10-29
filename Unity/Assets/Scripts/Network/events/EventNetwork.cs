@@ -343,7 +343,7 @@ public class EventNetwork
 
         override public int getSize()
         {
-            return base.getSize() + sizeof(int); // super + playerID
+            return base.getSize() + sizeof(System.UInt32); // super + playerID
         }
 
         override public void deserialize(byte[] data, ref int lastIndex)
