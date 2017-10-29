@@ -264,7 +264,7 @@ public class EventNetwork
     /**
      * Event: Notification that some user has spawned at some location
      */
-    public class EventUserSpawn : EventWithLocation
+    public class EventUserSpawn : EventWithID
     {
         public EventUserSpawn() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_SPAWN)
         {
@@ -273,7 +273,7 @@ public class EventNetwork
         override public void execute()
         {
             //Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
-            GameManager.INSTANCE.spawnPlayer(this.playerID, this.posX, this.posY);
+            GameManager.INSTANCE.spawnPlayer(this.playerID, 0, 0);
         }
 
     }
