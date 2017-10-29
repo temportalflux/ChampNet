@@ -83,7 +83,7 @@ public class EventNetwork
             //Debug.Log("Connected (" + this.id + ")");
             GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(true);
             // Tell the server we have connected
-            NetInterface.INSTANCE.Dispatch(new EventUserJoined());
+            NetInterface.INSTANCE.getEvents().Dispatch(new EventUserJoined());
             GameManager.INSTANCE.PlayNetwork();
         }
 

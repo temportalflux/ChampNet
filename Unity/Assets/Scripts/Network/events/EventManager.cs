@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Netty = ChampNetPlugin.Network;
+
 public class EventManager : MonoBehaviour {
 
     private Queue<EventNetwork> events;
@@ -13,7 +15,7 @@ public class EventManager : MonoBehaviour {
 
 	public void onReceive(int id, string address, byte[] data)
     {
-        Debug.Log(data.Length);
+        Debug.Log("Received: " + data.Length);
         EventNetwork evt = this.createEvent(id);
         
         int lastIndex = 0;
@@ -67,6 +69,21 @@ public class EventManager : MonoBehaviour {
         {
             evt.execute();
         }
+    }
+
+    public void Dispatch(EventNetwork evt)
+    {
+        KeyValuePair<string, int> server = NetInterface.INSTANCE.getServer();
+        this.Dispatch(evt, server.Key, server.Value);
+    }
+
+    public void Dispatch(EventNetwork evt, string address, int port)
+    {
+        byte[] data = new byte[evt.getSize()];
+        Debug.Log("Sending: " + data.Length);
+        int lastIndex = 0;
+        evt.serialize(ref data, ref lastIndex);
+        Netty.SendByteArray(address, port, data, data.Length);
     }
 
 }

@@ -23,7 +23,7 @@ public class NetInterface : Singleton<NetInterface>
         this.loadSingleton(this, ref NetInterface._instance);
     }
 
-    private void Start()
+    void Start()
     {
         this.events = this.GetComponent<EventManager>();
 
@@ -36,6 +36,11 @@ public class NetInterface : Singleton<NetInterface>
     {
         Debug.Log("Destroying network");
         Netty.Destroy();
+    }
+
+    public EventManager getEvents()
+    {
+        return this.events;
     }
 
 	public void connect(string address, int port)
@@ -83,17 +88,9 @@ public class NetInterface : Singleton<NetInterface>
         Netty.SendByteArray("127.0.0.1", 425, byteArray, size);
     }
 
-    public void Dispatch(EventNetwork evt)
+    public KeyValuePair<string, int> getServer()
     {
-        this.Dispatch(evt, this.serverAddress, this.serverPort);
-    }
-
-    public void Dispatch(EventNetwork evt, string address, int port)
-    {
-        byte[] data = new byte[evt.getSize()];
-        int lastIndex = 0;
-        evt.serialize(ref data, ref lastIndex);
-        Netty.SendByteArray(address, port, data, data.Length);
+        return new KeyValuePair<string, int>(this.serverAddress, this.serverPort);
     }
 
 }

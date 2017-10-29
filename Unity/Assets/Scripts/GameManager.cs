@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
     public void sendPositionUpdate()
     {
         if (this.netty == null) return;
-        this.netty.Dispatch(new EventNetwork.EventUpdatePosition(this.getID(), this.localPlayer.transform.position.x, this.localPlayer.transform.position.y));
+        this.netty.getEvents().Dispatch(new EventNetwork.EventUpdatePosition(this.getID(), this.localPlayer.transform.position.x, this.localPlayer.transform.position.y));
     }
 
     private IEnumerator sendPositionUpdates()
