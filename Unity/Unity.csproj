@@ -235,6 +235,7 @@
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Misc\CameraPixelCorrector.cs" />
     <Compile Include="Assets\Scripts\Misc\Color.cs" />
     <Compile Include="Assets\Scripts\Misc\Singleton.cs" />
     <Compile Include="Assets\Scripts\MonsterDataObject.cs" />
