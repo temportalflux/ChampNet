@@ -7,6 +7,7 @@ public class PlayerLocal : PlayerReference
 
     void Start()
     {
+        if (GameManager.INSTANCE != null)
         GameManager.INSTANCE.setPlayer(this);
     }
 

@@ -132,6 +132,7 @@ public class InputResponse : MonoBehaviour {
 
     public void Update()
     {
+        if (ManagerInput.INSTANCE == null) return;
         if (ManagerInput.INSTANCE.isInUse()) return;
         // Check for all inputs
         //MappedInput.inputDevices.ForEach(this.updateInput);
