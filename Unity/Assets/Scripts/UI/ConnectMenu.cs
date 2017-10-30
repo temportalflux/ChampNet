@@ -13,13 +13,14 @@ public class ConnectMenu : MonoBehaviour {
 
     private string txtAddress = "127.0.0.1", txtPort = "425";
     private string errorPort = null, errorConnect = null;
+    private Color color;
     private bool connecting = false, showGui = true;
     
     void OnGUI()
     {
         if (!this.showGui) return;
 
-        int width = 100;
+        int width = 200;
         GUI.Box(new Rect(0, 0, width, Screen.height), "");
 
         GUILayout.BeginVertical(GUILayout.Width(width));
@@ -55,6 +56,18 @@ public class ConnectMenu : MonoBehaviour {
                 GUILayout.Label(this.errorPort);
             }
 
+            // Color picker
+            GUILayout.BeginVertical(GUILayout.Width(width));
+            {
+                GUILayout.Label("Red " + (int)(this.color.r * 255));
+                this.color.r = GUILayout.HorizontalSlider(this.color.r * 255, 0, 255) / 255F;
+                GUILayout.Label("Green " + (int)(this.color.g * 255));
+                this.color.g = GUILayout.HorizontalSlider(this.color.g * 255, 0, 255) / 255F;
+                GUILayout.Label("Blue " + (int)(this.color.b * 255));
+                this.color.b = GUILayout.HorizontalSlider(this.color.b * 255, 0, 255) / 255F;
+            }
+            GUILayout.EndVertical();
+
             if (!this.connecting)
             {
                 if (GUILayout.Button("Connect"))
@@ -84,5 +97,10 @@ public class ConnectMenu : MonoBehaviour {
     {
         this.errorConnect = error;
     }
-    
+
+    /*
+     EventSystem.current.SetSelectedGameObject(myInputField.gameObject, null);
+ myInputField.OnPointerClick(new PointerEventData(EventSystem.current));
+     */
+
 }

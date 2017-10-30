@@ -9003,8 +9003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb6fa8c5da39664792982e5e91545f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ppu: 32
-  multiplier: 4
+  targetViewportSizeInPixels: {x: 480, y: 320}
+  pixelsPerUnit: 32
 --- !u!1 &666785507
 GameObject:
   m_ObjectHideFlags: 0
@@ -33168,7 +33168,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
       propertyPath: m_LocalPosition.y
