@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Water
   - Grass
+  - Music
   layers:
   - Default
   - TransparentFX

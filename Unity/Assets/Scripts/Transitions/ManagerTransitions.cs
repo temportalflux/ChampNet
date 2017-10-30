@@ -122,9 +122,15 @@ public class ManagerTransitions : MonoBehaviour
         // Begin transition display
         this.sceneTransition.forwards();
 
+        AudioSource sceneAudio = GameManager.INSTANCE.GetMusicSource();
+
         // Wait while the transition is running
         while (this.sceneTransition.isAnimating())
         {
+            if (sceneAudio != null)
+            {
+                sceneAudio.volume = 1 - this.sceneTransition.GetPercentDone();
+            }
             yield return null;
         }
 

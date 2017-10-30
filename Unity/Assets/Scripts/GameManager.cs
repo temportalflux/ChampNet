@@ -207,4 +207,18 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// Gets the music source.
+    /// </summary>
+    /// <returns>The AudioSource component</returns>
+    public AudioSource GetMusicSource()
+    {
+        GameObject source = GameObject.FindGameObjectWithTag("Music");
+        if (source != null)
+        {
+            return source.GetComponent<AudioSource>();
+        }
+        return null;
+    }
+
 }
