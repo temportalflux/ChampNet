@@ -114,6 +114,7 @@ public class GameManager : Singleton<GameManager>
     public void sendPositionUpdate()
     {
         if (this.netty == null) return;
+        if (this.localPlayer == null) return;
         EventNetwork evt = this.localPlayer.createUpdateEvent();
         if (evt != null)
         {

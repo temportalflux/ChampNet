@@ -319,10 +319,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
 			// A user's position/rotation is being updated
 			{
-				unsigned int pPacketLength = 0;
-				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
+				//unsigned int pPacketLength = 0;
+				//PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
 				// Forward the packet along to all clients except the sender
-				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
+				this->sendPacket(packet->getAddress().c_str(), packet, true);
 			}
 			break;
 		case ChampNetPlugin::ID_USER_LEFT:

@@ -6,12 +6,17 @@ using UnityEngine;
 public class PlayerLocal : PlayerReference
 {
     private PlayerCharacterController _pcc;
+
+    private void Awake()
+    {
+        _pcc = GetComponent<PlayerCharacterController>();
+        Debug.Log(_pcc);
+    }
+
     void Start()
     {
         if (GameManager.INSTANCE != null)
         GameManager.INSTANCE.setPlayer(this);
-
-        _pcc = GetComponent<PlayerCharacterController>();
     }
 
     /// <summary>
