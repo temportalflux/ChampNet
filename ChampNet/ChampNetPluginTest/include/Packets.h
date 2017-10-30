@@ -1,5 +1,7 @@
 #pragma once
 
+// All the possible packet configurations
+
 #pragma pack(push, 1)
 
 struct PacketGeneral

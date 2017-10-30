@@ -16,13 +16,16 @@ extern "C"
 	enum PacketPriority;
 	enum PacketReliability;
 
+	// Author: Dustin Yost
 	namespace ChampNetPlugin {
 
 		enum MessageIDs
 		{
 			// RakNet messages (unsued for clients)
 			ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,
+			// The connection was severed
 			ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,
+			// The connection was dropped
 			ID_CLIENT_MISSING = ID_CONNECTION_LOST,
 
 			// RakNet Messages (used for clients)
@@ -49,8 +52,9 @@ extern "C"
 			ID_USER_ID,
 			// Send to all clients to notify them of a battle result
 			ID_BATTLE_RESULT,
+			// Sent to server and forwarded to clients notifying them a user has left the server
 			ID_USER_LEFT,
-
+			// Notification to clients that the server has been disconnected
 			ID_DISCONNECT,
 
 		};
@@ -99,6 +103,7 @@ extern "C"
 		// Disconnect from the interface
 		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
 
+		// Returns the current peer interface address
 		CHAMPNET_PLUGIN_SYMTAG const char* GetAddress();
 
 	};

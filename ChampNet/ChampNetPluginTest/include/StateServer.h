@@ -41,20 +41,43 @@ public:
 	 */
 	virtual void updateNetwork() override;
 
+	/** Author: Dustin Yost
+	 * Handles the usage of all the different packet identifiers
+	 */
 	void handlePacket(ChampNet::Packet *packet);
 
+	virtual void render() override;
+
+	/** Author: Dustin Yost
+	 * Starts the server at whatever address and port are in the state data
+	 */
+	void start();
+	/** Author: Dustin Yost
+	 * Disconnects server and notifies clients of disconnection
+	 */
+	void disconnect();
+
+	/** Author: Dustin Yost
+	* Send packet data to the network
+	*/
 	void sendPacket(const char *address, char *data, int dataSize, bool broadcast);
+	/** Author: Dustin Yost
+	* Cast some general packet type to data
+	*/
 	template <typename T>
 	void sendPacket(const char *address, T *packet, bool broadcast)
 	{
 		this->sendPacket(address, (char*)(packet), sizeof(*packet), broadcast);
 	}
 
-	virtual void render() override;
-
-	void start();
-	void disconnect();
+	/** Author: Dustin Yost
+	 * Sends clients the notification of server disconnection
+	 */
 	void sendDisconnectPacket(const char *address, bool broadcast);
+
+	/** Author: Dustin Yost
+	 * Finds the next available address slot, returning -1 if none is found
+	 */
 	int findNextPlayerID();
 
 };

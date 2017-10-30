@@ -23,7 +23,10 @@ public:
 	Game();
 	virtual ~Game();
 
+	// Returns if the game is presently in a running state
 	const bool isRunning() const;
+
+	// Returns the system data
 	StateData* getData() const;
 
 	/** Author: Dustin Yost
@@ -32,6 +35,7 @@ public:
 	void update();
 
 	void queueState(StateApplication *nextState);
+
 	void goToNextState();
 
 };

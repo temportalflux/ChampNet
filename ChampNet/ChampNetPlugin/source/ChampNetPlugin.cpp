@@ -120,13 +120,6 @@ namespace ChampNetPlugin {
 	// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
 	const char* GetPacketAddress(void* packetPtr, unsigned int &length)
 	{
-		/*
-		std::stringstream s;
-		s << "Received packet location " << (void const*)packetPtr;
-		send_log(s.str().c_str(), Color::Yellow);
-		s.str("");
-		//*/
-
 		length = 0;
 
 		ChampNet::Packet *packet = (ChampNet::Packet*)packetPtr;
@@ -194,6 +187,7 @@ namespace ChampNetPlugin {
 		gpNetwork->disconnect();
 	}
 
+	// Returns the current peer interface address
 	const char* GetAddress()
 	{
 		return gpNetwork->getIP().c_str();

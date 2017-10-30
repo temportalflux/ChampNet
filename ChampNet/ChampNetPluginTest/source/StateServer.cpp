@@ -189,13 +189,16 @@ void StateServer::onKeyDown(int i)
 }
 
 /** Author: Dustin Yost
-* Called when some input has been entered (ENTER has been pressed)
-*/
+ * Called when some input has been entered (ENTER has been pressed)
+ */
 void StateServer::onInput(std::string &input)
 {
 	std::cout << input << '\n';
 }
 
+/** Author: Dustin Yost
+ * Starts the server at whatever address and port are in the state data
+ */
 void StateServer::start()
 {
 	this->mPlayerAddressesLength = this->mpState->mNetwork.maxClients;
@@ -206,12 +209,18 @@ void StateServer::start()
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
 
+/** Author: Dustin Yost
+ * Disconnects server and notifies clients of disconnection
+ */
 void StateServer::disconnect()
 {
 	this->sendDisconnectPacket(NULL, true);
 	ChampNetPlugin::Disconnect();
 }
 
+/** Author: Dustin Yost
+ * Sends clients the notification of server disconnection
+ */
 void StateServer::sendDisconnectPacket(const char *address, bool broadcast)
 {
 	PacketGeneral packet[1];
@@ -220,27 +229,38 @@ void StateServer::sendDisconnectPacket(const char *address, bool broadcast)
 }
 
 /** Author: Dustin Yost
-* Updates the network
-*/
+ * Updates the network
+ */
 void StateServer::updateNetwork()
 {
+	// Fetch all packets and put them in a queue - aka pull all packets from RakNet and put them in a queue in the plugin
 	ChampNetPlugin::FetchPackets();
+	// Iterate over all packets in the plugin queue
 	void* pPacket = NULL;
 	bool foundValidPacket = false;
 	do
 	{
+		// Get the next available packet
 		pPacket = ChampNetPlugin::PollPacket(foundValidPacket);
+		// Check if that packet is valid (there was a packet in the queue)
 		if (foundValidPacket)
 		{
+			// A packet was found, handle it
 			this->handlePacket((ChampNet::Packet*)pPacket);
+			// Free the packet from memory (delete it)
 			ChampNetPlugin::FreePacket(pPacket);
 		}
+		// Only operate while there are packets left in this fetch (more may have come in since fetch, but they can be taken care of next call)
 	} while (foundValidPacket);
 	
 }
 
+/** Author: Dustin Yost
+ * Handles the usage of all the different packet identifiers
+ */
 void StateServer::handlePacket(ChampNet::Packet *packet)
 {
+	// Check which packet type it is
 	switch (packet->getID())
 	{
 		// Some client is connecting (expect a ID_USER_JOINED shortly)
@@ -254,14 +274,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 		case ChampNetPlugin::ID_CLIENT_DISCONNECTION:
 			{
 				std::cout << "User disconnected\n";
-				this->mpState->mNetwork.peersConnected--; 
-
-				// TODO: Clients need to send messages with their ID when they leave
-				//PacketUserID packetLeft[1];
-				//packetLeft->id = ChampNetPlugin::ID_USER_LEFT;
-				//packetLeft->playerId = 
-
-
+				this->mpState->mNetwork.peersConnected--;
 			}
 			break;
 		// A client is joining
@@ -271,83 +284,80 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketGeneral* pPacket = packet->getPacketAs<PacketGeneral>(pPacketLength);
 
-				const char *addressSender;
-				unsigned int addressLength;
-				packet->getAddress(addressSender, addressLength);
+				std::string addressSender = packet->getAddress();
 
 				// Generate ID for user
 				int id = this->findNextPlayerID();
 				if (id < 0)
 				{
+					// Some invalid ID was found
 					std::cout << "ERROR: Server is full, but another user has connected - disconnecting new user\n";
-					this->sendDisconnectPacket(addressSender, false);
+					this->sendDisconnectPacket(addressSender.c_str(), false);
 					return;
 				}
+				// Set the id in the list with the new address
 				this->mpPlayerAddresses[id] = new std::string(addressSender);
 
+				// Print out that a user exists
 				std::cout << "User " << id << " has joined from " << addressSender << '\n';
 
+				// Create the packet to tell all peers of the user who joined
 				PacketUserID packetID[1];
+				// Set the new ID of the incoming user
 				packetID->playerId = id;
 
 				// Tell other players of new player
 				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
-				this->sendPacket(addressSender, packetID, true);
+				this->sendPacket(addressSender.c_str(), packetID, true);
 
 				// Tell user their player ID
 				packetID->id = ChampNetPlugin::ID_USER_ID;
-				this->sendPacket(addressSender, packetID, false);
+				this->sendPacket(addressSender.c_str(), packetID, false);
 				
 			}
 			break;
 		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
+			// A user's position/rotation is being updated
 			{
 				unsigned int pPacketLength = 0;
 				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
-
-				const char *addressSender;
-				unsigned int addressLength;
-				packet->getAddress(addressSender, addressLength);
-
-				//std::cout << "Passing along posUpdate(" << (int)pPacket->id << ") from " << pPacket->playerId << " at " << pPacket->posX << " | " << pPacket->posY << '\n';
-				
-				this->sendPacket(addressSender, pPacket, true);
+				// Forward the packet along to all clients except the sender
+				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
 		case ChampNetPlugin::ID_USER_LEFT:
+			// A user is leaving / has left the server
 			{
 				unsigned int pPacketLength = 0;
 				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
 
+				// Remove the address from the player's list
 				delete this->mpPlayerAddresses[pPacket->playerId];
 				this->mpPlayerAddresses[pPacket->playerId] = NULL;
 
+				// Report out that the user left
 				std::cout << "User " << pPacket->playerId << " has left\n";
 
-				const char *addressSender;
-				unsigned int addressLength;
-				packet->getAddress(addressSender, addressLength);
-
-				this->sendPacket(addressSender, pPacket, true);
+				// Notify all other clients that the user left
+				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_REQUEST:
+			// User (playerIdSender) is requesting User (playerIdReceiver) to battle
 			{
-				// User (playerIdSender) is requesting User (playerIdReceiver) to battle
 				unsigned int pPacketLength = 0;
 				PacketUserIDDouble* pPacket = packet->getPacketAs<PacketUserIDDouble>(pPacketLength);
 
-				const char *addressSender;
-				unsigned int addressLength;
-				packet->getAddress(addressSender, addressLength);
-
-				const char *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver]->c_str();
-
+				// Get the address of the sender (the challenger/requester) for reporting purposes
+				std::string addressSender = packet->getAddress();
+				// Get the address of the receiver
+				std::string *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver];
+				// Report out the request
 				std::cout << "Forwarding battle request from "
 					<< pPacket->playerIdSender << " at " << addressSender << " to "
 					<< pPacket->playerIdReceiver << " at " << addressReceiver << '\n';
-				
-				this->sendPacket(addressReceiver, pPacket, false);
+				// Send the request to the receiver
+				this->sendPacket(addressReceiver->c_str(), pPacket, false);
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESPONSE:
@@ -356,12 +366,9 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketBattleResponse* pPacket = packet->getPacketAs<PacketBattleResponse>(pPacketLength);
 
-				const char *addressSender;
-				unsigned int addressLength;
-				packet->getAddress(addressSender, addressLength);
-
+				// Get the address of the receiver (the challenger/requester)
 				const char *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver]->c_str();
-
+				// Forward the packet - forward the response to the one who requested the battle
 				this->sendPacket(addressReceiver, pPacket, false);
 
 				// TODO: This will be moved to post-battle
@@ -377,19 +384,13 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					packetBattleResult->playerIdThird = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
 					this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
 				}
+
 			}
 			break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;
 	}
-}
-
-void StateServer::sendPacket(const char *address, char *data, int dataSize, bool broadcast)
-{
-	PacketPriority priority = HIGH_PRIORITY;
-	PacketReliability reliability = RELIABLE;
-	ChampNetPlugin::SendData(address, data, dataSize, &priority, &reliability, 0, broadcast);
 }
 
 void StateServer::render()
@@ -410,6 +411,19 @@ void StateServer::render()
 
 }
 
+/** Author: Dustin Yost
+ * Send packet data to the network
+ */
+void StateServer::sendPacket(const char *address, char *data, int dataSize, bool broadcast)
+{
+	PacketPriority priority = HIGH_PRIORITY;
+	PacketReliability reliability = RELIABLE;
+	ChampNetPlugin::SendData(address, data, dataSize, &priority, &reliability, 0, broadcast);
+}
+
+/** Author: Dustin Yost
+ * Finds the next available address slot, returning -1 if none is found
+ */
 int StateServer::findNextPlayerID()
 {
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
