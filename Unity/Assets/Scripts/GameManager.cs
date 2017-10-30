@@ -145,11 +145,11 @@ public class GameManager : Singleton<GameManager>
         this.networkPlayerMap.Add(id, player);
         player.setID(id);
 
-        this.updatePlayer(id, posX, posY, 0);
+        this.updatePlayer(id, posX, posY, 0, 0);
 
     }
 
-    public void updatePlayer(uint id, float posX, float posY, float rotZ)
+    public void updatePlayer(uint id, float posX, float posY, float velX, float velY)
     {
         if (!this.networkPlayerMap.ContainsKey(id))
         {
@@ -162,7 +162,7 @@ public class GameManager : Singleton<GameManager>
         {
             if (player != null)
             {
-                player.updateAt(posX, posY, rotZ);
+                player.updateAt(posX, posY, velX, velY);
             }
             else
             {

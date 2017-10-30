@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof( PlayerCharacterController))]
 public class PlayerLocal : PlayerReference
 {
-
+    private PlayerCharacterController _pcc;
     void Start()
     {
         if (GameManager.INSTANCE != null)
         GameManager.INSTANCE.setPlayer(this);
+
+        _pcc = GetComponent<PlayerCharacterController>();
     }
 
     /// <summary>
@@ -40,4 +43,14 @@ public class PlayerLocal : PlayerReference
         NetInterface.INSTANCE.Dispatch(new EventNetwork.EventBattleRequest(this.getID(), player.getID()));
     }
 
+    public override EventNetwork createUpdateEvent()
+    {
+        return new EventNetwork.EventUpdatePosition(
+            this.getID(),
+            this.transform.position.x,
+            this.transform.position.y,
+            _pcc.deltaMove.x,
+            _pcc.deltaMove.y
+        );
+    }
 }

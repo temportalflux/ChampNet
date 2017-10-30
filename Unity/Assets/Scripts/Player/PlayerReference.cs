@@ -34,14 +34,18 @@ public class PlayerReference : MonoBehaviour {
     /// </summary>
     /// <param name="posX">The position x.</param>
     /// <param name="posY">The position y.</param>
-    /// <param name="rotZ">The rot z.</param>
+    /// <param name="velX">The rot z.</param>
+    /// <param name="velY"></param>
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void updateAt(float posX, float posY, float rotZ)
+    public void updateAt(float posX, float posY, float velX, float velY)
     {
         this.transform.position = new Vector3(posX, posY);
-        this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
+        //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
+
+
+
     }
 
     /// <summary>
@@ -57,7 +61,7 @@ public class PlayerReference : MonoBehaviour {
             this.getID(),
             this.transform.position.x,
             this.transform.position.y,
-            this.sprite.rotation.eulerAngles.z
+            0,0
         );
     }
 

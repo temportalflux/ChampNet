@@ -13,7 +13,8 @@ public class PlayerCharacterController : MonoBehaviour
     public float speed;
     public float sight;
 
-    private Vector3 _deltaMove;
+    [HideInInspector]
+    public Vector3 deltaMove;
     private float _skinWidth;
     private float _size;
     private float _halfSize;
@@ -71,8 +72,8 @@ public class PlayerCharacterController : MonoBehaviour
             }
         }
 
-        _deltaMove = input * step;
-        transform.position += _deltaMove;
+        deltaMove = input * step;
+        transform.position += deltaMove;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

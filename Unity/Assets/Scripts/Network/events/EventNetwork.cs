@@ -407,23 +407,25 @@ public class EventNetwork
     public class EventUpdatePosition : EventWithLocation
     {
 
-        private float rotZ;
+        private float velX;
+        private float velY;
 
         public EventUpdatePosition() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION)
         {
         }
 
-        public EventUpdatePosition(uint playerID, float posX, float posY, float rotZ) : this()
+        public EventUpdatePosition(uint playerID, float posX, float posY, float velX, float velY) : this()
         {
             this.playerID = playerID;
             this.posX = posX;
             this.posY = posY;
-            this.rotZ = rotZ;
+            this.velX = velX;
+            this.velY = velY;
         }
 
         override public int GetSize()
         {
-            return base.GetSize() + sizeof(System.Single); // super + rotZ
+            return base.GetSize() + sizeof(System.Single) * 2; // super + rotZ
         }
 
         override public void Deserialize(byte[] data, ref int lastIndex)
@@ -432,9 +434,10 @@ public class EventNetwork
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // float(single) is 4 bytes (c++ float is 4 bytes)
-            this.rotZ = System.BitConverter.ToSingle(data, lastIndex);
+            this.velX = System.BitConverter.ToSingle(data, lastIndex);
             lastIndex += sizeof(System.Single);
-
+            this.velY = System.BitConverter.ToSingle(data, lastIndex);
+            lastIndex += sizeof(System.Single);
 
         }
 
@@ -442,14 +445,16 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rotZ));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velX));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velY));
 
         }
 
         override public void Execute()
         {
             //Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
-            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.rotZ);
+            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.velX, this.velY);
+
         }
 
     }
