@@ -30,6 +30,7 @@ extern "C"
 
 			// RakNet Messages (used for clients)
 			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
+			ID_CLIENT_CONNECTION_REJECTED = ID_CONNECTION_ATTEMPT_FAILED,
 
 			// placeholder - For tracking in C# script
 			ID_PLACEHOLDER = ID_USER_PACKET_ENUM,

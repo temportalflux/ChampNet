@@ -3,30 +3,87 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
+/// <summary>
+/// A base class for network events
+/// https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx
+/// </summary>
+/// <remarks>
+/// Author: Dustin Yost
+/// </remarks>
 public class EventNetwork
 {
-    // https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx
 
-    // The event identifier (ChampNetPlugin::MessageIds)
+    /// <summary>
+    /// Creates an event from a packet identifier
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <returns>Some EventNetwork object</returns>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    public static EventNetwork createEvent(int id)
+    {
+        switch (id)
+        {
+            case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
+                return new EventNetwork.EventConnected();
+            case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED:
+                return new EventNetwork.EventConnectionRejected();
+            case (char)ChampNetPlugin.MessageIDs.ID_DISCONNECT:
+                return new EventNetwork.EventDisconnected();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
+                return new EventNetwork.EventUserID();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_LEFT:
+                return new EventNetwork.EventUserLeft();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
+                return new EventNetwork.EventUserSpawn();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION:
+                return new EventNetwork.EventUpdatePosition();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST:
+                return new EventNetwork.EventBattleRequest();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE:
+                return new EventNetwork.EventBattleResponse();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
+                return new EventNetwork.EventBattleResult();
+            default:
+                return new EventNetwork((byte)id);
+        }
+    }
+
+    /// <summary>
+    /// The event identifier (ChampNetPlugin::MessageIds)
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
     private byte id;
     
     public EventNetwork(byte id)
     {
         this.id = id;
     }
-    
-    /**
-     * Returns the size of the packet
-     */
-    virtual public int getSize()
+
+    /// <summary>
+    /// Returns the size of the packet (the size for a potential byte[])
+    /// </summary>
+    /// <returns>the integer length of a byte array to hold this event's data</returns>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    virtual public int GetSize()
     {
         return sizeof(byte); // id
     }
 
-    /**
-     * Reads data from a byte array into this event's data
-     */
-    virtual public void deserialize(byte[] data, ref int lastIndex)
+    /// <summary>
+    /// Deserializes data from a byte array into this event's data
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <param name="lastIndex">The last index.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    virtual public void Deserialize(byte[] data, ref int lastIndex)
     {
 
         // Read the event identifier
@@ -34,11 +91,16 @@ public class EventNetwork
         lastIndex += sizeof(byte);
         
     }
-
-    /**
-     * Writes data from this event into a byte array
-     */
-    virtual public void serialize(ref byte[] data, ref int lastIndex)
+    
+    /// <summary>
+    /// Serializes data from this event into a byte array
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <param name="lastIndex">The last index.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    virtual public void Serialize(ref byte[] data, ref int lastIndex)
     {
 
         // Write the event identifier
@@ -46,63 +108,86 @@ public class EventNetwork
         lastIndex += sizeof(byte);
 
     }
-
-    /**
-     * Write some byte array into another byte array at some offset
-     */
-    private void writeTo(ref byte[] data, ref int offset, byte[] dataObj)
+    
+    /// <summary>
+    /// Write some byte array into another byte array at some offset
+    /// </summary>
+    /// <param name="dest">The data to copy.</param>
+    /// <param name="offset">The offset in bytes.</param>
+    /// <param name="source">The data object to copy into at the offset.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    private void WriteTo(ref byte[] dest, ref int offset, byte[] source)
     {
-        System.Array.Copy(dataObj, 0, data, offset, dataObj.Length);
-        offset += dataObj.Length;
+        // copy all data from the source to the destination, starting at some offset
+        System.Array.Copy(source, 0, dest, offset, source.Length);
+        offset += source.Length;
     }
 
-    /**
-     * Processes this event to affect the actual environment
-     */
-    virtual public void execute()
+    /// <summary>
+    /// Processes this event to affect the actual environment
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    virtual public void Execute()
     {
         ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
         Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
-
-    /**
-     * Event: Notification that the client has been accepted to the server
-     */
+    
+    /// <summary>
+    /// Event: Notification that the client has been accepted to the server
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
     public class EventConnected : EventNetwork
     {
 
         public EventConnected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED)
         {
         }
-
-        /**
-         * Processes this event to affect the actual environment
-         */
-        override public void execute()
+        
+        /// <summary>
+        /// Processes this event to affect the actual environment
+        /// </summary>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Execute()
         {
-            //Debug.Log("Connected (" + this.id + ")");
+            // Notify the game manger that the connection request has been satisfied
             GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(true);
             // Tell the server we have connected
-            NetInterface.INSTANCE.getEvents().Dispatch(new EventUserJoined());
+            NetInterface.INSTANCE.Dispatch(new EventUserJoined());
+            // Begin the game in networked mode
             GameManager.INSTANCE.PlayNetwork();
         }
 
     }
-
-    /**
-     * Event: Notification that the client has been rejected from the server
-     */
+    
+    /// <summary>
+    /// Event: Notification that the client has been rejected from the server
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
     public class EventConnectionRejected : EventNetwork
     {
 
         public EventConnectionRejected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED)
         {
         }
-
-        /**
-         * Processes this event to affect the actual environment
-         */
-        override public void execute()
+        
+        /// <summary>
+        /// Processes this event to affect the actual environment
+        /// </summary>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Execute()
         {
             Debug.Log("Connection Rejected");
             GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(false);
@@ -117,13 +202,17 @@ public class EventNetwork
         public EventDisconnected() : base((byte)ChampNetPlugin.MessageIDs.ID_DISCONNECT)
         {
         }
-
-        /**
-         * Processes this event to affect the actual environment
-         */
-        override public void execute()
+        
+        /// <summary>
+        /// Processes this event to affect the actual environment
+        /// </summary>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Execute()
         {
             Debug.Log("Server Disconnected");
+            // Exit the game (we have been booted from the server)
             GameManager.INSTANCE.Exit();
         }
 
@@ -139,7 +228,13 @@ public class EventNetwork
         {
         }
 
-        override public void execute()
+        /// <summary>
+        /// Processes this event to affect the actual environment
+        /// </summary>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Execute()
         {
             Debug.Log("Some user has joined");
         }
@@ -148,21 +243,40 @@ public class EventNetwork
 
     public class EventWithID : EventNetwork
     {
-
-        // Some user identifier
+        
+        /// <summary>
+        /// The player identifier
+        /// </summary>
         protected uint playerID;
 
         public EventWithID(byte id) : base(id)
         {}
 
-        override public int getSize()
+        /// <summary>
+        /// Returns the size of the packet (the size for a potential byte[])
+        /// </summary>
+        /// <returns>
+        /// the integer length of a byte array to hold this event's data
+        /// </returns>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public int GetSize()
         {
-            return base.getSize() + sizeof(System.UInt32); // super + playerID
+            return base.GetSize() + sizeof(System.UInt32); // super + playerID
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        /// <summary>
+        /// Deserializes data from a byte array into this event's data
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="lastIndex">The last index.</param>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
@@ -171,11 +285,20 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        /// <summary>
+        /// Serializes data from this event into a byte array
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="lastIndex">The last index.</param>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
+            // Write the bytes of the playerID
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
 
         }
 
@@ -191,7 +314,7 @@ public class EventNetwork
         {
         }
 
-        override public void execute()
+        override public void Execute()
         {
             Debug.Log("Got user id " + this.playerID);
             GameManager.INSTANCE.setID(this.playerID);
@@ -211,7 +334,7 @@ public class EventNetwork
             this.playerID = id;
         }
 
-        override public void execute()
+        override public void Execute()
         {
             Debug.Log("User " + this.playerID + " has left");
             GameManager.INSTANCE.removePlayer(this.playerID);
@@ -231,14 +354,14 @@ public class EventNetwork
         {
         }
 
-        override public int getSize()
+        override public int GetSize()
         {
-            return base.getSize() + (sizeof(System.Single) * 2); // super + posX + posY
+            return base.GetSize() + (sizeof(System.Single) * 2); // super + posX + posY
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // float(single) is 4 bytes (c++ float is 4 bytes)
@@ -250,12 +373,12 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posX));
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posY));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posX));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posY));
 
         }
 
@@ -270,7 +393,7 @@ public class EventNetwork
         {
         }
 
-        override public void execute()
+        override public void Execute()
         {
             //Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
             GameManager.INSTANCE.spawnPlayer(this.playerID, 0, 0);
@@ -298,14 +421,14 @@ public class EventNetwork
             this.rotZ = rotZ;
         }
 
-        override public int getSize()
+        override public int GetSize()
         {
-            return base.getSize() + sizeof(System.Single); // super + rotZ
+            return base.GetSize() + sizeof(System.Single); // super + rotZ
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // float(single) is 4 bytes (c++ float is 4 bytes)
@@ -315,15 +438,15 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rotZ));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rotZ));
 
         }
 
-        override public void execute()
+        override public void Execute()
         {
             //Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
             GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.rotZ);
@@ -341,14 +464,14 @@ public class EventNetwork
 
         public EventWithIDTwo(byte id) : base(id) { }
 
-        override public int getSize()
+        override public int GetSize()
         {
-            return base.getSize() + sizeof(System.UInt32); // super + playerID
+            return base.GetSize() + sizeof(System.UInt32); // super + playerID
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
@@ -357,11 +480,11 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID_second));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID_second));
 
         }
 
@@ -415,11 +538,11 @@ public class EventNetwork
             this.idReceiver = receiver;
         }
 
-        public override void execute()
+        public override void Execute()
         {
             // Some user (requester) has asked us (receiver) to battle
             Debug.Log("Received request to battle from " + this.idSender + " (i am " + this.idReceiver + "=" + GameManager.INSTANCE.getID() + ")... auto accepting");
-            NetInterface.INSTANCE.getEvents().Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
+            NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
 
     }
@@ -441,15 +564,15 @@ public class EventNetwork
             this.accepted = accepted;
         }
 
-        override public int getSize()
+        override public int GetSize()
         {
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sizeof
-            return base.getSize() + sizeof(System.Boolean); // super + accepted
+            return base.GetSize() + sizeof(System.Boolean); // super + accepted
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // bool is 1 bytes (c++ bool is 1 bytes)
@@ -458,15 +581,15 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accepted));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accepted));
 
         }
 
-        public override void execute()
+        public override void Execute()
         {
             // This was sent back to the requester to notify them of the other's result, so receiver and requester are flipped
             //Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idSender);
@@ -484,14 +607,14 @@ public class EventNetwork
 
         public EventBattleResult() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT) { }
 
-        override public int getSize()
+        override public int GetSize()
         {
-            return base.getSize() + sizeof(System.UInt32); // super + playerIDWinner
+            return base.GetSize() + sizeof(System.UInt32); // super + playerIDWinner
         }
 
-        override public void deserialize(byte[] data, ref int lastIndex)
+        override public void Deserialize(byte[] data, ref int lastIndex)
         {
-            base.deserialize(data, ref lastIndex);
+            base.Deserialize(data, ref lastIndex);
 
             // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
             // uint is 4 bytes (c++ uint is 4 bytes)
@@ -500,15 +623,15 @@ public class EventNetwork
 
         }
 
-        override public void serialize(ref byte[] data, ref int lastIndex)
+        override public void Serialize(ref byte[] data, ref int lastIndex)
         {
-            base.serialize(ref data, ref lastIndex);
+            base.Serialize(ref data, ref lastIndex);
 
-            this.writeTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerIDWinner));
+            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerIDWinner));
 
         }
 
-        public override void execute()
+        public override void Execute()
         {
             Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
         }

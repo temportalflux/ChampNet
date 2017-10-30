@@ -31,8 +31,9 @@ namespace ChampNetPlugin
         ID_USER_ID,
         // Send to all clients to notify them of a battle result
         ID_BATTLE_RESULT,
+        // Sent to server and forwarded to clients notifying them a user has left the server
         ID_USER_LEFT,
-
+        // Notification to clients that the server has been disconnected
         ID_DISCONNECT,
 
     }

@@ -6,27 +6,51 @@ using UnityEngine;
 
 using Netty = ChampNetPlugin.Network;
 
-[RequireComponent(typeof(EventManager))]
+/// <summary>
+/// The interface to work with the plugin to fetch and send packet data
+/// </summary>
+/// <remarks>
+/// Author: Dustin Yost
+/// </remarks>
 public class NetInterface : Singleton<NetInterface>
 {
 
+    /// <summary>
+    /// The singleton instance
+    /// </summary>
     private static NetInterface _instance = null;
-    public static NetInterface INSTANCE { get {  return _instance; } }
-    
 
-    private EventManager events;
+    /// <summary>
+    /// Gets the instance.
+    /// </summary>
+    /// <value>
+    /// The instance.
+    /// </value>
+    public static NetInterface INSTANCE { get {  return _instance; } }
+
+    /// <summary>
+    /// The server address
+    /// </summary>
     private string serverAddress = "127.0.0.1";
+    /// <summary>
+    /// The server port
+    /// </summary>
     private int serverPort = 425;
+    
+    /// <summary>
+    /// The collection of events since last fetch
+    /// </summary>
+    private Queue<EventNetwork> events;
 
     void Awake()
     {
+        // Load the singleton instance variable before we need to use it (Start)
         this.loadSingleton(this, ref NetInterface._instance);
+        this.events = new Queue<EventNetwork>();
     }
 
     void Start()
     {
-        this.events = this.GetComponent<EventManager>();
-
         Debug.Log("Creating network");
         Netty.Create();
         //Netty.SetDebugCallback();
@@ -39,12 +63,15 @@ public class NetInterface : Singleton<NetInterface>
         Netty.Destroy();
     }
 
-    public EventManager getEvents()
-    {
-        return this.events;
-    }
-
-	public void connect(string address, int port)
+    /// <summary>
+    /// Starts the client, connects the specified address and port.
+    /// </summary>
+    /// <param name="address">The address.</param>
+    /// <param name="port">The port.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    public void Connect(string address, int port)
     {
         Netty.StartClient();
         this.serverAddress = address;
@@ -52,43 +79,144 @@ public class NetInterface : Singleton<NetInterface>
         Netty.ConnectToServer(address, port);
     }
 
-    public void disconnect()
+    /// <summary>
+    /// Disconnects from the server.
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    public void Disconnect()
     {
         Netty.Disconnect();
     }
-
+    
     private void FixedUpdate()
+    {
+        // TODO: This can be pushed into separate coroutines with mutex
+        this.UpdateNetwork();
+        this.ProcessEvents();
+    }
+
+    /// <summary>
+    /// Fetch and process network updates.
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    private void UpdateNetwork()
     {
         // Get all packets since last update
         Netty.FetchPackets();
 
         string address;
         byte[] data;
+        // Poll all packet data
         while (Netty.PollPacket(out address, out data))
         {
             int id = (int)data[0];
-            //Debug.Log("Receiving " + id);
-            this.events.onReceive(id, address, data);
+            // Handle all packets from the plugin interface
+            this.HandlePacket(id, address, data);
         }
-        this.events.ProcessEvents();
     }
 
     /// <summary>
-    /// Used to test sending a byte array to the server
+    /// Handles each packet and pushes it into an event
     /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <param name="address">The address.</param>
+    /// <param name="data">The data.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    private void HandlePacket(int id, string address, byte[] data)
+    {
+        // Create the event to be processed
+        EventNetwork evt = EventNetwork.createEvent(id);
+        // Read off the data of the packet
+        int lastIndex = 0;
+        evt.Deserialize(data, ref lastIndex);
+        // Push the event + data into the queue for processing
+        events.Enqueue(evt);
+    }
+
+    /// <summary>
+    /// Processes the events in the event queue.
+    /// </summary>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    private void ProcessEvents()
+    {
+        // While there are events
+        EventNetwork evt;
+        while (this.PollEvent(out evt))
+        {
+            // execute them
+            evt.Execute();
+        }
+    }
+
+    /// <summary>
+    /// Checks for events in the queue and returns the first if there are any.
+    /// </summary>
+    /// <param name="evt">The event.</param>
+    /// <returns>true if there is an event</returns>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    private bool PollEvent(out EventNetwork evt)
+    {
+        // ensure the event out is always something
+        evt = null;
+        // check if there are events in the queue
+        if (this.events.Count > 0)
+        {
+            // get the first event
+            evt = this.events.Dequeue();
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Dispatches the specified event.
+    /// </summary>
+    /// <param name="evt">The evt.</param>
+    public void Dispatch(EventNetwork evt)
+    {
+        // Get the server key pair
+        KeyValuePair<string, int> server = NetInterface.INSTANCE.getServer();
+        // Call other dispatch with more details
+        this.Dispatch(evt, server.Key, server.Value);
+    }
+
+    /// <summary>
+    /// Dispatches the specified event.
+    /// </summary>
+    /// <param name="evt">The event.</param>
+    /// <param name="address">The server address.</param>
+    /// <param name="port">The server port.</param>
     /// <remarks>
     /// Author: Jake Ruth
     /// </remarks>
-    [ContextMenu("Test Sending a byte array to the server")]
-    public void SendTestByteArray()
+    public void Dispatch(EventNetwork evt, string address, int port)
     {
-        char id = (char)MessageIDs.ID_USER_JOINED;
-        string test = id + "jake was here";
-        byte[] byteArray = Encoding.ASCII.GetBytes(test);
-        int size = byteArray.Length;
-        Netty.SendByteArray("127.0.0.1", 425, byteArray, size);
+        // Create the data array for the event
+        byte[] data = new byte[evt.GetSize()];
+        // Serialize the event data
+        int lastIndex = 0;
+        evt.Serialize(ref data, ref lastIndex);
+        // Send the event to the address
+        Netty.SendByteArray(address, port, data, data.Length);
     }
 
+    /// <summary>
+    /// Gets the server IP details.
+    /// </summary>
+    /// <returns>the server address/port</returns>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
     public KeyValuePair<string, int> getServer()
     {
         return new KeyValuePair<string, int>(this.serverAddress, this.serverPort);

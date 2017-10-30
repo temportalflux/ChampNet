@@ -117,7 +117,7 @@ public class GameManager : Singleton<GameManager>
         EventNetwork evt = this.localPlayer.createUpdateEvent();
         if (evt != null)
         {
-            this.netty.getEvents().Dispatch(evt);
+            this.netty.Dispatch(evt);
         }
     }
 
@@ -174,7 +174,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Disconnect()
     {
-        this.netty.getEvents().Dispatch(new EventNetwork.EventUserLeft(this.getID()));
+        this.netty.Dispatch(new EventNetwork.EventUserLeft(this.getID()));
     }
 
     public void removePlayer(uint id)
