@@ -19,7 +19,7 @@ struct PacketPlayerPosition
 {
 	unsigned char id;
 	unsigned int playerId;
-	float posX, posY, rotZ;
+	float posX, posY, velX, velY;
 };
 
 struct PacketUserIDDouble

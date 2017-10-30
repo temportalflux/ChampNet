@@ -306,23 +306,23 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// Set the new ID of the incoming user
 				packetID->playerId = id;
 
-				// Tell other players of new player
-				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
-				this->sendPacket(addressSender.c_str(), packetID, true);
-
 				// Tell user their player ID
 				packetID->id = ChampNetPlugin::ID_USER_ID;
 				this->sendPacket(addressSender.c_str(), packetID, false);
+
+				// Tell other players of new player
+				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
+				this->sendPacket(addressSender.c_str(), packetID, true);
 				
 			}
 			break;
 		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
 			// A user's position/rotation is being updated
 			{
-				//unsigned int pPacketLength = 0;
-				//PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
+				unsigned int pPacketLength = 0;
+				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
 				// Forward the packet along to all clients except the sender
-				this->sendPacket(packet->getAddress().c_str(), packet, true);
+				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
 		case ChampNetPlugin::ID_USER_LEFT:

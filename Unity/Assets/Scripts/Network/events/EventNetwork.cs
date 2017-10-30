@@ -23,6 +23,7 @@ public class EventNetwork
     /// </remarks>
     public static EventNetwork createEvent(int id)
     {
+        //Debug.Log("Got event " + id);
         switch (id)
         {
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
@@ -134,7 +135,7 @@ public class EventNetwork
     virtual public void Execute()
     {
         ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
-        Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
+        //Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
     
     /// <summary>
@@ -395,7 +396,7 @@ public class EventNetwork
 
         override public void Execute()
         {
-            //Debug.Log("User " + this.playerID + " spawned at (" + this.posX + " | " + this.posY + ")");
+            Debug.Log("User " + this.playerID + " spawned");
             GameManager.INSTANCE.spawnPlayer(this.playerID, 0, 0);
         }
 
@@ -452,7 +453,7 @@ public class EventNetwork
 
         override public void Execute()
         {
-            //Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ") with " + this.rotZ);
+            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
             GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.velX, this.velY);
 
         }

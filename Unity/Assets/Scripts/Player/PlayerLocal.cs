@@ -10,7 +10,6 @@ public class PlayerLocal : PlayerReference
     private void Awake()
     {
         _pcc = GetComponent<PlayerCharacterController>();
-        Debug.Log(_pcc);
     }
 
     void Start()
