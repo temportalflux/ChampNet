@@ -404,6 +404,7 @@ MonoBehaviour:
   spriteTransform: {fileID: 4975964848137938}
   speed: 4
   sight: 0
+  deltaMove: {x: 0, y: 0, z: 0}
 --- !u!212 &212139874473193022
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -438,7 +439,7 @@ SpriteRenderer:
   m_SortingLayerID: 274408807
   m_SortingLayer: 2
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+  m_Sprite: {fileID: 21300024, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -482,7 +483,7 @@ SpriteRenderer:
   m_SortingLayerID: 274408807
   m_SortingLayer: 2
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+  m_Sprite: {fileID: 21300024, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
   m_Color: {r: 0.9558824, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

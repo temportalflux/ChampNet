@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: walk_South 2
+  m_Name: walk_East
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,30 +19,30 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300016, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     - time: 0.25
-      value: {fileID: 21300002, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300018, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     - time: 0.5
-      value: {fileID: 21300004, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300020, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     - time: 0.75
-      value: {fileID: 21300006, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300022, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     - time: 0.98333335
-      value: {fileID: 21300000, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300016, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     attribute: m_Sprite
     path: Base
     classID: 212
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300016, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     - time: 0.25
-      value: {fileID: 21300002, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300018, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     - time: 0.5
-      value: {fileID: 21300004, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300020, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     - time: 0.75
-      value: {fileID: 21300006, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300022, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     - time: 0.98333335
-      value: {fileID: 21300000, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300016, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     attribute: m_Sprite
     path: Overlay
     classID: 212
@@ -53,8 +53,32 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 1619415391
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1984038178
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300016, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300018, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300020, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300022, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300016, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300016, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+    - {fileID: 21300018, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+    - {fileID: 21300020, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+    - {fileID: 21300022, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+    - {fileID: 21300016, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

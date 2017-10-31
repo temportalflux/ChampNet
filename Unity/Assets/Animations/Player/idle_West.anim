@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: idle_South 3
+  m_Name: idle_West
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,18 +19,14 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+      value: {fileID: 21300008, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
     attribute: m_Sprite
     path: Base
     classID: 212
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
-    - time: 1.0166667
-      value: {fileID: 21300000, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
+      value: {fileID: 21300008, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
     attribute: m_Sprite
     path: Overlay
     classID: 212
@@ -41,14 +37,30 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 1619415391
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1984038178
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300008, guid: 41d921819039b5d409bf4aa9f57cb6ce, type: 3}
+    - {fileID: 21300008, guid: edb58983fc5ddf5409e1f9f60efff683, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0333333
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

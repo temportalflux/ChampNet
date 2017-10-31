@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerReference : MonoBehaviour {
 
     public Transform sprite;
+    private Animator _anim;
+
+    void Awake()
+    {
+        _anim = GetComponentInChildren<Animator>();
+    }
 
     /// <summary>
     /// The player identifier
@@ -44,7 +50,9 @@ public class PlayerReference : MonoBehaviour {
         this.transform.position = new Vector3(posX, posY);
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-
+        _anim.SetFloat("velX", velX);
+        _anim.SetFloat("velY", velY);
+        _anim.SetBool("walking", Mathf.Abs(velX) > 0.001f && Mathf.Abs(velY) > 0.001f);
 
     }
 
