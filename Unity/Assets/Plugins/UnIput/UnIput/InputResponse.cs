@@ -147,14 +147,17 @@ public class InputResponse : MonoBehaviour {
         bool isKeyboard = device is KeyboardInputDevice;
         bool isGamepad = device is GamepadInputDevice;
 
+        int inputID = isMouse || isKeyboard ? 1 : (device as GamepadInputDevice).gamepad.deviceId;
+
+        if (this.inputId != inputID) return;
+
         float value;
 
         bool active;
         // check all mappings currently being tracked
         foreach (UpdateEvent eventType in this.dictListenerButtons.Keys)
         {
-
-
+            
             foreach (MappedButton mapping in this.dictListenerButtons[eventType].Keys)
             {
                 // Get the appropriate event
