@@ -18,6 +18,11 @@ public class PlayerReference : MonoBehaviour {
     private uint playerID;
 
     /// <summary>
+    /// Score of the player
+    /// </summary>
+    private uint score;
+
+    /// <summary>
     /// Sets the identifier.
     /// </summary>
     /// <param name="id">The identifier.</param>
@@ -33,6 +38,24 @@ public class PlayerReference : MonoBehaviour {
     public uint getID()
     {
         return this.playerID;
+    }
+
+    /// <summary>
+    /// Sets the identifier.
+    /// </summary>
+    /// <param name="newScore">The identifier.</param>
+    public void setScore(uint newScore)
+    {
+        this.score = newScore;
+    }
+
+    /// <summary>
+    /// Gets the identifier.
+    /// </summary>
+    /// <returns></returns>
+    public uint getScore()
+    {
+        return this.score;
     }
 
     /// <summary>

@@ -81,6 +81,23 @@ public class GameManager : Singleton<GameManager>
         return this.id;
     }
 
+    /// <summary>
+    /// gets the size of the Dictionary
+    /// </summary>
+    /// <returns> total size of the Dictionary </returns>
+    public uint getSize()
+    {
+        uint number = 0;
+        foreach (KeyValuePair<uint, PlayerReference> mapfPlayers in networkPlayerMap) // searches through all the map
+        {
+            if (mapfPlayers.Value != null) // checks if the player is still in the game
+            {
+                number += 1;
+            }
+        }
+        return number;
+    }
+
     private void createPlayer(bool networked)
     {
        // GameObject playerObj = Instantiate(this.playerPrefab);
@@ -220,6 +237,23 @@ public class GameManager : Singleton<GameManager>
             return source.GetComponent<AudioSource>();
         }
         return null;
+    }
+
+    /// <summary>
+    /// update the player's win count
+    /// </summary>
+    /// <param name="winnerID"> ID of the winner of a battle </param>
+    public void updatePlayerWin(uint winnerID)
+    {
+        PlayerReference player;
+
+        if (this.networkPlayerMap.TryGetValue(id, out player))
+        {
+            if (player != null)
+            {
+                player.setScore(player.getScore() + 1);
+            }
+        }
     }
 
 }

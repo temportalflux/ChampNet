@@ -640,6 +640,7 @@ public class EventNetwork
         public override void Execute()
         {
             Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
+            GameObject.Find("GameManager").GetComponent<GameManager>().updatePlayerWin(this.playerIDWinner);
         }
 
     }
