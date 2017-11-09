@@ -40,6 +40,7 @@ public class PlayerInputController : MonoBehaviour
                     _input.x = 0;
                 break;
             default:
+                _input = Vector3.zero;
                 break;
         }
 

@@ -249,6 +249,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerCharacterController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInputController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerLocal.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerLocalMultiplayer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerNetwork.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerReference.cs" />
     <Compile Include="Assets\Scripts\Transitions\CameraBlit.cs" />
