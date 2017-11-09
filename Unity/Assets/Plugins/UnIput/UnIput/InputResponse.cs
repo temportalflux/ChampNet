@@ -77,7 +77,12 @@ public class InputResponse : MonoBehaviour {
     public ListenerButton[] listenerButtons;
     [Tooltip("The list of listeners for axes")]
     public ListenerAxis[] listenerAxes;
-    
+
+
+    [System.Serializable]
+    public class KeyboardEvent : UnityEvent<InputDevice, char> { }
+    public KeyboardEvent onKeyInput;
+
     // The dictionary mapping of listeners for buttons from Update type -> Button -> Listener action
     private Dictionary<UpdateEvent, Dictionary<MappedButton, List<ListenerButton>>> dictListenerButtons;
     // The dictionary mapping of listeners for axes from Update type -> Button -> Listener action
@@ -160,6 +165,7 @@ public class InputResponse : MonoBehaviour {
             
             foreach (MappedButton mapping in this.dictListenerButtons[eventType].Keys)
             {
+
                 // Get the appropriate event
                 switch (eventType)
                 {
@@ -243,6 +249,15 @@ public class InputResponse : MonoBehaviour {
                 );
             }
             
+        }
+
+        // Check keyboard
+        if (isKeyboard)
+        {
+            foreach (char c in Input.inputString)
+            {
+                this.onKeyInput.Invoke(device, c);
+            }
         }
 
     }
