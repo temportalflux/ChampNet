@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof( PlayerCharacterController))]
+[RequireComponent(typeof(PlayerInputController))]
 public class PlayerLocal : PlayerReference
 {
     private PlayerCharacterController _pcc;
+    private PlayerInputController _pic;
 
     private void Awake()
     {
         _pcc = GetComponent<PlayerCharacterController>();
+        _pic = GetComponent<PlayerInputController>();
     }
 
     void Start()
@@ -57,4 +60,39 @@ public class PlayerLocal : PlayerReference
             _pcc.deltaMove.y
         );
     }
+
+    public void OnKeyInput(InputDevice device, char c)
+    {
+        MappedAxis axis = MappedAxis.Horizontal;
+        AxisDirection dir = AxisDirection.Centered;
+        bool found = true;
+        switch (c)
+        {
+            case 'o':
+                axis = MappedAxis.Vertical;
+                dir = AxisDirection.Positive;
+                break;
+            case 'k':
+                axis = MappedAxis.Horizontal;
+                dir = AxisDirection.Negative;
+                break;
+            case 'l':
+                axis = MappedAxis.Vertical;
+                dir = AxisDirection.Negative;
+                break;
+            case ';':
+                axis = MappedAxis.Horizontal;
+                dir = AxisDirection.Positive;
+                break;
+            default:
+                found = false;
+                break;
+        }
+        if (found)
+        {
+            _pic.onAxis(device, InputResponse.UpdateEvent.DOWN, axis, dir);
+            _pic.onAxis(device, InputResponse.UpdateEvent.TICK, axis, 1.0f);
+        }
+    }
+
 }

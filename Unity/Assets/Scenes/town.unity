@@ -8997,6 +8997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230135767}
   - component: {fileID: 1230135768}
+  - component: {fileID: 1230135769}
   m_Layer: 0
   m_Name: Player-2-Input
   m_TagString: Untagged
@@ -9038,20 +9039,9 @@ MonoBehaviour:
     action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1758577014}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1230135766}
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 1230135769}
+          m_MethodName: activate
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9063,6 +9053,34 @@ MonoBehaviour:
       m_TypeName: InputResponse+ListenerButton+InputEvent, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   listenerAxes: []
+  onKeyInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1230135769}
+        m_MethodName: OnKeyInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: InputResponse+KeyboardEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1230135769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1230135766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4015d3908c22c4d94187b83f1283bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1758577014}
 --- !u!1 &1290096684
 GameObject:
   m_ObjectHideFlags: 0
@@ -30445,6 +30463,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1471183601}
     m_Modifications:
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -30524,6 +30547,31 @@ Prefab:
       propertyPath: inputId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758577015}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnKeyInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: onKeyInput.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
   m_IsPrefabParent: 0
@@ -30537,6 +30585,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1194389487574842, guid: 174c70d922667da44a2d9f11cd8ff381,
     type: 2}
   m_PrefabInternal: {fileID: 1758577012}
+--- !u!114 &1758577015 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114064580263914160, guid: 174c70d922667da44a2d9f11cd8ff381,
+    type: 2}
+  m_PrefabInternal: {fileID: 1758577012}
+  m_Script: {fileID: 11500000, guid: bd19366c8eb91d344801ff4505aec94b, type: 3}
 --- !u!1 &1809785470
 GameObject:
   m_ObjectHideFlags: 0

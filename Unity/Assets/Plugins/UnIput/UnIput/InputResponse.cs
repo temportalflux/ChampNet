@@ -151,6 +151,15 @@ public class InputResponse : MonoBehaviour {
         bool isMouse = device is MouseInputDevice;
         bool isKeyboard = device is KeyboardInputDevice;
         bool isGamepad = device is GamepadInputDevice;
+        
+        // Check keyboard
+        if (isKeyboard)
+        {
+            foreach (char c in Input.inputString)
+            {
+                this.onKeyInput.Invoke(device, c);
+            }
+        }
 
         int inputID = isMouse || isKeyboard ? 1 : (device as GamepadInputDevice).gamepad.deviceId;
 
@@ -250,16 +259,7 @@ public class InputResponse : MonoBehaviour {
             }
             
         }
-
-        // Check keyboard
-        if (isKeyboard)
-        {
-            foreach (char c in Input.inputString)
-            {
-                this.onKeyInput.Invoke(device, c);
-            }
-        }
-
+        
     }
 
 }
