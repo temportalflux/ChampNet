@@ -31094,6 +31094,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager_GameObject: {fileID: 0}
   GameManagerScript: {fileID: 0}
+  rankText:
+  - Rank: 0
+    newName: {fileID: 0}
+    newWin: {fileID: 0}
+    fontSize: 14
+    fontStyle: 0
+  - Rank: 0
+    newName: {fileID: 0}
+    newWin: {fileID: 0}
+    fontSize: 14
+    fontStyle: 0
+  - Rank: 0
+    newName: {fileID: 0}
+    newWin: {fileID: 0}
+    fontSize: 14
+    fontStyle: 0
+  - Rank: 0
+    newName: {fileID: 0}
+    newWin: {fileID: 0}
+    fontSize: 14
+    fontStyle: 0
+  - Rank: 0
+    newName: {fileID: 0}
+    newWin: {fileID: 0}
+    fontSize: 14
+    fontStyle: 0
 --- !u!1 &1809785470
 GameObject:
   m_ObjectHideFlags: 0
@@ -33758,6 +33784,11 @@ Prefab:
     - target: {fileID: 4795091654540934, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468771059613572, guid: 174c70d922667da44a2d9f11cd8ff381,
+        type: 2}
+      propertyPath: listenerButtons.Array.data[0].useMouse
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 174c70d922667da44a2d9f11cd8ff381, type: 2}
