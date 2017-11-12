@@ -50,8 +50,17 @@ public class ScoreBoard : MonoBehaviour {
 
             // create new game object
             GameObject newNameObject = new GameObject(("PlayerName (" + currentText + ")"), typeof(RectTransform));
+            // set RectWidth and RectHeight
+            newNameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
+
             // set game object location
-            newNameObject.transform.position = this.camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+            newNameObject.transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (newNameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
+                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+
+            // set the z position
+            newNameObject.transform.position = new Vector3(newNameObject.transform.position.x, newNameObject.transform.position.y, 0);
+
             // add text component to the new game object
             var newNameText = newNameObject.AddComponent<Text>();
 
@@ -67,18 +76,27 @@ public class ScoreBoard : MonoBehaviour {
             newNameText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; // place holder unitl I can find how to add it from inspector
             // set font color
             newNameText.color = Color.black;
+            // set text allignment
+            newNameText.alignment = TextAnchor.MiddleLeft;
             // set unt to be child of ScoreBoard
             newNameText.transform.SetParent(transform);
             // set game object scale
             newNameObject.transform.localScale = new Vector3(1, 1, 1);
 
-            // repeate above for wins
+            // repeate above with modifications for wins
 
             GameObject newWinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
+            newWinObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
+
+            newWinObject.transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (newNameObject.GetComponent<RectTransform>().rect.width / 3) + newNameObject.GetComponent<RectTransform>().rect.width,
+                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+
+            newWinObject.transform.position = new Vector3(newWinObject.transform.position.x, newWinObject.transform.position.y, 0);
+
             var newWinText = newWinObject.AddComponent<Text>();
-            newWinObject.transform.position = this.camera.ScreenToWorldPoint(new Vector3(0 + 20, Screen.height, camera.nearClipPlane));
             
-            // set this to N/A as their is no one there to claim a win
+            // set this to N/A as their is no one there to display a win
             newWinText.text = "N/A";
             newWinText.alignment = TextAnchor.MiddleCenter;
             newWinText.fontSize = text.fontSize;
@@ -86,6 +104,7 @@ public class ScoreBoard : MonoBehaviour {
             newWinText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; // place holder unitl I can find how to add it from inspector
             newWinText.color = Color.black;
             newWinText.transform.SetParent(transform);
+            newWinText.alignment = TextAnchor.MiddleLeft;
             newWinObject.transform.localScale = new Vector3(1, 1, 1);
 
             currentText += 1;
