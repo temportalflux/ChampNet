@@ -26,24 +26,26 @@ public class GameManager : Singleton<GameManager>
     public GameObject playerPrefab;
     public GameObject playerNetworkPrefab;
 
+    public GameState state;
+
     private NetInterface netty;
 
-    private uint id;
-    private PlayerReference localPlayer;
     private Coroutine localPlayerUpdates;
-    private Dictionary<uint, PlayerReference> networkPlayerMap;
+
+    private Dictionary<uint, GameState.Player> playersLocal;
+    private Dictionary<uint, GameState.Player> playersConnected;
 
     void Awake()
     {
         this.loadSingleton(this, ref GameManager._instance);
-        this.networkPlayerMap = new Dictionary<uint, PlayerReference>();
+        this.playersLocal = new Dictionary<uint, GameState.Player>();
+        this.playersConnected = new Dictionary<uint, GameState.Player>();
     }
 
     void Start()
     {
         this.netty = NetInterface.INSTANCE;
-
-        this.localPlayer = null;
+        
         this.localPlayerUpdates = null;
         
     }
@@ -71,16 +73,6 @@ public class GameManager : Singleton<GameManager>
         this.transition.exit();
     }
 
-    public void setID(uint id)
-    {
-        this.id = id;
-    }
-
-    public uint getID()
-    {
-        return this.id;
-    }
-
     private void createPlayer(bool networked)
     {
        // GameObject playerObj = Instantiate(this.playerPrefab);
@@ -90,8 +82,9 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void setPlayer(PlayerReference player)
+    public void AddPlayerLocal(PlayerReference player)
     {
+        /*
         this.localPlayer = player;
         if (this.localPlayer != null)
         {
@@ -108,18 +101,22 @@ public class GameManager : Singleton<GameManager>
         {
             this.localPlayerUpdates = StartCoroutine(this.sendPositionUpdates());
         }
-
+        */
     }
 
     public void sendPositionUpdate()
     {
         if (this.netty == null) return;
-        if (this.localPlayer == null) return;
-        EventNetwork evt = this.localPlayer.createUpdateEvent();
-        if (evt != null)
+
+        foreach (GameState.Player playerLocal in this.playersLocal.Values)
         {
-            this.netty.Dispatch(evt);
+            EventNetwork evt = playerLocal.objectReference.createUpdateEvent();
+            if (evt != null)
+            {
+                this.netty.Dispatch(evt);
+            }
         }
+
     }
 
     private IEnumerator sendPositionUpdates()
@@ -131,9 +128,9 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void spawnPlayer(uint id, float posX, float posY)
+    public void spawnPlayer(GameState.Player playerInfo)
     {
-        if (this.networkPlayerMap.ContainsKey(id))
+        if (this.state.HasPlayer(ref playerInfo))
         {
             return;
         }
@@ -142,65 +139,72 @@ public class GameManager : Singleton<GameManager>
         // having a queue of updates waiting on (insert indicator that transition has finished) can help solved this
 
         GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
-        PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
-        this.networkPlayerMap.Add(id, player);
-        player.setID(id);
 
-        this.updatePlayer(id, posX, posY, 0, 0);
+        PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
+        player.initInfo(playerInfo);
+
+        this.state.AddPlayer(playerInfo);
+        if (playerInfo.isLocal)
+        {
+            this.playersLocal.Add(playerInfo.id, playerInfo);
+        }
+        else
+        {
+            this.playersConnected.Add(playerInfo.id, playerInfo);
+        }
+
+        this.updatePlayer(playerInfo);
 
     }
 
-    public void updatePlayer(uint id, float posX, float posY, float velX, float velY)
+    public void updatePlayer(GameState.Player playerInfo)
     {
-        if (!this.networkPlayerMap.ContainsKey(id))
+        if (!this.state.HasPlayer(ref playerInfo))
         {
-            this.spawnPlayer(id, posX, posY);
+            this.spawnPlayer(playerInfo);
             return;
         }
 
-        PlayerReference player;
-        if (this.networkPlayerMap.TryGetValue(id, out player))
+        if (playerInfo.objectReference != null)
         {
-            if (player != null)
-            {
-                player.updateAt(posX, posY, velX, velY);
-            }
-            else
-            {
-                this.networkPlayerMap.Remove(id);
-            }
+            playerInfo.objectReference.updateFromInfo();
+        }
+        else
+        {
+            this.state.RemovePlayer(playerInfo);
         }
 
     }
 
     public void Disconnect()
     {
-        this.netty.Dispatch(new EventNetwork.EventUserLeft(this.getID()));
+        foreach (uint id in this.playersLocal.Keys)
+        {
+            this.netty.Dispatch(new EventNetwork.EventUserLeft(id));
+            // TODO: Do this on receive packet (gamestate change)
+            this.removePlayer(this.playersLocal[id]);
+        }
     }
 
-    public void removePlayer(uint id)
+    public void removePlayer(GameState.Player playerInfo)
     {
-        if (this.networkPlayerMap.ContainsKey(id))
+        if (this.state.HasPlayer(ref playerInfo))
         {
-            PlayerReference player;
-            if (this.networkPlayerMap.TryGetValue(id, out player))
+            if (playerInfo.objectReference != null)
             {
-                if (player != null)
-                {
-                    Destroy(player.gameObject);
-                }
+                Destroy(playerInfo.objectReference.gameObject);
             }
-            this.networkPlayerMap.Remove(id);
+            this.state.RemovePlayer(playerInfo);
         }
     }
 
     public PlayerReference getRandomPlayer()
     {
-        List<PlayerReference> players = new List<PlayerReference>(this.networkPlayerMap.Values);
+        List<GameState.Player> players = new List<GameState.Player>(this.state.players.Values);
         if (players.Count > 0)
         {
             int index = UnityEngine.Random.Range(0, players.Count);
-            return players[index];
+            return players[index].objectReference;
         }
         else
         {

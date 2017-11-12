@@ -12,6 +12,8 @@ public class PlayerReference : MonoBehaviour {
         _anim = GetComponentInChildren<Animator>();
     }
 
+    private GameState.Player playerInfo;
+
     /// <summary>
     /// The player identifier
     /// </summary>
@@ -45,14 +47,14 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void updateAt(float posX, float posY, float velX, float velY)
+    public void updateFromInfo()
     {
-        this.transform.position = new Vector3(posX, posY);
+        this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        _anim.SetFloat("velX", velX);
-        _anim.SetFloat("velY", velY);
-        _anim.SetBool("walking", Mathf.Abs(velX) > 0.001f && Mathf.Abs(velY) > 0.001f);
+        _anim.SetFloat("velX", this.playerInfo.velocity.x);
+        _anim.SetFloat("velY", this.playerInfo.velocity.y);
+        _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
 
     }
 
@@ -71,6 +73,24 @@ public class PlayerReference : MonoBehaviour {
             this.transform.position.y,
             0,0
         );
+    }
+
+    public GameState.Player getInfo()
+    {
+        return this.playerInfo;
+    }
+
+    public void initInfo(GameState.Player info)
+    {
+        this.playerInfo = info;
+
+        // ID already set, init other identification info
+        this.playerInfo.name = "Unammed";
+        this.playerInfo.color = Color.white;
+
+        this.playerInfo.inBattle = false;
+
+        this.playerInfo.objectReference = this;
     }
 
 }

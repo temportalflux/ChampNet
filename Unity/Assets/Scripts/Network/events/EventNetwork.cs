@@ -317,8 +317,8 @@ public class EventNetwork
 
         override public void Execute()
         {
-            Debug.Log("Got user id " + this.playerID);
-            GameManager.INSTANCE.setID(this.playerID);
+            Debug.Log("[OLD] Got user id " + this.playerID);
+            //GameManager.INSTANCE.setID(this.playerID);
         }
 
     }
@@ -338,7 +338,9 @@ public class EventNetwork
         override public void Execute()
         {
             Debug.Log("User " + this.playerID + " has left");
-            GameManager.INSTANCE.removePlayer(this.playerID);
+            GameState.Player playerInfo = new GameState.Player();
+            playerInfo.id = this.playerID;
+            GameManager.INSTANCE.removePlayer(playerInfo);
         }
 
     }
@@ -397,7 +399,12 @@ public class EventNetwork
         override public void Execute()
         {
             Debug.Log("User " + this.playerID + " spawned");
-            GameManager.INSTANCE.spawnPlayer(this.playerID, 0, 0);
+            GameState.Player playerInfo = new GameState.Player();
+            playerInfo.id = this.playerID;
+            playerInfo.position = Vector3.zero;
+            playerInfo.velocity = Vector3.zero;
+            playerInfo.accelleration = Vector3.zero;
+            GameManager.INSTANCE.spawnPlayer(playerInfo);
         }
 
     }
@@ -454,7 +461,12 @@ public class EventNetwork
         override public void Execute()
         {
             Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
-            GameManager.INSTANCE.updatePlayer(this.playerID, this.posX, this.posY, this.velX, this.velY);
+            GameState.Player playerInfo = new GameState.Player();
+            playerInfo.id = this.playerID;
+            playerInfo.position = new Vector3(this.posX, this.posY);
+            playerInfo.velocity = new Vector3(this.velX, this.velY);
+            playerInfo.accelleration = Vector3.zero;
+            GameManager.INSTANCE.updatePlayer(playerInfo);
 
         }
 
@@ -547,7 +559,7 @@ public class EventNetwork
         public override void Execute()
         {
             // Some user (requester) has asked us (receiver) to battle
-            Debug.Log("Received request to battle from " + this.idSender + " (i am " + this.idReceiver + "=" + GameManager.INSTANCE.getID() + ")... auto accepting");
+            Debug.Log("Received request to battle from " + this.idSender + "... auto accepting");
             NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
 
