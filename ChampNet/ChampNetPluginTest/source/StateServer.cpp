@@ -316,6 +316,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				
 			}
 			break;
+			/*
 		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
 			// A user's position/rotation is being updated
 			{
@@ -387,6 +388,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 			}
 			break;
+			//*/
 		default:
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;

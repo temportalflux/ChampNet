@@ -54,7 +54,6 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.load(
             () => {
-                this.createPlayer(false);
             }
         );
     }
@@ -63,7 +62,6 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.load(
             () => {
-                this.createPlayer(true);
             }
         );
     }
@@ -71,15 +69,6 @@ public class GameManager : Singleton<GameManager>
     public void Exit()
     {
         this.transition.exit();
-    }
-
-    private void createPlayer(bool networked)
-    {
-       // GameObject playerObj = Instantiate(this.playerPrefab);
-
-        // TODO: THis assumes a lot
-       // GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().target = playerObj.transform;
-
     }
 
     public void AddPlayerLocal(PlayerReference player)

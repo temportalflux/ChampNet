@@ -237,7 +237,7 @@ public class EventNetwork
         /// </remarks>
         override public void Execute()
         {
-            Debug.Log("Some user has joined");
+            Debug.Log("Some user has joined - ERROR: Received an event that should never be received");
         }
 
     }
@@ -317,8 +317,9 @@ public class EventNetwork
 
         override public void Execute()
         {
-            Debug.Log("[OLD] Got user id " + this.playerID);
-            //GameManager.INSTANCE.setID(this.playerID);
+            Debug.Log("Got user id " + this.playerID);
+            // This is where a player can be spawned
+            //GameManager.INSTANCE.SpawnPlayerWithID(this.playerID);
         }
 
     }
@@ -404,7 +405,7 @@ public class EventNetwork
             playerInfo.position = Vector3.zero;
             playerInfo.velocity = Vector3.zero;
             playerInfo.accelleration = Vector3.zero;
-            GameManager.INSTANCE.spawnPlayer(playerInfo);
+            //GameManager.INSTANCE.spawnPlayer(playerInfo);
         }
 
     }
