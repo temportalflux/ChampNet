@@ -53,13 +53,17 @@ public class ScoreBoard : MonoBehaviour {
             // set RectWidth and RectHeight
             newNameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
 
+            newNameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+            newNameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+            newNameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
             // set game object location
-            newNameObject.transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            newNameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
                 (newNameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
-                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), Screen.height));
 
             // set the z position
-            newNameObject.transform.position = new Vector3(newNameObject.transform.position.x, newNameObject.transform.position.y, 0);
+            newNameObject.GetComponent<RectTransform>().transform.position = new Vector3(newNameObject.transform.position.x, newNameObject.transform.position.y, newNameObject.transform.position.z);
 
             // add text component to the new game object
             var newNameText = newNameObject.AddComponent<Text>();
@@ -88,11 +92,11 @@ public class ScoreBoard : MonoBehaviour {
             GameObject newWinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
             newWinObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
 
-            newWinObject.transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            newWinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
                 (newNameObject.GetComponent<RectTransform>().rect.width / 3) + newNameObject.GetComponent<RectTransform>().rect.width,
-                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), Screen.height));
 
-            newWinObject.transform.position = new Vector3(newWinObject.transform.position.x, newWinObject.transform.position.y, 0);
+            newWinObject.GetComponent<RectTransform>().transform.position = new Vector3(newWinObject.transform.position.x, newWinObject.transform.position.y, newWinObject.transform.position.z);
 
             var newWinText = newWinObject.AddComponent<Text>();
             
@@ -109,7 +113,8 @@ public class ScoreBoard : MonoBehaviour {
 
             currentText += 1;
         }
-
+        currentText = 1;
+        
         GameManager_GameObject = GameObject.Find("GameManager");
         GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
     }
