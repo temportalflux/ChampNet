@@ -8,24 +8,24 @@ public class ScoreBoard : MonoBehaviour {
     public GameObject GameManager_GameObject;
     public GameManager GameManager_Script;
 
+    public GameObject NameHeader;
+    public GameObject WinHeader;
+
+    // will remove this when the Dictionary of all units is created
+    public PlayerLocal LocalPlayerScript;
+
     public Camera camera;
 
     private Text name;
     private Text win;
 
     private uint currentText = 1;
-    // The listener class for handling all button effects
+
     [System.Serializable]
     public class RankText
     {
         [Tooltip("Rank setting (sets itself on start) (don't touch)")]
         public uint Rank;
-
-        //[Tooltip("Name text created")]
-        //public Text newName;
-
-        //[Tooltip("Wins text created")]
-        //public Text newWin;
 
         [Tooltip("Size of font used for text created")]
         public int fontSize;
@@ -33,25 +33,30 @@ public class ScoreBoard : MonoBehaviour {
         [Tooltip("Style of the font used for text created")]
         public FontStyle fontStyle;
 
-        [Tooltip("font of the font used for text created")]
+        [Tooltip("Font of the font used for text created")]
         public Font font;
 
+        [Tooltip("Text Object Name")]
         public GameObject NameObject;
 
+        [Tooltip("Text Object Wins")]
         public GameObject WinObject;
 
-        public uint score;
-
+        [Tooltip("Name for current owner")]
         public uint name;
+
+        [Tooltip("Wins for current owner")]
+        public uint score;
     }
 
     [Tooltip("The list of listeners for buttons")]
     public RankText[] rankText;
 
-
+    /// <summary>
+    /// Creates all text for number of ranks created
+    /// </summary>
     void Start ()
     {
-        GameObject test = new GameObject();
         foreach (RankText text in rankText)
         {
             // set rank for later use
@@ -130,8 +135,8 @@ public class ScoreBoard : MonoBehaviour {
         }
         currentText = 1;
 
-        GameManager_GameObject = GameObject.Find("GameManager");
-        GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
+        //GameManager_GameObject = GameObject.Find("GameManager");
+        //GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
     }
 
     /// <summary>
@@ -157,6 +162,24 @@ public class ScoreBoard : MonoBehaviour {
                 ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
             text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, camera.nearClipPlane);
+
+            // set Header
+
+            // set game object location
+            NameHeader.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (NameHeader.GetComponent<RectTransform>().rect.width / 2) + 5,
+                ((Screen.height - (NameHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
+
+            // set the z position
+            NameHeader.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y, camera.nearClipPlane);
+
+            // repeate above with modifications for wins
+
+            WinHeader.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (WinHeader.GetComponent<RectTransform>().rect.width / 3) + WinHeader.GetComponent<RectTransform>().rect.width,
+                ((Screen.height - (WinHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
+
+            WinHeader.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y, camera.nearClipPlane);
         }
     }
 
@@ -190,6 +213,9 @@ public class ScoreBoard : MonoBehaviour {
     /// recieve current score on board to check if a change is needed to be made
     /// </summary>
     /// <param name="scoreBoard"></param>
+    /// 
+    /// Modify so then the networked player and local player are all in one Dictionary and search that instead of having two searches
+    /// 
     /// <remarks>
     /// Author: Christopher Brennan
     /// </remarks>
@@ -200,7 +226,42 @@ public class ScoreBoard : MonoBehaviour {
         temp.setID(0);
         temp.setScore(0);
 
-        foreach(KeyValuePair<uint, PlayerReference> player in GameManager_Script.networkPlayerMap)
+        //local player
+        if (LocalPlayerScript.getID() == scoreBoard.name)
+        {
+            temp = LocalPlayerScript; // if nothing changes then stay with current player information
+        }
+        if (LocalPlayerScript.getScore() > scoreBoard.score)
+        {
+            if (LocalPlayerScript.getRank() > scoreBoard.Rank || LocalPlayerScript.getRank() == 0)
+            {
+                // check if there was already a player there and check if true check if it was the same player
+                if (scoreBoard.name == 100 || scoreBoard.name == LocalPlayerScript.getID()) // == 100 is the set id for if no player exists
+                {
+                    // set player on to the scoreboard
+                    // no one is currently holding that spot on the board. so take it
+                    LocalPlayerScript.setRank(scoreBoard.Rank);
+                    return LocalPlayerScript; // return player Reference
+                }
+                else
+                {
+                    // You just kicked someone off of above you
+                    // switch places with the individual that you kicked out
+                    foreach (KeyValuePair<uint, PlayerReference> defeatedPlayer in GameManager_Script.networkPlayerMap) // search for individual to move down a rank
+                    {
+                        if (defeatedPlayer.Value.getRank() == scoreBoard.Rank) // check for match
+                        {
+                            defeatedPlayer.Value.setRank(LocalPlayerScript.getRank()); // move player down
+                            LocalPlayerScript.setRank(scoreBoard.Rank); // move new player up
+                            return LocalPlayerScript; // return player Reference
+                        }
+                    }
+                }
+            }
+        }
+
+        // networked players
+        foreach (KeyValuePair<uint, PlayerReference> player in GameManager_Script.networkPlayerMap)
         {
             if(player.Value.getID() == scoreBoard.name)
             {
