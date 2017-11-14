@@ -8995,14 +8995,44 @@ MonoBehaviour:
     fontSize: 14
     fontStyle: 0
     font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
   - Rank: 0
     fontSize: 14
     fontStyle: 0
     font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
   - Rank: 0
     fontSize: 14
     fontStyle: 0
     font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
+  - Rank: 0
+    fontSize: 14
+    fontStyle: 0
+    font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
+  - Rank: 0
+    fontSize: 14
+    fontStyle: 0
+    font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
+  - Rank: 0
+    fontSize: 14
+    fontStyle: 0
+    font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
+  - Rank: 0
+    fontSize: 14
+    fontStyle: 0
+    font: {fileID: 0}
+    NameObject: {fileID: 0}
+    WinObject: {fileID: 0}
 --- !u!4 &562082221
 Transform:
   m_ObjectHideFlags: 0
@@ -9324,7 +9354,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1040123445
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &936262682
 RectTransform:
@@ -9332,9 +9362,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 936262677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.028901733, y: 0.028901733, z: 0.028901733}
+  m_LocalScale: {x: 0.023201857, y: 0.023201857, z: 0.023201857}
   m_Children:
   - {fileID: 1465623614}
   - {fileID: 136375479}
@@ -30741,7 +30771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87.9, y: 266.8}
+  m_AnchoredPosition: {x: -87.899994, y: 266.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465623615

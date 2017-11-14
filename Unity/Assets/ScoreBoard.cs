@@ -35,6 +35,10 @@ public class ScoreBoard : MonoBehaviour {
 
         [Tooltip("font of the font used for text created")]
         public Font font;
+
+        public GameObject NameObject;
+
+        public GameObject WinObject;
     }
 
     [Tooltip("The list of listeners for buttons")]
@@ -43,33 +47,34 @@ public class ScoreBoard : MonoBehaviour {
 
     void Start ()
     {
+        GameObject test = new GameObject();
         foreach (RankText text in rankText)
         {
             // set rank for later use
             text.Rank = currentText;
 
             // create new game object
-            GameObject newNameObject = new GameObject(("PlayerName (" + currentText + ")"), typeof(RectTransform));
+            text.NameObject = new GameObject(("PlayerName (" + currentText + ")"), typeof(RectTransform));
             // set RectWidth and RectHeight
-            newNameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
+            text.NameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
 
-            newNameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
-            newNameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
-            newNameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+            text.NameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+            text.NameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+            text.NameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 
-            // set game object location
-            newNameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
-                (newNameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
-                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), Screen.height));
+            //// set game object location
+            //text.NameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            //    (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
+            //    ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
 
-            // set the z position
-            newNameObject.GetComponent<RectTransform>().transform.position = new Vector3(newNameObject.transform.position.x, newNameObject.transform.position.y, newNameObject.transform.position.z);
+            //// set the z position
+            //text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, text.NameObject.transform.position.z);
 
             // add text component to the new game object
-            var newNameText = newNameObject.AddComponent<Text>();
+            var newNameText = text.NameObject.AddComponent<Text>();
 
             // set text info
-            newNameText.text = ("Empty rank: " + currentText );
+            newNameText.text = ("Empty rank: " + currentText);
             // set alignment for RectTransform
             newNameText.alignment = TextAnchor.MiddleCenter;
             // set font size to what we wanted
@@ -85,21 +90,21 @@ public class ScoreBoard : MonoBehaviour {
             // set unt to be child of ScoreBoard
             newNameText.transform.SetParent(transform);
             // set game object scale
-            newNameObject.transform.localScale = new Vector3(1, 1, 1);
+            text.NameObject.transform.localScale = new Vector3(1, 1, 1);
 
             // repeate above with modifications for wins
 
-            GameObject newWinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
-            newWinObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
+            text.WinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
+            text.WinObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
 
-            newWinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
-                (newNameObject.GetComponent<RectTransform>().rect.width / 3) + newNameObject.GetComponent<RectTransform>().rect.width,
-                ((Screen.height - (newNameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), Screen.height));
+            //text.WinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            //    (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
+            //    ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
 
-            newWinObject.GetComponent<RectTransform>().transform.position = new Vector3(newWinObject.transform.position.x, newWinObject.transform.position.y, newWinObject.transform.position.z);
+            //text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, text.WinObject.transform.position.z);
 
-            var newWinText = newWinObject.AddComponent<Text>();
-            
+            var newWinText = text.WinObject.AddComponent<Text>();
+
             // set this to N/A as their is no one there to display a win
             newWinText.text = "N/A";
             newWinText.alignment = TextAnchor.MiddleCenter;
@@ -109,14 +114,40 @@ public class ScoreBoard : MonoBehaviour {
             newWinText.color = Color.black;
             newWinText.transform.SetParent(transform);
             newWinText.alignment = TextAnchor.MiddleLeft;
-            newWinObject.transform.localScale = new Vector3(1, 1, 1);
+            text.WinObject.transform.localScale = new Vector3(1, 1, 1);
 
             currentText += 1;
         }
         currentText = 1;
-        
+
         GameManager_GameObject = GameObject.Find("GameManager");
         GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
+    }
+
+    /// <summary>
+    /// used to reset score board if window size is changed mid game
+    /// Also there was a bug where Z was not set properly and this allows it to be set properly
+    /// </summary>
+    private void Update()
+    {
+        foreach (RankText text in rankText)
+        {
+            // set game object location
+            text.NameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
+                ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
+
+            // set the z position
+            text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, camera.nearClipPlane);
+
+            // repeate above with modifications for wins
+
+            text.WinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+                (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
+                ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
+
+            text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, camera.nearClipPlane);
+        }
     }
 
     void DisplayScoreBoard()
