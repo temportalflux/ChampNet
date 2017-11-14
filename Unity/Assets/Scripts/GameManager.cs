@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     private uint id;
     private PlayerReference localPlayer;
     private Coroutine localPlayerUpdates;
-    private Dictionary<uint, PlayerReference> networkPlayerMap;
+    public Dictionary<uint, PlayerReference> networkPlayerMap;
 
     void Awake()
     {
@@ -85,6 +85,9 @@ public class GameManager : Singleton<GameManager>
     /// gets the size of the Dictionary
     /// </summary>
     /// <returns> total size of the Dictionary </returns>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
     public uint getSize()
     {
         uint number = 0;

@@ -13,13 +13,13 @@ public class ScoreBoard : MonoBehaviour {
     private Text name;
     private Text win;
 
-    private int currentText = 1;
+    private uint currentText = 1;
     // The listener class for handling all button effects
     [System.Serializable]
     public class RankText
     {
         [Tooltip("Rank setting (sets itself on start) (don't touch)")]
-        public int Rank;
+        public uint Rank;
 
         //[Tooltip("Name text created")]
         //public Text newName;
@@ -39,6 +39,10 @@ public class ScoreBoard : MonoBehaviour {
         public GameObject NameObject;
 
         public GameObject WinObject;
+
+        public uint score;
+
+        public uint name;
     }
 
     [Tooltip("The list of listeners for buttons")]
@@ -92,6 +96,9 @@ public class ScoreBoard : MonoBehaviour {
             // set game object scale
             text.NameObject.transform.localScale = new Vector3(1, 1, 1);
 
+            // init name
+            text.name = 100;
+
             // repeate above with modifications for wins
 
             text.WinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
@@ -115,6 +122,9 @@ public class ScoreBoard : MonoBehaviour {
             newWinText.transform.SetParent(transform);
             newWinText.alignment = TextAnchor.MiddleLeft;
             text.WinObject.transform.localScale = new Vector3(1, 1, 1);
+
+            // init score
+            text.score = 0;
 
             currentText += 1;
         }
@@ -150,23 +160,84 @@ public class ScoreBoard : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// updates scoreboard on player win
+    /// </summary>
+    /// left to do: remove player from board when they leave // call function on player disconnect notification
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
     void DisplayScoreBoard()
     {
         Debug.Log("yo it me, da score Board!");
 
-
-        foreach (RankText textNames in rankText)
+        foreach (RankText scoreboard in rankText)
         {
-            this.name = GameObject.Find("PlayerName (" + textNames.Rank + ")").GetComponent<Text>();
-            {
-                this.name.text = "hi";
-            }
+            PlayerReference recordInfo; // player info for board
+            recordInfo = findNextHighestScore(scoreboard);
 
-            if (this.win = GameObject.Find("PlayerWins (" + textNames.Rank + ")").GetComponent<Text>())
+            // get and set all name info
+            scoreboard.name = recordInfo.getID();
+            scoreboard.NameObject.GetComponent<Text>().text = scoreboard.name.ToString();
+
+            // get and set all win info
+            scoreboard.score = recordInfo.getScore();
+            scoreboard.WinObject.GetComponent<Text>().text = scoreboard.score.ToString();
+        }
+    }
+
+    /// <summary>
+    /// recieve current score on board to check if a change is needed to be made
+    /// </summary>
+    /// <param name="scoreBoard"></param>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    PlayerReference findNextHighestScore(RankText scoreBoard)
+    {
+        // created incase no new players are on scoreboard
+        PlayerReference temp = new PlayerReference();
+        temp.setID(0);
+        temp.setScore(0);
+
+        foreach(KeyValuePair<uint, PlayerReference> player in GameManager_Script.networkPlayerMap)
+        {
+            if(player.Value.getID() == scoreBoard.name)
             {
-                this.win.text = "yo";
+                temp = player.Value; // if nothing changes then stay with current player information
+            }
+            if(player.Value.getScore() > scoreBoard.score)
+            {
+                if(player.Value.getRank() > scoreBoard.Rank || player.Value.getRank() == 0)
+                {
+                    // check if there was already a player there and check if true check if it was the same player
+                    if(scoreBoard.name == 100 || scoreBoard.name == player.Value.getID()) // == 100 is the set id for if no player exists
+                    {
+                        // set player on to the scoreboard
+                        // no one is currently holding that spot on the board. so take it
+                        player.Value.setRank(scoreBoard.Rank);
+                        return player.Value; // return player Reference
+                    }
+                    else
+                    {
+                        // You just kicked someone off of above you
+                        // switch places with the individual that you kicked out
+                        foreach (KeyValuePair<uint, PlayerReference> defeatedPlayer in GameManager_Script.networkPlayerMap) // search for individual to move down a rank
+                        {
+                            if(defeatedPlayer.Value.getRank() == scoreBoard.Rank) // check for match
+                            {
+                                defeatedPlayer.Value.setRank(player.Value.getRank()); // move player down
+                                player.Value.setRank(scoreBoard.Rank); // move new player up
+                                return player.Value; // return player Reference
+                            }
+                        }
+                    }
+                }
             }
         }
+        // if no new info has changed then return the current player/ no player on the scoreboard
+        return temp;
+
     }
 
 }

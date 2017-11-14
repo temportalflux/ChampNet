@@ -23,6 +23,11 @@ public class PlayerReference : MonoBehaviour {
     private uint score;
 
     /// <summary>
+    /// Current Rank of the player
+    /// </summary>
+    private uint rank;
+
+    /// <summary>
     /// Sets the identifier.
     /// </summary>
     /// <param name="id">The identifier.</param>
@@ -44,6 +49,9 @@ public class PlayerReference : MonoBehaviour {
     /// Sets the identifier.
     /// </summary>
     /// <param name="newScore">The identifier.</param>
+     /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
     public void setScore(uint newScore)
     {
         this.score = newScore;
@@ -52,10 +60,36 @@ public class PlayerReference : MonoBehaviour {
     /// <summary>
     /// Gets the identifier.
     /// </summary>
-    /// <returns></returns>
+    /// <returns> the current number of wins for the player </returns>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
     public uint getScore()
     {
         return this.score;
+    }
+    /// <summary>
+    /// sets the new rank of the player for the scoreboard
+    /// </summary>
+    /// <param name="newRank"></param>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public void setRank(uint newRank)
+    {
+
+    }
+
+    /// <summary>
+    /// Gets the rank of the player 
+    /// </summary>
+    /// <returns> rank of player on scoreboard </returns>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public uint getRank()
+    {
+        return rank;
     }
 
     /// <summary>
