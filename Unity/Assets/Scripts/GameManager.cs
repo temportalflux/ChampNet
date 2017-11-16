@@ -29,11 +29,11 @@ public class GameManager : Singleton<GameManager>
     public GameState state;
 
     private NetInterface netty;
-
-    private Coroutine localPlayerUpdates;
+    private bool inGame;
 
     void Awake()
     {
+        this.inGame = false;
         this.loadSingleton(this, ref GameManager._instance);
     }
 
@@ -41,14 +41,13 @@ public class GameManager : Singleton<GameManager>
     {
         this.netty = NetInterface.INSTANCE;
         
-        this.localPlayerUpdates = null;
-        
     }
 	
     public void Play()
     {
         this.transition.load(
             () => {
+                this.inGame = true;
             }
         );
     }
@@ -57,6 +56,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.load(
             () => {
+                this.inGame = true;
             }
         );
     }
@@ -118,12 +118,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Disconnect()
     {
-        foreach (uint id in this.state.localPlayers.Keys)
-        {
-            this.netty.Dispatch(new EventNetwork.EventUserLeft(id));
-            // TODO: Do this on receive packet (gamestate change)
-            this.removePlayer(this.state.localPlayers[id]);
-        }
+        this.netty.Dispatch(new EventClientLeft(this.state.clientID));
     }
 
     public void removePlayer(GameState.Player playerInfo)
@@ -164,6 +159,15 @@ public class GameManager : Singleton<GameManager>
             return source.GetComponent<AudioSource>();
         }
         return null;
+    }
+
+    private void FixedUpdate()
+    {
+        if (this.inGame)
+        {
+            //GameObject allPlayers = GameObject.FindGameObjectWithTag("AllPlayers");
+            this.state.FixedUpdate();
+        }
     }
 
 }

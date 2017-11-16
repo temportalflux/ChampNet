@@ -17,15 +17,12 @@ public class PlayerReference : MonoBehaviour {
     /// <summary>
     /// The player identifier
     /// </summary>
-    private uint playerID;
-
-    /// <summary>
-    /// Sets the identifier.
-    /// </summary>
-    /// <param name="id">The identifier.</param>
-    public void setID(uint id)
+    private uint playerID
     {
-        this.playerID = id;
+        get
+        {
+            return this.playerInfo.playerID;
+        }
     }
 
     /// <summary>
@@ -65,6 +62,7 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
+    /*
     virtual public EventNetwork createUpdateEvent()
     {
         return new EventNetwork.EventUpdatePosition(
@@ -74,23 +72,16 @@ public class PlayerReference : MonoBehaviour {
             0,0
         );
     }
+    //*/
 
     public GameState.Player getInfo()
     {
         return this.playerInfo;
     }
 
-    public void initInfo(GameState.Player info)
+    virtual public void setInfo(GameState.Player info)
     {
         this.playerInfo = info;
-
-        // ID already set, init other identification info
-        this.playerInfo.name = "Unammed";
-        this.playerInfo.color = Color.white;
-
-        this.playerInfo.inBattle = false;
-
-        this.playerInfo.objectReference = this;
     }
 
 }

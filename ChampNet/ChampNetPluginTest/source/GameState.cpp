@@ -11,12 +11,13 @@ GameState::~GameState()
 
 }
 
-void GameState::addPlayer(unsigned int clientID, unsigned int playerID,
+void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned int localID,
 	std::string name, float colorR, float colorG, float colorB)
 {
 	Player player;
 	player.clientID = clientID;
 	player.playerID = playerID;
+	player.localID = localID;
 	player.name = name;
 	player.colorR = colorR;
 	player.colorG = colorG;
@@ -28,11 +29,21 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID,
 	this->players[playerID] = player;
 }
 
-char* GameState::serializeForClient(unsigned char packetID, unsigned int clientID, int &dataLength)
+void GameState::removePlayer(unsigned int playerID)
 {
-	const int size = sizeof(packetID)
+	if (this->players.find(playerID) != this->players.end())
+	{
+		this->players.erase(playerID);
+	}
+}
+
+char* GameState::serializeForClient(unsigned char packetID, int clientID, int &dataLength)
+{
+	const int size = 0
+		// packetID
+		+ sizeof(packetID)
 		// clientID
-		+ sizeof(unsigned int)
+		+ sizeof(int)
 		// number of players
 		+ sizeof(int)
 		// amount of space required for players
@@ -45,7 +56,7 @@ char* GameState::serializeForClient(unsigned char packetID, unsigned int clientI
 	// write the packetID
 	*((char *)pos) = packetID; pos += sizeof(packetID);
 	// write the client ID
-	*((int *)pos) = clientID; pos += sizeof(unsigned int);
+	*((int *)pos) = clientID; pos += sizeof(int);
 	// write player count
 	*((int *)pos) = this->players.size(); pos += sizeof(int);
 
@@ -58,6 +69,8 @@ char* GameState::serializeForClient(unsigned char packetID, unsigned int clientI
 		*((int *)pos) = player.clientID; pos += sizeof(unsigned int);
 		// write playerID
 		*((int *)pos) = player.playerID; pos += sizeof(unsigned int);
+		// write localID
+		*((int *)pos) = player.localID; pos += sizeof(unsigned int);
 
 		// write name
 		// NOTE: this does not use ALL of the name byte, if the name is < SIZE_MAX_NAME characters

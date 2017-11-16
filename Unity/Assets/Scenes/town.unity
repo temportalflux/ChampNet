@@ -8775,7 +8775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &574972400
 AudioListener:
   m_ObjectHideFlags: 0
@@ -30532,7 +30532,7 @@ GameObject:
   - component: {fileID: 1471183601}
   m_Layer: 0
   m_Name: Players
-  m_TagString: Untagged
+  m_TagString: AllPlayers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

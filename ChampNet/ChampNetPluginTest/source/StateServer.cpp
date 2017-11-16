@@ -23,7 +23,7 @@ StateServer::~StateServer()
 {
 	if (this->mpClientAddresses != NULL)
 	{
-		for (int i = 0; i < mClientAddressesLength; i++)
+		for (int i = 0; i < mClientCount; i++)
 			if (mpClientAddresses[i] != NULL)
 			{
 				delete mpClientAddresses[i];
@@ -37,6 +37,18 @@ StateServer::~StateServer()
 	{
 		delete[] this->mpPlayerIdToClientId;
 		this->mpPlayerIdToClientId = NULL;
+	}
+
+	if (this->mpClientIdToPlayers != NULL)
+	{
+		for (int i = 0; i < mClientCount; i++)
+			if (mpClientIdToPlayers[i] != NULL)
+			{
+				delete mpClientIdToPlayers[i];
+				mpClientIdToPlayers[i] = NULL;
+			}
+		delete[] this->mpClientIdToPlayers;
+		this->mpClientIdToPlayers = NULL;
 	}
 
 	if (mpGameState != NULL)
@@ -216,15 +228,21 @@ void StateServer::onInput(std::string &input)
  */
 void StateServer::start()
 {
-	this->mClientAddressesLength = this->mpState->mNetwork.maxClients;
-	this->mpClientAddresses = new PlayerAddress[mClientAddressesLength];
-	for (int i = 0; i < mClientAddressesLength; i++)
+	std::cout << "Starting server...\n";
+
+	this->mClientCount = this->mpState->mNetwork.maxClients;
+	this->mpClientAddresses = new PlayerAddress[mClientCount];
+	for (int i = 0; i < mClientCount; i++)
 		this->mpClientAddresses[i] = NULL;
 
-	this->mPlayerIdLength = this->mpState->mNetwork.maxClients * 4;
-	this->mpPlayerIdToClientId = new int[mPlayerIdLength];
-	for (int i = 0; i < mPlayerIdLength; i++)
+	this->mPlayerCount = this->mpState->mNetwork.maxClients * this->mpState->mNetwork.maxPlayersPerClient;
+	this->mpPlayerIdToClientId = new int[mPlayerCount];
+	for (int i = 0; i < mPlayerCount; i++)
 		this->mpPlayerIdToClientId[i] = -1;
+
+	this->mpClientIdToPlayers = new int*[mClientCount];
+	for (int i = 0; i < mClientCount; i++)
+		this->mpClientIdToPlayers[i] = NULL;
 
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
@@ -295,6 +313,9 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			{
 				std::cout << "User disconnected\n";
 				this->mpState->mNetwork.peersConnected--;
+
+				// Remove client
+				//this->removeClient(this->cl)
 			}
 			break;
 		// A client is joining
@@ -306,56 +327,46 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				std::string addressSender = packet->getAddress();
 
-				// Generate ID for user
-				int clientID = this->findNextClientID();
-				if (clientID < 0)
+				unsigned int clientID;
+				if (!this->addClient(addressSender.c_str(), clientID))
 				{
-					// Some invalid ID was found
-					std::cout << "ERROR: Server is full, but another user has connected - disconnecting new user\n";
 					this->sendDisconnectPacket(addressSender.c_str(), false);
 					return;
 				}
-				// Set the id in the list with the new address
-				this->mpClientAddresses[clientID] = new std::string(addressSender);
 
 				// Print out that a user exists
 				std::cout << "Client " << clientID << " has joined from " << addressSender << '\n';
 
-				int playerID = this->findNextPlayerID();
-				if (playerID < 0)
+				unsigned int playerID;
+				if (!this->addPlayer(clientID, 0, playerID))
 				{
-					// Some invalid ID was found
-					std::cout << "ERROR: Server is full, but another player has connected - disconnecting client\n";
 					this->sendDisconnectPacket(addressSender.c_str(), false);
+					std::cout << "Removing client " << clientID << '\n';
+					this->removeClient(clientID);
 					return;
 				}
-				this->mpPlayerIdToClientId[playerID] = clientID;
-
-				this->mpGameState->addPlayer((unsigned int)clientID, (unsigned int)playerID, "", 1, 1, 1);
-
-				{
-					int dataLength;
-					char *data = this->mpGameState->serializeForClient(ChampNetPlugin::ID_CLIENT_JOINED, clientID, dataLength);
-					this->sendPacket(addressSender.c_str(), data, dataLength, false);
-					delete data;
-				}
-
-				// Create the packet to tell all peers of the user who joined
-				//PacketUserID packetID[1];
-				// Set the new ID of the incoming user
-				//packetID->clientID = id;
-				//packetID->playerID = playerID;
-
-
 
 				// Tell user their client/player ID
-				//packetID->id = ChampNetPlugin::ID_CLIENT_JOINED;
-				//this->sendPacket(addressSender.c_str(), packetID, false);
-
+				this->sendGameState(ChampNetPlugin::ID_CLIENT_JOINED, addressSender.c_str(), false, clientID);
 				// Tell other players of new player
-				//packetID->id = ChampNetPlugin::ID_USER_SPAWN;
-				//this->sendPacket(addressSender.c_str(), packetID, true);
-				
+				this->sendGameState(ChampNetPlugin::ID_CLIENT_JOINED, addressSender.c_str());
+								
+			}
+			break;
+		case ChampNetPlugin::ID_CLIENT_LEFT:
+			// A user is leaving / has left the server
+			{
+				unsigned int pPacketLength = 0;
+				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+				unsigned int clientID = pPacket->dataID;
+
+				// Report out that the user left
+				std::cout << "Client " << clientID << " has left\n";
+
+				this->removeClient(clientID);
+
+				// Notify all other clients that the user left
+				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
 			/*
@@ -368,23 +379,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
-		case ChampNetPlugin::ID_USER_LEFT:
-			// A user is leaving / has left the server
-			{
-				unsigned int pPacketLength = 0;
-				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
-
-				// Remove the address from the player's list
-				delete this->mpPlayerAddresses[pPacket->playerId];
-				this->mpPlayerAddresses[pPacket->playerId] = NULL;
-
-				// Report out that the user left
-				std::cout << "User " << pPacket->playerId << " has left\n";
-
-				// Notify all other clients that the user left
-				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
-			}
-			break;
+		
 		case ChampNetPlugin::ID_BATTLE_REQUEST:
 			// User (playerIdSender) is requesting User (playerIdReceiver) to battle
 			{
@@ -468,23 +463,103 @@ void StateServer::sendPacket(const char *address, char *data, int dataSize, bool
 /** Author: Dustin Yost
 * Finds the next available address slot, returning -1 if none is found
 */
-int StateServer::findNextClientID()
+bool StateServer::findNextClientID(unsigned int &id)
 {
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
 	{
-		if (this->mpClientAddresses[i] == NULL) return i;
+		if (this->mpClientAddresses[i] == NULL)
+		{
+			id = i;
+			return true;
+		}
 	}
-	return -1;
+	return false;
 }
 
 /** Author: Dustin Yost
 * Finds the next available player slot, returning -1 if none is found
 */
-int StateServer::findNextPlayerID()
+bool StateServer::findNextPlayerID(unsigned int &id)
 {
-	for (int i = 0; i < this->mPlayerIdLength; i++)
+	for (int i = 0; i < this->mPlayerCount; i++)
 	{
-		if (this->mpPlayerIdToClientId[i] < 0) return i;
+		if (this->mpPlayerIdToClientId[i] < 0)
+		{
+			id = i;
+			return true;
+		}
 	}
-	return -1;
+	return false;
+}
+
+bool StateServer::addClient(const char* address, unsigned int &id)
+{
+	// Generate ID for user
+	if (!this->findNextClientID(id))
+	{
+		// Some invalid ID was found
+		std::cout << "ERROR: Server is full, but another user has connected - disconnecting new user\n";
+		return false;
+	}
+	// Set the id in the list with the new address
+	this->mpClientAddresses[id] = new std::string(address);
+	return true;
+}
+
+void StateServer::removeClient(unsigned int id)
+{
+	if (this->mpClientAddresses[id] != NULL)
+	{
+		delete this->mpClientAddresses[id];
+		this->mpClientAddresses[id] = NULL;
+	}
+
+	if (this->mpClientIdToPlayers[id] != NULL)
+	{
+		// Remove all players
+		for (int localID = 0; localID < this->mpState->mNetwork.maxPlayersPerClient; localID++)
+		{
+			if (this->mpClientIdToPlayers[id][localID] >= 0)
+			{
+				std::cout << "Removing player " << this->mpClientIdToPlayers[id][localID]
+					<< " at client|local=" << id << '|' << localID << '\n';
+				this->mpGameState->removePlayer(this->mpClientIdToPlayers[id][localID]);
+			}
+		}
+
+		// Remove map
+		delete this->mpClientIdToPlayers[id];
+		this->mpClientIdToPlayers[id] = NULL;
+	}
+}
+
+bool StateServer::addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID)
+{
+	if (!this->findNextPlayerID(playerID))
+	{
+		// Some invalid ID was found
+		std::cout << "ERROR: Server is full, but another player has connected - disconnecting client\n";
+		return false;
+	}
+	this->mpPlayerIdToClientId[playerID] = clientID;
+	
+	if (this->mpClientIdToPlayers[clientID] == NULL)
+	{
+		this->mpClientIdToPlayers[clientID] = new int[this->mpState->mNetwork.maxPlayersPerClient];
+		for (int i = 0; i < this->mpState->mNetwork.maxPlayersPerClient; i++)
+			this->mpClientIdToPlayers[clientID][i] = -1;
+	}
+	this->mpClientIdToPlayers[clientID][localID] = playerID;
+
+	this->mpGameState->addPlayer(clientID, playerID, localID, "", 1, 1, 1);
+
+	return true;
+}
+
+void StateServer::sendGameState(unsigned char msgID, const char* sender, bool broadcast, int clientID)
+{
+	int dataLength;
+	char *data = this->mpGameState->serializeForClient(msgID, clientID, dataLength);
+	this->sendPacket(sender == NULL ? ChampNetPlugin::GetAddress() : sender, data, dataLength, broadcast);
+	delete data;
 }

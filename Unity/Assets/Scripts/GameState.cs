@@ -37,6 +37,7 @@ public class GameState : ScriptableObject, ISerializing
         public static int SIZE =
             sizeof(ID) // clientID
             + sizeof(ID) // playerID
+            + sizeof(ID) // localID
             + sizeof(int) + (SIZE_MAX_NAME * sizeof(char))// name
             + (sizeof(float) * 3) // color
             + (sizeof(float) * 3) // position
@@ -66,7 +67,10 @@ public class GameState : ScriptableObject, ISerializing
 
         [Tooltip("The unique identifier for this specific player")]
         public ID playerID;
-        
+
+        [Tooltip("The unique identifier for this player on the local machine")]
+        public ID localID;
+
         [Tooltip("The name of this player with 10 characters max")]
         public string name;
 
@@ -115,6 +119,8 @@ public class GameState : ScriptableObject, ISerializing
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
             // write player id
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
+            // write player id
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.localID));
             // write name
             char[] characters = this.name.ToCharArray();
             int nameLength = Mathf.Min(characters.Length, SIZE_MAX_NAME);
@@ -159,6 +165,8 @@ public class GameState : ScriptableObject, ISerializing
             this.clientID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
             // read player id
             this.playerID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
+            // read local id
+            this.localID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
             // read name
             int nameLength = System.BitConverter.ToInt32(data, lastIndex); lastIndex += sizeof(System.Int32);
             this.name = "";
@@ -218,6 +226,7 @@ public class GameState : ScriptableObject, ISerializing
     public Dictionary<ID, Player> players;
 
     private List<Player> playersToAdd;
+    private List<Player> playersToRemove;
     private Dictionary<uint, GameState.Player> playersLocal;
     private Dictionary<uint, GameState.Player> playersConnected;
     public Dictionary<uint, Player> localPlayers
@@ -233,6 +242,7 @@ public class GameState : ScriptableObject, ISerializing
         this.players = new Dictionary<ID, Player>();
 
         this.playersToAdd = new List<Player>();
+        this.playersToRemove = new List<Player>();
         this.playersLocal = new Dictionary<uint, GameState.Player>();
         this.playersConnected = new Dictionary<uint, GameState.Player>();
     }
@@ -249,7 +259,21 @@ public class GameState : ScriptableObject, ISerializing
 
     public void AddPlayer(Player info)
     {
+        // Add player to total list
         this.players.Add(info.playerID, info);
+
+        // Add player to the appropriate sublist
+        if (info.isLocal) this.AddPlayerLocal(info); else this.AddPlayerConnected(info);
+        
+        // Create the player reference object
+        GameManager gm = GameManager.INSTANCE;
+        GameObject playerObject = GameManager.Instantiate(
+            info.isLocal ? gm.playerPrefab : gm.playerNetworkPrefab,
+            GameObject.FindGameObjectWithTag("AllPlayers").transform
+        );
+        info.objectReference = playerObject.GetComponent<PlayerReference>();
+        info.objectReference.setInfo(info);
+
     }
 
     public void RemovePlayer(Player info)
@@ -321,13 +345,19 @@ public class GameState : ScriptableObject, ISerializing
     {
 
         // Deserialize clientID
-        this.clientID = System.BitConverter.ToUInt32(data, lastIndex);
+        int clientID = System.BitConverter.ToInt32(data, lastIndex);
         lastIndex += sizeof(ID);
+        // Check for valid clientID (if < 0, then the gamestate was broadcasted)
+        if (clientID >= 0)
+        {
+            this.clientID = (uint)clientID;
+        }
 
         // Deserialize player count
         int playerCount = System.BitConverter.ToInt32(data, lastIndex);
         lastIndex += sizeof(System.Int32);
 
+        List<ID> playersFromData = new List<ID>();
         // Read all players, keeping track of the IDs read
         for (int i = 0; i < playerCount; i++)
         {
@@ -335,6 +365,8 @@ public class GameState : ScriptableObject, ISerializing
             Player player = new Player();
             player.objectReference = null;
             player.Deserialize(data, ref lastIndex);
+
+            playersFromData.Add(player.playerID);
 
             // Check if the ID is already in the map
             if (this.players.ContainsKey(player.playerID))
@@ -349,6 +381,38 @@ public class GameState : ScriptableObject, ISerializing
 
         }
 
+        // some players have been removed from gamestate data
+        if (playersFromData.Count < this.players.Count)
+        {
+            // find all players no longer in the gamestate data
+            foreach (ID playerID in this.players.Keys)
+            {
+                if (!playersFromData.Contains(playerID))
+                {
+                    // mark those players for removal from game
+                    this.playersToRemove.Add(this.players[playerID]);
+                }
+            }
+        }
+
+    }
+
+    // ~~~~~ Update
+
+    public void FixedUpdate()
+    {
+        // Remove all players that are set to be removed
+        foreach (Player player in this.playersToRemove)
+        {
+            this.RemovePlayer(player);
+        }
+        this.playersToRemove.Clear();
+        // Add all players that are set to be added
+        foreach (Player player in this.playersToAdd)
+        {
+            this.AddPlayer(player);
+        }
+        this.playersToAdd.Clear();
     }
 
 }

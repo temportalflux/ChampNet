@@ -19,16 +19,4 @@ public class EventClientJoined : EventNetwork
         GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
     }
 
-    /// <summary>
-    /// Processes this event to affect the actual environment
-    /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    override public void Execute()
-    {
-        // received the gamestate data with our ID and first player
-        GameState state = GameManager.INSTANCE.state;
-    }
-
 }

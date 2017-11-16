@@ -34,20 +34,22 @@ public class EventNetwork : ISerializing
                 return new EventDisconnected();
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_JOINED:
                 return new EventClientJoined();
-            case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
-                return new EventNetwork.EventUserID();
-            case (char)ChampNetPlugin.MessageIDs.ID_USER_LEFT:
-                return new EventNetwork.EventUserLeft();
-            case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
-                return new EventNetwork.EventUserSpawn();
-            case (char)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION:
-                return new EventNetwork.EventUpdatePosition();
-            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST:
-                return new EventNetwork.EventBattleRequest();
-            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE:
-                return new EventNetwork.EventBattleResponse();
-            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
-                return new EventNetwork.EventBattleResult();
+            case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_LEFT:
+                return new EventClientLeft();
+            /*
+        case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
+            return new EventNetwork.EventUserID();
+        case (char)ChampNetPlugin.MessageIDs.ID_USER_SPAWN:
+            return new EventNetwork.EventUserSpawn();
+        case (char)ChampNetPlugin.MessageIDs.ID_USER_UPDATE_POSITION:
+            return new EventNetwork.EventUpdatePosition();
+        case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST:
+            return new EventNetwork.EventBattleRequest();
+        case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE:
+            return new EventNetwork.EventBattleResponse();
+        case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
+            return new EventNetwork.EventBattleResult();
+            //*/
             default:
                 return new EventNetwork((byte)id);
         }
@@ -140,68 +142,7 @@ public class EventNetwork : ISerializing
         //Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
    
-    public class EventWithID : EventNetwork
-    {
-        
-        /// <summary>
-        /// The player identifier
-        /// </summary>
-        protected uint playerID;
-
-        public EventWithID(byte id) : base(id)
-        {}
-
-        /// <summary>
-        /// Returns the size of the packet (the size for a potential byte[])
-        /// </summary>
-        /// <returns>
-        /// the integer length of a byte array to hold this event's data
-        /// </returns>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public int GetSize()
-        {
-            return base.GetSize() + sizeof(System.UInt32); // super + playerID
-        }
-
-        /// <summary>
-        /// Deserializes data from a byte array into this event's data
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="lastIndex">The last index.</param>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Deserialize(byte[] data, ref int lastIndex)
-        {
-            base.Deserialize(data, ref lastIndex);
-
-            // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
-            // uint is 4 bytes (c++ uint is 4 bytes)
-            this.playerID = System.BitConverter.ToUInt32(data, lastIndex);
-            lastIndex += sizeof(System.UInt32);
-
-        }
-
-        /// <summary>
-        /// Serializes data from this event into a byte array
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="lastIndex">The last index.</param>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Serialize(ref byte[] data, ref int lastIndex)
-        {
-            base.Serialize(ref data, ref lastIndex);
-
-            // Write the bytes of the playerID
-            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
-
-        }
-
-    }
+    
 
     /**
      * Event: Notification from server of our user id
@@ -215,34 +156,14 @@ public class EventNetwork : ISerializing
 
         override public void Execute()
         {
-            Debug.Log("Got user id " + this.playerID);
+            Debug.Log("Got user id " + this.id);
             // This is where a player can be spawned
             //GameManager.INSTANCE.SpawnPlayerWithID(this.playerID);
         }
 
     }
     
-    public class EventUserLeft : EventWithID
-    {
-
-        public EventUserLeft() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_LEFT)
-        {
-        }
-
-        public EventUserLeft(uint id) : this()
-        {
-            this.playerID = id;
-        }
-
-        override public void Execute()
-        {
-            Debug.Log("User " + this.playerID + " has left");
-            GameState.Player playerInfo = new GameState.Player();
-            playerInfo.playerID = this.playerID;
-            GameManager.INSTANCE.removePlayer(playerInfo);
-        }
-
-    }
+    
 
     /**
      * A base event to (de)serialize a (float,float) location
@@ -297,9 +218,9 @@ public class EventNetwork : ISerializing
 
         override public void Execute()
         {
-            Debug.Log("User " + this.playerID + " spawned");
+            Debug.Log("User " + this.id + " spawned");
             GameState.Player playerInfo = new GameState.Player();
-            playerInfo.playerID = this.playerID;
+            playerInfo.playerID = this.id;
             playerInfo.position = Vector3.zero;
             playerInfo.velocity = Vector3.zero;
             playerInfo.accelleration = Vector3.zero;
@@ -323,7 +244,7 @@ public class EventNetwork : ISerializing
 
         public EventUpdatePosition(uint playerID, float posX, float posY, float velX, float velY) : this()
         {
-            this.playerID = playerID;
+            this.id = playerID;
             this.posX = posX;
             this.posY = posY;
             this.velX = velX;
@@ -359,9 +280,9 @@ public class EventNetwork : ISerializing
 
         override public void Execute()
         {
-            Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
+            Debug.Log("User " + this.id + " to update location to (" + this.posX + " | " + this.posY + ")");
             GameState.Player playerInfo = new GameState.Player();
-            playerInfo.playerID = this.playerID;
+            playerInfo.playerID = this.id;
             playerInfo.position = new Vector3(this.posX, this.posY);
             playerInfo.velocity = new Vector3(this.velX, this.velY);
             playerInfo.accelleration = Vector3.zero;
@@ -417,11 +338,11 @@ public class EventNetwork : ISerializing
         {
             get
             {
-                return this.playerID;
+                return this.id;
             }
             set
             {
-                this.playerID = value;
+                this.id = value;
             }
         }
 

@@ -7,7 +7,7 @@ class GameState
 {
 
 public:
-
+	
 	struct Player
 	{
 		const static int SIZE_MAX_NAME = 10;
@@ -15,6 +15,8 @@ public:
 			// clientID
 			+ sizeof(unsigned int)
 			// playerID
+			+ sizeof(unsigned int)
+			// localID
 			+ sizeof(unsigned int)
 			// name
 			+ sizeof(int) + (SIZE_MAX_NAME + sizeof(char))
@@ -34,6 +36,8 @@ public:
 		unsigned int clientID;
 		// the playerID of the character
 		unsigned int playerID;
+		// the localID of the character
+		unsigned int localID;
 		// the name of the character
 		std::string name;
 		// the highlight color of the character
@@ -55,10 +59,11 @@ public:
 	GameState(int id);
 	~GameState();
 
-	void addPlayer(unsigned int clientID, unsigned int playerID,
+	void addPlayer(unsigned int clientID, unsigned int playerID, unsigned int localID,
 		std::string name, float colorR, float colorG, float colorB);
+	void removePlayer(unsigned int playerID);
 
-	char* serializeForClient(unsigned char packetID, unsigned int clientID, int &dataLength);
+	char* serializeForClient(unsigned char packetID, int clientID, int &dataLength);
 
 };
 

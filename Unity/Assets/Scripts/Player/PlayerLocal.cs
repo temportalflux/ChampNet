@@ -50,6 +50,7 @@ public class PlayerLocal : PlayerReference
         NetInterface.INSTANCE.Dispatch(new EventNetwork.EventBattleRequest(this.getID(), player.getID()));
     }
 
+    /*
     public override EventNetwork createUpdateEvent()
     {
         return new EventNetwork.EventUpdatePosition(
@@ -59,6 +60,13 @@ public class PlayerLocal : PlayerReference
             _pcc.deltaMove.x,
             _pcc.deltaMove.y
         );
+    }
+    //*/
+
+    public override void setInfo(GameState.Player info)
+    {
+        base.setInfo(info);
+        this.GetComponent<InputResponse>().inputId = (int)info.localID + 1;
     }
 
 }

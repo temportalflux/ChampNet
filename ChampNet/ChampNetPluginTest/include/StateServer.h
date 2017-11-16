@@ -18,10 +18,11 @@ class StateServer : public StateApplication
 private:
 	typedef std::string* PlayerAddress;
 
-	int mClientAddressesLength;
-	int mPlayerIdLength;
-	PlayerAddress *mpClientAddresses;
-	int *mpPlayerIdToClientId;
+	int mClientCount;
+	int mPlayerCount;
+	PlayerAddress *mpClientAddresses = NULL;
+	int *mpPlayerIdToClientId = NULL;
+	int **mpClientIdToPlayers = NULL;
 
 	GameState *mpGameState;
 
@@ -84,12 +85,18 @@ public:
 	/** Author: Dustin Yost
 	* Finds the next available address slot, returning -1 if none is found
 	*/
-	int findNextClientID();
+	bool findNextClientID(unsigned int &id);
 
 	/** Author: Dustin Yost
 	* Finds the next available player slot, returning -1 if none is found
 	*/
-	int findNextPlayerID();
+	bool findNextPlayerID(unsigned int &id);
+
+	bool addClient(const char* address, unsigned int &id);
+	void removeClient(unsigned int id);
+	bool addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID);
+
+	void sendGameState(unsigned char msgID, const char* sender, bool broadcast = true, int clientID = -1);
 
 };
 
