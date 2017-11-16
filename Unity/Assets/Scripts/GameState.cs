@@ -241,6 +241,13 @@ public class GameState : ScriptableObject, ISerializing
             return playersLocal;
         }
     }
+    public Dictionary<uint, Player> connectedPlayers
+    {
+        get
+        {
+            return playersConnected;
+        }
+    }
 
     private void OnEnable()
     {
