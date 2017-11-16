@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Grass
   - Music
+  - AllPlayers
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,6 @@ TagManager:
     locked: 0
   - name: ScoreBoard
     uniqueID: 1040123445
+  - name: Foreground
+    uniqueID: 1202221475
     locked: 0

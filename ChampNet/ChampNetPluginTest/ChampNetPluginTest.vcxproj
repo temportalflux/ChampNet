@@ -176,12 +176,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\Game.cpp" />
+    <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\StateServer.cpp" />
     <ClCompile Include="source\StateApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Packets.h" />
     <ClInclude Include="include\StateServer.h" />
     <ClInclude Include="include\StateApplication.h" />

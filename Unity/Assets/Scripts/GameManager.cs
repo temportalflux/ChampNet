@@ -26,25 +26,20 @@ public class GameManager : Singleton<GameManager>
     public GameObject playerPrefab;
     public GameObject playerNetworkPrefab;
 
-    private NetInterface netty;
+    public GameState state;
 
-    private uint id;
-    private PlayerReference localPlayer;
-    private Coroutine localPlayerUpdates;
-    public Dictionary<uint, PlayerReference> networkPlayerMap;
+    private NetInterface netty;
+    private bool inGame;
 
     void Awake()
     {
+        this.inGame = false;
         this.loadSingleton(this, ref GameManager._instance);
-        this.networkPlayerMap = new Dictionary<uint, PlayerReference>();
     }
 
     void Start()
     {
         this.netty = NetInterface.INSTANCE;
-
-        this.localPlayer = null;
-        this.localPlayerUpdates = null;
         
     }
 	
@@ -52,7 +47,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.load(
             () => {
-                this.createPlayer(false);
+                this.inGame = true;
             }
         );
     }
@@ -61,9 +56,15 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.load(
             () => {
-                this.createPlayer(true);
+                this.inGame = true;
             }
         );
+    }
+
+    public void NetworkConnect(string address, int port, ConnectMenu.PlayerDescriptor[] players)
+    {
+        this.state.playerRequest = players;
+        this.netty.Connect(address, port);
     }
 
     public void Exit()
@@ -71,89 +72,10 @@ public class GameManager : Singleton<GameManager>
         this.transition.exit();
     }
 
-    public void setID(uint id)
+    /*
+    public void spawnPlayer(GameState.Player playerInfo)
     {
-        this.id = id;
-    }
-
-    public uint getID()
-    {
-        return this.id;
-    }
-
-    /// <summary>
-    /// gets the size of the Dictionary
-    /// </summary>
-    /// <returns> total size of the Dictionary </returns>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public uint getSize()
-    {
-        uint number = 0;
-        foreach (KeyValuePair<uint, PlayerReference> mapfPlayers in networkPlayerMap) // searches through all the map
-        {
-            if (mapfPlayers.Value != null) // checks if the player is still in the game
-            {
-                number += 1;
-            }
-        }
-        return number;
-    }
-
-    private void createPlayer(bool networked)
-    {
-       // GameObject playerObj = Instantiate(this.playerPrefab);
-
-        // TODO: THis assumes a lot
-       // GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().target = playerObj.transform;
-
-    }
-
-    public void setPlayer(PlayerReference player)
-    {
-        this.localPlayer = player;
-        if (this.localPlayer != null)
-        {
-            this.localPlayer.setID(this.getID());
-        }
-
-        if (this.localPlayerUpdates != null)
-        {
-            StopCoroutine(this.localPlayerUpdates);
-            this.localPlayerUpdates = null;
-        }
-
-        if (player != null)
-        {
-            this.localPlayerUpdates = StartCoroutine(this.sendPositionUpdates());
-        }
-
-    }
-
-    public void sendPositionUpdate()
-    {
-        if (this.netty == null) return;
-        if (this.localPlayer == null) return;
-        EventNetwork evt = this.localPlayer.createUpdateEvent();
-        if (evt != null)
-        {
-            this.netty.Dispatch(evt);
-        }
-    }
-
-    private IEnumerator sendPositionUpdates()
-    {
-        while (true)
-        {
-            this.sendPositionUpdate();
-            yield return null;// new WaitForSeconds(this.updateDelay);
-        }
-    }
-
-    public void spawnPlayer(uint id, float posX, float posY)
-    {
-        if (this.networkPlayerMap.ContainsKey(id))
+        if (this.state.HasPlayer(ref playerInfo))
         {
             return;
         }
@@ -162,65 +84,68 @@ public class GameManager : Singleton<GameManager>
         // having a queue of updates waiting on (insert indicator that transition has finished) can help solved this
 
         GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
-        PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
-        this.networkPlayerMap.Add(id, player);
-        player.setID(id);
 
-        this.updatePlayer(id, posX, posY, 0, 0);
+        PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
+        player.initInfo(playerInfo);
+
+        this.state.AddPlayer(playerInfo);
+        if (playerInfo.isLocal)
+        {
+            this.state.AddPlayerLocal(playerInfo);
+        }
+        else
+        {
+            this.state.AddPlayerConnected(playerInfo);
+        }
+
+        this.updatePlayer(playerInfo);
 
     }
 
-    public void updatePlayer(uint id, float posX, float posY, float velX, float velY)
+    public void updatePlayer(GameState.Player playerInfo)
     {
-        if (!this.networkPlayerMap.ContainsKey(id))
+        if (!this.state.HasPlayer(ref playerInfo))
         {
-            this.spawnPlayer(id, posX, posY);
+            this.spawnPlayer(playerInfo);
             return;
         }
 
-        PlayerReference player;
-        if (this.networkPlayerMap.TryGetValue(id, out player))
+        if (playerInfo.objectReference != null)
         {
-            if (player != null)
-            {
-                player.updateAt(posX, posY, velX, velY);
-            }
-            else
-            {
-                this.networkPlayerMap.Remove(id);
-            }
+            playerInfo.objectReference.updateFromInfo();
+        }
+        else
+        {
+            this.state.RemovePlayer(playerInfo);
         }
 
     }
+    //*/
 
     public void Disconnect()
     {
-        this.netty.Dispatch(new EventNetwork.EventUserLeft(this.getID()));
+        this.netty.Dispatch(new EventClientLeft(this.state.clientID));
     }
 
-    public void removePlayer(uint id)
+    public void removePlayer(GameState.Player playerInfo)
     {
-        if (this.networkPlayerMap.ContainsKey(id))
+        if (this.state.HasPlayer(ref playerInfo))
         {
-            PlayerReference player;
-            if (this.networkPlayerMap.TryGetValue(id, out player))
+            if (playerInfo.objectReference != null)
             {
-                if (player != null)
-                {
-                    Destroy(player.gameObject);
-                }
+                Destroy(playerInfo.objectReference.gameObject);
             }
-            this.networkPlayerMap.Remove(id);
+            this.state.RemovePlayer(playerInfo);
         }
     }
 
     public PlayerReference getRandomPlayer()
     {
-        List<PlayerReference> players = new List<PlayerReference>(this.networkPlayerMap.Values);
+        List<GameState.Player> players = new List<GameState.Player>(this.state.players.Values);
         if (players.Count > 0)
         {
             int index = UnityEngine.Random.Range(0, players.Count);
-            return players[index];
+            return players[index].objectReference;
         }
         else
         {
@@ -242,21 +167,31 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
+    private void FixedUpdate()
+    {
+        if (this.inGame)
+        {
+            //GameObject allPlayers = GameObject.FindGameObjectWithTag("AllPlayers");
+            this.state.FixedUpdate();
+        }
+    }
+
     /// <summary>
     /// update the player's win count
     /// </summary>
     /// <param name="winnerID"> ID of the winner of a battle </param>
     public void updatePlayerWin(uint winnerID)
     {
-        PlayerReference player;
+        GameState.Player player;
 
-        if (this.networkPlayerMap.TryGetValue(id, out player))
+        if (this.state.connectedPlayers.TryGetValue(winnerID, out player))
         {
-            if (player != null)
+            if (player.objectReference != null)
             {
-                player.setScore(player.getScore() + 1);
+                player.objectReference.setScore(player.objectReference.getScore() + 1);
             }
         }
     }
+
 
 }

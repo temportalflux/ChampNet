@@ -223,7 +223,7 @@ public class ScoreBoard : MonoBehaviour {
     {
         // created incase no new players are on scoreboard
         PlayerReference temp = new PlayerReference();
-        temp.setID(0);
+        //temp.setID(0);
         temp.setScore(0);
 
         //local player
@@ -247,11 +247,11 @@ public class ScoreBoard : MonoBehaviour {
                 {
                     // You just kicked someone off of above you
                     // switch places with the individual that you kicked out
-                    foreach (KeyValuePair<uint, PlayerReference> defeatedPlayer in GameManager_Script.networkPlayerMap) // search for individual to move down a rank
+                    foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
                     {
-                        if (defeatedPlayer.Value.getRank() == scoreBoard.Rank) // check for match
+                        if (defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
                         {
-                            defeatedPlayer.Value.setRank(LocalPlayerScript.getRank()); // move player down
+                            defeatedPlayer.Value.objectReference.setRank(LocalPlayerScript.getRank()); // move player down
                             LocalPlayerScript.setRank(scoreBoard.Rank); // move new player up
                             return LocalPlayerScript; // return player Reference
                         }
@@ -261,35 +261,35 @@ public class ScoreBoard : MonoBehaviour {
         }
 
         // networked players
-        foreach (KeyValuePair<uint, PlayerReference> player in GameManager_Script.networkPlayerMap)
+        foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.connectedPlayers)
         {
-            if(player.Value.getID() == scoreBoard.name)
+            if(player.Value.objectReference.getID() == scoreBoard.name)
             {
-                temp = player.Value; // if nothing changes then stay with current player information
+                temp = player.Value.objectReference; // if nothing changes then stay with current player information
             }
-            if(player.Value.getScore() > scoreBoard.score)
+            if(player.Value.objectReference.getScore() > scoreBoard.score)
             {
-                if(player.Value.getRank() > scoreBoard.Rank || player.Value.getRank() == 0)
+                if(player.Value.objectReference.getRank() > scoreBoard.Rank || player.Value.objectReference.getRank() == 0)
                 {
                     // check if there was already a player there and check if true check if it was the same player
-                    if(scoreBoard.name == 100 || scoreBoard.name == player.Value.getID()) // == 100 is the set id for if no player exists
+                    if(scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
-                        player.Value.setRank(scoreBoard.Rank);
-                        return player.Value; // return player Reference
+                        player.Value.objectReference.setRank(scoreBoard.Rank);
+                        return player.Value.objectReference; // return player Reference
                     }
                     else
                     {
                         // You just kicked someone off of above you
                         // switch places with the individual that you kicked out
-                        foreach (KeyValuePair<uint, PlayerReference> defeatedPlayer in GameManager_Script.networkPlayerMap) // search for individual to move down a rank
+                        foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
                         {
-                            if(defeatedPlayer.Value.getRank() == scoreBoard.Rank) // check for match
+                            if(defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
                             {
-                                defeatedPlayer.Value.setRank(player.Value.getRank()); // move player down
-                                player.Value.setRank(scoreBoard.Rank); // move new player up
-                                return player.Value; // return player Reference
+                                defeatedPlayer.Value.objectReference.setRank(player.Value.objectReference.getRank()); // move player down
+                                player.Value.objectReference.setRank(scoreBoard.Rank); // move new player up
+                                return player.Value.objectReference; // return player Reference
                             }
                         }
                     }

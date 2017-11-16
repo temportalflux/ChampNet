@@ -61,5 +61,15 @@ public class GamepadInput : MonoBehaviour
 		if (OnGamepadRemoved != null)
 			OnGamepadRemoved (gamepadDevice);
 	}
+
+    public UnGamepadManager getEditorManager()
+    {
+#if UNITY_EDITOR || !UNITY_STANDALONE_WIN
+        return manager as UnGamepadManager;
+#else
+        return null;
+#endif
+    }
+
 }
 
