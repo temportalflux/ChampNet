@@ -6,7 +6,7 @@ using AOT;
 namespace ChampNetPlugin
 {
 
-    enum MessageIDs
+    public enum MessageIDs
     {
         // RakNet Messages (used for clients)
         // Send to client from server on client connection
@@ -15,7 +15,7 @@ namespace ChampNetPlugin
 
         // Client-Sent Messages
         // 1) Sent to server to notify it of an incoming client
-        ID_USER_JOINED = 135,
+        ID_CLIENT_JOINED = 135,
         // Sent to server to notify all clients of an updated position
         ID_USER_UPDATE_POSITION,
         // Sent to server to request a battle with some other player

@@ -8,9 +8,9 @@ public class CameraPixelCorrector : MonoBehaviour
     public Vector2 targetViewportSizeInPixels = new Vector2(480.0f, 320.0f);
     public float pixelsPerUnit = 32.0f;
     private Camera _cam;
-    private int _currentScreenWidth;
-    private int _currentScreenHeight;
-    private float _pixelLockPPU = 32.0f;
+    private int _currentScreenWidth = 0;
+    private int _currentScreenHeight = 0;
+    //private float _pixelLockPPU = 32.0f;
     private Vector2 _winSize;
 
     void Start()
@@ -36,7 +36,7 @@ public class CameraPixelCorrector : MonoBehaviour
 
             float camSize = ((Screen.height / 2) / targetSizeFloor / pixelsPerUnit);
             _cam.orthographicSize = camSize;
-            _pixelLockPPU = targetSizeFloor * pixelsPerUnit;
+            //_pixelLockPPU = targetSizeFloor * pixelsPerUnit;
         }
         _winSize = new Vector2(Screen.width, Screen.height);
     }

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 /// <remarks>
 /// Author: Dustin Yost
 /// </remarks>
-public class EventNetwork
+public class EventNetwork : ISerializing
 {
 
     /// <summary>
@@ -27,11 +27,13 @@ public class EventNetwork
         switch (id)
         {
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
-                return new EventNetwork.EventConnected();
+                return new EventConnected();
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED:
-                return new EventNetwork.EventConnectionRejected();
+                return new EventConnectionRejected();
             case (char)ChampNetPlugin.MessageIDs.ID_DISCONNECT:
-                return new EventNetwork.EventDisconnected();
+                return new EventDisconnected();
+            case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_JOINED:
+                return new EventClientJoined();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
                 return new EventNetwork.EventUserID();
             case (char)ChampNetPlugin.MessageIDs.ID_USER_LEFT:
@@ -119,7 +121,7 @@ public class EventNetwork
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    private void WriteTo(ref byte[] dest, ref int offset, byte[] source)
+    public static void WriteTo(ref byte[] dest, ref int offset, byte[] source)
     {
         // copy all data from the source to the destination, starting at some offset
         System.Array.Copy(source, 0, dest, offset, source.Length);
@@ -134,114 +136,10 @@ public class EventNetwork
     /// </remarks>
     virtual public void Execute()
     {
-        ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
+        //ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
         //Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
-    
-    /// <summary>
-    /// Event: Notification that the client has been accepted to the server
-    /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    public class EventConnected : EventNetwork
-    {
-
-        public EventConnected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED)
-        {
-        }
-        
-        /// <summary>
-        /// Processes this event to affect the actual environment
-        /// </summary>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Execute()
-        {
-            // Notify the game manger that the connection request has been satisfied
-            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(true);
-            // Tell the server we have connected
-            NetInterface.INSTANCE.Dispatch(new EventUserJoined());
-            // Begin the game in networked mode
-            GameManager.INSTANCE.PlayNetwork();
-        }
-
-    }
-    
-    /// <summary>
-    /// Event: Notification that the client has been rejected from the server
-    /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    public class EventConnectionRejected : EventNetwork
-    {
-
-        public EventConnectionRejected() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED)
-        {
-        }
-        
-        /// <summary>
-        /// Processes this event to affect the actual environment
-        /// </summary>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Execute()
-        {
-            Debug.Log("Connection Rejected");
-            GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(false);
-            GameManager.INSTANCE.onNetworkRejected.Invoke("Invalid server");
-        }
-
-    }
-
-    public class EventDisconnected : EventNetwork
-    {
-
-        public EventDisconnected() : base((byte)ChampNetPlugin.MessageIDs.ID_DISCONNECT)
-        {
-        }
-        
-        /// <summary>
-        /// Processes this event to affect the actual environment
-        /// </summary>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Execute()
-        {
-            Debug.Log("Server Disconnected");
-            // Exit the game (we have been booted from the server)
-            GameManager.INSTANCE.Exit();
-        }
-
-    }
-
-    /**
-     * Event: Notification that some other client has also joined
-     */
-    public class EventUserJoined : EventNetwork
-    {
-
-        public EventUserJoined() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_JOINED)
-        {
-        }
-
-        /// <summary>
-        /// Processes this event to affect the actual environment
-        /// </summary>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
-        override public void Execute()
-        {
-            Debug.Log("Some user has joined - ERROR: Received an event that should never be received");
-        }
-
-    }
-
+   
     public class EventWithID : EventNetwork
     {
         
@@ -299,7 +197,7 @@ public class EventNetwork
             base.Serialize(ref data, ref lastIndex);
 
             // Write the bytes of the playerID
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
 
         }
 
@@ -340,7 +238,7 @@ public class EventNetwork
         {
             Debug.Log("User " + this.playerID + " has left");
             GameState.Player playerInfo = new GameState.Player();
-            playerInfo.id = this.playerID;
+            playerInfo.playerID = this.playerID;
             GameManager.INSTANCE.removePlayer(playerInfo);
         }
 
@@ -381,8 +279,8 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posX));
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posY));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posX));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.posY));
 
         }
 
@@ -401,7 +299,7 @@ public class EventNetwork
         {
             Debug.Log("User " + this.playerID + " spawned");
             GameState.Player playerInfo = new GameState.Player();
-            playerInfo.id = this.playerID;
+            playerInfo.playerID = this.playerID;
             playerInfo.position = Vector3.zero;
             playerInfo.velocity = Vector3.zero;
             playerInfo.accelleration = Vector3.zero;
@@ -454,8 +352,8 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velX));
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velY));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velX));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velY));
 
         }
 
@@ -463,11 +361,11 @@ public class EventNetwork
         {
             Debug.Log("User " + this.playerID + " to update location to (" + this.posX + " | " + this.posY + ")");
             GameState.Player playerInfo = new GameState.Player();
-            playerInfo.id = this.playerID;
+            playerInfo.playerID = this.playerID;
             playerInfo.position = new Vector3(this.posX, this.posY);
             playerInfo.velocity = new Vector3(this.velX, this.velY);
             playerInfo.accelleration = Vector3.zero;
-            GameManager.INSTANCE.updatePlayer(playerInfo);
+            //GameManager.INSTANCE.updatePlayer(playerInfo);
 
         }
 
@@ -503,7 +401,7 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID_second));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID_second));
 
         }
 
@@ -604,7 +502,7 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accepted));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accepted));
 
         }
 
@@ -646,7 +544,7 @@ public class EventNetwork
         {
             base.Serialize(ref data, ref lastIndex);
 
-            this.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerIDWinner));
+            WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerIDWinner));
 
         }
 

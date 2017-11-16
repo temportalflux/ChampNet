@@ -249,7 +249,11 @@
     <Compile Include="Assets\Scripts\MonsterDataObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventClientJoined.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventConnected.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventGameState.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventNetwork.cs" />
+    <Compile Include="Assets\Scripts\Network\events\ISerializing.cs" />
     <Compile Include="Assets\Scripts\Network\NetInterface.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\KeeperSystem.cs" />

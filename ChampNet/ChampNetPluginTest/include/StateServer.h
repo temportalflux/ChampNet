@@ -5,6 +5,8 @@
 
 #include <string>
 
+class GameState;
+
 namespace ChampNet
 {
 	class Packet;
@@ -16,8 +18,12 @@ class StateServer : public StateApplication
 private:
 	typedef std::string* PlayerAddress;
 
-	int mPlayerAddressesLength;
-	PlayerAddress *mpPlayerAddresses;
+	int mClientAddressesLength;
+	int mPlayerIdLength;
+	PlayerAddress *mpClientAddresses;
+	int *mpPlayerIdToClientId;
+
+	GameState *mpGameState;
 
 public:
 
@@ -76,8 +82,13 @@ public:
 	void sendDisconnectPacket(const char *address, bool broadcast);
 
 	/** Author: Dustin Yost
-	 * Finds the next available address slot, returning -1 if none is found
-	 */
+	* Finds the next available address slot, returning -1 if none is found
+	*/
+	int findNextClientID();
+
+	/** Author: Dustin Yost
+	* Finds the next available player slot, returning -1 if none is found
+	*/
 	int findNextPlayerID();
 
 };

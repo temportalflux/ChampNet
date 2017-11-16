@@ -5,11 +5,11 @@ using UnityEditor;
 
 using ID = System.UInt32;
 
-public class GameState : ScriptableObject
+public class GameState : ScriptableObject, ISerializing
 {
 
     [MenuItem("Assets/Create/Asset/Game State")]
-    public static void CreateBrush()
+    public static void Create()
     {
         // Get the path to the selected asset
         string selectedPath = "Assets";
@@ -31,23 +31,43 @@ public class GameState : ScriptableObject
     }
 
     [System.Serializable]
-    public struct Player
+    public struct Player : ISerializing
     {
+
+        public static int SIZE =
+            sizeof(ID) // clientID
+            + sizeof(ID) // playerID
+            + sizeof(int) + (SIZE_MAX_NAME * sizeof(char))// name
+            + (sizeof(float) * 3) // color
+            + (sizeof(float) * 3) // position
+            + (sizeof(float) * 3) // velocity
+            + (sizeof(float) * 3) // acceleration
+            + sizeof(bool) // inBattle
+            ;
+
+        public static int SIZE_MAX_NAME = 10;
 
         [HideInInspector]
         public bool editorFoldout;
 
+        public ID clientID;
+
         /// <summary>
         /// If the player id is from a local player (controlled on this game) or networked (controlled by a peer)
         /// </summary>
-        public bool isLocal;
+        public bool isLocal {
+            get
+            {
+                return this.clientID == GameManager.INSTANCE.state.clientID;
+            }
+        }
 
         // Indentification
 
         [Tooltip("The unique identifier for this specific player")]
-        public ID id;
-
-        [Tooltip("The name of this player")]
+        public ID playerID;
+        
+        [Tooltip("The name of this player with 10 characters max")]
         public string name;
 
         [Tooltip("The color of the character for the player")]
@@ -73,23 +93,155 @@ public class GameState : ScriptableObject
         // Game Objects
         public PlayerReference objectReference;
 
+        // ~~~~~ ISerializing
+
+        public int GetSize()
+        {
+            return SIZE;
+        }
+
+        /// <summary>
+        /// Serializes data from this event into a byte array
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="lastIndex">The last index.</param>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        public void Serialize(ref byte[] data, ref int lastIndex)
+        {
+
+            // write isLocal
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
+            // write player id
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
+            // write name
+            char[] characters = this.name.ToCharArray();
+            int nameLength = Mathf.Min(characters.Length, SIZE_MAX_NAME);
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(nameLength));
+            for (int i = 0; i < nameLength; i++)
+            {
+                EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(characters[i]));
+            }
+            // write color
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.r));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.g));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.b));
+            // write position
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.x));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.y));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.z));
+            // write velocity
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.x));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.y));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.z));
+            // write acceleration
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.x));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.y));
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.z));
+            // write inBattle
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.inBattle));
+
+        }
+
+        /// <summary>
+        /// Deserializes data from a byte array into this event's data
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="lastIndex">The last index.</param>
+        /// <remarks>
+        /// Author: Dustin Yost
+        /// </remarks>
+        public void Deserialize(byte[] data, ref int lastIndex)
+        {
+
+            // read isLocal
+            this.clientID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
+            // read player id
+            this.playerID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
+            // read name
+            int nameLength = System.BitConverter.ToInt32(data, lastIndex); lastIndex += sizeof(System.Int32);
+            this.name = "";
+            for (int i = 0; i < nameLength; i++)
+            {
+                this.name += System.BitConverter.ToChar(data, lastIndex);
+                lastIndex += sizeof(System.Char);
+            }
+            // read color
+            this.color.r = this.DeserializeFloat(data, ref lastIndex);
+            this.color.g = this.DeserializeFloat(data, ref lastIndex);
+            this.color.b = this.DeserializeFloat(data, ref lastIndex);
+            // read position
+            this.position.x = this.DeserializeFloat(data, ref lastIndex);
+            this.position.y = this.DeserializeFloat(data, ref lastIndex);
+            this.position.z = this.DeserializeFloat(data, ref lastIndex);
+            // read velocity
+            this.velocity.x = this.DeserializeFloat(data, ref lastIndex);
+            this.velocity.y = this.DeserializeFloat(data, ref lastIndex);
+            this.velocity.z = this.DeserializeFloat(data, ref lastIndex);
+            // read accelleration
+            this.accelleration.x = this.DeserializeFloat(data, ref lastIndex);
+            this.accelleration.y = this.DeserializeFloat(data, ref lastIndex);
+            this.accelleration.z = this.DeserializeFloat(data, ref lastIndex);
+            // read inBattle
+            this.inBattle = System.BitConverter.ToBoolean(data, lastIndex); lastIndex += sizeof(System.Boolean);
+
+        }
+
+        private float DeserializeFloat(byte[] data, ref int lastIndex)
+        {
+            float ret = System.BitConverter.ToSingle(data, lastIndex); lastIndex += sizeof(System.Single);
+            return ret;
+        }
+
+        // ~~~~~ Data copy
+
+        public void copyFromGameState(Player info)
+        {
+            this.clientID = info.clientID;
+            this.playerID = info.playerID;
+            this.name = info.name;
+            this.color = info.color;
+            this.position = info.position;
+            this.velocity = info.velocity;
+            this.accelleration = info.accelleration;
+            this.inBattle = info.inBattle;
+        }
+
     }
 
     [HideInInspector]
     public bool editorFoldoutPlayers;
 
+    public uint clientID;
+
     public Dictionary<ID, Player> players;
+
+    private List<Player> playersToAdd;
+    private Dictionary<uint, GameState.Player> playersLocal;
+    private Dictionary<uint, GameState.Player> playersConnected;
+    public Dictionary<uint, Player> localPlayers
+    {
+        get
+        {
+            return playersLocal;
+        }
+    }
 
     private void OnEnable()
     {
         this.players = new Dictionary<ID, Player>();
+
+        this.playersToAdd = new List<Player>();
+        this.playersLocal = new Dictionary<uint, GameState.Player>();
+        this.playersConnected = new Dictionary<uint, GameState.Player>();
     }
 
     public bool HasPlayer(ref Player info)
     {
-        if (this.players.ContainsKey(info.id))
+        if (this.players.ContainsKey(info.playerID))
         {
-            info = this.players[info.id];
+            info = this.players[info.playerID];
             return true;
         }
         return false;
@@ -97,15 +249,106 @@ public class GameState : ScriptableObject
 
     public void AddPlayer(Player info)
     {
-        this.players.Add(info.id, info);
+        this.players.Add(info.playerID, info);
     }
 
     public void RemovePlayer(Player info)
     {
         if (this.HasPlayer(ref info))
         {
-            this.players.Remove(info.id);
+            this.players.Remove(info.playerID);
         }
+    }
+
+    public void AddPlayerLocal(Player info)
+    {
+        this.playersLocal.Add(info.playerID, info);
+    }
+
+    public void AddPlayerConnected(Player info)
+    {
+        this.playersConnected.Add(info.playerID, info);
+    }
+
+    // ~~~~~ ISerializing
+
+    public int GetSize()
+    {
+        // clientID + # of players + amount of space required for players
+        return sizeof(uint) + sizeof(int) + (this.players.Count * Player.SIZE);
+    }
+
+    /// <summary>
+    /// Serializes data from this event into a byte array
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <param name="lastIndex">The last index.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    public void Serialize(ref byte[] data, ref int lastIndex)
+    {
+        // Serialize the clientID
+        EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
+
+        // Serialize player count
+        EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.players.Count));
+
+        // Serialize the player data
+        foreach (ID playerID in this.players.Keys)
+        {
+            // Get the player
+            ISerializing player = this.players[playerID];
+            // Create the byte array to hold the player
+            byte[] dataPlayer = new byte[player.GetSize()];
+            int dataPlayerIndex = 0;
+            // Serialize the player
+            player.Serialize(ref dataPlayer, ref dataPlayerIndex);
+            // Write player data to main data
+            EventNetwork.WriteTo(ref data, ref lastIndex, dataPlayer);
+        }
+    }
+
+    /// <summary>
+    /// Deserializes data from a byte array into this event's data
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <param name="lastIndex">The last index.</param>
+    /// <remarks>
+    /// Author: Dustin Yost
+    /// </remarks>
+    public void Deserialize(byte[] data, ref int lastIndex)
+    {
+
+        // Deserialize clientID
+        this.clientID = System.BitConverter.ToUInt32(data, lastIndex);
+        lastIndex += sizeof(ID);
+
+        // Deserialize player count
+        int playerCount = System.BitConverter.ToInt32(data, lastIndex);
+        lastIndex += sizeof(System.Int32);
+
+        // Read all players, keeping track of the IDs read
+        for (int i = 0; i < playerCount; i++)
+        {
+            // Deserialize the player data
+            Player player = new Player();
+            player.objectReference = null;
+            player.Deserialize(data, ref lastIndex);
+
+            // Check if the ID is already in the map
+            if (this.players.ContainsKey(player.playerID))
+            {
+                this.players[player.playerID].copyFromGameState(player);
+            }
+            // playerID not in map, add
+            else
+            {
+                this.playersToAdd.Add(player);
+            }
+
+        }
+
     }
 
 }

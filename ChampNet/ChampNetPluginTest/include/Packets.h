@@ -12,7 +12,8 @@ struct PacketGeneral
 struct PacketUserID
 {
 	unsigned char id;
-	unsigned int playerId;
+	unsigned int clientID;
+	unsigned int playerID;
 };
 
 struct PacketPlayerPosition

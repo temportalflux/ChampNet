@@ -17,8 +17,8 @@ public class PlayerLocal : PlayerReference
 
     void Start()
     {
-        if (GameManager.INSTANCE != null)
-        GameManager.INSTANCE.AddPlayerLocal(this);
+        //if (GameManager.INSTANCE != null)
+        //GameManager.INSTANCE.AddPlayerLocal(this);
     }
 
     /// <summary>

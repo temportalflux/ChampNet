@@ -38,7 +38,7 @@ public class GameStateEditor : Editor
                     EditorGUI.indentLevel++;
                     GUI.enabled = false;
 
-                    EditorGUILayout.IntField("ID", (int)player.id);
+                    EditorGUILayout.IntField("ID", (int)player.playerID);
 
                     EditorGUILayout.TextField("Name", player.name);
 

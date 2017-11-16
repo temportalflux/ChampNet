@@ -8,26 +8,41 @@
 #include <iostream>
 #include <RakNet\PacketPriority.h>
 #include "Packets.h"
+#include "GameState.h"
 
 #include <stdlib.h> // rand
 
 StateServer::StateServer() : StateApplication()
 {
 	ChampNetPlugin::Create();
+
+	this->mpGameState = new GameState(-1);
 }
 
 StateServer::~StateServer()
 {
-	if (this->mpPlayerAddresses != NULL)
+	if (this->mpClientAddresses != NULL)
 	{
-		for (int i = 0; i < mPlayerAddressesLength; i++)
-			if (mpPlayerAddresses[i] != NULL)
+		for (int i = 0; i < mClientAddressesLength; i++)
+			if (mpClientAddresses[i] != NULL)
 			{
-				delete mpPlayerAddresses[i];
-				mpPlayerAddresses[i] = NULL;
+				delete mpClientAddresses[i];
+				mpClientAddresses[i] = NULL;
 			}
-		delete[] this->mpPlayerAddresses;
-		this->mpPlayerAddresses = NULL;
+		delete[] this->mpClientAddresses;
+		this->mpClientAddresses = NULL;
+	}
+
+	if (this->mpPlayerIdToClientId != NULL)
+	{
+		delete[] this->mpPlayerIdToClientId;
+		this->mpPlayerIdToClientId = NULL;
+	}
+
+	if (mpGameState != NULL)
+	{
+		delete mpGameState;
+		mpGameState = NULL;
 	}
 
 	this->disconnect();
@@ -201,10 +216,15 @@ void StateServer::onInput(std::string &input)
  */
 void StateServer::start()
 {
-	this->mPlayerAddressesLength = this->mpState->mNetwork.maxClients;
-	this->mpPlayerAddresses = new PlayerAddress[mPlayerAddressesLength];
-	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
-		this->mpPlayerAddresses[i] = NULL;
+	this->mClientAddressesLength = this->mpState->mNetwork.maxClients;
+	this->mpClientAddresses = new PlayerAddress[mClientAddressesLength];
+	for (int i = 0; i < mClientAddressesLength; i++)
+		this->mpClientAddresses[i] = NULL;
+
+	this->mPlayerIdLength = this->mpState->mNetwork.maxClients * 4;
+	this->mpPlayerIdToClientId = new int[mPlayerIdLength];
+	for (int i = 0; i < mPlayerIdLength; i++)
+		this->mpPlayerIdToClientId[i] = -1;
 
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
 }
@@ -278,7 +298,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 		// A client is joining
-		case ChampNetPlugin::ID_USER_JOINED:
+		case ChampNetPlugin::ID_CLIENT_JOINED:
 			{
 
 				unsigned int pPacketLength = 0;
@@ -287,8 +307,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				std::string addressSender = packet->getAddress();
 
 				// Generate ID for user
-				int id = this->findNextPlayerID();
-				if (id < 0)
+				int clientID = this->findNextClientID();
+				if (clientID < 0)
 				{
 					// Some invalid ID was found
 					std::cout << "ERROR: Server is full, but another user has connected - disconnecting new user\n";
@@ -296,23 +316,45 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					return;
 				}
 				// Set the id in the list with the new address
-				this->mpPlayerAddresses[id] = new std::string(addressSender);
+				this->mpClientAddresses[clientID] = new std::string(addressSender);
 
 				// Print out that a user exists
-				std::cout << "User " << id << " has joined from " << addressSender << '\n';
+				std::cout << "Client " << clientID << " has joined from " << addressSender << '\n';
+
+				int playerID = this->findNextPlayerID();
+				if (playerID < 0)
+				{
+					// Some invalid ID was found
+					std::cout << "ERROR: Server is full, but another player has connected - disconnecting client\n";
+					this->sendDisconnectPacket(addressSender.c_str(), false);
+					return;
+				}
+				this->mpPlayerIdToClientId[playerID] = clientID;
+
+				this->mpGameState->addPlayer((unsigned int)clientID, (unsigned int)playerID, "", 1, 1, 1);
+
+				{
+					int dataLength;
+					char *data = this->mpGameState->serializeForClient(ChampNetPlugin::ID_CLIENT_JOINED, clientID, dataLength);
+					this->sendPacket(addressSender.c_str(), data, dataLength, false);
+					delete data;
+				}
 
 				// Create the packet to tell all peers of the user who joined
-				PacketUserID packetID[1];
+				//PacketUserID packetID[1];
 				// Set the new ID of the incoming user
-				packetID->playerId = id;
+				//packetID->clientID = id;
+				//packetID->playerID = playerID;
 
-				// Tell user their player ID
-				packetID->id = ChampNetPlugin::ID_USER_ID;
-				this->sendPacket(addressSender.c_str(), packetID, false);
+
+
+				// Tell user their client/player ID
+				//packetID->id = ChampNetPlugin::ID_CLIENT_JOINED;
+				//this->sendPacket(addressSender.c_str(), packetID, false);
 
 				// Tell other players of new player
-				packetID->id = ChampNetPlugin::ID_USER_SPAWN;
-				this->sendPacket(addressSender.c_str(), packetID, true);
+				//packetID->id = ChampNetPlugin::ID_USER_SPAWN;
+				//this->sendPacket(addressSender.c_str(), packetID, true);
 				
 			}
 			break;
@@ -424,13 +466,25 @@ void StateServer::sendPacket(const char *address, char *data, int dataSize, bool
 }
 
 /** Author: Dustin Yost
- * Finds the next available address slot, returning -1 if none is found
- */
-int StateServer::findNextPlayerID()
+* Finds the next available address slot, returning -1 if none is found
+*/
+int StateServer::findNextClientID()
 {
 	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
 	{
-		if (this->mpPlayerAddresses[i] == NULL) return i;
+		if (this->mpClientAddresses[i] == NULL) return i;
+	}
+	return -1;
+}
+
+/** Author: Dustin Yost
+* Finds the next available player slot, returning -1 if none is found
+*/
+int StateServer::findNextPlayerID()
+{
+	for (int i = 0; i < this->mPlayerIdLength; i++)
+	{
+		if (this->mpPlayerIdToClientId[i] < 0) return i;
 	}
 	return -1;
 }

@@ -32,14 +32,9 @@ public class GameManager : Singleton<GameManager>
 
     private Coroutine localPlayerUpdates;
 
-    private Dictionary<uint, GameState.Player> playersLocal;
-    private Dictionary<uint, GameState.Player> playersConnected;
-
     void Awake()
     {
         this.loadSingleton(this, ref GameManager._instance);
-        this.playersLocal = new Dictionary<uint, GameState.Player>();
-        this.playersConnected = new Dictionary<uint, GameState.Player>();
     }
 
     void Start()
@@ -71,52 +66,7 @@ public class GameManager : Singleton<GameManager>
         this.transition.exit();
     }
 
-    public void AddPlayerLocal(PlayerReference player)
-    {
-        /*
-        this.localPlayer = player;
-        if (this.localPlayer != null)
-        {
-            this.localPlayer.setID(this.getID());
-        }
-
-        if (this.localPlayerUpdates != null)
-        {
-            StopCoroutine(this.localPlayerUpdates);
-            this.localPlayerUpdates = null;
-        }
-
-        if (player != null)
-        {
-            this.localPlayerUpdates = StartCoroutine(this.sendPositionUpdates());
-        }
-        */
-    }
-
-    public void sendPositionUpdate()
-    {
-        if (this.netty == null) return;
-
-        foreach (GameState.Player playerLocal in this.playersLocal.Values)
-        {
-            EventNetwork evt = playerLocal.objectReference.createUpdateEvent();
-            if (evt != null)
-            {
-                this.netty.Dispatch(evt);
-            }
-        }
-
-    }
-
-    private IEnumerator sendPositionUpdates()
-    {
-        while (true)
-        {
-            this.sendPositionUpdate();
-            yield return null;// new WaitForSeconds(this.updateDelay);
-        }
-    }
-
+    /*
     public void spawnPlayer(GameState.Player playerInfo)
     {
         if (this.state.HasPlayer(ref playerInfo))
@@ -135,11 +85,11 @@ public class GameManager : Singleton<GameManager>
         this.state.AddPlayer(playerInfo);
         if (playerInfo.isLocal)
         {
-            this.playersLocal.Add(playerInfo.id, playerInfo);
+            this.state.AddPlayerLocal(playerInfo);
         }
         else
         {
-            this.playersConnected.Add(playerInfo.id, playerInfo);
+            this.state.AddPlayerConnected(playerInfo);
         }
 
         this.updatePlayer(playerInfo);
@@ -164,14 +114,15 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
+    //*/
 
     public void Disconnect()
     {
-        foreach (uint id in this.playersLocal.Keys)
+        foreach (uint id in this.state.localPlayers.Keys)
         {
             this.netty.Dispatch(new EventNetwork.EventUserLeft(id));
             // TODO: Do this on receive packet (gamestate change)
-            this.removePlayer(this.playersLocal[id]);
+            this.removePlayer(this.state.localPlayers[id]);
         }
     }
 
