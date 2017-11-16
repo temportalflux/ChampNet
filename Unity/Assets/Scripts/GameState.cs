@@ -48,9 +48,6 @@ public class GameState : ScriptableObject, ISerializing
 
         public static int SIZE_MAX_NAME = 10;
 
-        [HideInInspector]
-        public bool editorFoldout;
-
         public ID clientID;
 
         /// <summary>
@@ -179,6 +176,7 @@ public class GameState : ScriptableObject, ISerializing
             this.color.r = this.DeserializeFloat(data, ref lastIndex);
             this.color.g = this.DeserializeFloat(data, ref lastIndex);
             this.color.b = this.DeserializeFloat(data, ref lastIndex);
+            this.color.a = 1.0f;
             // read position
             this.position.x = this.DeserializeFloat(data, ref lastIndex);
             this.position.y = this.DeserializeFloat(data, ref lastIndex);
@@ -222,8 +220,11 @@ public class GameState : ScriptableObject, ISerializing
 
     }
 
+    public ConnectMenu.PlayerDescriptor[] playerRequest = null;
+
     [HideInInspector]
     public bool editorFoldoutPlayers;
+    public Dictionary<ID, bool> editorFoldouts;
 
     public uint clientID;
 
@@ -243,6 +244,7 @@ public class GameState : ScriptableObject, ISerializing
 
     private void OnEnable()
     {
+        this.editorFoldouts = new Dictionary<ID, bool>();
         this.players = new Dictionary<ID, Player>();
 
         this.playersToAdd = new List<Player>();

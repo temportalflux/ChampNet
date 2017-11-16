@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 4975964848137938}
+  overlay: {fileID: 212510256852981740}
 --- !u!114 &114375858895001024
 MonoBehaviour:
   m_ObjectHideFlags: 1

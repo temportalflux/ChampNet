@@ -79,7 +79,10 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		*((int *)pos) = nameLength; pos += sizeof(int);
 		for (int i = 0; i < nameLength; i++)
 		{
-			*((int *)pos) = player.name[i]; pos += sizeof(char);
+			*((char *)pos) = player.name[i];
+			*((char *)(pos + 1)) = 0;
+			// move head twice to account for UTF-16 encoding
+			pos += sizeof(char) * 2;
 		}
 
 		// write color

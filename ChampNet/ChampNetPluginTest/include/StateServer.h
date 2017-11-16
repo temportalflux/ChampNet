@@ -15,6 +15,13 @@ namespace ChampNet
 class StateServer : public StateApplication
 {
 
+	struct PlayerRequest
+	{
+		unsigned int localID;
+		std::string name;
+		float colorR, colorG, colorB;
+	};
+
 private:
 	typedef std::string* PlayerAddress;
 
@@ -82,6 +89,8 @@ public:
 	 */
 	void sendDisconnectPacket(const char *address, bool broadcast);
 
+	void deserializePlayerRequests(ChampNet::Packet *pPacket, PlayerRequest *&requests, int &playerRequestCount);
+
 	/** Author: Dustin Yost
 	* Finds the next available address slot, returning -1 if none is found
 	*/
@@ -94,7 +103,8 @@ public:
 
 	bool addClient(const char* address, unsigned int &id);
 	void removeClient(unsigned int id);
-	bool addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID);
+	bool addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID,
+		std::string name, float colorR, float colorG, float colorB);
 
 	void sendGameState(unsigned char msgID, const char* sender = NULL, bool broadcast = true, int clientID = -1);
 

@@ -26,7 +26,7 @@ public class EventConnected : EventNetwork
         // Notify the game manger that the connection request has been satisfied
         GameManager.INSTANCE.onNetworkConnectionHandled.Invoke(true);
         // Tell the server we have connected
-        NetInterface.INSTANCE.Dispatch(new EventClientJoined());
+        NetInterface.INSTANCE.Dispatch(new EventClientJoined(GameManager.INSTANCE.state.playerRequest));
         // Begin the game in networked mode
         GameManager.INSTANCE.PlayNetwork();
     }

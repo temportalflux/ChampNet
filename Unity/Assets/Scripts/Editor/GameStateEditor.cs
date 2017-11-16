@@ -31,9 +31,11 @@ public class GameStateEditor : Editor
             foreach (uint id in gameState.players.Keys)
             {
                 GameState.Player player = gameState.players[id];
+                if (!gameState.editorFoldouts.ContainsKey(id))
+                    gameState.editorFoldouts[id] = false;
 
-                player.editorFoldout = EditorGUILayout.Foldout(player.editorFoldout, "Player " + id);
-                if (player.editorFoldout)
+                gameState.editorFoldouts[id] = EditorGUILayout.Foldout(gameState.editorFoldouts[id], "Player " + id);
+                if (gameState.editorFoldouts[id])
                 {
                     EditorGUI.indentLevel++;
                     GUI.enabled = false;

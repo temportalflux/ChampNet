@@ -61,6 +61,12 @@ public class GameManager : Singleton<GameManager>
         );
     }
 
+    public void NetworkConnect(string address, int port, ConnectMenu.PlayerDescriptor[] players)
+    {
+        this.state.playerRequest = players;
+        this.netty.Connect(address, port);
+    }
+
     public void Exit()
     {
         this.transition.exit();

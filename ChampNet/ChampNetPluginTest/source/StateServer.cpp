@@ -11,6 +11,7 @@
 #include "GameState.h"
 
 #include <stdlib.h> // rand
+#include <sstream>
 
 StateServer::StateServer() : StateApplication()
 {
@@ -325,6 +326,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketGeneral* pPacket = packet->getPacketAs<PacketGeneral>(pPacketLength);
 
+				int playerRequestCount;
+				PlayerRequest *pPlayerRequests = NULL;
+				this->deserializePlayerRequests(packet, pPlayerRequests, playerRequestCount);
+
 				std::string addressSender = packet->getAddress();
 
 				unsigned int clientID;
@@ -337,13 +342,20 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// Print out that a user exists
 				std::cout << "Client " << clientID << " has joined from " << addressSender << '\n';
 
-				unsigned int playerID;
-				if (!this->addPlayer(clientID, 0, playerID))
+				for (int i = 0; i < playerRequestCount; i++)
 				{
-					this->sendDisconnectPacket(addressSender.c_str(), false);
-					std::cout << "Removing client " << clientID << '\n';
-					this->removeClient(clientID);
-					return;
+					unsigned int playerID;
+					if (!this->addPlayer(clientID,
+						pPlayerRequests[i].localID, playerID,
+						pPlayerRequests[i].name,
+						pPlayerRequests[i].colorR, pPlayerRequests[i].colorG, pPlayerRequests[i].colorB
+					))
+					{
+						this->sendDisconnectPacket(addressSender.c_str(), false);
+						std::cout << "Removing client " << clientID << '\n';
+						this->removeClient(clientID);
+						return;
+					}
 				}
 
 				// Tell user their client/player ID
@@ -351,6 +363,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// Tell other players of new player
 				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str());
 
+				delete[] pPlayerRequests;
 			}
 			break;
 		case ChampNetPlugin::ID_CLIENT_LEFT:
@@ -402,7 +415,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Get the next playerID
 				unsigned int playerID;
-				if (!this->addPlayer(clientID, localID, playerID))
+				if (!this->addPlayer(clientID, localID, playerID, "", 0, 0, 0))
 				{
 					std::cout << "Could not provide another player to client|local="
 						<< clientID << "|" << localID << '\n';
@@ -499,7 +512,7 @@ void StateServer::sendPacket(const char *address, char *data, int dataSize, bool
 */
 bool StateServer::findNextClientID(unsigned int &id)
 {
-	for (int i = 0; i < this->mpState->mNetwork.maxClients; i++)
+	for (unsigned int i = 0; i < this->mpState->mNetwork.maxClients; i++)
 	{
 		if (this->mpClientAddresses[i] == NULL)
 		{
@@ -551,7 +564,7 @@ void StateServer::removeClient(unsigned int id)
 	if (this->mpClientIdToPlayers[id] != NULL)
 	{
 		// Remove all players
-		for (int localID = 0; localID < this->mpState->mNetwork.maxPlayersPerClient; localID++)
+		for (unsigned int localID = 0; localID < this->mpState->mNetwork.maxPlayersPerClient; localID++)
 		{
 			if (this->mpClientIdToPlayers[id][localID] >= 0)
 			{
@@ -569,7 +582,8 @@ void StateServer::removeClient(unsigned int id)
 	}
 }
 
-bool StateServer::addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID)
+bool StateServer::addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID,
+	std::string name, float colorR, float colorG, float colorB)
 {
 	if (!this->findNextPlayerID(playerID))
 	{
@@ -582,12 +596,12 @@ bool StateServer::addPlayer(unsigned int clientID, unsigned int localID, unsigne
 	if (this->mpClientIdToPlayers[clientID] == NULL)
 	{
 		this->mpClientIdToPlayers[clientID] = new int[this->mpState->mNetwork.maxPlayersPerClient];
-		for (int i = 0; i < this->mpState->mNetwork.maxPlayersPerClient; i++)
+		for (unsigned int i = 0; i < this->mpState->mNetwork.maxPlayersPerClient; i++)
 			this->mpClientIdToPlayers[clientID][i] = -1;
 	}
 	this->mpClientIdToPlayers[clientID][localID] = playerID;
 
-	this->mpGameState->addPlayer(clientID, playerID, localID, "", 1, 1, 1);
+	this->mpGameState->addPlayer(clientID, playerID, localID, name, colorR, colorG, colorB);
 
 	return true;
 }
@@ -598,4 +612,41 @@ void StateServer::sendGameState(unsigned char msgID, const char* sender, bool br
 	char *data = this->mpGameState->serializeForClient(msgID, clientID, dataLength);
 	this->sendPacket(sender == NULL ? ChampNetPlugin::GetAddress() : sender, data, dataLength, broadcast);
 	delete data;
+}
+
+void StateServer::deserializePlayerRequests(ChampNet::Packet *pPacket, PlayerRequest *&requests, int &playerRequestCount)
+{
+	unsigned int pPacketLength = 0;
+	unsigned char *data;
+	pPacket->getData(data, pPacketLength);
+	unsigned char *dataHead = data;
+
+	unsigned char packetID = *((unsigned char *)dataHead);
+	dataHead += sizeof(unsigned char);
+	
+	playerRequestCount = *((int *)dataHead);
+	dataHead += sizeof(int);
+
+	requests = new PlayerRequest[playerRequestCount];
+
+	for (int localID = 0; localID < playerRequestCount; localID++)
+	{
+		requests[localID] = PlayerRequest();
+		requests[localID].localID = localID;
+
+		int nameLength = *((int *)dataHead);
+		dataHead += sizeof(int);
+
+		std::stringstream nameStream("");
+		for (int i = 0; i < nameLength; i++)
+		{
+			nameStream << *((char *)dataHead); dataHead += sizeof(char) * 2; // to account for c# UTF-16 encoding
+		}
+		requests[localID].name = nameStream.str();
+
+		requests[localID].colorR = *((float *)dataHead); dataHead += sizeof(float);
+		requests[localID].colorG = *((float *)dataHead); dataHead += sizeof(float);
+		requests[localID].colorB = *((float *)dataHead); dataHead += sizeof(float);
+	}
+
 }
