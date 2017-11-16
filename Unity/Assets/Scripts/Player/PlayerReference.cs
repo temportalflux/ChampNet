@@ -10,6 +10,16 @@ public class PlayerReference : MonoBehaviour {
     private Animator _anim;
     private Vector3 screenPos;
 
+    /// <summary>
+    /// Score of the player
+    /// </summary>
+    private uint score;
+
+    /// <summary>
+    /// Current Rank of the player
+    /// </summary>
+    private uint rank;
+
     void Awake()
     {
         _anim = GetComponentInChildren<Animator>();
@@ -36,6 +46,54 @@ public class PlayerReference : MonoBehaviour {
     {
         return this.playerID;
     }
+
+    /// <summary>
+    /// Sets the identifier.
+    /// </summary>
+    /// <param name="newScore">The identifier.</param>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public void setScore(uint newScore)
+    {
+        this.score = newScore;
+    }
+
+    /// <summary>
+    /// Gets the identifier.
+    /// </summary>
+    /// <returns> the current number of wins for the player </returns>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public uint getScore()
+    {
+        return this.score;
+    }
+    /// <summary>
+    /// sets the new rank of the player for the scoreboard
+    /// </summary>
+    /// <param name="newRank"></param>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public void setRank(uint newRank)
+    {
+
+    }
+
+    /// <summary>
+    /// Gets the rank of the player 
+    /// </summary>
+    /// <returns> rank of player on scoreboard </returns>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public uint getRank()
+    {
+        return rank;
+    }
+
 
     /// <summary>
     /// Update the object to have some transform properties

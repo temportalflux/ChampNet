@@ -371,6 +371,7 @@ public class EventNetwork : ISerializing
         public override void Execute()
         {
             Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
+            // TODO: Use GameManager.INSTANCE
             GameObject.Find("GameManager").GetComponent<GameManager>().updatePlayerWin(this.playerIDWinner);
         }
 
