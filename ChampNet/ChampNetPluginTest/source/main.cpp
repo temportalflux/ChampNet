@@ -26,7 +26,7 @@ int main() {
 	// Create a server
 	Game *pGame = new Game(new StateServer());
 	pGame->getData()->mNetwork.port = port;
-	pGame->getData()->mNetwork.maxClients = port;
+	pGame->getData()->mNetwork.maxClients = maxClients;
 
 	// Run the loop for the game
 	while (pGame->isRunning())

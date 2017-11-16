@@ -30,7 +30,7 @@ public class UnGamepadConfig : ScriptableObject
 		RightTrigger,
         Action5,
         Action6,
-        Home
+        Home,
 	}
 
 	public enum InputType

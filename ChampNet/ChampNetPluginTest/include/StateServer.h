@@ -5,6 +5,8 @@
 
 #include <string>
 
+class GameState;
+
 namespace ChampNet
 {
 	class Packet;
@@ -13,11 +15,23 @@ namespace ChampNet
 class StateServer : public StateApplication
 {
 
+	struct PlayerRequest
+	{
+		unsigned int localID;
+		std::string name;
+		float colorR, colorG, colorB;
+	};
+
 private:
 	typedef std::string* PlayerAddress;
 
-	int mPlayerAddressesLength;
-	PlayerAddress *mpPlayerAddresses;
+	int mClientCount;
+	int mPlayerCount;
+	PlayerAddress *mpClientAddresses = NULL;
+	int *mpPlayerIdToClientId = NULL;
+	int **mpClientIdToPlayers = NULL;
+
+	GameState *mpGameState;
 
 public:
 
@@ -75,10 +89,24 @@ public:
 	 */
 	void sendDisconnectPacket(const char *address, bool broadcast);
 
+	void deserializePlayerRequests(ChampNet::Packet *pPacket, PlayerRequest *&requests, int &playerRequestCount);
+
 	/** Author: Dustin Yost
-	 * Finds the next available address slot, returning -1 if none is found
-	 */
-	int findNextPlayerID();
+	* Finds the next available address slot, returning -1 if none is found
+	*/
+	bool findNextClientID(unsigned int &id);
+
+	/** Author: Dustin Yost
+	* Finds the next available player slot, returning -1 if none is found
+	*/
+	bool findNextPlayerID(unsigned int &id);
+
+	bool addClient(const char* address, unsigned int &id);
+	void removeClient(unsigned int id);
+	bool addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID,
+		std::string name, float colorR, float colorG, float colorB);
+
+	void sendGameState(unsigned char msgID, const char* sender = NULL, bool broadcast = true, int clientID = -1);
 
 };
 

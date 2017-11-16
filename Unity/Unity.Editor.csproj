@@ -305,6 +305,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Editor\GameStateEditor.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\Editor\AttackObjectEditor.cs" />
     <Compile Include="Assets\TileMap\Brushes\Editor\BrushCoordinate.cs" />
     <Compile Include="Assets\TileMap\Brushes\Editor\BrushLine.cs" />
