@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class ScoreBoard : MonoBehaviour {
 
-    public GameObject GameManager_GameObject;
-    public GameManager GameManager_Script;
-
     public GameObject NameHeader;
     public GameObject WinHeader;
 
@@ -134,9 +131,6 @@ public class ScoreBoard : MonoBehaviour {
             currentText += 1;
         }
         currentText = 1;
-
-        //GameManager_GameObject = GameObject.Find("GameManager");
-        //GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
     }
 
     /// <summary>
@@ -226,53 +220,19 @@ public class ScoreBoard : MonoBehaviour {
         //temp.setID(0);
         temp.setScore(0);
 
-        //local player
-        if (LocalPlayerScript.getID() == scoreBoard.name)
+        // checks both local and connected players
+        foreach(KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
         {
-            temp = LocalPlayerScript; // if nothing changes then stay with current player information
-        }
-        if (LocalPlayerScript.getScore() > scoreBoard.score)
-        {
-            if (LocalPlayerScript.getRank() > scoreBoard.Rank || LocalPlayerScript.getRank() == 0)
-            {
-                // check if there was already a player there and check if true check if it was the same player
-                if (scoreBoard.name == 100 || scoreBoard.name == LocalPlayerScript.getID()) // == 100 is the set id for if no player exists
-                {
-                    // set player on to the scoreboard
-                    // no one is currently holding that spot on the board. so take it
-                    LocalPlayerScript.setRank(scoreBoard.Rank);
-                    return LocalPlayerScript; // return player Reference
-                }
-                else
-                {
-                    // You just kicked someone off of above you
-                    // switch places with the individual that you kicked out
-                    foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
-                    {
-                        if (defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
-                        {
-                            defeatedPlayer.Value.objectReference.setRank(LocalPlayerScript.getRank()); // move player down
-                            LocalPlayerScript.setRank(scoreBoard.Rank); // move new player up
-                            return LocalPlayerScript; // return player Reference
-                        }
-                    }
-                }
-            }
-        }
-
-        // networked players
-        foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.connectedPlayers)
-        {
-            if(player.Value.objectReference.getID() == scoreBoard.name)
+            if (player.Value.objectReference.getID() == scoreBoard.name)
             {
                 temp = player.Value.objectReference; // if nothing changes then stay with current player information
             }
-            if(player.Value.objectReference.getScore() > scoreBoard.score)
+            if (player.Value.objectReference.getScore() > scoreBoard.score)
             {
-                if(player.Value.objectReference.getRank() > scoreBoard.Rank || player.Value.objectReference.getRank() == 0)
+                if (player.Value.objectReference.getRank() > scoreBoard.Rank || player.Value.objectReference.getRank() == 0)
                 {
                     // check if there was already a player there and check if true check if it was the same player
-                    if(scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists
+                    if (scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists // can change later just current placeholder
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
@@ -283,9 +243,9 @@ public class ScoreBoard : MonoBehaviour {
                     {
                         // You just kicked someone off of above you
                         // switch places with the individual that you kicked out
-                        foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
+                        foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.players) // search for individual to move down a rank
                         {
-                            if(defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
+                            if (defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
                             {
                                 defeatedPlayer.Value.objectReference.setRank(player.Value.objectReference.getRank()); // move player down
                                 player.Value.objectReference.setRank(scoreBoard.Rank); // move new player up
@@ -298,7 +258,6 @@ public class ScoreBoard : MonoBehaviour {
         }
         // if no new info has changed then return the current player/ no player on the scoreboard
         return temp;
-
     }
 
 }

@@ -338,6 +338,7 @@ public class GameState : ScriptableObject, ISerializing
     /// </remarks>
     public void Serialize(ref byte[] data, ref int lastIndex)
     {
+        /*
         // Serialize the clientID
         EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
 
@@ -357,6 +358,7 @@ public class GameState : ScriptableObject, ISerializing
             // Write player data to main data
             EventNetwork.WriteTo(ref data, ref lastIndex, dataPlayer);
         }
+        //*/
     }
 
     /// <summary>
