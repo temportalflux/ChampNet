@@ -254,7 +254,10 @@
     <Compile Include="Assets\Scripts\Network\events\EventConnected.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventGameState.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventNetwork.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventRequestMovement.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithID.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventWithLocation.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventWithPlayerID.cs" />
     <Compile Include="Assets\Scripts\Network\events\ISerializing.cs" />
     <Compile Include="Assets\Scripts\Network\NetInterface.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />

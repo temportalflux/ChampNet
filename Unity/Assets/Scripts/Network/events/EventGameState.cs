@@ -55,10 +55,6 @@ public class EventGameState : EventNetwork
     {
         base.Deserialize(data, ref lastIndex);
         GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
-        
-        // TODO: handle players which have been added
-        // TODO: handle players which are no longer in existance
-
     }
 
     /// <summary>

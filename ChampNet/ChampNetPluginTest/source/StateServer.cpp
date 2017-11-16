@@ -369,16 +369,25 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
 			}
 			break;
-			/*
-		case ChampNetPlugin::ID_USER_UPDATE_POSITION:
+		case ChampNetPlugin::ID_PLAYER_REQUEST_MOVEMENT:
 			// A user's position/rotation is being updated
 			{
 				unsigned int pPacketLength = 0;
 				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
-				// Forward the packet along to all clients except the sender
-				this->sendPacket(packet->getAddress().c_str(), pPacket, true);
+				unsigned int clientID = pPacket->clientID;
+				unsigned int playerID = pPacket->playerID;
+
+				// Integrate the position change into the gamestate
+				this->mpGameState->players[playerID].posX = pPacket->posX;
+				this->mpGameState->players[playerID].posY = pPacket->posY;
+				this->mpGameState->players[playerID].velY = pPacket->velY;
+				this->mpGameState->players[playerID].velX = pPacket->velX;
+
+				// ship gamestate back to all clients
+				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}
 			break;
+			/*
 		
 		case ChampNetPlugin::ID_BATTLE_REQUEST:
 			// User (playerIdSender) is requesting User (playerIdReceiver) to battle

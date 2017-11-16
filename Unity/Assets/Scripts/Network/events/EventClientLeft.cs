@@ -11,7 +11,7 @@ public class EventClientLeft : EventWithID
 
     public EventClientLeft(uint clientID) : this()
     {
-        this.id = clientID;
+        this.clientID = clientID;
     }
 
 }

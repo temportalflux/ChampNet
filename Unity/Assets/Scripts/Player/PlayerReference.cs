@@ -44,7 +44,7 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void updateFromInfo()
+    public void integrateInfo()
     {
         this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
@@ -55,25 +55,6 @@ public class PlayerReference : MonoBehaviour {
 
     }
 
-    /// <summary>
-    /// Creates the update event (the event for telling other clients where this object is).
-    /// </summary>
-    /// <returns></returns>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    /*
-    virtual public EventNetwork createUpdateEvent()
-    {
-        return new EventNetwork.EventUpdatePosition(
-            this.getID(),
-            this.transform.position.x,
-            this.transform.position.y,
-            0,0
-        );
-    }
-    //*/
-
     public GameState.Player getInfo()
     {
         return this.playerInfo;
@@ -82,6 +63,7 @@ public class PlayerReference : MonoBehaviour {
     virtual public void setInfo(GameState.Player info)
     {
         this.playerInfo = info;
+        this.integrateInfo();
     }
 
 }

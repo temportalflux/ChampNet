@@ -96,7 +96,7 @@ public:
 	void removeClient(unsigned int id);
 	bool addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID);
 
-	void sendGameState(unsigned char msgID, const char* sender, bool broadcast = true, int clientID = -1);
+	void sendGameState(unsigned char msgID, const char* sender = NULL, bool broadcast = true, int clientID = -1);
 
 };
 

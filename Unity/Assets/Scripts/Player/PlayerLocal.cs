@@ -15,12 +15,6 @@ public class PlayerLocal : PlayerReference
         _pic = GetComponent<PlayerInputController>();
     }
 
-    void Start()
-    {
-        //if (GameManager.INSTANCE != null)
-        //GameManager.INSTANCE.AddPlayerLocal(this);
-    }
-
     /// <summary>
     /// Challenges the random player to a networked battle
     /// </summary>
@@ -32,7 +26,6 @@ public class PlayerLocal : PlayerReference
         PlayerReference player = GameManager.INSTANCE.getRandomPlayer();
         if (player != null)
         {
-            //Debug.Log("Requesting battle from player " + player.getID());
             this.requestBattle(player);
         }
 
@@ -50,23 +43,20 @@ public class PlayerLocal : PlayerReference
         NetInterface.INSTANCE.Dispatch(new EventNetwork.EventBattleRequest(this.getID(), player.getID()));
     }
 
-    /*
-    public override EventNetwork createUpdateEvent()
-    {
-        return new EventNetwork.EventUpdatePosition(
-            this.getID(),
-            this.transform.position.x,
-            this.transform.position.y,
-            _pcc.deltaMove.x,
-            _pcc.deltaMove.y
-        );
-    }
-    //*/
-
     public override void setInfo(GameState.Player info)
     {
         base.setInfo(info);
         this.GetComponent<InputResponse>().inputId = (int)info.localID + 1;
+    }
+
+    public void requestMove()
+    {
+        GameState.Player info = this.getInfo();
+        NetInterface.INSTANCE.Dispatch(new EventRequestMovement(
+            info.clientID, info.playerID,
+            this.transform.position.x, this.transform.position.y,
+            _pcc.deltaMove.x, _pcc.deltaMove.y
+        ));
     }
 
 }

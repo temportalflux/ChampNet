@@ -214,6 +214,10 @@ public class GameState : ScriptableObject, ISerializing
             this.velocity = info.velocity;
             this.accelleration = info.accelleration;
             this.inBattle = info.inBattle;
+            if (this.objectReference != null)
+            {
+                this.objectReference.integrateInfo();
+            }
         }
 
     }

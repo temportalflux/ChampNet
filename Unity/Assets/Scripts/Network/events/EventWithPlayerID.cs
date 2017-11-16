@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventWithID : EventNetwork
+public class EventWithPlayerID : EventWithID
 {
 
     /// <summary>
     /// The player identifier
     /// </summary>
-    protected uint clientID;
+    protected uint playerID;
 
-    public EventWithID(byte id) : base(id)
+    public EventWithPlayerID(byte id) : base(id)
     { }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class EventWithID : EventNetwork
 
         // https://msdn.microsoft.com/en-us/library/system.bitconverter(v=vs.110).aspx
         // uint is 4 bytes (c++ uint is 4 bytes)
-        this.clientID = System.BitConverter.ToUInt32(data, lastIndex);
+        this.playerID = System.BitConverter.ToUInt32(data, lastIndex);
         lastIndex += sizeof(System.UInt32);
 
     }
@@ -59,7 +59,7 @@ public class EventWithID : EventNetwork
         base.Serialize(ref data, ref lastIndex);
 
         // Write the bytes of the playerID
-        WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
+        WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
 
     }
 
