@@ -5,35 +5,27 @@ using UnityEngine;
 public class PlayerReference : MonoBehaviour {
 
     public Transform sprite;
+    public SpriteRenderer overlay;
+
     private Animator _anim;
+    private Vector3 screenPos;
 
     void Awake()
     {
         _anim = GetComponentInChildren<Animator>();
     }
 
+    private GameState.Player playerInfo;
+
     /// <summary>
     /// The player identifier
     /// </summary>
-    private uint playerID;
-
-    /// <summary>
-    /// Score of the player
-    /// </summary>
-    private uint score;
-
-    /// <summary>
-    /// Current Rank of the player
-    /// </summary>
-    private uint rank;
-
-    /// <summary>
-    /// Sets the identifier.
-    /// </summary>
-    /// <param name="id">The identifier.</param>
-    public void setID(uint id)
+    private uint playerID
     {
-        this.playerID = id;
+        get
+        {
+            return this.playerInfo.playerID;
+        }
     }
 
     /// <summary>
@@ -46,53 +38,6 @@ public class PlayerReference : MonoBehaviour {
     }
 
     /// <summary>
-    /// Sets the identifier.
-    /// </summary>
-    /// <param name="newScore">The identifier.</param>
-     /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public void setScore(uint newScore)
-    {
-        this.score = newScore;
-    }
-
-    /// <summary>
-    /// Gets the identifier.
-    /// </summary>
-    /// <returns> the current number of wins for the player </returns>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public uint getScore()
-    {
-        return this.score;
-    }
-    /// <summary>
-    /// sets the new rank of the player for the scoreboard
-    /// </summary>
-    /// <param name="newRank"></param>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public void setRank(uint newRank)
-    {
-
-    }
-
-    /// <summary>
-    /// Gets the rank of the player 
-    /// </summary>
-    /// <returns> rank of player on scoreboard </returns>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public uint getRank()
-    {
-        return rank;
-    }
-
-    /// <summary>
     /// Update the object to have some transform properties
     /// </summary>
     /// <param name="posX">The position x.</param>
@@ -102,32 +47,40 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void updateAt(float posX, float posY, float velX, float velY)
+    public void integrateInfo()
     {
-        this.transform.position = new Vector3(posX, posY);
+        this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        _anim.SetFloat("velX", velX);
-        _anim.SetFloat("velY", velY);
-        _anim.SetBool("walking", Mathf.Abs(velX) > 0.001f && Mathf.Abs(velY) > 0.001f);
+        this.overlay.color = this.playerInfo.color;
 
+        if (this._anim != null) // can happen during instantiation of object (via setInfo)
+        {
+            _anim.SetFloat("velX", this.playerInfo.velocity.x);
+            _anim.SetFloat("velY", this.playerInfo.velocity.y);
+            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+        }
     }
 
-    /// <summary>
-    /// Creates the update event (the event for telling other clients where this object is).
-    /// </summary>
-    /// <returns></returns>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    virtual public EventNetwork createUpdateEvent()
+    public GameState.Player getInfo()
     {
-        return new EventNetwork.EventUpdatePosition(
-            this.getID(),
-            this.transform.position.x,
-            this.transform.position.y,
-            0,0
-        );
+        return this.playerInfo;
+    }
+
+    virtual public void setInfo(GameState.Player info)
+    {
+        this.playerInfo = info;
+        this.integrateInfo();
+    }
+
+    private void Update()
+    {
+        this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
+    }
+
+    private void OnGUI()
+    {
+        //GUI.Label(new Rect(screenPos.x, screenPos.y, 100, 50), this.playerInfo.name);
     }
 
 }

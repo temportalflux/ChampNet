@@ -8,12 +8,22 @@ using System;
 public class ConnectMenu : MonoBehaviour {
 
     [System.Serializable]
-    public class EventConnect : UnityEvent<string, int> { }
+    public class EventConnect : UnityEvent<string, int, PlayerDescriptor[]> { }
     public EventConnect onConnect;
 
-    private string txtAddress = "127.0.0.1", txtPort = "425";
-    private string errorPort = null, errorConnect = null;
-    private Color color;
+    public struct PlayerDescriptor
+    {
+        public string name;
+        public Color color;
+    }
+
+    private string txtAddress = "127.0.0.1", txtPort = "425", txtPlayerCount = "1";
+    private string errorPort = null, errorConnect = null, errorPlayerCount = null;
+    private Vector2 scrollPosition = Vector2.zero;
+
+    private int playerCount;
+    private PlayerDescriptor[] players = new PlayerDescriptor[0];
+
     private bool connecting = false, showGui = true;
     
     void OnGUI()
@@ -25,6 +35,8 @@ public class ConnectMenu : MonoBehaviour {
 
         GUILayout.BeginVertical(GUILayout.Width(width));
         {
+            this.scrollPosition = GUILayout.BeginScrollView(this.scrollPosition);
+
             GUILayout.Label("Address");
 
             this.txtAddress = GUILayout.TextField(this.txtAddress);
@@ -42,7 +54,7 @@ public class ConnectMenu : MonoBehaviour {
                 }
                 catch (FormatException e)
                 {
-                    this.errorPort = "Only numbers allowed";
+                    this.errorPort = "Only numbers allowed " + e.ToString();
                 }
                 catch (Exception e)
                 {
@@ -56,25 +68,99 @@ public class ConnectMenu : MonoBehaviour {
                 GUILayout.Label(this.errorPort);
             }
 
-            // Color picker
-            GUILayout.BeginVertical(GUILayout.Width(width));
+            // Player Listings
+            GUILayout.Label("# Players");
+            this.txtPlayerCount = GUILayout.TextField(this.txtPlayerCount);
+            if (this.txtPlayerCount != null)
             {
-                GUILayout.Label("Red " + (int)(this.color.r * 255));
-                this.color.r = GUILayout.HorizontalSlider(this.color.r * 255, 0, 255) / 255F;
-                GUILayout.Label("Green " + (int)(this.color.g * 255));
-                this.color.g = GUILayout.HorizontalSlider(this.color.g * 255, 0, 255) / 255F;
-                GUILayout.Label("Blue " + (int)(this.color.b * 255));
-                this.color.b = GUILayout.HorizontalSlider(this.color.b * 255, 0, 255) / 255F;
+                try
+                {
+                    int pc = 0;
+                    if (this.txtPlayerCount.Length > 0)
+                    {
+                        pc = int.Parse(this.txtPlayerCount);
+                    }
+
+                    if (pc <= 2)
+                    {
+                        if (pc != this.playerCount)
+                        {
+                            Array.Resize(ref this.players, pc);
+                        }
+                        if (this.txtPlayerCount.Length > 0)
+                            this.playerCount = pc;
+                        this.errorPlayerCount = null;
+                    }
+                    else
+                    {
+                        this.errorPlayerCount = "No more than 2 players";
+                    }
+
+                }
+                catch (FormatException e)
+                {
+                    this.errorPlayerCount = "Only numbers allowed " + e.ToString();
+                }
+                catch (Exception e)
+                {
+                    this.errorPlayerCount = "parse error";
+                    Debug.LogError(e);
+                }
             }
-            GUILayout.EndVertical();
+            if (this.errorPlayerCount != null)
+            {
+                GUILayout.Label(this.errorPlayerCount);
+            }
+            if (this.players.Length > 0)
+            {
+                for (int localID = 0; localID < this.players.Length; localID++)
+                {
+                    // Put down listings for the player
+                    GUILayout.Label("Player " + (localID + 1));
+
+                    if (this.players[localID].name == null)
+                        this.players[localID].name = "";
+                    if (this.players[localID].color == null)
+                        this.players[localID].color = Color.red;
+
+                    GUILayout.Label("Name");
+                    this.players[localID].name = GUILayout.TextField(this.players[localID].name, GameState.Player.SIZE_MAX_NAME);
+
+                    GUILayout.Label("Color");
+                    // Color picker
+                    GUILayout.BeginVertical(GUILayout.Width(width - 10));
+                    {
+                        GUILayout.Label("Red " + (int)(this.players[localID].color.r * 255));
+                        this.players[localID].color.r = GUILayout.HorizontalSlider(
+                            this.players[localID].color.r * 255, 0, 255) / 255F;
+                        GUILayout.Label("Green " + (int)(this.players[localID].color.g * 255));
+                        this.players[localID].color.g = GUILayout.HorizontalSlider(
+                            this.players[localID].color.g * 255, 0, 255) / 255F;
+                        GUILayout.Label("Blue " + (int)(this.players[localID].color.b * 255));
+                        this.players[localID].color.b = GUILayout.HorizontalSlider(
+                            this.players[localID].color.b * 255, 0, 255) / 255F;
+                    }
+                    GUILayout.EndVertical();
+
+                }
+            }
+
+            GUILayout.EndScrollView();
 
             if (!this.connecting)
             {
-                if (GUILayout.Button("Connect"))
+                if (this.playerCount <= 0)
                 {
-                    this.errorConnect = null;
-                    this.connecting = true;
-                    this.onConnect.Invoke(this.txtAddress, int.Parse(this.txtPort));
+                    GUILayout.Label("Must have at least 1 player");
+                }
+                else
+                {
+                    if (GUILayout.Button("Connect"))
+                    {
+                        this.errorConnect = null;
+                        this.connecting = true;
+                        this.onConnect.Invoke(this.txtAddress, int.Parse(this.txtPort), this.players);
+                    }
                 }
             }
 
