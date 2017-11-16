@@ -15,6 +15,13 @@ struct PacketUserID
 	unsigned int dataID;
 };
 
+struct PacketClientPlayerID
+{
+	unsigned char id;
+	unsigned int clientID;
+	unsigned int playerID;
+};
+
 struct PacketPlayerPosition
 {
 	unsigned char id;

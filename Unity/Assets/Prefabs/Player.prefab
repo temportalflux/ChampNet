@@ -73,8 +73,6 @@ GameObject:
   - component: {fileID: 4709341030004664}
   - component: {fileID: 20255340676414682}
   - component: {fileID: 124858957130102242}
-  - component: {fileID: 81751290522589214}
-  - component: {fileID: 114700413788764508}
   - component: {fileID: 114793226910797106}
   - component: {fileID: 114618219787613340}
   m_Layer: 0
@@ -229,13 +227,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!81 &81751290522589214
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1605449277460010}
-  m_Enabled: 1
 --- !u!95 &95752333722041198
 Animator:
   serializedVersion: 3
@@ -551,17 +542,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetViewportSizeInPixels: {x: 480, y: 320}
   pixelsPerUnit: 32
---- !u!114 &114700413788764508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1605449277460010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e38894c9f4343646b8c1f237528fb6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114793226910797106
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,10 +13,4 @@ public class EventClientJoined : EventNetwork
     {
     }
 
-    public override void Deserialize(byte[] data, ref int lastIndex)
-    {
-        base.Deserialize(data, ref lastIndex);
-        GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
-    }
-
 }

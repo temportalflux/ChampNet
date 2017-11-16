@@ -12,7 +12,8 @@ public class PlayerLocalSpawn : MonoBehaviour
         switch (c)
         {
             case 'i':
-                this.activate();
+                // this.activate();
+                GameManager.INSTANCE.state.SpawnLocalMultiplayer();
                 break;
             default:
                 break;

@@ -308,7 +308,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->mpState->mNetwork.peersConnected++;
 			}
 			break;
-		// Some client has disconnected
+			// Some client has disconnected
 		case ChampNetPlugin::ID_CLIENT_DISCONNECTION:
 			{
 				std::cout << "User disconnected\n";
@@ -318,7 +318,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				//this->removeClient(this->cl)
 			}
 			break;
-		// A client is joining
+			// A client is joining
 		case ChampNetPlugin::ID_CLIENT_JOINED:
 			{
 
@@ -347,10 +347,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				}
 
 				// Tell user their client/player ID
-				this->sendGameState(ChampNetPlugin::ID_CLIENT_JOINED, addressSender.c_str(), false, clientID);
+				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), false, clientID);
 				// Tell other players of new player
-				this->sendGameState(ChampNetPlugin::ID_CLIENT_JOINED, addressSender.c_str());
-								
+				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str());
+
 			}
 			break;
 		case ChampNetPlugin::ID_CLIENT_LEFT:
@@ -384,6 +384,31 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->mpGameState->players[playerID].velX = pPacket->velX;
 
 				// ship gamestate back to all clients
+				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
+			}
+			break;
+		case ChampNetPlugin::ID_CLIENT_REQUEST_PLAYER:
+			{
+				std::string addressSender = packet->getAddress();
+
+				// The client wants to spawn another player
+				unsigned int pPacketLength = 0;
+				PacketClientPlayerID* pPacket = packet->getPacketAs<PacketClientPlayerID>(pPacketLength);
+				unsigned int clientID = pPacket->clientID;
+				unsigned int localID = pPacket->playerID;
+
+				std::cout << "Client " << clientID <<
+					" has requested another player for localID " << localID << '\n';
+
+				// Get the next playerID
+				unsigned int playerID;
+				if (!this->addPlayer(clientID, localID, playerID))
+				{
+					std::cout << "Could not provide another player to client|local="
+						<< clientID << "|" << localID << '\n';
+					return;
+				}
+
 				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}
 			break;
@@ -530,9 +555,11 @@ void StateServer::removeClient(unsigned int id)
 		{
 			if (this->mpClientIdToPlayers[id][localID] >= 0)
 			{
-				std::cout << "Removing player " << this->mpClientIdToPlayers[id][localID]
+				unsigned int playerID = this->mpClientIdToPlayers[id][localID];
+				std::cout << "Removing player " << playerID
 					<< " at client|local=" << id << '|' << localID << '\n';
-				this->mpGameState->removePlayer(this->mpClientIdToPlayers[id][localID]);
+				this->mpGameState->removePlayer(playerID);
+				this->mpPlayerIdToClientId[playerID] = -1;
 			}
 		}
 

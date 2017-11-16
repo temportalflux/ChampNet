@@ -28,7 +28,7 @@ namespace ChampNetPlugin
         // Sender uses to place self, peers use to place a dummy unit
         ID_UPDATE_GAMESTATE,
         // 3) Sent to clients to mandate their ID
-        ID_USER_ID,
+        ID_CLIENT_REQUEST_PLAYER,
         // Send to all clients to notify them of a battle result
         ID_BATTLE_RESULT,
         // Sent to server and forwarded to clients notifying them a user has left the server

@@ -276,6 +276,14 @@ public class GameState : ScriptableObject, ISerializing
             GameObject.FindGameObjectWithTag("AllPlayers").transform
         );
         info.objectReference = playerObject.GetComponent<PlayerReference>();
+        if (info.isLocal && info.localID > 0)
+        {
+            Destroy(playerObject.GetComponent<PlayerReference>());
+            Destroy(playerObject.GetComponent<InputResponse>());
+            playerObject.AddComponent<PlayerLocalMultiplayer>();
+            info.objectReference = playerObject.GetComponent<PlayerReference>();
+            info.objectReference.sprite = playerObject.GetComponentInChildren<Animator>().transform;
+        }
         info.objectReference.setInfo(info);
 
     }
@@ -296,6 +304,11 @@ public class GameState : ScriptableObject, ISerializing
     public void AddPlayerConnected(Player info)
     {
         this.playersConnected.Add(info.playerID, info);
+    }
+
+    public void SpawnLocalMultiplayer()
+    {
+        NetInterface.INSTANCE.Dispatch(new EventRequestPlayer(this.clientID, (uint)this.playersLocal.Count));
     }
 
     // ~~~~~ ISerializing
@@ -412,11 +425,12 @@ public class GameState : ScriptableObject, ISerializing
         }
         this.playersToRemove.Clear();
         // Add all players that are set to be added
-        foreach (Player player in this.playersToAdd)
+        while (this.playersToAdd.Count > 0)
         {
+            Player player = this.playersToAdd[0];
+            this.playersToAdd.RemoveAt(0);
             this.AddPlayer(player);
         }
-        this.playersToAdd.Clear();
     }
 
 }

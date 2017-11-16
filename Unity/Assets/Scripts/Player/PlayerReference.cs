@@ -49,10 +49,12 @@ public class PlayerReference : MonoBehaviour {
         this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        _anim.SetFloat("velX", this.playerInfo.velocity.x);
-        _anim.SetFloat("velY", this.playerInfo.velocity.y);
-        _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
-
+        if (this._anim != null) // can happen during instantiation of object (via setInfo)
+        {
+            _anim.SetFloat("velX", this.playerInfo.velocity.x);
+            _anim.SetFloat("velY", this.playerInfo.velocity.y);
+            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+        }
     }
 
     public GameState.Player getInfo()
