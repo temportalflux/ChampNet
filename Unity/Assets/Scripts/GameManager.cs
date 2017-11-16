@@ -176,4 +176,22 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// update the player's win count
+    /// </summary>
+    /// <param name="winnerID"> ID of the winner of a battle </param>
+    public void updatePlayerWin(uint winnerID)
+    {
+        GameState.Player player;
+
+        if (this.state.connectedPlayers.TryGetValue(winnerID, out player))
+        {
+            if (player.objectReference != null)
+            {
+                player.objectReference.setScore(player.objectReference.getScore() + 1);
+            }
+        }
+    }
+
+
 }
