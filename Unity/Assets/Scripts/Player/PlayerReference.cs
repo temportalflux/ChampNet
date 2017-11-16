@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerReference : MonoBehaviour {
 
     public Transform sprite;
+    public SpriteRenderer overlay;
+
     private Animator _anim;
+    private Vector3 screenPos;
 
     void Awake()
     {
@@ -49,10 +52,14 @@ public class PlayerReference : MonoBehaviour {
         this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        _anim.SetFloat("velX", this.playerInfo.velocity.x);
-        _anim.SetFloat("velY", this.playerInfo.velocity.y);
-        _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+        this.overlay.color = this.playerInfo.color;
 
+        if (this._anim != null) // can happen during instantiation of object (via setInfo)
+        {
+            _anim.SetFloat("velX", this.playerInfo.velocity.x);
+            _anim.SetFloat("velY", this.playerInfo.velocity.y);
+            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+        }
     }
 
     public GameState.Player getInfo()
@@ -64,6 +71,16 @@ public class PlayerReference : MonoBehaviour {
     {
         this.playerInfo = info;
         this.integrateInfo();
+    }
+
+    private void Update()
+    {
+        this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
+    }
+
+    private void OnGUI()
+    {
+        //GUI.Label(new Rect(screenPos.x, screenPos.y, 100, 50), this.playerInfo.name);
     }
 
 }

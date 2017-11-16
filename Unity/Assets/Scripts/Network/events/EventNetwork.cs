@@ -150,7 +150,7 @@ public class EventNetwork : ISerializing
     public class EventUserID : EventWithID
     {
 
-        public EventUserID() : base((byte)ChampNetPlugin.MessageIDs.ID_USER_ID)
+        public EventUserID() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_REQUEST_PLAYER)
         {
         }
 

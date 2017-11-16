@@ -19,7 +19,7 @@ public:
 			// localID
 			+ sizeof(unsigned int)
 			// name
-			+ sizeof(int) + (SIZE_MAX_NAME + sizeof(char))
+			+ sizeof(int) + (SIZE_MAX_NAME * (sizeof(char) * 2))
 			// color
 			+ (sizeof(float) * 3)
 			// position
