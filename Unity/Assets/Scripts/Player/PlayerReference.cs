@@ -12,18 +12,17 @@ public class PlayerReference : MonoBehaviour {
         _anim = GetComponentInChildren<Animator>();
     }
 
+    private GameState.Player playerInfo;
+
     /// <summary>
     /// The player identifier
     /// </summary>
-    private uint playerID;
-
-    /// <summary>
-    /// Sets the identifier.
-    /// </summary>
-    /// <param name="id">The identifier.</param>
-    public void setID(uint id)
+    private uint playerID
     {
-        this.playerID = id;
+        get
+        {
+            return this.playerInfo.playerID;
+        }
     }
 
     /// <summary>
@@ -45,32 +44,26 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void updateAt(float posX, float posY, float velX, float velY)
+    public void integrateInfo()
     {
-        this.transform.position = new Vector3(posX, posY);
+        this.transform.position = this.playerInfo.position;
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        _anim.SetFloat("velX", velX);
-        _anim.SetFloat("velY", velY);
-        _anim.SetBool("walking", Mathf.Abs(velX) > 0.001f && Mathf.Abs(velY) > 0.001f);
+        _anim.SetFloat("velX", this.playerInfo.velocity.x);
+        _anim.SetFloat("velY", this.playerInfo.velocity.y);
+        _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
 
     }
 
-    /// <summary>
-    /// Creates the update event (the event for telling other clients where this object is).
-    /// </summary>
-    /// <returns></returns>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    virtual public EventNetwork createUpdateEvent()
+    public GameState.Player getInfo()
     {
-        return new EventNetwork.EventUpdatePosition(
-            this.getID(),
-            this.transform.position.x,
-            this.transform.position.y,
-            0,0
-        );
+        return this.playerInfo;
+    }
+
+    virtual public void setInfo(GameState.Player info)
+    {
+        this.playerInfo = info;
+        this.integrateInfo();
     }
 
 }

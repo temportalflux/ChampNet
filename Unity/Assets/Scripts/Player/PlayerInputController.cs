@@ -40,9 +40,10 @@ public class PlayerInputController : MonoBehaviour
                     _input.x = 0;
                 break;
             default:
+                _input = Vector3.zero;
                 break;
         }
-        
+
         _pcc.Move(_input.normalized);
         //latestAxis = -1;
 
@@ -51,6 +52,36 @@ public class PlayerInputController : MonoBehaviour
     Vector3 _input;
     int latestAxis = -1; // 0 = X, 1 = Y, -1 = none
     bool isDownX, isDownY;
+
+    public void onAxis(InputDevice device, InputResponse.UpdateEvent evt, MappedAxis axis, AxisDirection value)
+    {
+        switch (axis)
+        {
+            case MappedAxis.Horizontal:
+                this.onAxisHorizontal(device, evt, axis, value);
+                break;
+            case MappedAxis.Vertical:
+                this.onAxisVertical(device, evt, axis, value);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void onAxis(InputDevice device, InputResponse.UpdateEvent evt, MappedAxis axis, float value)
+    {
+        switch (axis)
+        {
+            case MappedAxis.Horizontal:
+                this.onAxisHorizontal(device, evt, axis, value);
+                break;
+            case MappedAxis.Vertical:
+                this.onAxisVertical(device, evt, axis, value);
+                break;
+            default:
+                break;
+        }
+    }
 
     public void onAxisHorizontal(InputDevice device, InputResponse.UpdateEvent evt, MappedAxis axis, AxisDirection value)
     {

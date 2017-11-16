@@ -43,6 +43,7 @@ struct StateNetwork
 
 	unsigned int maxClients;
 	unsigned int peersConnected;
+	const unsigned int maxPlayersPerClient = 4;
 
 };
 

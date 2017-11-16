@@ -42,7 +42,7 @@ public class ConnectMenu : MonoBehaviour {
                 }
                 catch (FormatException e)
                 {
-                    this.errorPort = "Only numbers allowed";
+                    this.errorPort = "Only numbers allowed " + e.ToString();
                 }
                 catch (Exception e)
                 {
