@@ -188,7 +188,7 @@ public class GameManager : Singleton<GameManager>
         {
             if (player.objectReference != null)
             {
-                player.objectReference.setScore(player.objectReference.getScore() + 1);
+                player.objectReference.score = player.objectReference.score + 1;
             }
         }
     }

@@ -30,6 +30,10 @@ public:
 			+ (sizeof(float) * 3)
 			// inBattle
 			+ sizeof(bool)
+			// Wins
+			+ sizeof(unsigned int)
+			// Rank
+			+ sizeof(unsigned int)
 			;
 
 		// the clientID of the controlling client
@@ -50,6 +54,10 @@ public:
 		float accX, accY, accZ;
 		// if the player is in battle
 		bool inBattle;
+		// Number of wins the player has
+		unsigned int wins;
+		// Rank of player on the scoreboard
+		unsigned int rank;
 	};
 
 	// The ID of the client this gamestate is in

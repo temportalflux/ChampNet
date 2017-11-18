@@ -44,6 +44,8 @@ public class GameState : ScriptableObject, ISerializing
             + (sizeof(float) * 3) // velocity
             + (sizeof(float) * 3) // acceleration
             + sizeof(bool) // inBattle
+            + sizeof(uint) // wins
+            + sizeof(uint) // rank
             ;
 
         public static int SIZE_MAX_NAME = 10;
@@ -90,6 +92,13 @@ public class GameState : ScriptableObject, ISerializing
         [Tooltip("If the player is in battle")]
         public bool inBattle;
 
+        // scoreboard data
+
+        [Tooltip("Total number of wins since entering the server")]
+        public uint wins;
+
+        [Tooltip("Scoreboard rank of the player")]
+        public uint rank;
 
         // Game Objects
         public PlayerReference objectReference;

@@ -13,12 +13,32 @@ public class PlayerReference : MonoBehaviour {
     /// <summary>
     /// Score of the player
     /// </summary>
-    private uint score;
+    public uint score
+    {
+        get
+        {
+            return this.playerInfo.wins;
+        }
+        set
+        {
+            this.playerInfo.wins = value;
+        }
+    }
 
     /// <summary>
     /// Current Rank of the player
     /// </summary>
-    private uint rank;
+    public uint rank
+    {
+        get
+        {
+            return this.playerInfo.rank;
+        }
+        set
+        {
+            this.playerInfo.rank = value;
+        }
+    }
 
     void Awake()
     {
@@ -36,6 +56,10 @@ public class PlayerReference : MonoBehaviour {
         {
             return this.playerInfo.playerID;
         }
+        set
+        {
+            this.playerInfo.playerID = value;
+        }
     }
 
     /// <summary>
@@ -47,53 +71,10 @@ public class PlayerReference : MonoBehaviour {
         return this.playerID;
     }
 
-    /// <summary>
-    /// Sets the identifier.
-    /// </summary>
-    /// <param name="newScore">The identifier.</param>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public void setScore(uint newScore)
+    public void setID(uint id)
     {
-        this.score = newScore;
+        this.playerID = id;
     }
-
-    /// <summary>
-    /// Gets the identifier.
-    /// </summary>
-    /// <returns> the current number of wins for the player </returns>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public uint getScore()
-    {
-        return this.score;
-    }
-    /// <summary>
-    /// sets the new rank of the player for the scoreboard
-    /// </summary>
-    /// <param name="newRank"></param>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public void setRank(uint newRank)
-    {
-
-    }
-
-    /// <summary>
-    /// Gets the rank of the player 
-    /// </summary>
-    /// <returns> rank of player on scoreboard </returns>
-    /// <remarks>
-    /// Author: Christopher Brennan
-    /// </remarks>
-    public uint getRank()
-    {
-        return rank;
-    }
-
 
     /// <summary>
     /// Update the object to have some transform properties
