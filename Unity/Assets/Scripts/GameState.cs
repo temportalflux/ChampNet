@@ -47,7 +47,7 @@ public class GameState : ScriptableObject, ISerializing
             ;
 
         public static int SIZE_MAX_NAME = 10;
-
+        
         public ID clientID;
 
         /// <summary>

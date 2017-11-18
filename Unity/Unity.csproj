@@ -234,6 +234,8 @@
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\PlayerLocalSpawn.cs" />
     <Compile Include="Assets\ScoreBoard.cs" />
+    <Compile Include="Assets\Scripts\Attribute\BitSerializeAttribute.cs" />
+    <Compile Include="Assets\Scripts\Attribute\BitTest.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
