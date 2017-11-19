@@ -230,6 +230,7 @@
   <ItemGroup>
     <Compile Include="Assets\CustomListAttribute.cs" />
     <Compile Include="Assets\CustomListDrawer.cs" />
+    <Compile Include="Assets\MainCamera.cs" />
     <Compile Include="Assets\MonsterDataObjectEditor.cs" />
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\PlayerLocalSpawn.cs" />
@@ -273,11 +274,13 @@
     <Compile Include="Assets\Scripts\Transitions\TransitionShader.cs" />
     <Compile Include="Assets\Scripts\UI\ConnectMenu.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
+    <Compile Include="Assets\UIMenuSelection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\Docs.txt" />
     <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\MITLicense.txt" />
     <None Include="Assets\Resources\pokemon\Shaders\ShaderDynamicOverlay.shader" />
+    <None Include="Assets\ShaderCameraSplice.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

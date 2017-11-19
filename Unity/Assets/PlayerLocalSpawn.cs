@@ -13,7 +13,8 @@ public class PlayerLocalSpawn : MonoBehaviour
         {
             case 'i':
                 // this.activate();
-                GameManager.INSTANCE.state.SpawnLocalMultiplayer();
+                GameManager.INSTANCE.state.SpawnPlayer();
+                this.gameObject.SetActive(false);
                 break;
             default:
                 break;
@@ -23,7 +24,6 @@ public class PlayerLocalSpawn : MonoBehaviour
     public void activate()
     {
         this.player.SetActive(true);
-        this.gameObject.SetActive(false);
     }
 
 }
