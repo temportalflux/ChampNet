@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class ScoreBoard : MonoBehaviour {
 
-    public GameObject GameManager_GameObject;
-    public GameManager GameManager_Script;
-
     public GameObject NameHeader;
     public GameObject WinHeader;
 
@@ -15,10 +12,9 @@ public class ScoreBoard : MonoBehaviour {
     public PlayerLocal LocalPlayerScript;
 
     public Camera theCamera;
-
+    
     //private Text name;
     private Text win;
-
     private uint currentText = 1;
 
     [System.Serializable]
@@ -57,8 +53,11 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     void Start ()
     {
+        // give GameManager the scoreboard
+        GameManager.INSTANCE.grabScoreBoard();
         foreach (RankText text in rankText)
         {
+
             // set rank for later use
             text.Rank = currentText;
 
@@ -134,9 +133,6 @@ public class ScoreBoard : MonoBehaviour {
             currentText += 1;
         }
         currentText = 1;
-
-        //GameManager_GameObject = GameObject.Find("GameManager");
-        //GameManager_Script = GameManager_GameObject.GetComponent<GameManager>();
     }
 
     /// <summary>
@@ -145,6 +141,7 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     private void Update()
     {
+        DisplayScoreBoard();
         foreach (RankText text in rankText)
         {
             // set game object location
@@ -190,21 +187,18 @@ public class ScoreBoard : MonoBehaviour {
     /// <remarks>
     /// Author: Christopher Brennan
     /// </remarks>
-    void DisplayScoreBoard()
+    public void DisplayScoreBoard()
     {
-        Debug.Log("yo it me, da score Board!");
+        //Debug.Log("update scoreboard");
 
         foreach (RankText scoreboard in rankText)
         {
-            PlayerReference recordInfo; // player info for board
-            recordInfo = findNextHighestScore(scoreboard);
+            findNextHighestScore(scoreboard);
 
-            // get and set all name info
-            scoreboard.name = recordInfo.getID();
+            // set name info
             scoreboard.NameObject.GetComponent<Text>().text = scoreboard.name.ToString();
 
-            // get and set all win info
-            scoreboard.score = recordInfo.getScore();
+            // set win info
             scoreboard.WinObject.GetComponent<Text>().text = scoreboard.score.ToString();
         }
     }
@@ -213,92 +207,63 @@ public class ScoreBoard : MonoBehaviour {
     /// recieve current score on board to check if a change is needed to be made
     /// </summary>
     /// <param name="scoreBoard"></param>
-    /// 
-    /// Modify so then the networked player and local player are all in one Dictionary and search that instead of having two searches
-    /// 
     /// <remarks>
     /// Author: Christopher Brennan
     /// </remarks>
-    PlayerReference findNextHighestScore(RankText scoreBoard)
+    private void findNextHighestScore(RankText scoreBoard)
     {
-        // created incase no new players are on scoreboard
-        PlayerReference temp = new PlayerReference();
-        //temp.setID(0);
-        temp.setScore(0);
-
-        //local player
-        if (LocalPlayerScript.getID() == scoreBoard.name)
+        // checks both local and connected players
+        foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
         {
-            temp = LocalPlayerScript; // if nothing changes then stay with current player information
-        }
-        if (LocalPlayerScript.getScore() > scoreBoard.score)
-        {
-            if (LocalPlayerScript.getRank() > scoreBoard.Rank || LocalPlayerScript.getRank() == 0)
+            //if (player.Value.objectReference.getID() == scoreBoard.name)
+            //{
+            //    temp = player.Value.objectReference; // if nothing changes then stay with current player information
+            //}
+            if (player.Value.objectReference.score > scoreBoard.score)
             {
-                // check if there was already a player there and check if true check if it was the same player
-                if (scoreBoard.name == 100 || scoreBoard.name == LocalPlayerScript.getID()) // == 100 is the set id for if no player exists
+                // check if you are lower in the rankings (higher number means lower in ranking) or check if you are even ranked
+                if (player.Value.objectReference.rank > scoreBoard.Rank || player.Value.objectReference.rank == 0)
                 {
-                    // set player on to the scoreboard
-                    // no one is currently holding that spot on the board. so take it
-                    LocalPlayerScript.setRank(scoreBoard.Rank);
-                    return LocalPlayerScript; // return player Reference
-                }
-                else
-                {
-                    // You just kicked someone off of above you
-                    // switch places with the individual that you kicked out
-                    foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
-                    {
-                        if (defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
-                        {
-                            defeatedPlayer.Value.objectReference.setRank(LocalPlayerScript.getRank()); // move player down
-                            LocalPlayerScript.setRank(scoreBoard.Rank); // move new player up
-                            return LocalPlayerScript; // return player Reference
-                        }
-                    }
-                }
-            }
-        }
-
-        // networked players
-        foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.connectedPlayers)
-        {
-            if(player.Value.objectReference.getID() == scoreBoard.name)
-            {
-                temp = player.Value.objectReference; // if nothing changes then stay with current player information
-            }
-            if(player.Value.objectReference.getScore() > scoreBoard.score)
-            {
-                if(player.Value.objectReference.getRank() > scoreBoard.Rank || player.Value.objectReference.getRank() == 0)
-                {
-                    // check if there was already a player there and check if true check if it was the same player
-                    if(scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists
+                    // check if there was already a player there and check if it is the current player
+                    if (scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists // can change later just current placeholder
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
-                        player.Value.objectReference.setRank(scoreBoard.Rank);
-                        return player.Value.objectReference; // return player Reference
+                        player.Value.objectReference.rank = scoreBoard.Rank;
+                        scoreBoard.score = player.Value.objectReference.score;
+                        scoreBoard.name = player.Value.objectReference.getID();
+                        // return player.Value.objectReference; // return player Reference
                     }
                     else
                     {
                         // You just kicked someone off of above you
                         // switch places with the individual that you kicked out
-                        foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.connectedPlayers) // search for individual to move down a rank
+                        foreach (KeyValuePair<uint, GameState.Player> defeatedPlayer in GameManager.INSTANCE.state.players) // search for individual to move down a rank
                         {
-                            if(defeatedPlayer.Value.objectReference.getRank() == scoreBoard.Rank) // check for match
+                            if (defeatedPlayer.Value.rank == scoreBoard.Rank) // check for match
                             {
-                                defeatedPlayer.Value.objectReference.setRank(player.Value.objectReference.getRank()); // move player down
-                                player.Value.objectReference.setRank(scoreBoard.Rank); // move new player up
-                                return player.Value.objectReference; // return player Reference
+                                defeatedPlayer.Value.objectReference.rank = player.Value.objectReference.rank; // move player down
+                                player.Value.objectReference.rank = scoreBoard.Rank; // move new player up
+                                scoreBoard.score = player.Value.objectReference.score;
+                                scoreBoard.name = player.Value.objectReference.getID();
+                                //return player.Value.objectReference; // return player Reference
                             }
                         }
                     }
                 }
             }
         }
-        // if no new info has changed then return the current player/ no player on the scoreboard
-        return temp;
-
+    }
+    public void removePlayerOnLeave(uint removeName) // currently using ID
+    {
+        foreach (RankText scoreboard in rankText)
+        {
+            if(scoreboard.name == removeName)
+            {
+                scoreboard.name = 100;
+                scoreboard.score = 0;
+            }
+        }
     }
 
 }

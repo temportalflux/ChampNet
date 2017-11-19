@@ -44,6 +44,8 @@ public class GameState : ScriptableObject, ISerializing
             + (sizeof(float) * 3) // velocity
             + (sizeof(float) * 3) // acceleration
             + sizeof(bool) // inBattle
+            + sizeof(uint) // wins
+            + sizeof(uint) // rank
             ;
 
         public static int SIZE_MAX_NAME = 10;
@@ -90,6 +92,13 @@ public class GameState : ScriptableObject, ISerializing
         [Tooltip("If the player is in battle")]
         public bool inBattle;
 
+        // scoreboard data
+
+        [Tooltip("Total number of wins since entering the server")]
+        public uint wins;
+
+        [Tooltip("Scoreboard rank of the player")]
+        public uint rank;
 
         // Game Objects
         public PlayerReference objectReference;
@@ -146,7 +155,10 @@ public class GameState : ScriptableObject, ISerializing
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.z));
             // write inBattle
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.inBattle));
-
+            // write wins
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.wins));
+            // write rank
+            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rank));
         }
 
         /// <summary>
@@ -193,7 +205,10 @@ public class GameState : ScriptableObject, ISerializing
             this.accelleration.z = this.DeserializeFloat(data, ref lastIndex);
             // read inBattle
             this.inBattle = System.BitConverter.ToBoolean(data, lastIndex); lastIndex += sizeof(System.Boolean);
-
+            // read wins
+            this.wins = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(uint);
+            // read rank
+            this.rank = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(uint);
         }
 
         private float DeserializeFloat(byte[] data, ref int lastIndex)
@@ -214,6 +229,8 @@ public class GameState : ScriptableObject, ISerializing
             this.velocity = info.velocity;
             this.accelleration = info.accelleration;
             this.inBattle = info.inBattle;
+            this.wins = info.wins;
+            this.rank = info.rank;
 
             this.integratePhysics(deltaTime);
 
@@ -395,6 +412,7 @@ public class GameState : ScriptableObject, ISerializing
     /// </remarks>
     public void Serialize(ref byte[] data, ref int lastIndex)
     {
+        /*
         // Serialize the clientID
         EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
 
@@ -414,6 +432,7 @@ public class GameState : ScriptableObject, ISerializing
             // Write player data to main data
             EventNetwork.WriteTo(ref data, ref lastIndex, dataPlayer);
         }
+        //*/
     }
 
     /// <summary>

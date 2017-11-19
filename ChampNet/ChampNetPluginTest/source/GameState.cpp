@@ -26,6 +26,8 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.velX = player.velY = player.velZ = 0;
 	player.accX = player.accY = player.accZ = 0;
 	player.inBattle = false;
+	player.wins = 0;
+	player.rank = 0;
 	this->players[playerID] = player;
 }
 
@@ -103,7 +105,10 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		*((float *)pos) = player.accZ; pos += sizeof(float);
 		// write inBattle
 		*((int *)pos) = player.inBattle; pos += sizeof(bool);
-		
+		// write Wins
+		*((unsigned int *)pos) = player.wins; pos += sizeof(unsigned int);
+		// write Rank
+		*((unsigned int *)pos) = player.rank; pos += sizeof(unsigned int);
 	}
 
 	// data is now filled with the gamestate data
