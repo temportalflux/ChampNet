@@ -139,7 +139,7 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     private void Update()
     {
-        //DisplayScoreBoard();
+        DisplayScoreBoard();
         foreach (RankText text in rankText)
         {
             // set game object location
