@@ -310,7 +310,7 @@ public class GameState : ScriptableObject, ISerializing
         info.cameraTexture = new RenderTexture(Screen.width, Screen.height, 16, RenderTextureFormat.ARGB32);
         info.cameraTexture.antiAliasing = 2;
         info.cameraTexture.Create();
-        playerObject.GetComponentInChildren<Camera>().targetTexture = info.cameraTexture;
+        playerObject.GetComponentInChildren<Camera>(true).targetTexture = info.cameraTexture;
         GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
 
         // Set the info for the player script
