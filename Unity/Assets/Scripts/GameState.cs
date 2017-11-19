@@ -358,6 +358,8 @@ public class GameState : ScriptableObject, ISerializing
         if (this.HasPlayer(ref info))
         {
             this.players.Remove(info.playerID);
+            if (info.objectReference != null)
+                Destroy(info.objectReference.gameObject);
         }
     }
 
