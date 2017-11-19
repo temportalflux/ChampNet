@@ -110,7 +110,7 @@ public class PlayerReference : MonoBehaviour {
         this.playerInfo = playerInfo;
 
         this.transform.position = this.playerInfo.position;
-        Debug.Log("Integrate " + this.playerInfo.position);
+        //Debug.Log("Integrate " + this.playerInfo.position);
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
         this.overlay.color = this.playerInfo.color;

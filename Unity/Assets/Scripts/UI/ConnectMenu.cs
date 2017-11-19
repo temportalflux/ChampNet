@@ -119,7 +119,7 @@ public class ConnectMenu : MonoBehaviour {
                     GUILayout.Label("Player " + (localID + 1));
 
                     if (this.players[localID].name == null)
-                        this.players[localID].name = "";
+                        this.players[localID].name = "Player-" + (localID + 1);
                     if (this.players[localID].color == null)
                         this.players[localID].color = Color.red;
 

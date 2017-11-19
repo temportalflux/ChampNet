@@ -56,7 +56,7 @@ public class PlayerLocal : PlayerReference
         Vector3 position, deltaMove;
         _pic.Move(out position, out deltaMove);
 
-        Debug.Log("Sending " + position);
+        //Debug.Log("Sending " + position);
         NetInterface.INSTANCE.Dispatch(new EventRequestMovement(
             info.clientID, info.playerID,
             position.x, position.y,
