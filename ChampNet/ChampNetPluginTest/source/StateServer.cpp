@@ -503,7 +503,7 @@ void StateServer::updateGame()
 	if (this->mpTimers->getElapsedTime("update") >= this->mMsPerUpdate)
 	{
 		this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE);
-		std::cout << "Update " << time(NULL) << '\n';
+		//std::cout << "Update " << time(NULL) << '\n';
 		this->mpTimers->stopTracking("update");
 		this->mpTimers->clearTracker("update");
 	}
