@@ -306,7 +306,7 @@ public class GameState : ScriptableObject, ISerializing
         }
 
         // Add render texture for player camera
-        Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         info.cameraTexture = new RenderTexture(Screen.width, Screen.height, 16, RenderTextureFormat.ARGB32);
         info.cameraTexture.antiAliasing = 2;
         info.cameraTexture.Create();

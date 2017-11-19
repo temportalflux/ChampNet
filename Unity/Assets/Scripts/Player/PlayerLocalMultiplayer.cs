@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLocalMultiplayer : PlayerLocal
 {
 
-    protected void Update()
+    protected override void Update()
     {
         base.Update();
         this.updateAxis(null, KeyCode.O, MappedAxis.Vertical, AxisDirection.Positive);

@@ -14,9 +14,9 @@ public class ScoreBoard : MonoBehaviour {
     // will remove this when the Dictionary of all units is created
     public PlayerLocal LocalPlayerScript;
 
-    public Camera camera;
+    public Camera theCamera;
 
-    private Text name;
+    //private Text name;
     private Text win;
 
     private uint currentText = 1;
@@ -148,38 +148,38 @@ public class ScoreBoard : MonoBehaviour {
         foreach (RankText text in rankText)
         {
             // set game object location
-            text.NameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            text.NameObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
                 (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
                 ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
             // set the z position
-            text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, camera.nearClipPlane);
+            text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, theCamera.nearClipPlane);
 
             // repeate above with modifications for wins
 
-            text.WinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            text.WinObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
                 (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
                 ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
-            text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, camera.nearClipPlane);
+            text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, theCamera.nearClipPlane);
 
             // set Header
 
             // set game object location
-            NameHeader.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            NameHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
                 (NameHeader.GetComponent<RectTransform>().rect.width / 2) + 5,
                 ((Screen.height - (NameHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
 
             // set the z position
-            NameHeader.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y, camera.nearClipPlane);
+            NameHeader.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y, theCamera.nearClipPlane);
 
             // repeate above with modifications for wins
 
-            WinHeader.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
+            WinHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
                 (WinHeader.GetComponent<RectTransform>().rect.width / 3) + WinHeader.GetComponent<RectTransform>().rect.width,
                 ((Screen.height - (WinHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
 
-            WinHeader.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y, camera.nearClipPlane);
+            WinHeader.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y, theCamera.nearClipPlane);
         }
     }
 

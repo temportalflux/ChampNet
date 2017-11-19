@@ -9,7 +9,7 @@ public class PlayerReference : MonoBehaviour {
     public Transform moveTarget;
 
     private Animator _anim;
-    private Vector3 screenPos;
+    //private Vector3 screenPos;
 
     /// <summary>
     /// Score of the player
@@ -144,7 +144,7 @@ public class PlayerReference : MonoBehaviour {
 
     protected virtual void Update()
     {
-        this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        //this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
         
 
     }

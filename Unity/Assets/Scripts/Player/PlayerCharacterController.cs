@@ -8,7 +8,7 @@ public class PlayerCharacterController : MonoBehaviour
 {
     [Header("Transform Dependencies")]
     public Transform spriteTransform;
-    private Animator _anim;
+    //private Animator _anim;
 
     [Header("Player Character Controller values")]
     public float speed;
@@ -23,7 +23,7 @@ public class PlayerCharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _anim = GetComponentInChildren<Animator>();
+        //_anim = GetComponentInChildren<Animator>();
         _skinWidth = 0.2f;
         _size = 1.0f - _skinWidth;
         _halfSize = _size / 2;

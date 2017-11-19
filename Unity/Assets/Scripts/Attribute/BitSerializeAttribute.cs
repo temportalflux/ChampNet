@@ -272,7 +272,7 @@ public class BitSerializeAttribute : Attribute
             FieldInfo info = attributeObjects[fieldIndex].Key;
             int size = attributeObjects[fieldIndex].Value;
             // Get the current value of the field
-            object fieldValue = info.GetValue(mono);
+            //object fieldValue = info.GetValue(mono);
             Type type = info.FieldType;
             // Deserialize the info
             object value;

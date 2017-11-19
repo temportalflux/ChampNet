@@ -120,8 +120,8 @@ public class ConnectMenu : MonoBehaviour {
 
                     if (this.players[localID].name == null)
                         this.players[localID].name = "Player-" + (localID + 1);
-                    if (this.players[localID].color == null)
-                        this.players[localID].color = Color.red;
+                    //if (this.players[localID].color == null)
+                    //    this.players[localID].color = Color.red;
 
                     GUILayout.Label("Name");
                     this.players[localID].name = GUILayout.TextField(this.players[localID].name, GameState.Player.SIZE_MAX_NAME);
