@@ -325,13 +325,16 @@ public class GameState : ScriptableObject, ISerializing
                     info.objectReference.overlay = r;
         }
 
-        // Add render texture for player camera
-        //Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        info.cameraTexture = new RenderTexture(Screen.width, Screen.height, 16, RenderTextureFormat.ARGB32);
-        info.cameraTexture.antiAliasing = 2;
-        info.cameraTexture.Create();
-        playerObject.GetComponentInChildren<Camera>(true).targetTexture = info.cameraTexture;
-        GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
+        if (info.isLocal)
+        {
+            // Add render texture for player camera
+            //Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            info.cameraTexture = new RenderTexture(Screen.width, Screen.height, 16, RenderTextureFormat.ARGB32);
+            info.cameraTexture.antiAliasing = 2;
+            info.cameraTexture.Create();
+            playerObject.GetComponentInChildren<Camera>(true).targetTexture = info.cameraTexture;
+            GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
+        }
 
         // Set the info for the player script
         info.objectReference.setInfo(info);
