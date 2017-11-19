@@ -66,4 +66,18 @@ public class PlayerLocal : PlayerReference
         ));
     }
 
+    protected override void Update()
+    {
+        if (GameManager.INSTANCE.mainCamera != null)
+        {
+            Camera camera = this.GetComponentInChildren<Camera>(true);
+            float camZ = camera.transform.position.z;
+            Vector3 playerPos = this.transform.position;
+            bool doUseCamera;
+            Vector3 pos = GameManager.INSTANCE.mainCamera.SetPosition((int)this.playerInfo.localID, playerPos, out doUseCamera);
+            camera.gameObject.SetActive(doUseCamera);
+            camera.transform.position = (doUseCamera ? pos.normalized * 2 + playerPos : this.transform.position) + Vector3.forward * camZ;
+        }
+    }
+
 }
