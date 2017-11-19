@@ -68,6 +68,7 @@ public class PlayerLocal : PlayerReference
 
     protected override void Update()
     {
+        base.Update();
         if (GameManager.INSTANCE.mainCamera != null)
         {
             Camera camera = this.GetComponentInChildren<Camera>(true);

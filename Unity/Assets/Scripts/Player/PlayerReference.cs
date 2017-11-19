@@ -138,7 +138,7 @@ public class PlayerReference : MonoBehaviour {
         this.integrateInfo(info);
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
         
