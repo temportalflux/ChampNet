@@ -42,6 +42,10 @@ public class PlayerLocalMultiplayer : PlayerLocal
             //Debug.Log(evt);
             this._pic.onAxis(device, evt, axis, dir);
             this._pic.onAxis(device, evt, axis, (float)dir);
+            if (!GameManager.INSTANCE.state.isLocalGame)
+            {
+                this.requestMove();
+            }
         }
     }
 
