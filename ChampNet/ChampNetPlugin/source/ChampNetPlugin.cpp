@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include <RakNet\RakPeerInterface.h>
+#include <RakNet\GetTime.h>
 
 namespace ChampNetPlugin {
 
@@ -172,7 +173,54 @@ namespace ChampNetPlugin {
 		s << address << '|' << port;
 		PacketPriority priority = HIGH_PRIORITY;
 		PacketReliability reliability = RELIABLE;
-		SendData(s.str().c_str(), byteArray, byteArraySize, &priority, &reliability, 0, false);
+
+		const RakNet::Time packetTime_local = RakNet::GetTime(); // Added By Jake
+		const int sizeOfTimeStamp = sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time); // Added By Jake
+		const int totalSize = byteArraySize + sizeOfTimeStamp + sizeOfTimeStamp; // Added By Jake
+
+		char* msg = new char[totalSize]; // Added By Jake
+		char *msgPtrTmp = msg + WriteTimeStamp(msg, packetTime_local, packetTime_local); // Added By Jake
+		char *msgPtr = msgPtrTmp + WriteTimeStamp(msgPtrTmp, 0, 0); // Added By Jake
+		
+		*msgPtrTmp = (char)byteArray[0]; // Added By Jake
+
+		memcpy(msgPtr, byteArray, byteArraySize); // Added By Jake
+
+		SendData(s.str().c_str(), msg, totalSize, &priority, &reliability, 0, false);
+	}
+
+
+	// Write the time stamp to a buffer
+	int WriteTimeStamp(char *buffer, const RakNet::Time &t, const RakNet::Time &t0)
+	{
+		const unsigned int ret = (sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time));
+		if (buffer)
+		{
+			*(buffer++) = (char)(ID_TIMESTAMP);
+			RakNet::Time *tPtr = (RakNet::Time *)buffer;
+			*(tPtr++) = t;
+			*(tPtr++) = t0;
+			return ret;
+		}
+		return 0;
+	}
+
+	// read the time stamp from a buffer
+	int ReadTimeStamp(const char *buffer, RakNet::Time &t, RakNet::Time &t0)
+	{
+		const unsigned int ret = (sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time));
+		char tag;
+		if (buffer)
+		{
+			tag = *(buffer++);
+			const RakNet::Time *tPtr = (RakNet::Time *)buffer;
+			t = *(tPtr++);
+			t0 = *(tPtr++);
+			if (*(buffer + 4) < 0)
+				t += 4311744512;	// RakNet seems to be subtracting this number for some stupid reason... and only half the time... what is it doing
+			return ret;
+		}
+		return 0;
 	}
 
 	void SendData(const char* address, char* byteArray, int byteArraySize, PacketPriority *priority, PacketReliability *reliability, int channel, bool broadcast)

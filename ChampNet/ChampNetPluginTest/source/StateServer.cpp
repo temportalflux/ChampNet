@@ -12,6 +12,7 @@
 
 #include <stdlib.h> // rand
 #include <sstream>
+#include <RakNet/GetTime.h>
 
 StateServer::StateServer() : StateApplication()
 {
@@ -299,6 +300,23 @@ void StateServer::updateNetwork()
  */
 void StateServer::handlePacket(ChampNet::Packet *packet)
 {
+
+	unsigned char *data; // Added By Jake
+	unsigned int length; // Added By Jake
+
+	packet->getData(data, length); // Added By Jake
+
+	// Time in local clock that the message was read // Added By Jake
+	RakNet::Time readTime_local = RakNet::GetTime(); // Added By Jake
+	// sentTime_local - The local time that the packet was sent at
+	// sentTime_remote - The remote time the packet was sent at
+
+	RakNet::Time sentTime_local, sentTime_remote, sendToReadDiff_local; // Added By Jake
+
+	ChampNetPlugin::ReadTimeStamp((char*)data, sentTime_local, sentTime_remote); // Added By Jake
+	
+	sendToReadDiff_local = (readTime_local - sentTime_local); // Added By Jake
+
 	// Check which packet type it is
 	switch (packet->getID())
 	{
@@ -385,8 +403,18 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 		case ChampNetPlugin::ID_PLAYER_REQUEST_MOVEMENT:
 			// A user's position/rotation is being updated
 			{
+				// Read the Time Dif From the Client // Added By Jake
+				RakNet::Time sentToRead_remote, sendToRead_other; // Added By Jake
+				data += ChampNetPlugin::ReadTimeStamp((char*)data, sentToRead_remote, sendToRead_other); // Added By Jake
+
+				// forward a new packet to all clients // Added By Jake
+				RakNet::Time packetTime_local = readTime_local; // Added By Jake
+				
+				// **** Write time data some how???
+
 				unsigned int pPacketLength = 0;
 				PacketPlayerPosition* pPacket = packet->getPacketAs<PacketPlayerPosition>(pPacketLength);
+
 				unsigned int clientID = pPacket->clientID;
 				unsigned int playerID = pPacket->playerID;
 

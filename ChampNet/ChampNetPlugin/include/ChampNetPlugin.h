@@ -6,6 +6,7 @@
 
 // Include raknet message identifiers
 #include <RakNet\MessageIdentifiers.h>
+#include <RakNet/RakNetTime.h>
 
 // tell compiler to link as if all function are C not C++
 #ifdef __cplusplus
@@ -100,6 +101,10 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize);
 
 		CHAMPNET_PLUGIN_SYMTAG void SendData(const char* address, char* byteArray, int byteArraySize, PacketPriority *priority, PacketReliability *reliability, int channel, bool broadcast);
+
+		CHAMPNET_PLUGIN_SYMTAG int WriteTimeStamp(char *buffer, const RakNet::Time &t, const RakNet::Time &t0); // Added By Jake
+
+		CHAMPNET_PLUGIN_SYMTAG int ReadTimeStamp(const char *buffer, RakNet::Time &t, RakNet::Time &t0); // Added By Jake
 
 		// Disconnect from the interface
 		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
