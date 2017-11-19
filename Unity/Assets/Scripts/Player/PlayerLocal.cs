@@ -54,7 +54,7 @@ public class PlayerLocal : PlayerReference
         GameState.Player info = this.getInfo();
 
         Vector3 position, deltaMove;
-        _pic.Move(out position, out deltaMove);
+        _pic.Move(this.moveTarget.position, out position, out deltaMove);
 
         Vector3 velocity = _pic._input.normalized * _pcc.speed;
 

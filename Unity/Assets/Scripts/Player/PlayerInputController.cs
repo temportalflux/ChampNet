@@ -30,13 +30,13 @@ public class PlayerInputController : MonoBehaviour
         //      input.Normalize();
 
         Vector3 position, deltaMove;
-        this.Move(out position, out deltaMove);
+        this.Move(this.transform.position, out position, out deltaMove);
         //this.transform.position = position;
         //latestAxis = -1;
 
     }
 
-    public void Move(out Vector3 position, out Vector3 deltaMove)
+    public void Move(Vector3 start, out Vector3 position, out Vector3 deltaMove)
     {
         switch (latestAxis)
         {
@@ -53,7 +53,7 @@ public class PlayerInputController : MonoBehaviour
                 break;
         }
 
-        _pcc.Move(_input.normalized, out deltaMove, out position);
+        _pcc.Move(start, _input.normalized, out deltaMove, out position);
     }
 
     public Vector3 _input;

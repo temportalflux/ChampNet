@@ -29,7 +29,7 @@ public class PlayerCharacterController : MonoBehaviour
         _halfSize = _size / 2;
     }
 
-    public void Move(Vector3 input, out Vector3 deltaMove, out Vector3 position)
+    public void Move(Vector3 start, Vector3 input, out Vector3 deltaMove, out Vector3 position)
     {
         float step = speed * Time.deltaTime;
         if (input.sqrMagnitude > 0)
@@ -40,7 +40,7 @@ public class PlayerCharacterController : MonoBehaviour
             for (int i = 0; i < numOfRays; i++)
             {
                 Vector3 inputRotate = new Vector3(-input.y, input.x);
-                Vector3 point = spriteTransform.position +
+                Vector3 point = start +
                                 input.normalized * (_halfSize + _skinWidth / 2) -
                                 inputRotate * _halfSize +
                                 inputRotate * i * raySeperation;
@@ -70,7 +70,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         deltaMove = input * step;
-        position = this.transform.position + deltaMove;
+        position = start + deltaMove;
 
         //_anim.SetFloat("velX", deltaMove.x);
         //_anim.SetFloat("velY", deltaMove.y);
