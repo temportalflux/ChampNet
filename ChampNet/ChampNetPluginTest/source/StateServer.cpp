@@ -9,15 +9,19 @@
 #include <RakNet\PacketPriority.h>
 #include "Packets.h"
 #include "GameState.h"
+#include "PerformanceTracker.h"
 
 #include <stdlib.h> // rand
 #include <sstream>
+#include <time.h>
 
 StateServer::StateServer() : StateApplication()
 {
 	ChampNetPlugin::Create();
 
 	this->mpGameState = new GameState(-1);
+	this->mpTimers = new PerformanceTracker();
+	this->mMsPerUpdate = 1 / (10 * 0.001); // (10 updates / second) * (seconds / ms) = (updates / ms) => (u/ms)^(-1) = (ms/u)
 }
 
 StateServer::~StateServer()
@@ -56,6 +60,12 @@ StateServer::~StateServer()
 	{
 		delete mpGameState;
 		mpGameState = NULL;
+	}
+
+	if (this->mpTimers != NULL)
+	{
+		delete mpTimers;
+		this->mpTimers = NULL;
 	}
 
 	this->disconnect();
@@ -246,6 +256,8 @@ void StateServer::start()
 		this->mpClientIdToPlayers[i] = NULL;
 
 	ChampNetPlugin::StartServer(this->mpState->mNetwork.port, this->mpState->mNetwork.maxClients);
+
+	this->mpTimers->startTracking("update");
 }
 
 /** Author: Dustin Yost
@@ -361,7 +373,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// Tell user their client/player ID
 				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), false, clientID);
 				// Tell other players of new player
-				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str());
+				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str());
 
 				delete[] pPlayerRequests;
 			}
@@ -397,7 +409,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->mpGameState->players[playerID].velX = pPacket->velX;
 
 				// ship gamestate back to all clients
-				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
+				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}
 			break;
 		case ChampNetPlugin::ID_CLIENT_REQUEST_PLAYER:
@@ -422,8 +434,12 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					return;
 				}
 
-				this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
+				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}
+			break;
+		case ChampNetPlugin::ID_CLIENT_MISSING:
+			std::cout << "Connection lost\n";
+			this->stopRunning();
 			break;
 			/*
 		
@@ -477,6 +493,21 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;
 	}
+}
+
+void StateServer::updateGame()
+{
+	StateApplication::updateGame();
+
+	// get update time in MS
+	if (this->mpTimers->getElapsedTime("update") >= this->mMsPerUpdate)
+	{
+		this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE);
+		std::cout << "Update " << time(NULL) << '\n';
+		this->mpTimers->stopTracking("update");
+		this->mpTimers->clearTracker("update");
+	}
+
 }
 
 void StateServer::render()

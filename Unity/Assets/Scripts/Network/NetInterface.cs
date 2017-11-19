@@ -110,10 +110,12 @@ public class NetInterface : Singleton<NetInterface>
 
         string address;
         byte[] data;
+        ulong transmitTime;
         // Poll all packet data
-        while (Netty.PollPacket(out address, out data))
+        while (Netty.PollPacket(out address, out data, out transmitTime))
         {
             int id = (int)data[0];
+            Debug.Log("Packet transmit at time " + transmitTime);
             // Handle all packets from the plugin interface
             this.HandlePacket(id, address, data);
         }

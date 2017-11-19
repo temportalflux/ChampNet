@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include <RakNet\RakPeerInterface.h>
+#include <RakNet\GetTime.h>
 
 namespace ChampNetPlugin {
 
@@ -27,6 +28,7 @@ namespace ChampNetPlugin {
 	void RegisterDebugCallback(FuncCallBack cb)
 	{
 		gDebugFunc = cb;
+		gpNetwork->logger = gDebugFunc;
 		send_log("Initialized debug callback", Color::Black);
 	}
 
@@ -65,7 +67,7 @@ namespace ChampNetPlugin {
 	{
 		if (gpNetwork != 0)
 		{
-			send_log("Starting the client", Color::Green);
+			//send_log("Starting the client", Color::Green);
 			gpNetwork->initClient();
 			return 0;
 		}
@@ -80,7 +82,7 @@ namespace ChampNetPlugin {
 		{
 			std::stringstream s("Connectint to ");
 			s << address << '|' << port;
-			send_log(s.str().c_str(), Color::Green);
+			//send_log(s.str().c_str(), Color::Green);
 
 			gpNetwork->connectToServer(address, port);
 			return 0;
@@ -109,8 +111,8 @@ namespace ChampNetPlugin {
 		if (validPacket)
 		{
 			std::stringstream s;
-			s << "Found valid packet at location " << (void const*)packet;
-			send_log(s.str().c_str(), Color::Green);
+			//s << "Found valid packet at location " << (void const*)packet;
+			//send_log(s.str().c_str(), Color::Green);
 		}
 
 		// Send the packet ptr for usage by FreePacket
@@ -148,12 +150,13 @@ namespace ChampNetPlugin {
 	}
 
 	// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
-	unsigned char* GetPacketData(void* packetPtr, unsigned int &length)
+	unsigned char* GetPacketData(void* packetPtr, unsigned int &length, unsigned long &transmitTime)
 	{
 		// copies the REFERENCE (not the actual bytes)
 		// this means data MUST be copied by the caller
 		unsigned char* data;
 		((ChampNet::Packet*)packetPtr)->getData(data, length);
+		transmitTime = ((ChampNet::Packet*)packetPtr)->timestampInfo.timesLoaded ? (unsigned long)((ChampNet::Packet*)packetPtr)->timestampInfo.totalTransferTime_local : 0;
 		return data;
 	}
 
@@ -179,7 +182,9 @@ namespace ChampNetPlugin {
 	{
 		RakNet::SystemAddress system_address;
 		system_address.FromString(address);
-		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, priority, reliability, channel, broadcast);
+		//std::string s = std::string("Writing data with timestamp for data size ") + std::to_string(byteArraySize);
+		//send_log(s.c_str(), Color::White);
+		gpNetwork->sendTo(byteArray, byteArraySize, &system_address, priority, reliability, channel, broadcast, true);
 	}
 
 	void Disconnect()
@@ -192,5 +197,18 @@ namespace ChampNetPlugin {
 	{
 		return gpNetwork->getIP().c_str();
 	}
+
+	// Write the time stamp to a buffer
+	int WriteTimeStamp(char *buffer, const RakNet::Time &time1, const RakNet::Time &time2)
+	{
+		return gpNetwork->writeTimestamps(buffer, time1, time2);
+	}
+
+	// read the time stamp from a buffer
+	int ReadTimeStamp(const char *buffer, RakNet::Time &time1, RakNet::Time &time2)
+	{
+		return gpNetwork->readTimestamps(buffer, time1, time2);
+	}
+
 
 }

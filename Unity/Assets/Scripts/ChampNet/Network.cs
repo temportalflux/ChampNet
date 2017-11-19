@@ -107,7 +107,7 @@ namespace ChampNetPlugin
 
         // Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
-        public static extern IntPtr GetPacketData(IntPtr packetRef, ref uint length);
+        public static extern IntPtr GetPacketData(IntPtr packetRef, ref uint length, ref ulong transmitTime);
 
         // Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
@@ -122,12 +122,13 @@ namespace ChampNetPlugin
         // Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket
         // Copies out the data from a valid packet, and frees the packet from memory.
         // Returns true if a valid packet was found, else false.
-        public static bool PollPacket(out string address, out byte[] data)
+        public static bool PollPacket(out string address, out byte[] data, out ulong transmitTime)
         {
 
             // Ensure the out params have some value (invalid at start)
             address = null;
             data = null;
+            transmitTime = 0;
 
             // Determine if there are valid packets in the buffer.
             bool foundPacket = false;
@@ -153,7 +154,7 @@ namespace ChampNetPlugin
 
                 // Get the data
                 uint dataLength = 0;
-                IntPtr ptrData = GetPacketData(packetRef, ref dataLength);
+                IntPtr ptrData = GetPacketData(packetRef, ref dataLength, ref transmitTime);
 
                 data = new byte[dataLength];
                 Marshal.Copy(ptrData, data, 0, (int)dataLength);

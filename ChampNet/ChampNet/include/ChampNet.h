@@ -2,6 +2,7 @@
 #define _CHAMPNET_MAIN_H
 
 #include <string>
+#include <RakNet\RakNetTime.h>
 
 namespace RakNet
 {
@@ -16,6 +17,10 @@ namespace ChampNet
 
 	class PacketQueue;
 	class Packet;
+	struct TimeStamp;
+
+	// Get the total size of a timestamp addition
+	const int SIZE_OF_TIMESTAMPS = sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time); // Added By Jake
 
 	class Network
 	{
@@ -27,9 +32,14 @@ namespace ChampNet
 		PacketQueue* mpPackets;
 
 	public:
+		typedef void(*MsgCallBack)(const char* message, int color, int size);
+
 		// Data types for Packets
 		typedef char* Data;
 		typedef unsigned int DataSize;
+
+		MsgCallBack logger = NULL;
+		void sendLog(const char *msg, int color);
 
 		Network();
 		~Network();
@@ -61,7 +71,7 @@ namespace ChampNet
 		void sendTo(Data data, DataSize size,
 			RakNet::SystemAddress *address,
 			PacketPriority *priority, PacketReliability *reliability,
-			char channel, bool broadcast
+			char channel, bool broadcast, bool timestamp, const TimeStamp *timestampInfo = NULL
 		);
 
 		// Handle sending struct packets to RakNet address
@@ -70,14 +80,14 @@ namespace ChampNet
 		void sendTo(T packet,
 			RakNet::SystemAddress *address,
 			PacketPriority *priority, PacketReliability *reliability,
-			char channel, bool broadcast
+			char channel, bool broadcast, bool timestamp
 		)
 		{
 			// Package up the packet
 			Data data = (Data)(&packet);
 			DataSize size = sizeof(packet);
 			// Send via RakNet
-			this->sendTo(data, size, address, priority, reliability, channel, broadcast);
+			this->sendTo(data, size, address, priority, reliability, channel, broadcast, timestamp);
 		}
 
 		// Handle sending struct packets to RakNet address
@@ -85,7 +95,7 @@ namespace ChampNet
 		template <typename T>
 		void sendTo(T packet, RakNet::SystemAddress *address)
 		{
-			this->sendTo(packet, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false);
+			this->sendTo(packet, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, false, true);
 		}
 
 		// Cache all incoming packets (should be run regularly)
@@ -94,6 +104,11 @@ namespace ChampNet
 		// Poll the next cached packet
 		// Returns true if a packet was found;
 		bool pollPackets(Packet *&nextPacket);
+
+		// Write the time stamp to a buffer
+		int writeTimestamps(char *buffer, const RakNet::Time &time1, const RakNet::Time &time2);
+		// read the time stamp from a buffer
+		int readTimestamps(const char *buffer, RakNet::Time &time1, RakNet::Time &time2);
 
 	};
 

@@ -19,6 +19,7 @@ public:
 	StateApplication();
 	virtual ~StateApplication();
 
+	inline const void stopRunning() { mIsRunning = false; }
 	inline const bool isRunning() const { return mIsRunning; }
 
 	StateData* getData() const;

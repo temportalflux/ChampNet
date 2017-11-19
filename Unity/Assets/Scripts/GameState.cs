@@ -487,7 +487,10 @@ public class GameState : ScriptableObject, ISerializing
         {
             Player player = this.playersToAdd[0];
             this.playersToAdd.RemoveAt(0);
-            this.AddPlayer(player);
+            if (!this.players.ContainsKey(player.playerID))
+            {
+                this.AddPlayer(player);
+            }
         }
     }
 

@@ -6,6 +6,7 @@
 
 // Include raknet message identifiers
 #include <RakNet\MessageIdentifiers.h>
+#include <RakNet\RakNetTime.h>
 
 // tell compiler to link as if all function are C not C++
 #ifdef __cplusplus
@@ -92,7 +93,7 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG const char* GetPacketAddress(void* packetPtr, unsigned int &length);
 
 		// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
-		CHAMPNET_PLUGIN_SYMTAG unsigned char* GetPacketData(void* packetPtr, unsigned int &length);
+		CHAMPNET_PLUGIN_SYMTAG unsigned char* GetPacketData(void* packetPtr, unsigned int &length, unsigned long &transmitTime);
 
 		// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
 		CHAMPNET_PLUGIN_SYMTAG void FreePacket(void* packetPtr);
@@ -106,6 +107,10 @@ extern "C"
 
 		// Returns the current peer interface address
 		CHAMPNET_PLUGIN_SYMTAG const char* GetAddress();
+
+		CHAMPNET_PLUGIN_SYMTAG int WriteTimeStamp(char *buffer, const RakNet::Time &time1, const RakNet::Time &time2); // Added By Jake
+
+		CHAMPNET_PLUGIN_SYMTAG int ReadTimeStamp(const char *buffer, RakNet::Time &time1, RakNet::Time &time2); // Added By Jake
 
 	};
 

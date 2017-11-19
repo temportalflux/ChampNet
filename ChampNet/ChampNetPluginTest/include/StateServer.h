@@ -6,6 +6,7 @@
 #include <string>
 
 class GameState;
+class PerformanceTracker;
 
 namespace ChampNet
 {
@@ -33,6 +34,9 @@ private:
 
 	GameState *mpGameState;
 
+	PerformanceTracker *mpTimers;
+	double mMsPerUpdate;
+
 public:
 
 	StateServer();
@@ -59,6 +63,8 @@ public:
 	 * Handles the usage of all the different packet identifiers
 	 */
 	void handlePacket(ChampNet::Packet *packet);
+
+	virtual void updateGame() override;
 
 	virtual void render() override;
 

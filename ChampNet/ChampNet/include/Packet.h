@@ -2,9 +2,24 @@
 #define _CHAMPNET_PACKET_H
 
 #include <string>
+#include <RakNet\RakNetTime.h>
 
 namespace ChampNet
 {
+
+	struct TimeStamp
+	{
+		// If the timestamps were found in the packet
+		bool timesLoaded = false;
+		// The lcoal time that the packet was read at
+		RakNet::Time packetReadTime_local = 0;
+		// The local time duration the packet took to start reading
+		RakNet::Time readDiff_local = 0;
+		// The remote time that the packet was sent at
+		RakNet::Time sentTime_remote = 0;
+		// The total time (local) that the packet took to be received/read
+		RakNet::Time totalTransferTime_local = 0;
+	};
 
 	/** Author: Dustin Yost
 	 * A class to handle packet data from RakNet
@@ -27,6 +42,9 @@ namespace ChampNet
 		Packet* mNext;
 
 	public:
+
+		TimeStamp timestampInfo;
+
 		Packet(const unsigned int lengthAddress, const char* address, const unsigned int dataLength, const unsigned char* data);
 		~Packet();
 
