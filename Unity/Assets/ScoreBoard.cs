@@ -51,8 +51,11 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     void Start ()
     {
+        // give GameManager the scoreboard
+        GameManager.INSTANCE.grabScoreBoard();
         foreach (RankText text in rankText)
         {
+
             // set rank for later use
             text.Rank = currentText;
 
@@ -136,7 +139,7 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     private void Update()
     {
-        DisplayScoreBoard();
+        //DisplayScoreBoard();
         foreach (RankText text in rankText)
         {
             // set game object location
@@ -182,9 +185,9 @@ public class ScoreBoard : MonoBehaviour {
     /// <remarks>
     /// Author: Christopher Brennan
     /// </remarks>
-    void DisplayScoreBoard()
+    public void DisplayScoreBoard()
     {
-        Debug.Log("update scoreboard");
+        //Debug.Log("update scoreboard");
 
         foreach (RankText scoreboard in rankText)
         {
@@ -205,7 +208,7 @@ public class ScoreBoard : MonoBehaviour {
     /// <remarks>
     /// Author: Christopher Brennan
     /// </remarks>
-    void findNextHighestScore(RankText scoreBoard)
+    private void findNextHighestScore(RankText scoreBoard)
     {
         // checks both local and connected players
         foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
@@ -246,6 +249,17 @@ public class ScoreBoard : MonoBehaviour {
                         }
                     }
                 }
+            }
+        }
+    }
+    public void removePlayerOnLeave(uint removeName) // currently using ID
+    {
+        foreach (RankText scoreboard in rankText)
+        {
+            if(scoreboard.name == removeName)
+            {
+                scoreboard.name = 100;
+                scoreboard.score = 0;
             }
         }
     }

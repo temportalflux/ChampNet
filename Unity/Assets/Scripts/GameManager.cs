@@ -31,6 +31,8 @@ public class GameManager : Singleton<GameManager>
     private NetInterface netty;
     private bool inGame;
 
+    private ScoreBoard scoreBoard;
+
     void Awake()
     {
         this.inGame = false;
@@ -134,6 +136,7 @@ public class GameManager : Singleton<GameManager>
             if (playerInfo.objectReference != null)
             {
                 Destroy(playerInfo.objectReference.gameObject);
+                scoreBoard.removePlayerOnLeave(playerInfo.clientID);
             }
             this.state.RemovePlayer(playerInfo);
         }
@@ -189,9 +192,13 @@ public class GameManager : Singleton<GameManager>
             if (player.objectReference != null)
             {
                 player.objectReference.score = player.objectReference.score + 1;
+                scoreBoard.DisplayScoreBoard();
             }
         }
     }
 
-
+    public void grabScoreBoard()
+    {
+        this.scoreBoard = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
+    }
 }
