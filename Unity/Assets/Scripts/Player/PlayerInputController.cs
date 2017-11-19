@@ -16,24 +16,6 @@ public class PlayerInputController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //Vector3 input = Vector2.zero;
-
-        //      if (Input.GetKey(KeyCode.A))
-        //          input.x = -1;
-        //      else if (Input.GetKey(KeyCode.D))
-        //          input.x = 1;
-        //      else if (Input.GetKey(KeyCode.S))
-        //          input.y = -1;
-        //      else if (Input.GetKey(KeyCode.W))
-        //          input.y = 1;
-
-        //      input.Normalize();
-
-        Vector3 position, deltaMove;
-        this.Move(this.transform.position, out position, out deltaMove);
-        //this.transform.position = position;
-        //latestAxis = -1;
-
     }
 
     public void Move(Vector3 start, out Vector3 position, out Vector3 deltaMove)

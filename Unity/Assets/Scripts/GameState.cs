@@ -313,9 +313,12 @@ public class GameState : ScriptableObject, ISerializing
         // check if second player, and tweak accordingly
         if (info.isLocal && info.localID > 0)
         {
+            Transform moveTarget = info.objectReference.moveTarget;
+
             Destroy(playerObject.GetComponent<PlayerReference>());
             Destroy(playerObject.GetComponent<InputResponse>());
             info.objectReference = playerObject.AddComponent<PlayerLocalMultiplayer>();
+            info.objectReference.moveTarget = moveTarget;
             info.objectReference.sprite = playerObject.GetComponentInChildren<Animator>().transform;
             foreach (SpriteRenderer r in playerObject.GetComponentsInChildren<SpriteRenderer>())
                 if (r.gameObject.name == "Overlay")

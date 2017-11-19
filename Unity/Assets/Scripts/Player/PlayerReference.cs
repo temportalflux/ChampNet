@@ -46,7 +46,7 @@ public class PlayerReference : MonoBehaviour {
         
     }
 
-    private GameState.Player playerInfo;
+    protected GameState.Player playerInfo;
 
     /// <summary>
     /// The player identifier
@@ -144,6 +144,10 @@ public class PlayerReference : MonoBehaviour {
 
         this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
 
+    }
+
+    public virtual void OnLocalInput(Vector3 position, Vector3 deltaMove)
+    {
     }
 
 }

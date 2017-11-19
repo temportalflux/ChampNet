@@ -79,6 +79,15 @@ public class PlayerLocal : PlayerReference
             camera.gameObject.SetActive(doUseCamera);
             camera.transform.position = (doUseCamera ? pos.normalized * 2 + playerPos : this.transform.position) + Vector3.forward * camZ;
         }
+
+        if (GameManager.INSTANCE.state.isLocalGame && this._pic != null)
+        {
+            Vector3 position, deltaMove;
+            this._pic.Move(this.moveTarget.position, out position, out deltaMove);
+            this.playerInfo.position += deltaMove;
+        }
+
     }
+    
 
 }
