@@ -408,6 +408,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				this->mpGameState->players[playerID].velY = pPacket->velY;
 				this->mpGameState->players[playerID].velX = pPacket->velX;
 
+				//std::cout << "Integrated " << this->mpGameState->players[playerID].posX << " " << this->mpGameState->players[playerID].posY << '\n';
+
 				// ship gamestate back to all clients
 				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}

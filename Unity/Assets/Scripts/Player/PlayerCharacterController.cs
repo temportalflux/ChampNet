@@ -29,7 +29,7 @@ public class PlayerCharacterController : MonoBehaviour
         _halfSize = _size / 2;
     }
 
-    public void Move(Vector3 input)
+    public void Move(Vector3 input, out Vector3 deltaMove, out Vector3 position)
     {
         float step = speed * Time.deltaTime;
         if (input.sqrMagnitude > 0)
@@ -70,11 +70,11 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         deltaMove = input * step;
-        transform.position += deltaMove;
+        position = this.transform.position + deltaMove;
 
-        _anim.SetFloat("velX", deltaMove.x);
-        _anim.SetFloat("velY", deltaMove.y);
-        _anim.SetBool("walking", deltaMove.sqrMagnitude > 0.001f);
+        //_anim.SetFloat("velX", deltaMove.x);
+        //_anim.SetFloat("velY", deltaMove.y);
+        //_anim.SetBool("walking", deltaMove.sqrMagnitude > 0.001f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

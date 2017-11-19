@@ -105,9 +105,12 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void integrateInfo()
+    public void integrateInfo(GameState.Player playerInfo)
     {
+        this.playerInfo = playerInfo;
+
         this.transform.position = this.playerInfo.position;
+        Debug.Log("Integrate " + this.playerInfo.position);
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
         this.overlay.color = this.playerInfo.color;
@@ -127,8 +130,7 @@ public class PlayerReference : MonoBehaviour {
 
     virtual public void setInfo(GameState.Player info)
     {
-        this.playerInfo = info;
-        this.integrateInfo();
+        this.integrateInfo(info);
     }
 
     protected void Update()

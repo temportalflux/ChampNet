@@ -52,10 +52,15 @@ public class PlayerLocal : PlayerReference
     public void requestMove()
     {
         GameState.Player info = this.getInfo();
+
+        Vector3 position, deltaMove;
+        _pic.Move(out position, out deltaMove);
+
+        Debug.Log("Sending " + position);
         NetInterface.INSTANCE.Dispatch(new EventRequestMovement(
             info.clientID, info.playerID,
-            this.transform.position.x, this.transform.position.y,
-            _pcc.deltaMove.x, _pcc.deltaMove.y
+            position.x, position.y,
+            deltaMove.x, deltaMove.y
         ));
     }
 

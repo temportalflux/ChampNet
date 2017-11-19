@@ -216,7 +216,7 @@ public class GameState : ScriptableObject, ISerializing
             this.inBattle = info.inBattle;
             if (this.objectReference != null)
             {
-                this.objectReference.integrateInfo();
+                this.objectReference.integrateInfo(info);
             }
         }
 
@@ -275,12 +275,6 @@ public class GameState : ScriptableObject, ISerializing
 
     public void AddPlayer(Player info)
     {
-        // Add player to total list
-        this.players.Add(info.playerID, info);
-
-        // Add player to the appropriate sublist
-        if (info.isLocal) this.AddPlayerLocal(info); else this.AddPlayerConnected(info);
-        
         // Create the player reference object
         GameManager gm = GameManager.INSTANCE;
         GameObject playerObject = GameManager.Instantiate(
@@ -314,6 +308,10 @@ public class GameState : ScriptableObject, ISerializing
 
         info.objectReference.gameObject.name = info.name;
 
+        // Add player to total list
+        this.players.Add(info.playerID, info);
+        // Add player to the appropriate sublist
+        if (info.isLocal) this.AddPlayerLocal(info); else this.AddPlayerConnected(info);
     }
 
     private IEnumerator AddPlayerToCamera(Player info)
@@ -487,7 +485,12 @@ public class GameState : ScriptableObject, ISerializing
         {
             Player player = this.playersToAdd[0];
             this.playersToAdd.RemoveAt(0);
-            if (!this.players.ContainsKey(player.playerID))
+            // If updates have been received before the list got updated, there could be overlap
+            if (this.players.ContainsKey(player.playerID))
+            {
+                this.players[player.playerID].copyFromGameState(player);
+            }
+            else
             {
                 this.AddPlayer(player);
             }

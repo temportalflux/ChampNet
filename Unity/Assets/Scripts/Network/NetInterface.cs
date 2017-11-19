@@ -115,7 +115,7 @@ public class NetInterface : Singleton<NetInterface>
         while (Netty.PollPacket(out address, out data, out transmitTime))
         {
             int id = (int)data[0];
-            Debug.Log("Packet transmit at time " + transmitTime);
+            //Debug.Log("Packet transmit at time " + transmitTime);
             // Handle all packets from the plugin interface
             this.HandlePacket(id, address, data);
         }
