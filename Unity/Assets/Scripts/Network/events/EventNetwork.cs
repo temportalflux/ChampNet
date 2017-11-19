@@ -62,6 +62,8 @@ public class EventNetwork : ISerializing
     /// Author: Dustin Yost
     /// </remarks>
     private byte eventID;
+
+    public float deltaTime;
     
     public EventNetwork(byte id)
     {

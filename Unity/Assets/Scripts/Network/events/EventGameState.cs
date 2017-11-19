@@ -54,6 +54,7 @@ public class EventGameState : EventNetwork
     override public void Deserialize(byte[] data, ref int lastIndex)
     {
         base.Deserialize(data, ref lastIndex);
+        GameManager.INSTANCE.state.deltaTime = this.deltaTime;
         GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
     }
 

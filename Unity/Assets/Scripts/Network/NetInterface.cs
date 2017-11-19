@@ -115,9 +115,10 @@ public class NetInterface : Singleton<NetInterface>
         while (Netty.PollPacket(out address, out data, out transmitTime))
         {
             int id = (int)data[0];
+            float deltaTime = transmitTime * 0.001f;
             //Debug.Log("Packet transmit at time " + transmitTime);
             // Handle all packets from the plugin interface
-            this.HandlePacket(id, address, data);
+            this.HandlePacket(id, address, data, deltaTime);
         }
     }
 
@@ -130,10 +131,11 @@ public class NetInterface : Singleton<NetInterface>
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    private void HandlePacket(int id, string address, byte[] data)
+    private void HandlePacket(int id, string address, byte[] data, float transmitDeltaTime)
     {
         // Create the event to be processed
         EventNetwork evt = EventNetwork.createEvent(id);
+        evt.deltaTime = transmitDeltaTime;
         // Read off the data of the packet
         int lastIndex = 0;
         evt.Deserialize(data, ref lastIndex);

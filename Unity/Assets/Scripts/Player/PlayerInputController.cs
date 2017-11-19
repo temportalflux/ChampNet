@@ -56,7 +56,7 @@ public class PlayerInputController : MonoBehaviour
         _pcc.Move(_input.normalized, out deltaMove, out position);
     }
 
-    Vector3 _input;
+    public Vector3 _input;
     int latestAxis = -1; // 0 = X, 1 = Y, -1 = none
     bool isDownX, isDownY;
 

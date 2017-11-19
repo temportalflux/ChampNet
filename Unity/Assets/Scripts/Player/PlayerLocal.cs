@@ -56,11 +56,13 @@ public class PlayerLocal : PlayerReference
         Vector3 position, deltaMove;
         _pic.Move(out position, out deltaMove);
 
+        Vector3 velocity = _pic._input.normalized * _pcc.speed;
+
         //Debug.Log("Sending " + position);
         NetInterface.INSTANCE.Dispatch(new EventRequestMovement(
             info.clientID, info.playerID,
-            position.x, position.y,
-            deltaMove.x, deltaMove.y
+            this.moveTarget.position.x, this.moveTarget.position.y,
+            velocity.x, velocity.y
         ));
     }
 

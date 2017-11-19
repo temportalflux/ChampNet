@@ -204,7 +204,7 @@ public class GameState : ScriptableObject, ISerializing
 
         // ~~~~~ Data copy
 
-        public void copyFromGameState(Player info)
+        public void copyFromGameState(Player info, float deltaTime)
         {
             this.clientID = info.clientID;
             this.playerID = info.playerID;
@@ -214,10 +214,19 @@ public class GameState : ScriptableObject, ISerializing
             this.velocity = info.velocity;
             this.accelleration = info.accelleration;
             this.inBattle = info.inBattle;
+
+            this.integratePhysics(deltaTime);
+
             if (this.objectReference != null)
             {
                 this.objectReference.integrateInfo(info);
             }
+        }
+
+        public void integratePhysics(float deltaTime)
+        {
+            this.velocity += this.accelleration * deltaTime;
+            this.position += this.velocity * deltaTime;
         }
 
     }
@@ -231,6 +240,7 @@ public class GameState : ScriptableObject, ISerializing
     public bool isLocalGame; // TODO: Serialize
     public uint clientID;
 
+    public float deltaTime;
     public Dictionary<ID, Player> players;
 
     private List<Player> playersToAdd;
@@ -444,7 +454,7 @@ public class GameState : ScriptableObject, ISerializing
             // Check if the ID is already in the map
             if (this.players.ContainsKey(player.playerID))
             {
-                this.players[player.playerID].copyFromGameState(player);
+                this.players[player.playerID].copyFromGameState(player, this.deltaTime);
             }
             // playerID not in map, add
             else
@@ -488,7 +498,7 @@ public class GameState : ScriptableObject, ISerializing
             // If updates have been received before the list got updated, there could be overlap
             if (this.players.ContainsKey(player.playerID))
             {
-                this.players[player.playerID].copyFromGameState(player);
+                this.players[player.playerID].copyFromGameState(player, 0);
             }
             else
             {

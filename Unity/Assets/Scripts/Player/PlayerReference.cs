@@ -6,6 +6,7 @@ public class PlayerReference : MonoBehaviour {
 
     public Transform sprite;
     public SpriteRenderer overlay;
+    public Transform moveTarget;
 
     private Animator _anim;
     private Vector3 screenPos;
@@ -22,7 +23,7 @@ public class PlayerReference : MonoBehaviour {
 
     void Awake()
     {
-        _anim = GetComponentInChildren<Animator>();
+        
     }
 
     private GameState.Player playerInfo;
@@ -108,9 +109,9 @@ public class PlayerReference : MonoBehaviour {
     public void integrateInfo(GameState.Player playerInfo)
     {
         this.playerInfo = playerInfo;
-
-        this.transform.position = this.playerInfo.position;
-        //Debug.Log("Integrate " + this.playerInfo.position);
+        
+        this.moveTarget.position = this.playerInfo.position;
+        
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
         this.overlay.color = this.playerInfo.color;
@@ -119,7 +120,11 @@ public class PlayerReference : MonoBehaviour {
         {
             _anim.SetFloat("velX", this.playerInfo.velocity.x);
             _anim.SetFloat("velY", this.playerInfo.velocity.y);
-            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f && Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f || Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
+        }
+        else
+        {
+            _anim = GetComponentInChildren<Animator>();
         }
     }
 
@@ -146,11 +151,23 @@ public class PlayerReference : MonoBehaviour {
             camera.gameObject.SetActive(doUseCamera);
             camera.transform.position = (doUseCamera ? pos.normalized * 2 + playerPos : this.transform.position) + Vector3.forward * camZ;
         }
+
     }
 
     private void OnGUI()
     {
         //GUI.Label(new Rect(screenPos.x, screenPos.y, 100, 50), this.playerInfo.name);
+    }
+
+    private void FixedUpdate()
+    {
+
+        // Integrate all physics
+        this.playerInfo.integratePhysics(Time.deltaTime);
+        this.moveTarget.position = this.playerInfo.position;
+
+        this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
+
     }
 
 }
