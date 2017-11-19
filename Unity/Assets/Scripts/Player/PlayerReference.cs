@@ -106,11 +106,15 @@ public class PlayerReference : MonoBehaviour {
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    public void integrateInfo(GameState.Player playerInfo)
+    public void integrateInfo(GameState.Player playerInfo, bool forceSnap = false)
     {
         this.playerInfo = playerInfo;
         
         this.moveTarget.position = this.playerInfo.position;
+        if (forceSnap)
+        {
+            this.transform.position = this.moveTarget.position;
+        }
         
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
@@ -135,7 +139,7 @@ public class PlayerReference : MonoBehaviour {
 
     virtual public void setInfo(GameState.Player info)
     {
-        this.integrateInfo(info);
+        this.integrateInfo(info, true);
     }
 
     protected virtual void Update()
