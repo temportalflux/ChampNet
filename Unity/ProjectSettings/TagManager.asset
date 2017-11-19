@@ -11,6 +11,7 @@ TagManager:
   - Music
   - AllPlayers
   - ScoreBoard
+  - Camera
   layers:
   - Default
   - TransparentFX

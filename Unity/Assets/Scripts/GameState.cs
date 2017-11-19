@@ -49,7 +49,7 @@ public class GameState : ScriptableObject, ISerializing
             ;
 
         public static int SIZE_MAX_NAME = 10;
-
+        
         public ID clientID;
 
         /// <summary>
@@ -102,6 +102,8 @@ public class GameState : ScriptableObject, ISerializing
 
         // Game Objects
         public PlayerReference objectReference;
+
+        public RenderTexture cameraTexture;
 
         // ~~~~~ ISerializing
 
@@ -243,6 +245,7 @@ public class GameState : ScriptableObject, ISerializing
     public bool editorFoldoutPlayers;
     public Dictionary<ID, bool> editorFoldouts;
 
+    public bool isLocalGame; // TODO: Serialize
     public uint clientID;
 
     public Dictionary<ID, Player> players;
@@ -302,16 +305,38 @@ public class GameState : ScriptableObject, ISerializing
             GameObject.FindGameObjectWithTag("AllPlayers").transform
         );
         info.objectReference = playerObject.GetComponent<PlayerReference>();
+
+        // check if second player, and tweak accordingly
         if (info.isLocal && info.localID > 0)
         {
             Destroy(playerObject.GetComponent<PlayerReference>());
             Destroy(playerObject.GetComponent<InputResponse>());
-            playerObject.AddComponent<PlayerLocalMultiplayer>();
-            info.objectReference = playerObject.GetComponent<PlayerReference>();
+            info.objectReference = playerObject.AddComponent<PlayerLocalMultiplayer>();
             info.objectReference.sprite = playerObject.GetComponentInChildren<Animator>().transform;
+            foreach (SpriteRenderer r in playerObject.GetComponentsInChildren<SpriteRenderer>())
+                if (r.gameObject.name == "Overlay")
+                    info.objectReference.overlay = r;
         }
+
+        // Add render texture for player camera
+        Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        info.cameraTexture = new RenderTexture(Screen.width, Screen.height, 16, RenderTextureFormat.ARGB32);
+        info.cameraTexture.antiAliasing = 2;
+        info.cameraTexture.Create();
+        playerObject.GetComponentInChildren<Camera>().targetTexture = info.cameraTexture;
+        GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
+
+        // Set the info for the player script
         info.objectReference.setInfo(info);
 
+        info.objectReference.gameObject.name = info.name;
+
+    }
+
+    private IEnumerator AddPlayerToCamera(Player info)
+    {
+        while (GameManager.INSTANCE.mainCamera == null) yield return null;
+        GameManager.INSTANCE.mainCamera.SetTexture((int)info.localID, info.cameraTexture);
     }
 
     public void RemovePlayer(Player info)
@@ -335,6 +360,30 @@ public class GameState : ScriptableObject, ISerializing
     public void SpawnLocalMultiplayer()
     {
         NetInterface.INSTANCE.Dispatch(new EventRequestPlayer(this.clientID, (uint)this.playersLocal.Count));
+    }
+
+    public void SpawnLocalPlayer()
+    {
+        Player player = new Player();
+        player.clientID = 0;
+        player.localID = (uint)this.players.Count;
+        player.playerID = player.localID;
+        player.position = Vector3.zero;
+        player.name = "Player " + (player.localID + 1);
+        switch (player.localID)
+        {
+            case 0: player.color = Colors.PuceRed; break;
+            case 1: player.color = Colors.BlizzardBlue; break;
+            case 2: player.color = Colors.EmeraldGreen; break;
+            default: player.color = Colors.YellowOrange; break;
+        }
+        this.AddPlayer(player);
+    }
+
+    public void SpawnPlayer()
+    {
+        if (this.isLocalGame) this.SpawnLocalPlayer();
+        else this.SpawnLocalMultiplayer();
     }
 
     // ~~~~~ ISerializing

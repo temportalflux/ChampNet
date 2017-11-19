@@ -112,9 +112,19 @@ public class PlayerReference : MonoBehaviour {
         this.integrateInfo();
     }
 
-    private void Update()
+    protected void Update()
     {
         this.screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        if (GameManager.INSTANCE.mainCamera != null)
+        {
+            Camera camera = this.GetComponentInChildren<Camera>(true);
+            float camZ = camera.transform.position.z;
+            Vector3 playerPos = this.transform.position;
+            bool doUseCamera;
+            Vector3 pos = GameManager.INSTANCE.mainCamera.SetPosition((int)this.playerInfo.localID, playerPos, out doUseCamera);
+            camera.gameObject.SetActive(doUseCamera);
+            camera.transform.position = (doUseCamera ? pos.normalized * 2 + playerPos : this.transform.position) + Vector3.forward * camZ;
+        }
     }
 
     private void OnGUI()

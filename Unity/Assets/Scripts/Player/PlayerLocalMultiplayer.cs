@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerLocalMultiplayer : PlayerLocal
 {
 
-    private void Update()
+    protected void Update()
     {
+        base.Update();
         this.updateAxis(null, KeyCode.O, MappedAxis.Vertical, AxisDirection.Positive);
         this.updateAxis(null, KeyCode.K, MappedAxis.Horizontal, AxisDirection.Negative);
         this.updateAxis(null, KeyCode.L, MappedAxis.Vertical, AxisDirection.Negative);

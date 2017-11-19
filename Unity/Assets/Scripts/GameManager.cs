@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -30,6 +31,7 @@ public class GameManager : Singleton<GameManager>
 
     private NetInterface netty;
     private bool inGame;
+    public MainCamera mainCamera;
 
     private ScoreBoard scoreBoard;
 
@@ -42,14 +44,15 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         this.netty = NetInterface.INSTANCE;
-        
     }
-	
+
     public void Play()
     {
         this.transition.load(
             () => {
                 this.inGame = true;
+                this.state.isLocalGame = true;
+                this.state.SpawnLocalPlayer();
             }
         );
     }
@@ -59,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         this.transition.load(
             () => {
                 this.inGame = true;
+                this.state.isLocalGame = false;
             }
         );
     }
@@ -73,57 +77,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transition.exit();
     }
-
-    /*
-    public void spawnPlayer(GameState.Player playerInfo)
-    {
-        if (this.state.HasPlayer(ref playerInfo))
-        {
-            return;
-        }
-
-        // TODO: Need queue of updates; this can be triggered while scenes are in transition
-        // having a queue of updates waiting on (insert indicator that transition has finished) can help solved this
-
-        GameObject playerNetworked = Instantiate(this.playerNetworkPrefab);
-
-        PlayerReference player = playerNetworked.GetComponent<PlayerNetwork>();
-        player.initInfo(playerInfo);
-
-        this.state.AddPlayer(playerInfo);
-        if (playerInfo.isLocal)
-        {
-            this.state.AddPlayerLocal(playerInfo);
-        }
-        else
-        {
-            this.state.AddPlayerConnected(playerInfo);
-        }
-
-        this.updatePlayer(playerInfo);
-
-    }
-
-    public void updatePlayer(GameState.Player playerInfo)
-    {
-        if (!this.state.HasPlayer(ref playerInfo))
-        {
-            this.spawnPlayer(playerInfo);
-            return;
-        }
-
-        if (playerInfo.objectReference != null)
-        {
-            playerInfo.objectReference.updateFromInfo();
-        }
-        else
-        {
-            this.state.RemovePlayer(playerInfo);
-        }
-
-    }
-    //*/
-
+    
     public void Disconnect()
     {
         this.netty.Dispatch(new EventClientLeft(this.state.clientID));

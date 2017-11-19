@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &64037311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1017,6 +1017,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 4578d6a216c8cde48a5626148f06b795,
         type: 2}
+    - target: {fileID: 114489386879819476, guid: 23a04a834adc1074c8681d6e7a4bdfab,
+        type: 2}
+      propertyPath: nextScene
+      value: town-multiplayer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23a04a834adc1074c8681d6e7a4bdfab, type: 2}
   m_IsPrefabParent: 0
@@ -1522,6 +1527,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1471137771}
+  - component: {fileID: 1471137772}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1551,6 +1557,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1471137772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471137770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157f2a3b0ca21d041a1e25383f8d6287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: {fileID: 64037310}
 --- !u!1 &1580468747
 GameObject:
   m_ObjectHideFlags: 0
