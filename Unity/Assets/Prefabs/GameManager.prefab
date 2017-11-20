@@ -108,6 +108,8 @@ MonoBehaviour:
     type: 2}
   playerNetworkPrefab: {fileID: 1579936410149914, guid: a6ccc1f5bc2e58444b62e9f866465ca6,
     type: 2}
+  state: {fileID: 11400000, guid: 4578d6a216c8cde48a5626148f06b795, type: 2}
+  mainCamera: {fileID: 0}
 --- !u!114 &114489386879819476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28146944e4a8c01448ad1e2dc5f00b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: town
+  nextScene: town-multiplayer
