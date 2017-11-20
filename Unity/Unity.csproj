@@ -273,6 +273,7 @@
     <Compile Include="Assets\Scripts\Transitions\Transition.cs" />
     <Compile Include="Assets\Scripts\Transitions\TransitionShader.cs" />
     <Compile Include="Assets\Scripts\UI\ConnectMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\MiniMap\MinimapHandler.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
     <Compile Include="Assets\UIMenuSelection.cs" />
   </ItemGroup>
