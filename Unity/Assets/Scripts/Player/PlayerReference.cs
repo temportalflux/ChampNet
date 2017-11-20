@@ -100,6 +100,11 @@ public class PlayerReference : MonoBehaviour {
         //this.sprite.rotation = Quaternion.Euler(0, 0, rotZ);
 
         this.overlay.color = this.playerInfo.color;
+        //transform.Find("MiniMapIcon").GetComponent<SpriteRenderer>().color = this.playerInfo.color;
+
+        Transform t = this.transform.Find("MiniMapIcon");
+        SpriteRenderer s = t.GetComponent<SpriteRenderer>();
+        s.color = this.playerInfo.color;
 
         if (this._anim != null) // can happen during instantiation of object (via setInfo)
         {
