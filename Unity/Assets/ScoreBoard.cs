@@ -39,7 +39,7 @@ public class ScoreBoard : MonoBehaviour {
         public GameObject WinObject;
 
         [Tooltip("Name for current owner")]
-        public uint name;
+        public string name;
 
         [Tooltip("Wins for current owner")]
         public uint score;
@@ -101,7 +101,7 @@ public class ScoreBoard : MonoBehaviour {
             text.NameObject.transform.localScale = new Vector3(1, 1, 1);
 
             // init name
-            text.name = 100;
+            text.name = "N/A";
 
             // repeate above with modifications for wins
 
@@ -225,13 +225,13 @@ public class ScoreBoard : MonoBehaviour {
                 if (player.Value.objectReference.rank > scoreBoard.Rank || player.Value.objectReference.rank == 0)
                 {
                     // check if there was already a player there and check if it is the current player
-                    if (scoreBoard.name == 100 || scoreBoard.name == player.Value.objectReference.getID()) // == 100 is the set id for if no player exists // can change later just current placeholder
+                    if (scoreBoard.name == " " || scoreBoard.name == player.Value.objectReference.name) // == 100 is the set id for if no player exists // can change later just current placeholder
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
                         player.Value.objectReference.rank = scoreBoard.Rank;
                         scoreBoard.score = player.Value.objectReference.score;
-                        scoreBoard.name = player.Value.objectReference.getID();
+                        scoreBoard.name = player.Value.objectReference.name;
                         // return player.Value.objectReference; // return player Reference
                     }
                     else
@@ -245,7 +245,7 @@ public class ScoreBoard : MonoBehaviour {
                                 defeatedPlayer.Value.objectReference.rank = player.Value.objectReference.rank; // move player down
                                 player.Value.objectReference.rank = scoreBoard.Rank; // move new player up
                                 scoreBoard.score = player.Value.objectReference.score;
-                                scoreBoard.name = player.Value.objectReference.getID();
+                                scoreBoard.name = player.Value.objectReference.name;
                                 //return player.Value.objectReference; // return player Reference
                             }
                         }
@@ -254,13 +254,13 @@ public class ScoreBoard : MonoBehaviour {
             }
         }
     }
-    public void removePlayerOnLeave(uint removeName) // currently using ID
+    public void removePlayerOnLeave(string removeName) // currently using ID
     {
         foreach (RankText scoreboard in rankText)
         {
             if(scoreboard.name == removeName)
             {
-                scoreboard.name = 100;
+                scoreboard.name = "N/A";
                 scoreboard.score = 0;
             }
         }
