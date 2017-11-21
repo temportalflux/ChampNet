@@ -90,7 +90,7 @@ public class GameManager : Singleton<GameManager>
             if (playerInfo.objectReference != null)
             {
                 Destroy(playerInfo.objectReference.gameObject);
-                scoreBoard.removePlayerOnLeave(playerInfo.name);
+                scoreBoard.removePlayerOnLeave(playerInfo.playerID);
             }
             this.state.RemovePlayer(playerInfo);
         }
@@ -146,7 +146,6 @@ public class GameManager : Singleton<GameManager>
             if (player.objectReference != null)
             {
                 player.objectReference.score = player.objectReference.score + 1;
-                scoreBoard.DisplayScoreBoard();
             }
         }
     }

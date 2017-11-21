@@ -234,7 +234,6 @@
     <Compile Include="Assets\MonsterDataObjectEditor.cs" />
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\PlayerLocalSpawn.cs" />
-    <Compile Include="Assets\ScoreBoard.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitSerializeAttribute.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitTest.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
@@ -273,6 +272,7 @@
     <Compile Include="Assets\Scripts\Transitions\Transition.cs" />
     <Compile Include="Assets\Scripts\Transitions\TransitionShader.cs" />
     <Compile Include="Assets\Scripts\UI\ConnectMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreBoard.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
     <Compile Include="Assets\UIMenuSelection.cs" />
   </ItemGroup>

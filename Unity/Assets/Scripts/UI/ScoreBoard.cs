@@ -43,9 +43,11 @@ public class ScoreBoard : MonoBehaviour {
 
         [Tooltip("Wins for current owner")]
         public uint score;
-    }
 
-    [Tooltip("The list of listeners for buttons")]
+        [Tooltip("ID for current owner")]
+        public int ID;
+    }
+    [Tooltip("The list of ranks generated")]
     public RankText[] rankText;
 
     /// <summary>
@@ -70,10 +72,11 @@ public class ScoreBoard : MonoBehaviour {
             text.NameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
             text.NameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 
-            //// set game object location
-            //text.NameObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
-            //    (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
-            //    ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+            // set game object location
+            text.NameObject.GetComponent<RectTransform>().transform.position = text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y - (15 * text.Rank), NameHeader.transform.position.z);
+            //this.camera.ScreenToWorldPoint(new Vector3(
+            //(text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
+            //((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
 
             //// set the z position
             //text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, text.NameObject.transform.position.z);
@@ -108,9 +111,12 @@ public class ScoreBoard : MonoBehaviour {
             text.WinObject = new GameObject(("PlayerWins (" + currentText + ")"), typeof(RectTransform));
             text.WinObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 30);
 
-            //text.WinObject.GetComponent<RectTransform>().transform.position = this.camera.ScreenToWorldPoint(new Vector3(
-            //    (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
-            //    ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
+            text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y - (15 * text.Rank), WinHeader.transform.position.z);
+
+
+            //this.camera.ScreenToWorldPoint(new Vector3(
+            //(text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
+            //((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));
 
             //text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, text.WinObject.transform.position.z);
 
@@ -129,6 +135,8 @@ public class ScoreBoard : MonoBehaviour {
 
             // init score
             text.score = 0;
+            // init ID
+            text.ID = -1;
 
             currentText += 1;
         }
@@ -142,42 +150,44 @@ public class ScoreBoard : MonoBehaviour {
     private void Update()
     {
         DisplayScoreBoard();
-        foreach (RankText text in rankText)
-        {
-            // set game object location
-            text.NameObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
-                (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
-                ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
-            // set the z position
-            text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, theCamera.nearClipPlane);
+        // used for single camera
+        //foreach (RankText text in rankText)
+        //{
+        //    // set game object location
+        //    text.NameObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
+        //        (text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
+        //        ((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
-            // repeate above with modifications for wins
+        //    // set the z position
+        //    text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(text.NameObject.transform.position.x, text.NameObject.transform.position.y, theCamera.nearClipPlane);
 
-            text.WinObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
-                (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
-                ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
+        //    // repeate above with modifications for wins
 
-            text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, theCamera.nearClipPlane);
+        //    text.WinObject.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
+        //        (text.WinObject.GetComponent<RectTransform>().rect.width / 3) + text.WinObject.GetComponent<RectTransform>().rect.width,
+        //        ((Screen.height - (text.WinObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), 0));
 
-            // set Header
+        //    text.WinObject.GetComponent<RectTransform>().transform.position = new Vector3(text.WinObject.transform.position.x, text.WinObject.transform.position.y, theCamera.nearClipPlane);
 
-            // set game object location
-            NameHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
-                (NameHeader.GetComponent<RectTransform>().rect.width / 2) + 5,
-                ((Screen.height - (NameHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
+        //    // set Header
 
-            // set the z position
-            NameHeader.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y, theCamera.nearClipPlane);
+        //    // set game object location
+        //    NameHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
+        //        (NameHeader.GetComponent<RectTransform>().rect.width / 2) + 5,
+        //        ((Screen.height - (NameHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
 
-            // repeate above with modifications for wins
+        //    // set the z position
+        //    NameHeader.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y, theCamera.nearClipPlane);
 
-            WinHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
-                (WinHeader.GetComponent<RectTransform>().rect.width / 3) + WinHeader.GetComponent<RectTransform>().rect.width,
-                ((Screen.height - (WinHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
+        //    // repeate above with modifications for wins
 
-            WinHeader.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y, theCamera.nearClipPlane);
-        }
+        //    WinHeader.GetComponent<RectTransform>().transform.position = this.theCamera.ScreenToWorldPoint(new Vector3(
+        //        (WinHeader.GetComponent<RectTransform>().rect.width / 3) + WinHeader.GetComponent<RectTransform>().rect.width,
+        //        ((Screen.height - (WinHeader.GetComponent<RectTransform>().rect.height / 2)) - 5), 0));
+
+        //    WinHeader.GetComponent<RectTransform>().transform.position = new Vector3(WinHeader.transform.position.x, WinHeader.transform.position.y, theCamera.nearClipPlane);
+        //}
     }
 
     /// <summary>
@@ -215,17 +225,18 @@ public class ScoreBoard : MonoBehaviour {
         // checks both local and connected players
         foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
         {
-            //if (player.Value.objectReference.getID() == scoreBoard.name)
-            //{
+            if (player.Value.objectReference.getID() == scoreBoard.ID)
+            {
+
             //    temp = player.Value.objectReference; // if nothing changes then stay with current player information
-            //}
+            }
             if (player.Value.objectReference.score > scoreBoard.score)
             {
                 // check if you are lower in the rankings (higher number means lower in ranking) or check if you are even ranked
                 if (player.Value.objectReference.rank > scoreBoard.Rank || player.Value.objectReference.rank == 0)
                 {
                     // check if there was already a player there and check if it is the current player
-                    if (scoreBoard.name == " " || scoreBoard.name == player.Value.objectReference.name) // == 100 is the set id for if no player exists // can change later just current placeholder
+                    if (scoreBoard.name == " " || player.Value.objectReference.getID() == scoreBoard.ID)
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
@@ -254,14 +265,15 @@ public class ScoreBoard : MonoBehaviour {
             }
         }
     }
-    public void removePlayerOnLeave(string removeName) // currently using ID
+    public void removePlayerOnLeave(uint removeName) // currently using ID
     {
         foreach (RankText scoreboard in rankText)
         {
-            if(scoreboard.name == removeName)
+            if(scoreboard.ID == removeName)
             {
                 scoreboard.name = "N/A";
                 scoreboard.score = 0;
+                scoreboard.ID = -1;
             }
         }
     }
