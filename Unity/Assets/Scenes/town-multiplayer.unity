@@ -30617,7 +30617,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395927616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 310.5, y: 205.5, z: 0}
+  m_LocalPosition: {x: 337, y: 206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2083072909}
@@ -30852,6 +30852,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1703921487}
   - component: {fileID: 1703921488}
+  - component: {fileID: 1703921489}
+  - component: {fileID: 1703921490}
   m_Layer: 14
   m_Name: Scoreboard
   m_TagString: ScoreBoard
@@ -30978,6 +30980,36 @@ MonoBehaviour:
     name: 0
     score: 0
     ID: 0
+--- !u!114 &1703921489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703921486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74c44c7891bc994f977acf47ba4ef39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputId: 1
+  listenerButtons: []
+  listenerAxes: []
+  onKeyInput:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InputResponse+KeyboardEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1703921490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703921486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f08f407b8405d040a4f088415ed8a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1758577013
 Transform:
   m_ObjectHideFlags: 0

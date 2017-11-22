@@ -36,6 +36,10 @@ namespace ChampNetPlugin
         // Notification to clients that the server has been disconnected
         ID_DISCONNECT,
 
+        // Increment Client Score by 1
+        ID_CLIENT_SCORE_UP,
+        // Rank Up
+        ID_CLIENT_RANK_UPDATE,
     }
 
     public class Network

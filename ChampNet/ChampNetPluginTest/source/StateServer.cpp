@@ -491,6 +491,39 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 			//*/
+		case ChampNetPlugin::ID_CLIENT_SCORE_UP: // used to increment a client score by 1 // proof that scoreboard works
+			{
+
+				std::string addressSender = packet->getAddress();
+
+				unsigned int pPacketLength = 0;
+
+				PacketPlayerScoreboardInfo* pPacket = packet->getPacketAs<PacketPlayerScoreboardInfo>(pPacketLength);
+				unsigned int clientID = pPacket->clientID;
+				unsigned int playerID = pPacket->playerID;
+
+				// Integrate the win and increment by 1 into the gamestate
+				this->mpGameState->players[playerID].wins = (pPacket->score + 1);
+
+				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), true, clientID);
+			}
+		break;
+		case ChampNetPlugin::ID_CLIENT_RANK_INTEGRATION:
+		{
+			std::string addressSender = packet->getAddress();
+
+			unsigned int pPacketLength = 0;
+
+			PacketPlayerScoreboardInfo* pPacket = packet->getPacketAs<PacketPlayerScoreboardInfo>(pPacketLength);
+			unsigned int clientID = pPacket->clientID;
+			unsigned int playerID = pPacket->playerID;
+
+			// Integrate the win and increment by 1 into the gamestate
+			this->mpGameState->players[playerID].rank = (pPacket->score);
+
+			//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), true, clientID);
+		}
+		break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;

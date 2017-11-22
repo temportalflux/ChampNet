@@ -88,6 +88,20 @@ public class PlayerLocal : PlayerReference
         }
 
     }
-    
+
+    public void down(InputDevice device, InputResponse.UpdateEvent type, MappedButton action)
+    {
+
+        GameState.Player info = this.getInfo();
+
+        switch (action)
+        {
+            case MappedButton.DENY:
+                NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
+                break;
+            default:
+                break;
+        }
+    }
 
 }

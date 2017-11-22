@@ -22,6 +22,14 @@ struct PacketClientPlayerID
 	unsigned int playerID;
 };
 
+struct PacketPlayerScoreboardInfo // created to just increment score/set new rank
+{
+	unsigned char id;
+	unsigned int clientID;
+	unsigned int playerID;
+	unsigned int score;
+};
+
 struct PacketPlayerPosition
 {
 	unsigned char id;

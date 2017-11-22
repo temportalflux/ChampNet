@@ -225,18 +225,16 @@ public class ScoreBoard : MonoBehaviour {
         // checks both local and connected players
         foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
         {
-            if (player.Value.objectReference.getID() == scoreBoard.ID)
-            {
-
-            //    temp = player.Value.objectReference; // if nothing changes then stay with current player information
-            }
+            //if (player.Value.objectReference.getID() == scoreBoard.ID)
+            //{
+            //}
             if (player.Value.objectReference.score > scoreBoard.score)
             {
                 // check if you are lower in the rankings (higher number means lower in ranking) or check if you are even ranked
                 if (player.Value.objectReference.rank > scoreBoard.Rank || player.Value.objectReference.rank == 0)
                 {
                     // check if there was already a player there and check if it is the current player
-                    if (scoreBoard.name == " " || player.Value.objectReference.getID() == scoreBoard.ID)
+                    if (scoreBoard.name == "N/A" || player.Value.objectReference.getID() == scoreBoard.ID)
                     {
                         // set player on to the scoreboard
                         // no one is currently holding that spot on the board. so take it
@@ -244,6 +242,9 @@ public class ScoreBoard : MonoBehaviour {
                         scoreBoard.score = player.Value.objectReference.score;
                         scoreBoard.name = player.Value.objectReference.name;
                         // return player.Value.objectReference; // return player Reference
+                        NetInterface.INSTANCE.Dispatch(new EventSendRank(player.Value.clientID, player.Value.playerID, player.Value.objectReference.rank));
+
+                        // dispatch event to server to set new rank
                     }
                     else
                     {
