@@ -89,6 +89,13 @@ public class PlayerLocal : PlayerReference
 
     }
 
+    /// <summary>
+    /// Only used to test scoreboard incrementation
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="type"></param>
+    /// <param name="action"></param>
+    /// <Author> Christopher Brennan </Author>
     public void down(InputDevice device, InputResponse.UpdateEvent type, MappedButton action)
     {
 
