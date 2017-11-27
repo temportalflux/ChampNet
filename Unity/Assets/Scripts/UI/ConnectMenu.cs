@@ -21,8 +21,8 @@ public class ConnectMenu : MonoBehaviour {
     private string errorPort = null, errorConnect = null, errorPlayerCount = null;
     private Vector2 scrollPosition = Vector2.zero;
 
-    private int playerCount;
-    private PlayerDescriptor[] players = new PlayerDescriptor[0];
+    //private int playerCount;
+    private PlayerDescriptor[] players = new PlayerDescriptor[1];
 
     private bool connecting = false, showGui = true;
     
@@ -69,6 +69,7 @@ public class ConnectMenu : MonoBehaviour {
             }
 
             // Player Listings
+            /*
             GUILayout.Label("# Players");
             this.txtPlayerCount = GUILayout.TextField(this.txtPlayerCount);
             if (this.txtPlayerCount != null)
@@ -111,6 +112,7 @@ public class ConnectMenu : MonoBehaviour {
             {
                 GUILayout.Label(this.errorPlayerCount);
             }
+            //*/
             if (this.players.Length > 0)
             {
                 for (int localID = 0; localID < this.players.Length; localID++)
@@ -149,7 +151,7 @@ public class ConnectMenu : MonoBehaviour {
 
             if (!this.connecting)
             {
-                if (this.playerCount <= 0)
+                if (this.players.Length <= 0)
                 {
                     GUILayout.Label("Must have at least 1 player");
                 }

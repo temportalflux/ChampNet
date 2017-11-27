@@ -55,9 +55,9 @@ TagManager:
   - name: Entity
     uniqueID: 274408807
     locked: 0
-  - name: ScoreBoard
-    uniqueID: 1040123445
-    locked: 0
   - name: Foreground
     uniqueID: 1202221475
+    locked: 0
+  - name: ScoreBoard
+    uniqueID: 1040123445
     locked: 0
