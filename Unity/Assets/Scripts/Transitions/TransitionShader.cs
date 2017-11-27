@@ -9,6 +9,7 @@ public class TransitionShader : MonoBehaviour
     public Material transitionMaterial;
 
     Coroutine currentTransition;
+    private float percentDone;
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class TransitionShader : MonoBehaviour
         this.setCutoff(0);
         this.setFade(1);
         this.currentTransition = StartCoroutine(this.runLoop(start, end, time));
+    }
+
+    public float GetPercentDone()
+    {
+        return this.percentDone;
     }
 
     IEnumerator runLoop(float start, float end, float time)
@@ -47,6 +53,8 @@ public class TransitionShader : MonoBehaviour
 
             // Add (end-start)x to delta
             delta += (Time.deltaTime * direction) / time;
+
+            this.percentDone = delta / (end - start);
 
             yield return null;
         }

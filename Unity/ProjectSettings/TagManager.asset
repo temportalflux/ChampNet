@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Transition
+  - Wall
+  - Water
+  - Grass
+  - Music
+  - AllPlayers
+  - ScoreBoard
+  - Camera
   layers:
   - Default
   - TransparentFX
@@ -14,13 +21,13 @@ TagManager:
   - UI
   - 
   - 
+  - Level
   - 
   - 
+  - Entity
+  - MinimapIcons
   - 
-  - 
-  - 
-  - 
-  - 
+  - ScoreBoard
   - 
   - 
   - 
@@ -41,4 +48,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3862260331
+    locked: 0
+  - name: Entity
+    uniqueID: 274408807
+    locked: 0
+  - name: ScoreBoard
+    uniqueID: 1040123445
+    locked: 0
+  - name: Foreground
+    uniqueID: 1202221475
     locked: 0

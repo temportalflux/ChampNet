@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Transition))]
 public class SceneTransition : MonoBehaviour {
-
+    
     public string nextScene;
 
     private Transition transition;
@@ -15,15 +15,14 @@ public class SceneTransition : MonoBehaviour {
         this.transition = this.GetComponent<Transition>();
     }
 
-    public void load()
+    public void load(ManagerTransitions.OnTransitionFinish onFinish = null)
     {
-        ManagerTransitions.INSTANCE.triggerLoadAsync(this.nextScene, this.transition);
+        ManagerTransitions.INSTANCE.triggerLoadAsync(this.nextScene, this.transition, onFinish);
     }
     
-    public void exit()
+    public void exit(ManagerTransitions.OnTransitionFinish onFinish = null)
     {
-        ManagerTransitions.INSTANCE.triggerLoadAsync(null, this.transition);
-        //ManagerTransitions.INSTANCE.triggerExit();
+        ManagerTransitions.INSTANCE.triggerLoadAsync(null, this.transition, onFinish);
     }
 
 }

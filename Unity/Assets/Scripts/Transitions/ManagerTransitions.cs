@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 /** Author: Dustin Yost
  * Static component class which handles transitioning between scenes
  */
-public class ManagerTransitions : MonoBehaviour {
+public class ManagerTransitions : MonoBehaviour
+{
+
+    public delegate void OnTransitionFinish();
 
     // The static instance of this class
     private static ManagerTransitions _instance;
@@ -23,8 +26,8 @@ public class ManagerTransitions : MonoBehaviour {
     // Mutex for handling if there is a transition in use
     private bool inUse;
 
-    private Coroutine routDisplay, routLoad, routMain;
-
+    private Coroutine routDisplay, routLoad;
+    private OnTransitionFinish onTransitionFinish;
     Transition sceneTransition;
 
     // variable to store the loading of some scene asynchonously - only non-null while inUse is true
@@ -84,7 +87,7 @@ public class ManagerTransitions : MonoBehaviour {
     /**
      * Trigger a loading of some scene asynchronously with some transition
      */
-    public bool triggerLoadAsync(string nextScene, Transition transition)
+    public bool triggerLoadAsync(string nextScene, Transition transition, OnTransitionFinish onFinish = null)
     {
         // Check to see if a transition is already occuring
         if (!this.inUse)
@@ -94,6 +97,8 @@ public class ManagerTransitions : MonoBehaviour {
 
             // Trigger the coroutines
 
+            this.onTransitionFinish = onFinish;
+
             // Begin the visual transition
             this.routDisplay = StartCoroutine(this.displayTransition(transition));
 
@@ -101,7 +106,7 @@ public class ManagerTransitions : MonoBehaviour {
             this.routLoad = StartCoroutine(this.loadScene(nextScene));
 
             // Add check for merging routines
-            this.routMain = StartCoroutine(this.checkDisplayLoad());
+            StartCoroutine(this.checkDisplayLoad());
 
             return true;
         }
@@ -110,16 +115,22 @@ public class ManagerTransitions : MonoBehaviour {
 
     private IEnumerator displayTransition(Transition transition)
     {
-        Debug.Log("Displaying transition");
+        //Debug.Log("Displaying transition");
 
         this.sceneTransition = transition;
 
         // Begin transition display
         this.sceneTransition.forwards();
 
+        AudioSource sceneAudio = GameManager.INSTANCE.GetMusicSource();
+
         // Wait while the transition is running
         while (this.sceneTransition.isAnimating())
         {
+            if (sceneAudio != null)
+            {
+                sceneAudio.volume = 1 - this.sceneTransition.GetPercentDone();
+            }
             yield return null;
         }
 
@@ -130,7 +141,7 @@ public class ManagerTransitions : MonoBehaviour {
     private IEnumerator loadScene(string nextScene)
     {
         // Tell debugger the scene is loading
-        Debug.Log("Loading next scene");
+        //Debug.Log("Loading next scene");
 
         if (nextScene != null)
         {
@@ -151,7 +162,7 @@ public class ManagerTransitions : MonoBehaviour {
 
         if (nextScene != null)
         {
-            Debug.Log(nextScene + " is loaded.");
+            //Debug.Log(nextScene + " is loaded.");
         }
         else
         {
@@ -189,7 +200,11 @@ public class ManagerTransitions : MonoBehaviour {
         this.inUse = false;
 
         // clean the coroutine
-        this.routMain = null;
+        //this.routMain = null;
+
+        this.onTransitionFinish();
+        this.onTransitionFinish = null;
+
     }
 
     public void triggerExit()

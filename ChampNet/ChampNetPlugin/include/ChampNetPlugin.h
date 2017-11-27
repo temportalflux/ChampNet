@@ -4,16 +4,72 @@
 // defines CHAMPNET_PLUGIN_SYMTAG
 #include "lib.h"
 
+// Include raknet message identifiers
+#include <RakNet\MessageIdentifiers.h>
+#include <RakNet\RakNetTime.h>
+
 // tell compiler to link as if all function are C not C++
 #ifdef __cplusplus
 extern "C"
 {
 #endif // __cplusplus
 
+	enum PacketPriority;
+	enum PacketReliability;
+
+	// Author: Dustin Yost
 	namespace ChampNetPlugin {
+
+		enum MessageIDs
+		{
+			// RakNet messages (unsued for clients)
+			ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,
+			// The connection was severed
+			ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,
+			// The connection was dropped
+			ID_CLIENT_MISSING = ID_CONNECTION_LOST,
+
+			// RakNet Messages (used for clients)
+			ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,
+			ID_CLIENT_CONNECTION_REJECTED = ID_CONNECTION_ATTEMPT_FAILED,
+
+			// placeholder - For tracking in C# script
+			ID_PLACEHOLDER = ID_USER_PACKET_ENUM,
+
+			// Client-Sent Messages
+			// 1) Sent to server to notify it of an incoming client
+			ID_CLIENT_JOINED,
+			// Sent to server to notify all clients of an updated position
+			ID_PLAYER_REQUEST_MOVEMENT,
+			// Sent to server to request a battle with some other player
+			ID_BATTLE_REQUEST,
+			// Sent to server to accept or deny battle with some requesting player
+			ID_BATTLE_RESPONSE,
+
+			// Server-Sent Messages
+			// 2) Sent to clients to notify them of the values for some spawning user
+			// Sender uses to place self, peers use to place a dummy unit
+			ID_UPDATE_GAMESTATE,
+			// 3) Sent to clients to mandate their ID
+			ID_CLIENT_REQUEST_PLAYER,
+			// Send to all clients to notify them of a battle result
+			ID_BATTLE_RESULT,
+			// Sent to server and forwarded to clients notifying them a user has left the server
+			ID_CLIENT_LEFT,
+			// Notification to clients that the server has been disconnected
+			ID_DISCONNECT,
+
+		};
 
 		// Create a network to connect with
 		CHAMPNET_PLUGIN_SYMTAG int Create();
+
+		typedef void(*FuncCallBack)(const char* message, int color, int size);
+		enum class Color { Red, Green, Blue, Black, White, Yellow, Orange };
+
+		CHAMPNET_PLUGIN_SYMTAG void RegisterDebugCallback(FuncCallBack callBack);
+
+		static void send_log(const char *msg, const Color &color);
 
 		// Destroy the network (must call Create prior) (must call when owning object is destroyed)
 		CHAMPNET_PLUGIN_SYMTAG int Destroy();
@@ -34,13 +90,27 @@ extern "C"
 		CHAMPNET_PLUGIN_SYMTAG void* PollPacket(bool &validPacket);
 
 		// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
-		CHAMPNET_PLUGIN_SYMTAG char* GetPacketAddress(void* packetPtr, unsigned int &length);
+		CHAMPNET_PLUGIN_SYMTAG const char* GetPacketAddress(void* packetPtr, unsigned int &length);
 
 		// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
-		CHAMPNET_PLUGIN_SYMTAG unsigned char* GetPacketData(void* packetPtr, unsigned int &length);
+		CHAMPNET_PLUGIN_SYMTAG unsigned char* GetPacketData(void* packetPtr, unsigned int &length, unsigned long &transmitTime);
 
 		// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
 		CHAMPNET_PLUGIN_SYMTAG void FreePacket(void* packetPtr);
+
+		CHAMPNET_PLUGIN_SYMTAG void SendByteArray(const char* address, int port, char* byteArray, int byteArraySize);
+
+		CHAMPNET_PLUGIN_SYMTAG void SendData(const char* address, char* byteArray, int byteArraySize, PacketPriority *priority, PacketReliability *reliability, int channel, bool broadcast);
+
+		// Disconnect from the interface
+		CHAMPNET_PLUGIN_SYMTAG void Disconnect();
+
+		// Returns the current peer interface address
+		CHAMPNET_PLUGIN_SYMTAG const char* GetAddress();
+
+		CHAMPNET_PLUGIN_SYMTAG int WriteTimeStamp(char *buffer, const RakNet::Time &time1, const RakNet::Time &time2); // Added By Jake
+
+		CHAMPNET_PLUGIN_SYMTAG int ReadTimeStamp(const char *buffer, RakNet::Time &time1, RakNet::Time &time2); // Added By Jake
 
 	};
 

@@ -53,7 +53,7 @@ public class UnGamepadManager : GamepadManager
 			gamepads [i].Update ();
 	}
 	
-	void RefreshDevices ()
+	public void RefreshDevices ()
 	{
 		if (Input.GetJoystickNames ().Length > 0)
 		{
@@ -140,7 +140,7 @@ public class UnGamepadManager : GamepadManager
 		AddDevice (gamepad);
 	}
 	
-	void RemoveIfDisconnected (GamepadDevice gamepad)
+	public void RemoveIfDisconnected (GamepadDevice gamepad)
 	{
 		UnGamepadConfig config = (UnGamepadConfig)((UnGamepadDevice)gamepad).config;
 		

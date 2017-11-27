@@ -69,9 +69,6 @@ public class InputResponse : MonoBehaviour {
 
     }
 
-    [Tooltip("The main input manager")]
-    public GamepadInput input;
-
     [Range(1, 4)]
     [Tooltip("The controller number")]
     public int inputId = 1;
@@ -80,7 +77,12 @@ public class InputResponse : MonoBehaviour {
     public ListenerButton[] listenerButtons;
     [Tooltip("The list of listeners for axes")]
     public ListenerAxis[] listenerAxes;
-    
+
+
+    [System.Serializable]
+    public class KeyboardEvent : UnityEvent<InputDevice, char> { }
+    public KeyboardEvent onKeyInput;
+
     // The dictionary mapping of listeners for buttons from Update type -> Button -> Listener action
     private Dictionary<UpdateEvent, Dictionary<MappedButton, List<ListenerButton>>> dictListenerButtons;
     // The dictionary mapping of listeners for axes from Update type -> Button -> Listener action
@@ -135,9 +137,12 @@ public class InputResponse : MonoBehaviour {
 
     public void Update()
     {
+        if (ManagerInput.INSTANCE == null) return;
+        if (ManagerInput.INSTANCE.isInUse()) return;
         // Check for all inputs
         //MappedInput.inputDevices.ForEach(this.updateInput);
-        this.updateInput(MappedInput.activeDevice);
+        if (MappedInput.activeDevice != null)
+            this.updateInput(MappedInput.activeDevice);
     }
 
     // Check for updates in some input
@@ -146,6 +151,19 @@ public class InputResponse : MonoBehaviour {
         bool isMouse = device is MouseInputDevice;
         bool isKeyboard = device is KeyboardInputDevice;
         bool isGamepad = device is GamepadInputDevice;
+        
+        // Check keyboard
+        if (isKeyboard)
+        {
+            foreach (char c in Input.inputString)
+            {
+                this.onKeyInput.Invoke(device, c);
+            }
+        }
+
+        int inputID = isMouse || isKeyboard ? 1 : (device as GamepadInputDevice).gamepad.deviceId;
+
+        if (this.inputId != inputID) return;
 
         float value;
 
@@ -153,8 +171,10 @@ public class InputResponse : MonoBehaviour {
         // check all mappings currently being tracked
         foreach (UpdateEvent eventType in this.dictListenerButtons.Keys)
         {
+            
             foreach (MappedButton mapping in this.dictListenerButtons[eventType].Keys)
             {
+
                 // Get the appropriate event
                 switch (eventType)
                 {
@@ -239,7 +259,7 @@ public class InputResponse : MonoBehaviour {
             }
             
         }
-
+        
     }
 
 }

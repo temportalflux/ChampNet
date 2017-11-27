@@ -65,11 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f3b5231fb044acca971aacf0793bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamepadInputMapping: {fileID: 11400000, guid: 4f086e47f5302419dab1a229f0fa0f8d,
+  gamepadInputMapping: {fileID: 11400000, guid: 5f071f3777bf9a440bf7c04e8dc8932d,
     type: 2}
-  keyboardInputMapping: {fileID: 11400000, guid: 4e9908c3656944bc1a051f755f9284be,
+  keyboardInputMapping: {fileID: 11400000, guid: 7d255239f1e68894e8a004fe3f38588b,
     type: 2}
-  mouseInputMapping: {fileID: 11400000, guid: 99acd2c1a71d543ab92e29ab1d644214, type: 2}
+  mouseInputMapping: {fileID: 11400000, guid: 20acf38c185c5e94b9492e69388c2484, type: 2}
 --- !u!114 &114727185552034598
 MonoBehaviour:
   m_ObjectHideFlags: 1

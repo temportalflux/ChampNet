@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/menu-main.unity
     guid: d1a6c949e5929404ba4c90be8ae249bc
   - enabled: 1
-    path: Assets/Scenes/example.unity
-    guid: 6ea62592a82c04249b3acd5e817bd668
+    path: Assets/Scenes/town.unity
+    guid: 6bb9e18a2d60fe34998bd67bb955260d
+  - enabled: 1
+    path: Assets/Scenes/town-multiplayer.unity
+    guid: d3b00f1be763e8b4980f30197ba741ad
