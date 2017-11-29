@@ -1,0 +1,161 @@
+\hypertarget{struct_game_state_1_1_player}{\section{Game\-State.\-Player Struct Reference}
+\label{struct_game_state_1_1_player}\index{Game\-State.\-Player@{Game\-State.\-Player}}
+}
+Inheritance diagram for Game\-State.\-Player\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_game_state_1_1_player}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}{int {\bfseries Get\-Size} ()}\label{struct_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}
+
+\item 
+void \hyperlink{struct_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
+void \hyperlink{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+\hypertarget{struct_game_state_1_1_player_ace7e3625cf1996b8c56bcafae36673af}{void {\bfseries copy\-From\-Game\-State} (\hyperlink{struct_game_state_1_1_player}{Player} info, float delta\-Time)}\label{struct_game_state_1_1_player_ace7e3625cf1996b8c56bcafae36673af}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a59ac624b5378e8253ac70d827febfe6a}{void {\bfseries integrate\-Physics} (float delta\-Time)}\label{struct_game_state_1_1_player_a59ac624b5378e8253ac70d827febfe6a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_game_state_1_1_player_aacc123df8ea5256f83c1060a5fdd19c2}{I\-D {\bfseries client\-I\-D}}\label{struct_game_state_1_1_player_aacc123df8ea5256f83c1060a5fdd19c2}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{I\-D {\bfseries player\-I\-D}}\label{struct_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_ae0383475b3348fb85ba5be64433443ff}{I\-D {\bfseries local\-I\-D}}\label{struct_game_state_1_1_player_ae0383475b3348fb85ba5be64433443ff}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_afc2b145df544ca5bffc7c87ef294bcde}{string {\bfseries name}}\label{struct_game_state_1_1_player_afc2b145df544ca5bffc7c87ef294bcde}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a38366fae101c03655d90443f174e362d}{Color {\bfseries color}}\label{struct_game_state_1_1_player_a38366fae101c03655d90443f174e362d}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a24a9ccd0325cae667f125821b3be79c2}{Vector3 {\bfseries position}}\label{struct_game_state_1_1_player_a24a9ccd0325cae667f125821b3be79c2}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_aa22122c85cfdae428d82bd1571ab022a}{Vector3 {\bfseries velocity}}\label{struct_game_state_1_1_player_aa22122c85cfdae428d82bd1571ab022a}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a8f25769e000454ef477d359f44a5ed31}{Vector3 {\bfseries accelleration}}\label{struct_game_state_1_1_player_a8f25769e000454ef477d359f44a5ed31}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a7a4794af9943bc989eb1479b80c3b34b}{bool {\bfseries in\-Battle}}\label{struct_game_state_1_1_player_a7a4794af9943bc989eb1479b80c3b34b}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{uint {\bfseries wins}}\label{struct_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}{uint {\bfseries rank}}\label{struct_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_aebf24de01e14055dc940d0493753484f}{Player\-Reference {\bfseries object\-Reference}}\label{struct_game_state_1_1_player_aebf24de01e14055dc940d0493753484f}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_ac1f7e0b5bc335c32c3be71e3653787a6}{Render\-Texture {\bfseries camera\-Texture}}\label{struct_game_state_1_1_player_ac1f7e0b5bc335c32c3be71e3653787a6}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int {\bfseries S\-I\-Z\-E}
+\item 
+\hypertarget{struct_game_state_1_1_player_a1cdc9de8183b220e87632f7f6a7147d0}{static int {\bfseries S\-I\-Z\-E\-\_\-\-M\-A\-X\-\_\-\-N\-A\-M\-E} = 10}\label{struct_game_state_1_1_player_a1cdc9de8183b220e87632f7f6a7147d0}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{struct_game_state_1_1_player_affd7c601a6d763dafdc59a58c415e9e7}{is\-Local}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the player id is from a local player (controlled on this game) or networked (controlled by a peer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Player.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{struct_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Player.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
+\index{S\-I\-Z\-E@{S\-I\-Z\-E}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-State.\-Player.\-S\-I\-Z\-E\hspace{0.3cm}{\ttfamily [static]}}}\label{struct_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+=
+            \textcolor{keyword}{sizeof}(ID) 
+            + \textcolor{keyword}{sizeof}(ID) 
+            + \textcolor{keyword}{sizeof}(ID) 
+            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) + (SIZE\_MAX\_NAME * \textcolor{keyword}{sizeof}(char))
+            + (\textcolor{keyword}{sizeof}(float) * 3) 
+            + (\textcolor{keyword}{sizeof}(float) * 3) 
+            + (\textcolor{keyword}{sizeof}(float) * 3) 
+            + (\textcolor{keyword}{sizeof}(float) * 3) 
+            + \textcolor{keyword}{sizeof}(bool) 
+            + \textcolor{keyword}{sizeof}(uint) 
+            + \textcolor{keyword}{sizeof}(uint)
+\end{DoxyCode}
+
+
+\subsection{Property Documentation}
+\hypertarget{struct_game_state_1_1_player_affd7c601a6d763dafdc59a58c415e9e7}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!is\-Local@{is\-Local}}
+\index{is\-Local@{is\-Local}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{is\-Local}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-State.\-Player.\-is\-Local\hspace{0.3cm}{\ttfamily [get]}}}\label{struct_game_state_1_1_player_affd7c601a6d763dafdc59a58c415e9e7}
+
+
+If the player id is from a local player (controlled on this game) or networked (controlled by a peer) 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/Game\-State.\-cs\end{DoxyCompactItemize}

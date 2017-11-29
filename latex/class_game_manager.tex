@@ -1,0 +1,120 @@
+\hypertarget{class_game_manager}{\section{Game\-Manager Class Reference}
+\label{class_game_manager}\index{Game\-Manager@{Game\-Manager}}
+}
+Inheritance diagram for Game\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_game_manager_1_1_game_action}{Game\-Action}
+\item 
+class \hyperlink{class_game_manager_1_1_game_action_flag}{Game\-Action\-Flag}
+\item 
+class \hyperlink{class_game_manager_1_1_game_action_message}{Game\-Action\-Message}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_manager_a3403831c40f16191e3997be60d95380b}{void {\bfseries Play} ()}\label{class_game_manager_a3403831c40f16191e3997be60d95380b}
+
+\item 
+\hypertarget{class_game_manager_a1138f86278583414cba9456d02d0fa1c}{void {\bfseries Play\-Network} ()}\label{class_game_manager_a1138f86278583414cba9456d02d0fa1c}
+
+\item 
+\hypertarget{class_game_manager_a3c3a8e05664851d7642c13989af691cf}{void {\bfseries Network\-Connect} (string address, int port, Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} players)}\label{class_game_manager_a3c3a8e05664851d7642c13989af691cf}
+
+\item 
+\hypertarget{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}{void {\bfseries Exit} ()}\label{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}
+
+\item 
+\hypertarget{class_game_manager_adb53a672ec492ed3a0cb89ca00808bd4}{void {\bfseries Disconnect} ()}\label{class_game_manager_adb53a672ec492ed3a0cb89ca00808bd4}
+
+\item 
+\hypertarget{class_game_manager_aebdaf24911f168c490194f548297f8d1}{void {\bfseries remove\-Player} (\hyperlink{struct_game_state_1_1_player}{Game\-State.\-Player} player\-Info)}\label{class_game_manager_aebdaf24911f168c490194f548297f8d1}
+
+\item 
+\hypertarget{class_game_manager_a5682ae7c68535cd62fa0791e3c859811}{Player\-Reference {\bfseries get\-Random\-Player} ()}\label{class_game_manager_a5682ae7c68535cd62fa0791e3c859811}
+
+\item 
+Audio\-Source \hyperlink{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{Get\-Music\-Source} ()
+\begin{DoxyCompactList}\small\item\em Gets the music source. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_manager_a6a788456fbde7a3587013f1707586f73}{update\-Player\-Win} (uint winner\-I\-D)
+\begin{DoxyCompactList}\small\item\em update the player's win count \end{DoxyCompactList}\item 
+\hypertarget{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}{void {\bfseries grab\-Score\-Board} ()}\label{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_manager_a87d481fe88a1765f436ea5764cd1a21a}{\hyperlink{class_game_manager_1_1_game_action_flag}{Game\-Action\-Flag} {\bfseries on\-Network\-Connection\-Handled}}\label{class_game_manager_a87d481fe88a1765f436ea5764cd1a21a}
+
+\item 
+\hypertarget{class_game_manager_af977df043b83671ab9a4753b90fbf75b}{\hyperlink{class_game_manager_1_1_game_action_message}{Game\-Action\-Message} {\bfseries on\-Network\-Rejected}}\label{class_game_manager_af977df043b83671ab9a4753b90fbf75b}
+
+\item 
+\hypertarget{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{Scene\-Transition {\bfseries transition}}\label{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}
+
+\item 
+\hypertarget{class_game_manager_a4783d964ba3d7bf89b0142286d745014}{float {\bfseries update\-Delay} = 0.\-5f}\label{class_game_manager_a4783d964ba3d7bf89b0142286d745014}
+
+\item 
+\hypertarget{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}{Game\-Object {\bfseries player\-Prefab}}\label{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}
+
+\item 
+\hypertarget{class_game_manager_aeca2fe86e0abba27ebac921e0fd193ab}{Game\-Object {\bfseries player\-Network\-Prefab}}\label{class_game_manager_aeca2fe86e0abba27ebac921e0fd193ab}
+
+\item 
+\hypertarget{class_game_manager_a8d86b330237462e38933b28276ed0e2c}{\hyperlink{class_game_state}{Game\-State} {\bfseries state}}\label{class_game_manager_a8d86b330237462e38933b28276ed0e2c}
+
+\item 
+\hypertarget{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}{Main\-Camera {\bfseries main\-Camera}}\label{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}{static \hyperlink{class_game_manager}{Game\-Manager} {\bfseries I\-N\-S\-T\-A\-N\-C\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{\index{Game\-Manager@{Game\-Manager}!Get\-Music\-Source@{Get\-Music\-Source}}
+\index{Get\-Music\-Source@{Get\-Music\-Source}!GameManager@{Game\-Manager}}
+\subsubsection[{Get\-Music\-Source}]{\setlength{\rightskip}{0pt plus 5cm}Audio\-Source Game\-Manager.\-Get\-Music\-Source (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}
+
+
+Gets the music source. 
+
+\begin{DoxyReturn}{Returns}
+The Audio\-Source component
+\end{DoxyReturn}
+\hypertarget{class_game_manager_a6a788456fbde7a3587013f1707586f73}{\index{Game\-Manager@{Game\-Manager}!update\-Player\-Win@{update\-Player\-Win}}
+\index{update\-Player\-Win@{update\-Player\-Win}!GameManager@{Game\-Manager}}
+\subsubsection[{update\-Player\-Win}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-update\-Player\-Win (
+\begin{DoxyParamCaption}
+\item[{uint}]{winner\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a6a788456fbde7a3587013f1707586f73}
+
+
+update the player's win count 
+
+
+\begin{DoxyParams}{Parameters}
+{\em winner\-I\-D} & I\-D of the winner of a battle \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/Game\-Manager.\-cs\end{DoxyCompactItemize}

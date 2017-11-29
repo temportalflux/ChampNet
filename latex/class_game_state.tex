@@ -1,0 +1,140 @@
+\hypertarget{class_game_state}{\section{Game\-State Class Reference}
+\label{class_game_state}\index{Game\-State@{Game\-State}}
+}
+Inheritance diagram for Game\-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_state}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_game_state_1_1_player}{Player}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_state_a05acc40696378ba026165a2cc824acf0}{bool {\bfseries Has\-Player} (ref \hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a05acc40696378ba026165a2cc824acf0}
+
+\item 
+\hypertarget{class_game_state_a4c4e32237639764263332c7c236974d1}{void {\bfseries Add\-Player} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a4c4e32237639764263332c7c236974d1}
+
+\item 
+\hypertarget{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}{void {\bfseries Remove\-Player} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}
+
+\item 
+\hypertarget{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}{void {\bfseries Add\-Player\-Local} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}
+
+\item 
+\hypertarget{class_game_state_a2e6cdef311e93ec46d07206d621f6837}{void {\bfseries Add\-Player\-Connected} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a2e6cdef311e93ec46d07206d621f6837}
+
+\item 
+\hypertarget{class_game_state_a61e4817740bd283ce4a6ea44e0d0f00a}{void {\bfseries Spawn\-Local\-Multiplayer} ()}\label{class_game_state_a61e4817740bd283ce4a6ea44e0d0f00a}
+
+\item 
+\hypertarget{class_game_state_a82b88c45043a403441d3eef1e0b72266}{void {\bfseries Spawn\-Local\-Player} ()}\label{class_game_state_a82b88c45043a403441d3eef1e0b72266}
+
+\item 
+\hypertarget{class_game_state_af2fbb55979f8cc6da50317e1d701e370}{void {\bfseries Spawn\-Player} ()}\label{class_game_state_af2fbb55979f8cc6da50317e1d701e370}
+
+\item 
+\hypertarget{class_game_state_a57d152b243c11aa86e7ba0f07b4bd0dd}{int {\bfseries Get\-Size} ()}\label{class_game_state_a57d152b243c11aa86e7ba0f07b4bd0dd}
+
+\item 
+void \hyperlink{class_game_state_af57a06c77a763e8b57841bab79c9b12f}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}{void {\bfseries Fixed\-Update} ()}\label{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_state_a2f3154927e33e16bd595b4aece996c61}{static void {\bfseries Create} ()}\label{class_game_state_a2f3154927e33e16bd595b4aece996c61}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_state_a8b1949523ac8e40776c0617666023d64}{Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} {\bfseries player\-Request} = null}\label{class_game_state_a8b1949523ac8e40776c0617666023d64}
+
+\item 
+\hypertarget{class_game_state_ad68ed3f1f32060bfff68d296e6750712}{bool {\bfseries editor\-Foldout\-Players}}\label{class_game_state_ad68ed3f1f32060bfff68d296e6750712}
+
+\item 
+\hypertarget{class_game_state_a47358e83d829da7a28c49f8d0a795125}{Dictionary$<$ I\-D, bool $>$ {\bfseries editor\-Foldouts}}\label{class_game_state_a47358e83d829da7a28c49f8d0a795125}
+
+\item 
+\hypertarget{class_game_state_aa4cba70bc38a13e80439dc784c6ca12e}{bool {\bfseries is\-Local\-Game}}\label{class_game_state_aa4cba70bc38a13e80439dc784c6ca12e}
+
+\item 
+\hypertarget{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{uint {\bfseries client\-I\-D}}\label{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}
+
+\item 
+\hypertarget{class_game_state_a857eed8c97274c3dd9d3eb558a33f855}{float {\bfseries delta\-Time}}\label{class_game_state_a857eed8c97274c3dd9d3eb558a33f855}
+
+\item 
+\hypertarget{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}{Dictionary$<$ I\-D, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}{Dictionary$<$ uint, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries local\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}
+
+\item 
+\hypertarget{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}{Dictionary$<$ uint, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries connected\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{\index{Game\-State@{Game\-State}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!GameState@{Game\-State}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{class_game_state_af57a06c77a763e8b57841bab79c9b12f}{\index{Game\-State@{Game\-State}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!GameState@{Game\-State}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_af57a06c77a763e8b57841bab79c9b12f}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/Game\-State.\-cs\end{DoxyCompactItemize}
