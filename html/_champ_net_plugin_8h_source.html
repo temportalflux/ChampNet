@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -64,7 +62,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -72,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,8 +104,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif // __cplusplus</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">enum</span> <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">enum</span> <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">enum</span> PacketPriority;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">enum</span> PacketReliability;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// Author: Dustin Yost</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">namespace </span>ChampNetPlugin {</div>
@@ -116,15 +113,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">enum</span> MessageIDs</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// RakNet messages (unsued for clients)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            ID_CLIENT_CONNECTION = <a class="code" href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a884712d974b7a5747131dcce61538180">ID_NEW_INCOMING_CONNECTION</a>,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="comment">// The connection was severed</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            ID_CLIENT_DISCONNECTION = <a class="code" href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3aa3c9ab42767af4b738cceb5a5b3600ae">ID_DISCONNECTION_NOTIFICATION</a>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="comment">// The connection was dropped</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ID_CLIENT_MISSING = <a class="code" href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a28dffd6d158f4003cb58fbe9b483a9a9">ID_CONNECTION_LOST</a>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ID_CLIENT_MISSING = ID_CONNECTION_LOST,</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="comment">// RakNet Messages (used for clients)</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            ID_CLIENT_CONNECTION_ACCEPTED = <a class="code" href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a8e1677131f83c52ed49001d6401fd2e7">ID_CONNECTION_REQUEST_ACCEPTED</a>,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            ID_CLIENT_CONNECTION_REJECTED = <a class="code" href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a7d4e094a2d30cd58511ebe6934a34c0e">ID_CONNECTION_ATTEMPT_FAILED</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            ID_CLIENT_CONNECTION_REJECTED = ID_CONNECTION_ATTEMPT_FAILED,</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="comment">// placeholder - For tracking in C# script</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            ID_PLACEHOLDER = ID_USER_PACKET_ENUM,</div>
@@ -198,7 +195,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendByteArray(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">int</span> port, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendData(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize, <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a> *priority, <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a> *reliability, <span class="keywordtype">int</span> channel, <span class="keywordtype">bool</span> broadcast);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendData(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize, PacketPriority *priority, PacketReliability *reliability, <span class="keywordtype">int</span> channel, <span class="keywordtype">bool</span> broadcast);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// Disconnect from the interface</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> Disconnect();</div>
@@ -217,13 +214,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif // __cplusplus</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif // _CHAMPNET_PLUGIN_PLUGIN_H</span></div>
-<div class="ttc" id="_message_identifiers_8h_html_ac1b471af280629f5ace02e586d5bcfd3aa3c9ab42767af4b738cceb5a5b3600ae"><div class="ttname"><a href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3aa3c9ab42767af4b738cceb5a5b3600ae">ID_DISCONNECTION_NOTIFICATION</a></div><div class="ttdef"><b>Definition:</b> MessageIdentifiers.h:122</div></div>
-<div class="ttc" id="_packet_priority_8h_html_a659378374e516180f93640c79f59705c"><div class="ttname"><a href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a></div><div class="ttdeci">PacketPriority</div><div class="ttdoc">These enumerations are used to describe when packets are delivered. </div><div class="ttdef"><b>Definition:</b> PacketPriority.h:21</div></div>
-<div class="ttc" id="_message_identifiers_8h_html_ac1b471af280629f5ace02e586d5bcfd3a8e1677131f83c52ed49001d6401fd2e7"><div class="ttname"><a href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a8e1677131f83c52ed49001d6401fd2e7">ID_CONNECTION_REQUEST_ACCEPTED</a></div><div class="ttdoc">RakPeer - In a client/server environment, our connection request to the server has been accepted...</div><div class="ttdef"><b>Definition:</b> MessageIdentifiers.h:111</div></div>
-<div class="ttc" id="_message_identifiers_8h_html_ac1b471af280629f5ace02e586d5bcfd3a7d4e094a2d30cd58511ebe6934a34c0e"><div class="ttname"><a href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a7d4e094a2d30cd58511ebe6934a34c0e">ID_CONNECTION_ATTEMPT_FAILED</a></div><div class="ttdoc">RakPeer - Sent to the player when a connection request cannot be completed due to inability to connec...</div><div class="ttdef"><b>Definition:</b> MessageIdentifiers.h:113</div></div>
-<div class="ttc" id="_message_identifiers_8h_html_ac1b471af280629f5ace02e586d5bcfd3a884712d974b7a5747131dcce61538180"><div class="ttname"><a href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a884712d974b7a5747131dcce61538180">ID_NEW_INCOMING_CONNECTION</a></div><div class="ttdoc">RakPeer - A remote system has successfully connected. </div><div class="ttdef"><b>Definition:</b> MessageIdentifiers.h:117</div></div>
-<div class="ttc" id="_packet_priority_8h_html_ae41fa01235e99dced384d137fa874a7e"><div class="ttname"><a href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a></div><div class="ttdeci">PacketReliability</div><div class="ttdef"><b>Definition:</b> PacketPriority.h:46</div></div>
-<div class="ttc" id="_message_identifiers_8h_html_ac1b471af280629f5ace02e586d5bcfd3a28dffd6d158f4003cb58fbe9b483a9a9"><div class="ttname"><a href="_message_identifiers_8h.html#ac1b471af280629f5ace02e586d5bcfd3a28dffd6d158f4003cb58fbe9b483a9a9">ID_CONNECTION_LOST</a></div><div class="ttdef"><b>Definition:</b> MessageIdentifiers.h:125</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

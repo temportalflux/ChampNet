@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['nattypedetectionresulttostring',['NATTypeDetectionResultToString',['../namespace_rak_net.html#ac89c0a6308f35b933825a354dbf4a219',1,'RakNet']]],
-  ['nattypedetectionresulttostringfriendly',['NATTypeDetectionResultToStringFriendly',['../namespace_rak_net.html#aa400a447c631b730d879855b65fe2f67',1,'RakNet']]],
-  ['nonvariadic',['NonVariadic',['../class_rak_net_1_1_rak_string.html#a6220f7e457fda28d722c83ee95d9baa9',1,'RakNet::RakString']]],
-  ['noteam',['NoTeam',['../struct_rak_net_1_1_team_selection.html#a1431b86590b2231b7b8f833d58c62699',1,'RakNet::TeamSelection']]],
-  ['notifyandflagforshutdown',['NotifyAndFlagForShutdown',['../class_rak_net_1_1_rak_peer.html#abff708e05373259e91ec0a863fbaf375',1,'RakNet::RakPeer']]],
-  ['numberofconnections',['NumberOfConnections',['../class_rak_net_1_1_rak_peer.html#a4d47b849ba6e7ecf2d1fca3198a60ba5',1,'RakNet::RakPeer::NumberOfConnections()'],['../class_rak_net_1_1_rak_peer_interface.html#a88611e451f6f6e0d5f7cb00ce5bcabf9',1,'RakNet::RakPeerInterface::NumberOfConnections()']]],
-  ['numberofleadingzeroes',['NumberOfLeadingZeroes',['../class_rak_net_1_1_bit_stream.html#afc678e70ac2082d65c1b103436ca6b6f',1,'RakNet::BitStream']]],
-  ['numthreadsworking',['NumThreadsWorking',['../struct_thread_pool.html#aad431a8d3f28af0ae5249c7e3b819307',1,'ThreadPool']]]
+  ['unlock',['Unlock',['../class_singleton_3_01_t_01_4.html#a4832d0cc115af2e3fe38947538f17dee',1,'Singleton&lt; T &gt;']]],
+  ['update',['update',['../class_game.html#a79df6376b332d63c9eca0dcee30305c3',1,'Game']]],
+  ['updategame',['updateGame',['../class_state_application.html#ae8c352707a7a61196ad655f0e357faff',1,'StateApplication::updateGame()'],['../class_state_server.html#afc726acef321e4fd0b9f3aeacb126845',1,'StateServer::updateGame()']]],
+  ['updategameforinput',['updateGameForInput',['../class_state_application.html#a32ae34ecad2716a916e1342a10c1f620',1,'StateApplication']]],
+  ['updateinput',['updateInput',['../class_state_application.html#aa23f7bb0379af168a9d261acbb580cc4',1,'StateApplication']]],
+  ['updatenetwork',['updateNetwork',['../class_state_application.html#a55c3922d9e1be3e3ef39f7252c698fc4',1,'StateApplication::updateNetwork()'],['../class_state_server.html#aceb9a260a5c4a4d46607e8fe71be2667',1,'StateServer::updateNetwork()']]],
+  ['updateplayerwin',['updatePlayerWin',['../class_game_manager.html#a6a788456fbde7a3587013f1707586f73',1,'GameManager']]]
 ];

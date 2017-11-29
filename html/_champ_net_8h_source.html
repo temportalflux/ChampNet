@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -64,7 +62,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -72,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,13 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;RakNet\RakNetTime.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespace_rak_net.html">    7</a></span>&#160;<span class="keyword">namespace </span>RakNet</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RakNet</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">class </span><a class="code" href="class_rak_net_1_1_rak_peer_interface.html">RakPeerInterface</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_rak_net_1_1_system_address.html">SystemAddress</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">class </span>RakPeerInterface;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">struct </span>SystemAddress;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">enum</span> <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">enum</span> <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">enum</span> PacketPriority;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">enum</span> PacketReliability;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespace_champ_net.html">   15</a></span>&#160;<span class="keyword">namespace </span>ChampNet</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
@@ -120,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// The interface used to connect to another computer</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_rak_net_1_1_rak_peer_interface.html">RakNet::RakPeerInterface</a> *mpPeerInterface;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        RakNet::RakPeerInterface *mpPeerInterface;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// All the packets to be processed</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="class_champ_net_1_1_packet_queue.html">PacketQueue</a>* mpPackets;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
@@ -146,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">// Fetch the address the peer is bound to</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// TODO: Encapsulation Leek</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> queryAddress(<a class="code" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> queryAddress(RakNet::SystemAddress *address);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Return the IP string from the peer</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        std::string getIP();</div>
@@ -162,8 +159,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Send packet data over RakNet</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// TODO: Encapsulation Leek</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> sendTo(Data data, DataSize size,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a> *priority, <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a> *reliability,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            RakNet::SystemAddress *address,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            PacketPriority *priority, PacketReliability *reliability,</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordtype">char</span> channel, <span class="keywordtype">bool</span> broadcast, <span class="keywordtype">bool</span> timestamp, <span class="keyword">const</span> <a class="code" href="struct_champ_net_1_1_time_stamp.html">TimeStamp</a> *timestampInfo = NULL</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        );</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
@@ -171,8 +168,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// TODO: Encapsulation Leek</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">void</span> sendTo(T packet,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a> *priority, <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a> *reliability,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            RakNet::SystemAddress *address,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            PacketPriority *priority, PacketReliability *reliability,</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordtype">char</span> channel, <span class="keywordtype">bool</span> broadcast, <span class="keywordtype">bool</span> timestamp</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        )</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
@@ -186,9 +183,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">// Handle sending struct packets to RakNet address</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// TODO: Encapsulation Leek</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">void</span> sendTo(T packet, <a class="code" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">void</span> sendTo(T packet, RakNet::SystemAddress *address)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            this-&gt;sendTo(packet, address, <a class="code" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705cacb1785f11dd02aa7f5d164fb314c594e">HIGH_PRIORITY</a>, <a class="code" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7eaff2d39b163bcf3e142744962bfb0849f">RELIABLE_ORDERED</a>, 0, <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            this-&gt;sendTo(packet, address, HIGH_PRIORITY, RELIABLE_ORDERED, 0, <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// Cache all incoming packets (should be run regularly)</span></div>
@@ -208,15 +205,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif // _CHAMPNET_MAIN_H</span></div>
-<div class="ttc" id="class_rak_net_1_1_rak_peer_interface_html"><div class="ttname"><a href="class_rak_net_1_1_rak_peer_interface.html">RakNet::RakPeerInterface</a></div><div class="ttdoc">The main interface for network communications. </div><div class="ttdef"><b>Definition:</b> RakPeerInterface.h:42</div></div>
 <div class="ttc" id="struct_champ_net_1_1_time_stamp_html"><div class="ttname"><a href="struct_champ_net_1_1_time_stamp.html">ChampNet::TimeStamp</a></div><div class="ttdef"><b>Definition:</b> Packet.h:10</div></div>
-<div class="ttc" id="_packet_priority_8h_html_a659378374e516180f93640c79f59705cacb1785f11dd02aa7f5d164fb314c594e"><div class="ttname"><a href="_packet_priority_8h.html#a659378374e516180f93640c79f59705cacb1785f11dd02aa7f5d164fb314c594e">HIGH_PRIORITY</a></div><div class="ttdef"><b>Definition:</b> PacketPriority.h:28</div></div>
 <div class="ttc" id="class_champ_net_1_1_packet_html"><div class="ttname"><a href="class_champ_net_1_1_packet.html">ChampNet::Packet</a></div><div class="ttdef"><b>Definition:</b> Packet.h:27</div></div>
-<div class="ttc" id="struct_rak_net_1_1_system_address_html"><div class="ttname"><a href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a></div><div class="ttdoc">Network address for a system. </div><div class="ttdef"><b>Definition:</b> RakNetTypes.h:194</div></div>
-<div class="ttc" id="_packet_priority_8h_html_a659378374e516180f93640c79f59705c"><div class="ttname"><a href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a></div><div class="ttdeci">PacketPriority</div><div class="ttdoc">These enumerations are used to describe when packets are delivered. </div><div class="ttdef"><b>Definition:</b> PacketPriority.h:21</div></div>
 <div class="ttc" id="class_champ_net_1_1_network_html"><div class="ttname"><a href="class_champ_net_1_1_network.html">ChampNet::Network</a></div><div class="ttdef"><b>Definition:</b> ChampNet.h:25</div></div>
-<div class="ttc" id="_packet_priority_8h_html_ae41fa01235e99dced384d137fa874a7eaff2d39b163bcf3e142744962bfb0849f"><div class="ttname"><a href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7eaff2d39b163bcf3e142744962bfb0849f">RELIABLE_ORDERED</a></div><div class="ttdef"><b>Definition:</b> PacketPriority.h:60</div></div>
-<div class="ttc" id="_packet_priority_8h_html_ae41fa01235e99dced384d137fa874a7e"><div class="ttname"><a href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a></div><div class="ttdeci">PacketReliability</div><div class="ttdef"><b>Definition:</b> PacketPriority.h:46</div></div>
 <div class="ttc" id="class_champ_net_1_1_packet_queue_html"><div class="ttname"><a href="class_champ_net_1_1_packet_queue.html">ChampNet::PacketQueue</a></div><div class="ttdef"><b>Definition:</b> Packet.h:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

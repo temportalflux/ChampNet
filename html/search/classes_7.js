@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['hash',['Hash',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20networkid_2c_20raknet_3a_3atm_5fteam_20_2a_2c_20256_2c_20raknet_3a_3atm_5fteam_3a_3atouint32_20_3e',['Hash&lt; NetworkID, RakNet::TM_Team *, 256, RakNet::TM_Team::ToUint32 &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20networkid_2c_20raknet_3a_3atm_5fteammember_20_2a_2c_20256_2c_20raknet_3a_3atm_5fteammember_3a_3atouint32_20_3e',['Hash&lt; NetworkID, RakNet::TM_TeamMember *, 256, RakNet::TM_TeamMember::ToUint32 &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3aaddressorguid_2c_20raknet_3a_3afilteredsystem_2c_202048_2c_20raknet_3a_3aaddressorguid_3a_3atointeger_20_3e',['Hash&lt; RakNet::AddressOrGUID, RakNet::FilteredSystem, 2048, RakNet::AddressOrGUID::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknet_3a_3arakstring_2c_20raknet_3a_3araknet_3a_3arakstring_2c_2016_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakNet::RakString, RakNet::RakNet::RakString, 16, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknet_3a_3arakstring_2c_20raknet_3a_3arpc4_3a_3alocalslot_20_2a_2c_20256_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakNet::RakString, RakNet::RPC4::LocalSlot *, 256, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknet_3a_3arakstring_2c_20raknet_3a_3astatisticshistory_3a_3atimeandvaluequeue_20_2a_2c_2032_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakNet::RakString, RakNet::StatisticsHistory::TimeAndValueQueue *, 32, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknet_3a_3arakstring_2c_20void_28_2a_29_28raknet_3a_3araknet_3a_3abitstream_20_2a_2c_20raknet_3a_3apacket_20_2a_29_2c_2064_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakNet::RakString, void(*)(RakNet::RakNet::BitStream *, RakNet::Packet *), 64, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknet_3a_3arakstring_2c_20void_28_2a_29_28raknet_3a_3araknet_3a_3abitstream_20_2a_2c_20raknet_3a_3araknet_3a_3abitstream_20_2a_2c_20raknet_3a_3apacket_20_2a_29_2c_2064_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakNet::RakString, void(*)(RakNet::RakNet::BitStream *, RakNet::RakNet::BitStream *, RakNet::Packet *), 64, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknetguid_2c_20raknet_3a_3acloudserver_3a_3aremotecloudclient_20_2a_2c_202048_2c_20raknet_3a_3araknetguid_3a_3atouint32_20_3e',['Hash&lt; RakNet::RakNetGUID, RakNet::CloudServer::RemoteCloudClient *, 2048, RakNet::RakNetGUID::ToUint32 &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3araknetguid_2c_20raknet_3a_3arelayplugin_3a_3astrandguidandroom_20_2a_2c_208096_2c_20raknet_3a_3araknet_3a_3araknetguid_3a_3atouint32_20_3e',['Hash&lt; RakNet::RakNetGUID, RakNet::RelayPlugin::StrAndGuidAndRoom *, 8096, RakNet::RakNet::RakNetGUID::ToUint32 &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hash_3c_20raknet_3a_3arakstring_2c_20raknet_3a_3arelayplugin_3a_3astrandguidandroom_20_2a_2c_208096_2c_20raknet_3a_3araknet_3a_3arakstring_3a_3atointeger_20_3e',['Hash&lt; RakNet::RakString, RakNet::RelayPlugin::StrAndGuidAndRoom *, 8096, RakNet::RakNet::RakString::ToInteger &gt;',['../class_data_structures_1_1_hash.html',1,'DataStructures']]],
-  ['hashindex',['HashIndex',['../struct_data_structures_1_1_hash_index.html',1,'DataStructures']]],
-  ['heap',['Heap',['../class_data_structures_1_1_heap.html',1,'DataStructures']]],
-  ['heap_3c_20double_2c_20datastructures_3a_3aorderedchannelheap_3a_3aheapchannelanddata_2c_20true_20_3e',['Heap&lt; double, DataStructures::OrderedChannelHeap::HeapChannelAndData, true &gt;',['../class_data_structures_1_1_heap.html',1,'DataStructures']]],
-  ['heap_3c_20reliabilityheapweighttype_2c_20raknet_3a_3ainternalpacket_20_2a_2c_20false_20_3e',['Heap&lt; reliabilityHeapWeightType, RakNet::InternalPacket *, false &gt;',['../class_data_structures_1_1_heap.html',1,'DataStructures']]],
-  ['heapchannelanddata',['HeapChannelAndData',['../struct_data_structures_1_1_ordered_channel_heap_1_1_heap_channel_and_data.html',1,'DataStructures::OrderedChannelHeap']]],
-  ['heapnode',['HeapNode',['../struct_data_structures_1_1_heap_1_1_heap_node.html',1,'DataStructures::Heap']]],
-  ['httpconnection',['HTTPConnection',['../class_rak_net_1_1_h_t_t_p_connection.html',1,'RakNet']]],
-  ['httpconnection2',['HTTPConnection2',['../class_rak_net_1_1_h_t_t_p_connection2.html',1,'RakNet']]],
-  ['huffmanencodingtree',['HuffmanEncodingTree',['../class_rak_net_1_1_huffman_encoding_tree.html',1,'RakNet']]],
-  ['huffmanencodingtreefactory',['HuffmanEncodingTreeFactory',['../class_rak_net_1_1_huffman_encoding_tree_factory.html',1,'RakNet']]],
-  ['huffmanencodingtreenode',['HuffmanEncodingTreeNode',['../struct_huffman_encoding_tree_node.html',1,'']]]
+  ['managertransitions',['ManagerTransitions',['../class_manager_transitions.html',1,'']]],
+  ['minimaphandler',['MinimapHandler',['../class_minimap_handler.html',1,'']]],
+  ['monsterdataobject',['MonsterDataObject',['../class_monster_data_object.html',1,'']]],
+  ['monsterstat',['MonsterStat',['../class_monster_stat.html',1,'']]]
 ];

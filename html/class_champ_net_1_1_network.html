@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -74,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -126,7 +124,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initClient</b> ()</td
 void&#160;</td><td class="memItemRight" valign="bottom"><b>connectToServer</b> (const std::string &amp;address, const int port)</td></tr>
 <tr class="separator:a9dbfd1e6e9e5f11720a6e8e41174df1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cde161aafa694e5fef8d1c3fac3edd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9cde161aafa694e5fef8d1c3fac3edd3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>queryAddress</b> (<a class="el" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>queryAddress</b> (RakNet::SystemAddress *address)</td></tr>
 <tr class="separator:a9cde161aafa694e5fef8d1c3fac3edd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29734a6ba6ab488fc9ed9278ae7239d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29734a6ba6ab488fc9ed9278ae7239d9"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getIP</b> ()</td></tr>
@@ -141,15 +139,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getPacketCount</b> () 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
 <tr class="separator:a6d06699d228d77aff9c358f79c76ed56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1490e576ec8bf76357c56b16658a1aa1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1490e576ec8bf76357c56b16658a1aa1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTo</b> (Data data, DataSize size, <a class="el" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address, <a class="el" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a> *priority, <a class="el" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a> *reliability, char channel, bool broadcast, bool timestamp, const <a class="el" href="struct_champ_net_1_1_time_stamp.html">TimeStamp</a> *timestampInfo=NULL)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTo</b> (Data data, DataSize size, RakNet::SystemAddress *address, PacketPriority *priority, PacketReliability *reliability, char channel, bool broadcast, bool timestamp, const <a class="el" href="struct_champ_net_1_1_time_stamp.html">TimeStamp</a> *timestampInfo=NULL)</td></tr>
 <tr class="separator:a1490e576ec8bf76357c56b16658a1aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad24d4552c6b597b5667965c323221aaa"><td class="memTemplParams" colspan="2"><a class="anchor" id="ad24d4552c6b597b5667965c323221aaa"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad24d4552c6b597b5667965c323221aaa"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sendTo</b> (T packet, <a class="el" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address, <a class="el" href="_packet_priority_8h.html#a659378374e516180f93640c79f59705c">PacketPriority</a> *priority, <a class="el" href="_packet_priority_8h.html#ae41fa01235e99dced384d137fa874a7e">PacketReliability</a> *reliability, char channel, bool broadcast, bool timestamp)</td></tr>
+<tr class="memitem:ad24d4552c6b597b5667965c323221aaa"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sendTo</b> (T packet, RakNet::SystemAddress *address, PacketPriority *priority, PacketReliability *reliability, char channel, bool broadcast, bool timestamp)</td></tr>
 <tr class="separator:ad24d4552c6b597b5667965c323221aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcd324ec71ef70454b7e4476f070c932"><td class="memTemplParams" colspan="2"><a class="anchor" id="abcd324ec71ef70454b7e4476f070c932"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:abcd324ec71ef70454b7e4476f070c932"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sendTo</b> (T packet, <a class="el" href="struct_rak_net_1_1_system_address.html">RakNet::SystemAddress</a> *address)</td></tr>
+<tr class="memitem:abcd324ec71ef70454b7e4476f070c932"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sendTo</b> (T packet, RakNet::SystemAddress *address)</td></tr>
 <tr class="separator:abcd324ec71ef70454b7e4476f070c932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a981aef84fbe239079ea158931e5eeb71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a981aef84fbe239079ea158931e5eeb71"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fetchAllPackets</b> ()</td></tr>
