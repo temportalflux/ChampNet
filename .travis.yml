@@ -9,9 +9,9 @@ branches:
 # Environment variables
 env:
   global:
-    - GH_REPO_NAME: champnet
+    - GH_REPO_NAME: ChampNet
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxygen.cfg
-    - GH_REPO_REF: github.com/temportalflux/champnet.git
+    - GH_REPO_REF: github.com/temportalflux/ChampNet.git
 
 # Install dependencies
 addons:
