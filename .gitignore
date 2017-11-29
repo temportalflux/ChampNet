@@ -1,0 +1,10 @@
+project/.vs/
+Graphics/
+*.csproj
+developer-sdk-directory-egp-2017-09/DevSDKs/
+EGP Networking Playground/.vs/
+EGP Networking Playground/bin/
+EGP Networking Playground/egpNetFramework/build/
+EGP Networking Playground/egpNetGameClient/build/
+EGP Networking Playground/egpNetGameServer/build/
+EGP Networking Playground/lib/
