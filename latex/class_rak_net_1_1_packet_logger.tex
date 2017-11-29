@@ -1,0 +1,254 @@
+\hypertarget{class_rak_net_1_1_packet_logger}{\section{Rak\-Net\-:\-:Packet\-Logger Class Reference}
+\label{class_rak_net_1_1_packet_logger}\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}}
+}
+
+
+Writes incoming and outgoing messages to the screen. This will write all incoming and outgoing messages to the console window, or to a file if you override it and give it this functionality.  
+
+
+
+
+{\ttfamily \#include $<$Packet\-Logger.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Packet\-Logger\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.866667cm]{class_rak_net_1_1_packet_logger}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a30bde674a2fccc4ee502c4bc8eb86db9}{virtual void {\bfseries Format\-Line} (char $\ast$into, const char $\ast$dir, const char $\ast$type, unsigned int reliable\-Message\-Number, unsigned int frame, unsigned char message\-Identifier, const Bit\-Size\-\_\-t bit\-Len, unsigned long long time, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&local, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&remote, unsigned int split\-Packet\-Id, unsigned int split\-Packet\-Index, unsigned int split\-Packet\-Count, unsigned int ordering\-Index)}\label{class_rak_net_1_1_packet_logger_a30bde674a2fccc4ee502c4bc8eb86db9}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a5cb471dcdd72bafc1285e9a4c073919c}{virtual void {\bfseries Format\-Line} (char $\ast$into, const char $\ast$dir, const char $\ast$type, unsigned int reliable\-Message\-Number, unsigned int frame, const char $\ast$id\-To\-Print, const Bit\-Size\-\_\-t bit\-Len, unsigned long long time, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&local, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&remote, unsigned int split\-Packet\-Id, unsigned int split\-Packet\-Index, unsigned int split\-Packet\-Count, unsigned int ordering\-Index)}\label{class_rak_net_1_1_packet_logger_a5cb471dcdd72bafc1285e9a4c073919c}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a574e24adec497ee567f5ea7a1aaa2d26}{virtual void \hyperlink{class_rak_net_1_1_packet_logger_a574e24adec497ee567f5ea7a1aaa2d26}{On\-Direct\-Socket\-Send} (const char $\ast$data, const Bit\-Size\-\_\-t bits\-Used, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address)}\label{class_rak_net_1_1_packet_logger_a574e24adec497ee567f5ea7a1aaa2d26}
+
+\begin{DoxyCompactList}\small\item\em Events on low level sends and receives. These functions may be called from different threads at the same time. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_packet_logger_a94dd0e79e3e51933166180f3391a9387}{On\-Direct\-Socket\-Receive} (const char $\ast$data, const Bit\-Size\-\_\-t bits\-Used, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_packet_logger_aba0d74f42ad8b50ed50e439d4d13fafb}{On\-Reliability\-Layer\-Notification} (const char $\ast$error\-Message, const Bit\-Size\-\_\-t bits\-Used, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address, bool is\-Error)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_packet_logger_a96775f5fb8fa1be7c55b78628ec1ae94}{On\-Internal\-Packet} (\hyperlink{struct_rak_net_1_1_internal_packet}{Internal\-Packet} $\ast$internal\-Packet, unsigned frame\-Number, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address, Rak\-Net\-::\-Time\-M\-S time, int is\-Send)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_packet_logger_a28c18d70969acf2857fde1c7a1b443fd}{On\-Ack} (unsigned int message\-Number, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address, Rak\-Net\-::\-Time\-M\-S time)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_packet_logger_aff91d53f25ba43df5778aa04bd01cc4f}{On\-Push\-Back\-Packet} (const char $\ast$data, const Bit\-Size\-\_\-t bits\-Used, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} remote\-System\-Address)
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a615fbb0945d97f8d9b940f079ed45645}{virtual void \hyperlink{class_rak_net_1_1_packet_logger_a615fbb0945d97f8d9b940f079ed45645}{Log\-Header} (void)}\label{class_rak_net_1_1_packet_logger_a615fbb0945d97f8d9b940f079ed45645}
+
+\begin{DoxyCompactList}\small\item\em Logs out a header for all the data. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a25e1e0c6122cfa708d98be6799a54926}{virtual void \hyperlink{class_rak_net_1_1_packet_logger_a25e1e0c6122cfa708d98be6799a54926}{Write\-Log} (const char $\ast$str)}\label{class_rak_net_1_1_packet_logger_a25e1e0c6122cfa708d98be6799a54926}
+
+\begin{DoxyCompactList}\small\item\em Override this to log strings to wherever. Log should be threadsafe. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a67c24ca0c97078ca5290ec6287f7c774}{virtual void {\bfseries Write\-Miscellaneous} (const char $\ast$type, const char $\ast$msg)}\label{class_rak_net_1_1_packet_logger_a67c24ca0c97078ca5290ec6287f7c774}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a48dc88cba2792776b43c95f827fee9cf}{virtual void {\bfseries Set\-Print\-I\-D} (bool print)}\label{class_rak_net_1_1_packet_logger_a48dc88cba2792776b43c95f827fee9cf}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a21781635af3c1b6d7b1076e0af921c39}{virtual void {\bfseries Set\-Print\-Acks} (bool print)}\label{class_rak_net_1_1_packet_logger_a21781635af3c1b6d7b1076e0af921c39}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a0819da3879136df1a26b24844fb6abee}{virtual void \hyperlink{class_rak_net_1_1_packet_logger_a0819da3879136df1a26b24844fb6abee}{Set\-Prefix} (const char $\ast$\-\_\-prefix)}\label{class_rak_net_1_1_packet_logger_a0819da3879136df1a26b24844fb6abee}
+
+\begin{DoxyCompactList}\small\item\em Prepend this string to output logs. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a7b8f7d4767ddb445d2fdb344538278f5}{virtual void \hyperlink{class_rak_net_1_1_packet_logger_a7b8f7d4767ddb445d2fdb344538278f5}{Set\-Suffix} (const char $\ast$\-\_\-suffix)}\label{class_rak_net_1_1_packet_logger_a7b8f7d4767ddb445d2fdb344538278f5}
+
+\begin{DoxyCompactList}\small\item\em Append this string to output logs. (newline is useful here) \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a1ca13332359a83158095b52ab686303e}{void \hyperlink{class_rak_net_1_1_packet_logger_a1ca13332359a83158095b52ab686303e}{Set\-Log\-Direct\-Messages} (bool send)}\label{class_rak_net_1_1_packet_logger_a1ca13332359a83158095b52ab686303e}
+
+\begin{DoxyCompactList}\small\item\em Log the direct sends and receives or not. Default true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a1ea5a094f5c433e0d10419c5bfba0977}{static const char $\ast$ {\bfseries Base\-I\-D\-T\-O\-String} (unsigned char Id)}\label{class_rak_net_1_1_packet_logger_a1ea5a094f5c433e0d10419c5bfba0977}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{Uses\-Reliability\-Layer} (void) const 
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a46700c39ac30533daced3a11bbc672d9}{const char $\ast$ {\bfseries I\-D\-T\-O\-String} (unsigned char Id)}\label{class_rak_net_1_1_packet_logger_a46700c39ac30533daced3a11bbc672d9}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_aa253a615de429ba330bb8f3c899ec261}{virtual void {\bfseries Add\-To\-Log} (const char $\ast$str)}\label{class_rak_net_1_1_packet_logger_aa253a615de429ba330bb8f3c899ec261}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a0c4b5188a37b70708603f3d12069dd54}{virtual const char $\ast$ {\bfseries User\-I\-D\-T\-O\-String} (unsigned char Id)}\label{class_rak_net_1_1_packet_logger_a0c4b5188a37b70708603f3d12069dd54}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_af7f4e93aa5befb7f4f9c5ef1b6c44c82}{void {\bfseries Get\-Local\-Time} (char buffer\mbox{[}128\mbox{]})}\label{class_rak_net_1_1_packet_logger_af7f4e93aa5befb7f4f9c5ef1b6c44c82}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a271d3b45acc4969ab267155f10c90eb0}{bool {\bfseries log\-Direct\-Messages}}\label{class_rak_net_1_1_packet_logger_a271d3b45acc4969ab267155f10c90eb0}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a4c5215bc490d4e996ed06facbb24a4f7}{bool {\bfseries print\-Id}}\label{class_rak_net_1_1_packet_logger_a4c5215bc490d4e996ed06facbb24a4f7}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a4506de67ed45463fc1e9cb139e2e585d}{bool {\bfseries print\-Acks}}\label{class_rak_net_1_1_packet_logger_a4506de67ed45463fc1e9cb139e2e585d}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a7f0ad6be727a3124a5891ac7301b7925}{char {\bfseries prefix} \mbox{[}256\mbox{]}}\label{class_rak_net_1_1_packet_logger_a7f0ad6be727a3124a5891ac7301b7925}
+
+\item 
+\hypertarget{class_rak_net_1_1_packet_logger_a4495d375195310cbb01d15c890a0312f}{char {\bfseries suffix} \mbox{[}256\mbox{]}}\label{class_rak_net_1_1_packet_logger_a4495d375195310cbb01d15c890a0312f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Writes incoming and outgoing messages to the screen. This will write all incoming and outgoing messages to the console window, or to a file if you override it and give it this functionality. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_packet_logger_a28c18d70969acf2857fde1c7a1b443fd}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!On\-Ack@{On\-Ack}}
+\index{On\-Ack@{On\-Ack}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{On\-Ack}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Packet\-Logger\-::\-On\-Ack (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{message\-Number, }
+\item[{{\bf System\-Address}}]{remote\-System\-Address, }
+\item[{Rak\-Net\-::\-Time\-M\-S}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_a28c18d70969acf2857fde1c7a1b443fd}
+Called when we get an ack for a message we reliably sent \begin{DoxyPrecond}{Precondition}
+To be called, \hyperlink{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{Uses\-Reliability\-Layer()} must return true 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em message\-Number} & The numerical identifier for which message this is \\
+\hline
+\mbox{\tt in}  & {\em remote\-System\-Address} & The player we sent or got this packet from \\
+\hline
+\mbox{\tt in}  & {\em time} & The current time as returned by \hyperlink{namespace_rak_net_ada73d8160aa36bffbba9e3eb092147cc}{Rak\-Net\-::\-Get\-Time\-M\-S()} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_ae0b0cad31cfc209c48197c77d6b46345}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_packet_logger_a94dd0e79e3e51933166180f3391a9387}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!On\-Direct\-Socket\-Receive@{On\-Direct\-Socket\-Receive}}
+\index{On\-Direct\-Socket\-Receive@{On\-Direct\-Socket\-Receive}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{On\-Direct\-Socket\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Packet\-Logger\-::\-On\-Direct\-Socket\-Receive (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{data, }
+\item[{const Bit\-Size\-\_\-t}]{bits\-Used, }
+\item[{{\bf System\-Address}}]{remote\-System\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_a94dd0e79e3e51933166180f3391a9387}
+Called on a receive from the socket, per datagram, that does not go through the reliability layer \begin{DoxyPrecond}{Precondition}
+To be called, \hyperlink{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{Uses\-Reliability\-Layer()} must return true 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The data being sent \\
+\hline
+\mbox{\tt in}  & {\em bits\-Used} & How many bits long {\itshape data} is \\
+\hline
+\mbox{\tt in}  & {\em remote\-System\-Address} & Which system this message is being sent to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a9aac1101ad58e8443516588e96e066ec}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_packet_logger_a96775f5fb8fa1be7c55b78628ec1ae94}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!On\-Internal\-Packet@{On\-Internal\-Packet}}
+\index{On\-Internal\-Packet@{On\-Internal\-Packet}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{On\-Internal\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Packet\-Logger\-::\-On\-Internal\-Packet (
+\begin{DoxyParamCaption}
+\item[{{\bf Internal\-Packet} $\ast$}]{internal\-Packet, }
+\item[{unsigned}]{frame\-Number, }
+\item[{{\bf System\-Address}}]{remote\-System\-Address, }
+\item[{Rak\-Net\-::\-Time\-M\-S}]{time, }
+\item[{int}]{is\-Send}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_a96775f5fb8fa1be7c55b78628ec1ae94}
+Called on a send or receive of a message within the reliability layer \begin{DoxyPrecond}{Precondition}
+To be called, \hyperlink{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{Uses\-Reliability\-Layer()} must return true 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em internal\-Packet} & The user message, along with all send data. \\
+\hline
+\mbox{\tt in}  & {\em frame\-Number} & The number of frames sent or received so far for this player depending on {\itshape is\-Send} . Indicates the frame of this user message. \\
+\hline
+\mbox{\tt in}  & {\em remote\-System\-Address} & The player we sent or got this packet from \\
+\hline
+\mbox{\tt in}  & {\em time} & The current time as returned by \hyperlink{namespace_rak_net_ada73d8160aa36bffbba9e3eb092147cc}{Rak\-Net\-::\-Get\-Time\-M\-S()} \\
+\hline
+\mbox{\tt in}  & {\em is\-Send} & Is this callback representing a send event or receive event? \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a399b8c93daa0236599961e754742e2f7}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_packet_logger_aff91d53f25ba43df5778aa04bd01cc4f}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!On\-Push\-Back\-Packet@{On\-Push\-Back\-Packet}}
+\index{On\-Push\-Back\-Packet@{On\-Push\-Back\-Packet}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{On\-Push\-Back\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Packet\-Logger\-::\-On\-Push\-Back\-Packet (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{data, }
+\item[{const Bit\-Size\-\_\-t}]{bits\-Used, }
+\item[{{\bf System\-Address}}]{remote\-System\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_aff91d53f25ba43df5778aa04bd01cc4f}
+System called \hyperlink{class_rak_net_1_1_rak_peer_interface_a29c5527b07a3ddc32083d8ec1e24318b}{Rak\-Peer\-Interface\-::\-Push\-Back\-Packet} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The data being sent \\
+\hline
+\mbox{\tt in}  & {\em bits\-Used} & How many bits long {\itshape data} is \\
+\hline
+\mbox{\tt in}  & {\em remote\-System\-Address} & The player we sent or got this packet from \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a5c976aea56ed85055a17c19d91b90727}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_packet_logger_aba0d74f42ad8b50ed50e439d4d13fafb}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!On\-Reliability\-Layer\-Notification@{On\-Reliability\-Layer\-Notification}}
+\index{On\-Reliability\-Layer\-Notification@{On\-Reliability\-Layer\-Notification}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{On\-Reliability\-Layer\-Notification}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Packet\-Logger\-::\-On\-Reliability\-Layer\-Notification (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{error\-Message, }
+\item[{const Bit\-Size\-\_\-t}]{bits\-Used, }
+\item[{{\bf System\-Address}}]{remote\-System\-Address, }
+\item[{bool}]{is\-Error}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_aba0d74f42ad8b50ed50e439d4d13fafb}
+Called when the reliability layer rejects a send or receive \begin{DoxyPrecond}{Precondition}
+To be called, \hyperlink{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{Uses\-Reliability\-Layer()} must return true 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bits\-Used} & How many bits long {\itshape data} is \\
+\hline
+\mbox{\tt in}  & {\em remote\-System\-Address} & Which system this message is being sent to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_abf51e60546bd74d21c91dc0d6f9f3a4b}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}{\index{Rak\-Net\-::\-Packet\-Logger@{Rak\-Net\-::\-Packet\-Logger}!Uses\-Reliability\-Layer@{Uses\-Reliability\-Layer}}
+\index{Uses\-Reliability\-Layer@{Uses\-Reliability\-Layer}!RakNet::PacketLogger@{Rak\-Net\-::\-Packet\-Logger}}
+\subsubsection[{Uses\-Reliability\-Layer}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Packet\-Logger\-::\-Uses\-Reliability\-Layer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_packet_logger_ab486d35c408ffee7d1732678143d4a81}
+Queried when attached to \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} Return true to call \hyperlink{class_rak_net_1_1_packet_logger_a574e24adec497ee567f5ea7a1aaa2d26}{On\-Direct\-Socket\-Send()}, \hyperlink{class_rak_net_1_1_packet_logger_a94dd0e79e3e51933166180f3391a9387}{On\-Direct\-Socket\-Receive()}, \hyperlink{class_rak_net_1_1_packet_logger_aba0d74f42ad8b50ed50e439d4d13fafb}{On\-Reliability\-Layer\-Notification()}, \hyperlink{class_rak_net_1_1_packet_logger_a96775f5fb8fa1be7c55b78628ec1ae94}{On\-Internal\-Packet()}, and \hyperlink{class_rak_net_1_1_packet_logger_a28c18d70969acf2857fde1c7a1b443fd}{On\-Ack()} If true, then you cannot call \hyperlink{class_rak_net_1_1_rak_peer_a4ceacd63ae51089a2e36287c54f07ffe}{Rak\-Peer\-::\-Attach\-Plugin()} or \hyperlink{class_rak_net_1_1_rak_peer_a9f29151642a0ad0abdddc6d9a8f25239}{Rak\-Peer\-::\-Detach\-Plugin()} for this plugin, while \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} is active 
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_accfca7d25262c48a87a30114383284aa}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_packet_logger_8h}{Packet\-Logger.\-h}\end{DoxyCompactItemize}

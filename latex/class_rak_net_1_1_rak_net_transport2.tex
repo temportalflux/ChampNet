@@ -1,0 +1,269 @@
+\hypertarget{class_rak_net_1_1_rak_net_transport2}{\section{Rak\-Net\-:\-:Rak\-Net\-Transport2 Class Reference}
+\label{class_rak_net_1_1_rak_net_transport2}\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+}
+
+
+Use Rak\-Net\-Transport if you need a secure connection between the client and the console server.  
+
+
+
+
+{\ttfamily \#include $<$Rak\-Net\-Transport2.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Rak\-Net\-Transport2\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_rak_net_transport2}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_rak_net_transport2_abb58cb4fd2ea3250c389b8ef277dad95}{Start} (unsigned short port, bool server\-Mode)
+\item 
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a3de211dcbde531971013a237ebebbc4c}{void \hyperlink{class_rak_net_1_1_rak_net_transport2_a3de211dcbde531971013a237ebebbc4c}{Stop} (void)}\label{class_rak_net_1_1_rak_net_transport2_a3de211dcbde531971013a237ebebbc4c}
+
+\begin{DoxyCompactList}\small\item\em Stop the transport provider. You can clear memory and shutdown threads here. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rak_net_transport2_a7ec569657d7add40b0cee7278bc04c35}{Send} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address, const char $\ast$data,...)
+\item 
+void \hyperlink{class_rak_net_1_1_rak_net_transport2_a73d6c3178bfc051d9a143e855fd7ace9}{Close\-Connection} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address)
+\item 
+\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$ \hyperlink{class_rak_net_1_1_rak_net_transport2_a1f51afa7fad8d03ffc3b814af206b7d3}{Receive} (void)
+\item 
+void \hyperlink{class_rak_net_1_1_rak_net_transport2_af87746cec490429fe1332cc1e6a6b40e}{Deallocate\-Packet} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_rak_net_transport2_a964e1e7302513fc9aa878980473cd782}{Has\-New\-Incoming\-Connection} (void)
+\item 
+\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_rak_net_transport2_a4a80043c5d0395af7fa07a0dc5fd24c8}{Has\-Lost\-Connection} (void)
+\item 
+virtual \hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} $\ast$ \hyperlink{class_rak_net_1_1_rak_net_transport2_a7f8567ba431056ef96da1536d0cf01d7}{Get\-Command\-Parser} (void)
+\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_rak_net_transport2_ad5607edbc41109fa3ab901c8eb47616d}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_rak_net_transport2_a43bdc270a02f5584c5190b902ac243d9}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_rak_net_transport2_a55d99bb7a6993f5e4d4ef564dea5e487}{On\-New\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, bool is\-Incoming)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_rak_net_transport2_abd5a437c52e50879141abee05a98d88b}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}\\*
+$<$ \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $>$ {\bfseries new\-Connections}}\label{class_rak_net_1_1_rak_net_transport2_abd5a437c52e50879141abee05a98d88b}
+
+\item 
+\hypertarget{class_rak_net_1_1_rak_net_transport2_aff11289e1c19403f00a2f317739e6550}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}\\*
+$<$ \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $>$ {\bfseries lost\-Connections}}\label{class_rak_net_1_1_rak_net_transport2_aff11289e1c19403f00a2f317739e6550}
+
+\item 
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a106688d6509ee5b14ea9ebb730eb52c9}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}$<$ \hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$ $>$ {\bfseries packet\-Queue}}\label{class_rak_net_1_1_rak_net_transport2_a106688d6509ee5b14ea9ebb730eb52c9}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Use Rak\-Net\-Transport if you need a secure connection between the client and the console server. 
+
+Rak\-Net\-Transport automatically initializes security for the system. Use the project Command\-Console\-Client to connect To the \hyperlink{class_rak_net_1_1_console_server}{Console\-Server} if you use Rak\-Net\-Transport 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a73d6c3178bfc051d9a143e855fd7ace9}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Close\-Connection@{Close\-Connection}}
+\index{Close\-Connection@{Close\-Connection}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Close\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Close\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf System\-Address}}]{system\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a73d6c3178bfc051d9a143e855fd7ace9}
+Disconnect {\itshape system\-Address} . The binary address and port defines the \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} structure. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player/address to disconnect \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a089cdab96f00d399988c3a23db039201}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_af87746cec490429fe1332cc1e6a6b40e}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Deallocate\-Packet@{Deallocate\-Packet}}
+\index{Deallocate\-Packet@{Deallocate\-Packet}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Deallocate\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Deallocate\-Packet (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_af87746cec490429fe1332cc1e6a6b40e}
+Deallocate the \hyperlink{struct_rak_net_1_1_packet}{Packet} structure returned by Receive 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em The} & packet to deallocate \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a889932d752ad7a3e14108cd0b5371b7a}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a7f8567ba431056ef96da1536d0cf01d7}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Get\-Command\-Parser@{Get\-Command\-Parser}}
+\index{Get\-Command\-Parser@{Get\-Command\-Parser}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Get\-Command\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Command\-Parser\-Interface}$\ast$ Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Get\-Command\-Parser (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a7f8567ba431056ef96da1536d0cf01d7}
+Your transport provider can itself have command parsers if the transport layer has user-\/modifiable features For example, your transport layer may have a password which you want remote users to be able to set or you may want to allow remote users to turn on or off command echo \begin{DoxyReturn}{Returns}
+0 if you do not need a command parser -\/ otherwise the desired derivation of \hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_ad96ea3ff016ad1a7590e1f63d5efd6b0}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a4a80043c5d0395af7fa07a0dc5fd24c8}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Has\-Lost\-Connection@{Has\-Lost\-Connection}}
+\index{Has\-Lost\-Connection@{Has\-Lost\-Connection}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Has\-Lost\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf System\-Address} Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Has\-Lost\-Connection (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a4a80043c5d0395af7fa07a0dc5fd24c8}
+If a system loses the connection, you should queue that event and return the system\-Address/address of that player in this function. \begin{DoxyReturn}{Returns}
+The System\-Address/address of the system 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a7ee1400724af8c3d94555c4c5ca189c5}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a964e1e7302513fc9aa878980473cd782}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Has\-New\-Incoming\-Connection@{Has\-New\-Incoming\-Connection}}
+\index{Has\-New\-Incoming\-Connection@{Has\-New\-Incoming\-Connection}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Has\-New\-Incoming\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf System\-Address} Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Has\-New\-Incoming\-Connection (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a964e1e7302513fc9aa878980473cd782}
+If a new system connects to you, you should queue that event and return the system\-Address/address of that player in this function. \begin{DoxyReturn}{Returns}
+The System\-Address/address of the system 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a78f3977421deabf57046773112d07626}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a43bdc270a02f5584c5190b902ac243d9}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a43bdc270a02f5584c5190b902ac243d9}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a55d99bb7a6993f5e4d4ef564dea5e487}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!On\-New\-Connection@{On\-New\-Connection}}
+\index{On\-New\-Connection@{On\-New\-Connection}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{On\-New\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-On\-New\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{bool}]{is\-Incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a55d99bb7a6993f5e4d4ef564dea5e487}
+Called when we got a new connection 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & Address of the new connection \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em is\-Incoming} & If true, this is I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, or the equivalent \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_abf13327cc10f772ba06dff8f2687f8ae}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_ad5607edbc41109fa3ab901c8eb47616d}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_ad5607edbc41109fa3ab901c8eb47616d}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a1f51afa7fad8d03ffc3b814af206b7d3}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Receive@{Receive}}
+\index{Receive@{Receive}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Receive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Packet}$\ast$ Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Receive (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a1f51afa7fad8d03ffc3b814af206b7d3}
+Return a string. The string should be allocated and written to \hyperlink{struct_rak_net_1_1_packet_a63e46b85c8ca156b205a124e54659614}{Packet\-::data} . The byte length should be written to \hyperlink{struct_rak_net_1_1_packet_a114883d23f7133c77808651a33420d0f}{Packet\-::length} . The player/address should be written to \hyperlink{struct_rak_net_1_1_packet_abf432112847cb3ce458935b8a5ae4089}{Packet\-::system\-Address} If your transport protocol adds special formatting to the data stream you should parse it out before returning it in the packet and thus only return a string in \hyperlink{struct_rak_net_1_1_packet_a63e46b85c8ca156b205a124e54659614}{Packet\-::data} \begin{DoxyReturn}{Returns}
+The packet structure containing the result of Receive, or 0 if no data is available 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a2d458e6e575f700f292c42b7566d15c9}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_a7ec569657d7add40b0cee7278bc04c35}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Send@{Send}}
+\index{Send@{Send}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Send}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Send (
+\begin{DoxyParamCaption}
+\item[{{\bf System\-Address}}]{system\-Address, }
+\item[{const char $\ast$}]{data, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_a7ec569657d7add40b0cee7278bc04c35}
+Send a null-\/terminated string to {\itshape system\-Address} If your transport method requires particular formatting of the outgoing data (e.\-g. you don't just send strings) you can do it here and parse it out in \hyperlink{class_rak_net_1_1_rak_net_transport2_a1f51afa7fad8d03ffc3b814af206b7d3}{Receive()}. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player to send the string to \\
+\hline
+\mbox{\tt in}  & {\em data} & format specifier -\/ same as R\-A\-K\-N\-E\-T\-\_\-\-D\-E\-B\-U\-G\-\_\-\-P\-R\-I\-N\-T\-F \\
+\hline
+\mbox{\tt in}  & {\em ...} & format specification arguments -\/ same as R\-A\-K\-N\-E\-T\-\_\-\-D\-E\-B\-U\-G\-\_\-\-P\-R\-I\-N\-T\-F \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_ab77f9c90719f38340bdbcb4ffdbf192a}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_rak_net_transport2_abb58cb4fd2ea3250c389b8ef277dad95}{\index{Rak\-Net\-::\-Rak\-Net\-Transport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}!Start@{Start}}
+\index{Start@{Start}!RakNet::RakNetTransport2@{Rak\-Net\-::\-Rak\-Net\-Transport2}}
+\subsubsection[{Start}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Rak\-Net\-Transport2\-::\-Start (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{port, }
+\item[{bool}]{server\-Mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_rak_net_transport2_abb58cb4fd2ea3250c389b8ef277dad95}
+Start the transport provider on the indicated port. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & The port to start the transport provider on \\
+\hline
+\mbox{\tt in}  & {\em server\-Mode} & If true, you should allow incoming connections (I don't actually use this anywhere) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true on success, false on failure. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a309a38aa455b6b72f1c760276f3fb6a8}{Rak\-Net\-::\-Transport\-Interface}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_rak_net_transport2_8h}{Rak\-Net\-Transport2.\-h}\end{DoxyCompactItemize}

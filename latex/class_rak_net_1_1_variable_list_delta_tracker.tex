@@ -1,0 +1,78 @@
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker}{\section{Rak\-Net\-:\-:Variable\-List\-Delta\-Tracker Class Reference}
+\label{class_rak_net_1_1_variable_list_delta_tracker}\index{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker@{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker}}
+}
+
+
+{\ttfamily \#include $<$Variable\-List\-Delta\-Tracker.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_variable_list_delta_tracker_1_1_variable_last_value_node}{Variable\-Last\-Value\-Node}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a85fb2ff6ff30540b2d4d313eeeedf350}{void {\bfseries Start\-Write} (void)}\label{class_rak_net_1_1_variable_list_delta_tracker_a85fb2ff6ff30540b2d4d313eeeedf350}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_ae3e89e4348a21233b8bc7fbcc73109b0}{bool {\bfseries Is\-Past\-End\-Of\-List} (void) const }\label{class_rak_net_1_1_variable_list_delta_tracker_ae3e89e4348a21233b8bc7fbcc73109b0}
+
+\item 
+{\footnotesize template$<$class Var\-Type $>$ }\\bool \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a1b290d704a8c53be32a7613f86f113f4}{Write\-Var} (const Var\-Type \&var\-Data)
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a349cf26aa8c11dd567babb507241dd72}{{\footnotesize template$<$class Var\-Type $>$ }\\bool \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a349cf26aa8c11dd567babb507241dd72}{Write\-Var\-To\-Bitstream} (const Var\-Type \&var\-Data, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$bit\-Stream)}\label{class_rak_net_1_1_variable_list_delta_tracker_a349cf26aa8c11dd567babb507241dd72}
+
+\begin{DoxyCompactList}\small\item\em Calls Write\-Var. If the variable has changed, writes true, and writes the variable. Otherwise writes false. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_aeb21d3c2beb53cceeee6b5072c855043}{{\footnotesize template$<$class Var\-Type $>$ }\\bool \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_aeb21d3c2beb53cceeee6b5072c855043}{Write\-Var\-To\-Bitstream} (const Var\-Type \&var\-Data, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$bit\-Stream, unsigned char $\ast$b\-Array, unsigned short write\-Offset)}\label{class_rak_net_1_1_variable_list_delta_tracker_aeb21d3c2beb53cceeee6b5072c855043}
+
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a349cf26aa8c11dd567babb507241dd72}{Write\-Var\-To\-Bitstream()}. Additionally, adds the boolean result of \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a1b290d704a8c53be32a7613f86f113f4}{Write\-Var()} to boolean bit array. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a1e8263d93c52d3ba915bf7b6cf403e37}{Flag\-Dirty\-From\-Bit\-Array} (unsigned char $\ast$b\-Array)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a107d8082f40358de5025f1f44e93c47f}{{\footnotesize template$<$class Var\-Type $>$ }\\static bool \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a107d8082f40358de5025f1f44e93c47f}{Read\-Var\-From\-Bitstream} (Var\-Type \&var\-Data, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$bit\-Stream)}\label{class_rak_net_1_1_variable_list_delta_tracker_a107d8082f40358de5025f1f44e93c47f}
+
+\begin{DoxyCompactList}\small\item\em Paired with a call to \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a349cf26aa8c11dd567babb507241dd72}{Write\-Var\-To\-Bitstream()}, will read a variable if it had changed. Otherwise the values remains the same. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_adf4066c4c0b0a4d327e2180852c91ae6}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_variable_list_delta_tracker_1_1_variable_last_value_node}{Variable\-Last\-Value\-Node} $>$ {\bfseries variable\-List}}\label{class_rak_net_1_1_variable_list_delta_tracker_adf4066c4c0b0a4d327e2180852c91ae6}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a791777bbb0619ea65a618413221ea81f}{unsigned int {\bfseries next\-Write\-Index}}\label{class_rak_net_1_1_variable_list_delta_tracker_a791777bbb0619ea65a618413221ea81f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to write a series of variables, copy the contents to memory, and return if the newly written value is different than what was last written Can also encode the reads, writes, and results directly to/from a bitstream 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a1e8263d93c52d3ba915bf7b6cf403e37}{\index{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker@{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker}!Flag\-Dirty\-From\-Bit\-Array@{Flag\-Dirty\-From\-Bit\-Array}}
+\index{Flag\-Dirty\-From\-Bit\-Array@{Flag\-Dirty\-From\-Bit\-Array}!RakNet::VariableListDeltaTracker@{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker}}
+\subsubsection[{Flag\-Dirty\-From\-Bit\-Array}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-List\-Delta\-Tracker\-::\-Flag\-Dirty\-From\-Bit\-Array (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{b\-Array}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_list_delta_tracker_a1e8263d93c52d3ba915bf7b6cf403e37}
+Variables flagged dirty will cause \hyperlink{class_rak_net_1_1_variable_list_delta_tracker_a1b290d704a8c53be32a7613f86f113f4}{Write\-Var()} to return true, even if the variable had not otherwise changed This updates all the variables in the list, where in each index {\itshape vars\-Written} is true, so will the variable at the corresponding index be flagged dirty \hypertarget{class_rak_net_1_1_variable_list_delta_tracker_a1b290d704a8c53be32a7613f86f113f4}{\index{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker@{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker}!Write\-Var@{Write\-Var}}
+\index{Write\-Var@{Write\-Var}!RakNet::VariableListDeltaTracker@{Rak\-Net\-::\-Variable\-List\-Delta\-Tracker}}
+\subsubsection[{Write\-Var}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Var\-Type $>$ bool Rak\-Net\-::\-Variable\-List\-Delta\-Tracker\-::\-Write\-Var (
+\begin{DoxyParamCaption}
+\item[{const Var\-Type \&}]{var\-Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_rak_net_1_1_variable_list_delta_tracker_a1b290d704a8c53be32a7613f86f113f4}
+Records the passed value of the variable to memory, and returns true if the value is different from the write before that (or if it is the first write) \begin{DoxyPrecond}{Precondition}
+Call Start\-Write() before doing the first of a series of calls to Write\-Var or other functions that call Write\-Var 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+Variables must be of the same type, written in the same order, each time 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/Variable\-List\-Delta\-Tracker.\-h\end{DoxyCompactItemize}

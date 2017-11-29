@@ -1,0 +1,318 @@
+\hypertarget{class_rak_net_1_1_file_list}{\section{Rak\-Net\-:\-:File\-List Class Reference}
+\label{class_rak_net_1_1_file_list}\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}{Add\-Files\-From\-Directory} (const char $\ast$application\-Directory, const char $\ast$sub\-Directory, bool write\-Hash, bool write\-Data, bool recursive, \hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} context)
+\begin{DoxyCompactList}\small\item\em Add all the files at a given directory. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_a0aaff64575ef83bf998d88cd8c5bd60e}{void \hyperlink{class_rak_net_1_1_file_list_a0aaff64575ef83bf998d88cd8c5bd60e}{Clear} (void)}\label{class_rak_net_1_1_file_list_a0aaff64575ef83bf998d88cd8c5bd60e}
+
+\begin{DoxyCompactList}\small\item\em Deallocate all memory. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_a74b69189fbd89936926919d6de03974b}{void \hyperlink{class_rak_net_1_1_file_list_a74b69189fbd89936926919d6de03974b}{Serialize} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$out\-Bit\-Stream)}\label{class_rak_net_1_1_file_list_a74b69189fbd89936926919d6de03974b}
+
+\begin{DoxyCompactList}\small\item\em Write all encoded data into a bitstream. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_ab801a3cd39d39996b75e3d4f18b64a13}{bool \hyperlink{class_rak_net_1_1_file_list_ab801a3cd39d39996b75e3d4f18b64a13}{Deserialize} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$in\-Bit\-Stream)}\label{class_rak_net_1_1_file_list_ab801a3cd39d39996b75e3d4f18b64a13}
+
+\begin{DoxyCompactList}\small\item\em Read all encoded data from a bitstream. \hyperlink{class_rak_net_1_1_file_list_a0aaff64575ef83bf998d88cd8c5bd60e}{Clear()} is called before deserializing. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_aea9ffda23dd33149eaee6920658bf563}{List\-Missing\-Or\-Changed\-Files} (const char $\ast$application\-Directory, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$missing\-Or\-Changed\-Files, bool always\-Write\-Hash, bool never\-Write\-Hash)
+\begin{DoxyCompactList}\small\item\em Given the existing set of files, search application\-Directory for the same files. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_ac33f1a4ad0daec40c8aad00ccd7c45d2}{Get\-Delta\-To\-Current} (\hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$input, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$output, const char $\ast$dir\-Subset, const char $\ast$remote\-Subdir)
+\begin{DoxyCompactList}\small\item\em Return the files that need to be written to make {\itshape input} match this current \hyperlink{class_rak_net_1_1_file_list}{File\-List}. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_a128a186b55edc6e657dc30eac1504d68}{Populate\-Data\-From\-Disk} (const char $\ast$application\-Directory, bool write\-File\-Data, bool write\-File\-Hash, bool remove\-Unknown\-Files)
+\begin{DoxyCompactList}\small\item\em Assuming \hyperlink{class_rak_net_1_1_file_list}{File\-List} contains a list of filenames presumably without data, read the data for these filenames. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_aa8dd0df10e49eaf05a60fb915c66a211}{Flag\-Files\-As\-References} (void)
+\item 
+void \hyperlink{class_rak_net_1_1_file_list_aa98d01c5fcc631d6a8a55b2ec3c522d2}{Write\-Data\-To\-Disk} (const char $\ast$application\-Directory)
+\begin{DoxyCompactList}\small\item\em Write all files to disk, prefixing the paths with application\-Directory. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_aabddbe6982e76d9c3baaa5d09c7f6555}{Add\-File} (const char $\ast$filename, const char $\ast$full\-Path\-To\-File, const char $\ast$data, const unsigned data\-Length, const unsigned file\-Length, \hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} context, bool is\-A\-Reference=false, bool take\-Data\-Pointer=false)
+\begin{DoxyCompactList}\small\item\em Add a file, given data already in memory. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_a420660409c9e429a1ff893d24e862dc4}{Add\-File} (const char $\ast$filepath, const char $\ast$filename, \hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} context)
+\begin{DoxyCompactList}\small\item\em Add a file, reading it from disk. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_abf181cf92f85f0682e26096fdbca92c0}{Delete\-Files} (const char $\ast$application\-Directory)
+\begin{DoxyCompactList}\small\item\em Delete all files stored in the file list. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_acc6df188100d1116080b302315143f86}{Add\-Callback} (\hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress} $\ast$cb)
+\begin{DoxyCompactList}\small\item\em Adds a callback to get progress reports about what the file list instances do. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_a5d445614a63cd9341db02861974d64c8}{Remove\-Callback} (\hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress} $\ast$cb)
+\begin{DoxyCompactList}\small\item\em Removes a callback. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_aeb148bec17223bfaba6eb0ad496cd0ef}{void \hyperlink{class_rak_net_1_1_file_list_aeb148bec17223bfaba6eb0ad496cd0ef}{Clear\-Callbacks} (void)}\label{class_rak_net_1_1_file_list_aeb148bec17223bfaba6eb0ad496cd0ef}
+
+\begin{DoxyCompactList}\small\item\em Removes all callbacks. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_file_list_a1a193c36458156c59df8b44b8012eee9}{Get\-Callbacks} (\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress} $\ast$ $>$ \&callbacks)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_file_list_a8a4271c6792123f66d5b1336f80900d4}{static bool {\bfseries Fix\-Ending\-Slash} (char $\ast$str)}\label{class_rak_net_1_1_file_list_a8a4271c6792123f66d5b1336f80900d4}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_file_list_abd31d4981b5a37d9b208a03ccf5eab35}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_file_list_node}{File\-List\-Node} $>$ {\bfseries file\-List}}\label{class_rak_net_1_1_file_list_abd31d4981b5a37d9b208a03ccf5eab35}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_file_list_af205b6884e70b20140b779ac2b7a16d1}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress} $\ast$ $>$ {\bfseries file\-List\-Progress\-Callbacks}}\label{class_rak_net_1_1_file_list_af205b6884e70b20140b779ac2b7a16d1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_file_list_acc6df188100d1116080b302315143f86}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Add\-Callback@{Add\-Callback}}
+\index{Add\-Callback@{Add\-Callback}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Add\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Add\-Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf File\-List\-Progress} $\ast$}]{cb}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_acc6df188100d1116080b302315143f86}
+
+
+Adds a callback to get progress reports about what the file list instances do. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cb} & A pointer to an externally defined instance of \hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress}. This pointer is held internally, so should remain valid as long as this class is valid. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_aabddbe6982e76d9c3baaa5d09c7f6555}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Add\-File@{Add\-File}}
+\index{Add\-File@{Add\-File}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Add\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Add\-File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{const char $\ast$}]{full\-Path\-To\-File, }
+\item[{const char $\ast$}]{data, }
+\item[{const unsigned}]{data\-Length, }
+\item[{const unsigned}]{file\-Length, }
+\item[{{\bf File\-List\-Node\-Context}}]{context, }
+\item[{bool}]{is\-A\-Reference = {\ttfamily false}, }
+\item[{bool}]{take\-Data\-Pointer = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_aabddbe6982e76d9c3baaa5d09c7f6555}
+
+
+Add a file, given data already in memory. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & Name of a file, optionally prefixed with a partial or complete path. Use \textbackslash{} as the path delineator. \\
+\hline
+\mbox{\tt in}  & {\em full\-Path\-To\-File} & Full path to the file on disk \\
+\hline
+\mbox{\tt in}  & {\em data} & Contents to write \\
+\hline
+\mbox{\tt in}  & {\em data\-Length} & length of the data, which may be greater than file\-Length should you prefix extra data, such as the hash \\
+\hline
+\mbox{\tt in}  & {\em file\-Length} & Length of the file \\
+\hline
+\mbox{\tt in}  & {\em context} & User defined byte to store with each file. Use for whatever you want. \\
+\hline
+\mbox{\tt in}  & {\em is\-A\-Reference} & Means that this is just a reference to a file elsewhere -\/ does not actually have any data \\
+\hline
+\mbox{\tt in}  & {\em take\-Data\-Pointer} & If true, do not allocate data\-Length. Just take the pointer passed to the {\itshape data} parameter \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_a420660409c9e429a1ff893d24e862dc4}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Add\-File@{Add\-File}}
+\index{Add\-File@{Add\-File}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Add\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Add\-File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filepath, }
+\item[{const char $\ast$}]{filename, }
+\item[{{\bf File\-List\-Node\-Context}}]{context}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_a420660409c9e429a1ff893d24e862dc4}
+
+
+Add a file, reading it from disk. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filepath} & Complete path to the file, including the filename itself \\
+\hline
+\mbox{\tt in}  & {\em filename} & filename to store internally, anything you want, but usually either the complete path or a subset of the complete path. \\
+\hline
+\mbox{\tt in}  & {\em context} & User defined byte to store with each file. Use for whatever you want. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Add\-Files\-From\-Directory@{Add\-Files\-From\-Directory}}
+\index{Add\-Files\-From\-Directory@{Add\-Files\-From\-Directory}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Add\-Files\-From\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Add\-Files\-From\-Directory (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Directory, }
+\item[{const char $\ast$}]{sub\-Directory, }
+\item[{bool}]{write\-Hash, }
+\item[{bool}]{write\-Data, }
+\item[{bool}]{recursive, }
+\item[{{\bf File\-List\-Node\-Context}}]{context}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}
+
+
+Add all the files at a given directory. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Directory} & The first part of the path. This is not stored as part of the filename. Use \textbackslash{} as the path delineator. \\
+\hline
+\mbox{\tt in}  & {\em sub\-Directory} & The rest of the path to the file. This is stored as a prefix to the filename \\
+\hline
+\mbox{\tt in}  & {\em write\-Hash} & The first 4 bytes is a hash of the file, with the remainder the actual file data (should {\itshape write\-Data} be true) \\
+\hline
+\mbox{\tt in}  & {\em write\-Data} & Write the contents of each file \\
+\hline
+\mbox{\tt in}  & {\em recursive} & Whether or not to visit subdirectories \\
+\hline
+\mbox{\tt in}  & {\em context} & User defined byte to store with each file. Use for whatever you want. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_abf181cf92f85f0682e26096fdbca92c0}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Delete\-Files@{Delete\-Files}}
+\index{Delete\-Files@{Delete\-Files}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Delete\-Files}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Delete\-Files (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Directory}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_abf181cf92f85f0682e26096fdbca92c0}
+
+
+Delete all files stored in the file list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Directory} & Prefixed to the path to each filename. Use \textbackslash{} as the path delineator. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_aa8dd0df10e49eaf05a60fb915c66a211}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Flag\-Files\-As\-References@{Flag\-Files\-As\-References}}
+\index{Flag\-Files\-As\-References@{Flag\-Files\-As\-References}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Flag\-Files\-As\-References}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Flag\-Files\-As\-References (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_aa8dd0df10e49eaf05a60fb915c66a211}
+By default, Get\-Delta\-To\-Current tags files as non-\/references, meaning they are assumed to be populated later This tags all files as references, required for \hyperlink{class_rak_net_1_1_incremental_read_interface}{Incremental\-Read\-Interface} to process them incrementally \hypertarget{class_rak_net_1_1_file_list_a1a193c36458156c59df8b44b8012eee9}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Get\-Callbacks@{Get\-Callbacks}}
+\index{Get\-Callbacks@{Get\-Callbacks}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Get\-Callbacks}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Get\-Callbacks (
+\begin{DoxyParamCaption}
+\item[{{\bf Data\-Structures\-::\-List}$<$ {\bf File\-List\-Progress} $\ast$ $>$ \&}]{callbacks}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_a1a193c36458156c59df8b44b8012eee9}
+Returns all callbacks added with \hyperlink{class_rak_net_1_1_file_list_acc6df188100d1116080b302315143f86}{Add\-Callback()} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em callbacks} & The list is set to the list of callbacks \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_ac33f1a4ad0daec40c8aad00ccd7c45d2}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Get\-Delta\-To\-Current@{Get\-Delta\-To\-Current}}
+\index{Get\-Delta\-To\-Current@{Get\-Delta\-To\-Current}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Get\-Delta\-To\-Current}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Get\-Delta\-To\-Current (
+\begin{DoxyParamCaption}
+\item[{{\bf File\-List} $\ast$}]{input, }
+\item[{{\bf File\-List} $\ast$}]{output, }
+\item[{const char $\ast$}]{dir\-Subset, }
+\item[{const char $\ast$}]{remote\-Subdir}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_ac33f1a4ad0daec40c8aad00ccd7c45d2}
+
+
+Return the files that need to be written to make {\itshape input} match this current \hyperlink{class_rak_net_1_1_file_list}{File\-List}. 
+
+Specify dir\-Subset to only consider files that start with this path specify remote\-Subdir to assume that all filenames in input start with this path, so strip it off when comparing filenames. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em input} & Full list of files \\
+\hline
+\mbox{\tt out}  & {\em output} & Files that we need to match input \\
+\hline
+\mbox{\tt in}  & {\em dir\-Subset} & If the filename does not start with this path, just skip this file. \\
+\hline
+\mbox{\tt in}  & {\em remote\-Subdir} & Remove this from the filenames of {\itshape input} when comparing to existing filenames. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_aea9ffda23dd33149eaee6920658bf563}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!List\-Missing\-Or\-Changed\-Files@{List\-Missing\-Or\-Changed\-Files}}
+\index{List\-Missing\-Or\-Changed\-Files@{List\-Missing\-Or\-Changed\-Files}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{List\-Missing\-Or\-Changed\-Files}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-List\-Missing\-Or\-Changed\-Files (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Directory, }
+\item[{{\bf File\-List} $\ast$}]{missing\-Or\-Changed\-Files, }
+\item[{bool}]{always\-Write\-Hash, }
+\item[{bool}]{never\-Write\-Hash}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_aea9ffda23dd33149eaee6920658bf563}
+
+
+Given the existing set of files, search application\-Directory for the same files. 
+
+For each file that is missing or different, add that file to {\itshape missing\-Or\-Changed\-Files}. Note\-: the file contents are not written, and only the hash if written if {\itshape always\-Write\-Hash} is true always\-Write\-Hash and never\-Write\-Hash are optimizations to avoid reading the file contents to generate the hash if not necessary because the file is missing or has different lengths anyway. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Directory} & The first part of the path. This is not stored as part of the filename. Use \textbackslash{} as the path delineator. \\
+\hline
+\mbox{\tt out}  & {\em missing\-Or\-Changed\-Files} & Output list written to \\
+\hline
+\mbox{\tt in}  & {\em always\-Write\-Hash} & If true, and never\-Write\-Hash is false, will hash the file content of the file on disk, and write that as the file data with a length of S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H bytes. If false, if the file length is different, will only write the filename. \\
+\hline
+\mbox{\tt in}  & {\em never\-Write\-Hash} & If true, will never write the hash, even if available. If false, will write the hash if the file lengths are the same and it was forced to do a comparison. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_a128a186b55edc6e657dc30eac1504d68}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Populate\-Data\-From\-Disk@{Populate\-Data\-From\-Disk}}
+\index{Populate\-Data\-From\-Disk@{Populate\-Data\-From\-Disk}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Populate\-Data\-From\-Disk}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Populate\-Data\-From\-Disk (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Directory, }
+\item[{bool}]{write\-File\-Data, }
+\item[{bool}]{write\-File\-Hash, }
+\item[{bool}]{remove\-Unknown\-Files}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_a128a186b55edc6e657dc30eac1504d68}
+
+
+Assuming \hyperlink{class_rak_net_1_1_file_list}{File\-List} contains a list of filenames presumably without data, read the data for these filenames. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Directory} & Prepend this path to each filename. Trailing slash will be added if necessary. Use \textbackslash{} as the path delineator. \\
+\hline
+\mbox{\tt in}  & {\em write\-File\-Data} & True to read and store the file data. The first S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H bytes will contain the hash if {\itshape write\-File\-Hash} is true \\
+\hline
+\mbox{\tt in}  & {\em write\-File\-Hash} & True to read and store the hash of the file data. The first S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H bytes will contain the hash if {\itshape write\-File\-Hash} is true \\
+\hline
+\mbox{\tt in}  & {\em remove\-Unknown\-Files} & If a file does not exist on disk but is in the file list, remove it from the file list? \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_a5d445614a63cd9341db02861974d64c8}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Remove\-Callback@{Remove\-Callback}}
+\index{Remove\-Callback@{Remove\-Callback}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Remove\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Remove\-Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf File\-List\-Progress} $\ast$}]{cb}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_a5d445614a63cd9341db02861974d64c8}
+
+
+Removes a callback. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cb} & A pointer to an externally defined instance of \hyperlink{class_rak_net_1_1_file_list_progress}{File\-List\-Progress} that was previously added with \hyperlink{class_rak_net_1_1_file_list_acc6df188100d1116080b302315143f86}{Add\-Callback()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_file_list_aa98d01c5fcc631d6a8a55b2ec3c522d2}{\index{Rak\-Net\-::\-File\-List@{Rak\-Net\-::\-File\-List}!Write\-Data\-To\-Disk@{Write\-Data\-To\-Disk}}
+\index{Write\-Data\-To\-Disk@{Write\-Data\-To\-Disk}!RakNet::FileList@{Rak\-Net\-::\-File\-List}}
+\subsubsection[{Write\-Data\-To\-Disk}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-File\-List\-::\-Write\-Data\-To\-Disk (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Directory}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_file_list_aa98d01c5fcc631d6a8a55b2ec3c522d2}
+
+
+Write all files to disk, prefixing the paths with application\-Directory. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Directory} & path prefix \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_file_list_8h}{File\-List.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,102 @@
+\hypertarget{class_event_with_rank}{\section{Event\-With\-Rank Class Reference}
+\label{class_event_with_rank}\index{Event\-With\-Rank@{Event\-With\-Rank}}
+}
+Inheritance diagram for Event\-With\-Rank\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_event_with_rank}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_with_rank_a4d0549af46640d8030477954c4c78f55}{{\bfseries Event\-With\-Rank} (byte id)}\label{class_event_with_rank_a4d0549af46640d8030477954c4c78f55}
+
+\item 
+override int \hyperlink{class_event_with_rank_a06f136165bcc0c8f53a7d681377d3056}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_rank_a27b73f2ee4299dcc88960da8a5272a3d}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_rank_a590f1c4561dbc363ab6167101ba5139d}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint \hyperlink{class_event_with_rank_ab7a5557f1fe949d90945003b566d33db}{rank}
+\begin{DoxyCompactList}\small\item\em The player Rank \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_with_rank_a27b73f2ee4299dcc88960da8a5272a3d}{\index{Event\-With\-Rank@{Event\-With\-Rank}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!EventWithRank@{Event\-With\-Rank}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Rank.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_rank_a27b73f2ee4299dcc88960da8a5272a3d}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{class_event_with_rank_a06f136165bcc0c8f53a7d681377d3056}{\index{Event\-With\-Rank@{Event\-With\-Rank}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!EventWithRank@{Event\-With\-Rank}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}override int Event\-With\-Rank.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_rank_a06f136165bcc0c8f53a7d681377d3056}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data 
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost Modifier\-: Christopher Brennan \hypertarget{class_event_with_rank_a590f1c4561dbc363ab6167101ba5139d}{\index{Event\-With\-Rank@{Event\-With\-Rank}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!EventWithRank@{Event\-With\-Rank}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Rank.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_rank_a590f1c4561dbc363ab6167101ba5139d}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_event_with_rank_ab7a5557f1fe949d90945003b566d33db}{\index{Event\-With\-Rank@{Event\-With\-Rank}!rank@{rank}}
+\index{rank@{rank}!EventWithRank@{Event\-With\-Rank}}
+\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}uint Event\-With\-Rank.\-rank\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_event_with_rank_ab7a5557f1fe949d90945003b566d33db}
+
+
+The player Rank 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/events/Event\-With\-Rank.\-cs\end{DoxyCompactItemize}

@@ -1,0 +1,78 @@
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct}{\section{Rak\-Net\-:\-:Rak\-Peer\-:\-:Remote\-System\-Struct Struct Reference}
+\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct}\index{Rak\-Net\-::\-Rak\-Peer\-::\-Remote\-System\-Struct@{Rak\-Net\-::\-Rak\-Peer\-::\-Remote\-System\-Struct}}
+}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Connect\-Mode} \{ \\*
+{\bfseries N\-O\-\_\-\-A\-C\-T\-I\-O\-N}, 
+{\bfseries D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-\_\-\-A\-S\-A\-P}, 
+{\bfseries D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-\_\-\-A\-S\-A\-P\-\_\-\-S\-I\-L\-E\-N\-T\-L\-Y}, 
+{\bfseries D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-\_\-\-O\-N\-\_\-\-N\-O\-\_\-\-A\-C\-K}, 
+\\*
+{\bfseries R\-E\-Q\-U\-E\-S\-T\-E\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}, 
+{\bfseries H\-A\-N\-D\-L\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries U\-N\-V\-E\-R\-I\-F\-I\-E\-D\-\_\-\-S\-E\-N\-D\-E\-R}, 
+{\bfseries C\-O\-N\-N\-E\-C\-T\-E\-D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a05b3449587b788078b0085635d0af608}{bool {\bfseries is\-Active}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a05b3449587b788078b0085635d0af608}
+
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a47350ca537a1ea083c2e3ad832955992}{\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} {\bfseries system\-Address}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a47350ca537a1ea083c2e3ad832955992}
+
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a57002b4af19c8f378c333d37cb47f9d6}{\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a57002b4af19c8f378c333d37cb47f9d6}{my\-External\-System\-Address}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a57002b4af19c8f378c333d37cb47f9d6}
+
+\begin{DoxyCompactList}\small\item\em Their external I\-P on the internet. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aada74fe16b0624dc53d9eb351c675182}{\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aada74fe16b0624dc53d9eb351c675182}{their\-Internal\-System\-Address} \mbox{[}M\-A\-X\-I\-M\-U\-M\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L\-\_\-\-I\-D\-S\mbox{]}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aada74fe16b0624dc53d9eb351c675182}
+
+\begin{DoxyCompactList}\small\item\em Your external I\-P on the internet, from their perspective. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a659ea2f6a6b99579c3f719542f1298f7}{\hyperlink{class_rak_net_1_1_reliability_layer}{Reliability\-Layer} \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a659ea2f6a6b99579c3f719542f1298f7}{reliability\-Layer}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a659ea2f6a6b99579c3f719542f1298f7}
+
+\begin{DoxyCompactList}\small\item\em Their internal I\-P, behind the L\-A\-N. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a38f2cb6c9ece14d72379ec929d9f5548}{bool \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a38f2cb6c9ece14d72379ec929d9f5548}{we\-Initiated\-The\-Connection}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a38f2cb6c9ece14d72379ec929d9f5548}
+
+\begin{DoxyCompactList}\small\item\em The reliability layer associated with this player. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a4430a6a61278c7071b7b5dffd267b531}{\hyperlink{struct_rak_net_1_1_rak_peer_1_1_ping_and_clock_differential}{Ping\-And\-Clock\-Differential} \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a4430a6a61278c7071b7b5dffd267b531}{ping\-And\-Clock\-Differential} \mbox{[}P\-I\-N\-G\-\_\-\-T\-I\-M\-E\-S\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-S\-I\-Z\-E\mbox{]}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a4430a6a61278c7071b7b5dffd267b531}
+
+\begin{DoxyCompactList}\small\item\em True if we started this connection via Connect. False if someone else connected to us. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a42d746998fc993e858bc05a345d669e4}{Rak\-Net\-::\-Time \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a42d746998fc993e858bc05a345d669e4}{ping\-And\-Clock\-Differential\-Write\-Index}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a42d746998fc993e858bc05a345d669e4}
+
+\begin{DoxyCompactList}\small\item\em last x ping times and calculated clock differentials with it \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a93c21d765397a20aaee29f90d0f82f5f}{unsigned short \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a93c21d765397a20aaee29f90d0f82f5f}{lowest\-Ping}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a93c21d765397a20aaee29f90d0f82f5f}
+
+\begin{DoxyCompactList}\small\item\em The index we are writing into the ping\-And\-Clock\-Differential circular buffer. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aef5cb3dd099cc1e40309ed2f23db3ab2}{Rak\-Net\-::\-Time \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aef5cb3dd099cc1e40309ed2f23db3ab2}{next\-Ping\-Time}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_aef5cb3dd099cc1e40309ed2f23db3ab2}
+
+\begin{DoxyCompactList}\small\item\em The lowest ping value encountered. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_afaf8167643d88fb07cbd0a05a3433e91}{Rak\-Net\-::\-Time \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_afaf8167643d88fb07cbd0a05a3433e91}{last\-Reliable\-Send}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_afaf8167643d88fb07cbd0a05a3433e91}
+
+\begin{DoxyCompactList}\small\item\em When to next ping this player. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_ae80999ef54359f7d36095010e69a24a9}{Rak\-Net\-::\-Time \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_ae80999ef54359f7d36095010e69a24a9}{connection\-Time}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_ae80999ef54359f7d36095010e69a24a9}
+
+\begin{DoxyCompactList}\small\item\em When did the last reliable send occur. Reliable sends must occur at least once every timeout\-Time/2 units to notice disconnects. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a9a01590c31b4bd76058bac91bc4e9ad0}{\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a9a01590c31b4bd76058bac91bc4e9ad0}{guid}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a9a01590c31b4bd76058bac91bc4e9ad0}
+
+\begin{DoxyCompactList}\small\item\em connection time, if active. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a20573ab2e5fdd17779087f81fc084a56}{int {\bfseries M\-T\-U\-Size}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a20573ab2e5fdd17779087f81fc084a56}
+
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a5b3a64f9f425c608738ca013c2b2e843}{\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$ {\bfseries rak\-Net\-Socket}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a5b3a64f9f425c608738ca013c2b2e843}
+
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_ab3ed0a937db76fd623ef53ca705a348b}{System\-Index {\bfseries remote\-System\-Index}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_ab3ed0a937db76fd623ef53ca705a348b}
+
+\item 
+\hypertarget{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a4241eace2b894c5cf90981cecba42784}{enum \\*
+Rak\-Net\-::\-Rak\-Peer\-::\-Remote\-System\-Struct\-::\-Connect\-Mode {\bfseries connect\-Mode}}\label{struct_rak_net_1_1_rak_peer_1_1_remote_system_struct_a4241eace2b894c5cf90981cecba42784}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_rak_peer_8h}{Rak\-Peer.\-h}\end{DoxyCompactItemize}

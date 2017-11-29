@@ -1,0 +1,259 @@
+\hypertarget{class_rak_net_1_1_relay_plugin}{\section{Rak\-Net\-:\-:Relay\-Plugin Class Reference}
+\label{class_rak_net_1_1_relay_plugin}\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}}
+}
+
+
+A simple class to relay messages from one system to another, identifying remote systems by a string.  
+
+
+
+
+{\ttfamily \#include $<$Relay\-Plugin.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Relay\-Plugin\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_relay_plugin}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{R\-P\-\_\-\-Group}
+\item 
+struct \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid}{Str\-And\-Guid}
+\item 
+struct \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a41fa4280b42747c253e71e46b2a8155e}{\hyperlink{class_rak_net_1_1_relay_plugin_a41fa4280b42747c253e71e46b2a8155e}{Relay\-Plugin} ()}\label{class_rak_net_1_1_relay_plugin_a41fa4280b42747c253e71e46b2a8155e}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_ad6c129d0be47d82443245a9c32a6ddd8}{virtual \hyperlink{class_rak_net_1_1_relay_plugin_ad6c129d0be47d82443245a9c32a6ddd8}{$\sim$\-Relay\-Plugin} ()}\label{class_rak_net_1_1_relay_plugin_ad6c129d0be47d82443245a9c32a6ddd8}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+Relay\-Plugin\-Enums \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server} (const \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} \&key, const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&guid)
+\begin{DoxyCompactList}\small\item\em Forward messages from any system, to the system specified by the combination of key and guid. The sending system only needs to know the key. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a0488ca3755034a74ad4275263a3fb0dc}{void \hyperlink{class_rak_net_1_1_relay_plugin_a0488ca3755034a74ad4275263a3fb0dc}{Remove\-Participant\-On\-Server} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&guid)}\label{class_rak_net_1_1_relay_plugin_a0488ca3755034a74ad4275263a3fb0dc}
+
+\begin{DoxyCompactList}\small\item\em Remove a chat participant. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_relay_plugin_a51987baa3095d72ca8195a69ecb73793}{Set\-Accept\-Add\-Participant\-Requests} (bool accept)
+\begin{DoxyCompactList}\small\item\em If true, then if the client calls \hyperlink{class_rak_net_1_1_relay_plugin_a8f0d6808a2fed5dcfabb1c2435ae736e}{Add\-Participant\-Request\-From\-Client()}, the server will call \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server()} automatically Defaults to false. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_relay_plugin_a8f0d6808a2fed5dcfabb1c2435ae736e}{Add\-Participant\-Request\-From\-Client} (const \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} \&key, const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid)
+\begin{DoxyCompactList}\small\item\em Request from the client for the server to call \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server()} \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a490a9b9fe571e7d4d720a4f9fb2aac2d}{void \hyperlink{class_rak_net_1_1_relay_plugin_a490a9b9fe571e7d4d720a4f9fb2aac2d}{Remove\-Participant\-Request\-From\-Client} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid)}\label{class_rak_net_1_1_relay_plugin_a490a9b9fe571e7d4d720a4f9fb2aac2d}
+
+\begin{DoxyCompactList}\small\item\em Remove yourself as a participant. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_relay_plugin_a87ccee7236bc47e58d6b44998a10221d}{Send\-To\-Participant} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid, const \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} \&destination\-Guid, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream, \hyperlink{_packet_priority_8h_a659378374e516180f93640c79f59705c}{Packet\-Priority} priority, \hyperlink{_packet_priority_8h_ae41fa01235e99dced384d137fa874a7e}{Packet\-Reliability} reliability, char ordering\-Channel)
+\begin{DoxyCompactList}\small\item\em Request that the server relay {\itshape bit\-Stream} to the system designated by {\itshape key}. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_ae984b030db73eaf406bce1b0986bf970}{void {\bfseries Send\-Group\-Message} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream, \hyperlink{_packet_priority_8h_a659378374e516180f93640c79f59705c}{Packet\-Priority} priority, \hyperlink{_packet_priority_8h_ae41fa01235e99dced384d137fa874a7e}{Packet\-Reliability} reliability, char ordering\-Channel)}\label{class_rak_net_1_1_relay_plugin_ae984b030db73eaf406bce1b0986bf970}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a5d4af4c06640641ed8e2826bbd916987}{void {\bfseries Join\-Group\-Request} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} group\-Name)}\label{class_rak_net_1_1_relay_plugin_a5d4af4c06640641ed8e2826bbd916987}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_ac0c6804a063ba76b44e0c143e1cb2f60}{void {\bfseries Leave\-Group} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid)}\label{class_rak_net_1_1_relay_plugin_ac0c6804a063ba76b44e0c143e1cb2f60}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a3669a3796f9e667f097e127a4ebff12a}{void {\bfseries Get\-Group\-List} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&relay\-Plugin\-Server\-Guid)}\label{class_rak_net_1_1_relay_plugin_a3669a3796f9e667f097e127a4ebff12a}
+
+\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_relay_plugin_ae9eed4316b23891897d8bdf952a45618}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_relay_plugin_a11626f8a60483c9bd41fbc2bef86b85a}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a9066c518963334adb97deb1fc286583d}{\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{Relay\-Plugin\-::\-R\-P\-\_\-\-Group} $\ast$ {\bfseries Join\-Group} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} user\-Guid, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} room\-Name)}\label{class_rak_net_1_1_relay_plugin_a9066c518963334adb97deb1fc286583d}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a655808328ff834cb2ffab74c1941efbf}{\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{Relay\-Plugin\-::\-R\-P\-\_\-\-Group} $\ast$ {\bfseries Join\-Group} (\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{R\-P\-\_\-\-Group} $\ast$room, \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room} $\ast$$\ast$str\-And\-Guid\-Sender)}\label{class_rak_net_1_1_relay_plugin_a655808328ff834cb2ffab74c1941efbf}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a6bf99497ef40ce441cabe0a053585a45}{void {\bfseries Leave\-Group} (\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room} $\ast$$\ast$str\-And\-Guid\-Sender)}\label{class_rak_net_1_1_relay_plugin_a6bf99497ef40ce441cabe0a053585a45}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a20c5115dcd603632e4a52a5551ad1cef}{void {\bfseries Notify\-Users\-In\-Room} (\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{R\-P\-\_\-\-Group} $\ast$room, int msg, const \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} \&message)}\label{class_rak_net_1_1_relay_plugin_a20c5115dcd603632e4a52a5551ad1cef}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a7186a881b63ac9d92a7e27ee4db66990}{void {\bfseries Send\-Message\-To\-Room} (\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room} $\ast$$\ast$str\-And\-Guid\-Sender, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$message)}\label{class_rak_net_1_1_relay_plugin_a7186a881b63ac9d92a7e27ee4db66990}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a966286ee01264da7f15b38c6523feb18}{void {\bfseries Send\-Chat\-Rooms\-List} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} target)}\label{class_rak_net_1_1_relay_plugin_a966286ee01264da7f15b38c6523feb18}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a0c044ea362ed842a2a5a0a966f4a6a49}{void {\bfseries On\-Group\-Message\-From\-Client} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_relay_plugin_a0c044ea362ed842a2a5a0a966f4a6a49}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_aeaaadd38f5344f73ef417ddf5f6bc6b0}{void {\bfseries On\-Join\-Group\-Request\-From\-Client} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_relay_plugin_aeaaadd38f5344f73ef417ddf5f6bc6b0}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a0ccdc86785058ee810954feccabae708}{void {\bfseries On\-Leave\-Group\-Request\-From\-Client} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_relay_plugin_a0ccdc86785058ee810954feccabae708}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_af6c218290e66e4acbc49c1a6a5242975}{\hyperlink{class_data_structures_1_1_hash}{Data\-Structures\-::\-Hash}\\*
+$<$ \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String}, \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room} \\*
+$\ast$, 8096, \hyperlink{class_rak_net_1_1_rak_string_a79f546baedf74c64a820297b40590250}{Rak\-Net\-::\-Rak\-String\-::\-To\-Integer} $>$ {\bfseries str\-To\-Guid\-Hash}}\label{class_rak_net_1_1_relay_plugin_af6c218290e66e4acbc49c1a6a5242975}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_aae0a31e12cab443ffa52a083ec4d13e2}{\hyperlink{class_data_structures_1_1_hash}{Data\-Structures\-::\-Hash}\\*
+$<$ \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}, \\*
+\hyperlink{struct_rak_net_1_1_relay_plugin_1_1_str_and_guid_and_room}{Str\-And\-Guid\-And\-Room} \\*
+$\ast$, 8096, Rak\-Net\-::\-Rak\-Net\-G\-U\-I\-D\-::\-To\-Uint32 $>$ {\bfseries guid\-To\-Str\-Hash}}\label{class_rak_net_1_1_relay_plugin_aae0a31e12cab443ffa52a083ec4d13e2}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_a9c7c0a8992faa7dd708a03a07876a615}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{struct_rak_net_1_1_relay_plugin_1_1_r_p___group}{R\-P\-\_\-\-Group} $\ast$ $>$ {\bfseries chat\-Rooms}}\label{class_rak_net_1_1_relay_plugin_a9c7c0a8992faa7dd708a03a07876a615}
+
+\item 
+\hypertarget{class_rak_net_1_1_relay_plugin_ab0ad21afe836d2bd64f0e27f759affa5}{bool {\bfseries accept\-Add\-Participant\-Requests}}\label{class_rak_net_1_1_relay_plugin_ab0ad21afe836d2bd64f0e27f759affa5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple class to relay messages from one system to another, identifying remote systems by a string. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!Add\-Participant\-On\-Server@{Add\-Participant\-On\-Server}}
+\index{Add\-Participant\-On\-Server@{Add\-Participant\-On\-Server}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{Add\-Participant\-On\-Server}]{\setlength{\rightskip}{0pt plus 5cm}Relay\-Plugin\-Enums Rak\-Net\-::\-Relay\-Plugin\-::\-Add\-Participant\-On\-Server (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rak\-String} \&}]{key, }
+\item[{const {\bf Rak\-Net\-G\-U\-I\-D} \&}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}
+
+
+Forward messages from any system, to the system specified by the combination of key and guid. The sending system only needs to know the key. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key} & A string to identify the target's \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}. This is so the sending system does not need to know the \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} of the target system. The key should be unique among all guids added. If the key is not unique, only one system will be sent to (at random). \\
+\hline
+\mbox{\tt in}  & {\em guid} & The Rak\-Net\-Guid of the system to send to. If this system disconnects, it is removed from the internal hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+R\-P\-E\-\_\-\-A\-D\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-T\-A\-R\-G\-E\-T\-\_\-\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D, R\-P\-E\-\_\-\-A\-D\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-N\-A\-M\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-I\-N\-\_\-\-U\-S\-E, or R\-P\-E\-\_\-\-A\-D\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-O\-K 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_relay_plugin_a8f0d6808a2fed5dcfabb1c2435ae736e}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!Add\-Participant\-Request\-From\-Client@{Add\-Participant\-Request\-From\-Client}}
+\index{Add\-Participant\-Request\-From\-Client@{Add\-Participant\-Request\-From\-Client}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{Add\-Participant\-Request\-From\-Client}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Relay\-Plugin\-::\-Add\-Participant\-Request\-From\-Client (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rak\-String} \&}]{key, }
+\item[{const {\bf Rak\-Net\-G\-U\-I\-D} \&}]{relay\-Plugin\-Server\-Guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_relay_plugin_a8f0d6808a2fed5dcfabb1c2435ae736e}
+
+
+Request from the client for the server to call \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server()} 
+
+\begin{DoxyPrecond}{Precondition}
+The server must have called Set\-Accept\-Add\-Participant\-Requests(true) or the request will be ignored 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key} & A string to identify out system. Passed to {\itshape key} on \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server()} \\
+\hline
+\mbox{\tt in}  & {\em relay\-Plugin\-Server\-Guid} & the \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} of the system running \hyperlink{class_rak_net_1_1_relay_plugin}{Relay\-Plugin} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_relay_plugin_a11626f8a60483c9bd41fbc2bef86b85a}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Relay\-Plugin\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_relay_plugin_a11626f8a60483c9bd41fbc2bef86b85a}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_relay_plugin_ae9eed4316b23891897d8bdf952a45618}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Relay\-Plugin\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_relay_plugin_ae9eed4316b23891897d8bdf952a45618}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_relay_plugin_a87ccee7236bc47e58d6b44998a10221d}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!Send\-To\-Participant@{Send\-To\-Participant}}
+\index{Send\-To\-Participant@{Send\-To\-Participant}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{Send\-To\-Participant}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Relay\-Plugin\-::\-Send\-To\-Participant (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rak\-Net\-G\-U\-I\-D} \&}]{relay\-Plugin\-Server\-Guid, }
+\item[{const {\bf Rak\-String} \&}]{destination\-Guid, }
+\item[{{\bf Bit\-Stream} $\ast$}]{bit\-Stream, }
+\item[{{\bf Packet\-Priority}}]{priority, }
+\item[{{\bf Packet\-Reliability}}]{reliability, }
+\item[{char}]{ordering\-Channel}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_relay_plugin_a87ccee7236bc47e58d6b44998a10221d}
+
+
+Request that the server relay {\itshape bit\-Stream} to the system designated by {\itshape key}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em relay\-Plugin\-Server\-Guid} & the \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} of the system running \hyperlink{class_rak_net_1_1_relay_plugin}{Relay\-Plugin} \\
+\hline
+\mbox{\tt in}  & {\em destination\-Guid} & The key value passed to Add\-Participant() earlier on the server. If this was not done, the server will not relay the message (it will be silently discarded). \\
+\hline
+\mbox{\tt in}  & {\em bit\-Stream} & The data to relay \\
+\hline
+\mbox{\tt in}  & {\em priority} & See the parameter of the same name in \hyperlink{class_rak_net_1_1_rak_peer_interface_a543ec5be9cf5f73f5c8733d1829789f9}{Rak\-Peer\-Interface\-::\-Send()} \\
+\hline
+\mbox{\tt in}  & {\em reliability} & See the parameter of the same name in \hyperlink{class_rak_net_1_1_rak_peer_interface_a543ec5be9cf5f73f5c8733d1829789f9}{Rak\-Peer\-Interface\-::\-Send()} \\
+\hline
+\mbox{\tt in}  & {\em ordering\-Channel} & See the parameter of the same name in \hyperlink{class_rak_net_1_1_rak_peer_interface_a543ec5be9cf5f73f5c8733d1829789f9}{Rak\-Peer\-Interface\-::\-Send()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_relay_plugin_a51987baa3095d72ca8195a69ecb73793}{\index{Rak\-Net\-::\-Relay\-Plugin@{Rak\-Net\-::\-Relay\-Plugin}!Set\-Accept\-Add\-Participant\-Requests@{Set\-Accept\-Add\-Participant\-Requests}}
+\index{Set\-Accept\-Add\-Participant\-Requests@{Set\-Accept\-Add\-Participant\-Requests}!RakNet::RelayPlugin@{Rak\-Net\-::\-Relay\-Plugin}}
+\subsubsection[{Set\-Accept\-Add\-Participant\-Requests}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Relay\-Plugin\-::\-Set\-Accept\-Add\-Participant\-Requests (
+\begin{DoxyParamCaption}
+\item[{bool}]{accept}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_relay_plugin_a51987baa3095d72ca8195a69ecb73793}
+
+
+If true, then if the client calls \hyperlink{class_rak_net_1_1_relay_plugin_a8f0d6808a2fed5dcfabb1c2435ae736e}{Add\-Participant\-Request\-From\-Client()}, the server will call \hyperlink{class_rak_net_1_1_relay_plugin_a8a8b10be11428da1b26e0f9a9e1e133e}{Add\-Participant\-On\-Server()} automatically Defaults to false. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em accept} & true to accept, false to not. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_relay_plugin_8h}{Relay\-Plugin.\-h}\end{DoxyCompactItemize}

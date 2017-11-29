@@ -1,0 +1,755 @@
+\hypertarget{class_rak_net_1_1_replica3}{\section{Rak\-Net\-:\-:Replica3 Class Reference}
+\label{class_rak_net_1_1_replica3}\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}}
+}
+
+
+Base class for your replicated objects for the \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} system.  
+
+
+
+
+{\ttfamily \#include $<$Replica\-Manager3.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Replica3\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_rak_net_1_1_replica3}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_rak_net_1_1_replica3_a1fbe0ed0e0c540bbad1da2549b1a4074}{$\sim$\-Replica3} ()
+\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_ada0458bb521a455f23e08742c9e1b0b9}{Write\-Allocation\-I\-D} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$allocation\-Id\-Bitstream) const =0
+\begin{DoxyCompactList}\small\item\em Write a unique identifer that can be read on a remote system to create an object of this same class. \end{DoxyCompactList}\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga16aaecf3c23582f0de6652b348ccfa38}{R\-M3\-Construction\-State} \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} $\ast$replica\-Manager3)=0
+\begin{DoxyCompactList}\small\item\em Ask if this object, which does not exist on {\itshape destination\-Connection} should (now) be sent to that system. \end{DoxyCompactList}\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga400c157a937f062bd8a3c19a49d33541}{R\-M3\-Destruction\-State} \hyperlink{class_rak_net_1_1_replica3_ab476629672d62c7c33c8b1d8aa606918}{Query\-Destruction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} $\ast$replica\-Manager3)
+\begin{DoxyCompactList}\small\item\em Ask if this object, which does exist on {\itshape destination\-Connection} should be removed from the remote system. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)=0
+\begin{DoxyCompactList}\small\item\em We're about to call \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction()} on this \hyperlink{class_rak_net_1_1_replica3}{Replica3}. If \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()} returns false, this object is deleted instead. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a2e6e18213d1c45012157149148994299}{virtual bool \hyperlink{class_rak_net_1_1_replica3_a2e6e18213d1c45012157149148994299}{Query\-Relay\-Destruction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Connection\-\_\-\-R\-M3} $\ast$source\-Connection) const }\label{class_rak_net_1_1_replica3_a2e6e18213d1c45012157149148994299}
+
+\begin{DoxyCompactList}\small\item\em We got a message from a connection to destroy this replica Return true to automatically relay the destruction message to all our other connections For a client in client/server, it does not matter what this funtion returns For a server in client/server, this should normally return true For a peer in peer to peer, you can normally return false since the original destroying peer would have told all other peers about the destruction If a system gets a destruction command for an object that was already destroyed, the destruction message is ignored. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Serialize\-Construction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Write data to be sent only when the object is constructed on a remote system. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Read data written by \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Replica3\-::\-Serialize\-Construction()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a245a99bf6338ed42ab5386be11417fde}{Serialize\-Construction\-Existing} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a1949dd5597c106d7538ed602133ec04d}{Deserialize\-Construction\-Existing} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}{Serialize\-Destruction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$destruction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Write extra data to send with the object deletion event, if desired. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_ac7fa042647ea0bf2748d194e2eefeb74}{Deserialize\-Destruction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$destruction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Read data written by \hyperlink{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}{Replica3\-::\-Serialize\-Destruction()} \end{DoxyCompactList}\item 
+virtual \\*
+Rak\-Net\-::\-R\-M3\-Action\-On\-Pop\-Connection \hyperlink{class_rak_net_1_1_replica3_a72df203ad36574b2e7d09b5b9abc7788}{Query\-Action\-On\-Pop\-Connection} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$dropped\-Connection) const =0
+\begin{DoxyCompactList}\small\item\em The system is asking what to do with this replica when the connection is dropped. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a707a3bcfeea37219b778a4d0e4834d2d}{virtual void \hyperlink{class_rak_net_1_1_replica3_a707a3bcfeea37219b778a4d0e4834d2d}{On\-Popped\-Connection} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$dropped\-Connection)}\label{class_rak_net_1_1_replica3_a707a3bcfeea37219b778a4d0e4834d2d}
+
+\begin{DoxyCompactList}\small\item\em Notification called for each of our replicas when a connection is popped. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_acf667862eb0f6ff14ce29c4a7146ccab}{Dealloc\-Replica} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Override with \{delete this;\}. \end{DoxyCompactList}\item 
+virtual \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga9a29b413d7f2b9cb21c16457631d3aef}{Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)=0
+\begin{DoxyCompactList}\small\item\em Implement with \hyperlink{class_rak_net_1_1_replica3_a8af3a3d3cee9098378deea019710852c}{Query\-Serialization\-\_\-\-Client\-Serializable()}, \hyperlink{class_rak_net_1_1_replica3_a2a2c5faec10124231298d43e6f628234}{Query\-Serialization\-\_\-\-Server\-Serializable()}, or \hyperlink{class_rak_net_1_1_replica3_a212c9fff207005acf494fb9c4ae9e194}{Query\-Serialization\-\_\-\-Peer\-To\-Peer()} \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a1f633cb586ee48c3f3026f1af1053ba6}{virtual void \hyperlink{class_rak_net_1_1_replica3_a1f633cb586ee48c3f3026f1af1053ba6}{On\-User\-Replica\-Pre\-Serialize\-Tick} (void)}\label{class_rak_net_1_1_replica3_a1f633cb586ee48c3f3026f1af1053ba6}
+
+\begin{DoxyCompactList}\small\item\em Called for each replica owned by the user, once per Serialization tick, before \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} is called. If you want to do some kind of operation on the Replica objects that you own, just before Serialization(), then overload this function. \end{DoxyCompactList}\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga993da25eb23b67455e2438971c51429c}{R\-M3\-Serialization\-Result} \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize} (\hyperlink{struct_rak_net_1_1_serialize_parameters}{Rak\-Net\-::\-Serialize\-Parameters} $\ast$serialize\-Parameters)=0
+\begin{DoxyCompactList}\small\item\em Serialize our class to a bitstream. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a0133383d790ca6e3c9d39e95ac9add8b}{On\-Serialize\-Transmission} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$bit\-Stream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, Bit\-Size\-\_\-t bits\-Per\-Channel\mbox{[}R\-M3\-\_\-\-N\-U\-M\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-B\-I\-T\-S\-T\-R\-E\-A\-M\-\_\-\-C\-H\-A\-N\-N\-E\-L\-S\mbox{]}, Rak\-Net\-::\-Time cur\-Time)
+\begin{DoxyCompactList}\small\item\em Called when the class is actually transmitted via \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_adc3ca56ef4fe3ad95e381c7d72f0956f}{Deserialize} (\hyperlink{struct_rak_net_1_1_deserialize_parameters}{Rak\-Net\-::\-Deserialize\-Parameters} $\ast$deserialize\-Parameters)=0
+\begin{DoxyCompactList}\small\item\em Read what was written in \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a1b2a1d043e575f738e204d1d3a41c5a5}{virtual void \hyperlink{class_rak_net_1_1_replica3_a1b2a1d043e575f738e204d1d3a41c5a5}{Post\-Serialize\-Construction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)}\label{class_rak_net_1_1_replica3_a1b2a1d043e575f738e204d1d3a41c5a5}
+
+\begin{DoxyCompactList}\small\item\em Called after Serialize\-Construction completes for all objects in a given update tick.\par
+ Writes to \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Post\-Deserialize\-Construction()}, which is called after all objects are created for a given Construction tick(). Override to send data to \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Post\-Deserialize\-Construction()}, such as the Network\-I\-D of other objects to resolve pointers to. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Post\-Deserialize\-Construction} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)
+\item 
+\hypertarget{class_rak_net_1_1_replica3_a2f9257e74d9ecedb92700473dcea9bb4}{virtual void \hyperlink{class_rak_net_1_1_replica3_a2f9257e74d9ecedb92700473dcea9bb4}{Post\-Serialize\-Construction\-Existing} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection)}\label{class_rak_net_1_1_replica3_a2f9257e74d9ecedb92700473dcea9bb4}
+
+\begin{DoxyCompactList}\small\item\em Same as \hyperlink{class_rak_net_1_1_replica3_a1b2a1d043e575f738e204d1d3a41c5a5}{Post\-Serialize\-Construction()}, but for objects that returned R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y from Query\-Construction. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a15bdad205bb8e73c686b526b104fc1e6}{virtual void \hyperlink{class_rak_net_1_1_replica3_a15bdad205bb8e73c686b526b104fc1e6}{Post\-Deserialize\-Construction\-Existing} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$construction\-Bitstream, \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)}\label{class_rak_net_1_1_replica3_a15bdad205bb8e73c686b526b104fc1e6}
+
+\begin{DoxyCompactList}\small\item\em Same as \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Post\-Deserialize\-Construction()}, but for objects that returned R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y from Query\-Construction. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_ad517ffd842f11fe5cdef2678e87c86ab}{Pre\-Destruction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)
+\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga16aaecf3c23582f0de6652b348ccfa38}{R\-M3\-Construction\-State} \hyperlink{class_rak_net_1_1_replica3_a98df31b4f30c6a6913963d6ecb8fea73}{Query\-Construction\-\_\-\-Client\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, bool is\-This\-The\-Server)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_a8d72273c247770401da9d54b6bad4d16}{Query\-Remote\-Construction\-\_\-\-Client\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection, bool is\-This\-The\-Server)
+\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga16aaecf3c23582f0de6652b348ccfa38}{R\-M3\-Construction\-State} \hyperlink{class_rak_net_1_1_replica3_a111ebc1ea1f9f11202ea15abb39fc329}{Query\-Construction\-\_\-\-Server\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, bool is\-This\-The\-Server)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_af5d3b25a95bbd91020d035ce9f6476a9}{Query\-Remote\-Construction\-\_\-\-Server\-Construction} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection, bool is\-This\-The\-Server)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()}. Allow the server to create this object, but not the client. \end{DoxyCompactList}\item 
+virtual \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga16aaecf3c23582f0de6652b348ccfa38}{R\-M3\-Construction\-State} \hyperlink{class_rak_net_1_1_replica3_abd7b33c48572729b624485e69e1f0fe2}{Query\-Construction\-\_\-\-Peer\-To\-Peer} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga91a588da9d58bc86b8fb7e4f27ddcf7e}{Replica3\-P2\-P\-Mode} p2p\-Mode=\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7eae6bb229afa26313b6aa4c11320e630d5}{R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R})
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_replica3_a6f398550955711b0a2b8366ca6627835}{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$source\-Connection)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()}. \end{DoxyCompactList}\item 
+virtual \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga9a29b413d7f2b9cb21c16457631d3aef}{Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} \hyperlink{class_rak_net_1_1_replica3_a8af3a3d3cee9098378deea019710852c}{Query\-Serialization\-\_\-\-Client\-Serializable} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, bool is\-This\-The\-Server)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. \end{DoxyCompactList}\item 
+virtual \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga9a29b413d7f2b9cb21c16457631d3aef}{Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} \hyperlink{class_rak_net_1_1_replica3_a2a2c5faec10124231298d43e6f628234}{Query\-Serialization\-\_\-\-Server\-Serializable} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, bool is\-This\-The\-Server)
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. \end{DoxyCompactList}\item 
+virtual \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga9a29b413d7f2b9cb21c16457631d3aef}{Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} \hyperlink{class_rak_net_1_1_replica3_a212c9fff207005acf494fb9c4ae9e194}{Query\-Serialization\-\_\-\-Peer\-To\-Peer} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$destination\-Connection, \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga91a588da9d58bc86b8fb7e4f27ddcf7e}{Replica3\-P2\-P\-Mode} p2p\-Mode=\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7eae6bb229afa26313b6aa4c11320e630d5}{R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R})
+\begin{DoxyCompactList}\small\item\em Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a4e6de7837b8df78d6932691df18d2111}{virtual R\-M3\-Action\-On\-Pop\-Connection \hyperlink{class_rak_net_1_1_replica3_a4e6de7837b8df78d6932691df18d2111}{Query\-Action\-On\-Pop\-Connection\-\_\-\-Client} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$dropped\-Connection) const }\label{class_rak_net_1_1_replica3_a4e6de7837b8df78d6932691df18d2111}
+
+\begin{DoxyCompactList}\small\item\em Default\-: If we are a client, and the connection is lost, delete the server's objects. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_ae9f27d603e6e5848fc2b6406319a2307}{virtual R\-M3\-Action\-On\-Pop\-Connection \hyperlink{class_rak_net_1_1_replica3_ae9f27d603e6e5848fc2b6406319a2307}{Query\-Action\-On\-Pop\-Connection\-\_\-\-Server} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$dropped\-Connection) const }\label{class_rak_net_1_1_replica3_ae9f27d603e6e5848fc2b6406319a2307}
+
+\begin{DoxyCompactList}\small\item\em Default\-: If we are a server, and the connection is lost, delete the client's objects and broadcast the destruction. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_adfc92444727b42175cba755a63c9b94b}{virtual R\-M3\-Action\-On\-Pop\-Connection \hyperlink{class_rak_net_1_1_replica3_adfc92444727b42175cba755a63c9b94b}{Query\-Action\-On\-Pop\-Connection\-\_\-\-Peer\-To\-Peer} (\hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$dropped\-Connection) const }\label{class_rak_net_1_1_replica3_adfc92444727b42175cba755a63c9b94b}
+
+\begin{DoxyCompactList}\small\item\em Default\-: If we are a peer, and the connection is lost, delete the peer's objects. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{Broadcast\-Destruction} (void)
+\item 
+\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{class_rak_net_1_1_replica3_ada38ca6f642e7fd0b014cbf9d983e31a}{Get\-Creating\-System\-G\-U\-I\-D} (void) const 
+\item 
+bool \hyperlink{class_rak_net_1_1_replica3_a80c1541b6b76ad0c5513e45c1fbb1bdd}{Was\-Referenced} (void) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{class_rak_net_1_1_replica3_a02e865cdf4292bd4dd8c9795ebb3bb05}{creating\-System\-G\-U\-I\-D}
+\item 
+\hypertarget{class_rak_net_1_1_replica3_a7caafa3334eddc2697a1b41828b3a997}{\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{class_rak_net_1_1_replica3_a7caafa3334eddc2697a1b41828b3a997}{deleting\-System\-G\-U\-I\-D}}\label{class_rak_net_1_1_replica3_a7caafa3334eddc2697a1b41828b3a997}
+
+\begin{DoxyCompactList}\small\item\em G\-U\-I\-D of the system that caused the item to send a deletion command over the network. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_replica3_a836775e54b65d866e26b5eb1c6d2f5aa}{\hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} $\ast$ {\bfseries replica\-Manager}}\label{class_rak_net_1_1_replica3_a836775e54b65d866e26b5eb1c6d2f5aa}
+
+\item 
+\hypertarget{class_rak_net_1_1_replica3_a05577ac20a970b96b5a8a78f7b946ca6}{\hyperlink{struct_rak_net_1_1_last_serialization_result_b_s}{Last\-Serialization\-Result\-B\-S} {\bfseries last\-Sent\-Serialization}}\label{class_rak_net_1_1_replica3_a05577ac20a970b96b5a8a78f7b946ca6}
+
+\item 
+\hypertarget{class_rak_net_1_1_replica3_aa158eb98b54013a740f616dc05e2fd72}{bool {\bfseries force\-Send\-Until\-Next\-Update}}\label{class_rak_net_1_1_replica3_aa158eb98b54013a740f616dc05e2fd72}
+
+\item 
+\hypertarget{class_rak_net_1_1_replica3_ab980700d64845166660f7953a65a77d0}{\hyperlink{struct_rak_net_1_1_last_serialization_result}{Last\-Serialization\-Result} $\ast$ {\bfseries lsr}}\label{class_rak_net_1_1_replica3_ab980700d64845166660f7953a65a77d0}
+
+\item 
+\hypertarget{class_rak_net_1_1_replica3_a8d37d9e7b357f2c734a54d2221c62cac}{uint32\-\_\-t {\bfseries reference\-Index}}\label{class_rak_net_1_1_replica3_a8d37d9e7b357f2c734a54d2221c62cac}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base class for your replicated objects for the \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} system. 
+
+To use, derive your class, or a member of your class, from \hyperlink{class_rak_net_1_1_replica3}{Replica3}.\par
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_rak_net_1_1_replica3_a1fbe0ed0e0c540bbad1da2549b1a4074}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!$\sim$\-Replica3@{$\sim$\-Replica3}}
+\index{$\sim$\-Replica3@{$\sim$\-Replica3}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{$\sim$\-Replica3}]{\setlength{\rightskip}{0pt plus 5cm}virtual Rak\-Net\-::\-Replica3\-::$\sim$\-Replica3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a1fbe0ed0e0c540bbad1da2549b1a4074}
+Before deleting a local instance of \hyperlink{class_rak_net_1_1_replica3}{Replica3}, call \hyperlink{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{Replica3\-::\-Broadcast\-Destruction()} for the deletion notification to go out on the network. It is not necessary to call \hyperlink{class_rak_net_1_1_replica_manager3_a4bd439b6f0479a20236cc29ac36a6ff2}{Replica\-Manager3\-::\-Dereference()}, as this happens automatically in the destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Broadcast\-Destruction@{Broadcast\-Destruction}}
+\index{Broadcast\-Destruction@{Broadcast\-Destruction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Broadcast\-Destruction}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Broadcast\-Destruction (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}
+Call to send a network message to delete this object on other systems.\par
+ Call it before deleting the object \hypertarget{class_rak_net_1_1_replica3_acf667862eb0f6ff14ce29c4a7146ccab}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Dealloc\-Replica@{Dealloc\-Replica}}
+\index{Dealloc\-Replica@{Dealloc\-Replica}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Dealloc\-Replica}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Dealloc\-Replica (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_acf667862eb0f6ff14ce29c4a7146ccab}
+
+
+Override with \{delete this;\}. 
+
+
+\begin{DoxyEnumerate}
+\item Got a remote message to delete this object which passed \hyperlink{class_rak_net_1_1_replica3_ac7fa042647ea0bf2748d194e2eefeb74}{Deserialize\-Destruction()}, O\-R 
+\item \hyperlink{class_rak_net_1_1_replica_manager3_af7e33dfb956e311cde40a97c9f89dc8e}{Replica\-Manager3\-::\-Set\-Auto\-Manage\-Connections()} was called auto\-Destroy true (which is the default setting), and a remote system that owns this object disconnected) O\-R $<$$>$ \par
+ Override with \{delete this;\} to actually delete the object (and any other processing you wish).\par
+ If you don't want to delete the object, just do nothing, however, the system will not know this. You may wish to call Dereference() if the object should no longer be networked, but remain in memory. You are responsible for deleting it yoruself later.\par
+ destruction\-Bitstream may be 0 if the object was deleted locally 
+\end{DoxyEnumerate}
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a403aa19294fd0c5adc64bd6204b7c134}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_adc3ca56ef4fe3ad95e381c7d72f0956f}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Deserialize\-Parameters} $\ast$}]{deserialize\-Parameters}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_adc3ca56ef4fe3ad95e381c7d72f0956f}
+
+
+Read what was written in \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} 
+
+Reads the contents of the class from Serialization\-Paramters\-::serialization\-Bitstream.\par
+ Called whenever \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} is called with different data from the last send. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em serialization\-Bitstream} & Bitstream passed to \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} \\
+\hline
+\mbox{\tt in}  & {\em time\-Stamp} & 0 if unused, else contains the time the message originated on the remote system \\
+\hline
+\mbox{\tt in}  & {\em source\-Connection} & Which system sent to us \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a93bedef73e62c6893d47cd0482807f4c}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Deserialize\-Construction@{Deserialize\-Construction}}
+\index{Deserialize\-Construction@{Deserialize\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Deserialize\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Deserialize\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{construction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}
+
+
+Read data written by \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Replica3\-::\-Serialize\-Construction()} 
+
+Reads whatever data was written to {\itshape construction\-Bitstream} in \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Replica3\-::\-Serialize\-Construction()} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em construction\-Bitstream} & Bitstream written to in \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Replica3\-::\-Serialize\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em source\-Connection} & System that sent us this network message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true to accept construction of the object. false to reject, in which case the object will be deleted via \hyperlink{class_rak_net_1_1_replica3_acf667862eb0f6ff14ce29c4a7146ccab}{Replica3\-::\-Dealloc\-Replica()} 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a387379441c90fcb6381d0227c42c5712}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a1949dd5597c106d7538ed602133ec04d}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Deserialize\-Construction\-Existing@{Deserialize\-Construction\-Existing}}
+\index{Deserialize\-Construction\-Existing@{Deserialize\-Construction\-Existing}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Deserialize\-Construction\-Existing}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Deserialize\-Construction\-Existing (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{construction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a1949dd5597c106d7538ed602133ec04d}
+Same as \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction()}, but for an object that already exists on the remote system. Used if you return R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y from Query\-Construction 
+
+Reimplemented in \hyperlink{class_rak_net_1_1_replica3_composite_a90b834da8ba20e7e46dd2efedfc83f78}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_ac7fa042647ea0bf2748d194e2eefeb74}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Deserialize\-Destruction@{Deserialize\-Destruction}}
+\index{Deserialize\-Destruction@{Deserialize\-Destruction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Deserialize\-Destruction}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Deserialize\-Destruction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{destruction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_ac7fa042647ea0bf2748d194e2eefeb74}
+
+
+Read data written by \hyperlink{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}{Replica3\-::\-Serialize\-Destruction()} 
+
+Return true to delete the object. \hyperlink{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{Broadcast\-Destruction()} will be called automatically, followed by \hyperlink{class_rak_net_1_1_replica_manager3_a4bd439b6f0479a20236cc29ac36a6ff2}{Replica\-Manager3\-::\-Dereference}.\par
+ Return false to not delete it. If you delete it at a later point, you are responsible for calling \hyperlink{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{Broadcast\-Destruction()} yourself. 
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a16992d92f94580265ae4bba1a199b5ab}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_ada38ca6f642e7fd0b014cbf9d983e31a}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Get\-Creating\-System\-G\-U\-I\-D@{Get\-Creating\-System\-G\-U\-I\-D}}
+\index{Get\-Creating\-System\-G\-U\-I\-D@{Get\-Creating\-System\-G\-U\-I\-D}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Get\-Creating\-System\-G\-U\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-G\-U\-I\-D} Rak\-Net\-::\-Replica3\-::\-Get\-Creating\-System\-G\-U\-I\-D (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_replica3_ada38ca6f642e7fd0b014cbf9d983e31a}
+creating\-System\-G\-U\-I\-D is set the first time Reference() is called, or if we get the object from another system \begin{DoxyReturn}{Returns}
+System that originally created this object 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_replica3_a0133383d790ca6e3c9d39e95ac9add8b}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!On\-Serialize\-Transmission@{On\-Serialize\-Transmission}}
+\index{On\-Serialize\-Transmission@{On\-Serialize\-Transmission}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{On\-Serialize\-Transmission}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-On\-Serialize\-Transmission (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{bit\-Stream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{Bit\-Size\-\_\-t}]{bits\-Per\-Channel\mbox{[}\-R\-M3\-\_\-\-N\-U\-M\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-B\-I\-T\-S\-T\-R\-E\-A\-M\-\_\-\-C\-H\-A\-N\-N\-E\-L\-S\mbox{]}, }
+\item[{Rak\-Net\-::\-Time}]{cur\-Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a0133383d790ca6e3c9d39e95ac9add8b}
+
+
+Called when the class is actually transmitted via \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} 
+
+Use to track how much bandwidth this class it taking \hypertarget{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Post\-Deserialize\-Construction@{Post\-Deserialize\-Construction}}
+\index{Post\-Deserialize\-Construction@{Post\-Deserialize\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Post\-Deserialize\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Post\-Deserialize\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{construction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}
+Called after Deserialize\-Construction completes for all objects in a given update tick.\par
+ This is used to resolve dependency chains, where two objects would refer to each other in Deserialize\-Construction, yet one had not been constructed yet In \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Post\-Deserialize\-Construction()}, you know that all objects have already been created, so can resolve Network\-I\-Ds to pointers safely. You can also use it to trigger some sort of event when you know the object has completed deserialization. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em construction\-Bitstream} & \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} written in \hyperlink{class_rak_net_1_1_replica3_a1b2a1d043e575f738e204d1d3a41c5a5}{Post\-Serialize\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em source\-Connection} & System that sent us this network message. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_replica3_composite_ac8258f928d6922f928c5d842c62c8094}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_ad517ffd842f11fe5cdef2678e87c86ab}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Pre\-Destruction@{Pre\-Destruction}}
+\index{Pre\-Destruction@{Pre\-Destruction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Pre\-Destruction}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Pre\-Destruction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_ad517ffd842f11fe5cdef2678e87c86ab}
+Called after Deserialize\-Destruction completes for the object successfully, but obviously before the object is deleted.\par
+ Override to trigger some sort of event when you know the object has completed destruction. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source\-Connection} & System that sent us this network message. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_replica3_composite_a5756a6c31fde002484a031199c32f053}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a72df203ad36574b2e7d09b5b9abc7788}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Action\-On\-Pop\-Connection@{Query\-Action\-On\-Pop\-Connection}}
+\index{Query\-Action\-On\-Pop\-Connection@{Query\-Action\-On\-Pop\-Connection}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Action\-On\-Pop\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual Rak\-Net\-::\-R\-M3\-Action\-On\-Pop\-Connection Rak\-Net\-::\-Replica3\-::\-Query\-Action\-On\-Pop\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{dropped\-Connection}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_a72df203ad36574b2e7d09b5b9abc7788}
+
+
+The system is asking what to do with this replica when the connection is dropped. 
+
+Return Query\-Action\-On\-Pop\-Connection\-\_\-\-Client, Query\-Action\-On\-Pop\-Connection\-\_\-\-Server, or Query\-Action\-On\-Pop\-Connection\-\_\-\-Peer\-To\-Peer 
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a72b9991e5a7042055cd570f4f6988aa9}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Construction@{Query\-Construction}}
+\index{Query\-Construction@{Query\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Construction\-State} Rak\-Net\-::\-Replica3\-::\-Query\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{{\bf Replica\-Manager3} $\ast$}]{replica\-Manager3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}
+
+
+Ask if this object, which does not exist on {\itshape destination\-Connection} should (now) be sent to that system. 
+
+If Replica\-Manager3\-::\-Query\-Construction\-Mode() returns Q\-U\-E\-R\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-F\-O\-R\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-L\-I\-S\-T or Q\-U\-E\-R\-Y\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-F\-O\-R\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-I\-O\-N\-\_\-\-A\-N\-D\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N (default), then Queyr\-Construction() is called once per tick from \hyperlink{class_rak_net_1_1_replica_manager3_a8aa2fdb5b20aeeab74b037bc1632c9e9}{Replica\-Manager3\-::\-Update()} to determine if an object should exist on a given system.\par
+ Based on the return value, a network message may be sent to the other system to create the object.\par
+ If Query\-Construction\-Mode() is overriden to return Q\-U\-E\-R\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-F\-O\-R\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-L\-I\-S\-T, this function is unused.\par
+ \begin{DoxyNote}{Note}
+Defaults are provided\-: \hyperlink{class_rak_net_1_1_replica3_abd7b33c48572729b624485e69e1f0fe2}{Query\-Construction\-\_\-\-Peer\-To\-Peer()}, \hyperlink{class_rak_net_1_1_replica3_a111ebc1ea1f9f11202ea15abb39fc329}{Query\-Construction\-\_\-\-Server\-Construction()}, \hyperlink{class_rak_net_1_1_replica3_a98df31b4f30c6a6913963d6ecb8fea73}{Query\-Construction\-\_\-\-Client\-Construction()}. Return one of these functions for a working default for the relevant topology. 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & Which system we will send to \\
+\hline
+\mbox{\tt in}  & {\em replica\-Manager3} & Plugin instance for this \hyperlink{class_rak_net_1_1_replica3}{Replica3} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+What action to take 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a28ba2a4669eb1f6c5a0b1d6eec31848c}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a98df31b4f30c6a6913963d6ecb8fea73}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Construction\-\_\-\-Client\-Construction@{Query\-Construction\-\_\-\-Client\-Construction}}
+\index{Query\-Construction\-\_\-\-Client\-Construction@{Query\-Construction\-\_\-\-Client\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Construction\-\_\-\-Client\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Construction\-State} Rak\-Net\-::\-Replica3\-::\-Query\-Construction\-\_\-\-Client\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a98df31b4f30c6a6913963d6ecb8fea73}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. 
+
+Both the client and the server is allowed to create this object. The network topology is client/server 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_abd7b33c48572729b624485e69e1f0fe2}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Construction\-\_\-\-Peer\-To\-Peer@{Query\-Construction\-\_\-\-Peer\-To\-Peer}}
+\index{Query\-Construction\-\_\-\-Peer\-To\-Peer@{Query\-Construction\-\_\-\-Peer\-To\-Peer}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Construction\-\_\-\-Peer\-To\-Peer}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Construction\-State} Rak\-Net\-::\-Replica3\-::\-Query\-Construction\-\_\-\-Peer\-To\-Peer (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{{\bf Replica3\-P2\-P\-Mode}}]{p2p\-Mode = {\ttfamily {\bf R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_abd7b33c48572729b624485e69e1f0fe2}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. 
+
+All clients are allowed to create all objects. The object is not relayed when remotely created 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em p2p\-Mode} & If controlled only by this system ever, pass R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R. Otherwise pass R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E or R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-N\-O\-T\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_a111ebc1ea1f9f11202ea15abb39fc329}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Construction\-\_\-\-Server\-Construction@{Query\-Construction\-\_\-\-Server\-Construction}}
+\index{Query\-Construction\-\_\-\-Server\-Construction@{Query\-Construction\-\_\-\-Server\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Construction\-\_\-\-Server\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Construction\-State} Rak\-Net\-::\-Replica3\-::\-Query\-Construction\-\_\-\-Server\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a111ebc1ea1f9f11202ea15abb39fc329}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()}. 
+
+Only the server is allowed to create this object. The network topology is client/server 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_ab476629672d62c7c33c8b1d8aa606918}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Destruction@{Query\-Destruction}}
+\index{Query\-Destruction@{Query\-Destruction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Destruction}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Destruction\-State} Rak\-Net\-::\-Replica3\-::\-Query\-Destruction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{{\bf Replica\-Manager3} $\ast$}]{replica\-Manager3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_ab476629672d62c7c33c8b1d8aa606918}
+
+
+Ask if this object, which does exist on {\itshape destination\-Connection} should be removed from the remote system. 
+
+If Replica\-Manager3\-::\-Query\-Construction\-Mode() returns Q\-U\-E\-R\-Y\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-F\-O\-R\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-I\-O\-N\-\_\-\-A\-N\-D\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N (default), then \hyperlink{class_rak_net_1_1_replica3_ab476629672d62c7c33c8b1d8aa606918}{Query\-Destruction()} is called once per tick from \hyperlink{class_rak_net_1_1_replica_manager3_a8aa2fdb5b20aeeab74b037bc1632c9e9}{Replica\-Manager3\-::\-Update()} to determine if an object that exists on a remote system should be destroyed for a given system.\par
+ Based on the return value, a network message may be sent to the other system to destroy the object.\par
+ Note that you can also destroy objects with \hyperlink{class_rak_net_1_1_replica3_a7c6a22d575326cddec3a70eb1c2568f2}{Broadcast\-Destruction()}, so this function is not useful unless you plan to delete objects for only a particular connection.\par
+ If Query\-Construction\-Mode() is overriden to return Q\-U\-E\-R\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-F\-O\-R\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-L\-I\-S\-T, this function is unused.\par
+ 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & Which system we will send to \\
+\hline
+\mbox{\tt in}  & {\em replica\-Manager3} & Plugin instance for this \hyperlink{class_rak_net_1_1_replica3}{Replica3} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+What action to take. Only R\-M3\-C\-S\-\_\-\-S\-E\-N\-D\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N does anything at this time. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_replica3_composite_a6072ff772d5eff7c73e6f6e5b8e00ac3}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Remote\-Construction@{Query\-Remote\-Construction}}
+\index{Query\-Remote\-Construction@{Query\-Remote\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Remote\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Query\-Remote\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}
+
+
+We're about to call \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction()} on this \hyperlink{class_rak_net_1_1_replica3}{Replica3}. If \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()} returns false, this object is deleted instead. 
+
+By default, \hyperlink{class_rak_net_1_1_replica3_af5d3b25a95bbd91020d035ce9f6476a9}{Query\-Remote\-Construction\-\_\-\-Server\-Construction()} does not allow clients to create objects. The client will get Replica3\-::\-Deserialize\-Construction\-Request\-Rejected().\par
+ If you want the client to be able to potentially create objects for client/server, override accordingly.\par
+ Other variants of Query\-Remote\-Construction\-\_\-$\ast$ just return true. \begin{DoxyNote}{Note}
+Defaults are provided\-: \hyperlink{class_rak_net_1_1_replica3_a6f398550955711b0a2b8366ca6627835}{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer()}, \hyperlink{class_rak_net_1_1_replica3_af5d3b25a95bbd91020d035ce9f6476a9}{Query\-Remote\-Construction\-\_\-\-Server\-Construction()}, \hyperlink{class_rak_net_1_1_replica3_a8d72273c247770401da9d54b6bad4d16}{Query\-Remote\-Construction\-\_\-\-Client\-Construction()}. Return one of these functions for a working default for the relevant topology. 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source\-Connection} & Which system sent us the object creation request message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the object to pass onto \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction()} (where it may also be rejected), false to immediately reject the remote construction request 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_ae5f099064ed5168d7bb180aec8ca2eb5}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a8d72273c247770401da9d54b6bad4d16}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Remote\-Construction\-\_\-\-Client\-Construction@{Query\-Remote\-Construction\-\_\-\-Client\-Construction}}
+\index{Query\-Remote\-Construction\-\_\-\-Client\-Construction@{Query\-Remote\-Construction\-\_\-\-Client\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Remote\-Construction\-\_\-\-Client\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Query\-Remote\-Construction\-\_\-\-Client\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a8d72273c247770401da9d54b6bad4d16}
+Default call for \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()}.
+
+Both the client and the server is allowed to create this object. The network topology is client/server The code means on the client or the server, allow creation of \hyperlink{class_rak_net_1_1_replica3}{Replica3} instances 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_a6f398550955711b0a2b8366ca6627835}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer@{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer}}
+\index{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer@{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Query\-Remote\-Construction\-\_\-\-Peer\-To\-Peer (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a6f398550955711b0a2b8366ca6627835}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()}. 
+
+All clients are allowed to create all objects. The object is not relayed when remotely created 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_af5d3b25a95bbd91020d035ce9f6476a9}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Remote\-Construction\-\_\-\-Server\-Construction@{Query\-Remote\-Construction\-\_\-\-Server\-Construction}}
+\index{Query\-Remote\-Construction\-\_\-\-Server\-Construction@{Query\-Remote\-Construction\-\_\-\-Server\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Remote\-Construction\-\_\-\-Server\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Replica3\-::\-Query\-Remote\-Construction\-\_\-\-Server\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{source\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_af5d3b25a95bbd91020d035ce9f6476a9}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_a79bd207fb79055d2b39943eb1c6b1f58}{Query\-Remote\-Construction()}. Allow the server to create this object, but not the client. 
+
+Only the server is allowed to create this object. The network topology is client/server The code means if this is the server, and I got a command to create a \hyperlink{class_rak_net_1_1_replica3}{Replica3} to ignore it. If this is the client, to allow it. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Serialization@{Query\-Serialization}}
+\index{Query\-Serialization@{Query\-Serialization}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Serialization}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} Rak\-Net\-::\-Replica3\-::\-Query\-Serialization (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}
+
+
+Implement with \hyperlink{class_rak_net_1_1_replica3_a8af3a3d3cee9098378deea019710852c}{Query\-Serialization\-\_\-\-Client\-Serializable()}, \hyperlink{class_rak_net_1_1_replica3_a2a2c5faec10124231298d43e6f628234}{Query\-Serialization\-\_\-\-Server\-Serializable()}, or \hyperlink{class_rak_net_1_1_replica3_a212c9fff207005acf494fb9c4ae9e194}{Query\-Serialization\-\_\-\-Peer\-To\-Peer()} 
+
+\hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()} is a first pass query to check if a given object should serializable to a given system. The intent is that the user implements with one of the defaults for client, server, or peer to peer.\par
+ Without this function, a careless implementation would serialize an object anytime it changed to all systems. This would give you feedback loops as the sender gets the same message back from the recipient it just sent to.\par
+ If more than one system can serialize the same object then you will need to override to return true, and control the serialization result from \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Replica3\-::\-Serialize()}. Be careful not to send back the same data to the system that just sent to you! \begin{DoxyReturn}{Returns}
+True to allow calling \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Replica3\-::\-Serialize()} for this connection, false to not call. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a4b09de10ab5fb4e5b28b385bef2a7a91}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a8af3a3d3cee9098378deea019710852c}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Serialization\-\_\-\-Client\-Serializable@{Query\-Serialization\-\_\-\-Client\-Serializable}}
+\index{Query\-Serialization\-\_\-\-Client\-Serializable@{Query\-Serialization\-\_\-\-Client\-Serializable}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Serialization\-\_\-\-Client\-Serializable}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} Rak\-Net\-::\-Replica3\-::\-Query\-Serialization\-\_\-\-Client\-Serializable (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a8af3a3d3cee9098378deea019710852c}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. 
+
+Use if the values you are serializing are generated by the client that owns the object. The serialization will be relayed through the server to the other clients. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_a212c9fff207005acf494fb9c4ae9e194}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Serialization\-\_\-\-Peer\-To\-Peer@{Query\-Serialization\-\_\-\-Peer\-To\-Peer}}
+\index{Query\-Serialization\-\_\-\-Peer\-To\-Peer@{Query\-Serialization\-\_\-\-Peer\-To\-Peer}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Serialization\-\_\-\-Peer\-To\-Peer}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} Rak\-Net\-::\-Replica3\-::\-Query\-Serialization\-\_\-\-Peer\-To\-Peer (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{{\bf Replica3\-P2\-P\-Mode}}]{p2p\-Mode = {\ttfamily {\bf R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a212c9fff207005acf494fb9c4ae9e194}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. 
+
+Use if the values you are serializing are on a peer to peer network. The peer that owns the object will send to all. Remote peers will not send. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em p2p\-Mode} & If controlled only by this system ever, pass R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R. Otherwise pass R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E or R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-N\-O\-T\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_a2a2c5faec10124231298d43e6f628234}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Query\-Serialization\-\_\-\-Server\-Serializable@{Query\-Serialization\-\_\-\-Server\-Serializable}}
+\index{Query\-Serialization\-\_\-\-Server\-Serializable@{Query\-Serialization\-\_\-\-Server\-Serializable}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Query\-Serialization\-\_\-\-Server\-Serializable}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} Rak\-Net\-::\-Replica3\-::\-Query\-Serialization\-\_\-\-Server\-Serializable (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{bool}]{is\-This\-The\-Server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a2a2c5faec10124231298d43e6f628234}
+
+
+Default call for \hyperlink{class_rak_net_1_1_replica3_abc1b2daa5c1a908ddd2d6df44da7e9aa}{Query\-Serialization()}. 
+
+Use if the values you are serializing are generated only by the server. The serialization will be sent to all clients, but the clients will not send back to the server. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination\-Connection} & destination\-Connection parameter passed to \hyperlink{class_rak_net_1_1_replica3_ad826e04ce6a0db4e32c3d990fd27e943}{Query\-Construction()} \\
+\hline
+\mbox{\tt in}  & {\em is\-This\-The\-Server} & True if this system is the server, false if not. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-M3\-Serialization\-Result} Rak\-Net\-::\-Replica3\-::\-Serialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Serialize\-Parameters} $\ast$}]{serialize\-Parameters}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}
+
+
+Serialize our class to a bitstream. 
+
+User should implement this function to write the contents of this class to Serialization\-Paramters\-::serialization\-Bitstream.\par
+ If data only needs to be written once, you can write it to \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Serialize\-Construction()} instead for efficiency.\par
+ Transmitted over the network if it changed from the last time we called \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()}.\par
+ Called every time the time interval to \hyperlink{class_rak_net_1_1_replica_manager3_a06af43f52ae3148e763ad9223c308639}{Replica\-Manager3\-::\-Set\-Auto\-Serialize\-Interval()} elapses and \hyperlink{class_rak_net_1_1_replica_manager3_a8aa2fdb5b20aeeab74b037bc1632c9e9}{Replica\-Manager3\-::\-Update} is subsequently called. 
+\begin{DoxyParams}{Parameters}
+{\em in/out\mbox{]}} & serialize\-Parameters Parameters controlling the serialization, including destination bitstream to write to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether to serialize, and if so, how to optimize the results 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_abf66b82cf60d9c7d566ce8ade9cc17d3}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Serialize\-Construction@{Serialize\-Construction}}
+\index{Serialize\-Construction@{Serialize\-Construction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Serialize\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Serialize\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{construction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}
+
+
+Write data to be sent only when the object is constructed on a remote system. 
+
+Serialize\-Construction is used to write out data that you need to create this object in the context of your game, such as health, score, name. Use it for data you only need to send when the object is created.\par
+ After \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Serialize\-Construction()} is called, \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} will be called immediately thereafter. However, they are sent in different messages, so \hyperlink{class_rak_net_1_1_replica3_a6e59b6a75b22441365145bf552f89e09}{Serialize()} may arrive a later frame than \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Serialize\-Construction()} For that reason, the object should be valid after a call to \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Deserialize\-Construction()} for at least a short time.\par
+ \begin{DoxyNote}{Note}
+The object's Network\-I\-D and allocation id are handled by the system automatically, you do not need to write these values to {\itshape construction\-Bitstream} 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em construction\-Bitstream} & Destination bitstream to write your data to \\
+\hline
+\mbox{\tt in}  & {\em destination\-Connection} & System that will receive this network message. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a75be39067450e1d717473408600a9c73}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a245a99bf6338ed42ab5386be11417fde}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Serialize\-Construction\-Existing@{Serialize\-Construction\-Existing}}
+\index{Serialize\-Construction\-Existing@{Serialize\-Construction\-Existing}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Serialize\-Construction\-Existing}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Serialize\-Construction\-Existing (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{construction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_replica3_a245a99bf6338ed42ab5386be11417fde}
+Same as \hyperlink{class_rak_net_1_1_replica3_a8297aa828aa9261d8ff6194f0023423a}{Serialize\-Construction()}, but for an object that already exists on the remote system. Used if you return R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y from Query\-Construction 
+
+Reimplemented in \hyperlink{class_rak_net_1_1_replica3_composite_a1b73936583a501800162571c5c117aff}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Serialize\-Destruction@{Serialize\-Destruction}}
+\index{Serialize\-Destruction@{Serialize\-Destruction}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Serialize\-Destruction}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Serialize\-Destruction (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{destruction\-Bitstream, }
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}
+
+
+Write extra data to send with the object deletion event, if desired. 
+
+\hyperlink{class_rak_net_1_1_replica3_ac78ab07796290ede00559de9d4ceb72d}{Replica3\-::\-Serialize\-Destruction()} will be called to write any object destruction specific data you want to send with this event. {\itshape destruction\-Bitstream} can be read in \hyperlink{class_rak_net_1_1_replica3_ac7fa042647ea0bf2748d194e2eefeb74}{Deserialize\-Destruction()} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em destruction\-Bitstream} & Bitstream for you to write to \\
+\hline
+\mbox{\tt in}  & {\em destination\-Connection} & System that will receive this network message. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_ac02df3fd25db390ebaed1bb0773a5086}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+\hypertarget{class_rak_net_1_1_replica3_a80c1541b6b76ad0c5513e45c1fbb1bdd}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Was\-Referenced@{Was\-Referenced}}
+\index{Was\-Referenced@{Was\-Referenced}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Was\-Referenced}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Replica3\-::\-Was\-Referenced (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_rak_net_1_1_replica3_a80c1541b6b76ad0c5513e45c1fbb1bdd}
+\begin{DoxyReturn}{Returns}
+If \hyperlink{class_rak_net_1_1_replica_manager3_a9046d827471c0be651b54b7efb7b6f28}{Replica\-Manager3\-::\-Reference()} was called on this object. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_replica3_ada0458bb521a455f23e08742c9e1b0b9}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!Write\-Allocation\-I\-D@{Write\-Allocation\-I\-D}}
+\index{Write\-Allocation\-I\-D@{Write\-Allocation\-I\-D}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{Write\-Allocation\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Replica3\-::\-Write\-Allocation\-I\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Connection\-\_\-\-R\-M3} $\ast$}]{destination\-Connection, }
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{allocation\-Id\-Bitstream}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_replica3_ada0458bb521a455f23e08742c9e1b0b9}
+
+
+Write a unique identifer that can be read on a remote system to create an object of this same class. 
+
+The value written to {\itshape allocation\-Id\-Bitstream} will be passed to \hyperlink{class_rak_net_1_1_connection___r_m3_ab05d85100f726378f2ed73c6792a5b46}{Connection\-\_\-\-R\-M3\-::\-Alloc\-Replica()}.\par
+ Sample implementation\-:\par
+ \{allocation\-Id\-Bitstream-\/$>$Write(\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String}(\char`\"{}\-Soldier\char`\"{});\}\par
+ 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em allocation\-Id\-Bitstream} & Bitstream for the user to write to, to identify this class \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_replica3_composite_a7a05709ac67f8261dd5e3293c4374d3a}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_rak_net_1_1_replica3_a02e865cdf4292bd4dd8c9795ebb3bb05}{\index{Rak\-Net\-::\-Replica3@{Rak\-Net\-::\-Replica3}!creating\-System\-G\-U\-I\-D@{creating\-System\-G\-U\-I\-D}}
+\index{creating\-System\-G\-U\-I\-D@{creating\-System\-G\-U\-I\-D}!RakNet::Replica3@{Rak\-Net\-::\-Replica3}}
+\subsubsection[{creating\-System\-G\-U\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-G\-U\-I\-D} Rak\-Net\-::\-Replica3\-::creating\-System\-G\-U\-I\-D}}\label{class_rak_net_1_1_replica3_a02e865cdf4292bd4dd8c9795ebb3bb05}
+G\-U\-I\-D of the system that first called Reference() on this object. Transmitted automatically when the object is constructed 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_replica_manager3_8h}{Replica\-Manager3.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,253 @@
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window}{\section{Rak\-Net\-:\-:C\-C\-Rak\-Net\-Sliding\-Window Class Reference}
+\label{class_rak_net_1_1_c_c_rak_net_sliding_window}\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aa6c4aa85156095c2b02069d3d736c8cf}{void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_aa6c4aa85156095c2b02069d3d736c8cf}{Init} (C\-C\-Time\-Type cur\-Time, uint32\-\_\-t max\-Datagram\-Payload)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aa6c4aa85156095c2b02069d3d736c8cf}
+
+\begin{DoxyCompactList}\small\item\em Reset all variables to their initial states, for a new connection. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_abcf47c3afe6ff15093a31594ab812fc6}{void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_abcf47c3afe6ff15093a31594ab812fc6}{Update} (C\-C\-Time\-Type cur\-Time, bool has\-Data\-To\-Send\-Or\-Resend)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_abcf47c3afe6ff15093a31594ab812fc6}
+
+\begin{DoxyCompactList}\small\item\em Update over time. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a07ea5447b3dcd03cb405956b3805fbbd}{int {\bfseries Get\-Retransmission\-Bandwidth} (C\-C\-Time\-Type cur\-Time, C\-C\-Time\-Type time\-Since\-Last\-Tick, uint32\-\_\-t unacknowledged\-Bytes, bool is\-Continuous\-Send)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a07ea5447b3dcd03cb405956b3805fbbd}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a2c3861abda9c962acf93f2f870742005}{int {\bfseries Get\-Transmission\-Bandwidth} (C\-C\-Time\-Type cur\-Time, C\-C\-Time\-Type time\-Since\-Last\-Tick, uint32\-\_\-t unacknowledged\-Bytes, bool is\-Continuous\-Send)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a2c3861abda9c962acf93f2f870742005}
+
+\item 
+bool \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_aebb13b16d6e6601f191a48f5da5aed05}{Should\-Send\-A\-C\-Ks} (C\-C\-Time\-Type cur\-Time, C\-C\-Time\-Type estimated\-Time\-To\-Next\-Tick)
+\item 
+\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a143bddc1be41f1ea910b400cf403749d}{Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number} (void)
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a0cf92f5a4f33e481bb73ab93c6ae6345}{\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} {\bfseries Get\-Next\-Datagram\-Sequence\-Number} (void)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a0cf92f5a4f33e481bb73ab93c6ae6345}
+
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a67bc237267f26e02f7607a075a82e385}{On\-Send\-Bytes} (C\-C\-Time\-Type cur\-Time, uint32\-\_\-t num\-Bytes)
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ad9b18795ecb3c09311a3482229003de1}{void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_ad9b18795ecb3c09311a3482229003de1}{On\-Got\-Packet\-Pair} (\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} datagram\-Sequence\-Number, uint32\-\_\-t size\-In\-Bytes, C\-C\-Time\-Type cur\-Time)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ad9b18795ecb3c09311a3482229003de1}
+
+\begin{DoxyCompactList}\small\item\em Call this when you get a packet pair. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b09736b3bdb68855b02a1054fc8e861}{On\-Got\-Packet} (\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} datagram\-Sequence\-Number, bool is\-Continuous\-Send, C\-C\-Time\-Type cur\-Time, uint32\-\_\-t size\-In\-Bytes, uint32\-\_\-t $\ast$skipped\-Message\-Count)
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b6125fb3cc8955cd666c514ac642988}{On\-Resend} (C\-C\-Time\-Type cur\-Time, Rak\-Net\-::\-Time\-U\-S next\-Action\-Time)
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a8f65af8f9f4ae908760c44678b4a196c}{void {\bfseries On\-N\-A\-K} (C\-C\-Time\-Type cur\-Time, \hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} nak\-Sequence\-Number)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a8f65af8f9f4ae908760c44678b4a196c}
+
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_aac0288a827f1a61435a48faed9a09cb9}{On\-Ack} (C\-C\-Time\-Type cur\-Time, C\-C\-Time\-Type rtt, bool has\-B\-And\-A\-S, Bytes\-Per\-Microsecond \-\_\-\-B, Bytes\-Per\-Microsecond \-\_\-\-A\-S, double total\-User\-Data\-Bytes\-Acked, bool is\-Continuous\-Send, \hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} sequence\-Number)
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a2ae0e36a277fcbbcb4bd97d23b8c3263}{void {\bfseries On\-Duplicate\-Ack} (C\-C\-Time\-Type cur\-Time, \hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} sequence\-Number)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a2ae0e36a277fcbbcb4bd97d23b8c3263}
+
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a5b0d43355d169c617b3e52a8e1fa72fb}{On\-Send\-Ack\-Get\-B\-And\-A\-S} (C\-C\-Time\-Type cur\-Time, bool $\ast$has\-B\-And\-A\-S, Bytes\-Per\-Microsecond $\ast$\-\_\-\-B, Bytes\-Per\-Microsecond $\ast$\-\_\-\-A\-S)
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}{On\-Send\-Ack} (C\-C\-Time\-Type cur\-Time, uint32\-\_\-t num\-Bytes)
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_af2495a5ae77a57b1533cfcb655eb55ae}{On\-Send\-N\-A\-C\-K} (C\-C\-Time\-Type cur\-Time, uint32\-\_\-t num\-Bytes)
+\item 
+C\-C\-Time\-Type \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_af5f3efc0cf3a9d155a5ab6a3b4a7a632}{Get\-R\-T\-O\-For\-Retransmission} (unsigned char times\-Sent) const 
+\item 
+void \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a44df5ef0a3d2936282a13e63972e1302}{Set\-M\-T\-U} (uint32\-\_\-t bytes)
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a2d9d16951f82d09b3e858d765f69c169}{uint32\-\_\-t \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a2d9d16951f82d09b3e858d765f69c169}{Get\-M\-T\-U} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a2d9d16951f82d09b3e858d765f69c169}
+
+\begin{DoxyCompactList}\small\item\em Return what was set by \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a44df5ef0a3d2936282a13e63972e1302}{Set\-M\-T\-U()} \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a2862f2561b92b12fb44b04803cf54a72}{Bytes\-Per\-Microsecond \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a2862f2561b92b12fb44b04803cf54a72}{Get\-Local\-Send\-Rate} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a2862f2561b92b12fb44b04803cf54a72}
+
+\begin{DoxyCompactList}\small\item\em Query for statistics. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a934eab66102b9fe6ffe9a93c6b87cb9f}{Bytes\-Per\-Microsecond {\bfseries Get\-Local\-Receive\-Rate} (C\-C\-Time\-Type current\-Time) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a934eab66102b9fe6ffe9a93c6b87cb9f}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a768a00f862721c2a323f8a8f87f0b4e3}{Bytes\-Per\-Microsecond {\bfseries Get\-Remove\-Receive\-Rate} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a768a00f862721c2a323f8a8f87f0b4e3}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a95b5cf606b8b62ece86dbd7245b3010b}{Bytes\-Per\-Microsecond {\bfseries Get\-Estimated\-Bandwidth} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a95b5cf606b8b62ece86dbd7245b3010b}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aa5f7c2b108a98025d9a4ab823b9cc954}{double {\bfseries Get\-Link\-Capacity\-Bytes\-Per\-Second} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aa5f7c2b108a98025d9a4ab823b9cc954}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a844eb712f90029e5e1b3069a11e912ff}{double \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a844eb712f90029e5e1b3069a11e912ff}{Get\-R\-T\-T} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a844eb712f90029e5e1b3069a11e912ff}
+
+\begin{DoxyCompactList}\small\item\em Query for statistics. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a1cf6c1e2341ad4ba0ce5cf9f39cb353b}{bool {\bfseries Get\-Is\-In\-Slow\-Start} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a1cf6c1e2341ad4ba0ce5cf9f39cb353b}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a3fd082a2752e6f179fe4d7a110445023}{uint32\-\_\-t {\bfseries Get\-C\-W\-N\-D\-Limit} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a3fd082a2752e6f179fe4d7a110445023}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a6745c18b918567aef1db9fb8fbd25a78}{uint64\-\_\-t {\bfseries Get\-Bytes\-Per\-Second\-Limit\-By\-Congestion\-Control} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a6745c18b918567aef1db9fb8fbd25a78}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aee276120dfc2af98db28843bebbe20bb}{static bool \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_aee276120dfc2af98db28843bebbe20bb}{Greater\-Than} (\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} a, \hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} b)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aee276120dfc2af98db28843bebbe20bb}
+
+\begin{DoxyCompactList}\small\item\em Is a $>$ b, accounting for variable overflow? \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ad748dfbe81cccdc218650eb2a0652d78}{static bool \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_ad748dfbe81cccdc218650eb2a0652d78}{Less\-Than} (\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} a, \hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} b)}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ad748dfbe81cccdc218650eb2a0652d78}
+
+\begin{DoxyCompactList}\small\item\em Is a $<$ b, accounting for variable overflow? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a85a60864b0b65aadccb8538e27a387db}{C\-C\-Time\-Type {\bfseries Get\-Sender\-R\-T\-O\-For\-A\-C\-K} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a85a60864b0b65aadccb8538e27a387db}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ab37242e98e6c988f769cba0434fae5f6}{bool {\bfseries Is\-In\-Slow\-Start} (void) const }\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ab37242e98e6c988f769cba0434fae5f6}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a39da7f232c120c98916b0f673ce8e0da}{uint32\-\_\-t {\bfseries M\-A\-X\-I\-M\-U\-M\-\_\-\-M\-T\-U\-\_\-\-I\-N\-C\-L\-U\-D\-I\-N\-G\-\_\-\-U\-D\-P\-\_\-\-H\-E\-A\-D\-E\-R}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a39da7f232c120c98916b0f673ce8e0da}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a5247591e49e3533b68b144bd425edea1}{double {\bfseries cwnd}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a5247591e49e3533b68b144bd425edea1}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a0cbd46624da2268aee34253b6e4d5a3c}{double {\bfseries ss\-Thresh}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a0cbd46624da2268aee34253b6e4d5a3c}
+
+\item 
+C\-C\-Time\-Type \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_addc3099db5884a308893f31429a6be28}{oldest\-Unsent\-Ack}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a10fd5e4866fd0a7231147dae09fd163f}{\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a10fd5e4866fd0a7231147dae09fd163f}{next\-Datagram\-Sequence\-Number}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a10fd5e4866fd0a7231147dae09fd163f}
+
+\begin{DoxyCompactList}\small\item\em Every outgoing datagram is assigned a sequence number, which increments by 1 every assignment. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a31ca53ddbec44b4178b48b4f84898971}{\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} {\bfseries next\-Congestion\-Control\-Block}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a31ca53ddbec44b4178b48b4f84898971}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a0562bf748c7e41977c4f20e4d48fc04c}{bool {\bfseries backoff\-This\-Block}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a0562bf748c7e41977c4f20e4d48fc04c}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ae71d77e1f88a970e0e725f5528ce8e88}{bool {\bfseries speed\-Up\-This\-Block}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ae71d77e1f88a970e0e725f5528ce8e88}
+
+\item 
+\hyperlink{struct_rak_net_1_1uint24__t}{Datagram\-Sequence\-Number\-Type} \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_aad7867d1a9fb971f16450dbb769c31ef}{expected\-Next\-Sequence\-Number}
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a496f4a364a82c51f2bb35ae1eb5c6f5a}{bool {\bfseries \-\_\-is\-Continuous\-Send}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a496f4a364a82c51f2bb35ae1eb5c6f5a}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ad5927e5be2902a3e896a21f9b31a32b1}{double {\bfseries last\-Rtt}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ad5927e5be2902a3e896a21f9b31a32b1}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_ad2def10c66bc8f84fee068732ca898c3}{double {\bfseries estimated\-R\-T\-T}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_ad2def10c66bc8f84fee068732ca898c3}
+
+\item 
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a8d7180920f830e983ed5e616268a7b59}{double {\bfseries deviation\-Rtt}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a8d7180920f830e983ed5e616268a7b59}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a143bddc1be41f1ea910b400cf403749d}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number@{Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number}}
+\index{Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number@{Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram\-Sequence\-Number\-Type} Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-Get\-And\-Increment\-Next\-Datagram\-Sequence\-Number (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a143bddc1be41f1ea910b400cf403749d}
+Every data packet sent must contain a sequence number Call this function to get it. The sequence number is passed into \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_ad9b18795ecb3c09311a3482229003de1}{On\-Got\-Packet\-Pair()} \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_af5f3efc0cf3a9d155a5ab6a3b4a7a632}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!Get\-R\-T\-O\-For\-Retransmission@{Get\-R\-T\-O\-For\-Retransmission}}
+\index{Get\-R\-T\-O\-For\-Retransmission@{Get\-R\-T\-O\-For\-Retransmission}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{Get\-R\-T\-O\-For\-Retransmission}]{\setlength{\rightskip}{0pt plus 5cm}C\-C\-Time\-Type Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-Get\-R\-T\-O\-For\-Retransmission (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{times\-Sent}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_af5f3efc0cf3a9d155a5ab6a3b4a7a632}
+Retransmission time out for the sender If the time difference between when a message was last transmitted, and the current time is greater than R\-T\-O then packet is eligible for retransmission, pending congestion control R\-T\-O = (R\-T\-T + 4 $\ast$ R\-T\-T\-Var) + S\-Y\-N If we have been continuously sending for the last R\-T\-O, and no A\-C\-K or N\-A\-K at all, S\-N\-D$\ast$=2; This is per message, which is different from U\-D\-T, but \hyperlink{namespace_rak_net}{Rak\-Net} supports packetloss with continuing data where U\-D\-T is only R\-E\-L\-I\-A\-B\-L\-E\-\_\-\-O\-R\-D\-E\-R\-E\-D Minimum value is 100 milliseconds \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aac0288a827f1a61435a48faed9a09cb9}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Ack@{On\-Ack}}
+\index{On\-Ack@{On\-Ack}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Ack}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Ack (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{C\-C\-Time\-Type}]{rtt, }
+\item[{bool}]{has\-B\-And\-A\-S, }
+\item[{Bytes\-Per\-Microsecond}]{\-\_\-\-B, }
+\item[{Bytes\-Per\-Microsecond}]{\-\_\-\-A\-S, }
+\item[{double}]{total\-User\-Data\-Bytes\-Acked, }
+\item[{bool}]{is\-Continuous\-Send, }
+\item[{{\bf Datagram\-Sequence\-Number\-Type}}]{sequence\-Number}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aac0288a827f1a61435a48faed9a09cb9}
+Call this when an A\-C\-K arrives. has\-B\-And\-A\-S are possibly written with the ack, see \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}{On\-Send\-Ack()} B and A\-S are used in the calculations in Update\-Window\-Size\-And\-Ack\-On\-Ack\-Per\-Syn B and A\-S are updated at most once per S\-Y\-N \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b09736b3bdb68855b02a1054fc8e861}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Got\-Packet@{On\-Got\-Packet}}
+\index{On\-Got\-Packet@{On\-Got\-Packet}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Got\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Got\-Packet (
+\begin{DoxyParamCaption}
+\item[{{\bf Datagram\-Sequence\-Number\-Type}}]{datagram\-Sequence\-Number, }
+\item[{bool}]{is\-Continuous\-Send, }
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{uint32\-\_\-t}]{size\-In\-Bytes, }
+\item[{uint32\-\_\-t $\ast$}]{skipped\-Message\-Count}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b09736b3bdb68855b02a1054fc8e861}
+Call this when you get a packet (including packet pairs) If the Datagram\-Sequence\-Number\-Type is out of order, skipped\-Message\-Count will be non-\/zero In that case, send a N\-A\-K for every sequence number up to that count \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b6125fb3cc8955cd666c514ac642988}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Resend@{On\-Resend}}
+\index{On\-Resend@{On\-Resend}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Resend}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Resend (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{Rak\-Net\-::\-Time\-U\-S}]{next\-Action\-Time}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a9b6125fb3cc8955cd666c514ac642988}
+Call when you get a N\-A\-K, with the sequence number of the lost message Affects the congestion control \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Send\-Ack@{On\-Send\-Ack}}
+\index{On\-Send\-Ack@{On\-Send\-Ack}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Send\-Ack}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Send\-Ack (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{uint32\-\_\-t}]{num\-Bytes}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}
+Call when we send an ack, to write B and A\-S if needed B and A\-S are only written once per S\-Y\-N, to prevent slow calculations Also updates S\-N\-D, the period between sends, since data is written out Be sure to call \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a5b0d43355d169c617b3e52a8e1fa72fb}{On\-Send\-Ack\-Get\-B\-And\-A\-S()} before calling \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}{On\-Send\-Ack()}, since whether you write it or not affects {\itshape num\-Bytes} \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a5b0d43355d169c617b3e52a8e1fa72fb}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Send\-Ack\-Get\-B\-And\-A\-S@{On\-Send\-Ack\-Get\-B\-And\-A\-S}}
+\index{On\-Send\-Ack\-Get\-B\-And\-A\-S@{On\-Send\-Ack\-Get\-B\-And\-A\-S}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Send\-Ack\-Get\-B\-And\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Send\-Ack\-Get\-B\-And\-A\-S (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{bool $\ast$}]{has\-B\-And\-A\-S, }
+\item[{Bytes\-Per\-Microsecond $\ast$}]{\-\_\-\-B, }
+\item[{Bytes\-Per\-Microsecond $\ast$}]{\-\_\-\-A\-S}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a5b0d43355d169c617b3e52a8e1fa72fb}
+Call when you send an ack, to see if the ack should have the B and A\-S parameters transmitted Call before calling \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_a9a102c6aa261d422ee4b3fc40710710c}{On\-Send\-Ack()} \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a67bc237267f26e02f7607a075a82e385}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Send\-Bytes@{On\-Send\-Bytes}}
+\index{On\-Send\-Bytes@{On\-Send\-Bytes}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Send\-Bytes}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Send\-Bytes (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{uint32\-\_\-t}]{num\-Bytes}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a67bc237267f26e02f7607a075a82e385}
+Call this when you send packets Every 15th and 16th packets should be sent as a packet pair if possible When packets marked as a packet pair arrive, pass to \hyperlink{class_rak_net_1_1_c_c_rak_net_sliding_window_ad9b18795ecb3c09311a3482229003de1}{On\-Got\-Packet\-Pair()} When any packets arrive, (additionally) pass to On\-Got\-Packet Packets should contain our system time, so we can pass rtt to On\-Non\-Duplicate\-Ack() \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_af2495a5ae77a57b1533cfcb655eb55ae}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!On\-Send\-N\-A\-C\-K@{On\-Send\-N\-A\-C\-K}}
+\index{On\-Send\-N\-A\-C\-K@{On\-Send\-N\-A\-C\-K}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{On\-Send\-N\-A\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-On\-Send\-N\-A\-C\-K (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{uint32\-\_\-t}]{num\-Bytes}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_af2495a5ae77a57b1533cfcb655eb55ae}
+Call when we send a N\-A\-C\-K Also updates S\-N\-D, the period between sends, since data is written out \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_a44df5ef0a3d2936282a13e63972e1302}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!Set\-M\-T\-U@{Set\-M\-T\-U}}
+\index{Set\-M\-T\-U@{Set\-M\-T\-U}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{Set\-M\-T\-U}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-Set\-M\-T\-U (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{bytes}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_a44df5ef0a3d2936282a13e63972e1302}
+Set the maximum amount of data that can be sent in one datagram Default to M\-A\-X\-I\-M\-U\-M\-\_\-\-M\-T\-U\-\_\-\-S\-I\-Z\-E-\/\-U\-D\-P\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-S\-I\-Z\-E \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aebb13b16d6e6601f191a48f5da5aed05}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!Should\-Send\-A\-C\-Ks@{Should\-Send\-A\-C\-Ks}}
+\index{Should\-Send\-A\-C\-Ks@{Should\-Send\-A\-C\-Ks}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{Should\-Send\-A\-C\-Ks}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::\-Should\-Send\-A\-C\-Ks (
+\begin{DoxyParamCaption}
+\item[{C\-C\-Time\-Type}]{cur\-Time, }
+\item[{C\-C\-Time\-Type}]{estimated\-Time\-To\-Next\-Tick}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aebb13b16d6e6601f191a48f5da5aed05}
+Acks do not have to be sent immediately. Instead, they can be buffered up such that groups of acks are sent at a time This reduces overall bandwidth usage How long they can be buffered depends on the retransmit time of the sender Should call once per update tick, and send if needed 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_aad7867d1a9fb971f16450dbb769c31ef}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!expected\-Next\-Sequence\-Number@{expected\-Next\-Sequence\-Number}}
+\index{expected\-Next\-Sequence\-Number@{expected\-Next\-Sequence\-Number}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{expected\-Next\-Sequence\-Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram\-Sequence\-Number\-Type} Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::expected\-Next\-Sequence\-Number\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_aad7867d1a9fb971f16450dbb769c31ef}
+Track which datagram sequence numbers have arrived. If a sequence number is skipped, send a N\-A\-K for all skipped messages \hypertarget{class_rak_net_1_1_c_c_rak_net_sliding_window_addc3099db5884a308893f31429a6be28}{\index{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}!oldest\-Unsent\-Ack@{oldest\-Unsent\-Ack}}
+\index{oldest\-Unsent\-Ack@{oldest\-Unsent\-Ack}!RakNet::CCRakNetSlidingWindow@{Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window}}
+\subsubsection[{oldest\-Unsent\-Ack}]{\setlength{\rightskip}{0pt plus 5cm}C\-C\-Time\-Type Rak\-Net\-::\-C\-C\-Rak\-Net\-Sliding\-Window\-::oldest\-Unsent\-Ack\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_rak_net_1_1_c_c_rak_net_sliding_window_addc3099db5884a308893f31429a6be28}
+When we get an ack, if oldest\-Unsent\-Ack==0, set it to the current time When we send out acks, set oldest\-Unsent\-Ack to 0 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/C\-C\-Rak\-Net\-Sliding\-Window.\-h\end{DoxyCompactItemize}

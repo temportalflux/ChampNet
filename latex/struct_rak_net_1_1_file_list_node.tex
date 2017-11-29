@@ -1,0 +1,44 @@
+\hypertarget{struct_rak_net_1_1_file_list_node}{\section{Rak\-Net\-:\-:File\-List\-Node Struct Reference}
+\label{struct_rak_net_1_1_file_list_node}\index{Rak\-Net\-::\-File\-List\-Node@{Rak\-Net\-::\-File\-List\-Node}}
+}
+
+
+Represents once instance of a file.  
+
+
+
+
+{\ttfamily \#include $<$File\-List.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_ae4b5eb8be3568977c96dd6dc67ecb8b8}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \hyperlink{struct_rak_net_1_1_file_list_node_ae4b5eb8be3568977c96dd6dc67ecb8b8}{filename}}\label{struct_rak_net_1_1_file_list_node_ae4b5eb8be3568977c96dd6dc67ecb8b8}
+
+\begin{DoxyCompactList}\small\item\em Name of the file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_a36ee27443bd4be041163daeaa87cb635}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \hyperlink{struct_rak_net_1_1_file_list_node_a36ee27443bd4be041163daeaa87cb635}{full\-Path\-To\-File}}\label{struct_rak_net_1_1_file_list_node_a36ee27443bd4be041163daeaa87cb635}
+
+\begin{DoxyCompactList}\small\item\em Full path to the file, which may be different than filename. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_ade7a1978f2aa5bf89961b1ad3bf5049f}{char $\ast$ \hyperlink{struct_rak_net_1_1_file_list_node_ade7a1978f2aa5bf89961b1ad3bf5049f}{data}}\label{struct_rak_net_1_1_file_list_node_ade7a1978f2aa5bf89961b1ad3bf5049f}
+
+\begin{DoxyCompactList}\small\item\em File data (may be null if not ready) \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_a487ee977967c5e19dd2dfafcf150b9fc}{Bit\-Size\-\_\-t \hyperlink{struct_rak_net_1_1_file_list_node_a487ee977967c5e19dd2dfafcf150b9fc}{data\-Length\-Bytes}}\label{struct_rak_net_1_1_file_list_node_a487ee977967c5e19dd2dfafcf150b9fc}
+
+\begin{DoxyCompactList}\small\item\em Length of {\itshape data}. May be greater than file\-Length if prepended with a file hash. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_a210cd8072160d33b4bfd7e16fe44c302}{unsigned \hyperlink{struct_rak_net_1_1_file_list_node_a210cd8072160d33b4bfd7e16fe44c302}{file\-Length\-Bytes}}\label{struct_rak_net_1_1_file_list_node_a210cd8072160d33b4bfd7e16fe44c302}
+
+\begin{DoxyCompactList}\small\item\em Length of the file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_a8966525bea5a3f3a47f42957481d1e73}{\hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} \hyperlink{struct_rak_net_1_1_file_list_node_a8966525bea5a3f3a47f42957481d1e73}{context}}\label{struct_rak_net_1_1_file_list_node_a8966525bea5a3f3a47f42957481d1e73}
+
+\begin{DoxyCompactList}\small\item\em User specific data for whatever, describing this file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_node_acf7bd656e80e80154e626a96169fe0ed}{bool \hyperlink{struct_rak_net_1_1_file_list_node_acf7bd656e80e80154e626a96169fe0ed}{is\-A\-Reference}}\label{struct_rak_net_1_1_file_list_node_acf7bd656e80e80154e626a96169fe0ed}
+
+\begin{DoxyCompactList}\small\item\em If true, data and data\-Length\-Bytes should be empty. This is just storing the filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents once instance of a file. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_file_list_8h}{File\-List.\-h}\end{DoxyCompactItemize}

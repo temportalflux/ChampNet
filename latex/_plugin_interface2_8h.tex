@@ -1,0 +1,55 @@
+\hypertarget{_plugin_interface2_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Plugin\-Interface2.h File Reference}
+\label{_plugin_interface2_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Plugin\-Interface2.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Plugin\-Interface2.\-h}}
+}
+
+
+{\bfseries \hyperlink{namespace_rak_net}{Rak\-Net}'s} plugin functionality system, version 2. You can derive from this to create your own plugins.  
+
+
+{\ttfamily \#include \char`\"{}Native\-Feature\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Packet\-Priority.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rak_net_1_1_plugin_interface2}{Rak\-Net\-::\-Plugin\-Interface2}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Rak\-Net\-::\-Plugin\-Receive\-Result} \{ \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga89998adaafb29e5d879113b992161085afcd33db33aa6fdf749686a30ab2bddec}{Rak\-Net\-::\-R\-R\-\_\-\-S\-T\-O\-P\-\_\-\-P\-R\-O\-C\-E\-S\-S\-I\-N\-G\-\_\-\-A\-N\-D\-\_\-\-D\-E\-A\-L\-L\-O\-C\-A\-T\-E} =0, 
+\hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga89998adaafb29e5d879113b992161085a10d49b25874f0d9f5c420e3bf2e6c9d9}{Rak\-Net\-::\-R\-R\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E\-\_\-\-P\-R\-O\-C\-E\-S\-S\-I\-N\-G}, 
+\hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga89998adaafb29e5d879113b992161085a9e014324e71812eabb1271984a12e238}{Rak\-Net\-::\-R\-R\-\_\-\-S\-T\-O\-P\-\_\-\-P\-R\-O\-C\-E\-S\-S\-I\-N\-G}
+ \}
+\item 
+enum \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{Rak\-Net\-::\-P\-I2\-\_\-\-Lost\-Connection\-Reason} \{ \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga376cc546fd6892c2ead48cd51796c8b8a6e61c0d570e2be4ee58ce7a58d782879}{Rak\-Net\-::\-L\-C\-R\-\_\-\-C\-L\-O\-S\-E\-D\-\_\-\-B\-Y\-\_\-\-U\-S\-E\-R}, 
+\hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga376cc546fd6892c2ead48cd51796c8b8a80ff559ada3a0030585a2afa8bdf46a7}{Rak\-Net\-::\-L\-C\-R\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-I\-F\-I\-C\-A\-T\-I\-O\-N}, 
+\hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_gga376cc546fd6892c2ead48cd51796c8b8aff6f926616ed81a798b92aa6ee7f6b71}{Rak\-Net\-::\-L\-C\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-L\-O\-S\-T}
+ \}
+\item 
+enum \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga3e92f686bace869b78c10508c58e0825}{Rak\-Net\-::\-P\-I2\-\_\-\-Failed\-Connection\-Attempt\-Reason} \{ \\*
+{\bfseries F\-C\-A\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-T\-T\-E\-M\-P\-T\-\_\-\-F\-A\-I\-L\-E\-D}, 
+{\bfseries F\-C\-A\-R\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}, 
+{\bfseries F\-C\-A\-R\-\_\-\-N\-O\-\_\-\-F\-R\-E\-E\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}, 
+{\bfseries F\-C\-A\-R\-\_\-\-S\-E\-C\-U\-R\-I\-T\-Y\-\_\-\-P\-U\-B\-L\-I\-C\-\_\-\-K\-E\-Y\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}, 
+\\*
+{\bfseries F\-C\-A\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-B\-A\-N\-N\-E\-D}, 
+{\bfseries F\-C\-A\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-P\-A\-S\-S\-W\-O\-R\-D}, 
+{\bfseries F\-C\-A\-R\-\_\-\-I\-N\-C\-O\-M\-P\-A\-T\-I\-B\-L\-E\-\_\-\-P\-R\-O\-T\-O\-C\-O\-L}, 
+{\bfseries F\-C\-A\-R\-\_\-\-I\-P\-\_\-\-R\-E\-C\-E\-N\-T\-L\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}, 
+\\*
+{\bfseries F\-C\-A\-R\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-S\-\_\-\-P\-U\-B\-L\-I\-C\-\_\-\-K\-E\-Y}, 
+{\bfseries F\-C\-A\-R\-\_\-\-O\-U\-R\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-S\-\_\-\-S\-E\-C\-U\-R\-I\-T\-Y}, 
+{\bfseries F\-C\-A\-R\-\_\-\-P\-U\-B\-L\-I\-C\-\_\-\-K\-E\-Y\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\bfseries \hyperlink{namespace_rak_net}{Rak\-Net}'s} plugin functionality system, version 2. You can derive from this to create your own plugins. 

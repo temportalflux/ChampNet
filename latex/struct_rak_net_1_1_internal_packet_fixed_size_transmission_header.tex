@@ -1,0 +1,44 @@
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header}{\section{Rak\-Net\-:\-:Internal\-Packet\-Fixed\-Size\-Transmission\-Header Struct Reference}
+\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header}\index{Rak\-Net\-::\-Internal\-Packet\-Fixed\-Size\-Transmission\-Header@{Rak\-Net\-::\-Internal\-Packet\-Fixed\-Size\-Transmission\-Header}}
+}
+Inheritance diagram for Rak\-Net\-:\-:Internal\-Packet\-Fixed\-Size\-Transmission\-Header\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a1c43e5bdc29e63038d48e189a6000508}{\hyperlink{namespace_rak_net_a48a622d2efad1d8be8e1fbc5e8e433db}{Message\-Number\-Type} \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a1c43e5bdc29e63038d48e189a6000508}{reliable\-Message\-Number}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a1c43e5bdc29e63038d48e189a6000508}
+
+\begin{DoxyCompactList}\small\item\em A unique numerical identifier given to this user message. Used to identify reliable messages on the network. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a3741b8ff0dddb2b7bf3158d61a4f1901}{\hyperlink{namespace_rak_net_a2420990844ae2bee638d55b6834baa75}{Ordering\-Index\-Type} \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a3741b8ff0dddb2b7bf3158d61a4f1901}{ordering\-Index}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a3741b8ff0dddb2b7bf3158d61a4f1901}
+
+\begin{DoxyCompactList}\small\item\em The I\-D used as identification for ordering messages. Also included in sequenced messages. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a0d35cefcdac1d34e57d432ef179469e2}{\hyperlink{namespace_rak_net_a2420990844ae2bee638d55b6834baa75}{Ordering\-Index\-Type} {\bfseries sequencing\-Index}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a0d35cefcdac1d34e57d432ef179469e2}
+
+\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a331d964cb7a92b734c82471e5ad4a509}{unsigned char \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a331d964cb7a92b734c82471e5ad4a509}{ordering\-Channel}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a331d964cb7a92b734c82471e5ad4a509}
+
+\begin{DoxyCompactList}\small\item\em What ordering channel this packet is on, if the reliability type uses ordering channels. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a9ff04fd4ec549f0bd52eb665a81a7c44}{Split\-Packet\-Id\-Type \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a9ff04fd4ec549f0bd52eb665a81a7c44}{split\-Packet\-Id}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a9ff04fd4ec549f0bd52eb665a81a7c44}
+
+\begin{DoxyCompactList}\small\item\em The I\-D of the split packet, if we have split packets. This is the maximum number of split messages we can send simultaneously per connection. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a84b8347e3c3e9cdcb6b275686b3cb910}{Split\-Packet\-Index\-Type \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a84b8347e3c3e9cdcb6b275686b3cb910}{split\-Packet\-Index}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a84b8347e3c3e9cdcb6b275686b3cb910}
+
+\begin{DoxyCompactList}\small\item\em If this is a split packet, the index into the array of subsplit packets. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_ac1836c3dbf2c34ef838326b321fef7e2}{Split\-Packet\-Index\-Type \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_ac1836c3dbf2c34ef838326b321fef7e2}{split\-Packet\-Count}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_ac1836c3dbf2c34ef838326b321fef7e2}
+
+\begin{DoxyCompactList}\small\item\em The size of the array of subsplit packets. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_af919cecb3bd4ff255701f0a3b3cd827a}{Bit\-Size\-\_\-t \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_af919cecb3bd4ff255701f0a3b3cd827a}{data\-Bit\-Length}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_af919cecb3bd4ff255701f0a3b3cd827a}
+
+\begin{DoxyCompactList}\small\item\em How many bits long the data is. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a6737b01446c2c61287cbc27382034fd0}{\hyperlink{_packet_priority_8h_ae41fa01235e99dced384d137fa874a7e}{Packet\-Reliability} \hyperlink{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a6737b01446c2c61287cbc27382034fd0}{reliability}}\label{struct_rak_net_1_1_internal_packet_fixed_size_transmission_header_a6737b01446c2c61287cbc27382034fd0}
+
+\begin{DoxyCompactList}\small\item\em What type of reliability algorithm to use with this packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_internal_packet_8h}{Internal\-Packet.\-h}\end{DoxyCompactItemize}

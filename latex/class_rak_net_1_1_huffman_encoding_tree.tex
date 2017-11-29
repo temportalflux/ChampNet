@@ -1,0 +1,62 @@
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree}{\section{Rak\-Net\-:\-:Huffman\-Encoding\-Tree Class Reference}
+\label{class_rak_net_1_1_huffman_encoding_tree}\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree@{Rak\-Net\-::\-Huffman\-Encoding\-Tree}}
+}
+
+
+This generates special cases of the huffman encoding tree using 8 bit keys with the additional condition that unused combinations of 8 bits are treated as a frequency of 1.  
+
+
+
+
+{\ttfamily \#include $<$D\-S\-\_\-\-Huffman\-Encoding\-Tree.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_aecad5eab19cc648edfef7ada23a73278}{Encode\-Array} (unsigned char $\ast$input, size\-\_\-t size\-In\-Bytes, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$output)
+\begin{DoxyCompactList}\small\item\em Pass an array of bytes to array and a preallocated \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} to receive the output. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_a0e91b3afa18de8a421b1f14cea55e942}{unsigned {\bfseries Decode\-Array} (\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$input, Bit\-Size\-\_\-t size\-In\-Bits, size\-\_\-t max\-Chars\-To\-Write, unsigned char $\ast$output)}\label{class_rak_net_1_1_huffman_encoding_tree_a0e91b3afa18de8a421b1f14cea55e942}
+
+\item 
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_aa308ff3dec14d0a7ccdb4269c8708eb0}{void {\bfseries Decode\-Array} (unsigned char $\ast$input, Bit\-Size\-\_\-t size\-In\-Bits, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$output)}\label{class_rak_net_1_1_huffman_encoding_tree_aa308ff3dec14d0a7ccdb4269c8708eb0}
+
+\item 
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_a1d2fe539dfdd920c5f497af6eb1b05b7}{void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_a1d2fe539dfdd920c5f497af6eb1b05b7}{Generate\-From\-Frequency\-Table} (unsigned int frequency\-Table\mbox{[}256\mbox{]})}\label{class_rak_net_1_1_huffman_encoding_tree_a1d2fe539dfdd920c5f497af6eb1b05b7}
+
+\begin{DoxyCompactList}\small\item\em Given a frequency table of 256 elements, all with a frequency of 1 or more, generate the tree. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_a75ed89191435d5177a5303db59ab83bf}{void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_a75ed89191435d5177a5303db59ab83bf}{Free\-Memory} (void)}\label{class_rak_net_1_1_huffman_encoding_tree_a75ed89191435d5177a5303db59ab83bf}
+
+\begin{DoxyCompactList}\small\item\em Free the memory used by the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This generates special cases of the huffman encoding tree using 8 bit keys with the additional condition that unused combinations of 8 bits are treated as a frequency of 1. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_aecad5eab19cc648edfef7ada23a73278}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree@{Rak\-Net\-::\-Huffman\-Encoding\-Tree}!Encode\-Array@{Encode\-Array}}
+\index{Encode\-Array@{Encode\-Array}!RakNet::HuffmanEncodingTree@{Rak\-Net\-::\-Huffman\-Encoding\-Tree}}
+\subsubsection[{Encode\-Array}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Huffman\-Encoding\-Tree\-::\-Encode\-Array (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{input, }
+\item[{size\-\_\-t}]{size\-In\-Bytes, }
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{output}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_aecad5eab19cc648edfef7ada23a73278}
+
+
+Pass an array of bytes to array and a preallocated \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} to receive the output. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em input} & Array of bytes to encode \\
+\hline
+\mbox{\tt in}  & {\em size\-In\-Bytes} & size of {\itshape input} \\
+\hline
+\mbox{\tt out}  & {\em output} & The bitstream to write to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_d_s___huffman_encoding_tree_8h}{D\-S\-\_\-\-Huffman\-Encoding\-Tree.\-h}\end{DoxyCompactItemize}

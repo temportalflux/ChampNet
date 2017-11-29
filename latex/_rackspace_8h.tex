@@ -1,0 +1,95 @@
+\hypertarget{_rackspace_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rackspace.h File Reference}
+\label{_rackspace_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rackspace.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rackspace.\-h}}
+}
+
+
+Helper to class to manage Rackspace servers.  
+
+
+{\ttfamily \#include \char`\"{}Native\-Feature\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-List.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-Queue.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-String.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rak_net_1_1_rackspace2_event_callback}{Rak\-Net\-::\-Rackspace2\-Event\-Callback}
+\begin{DoxyCompactList}\small\item\em Callback interface to receive the results of operations. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_rackspace_event_callback___default}{Rak\-Net\-::\-Rackspace\-Event\-Callback\-\_\-\-Default}
+\begin{DoxyCompactList}\small\item\em Callback interface to receive the results of operations, with a default result. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_rackspace}{Rak\-Net\-::\-Rackspace}
+\begin{DoxyCompactList}\small\item\em Code that uses the \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} class to communicate with the \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} A\-P\-I servers. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_rackspace_1_1_rackspace_operation}{Rak\-Net\-::\-Rackspace\-::\-Rackspace\-Operation}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespace_rak_net_a120cf6e1a0904cff45269f14c3c4c289}{Rak\-Net\-::\-Rackspace\-Event\-Type} \{ \\*
+{\bfseries R\-E\-T\-\_\-\-Success\-\_\-200}, 
+{\bfseries R\-E\-T\-\_\-\-Success\-\_\-201}, 
+{\bfseries R\-E\-T\-\_\-\-Success\-\_\-202}, 
+{\bfseries R\-E\-T\-\_\-\-Success\-\_\-203}, 
+\\*
+{\bfseries R\-E\-T\-\_\-\-Success\-\_\-204}, 
+{\bfseries R\-E\-T\-\_\-\-Cloud\-\_\-\-Servers\-\_\-\-Fault\-\_\-500}, 
+{\bfseries R\-E\-T\-\_\-\-Service\-\_\-\-Unavailable\-\_\-503}, 
+{\bfseries R\-E\-T\-\_\-\-Unauthorized\-\_\-401}, 
+\\*
+{\bfseries R\-E\-T\-\_\-\-Bad\-\_\-\-Request\-\_\-400}, 
+{\bfseries R\-E\-T\-\_\-\-Over\-\_\-\-Limit\-\_\-413}, 
+{\bfseries R\-E\-T\-\_\-\-Bad\-\_\-\-Media\-\_\-\-Type\-\_\-415}, 
+{\bfseries R\-E\-T\-\_\-\-Item\-\_\-\-Not\-\_\-\-Found\-\_\-404}, 
+\\*
+{\bfseries R\-E\-T\-\_\-\-Build\-\_\-\-In\-\_\-\-Progress\-\_\-409}, 
+{\bfseries R\-E\-T\-\_\-\-Resize\-\_\-\-Not\-\_\-\-Allowed\-\_\-403}, 
+{\bfseries R\-E\-T\-\_\-\-Connection\-\_\-\-Closed\-\_\-\-Without\-\_\-\-Reponse}, 
+{\bfseries R\-E\-T\-\_\-\-Unknown\-\_\-\-Failure}
+ \}
+\begin{DoxyCompactList}\small\item\em Result codes for Rackspace commands /sa Rackspace\-::\-Event\-Type\-To\-String() \end{DoxyCompactList}\item 
+enum {\bfseries Rackspace\-Operation\-Type} \{ \\*
+{\bfseries R\-O\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-A\-N\-D\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-E}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-S\-E\-R\-V\-E\-R\-S}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-S\-E\-R\-V\-E\-R\-S\-\_\-\-W\-I\-T\-H\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+{\bfseries R\-O\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-S\-E\-R\-V\-E\-R}, 
+\\*
+{\bfseries R\-O\-\_\-\-G\-E\-T\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+{\bfseries R\-O\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-O\-R\-\_\-\-P\-A\-S\-S\-W\-O\-R\-D}, 
+{\bfseries R\-O\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-S\-E\-R\-V\-E\-R}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S\-E\-S}, 
+\\*
+{\bfseries R\-O\-\_\-\-S\-H\-A\-R\-E\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S}, 
+{\bfseries R\-O\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S}, 
+{\bfseries R\-O\-\_\-\-R\-E\-B\-O\-O\-T\-\_\-\-S\-E\-R\-V\-E\-R}, 
+{\bfseries R\-O\-\_\-\-R\-E\-B\-U\-I\-L\-D\-\_\-\-S\-E\-R\-V\-E\-R}, 
+\\*
+{\bfseries R\-O\-\_\-\-R\-E\-S\-I\-Z\-E\-\_\-\-S\-E\-R\-V\-E\-R}, 
+{\bfseries R\-O\-\_\-\-C\-O\-N\-F\-I\-R\-M\-\_\-\-R\-E\-S\-I\-Z\-E\-D\-\_\-\-S\-E\-R\-V\-E\-R}, 
+{\bfseries R\-O\-\_\-\-R\-E\-V\-E\-R\-T\-\_\-\-R\-E\-S\-I\-Z\-E\-D\-\_\-\-S\-E\-R\-V\-E\-R}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-F\-L\-A\-V\-O\-R\-S}, 
+\\*
+{\bfseries R\-O\-\_\-\-G\-E\-T\-\_\-\-F\-L\-A\-V\-O\-R\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-I\-M\-A\-G\-E\-S}, 
+{\bfseries R\-O\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-I\-M\-A\-G\-E}, 
+{\bfseries R\-O\-\_\-\-G\-E\-T\-\_\-\-I\-M\-A\-G\-E\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+\\*
+{\bfseries R\-O\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-I\-M\-A\-G\-E}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-S\-H\-A\-R\-E\-D\-\_\-\-I\-P\-\_\-\-G\-R\-O\-U\-P\-S}, 
+{\bfseries R\-O\-\_\-\-L\-I\-S\-T\-\_\-\-S\-H\-A\-R\-E\-D\-\_\-\-I\-P\-\_\-\-G\-R\-O\-U\-P\-S\-\_\-\-W\-I\-T\-H\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+{\bfseries R\-O\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-S\-H\-A\-R\-E\-D\-\_\-\-I\-P\-\_\-\-G\-R\-O\-U\-P}, 
+\\*
+{\bfseries R\-O\-\_\-\-G\-E\-T\-\_\-\-S\-H\-A\-R\-E\-D\-\_\-\-I\-P\-\_\-\-G\-R\-O\-U\-P\-\_\-\-D\-E\-T\-A\-I\-L\-S}, 
+{\bfseries R\-O\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-S\-H\-A\-R\-E\-D\-\_\-\-I\-P\-\_\-\-G\-R\-O\-U\-P}, 
+{\bfseries R\-O\-\_\-\-N\-O\-N\-E}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper to class to manage Rackspace servers. 

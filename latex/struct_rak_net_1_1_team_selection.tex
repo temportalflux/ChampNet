@@ -1,0 +1,104 @@
+\hypertarget{struct_rak_net_1_1_team_selection}{\section{Rak\-Net\-:\-:Team\-Selection Struct Reference}
+\label{struct_rak_net_1_1_team_selection}\index{Rak\-Net\-::\-Team\-Selection@{Rak\-Net\-::\-Team\-Selection}}
+}
+
+
+Parameter to \hyperlink{class_rak_net_1_1_t_m___world_a13c60cbb4d1894aece9e1b1b9887601f}{T\-M\-\_\-\-World\-::\-Reference\-Team\-Member()}  
+
+
+
+
+{\ttfamily \#include $<$Team\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_team_selection_aade43e2b34830d14063c8f31e3e5ed97}{{\bfseries Team\-Selection} (\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga8a8704b992ae17ee4789b2ba4cc4b34b}{Join\-Team\-Type} itt)}\label{struct_rak_net_1_1_team_selection_aade43e2b34830d14063c8f31e3e5ed97}
+
+\item 
+\hypertarget{struct_rak_net_1_1_team_selection_a0060cb3bb81750d286aedd1ae782293b}{{\bfseries Team\-Selection} (\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga8a8704b992ae17ee4789b2ba4cc4b34b}{Join\-Team\-Type} itt, \hyperlink{class_rak_net_1_1_t_m___team}{T\-M\-\_\-\-Team} $\ast$param)}\label{struct_rak_net_1_1_team_selection_a0060cb3bb81750d286aedd1ae782293b}
+
+\item 
+\hypertarget{struct_rak_net_1_1_team_selection_adcef9932fe3228b725d3fb8f9fc2d53d}{{\bfseries Team\-Selection} (\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga8a8704b992ae17ee4789b2ba4cc4b34b}{Join\-Team\-Type} itt, \hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_gadd1e99b7724ceb0f6794f46de31a6b02}{No\-Team\-Id} param)}\label{struct_rak_net_1_1_team_selection_adcef9932fe3228b725d3fb8f9fc2d53d}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{struct_rak_net_1_1_team_selection}{Team\-Selection} \hyperlink{struct_rak_net_1_1_team_selection_aa5a3260b26e6efa68bd019a3df94cdaf}{Any\-Available} (void)
+\begin{DoxyCompactList}\small\item\em Join any team that has available slots and is tagged with A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-A\-N\-Y\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E\-\_\-\-T\-E\-A\-M. \end{DoxyCompactList}\item 
+static \hyperlink{struct_rak_net_1_1_team_selection}{Team\-Selection} \hyperlink{struct_rak_net_1_1_team_selection_acd3b970f35fa016ee969981f6d4ea1ab}{Specific\-Team} (\hyperlink{class_rak_net_1_1_t_m___team}{T\-M\-\_\-\-Team} $\ast$specific\-Team\-To\-Join)
+\begin{DoxyCompactList}\small\item\em Join a specific team if it has available slots, and is tagged with J\-O\-I\-N\-\_\-\-S\-P\-E\-C\-I\-F\-I\-C\-\_\-\-T\-E\-A\-M\-S. \end{DoxyCompactList}\item 
+static \hyperlink{struct_rak_net_1_1_team_selection}{Team\-Selection} \hyperlink{struct_rak_net_1_1_team_selection_a1431b86590b2231b7b8f833d58c62699}{No\-Team} (\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_gadd1e99b7724ceb0f6794f46de31a6b02}{No\-Team\-Id} no\-Team\-Subcategory)
+\begin{DoxyCompactList}\small\item\em Do not join a team, or leave all current teams. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_team_selection_a1945b223249b39f0056ce7bcb282bdd0}{\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga8a8704b992ae17ee4789b2ba4cc4b34b}{Join\-Team\-Type} {\bfseries join\-Team\-Type}}\label{struct_rak_net_1_1_team_selection_a1945b223249b39f0056ce7bcb282bdd0}
+
+\item 
+\hypertarget{struct_rak_net_1_1_team_selection_a07edab03f88aed752e9c1f32be78cc42}{\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\hypertarget{union_rak_net_1_1_team_selection_1_1@8_a4583a75da3cf48f3caf17c1deff3b7da}{\>\hyperlink{class_rak_net_1_1_t_m___team}{TM\_Team} $\ast$ {\bfseries specificTeamToJoin}\\
+\hypertarget{union_rak_net_1_1_team_selection_1_1@8_ac657d8f897bcc1567c57c8f167a4cd46}{\>\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_gadd1e99b7724ceb0f6794f46de31a6b02}{NoTeamId} {\bfseries noTeamSubcategory}\\
+\} {\bfseries teamParameter}}\label{struct_rak_net_1_1_team_selection_a07edab03f88aed752e9c1f32be78cc42}
+\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Parameter to \hyperlink{class_rak_net_1_1_t_m___world_a13c60cbb4d1894aece9e1b1b9887601f}{T\-M\-\_\-\-World\-::\-Reference\-Team\-Member()} 
+
+Use \hyperlink{struct_rak_net_1_1_team_selection_aa5a3260b26e6efa68bd019a3df94cdaf}{Team\-Selection\-::\-Any\-Available()}, \hyperlink{struct_rak_net_1_1_team_selection_acd3b970f35fa016ee969981f6d4ea1ab}{Team\-Selection\-::\-Specific\-Team()}, or \hyperlink{struct_rak_net_1_1_team_selection_a1431b86590b2231b7b8f833d58c62699}{Team\-Selection\-::\-No\-Team()} 
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_rak_net_1_1_team_selection_aa5a3260b26e6efa68bd019a3df94cdaf}{\index{Rak\-Net\-::\-Team\-Selection@{Rak\-Net\-::\-Team\-Selection}!Any\-Available@{Any\-Available}}
+\index{Any\-Available@{Any\-Available}!RakNet::TeamSelection@{Rak\-Net\-::\-Team\-Selection}}
+\subsubsection[{Any\-Available}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Team\-Selection} Rak\-Net\-::\-Team\-Selection\-::\-Any\-Available (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{struct_rak_net_1_1_team_selection_aa5a3260b26e6efa68bd019a3df94cdaf}
+
+
+Join any team that has available slots and is tagged with A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-A\-N\-Y\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E\-\_\-\-T\-E\-A\-M. 
+
+I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-T\-E\-A\-M\-\_\-\-A\-S\-S\-I\-G\-N\-E\-D, I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-E\-D\-\_\-\-T\-E\-A\-M\-\_\-\-F\-U\-L\-L, or I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-E\-D\-\_\-\-T\-E\-A\-M\-\_\-\-L\-O\-C\-K\-E\-D will be returned to all systems. \hypertarget{struct_rak_net_1_1_team_selection_a1431b86590b2231b7b8f833d58c62699}{\index{Rak\-Net\-::\-Team\-Selection@{Rak\-Net\-::\-Team\-Selection}!No\-Team@{No\-Team}}
+\index{No\-Team@{No\-Team}!RakNet::TeamSelection@{Rak\-Net\-::\-Team\-Selection}}
+\subsubsection[{No\-Team}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Team\-Selection} Rak\-Net\-::\-Team\-Selection\-::\-No\-Team (
+\begin{DoxyParamCaption}
+\item[{{\bf No\-Team\-Id}}]{no\-Team\-Subcategory}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{struct_rak_net_1_1_team_selection_a1431b86590b2231b7b8f833d58c62699}
+
+
+Do not join a team, or leave all current teams. 
+
+This always succeeds. I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-T\-E\-A\-M\-\_\-\-A\-S\-S\-I\-G\-N\-E\-D will be returned to all systems. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em no\-Team\-Subcategory} & Even when not on a team, you can internally identify a subcategory of not being on a team, such as A\-I or spectator. \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_rak_net_1_1_team_selection_acd3b970f35fa016ee969981f6d4ea1ab}{\index{Rak\-Net\-::\-Team\-Selection@{Rak\-Net\-::\-Team\-Selection}!Specific\-Team@{Specific\-Team}}
+\index{Specific\-Team@{Specific\-Team}!RakNet::TeamSelection@{Rak\-Net\-::\-Team\-Selection}}
+\subsubsection[{Specific\-Team}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Team\-Selection} Rak\-Net\-::\-Team\-Selection\-::\-Specific\-Team (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-M\-\_\-\-Team} $\ast$}]{specific\-Team\-To\-Join}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{struct_rak_net_1_1_team_selection_acd3b970f35fa016ee969981f6d4ea1ab}
+
+
+Join a specific team if it has available slots, and is tagged with J\-O\-I\-N\-\_\-\-S\-P\-E\-C\-I\-F\-I\-C\-\_\-\-T\-E\-A\-M\-S. 
+
+I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-T\-E\-A\-M\-\_\-\-A\-S\-S\-I\-G\-N\-E\-D, I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-E\-D\-\_\-\-T\-E\-A\-M\-\_\-\-F\-U\-L\-L, or I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-E\-D\-\_\-\-T\-E\-A\-M\-\_\-\-L\-O\-C\-K\-E\-D will be returned to all systems. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em specific\-Team\-To\-Join} & Which team to attempt to join. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_team_manager_8h}{Team\-Manager.\-h}\end{DoxyCompactItemize}

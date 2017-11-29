@@ -1,0 +1,143 @@
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface}{\section{Rak\-Net\-:\-:Autopatcher\-Repository\-Interface Class Reference}
+\label{class_rak_net_1_1_autopatcher_repository_interface}\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+}
+
+
+An interface used by Autopatcher\-Server to get the data necessary to run an autopatcher. This is up to you to implement for custom repository solutions.  
+
+
+
+
+{\ttfamily \#include $<$Autopatcher\-Repository\-Interface.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Autopatcher\-Repository\-Interface\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_autopatcher_repository_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_rak_net_1_1_autopatcher_repository_interface_a54058b725b12eb1186a94ba4e77ae87a}{Get\-Changelist\-Since\-Date} (const char $\ast$application\-Name, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$added\-Or\-Modified\-Files\-With\-Hash\-Data, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$deleted\-Files, double since\-Date)=0
+\item 
+virtual int \hyperlink{class_rak_net_1_1_autopatcher_repository_interface_aa1e6f1fff8fa2ade2a82c437a5da6947}{Get\-Patches} (const char $\ast$application\-Name, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$input, bool allow\-Download\-Of\-Original\-Unmodified\-Files, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$patch\-List)=0
+\item 
+virtual bool \hyperlink{class_rak_net_1_1_autopatcher_repository_interface_a1244493706ecbd21fbbc8ce5e198ee59}{Get\-Most\-Recent\-Changelist\-With\-Patches} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \&application\-Name, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$patched\-Files, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$updated\-Files, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$added\-Or\-Modified\-File\-Hashes, \hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$deleted\-Files, double $\ast$prior\-Row\-Patch\-Time, double $\ast$most\-Recent\-Row\-Patch\-Time)=0
+\item 
+virtual const char $\ast$ \hyperlink{class_rak_net_1_1_autopatcher_repository_interface_a4975ce3c8337d41e4e0ac2d2f01f1c83}{Get\-Last\-Error} (void) const =0
+\item 
+virtual const int \hyperlink{class_rak_net_1_1_autopatcher_repository_interface_a37256a1ad98612546e6510140ca00d94}{Get\-Incremental\-Read\-Chunk\-Size} (void) const =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An interface used by Autopatcher\-Server to get the data necessary to run an autopatcher. This is up to you to implement for custom repository solutions. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface_a54058b725b12eb1186a94ba4e77ae87a}{\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}!Get\-Changelist\-Since\-Date@{Get\-Changelist\-Since\-Date}}
+\index{Get\-Changelist\-Since\-Date@{Get\-Changelist\-Since\-Date}!RakNet::AutopatcherRepositoryInterface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+\subsubsection[{Get\-Changelist\-Since\-Date}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Autopatcher\-Repository\-Interface\-::\-Get\-Changelist\-Since\-Date (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Name, }
+\item[{{\bf File\-List} $\ast$}]{added\-Or\-Modified\-Files\-With\-Hash\-Data, }
+\item[{{\bf File\-List} $\ast$}]{deleted\-Files, }
+\item[{double}]{since\-Date}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_autopatcher_repository_interface_a54058b725b12eb1186a94ba4e77ae87a}
+Get list of files added and deleted since a certain date. This is used by Autopatcher\-Server and not usually explicitly called. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Name} & A null terminated string identifying the application \\
+\hline
+\mbox{\tt out}  & {\em added\-Files} & A list of the current versions of filenames with hashes as their data that were created after {\itshape since\-Data} \\
+\hline
+\mbox{\tt out}  & {\em deleted\-Files} & A list of the current versions of filenames that were deleted after {\itshape since\-Data} \\
+\hline
+\mbox{\tt in}  & {\em An} & input date, in whatever format your repository uses \\
+\hline
+\mbox{\tt out}  & {\em current\-Date} & The current server date, in whatever format your repository uses \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface_a37256a1ad98612546e6510140ca00d94}{\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}!Get\-Incremental\-Read\-Chunk\-Size@{Get\-Incremental\-Read\-Chunk\-Size}}
+\index{Get\-Incremental\-Read\-Chunk\-Size@{Get\-Incremental\-Read\-Chunk\-Size}!RakNet::AutopatcherRepositoryInterface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+\subsubsection[{Get\-Incremental\-Read\-Chunk\-Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual const int Rak\-Net\-::\-Autopatcher\-Repository\-Interface\-::\-Get\-Incremental\-Read\-Chunk\-Size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_autopatcher_repository_interface_a37256a1ad98612546e6510140ca00d94}
+\begin{DoxyReturn}{Returns}
+Passed to \hyperlink{class_rak_net_1_1_file_list_transfer_ae0dd9c15eb9b045a2a912da9772271e2}{File\-List\-Transfer\-::\-Send()} as the \-\_\-chunk\-Size parameter. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface_a4975ce3c8337d41e4e0ac2d2f01f1c83}{\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}!Get\-Last\-Error@{Get\-Last\-Error}}
+\index{Get\-Last\-Error@{Get\-Last\-Error}!RakNet::AutopatcherRepositoryInterface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+\subsubsection[{Get\-Last\-Error}]{\setlength{\rightskip}{0pt plus 5cm}virtual const char$\ast$ Rak\-Net\-::\-Autopatcher\-Repository\-Interface\-::\-Get\-Last\-Error (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_autopatcher_repository_interface_a4975ce3c8337d41e4e0ac2d2f01f1c83}
+\begin{DoxyReturn}{Returns}
+Whatever this function returns is sent from the Autopatcher\-Server to the Autopatcher\-Client when one of the above functions returns false. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface_a1244493706ecbd21fbbc8ce5e198ee59}{\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}!Get\-Most\-Recent\-Changelist\-With\-Patches@{Get\-Most\-Recent\-Changelist\-With\-Patches}}
+\index{Get\-Most\-Recent\-Changelist\-With\-Patches@{Get\-Most\-Recent\-Changelist\-With\-Patches}!RakNet::AutopatcherRepositoryInterface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+\subsubsection[{Get\-Most\-Recent\-Changelist\-With\-Patches}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Autopatcher\-Repository\-Interface\-::\-Get\-Most\-Recent\-Changelist\-With\-Patches (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String} \&}]{application\-Name, }
+\item[{{\bf File\-List} $\ast$}]{patched\-Files, }
+\item[{{\bf File\-List} $\ast$}]{updated\-Files, }
+\item[{{\bf File\-List} $\ast$}]{added\-Or\-Modified\-File\-Hashes, }
+\item[{{\bf File\-List} $\ast$}]{deleted\-Files, }
+\item[{double $\ast$}]{prior\-Row\-Patch\-Time, }
+\item[{double $\ast$}]{most\-Recent\-Row\-Patch\-Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_autopatcher_repository_interface_a1244493706ecbd21fbbc8ce5e198ee59}
+For the most recent update, return files that were patched, added, or deleted. For files that were patched, return both the patch in {\itshape patched\-Files} and the current version in {\itshape updated\-Files} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em application\-Name} & Name of the application to get patches for. If empty, uses the most recently updated application, and the string will be updated to reflect this name. \\
+\hline
+\mbox{\tt out}  & {\em patched\-Files} & A list of patched files with op P\-C\-\_\-\-H\-A\-S\-H\-\_\-2\-\_\-\-W\-I\-T\-H\-\_\-\-P\-A\-T\-C\-H. It has 2 hashes, the prior\-Hash and the current\-Hash. The current\-Hash is checked on the client after patching for patch success. The prior\-Hash is checked in Autopatcher\-Server\-::\-On\-Get\-Patch() to see if the client is able to hash with the version they currently have \\
+\hline
+\mbox{\tt out}  & {\em patched\-Files} & A list of new files. It contains the actual data in addition to the filename \\
+\hline
+\mbox{\tt out}  & {\em added\-Or\-Modified\-File\-Hashes} & A list of file hashes that were either modified or new. This is returned to the client when replying to I\-D\-\_\-\-A\-U\-T\-O\-P\-A\-T\-C\-H\-E\-R\-\_\-\-C\-R\-E\-A\-T\-I\-O\-N\-\_\-\-L\-I\-S\-T, which tells the client what files have changed on the server since a certain date \\
+\hline
+\mbox{\tt out}  & {\em deleted\-Files} & A list of the current versions of filenames that were deleted in the most recent patch \\
+\hline
+\mbox{\tt out}  & {\em when\-Patched} & time in seconds since epoch when patched. Use time() function to get this in C \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, false on failure 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_autopatcher_repository_interface_aa1e6f1fff8fa2ade2a82c437a5da6947}{\index{Rak\-Net\-::\-Autopatcher\-Repository\-Interface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}!Get\-Patches@{Get\-Patches}}
+\index{Get\-Patches@{Get\-Patches}!RakNet::AutopatcherRepositoryInterface@{Rak\-Net\-::\-Autopatcher\-Repository\-Interface}}
+\subsubsection[{Get\-Patches}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Rak\-Net\-::\-Autopatcher\-Repository\-Interface\-::\-Get\-Patches (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{application\-Name, }
+\item[{{\bf File\-List} $\ast$}]{input, }
+\item[{bool}]{allow\-Download\-Of\-Original\-Unmodified\-Files, }
+\item[{{\bf File\-List} $\ast$}]{patch\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_autopatcher_repository_interface_aa1e6f1fff8fa2ade2a82c437a5da6947}
+Get patches (or files) for every file in input, assuming that input has a hash for each of those files. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em application\-Name} & A null terminated string identifying the application \\
+\hline
+\mbox{\tt in}  & {\em input} & A list of files with S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H byte hashes to get from the database. \\
+\hline
+\mbox{\tt out}  & {\em patch\-List} & You should return list of files with either the filedata or the patch. This is a subset of {\itshape input}. The context data for each file will be either P\-C\-\_\-\-W\-R\-I\-T\-E\-\_\-\-F\-I\-L\-E (to just write the file) or P\-C\-\_\-\-H\-A\-S\-H\-\_\-\-W\-I\-T\-H\-\_\-\-P\-A\-T\-C\-H (to patch). If P\-C\-\_\-\-H\-A\-S\-H\-\_\-\-W\-I\-T\-H\-\_\-\-P\-A\-T\-C\-H, then the file contains a S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H byte patch followed by the hash. The datalength is patchlength + S\-H\-A1\-\_\-\-L\-E\-N\-G\-T\-H \\
+\hline
+\mbox{\tt out}  & {\em current\-Date} & The current server date, in whatever format your repository uses \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on database failure, -\/1 on tried to download original unmodified file 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_autopatcher_repository_interface_8h}{Autopatcher\-Repository\-Interface.\-h}\end{DoxyCompactItemize}

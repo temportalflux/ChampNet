@@ -1,0 +1,44 @@
+\hypertarget{struct_rak_net_1_1_cloud_query_result}{\section{Rak\-Net\-:\-:Cloud\-Query\-Result Struct Reference}
+\label{struct_rak_net_1_1_cloud_query_result}\index{Rak\-Net\-::\-Cloud\-Query\-Result@{Rak\-Net\-::\-Cloud\-Query\-Result}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_aad1eb80e571b21fadf6f11cc931db858}{void {\bfseries Serialize} (bool write\-To\-Bitstream, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream, \hyperlink{class_rak_net_1_1_cloud_allocator}{Cloud\-Allocator} $\ast$allocator)}\label{struct_rak_net_1_1_cloud_query_result_aad1eb80e571b21fadf6f11cc931db858}
+
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_af4e1e11366d3eb29b8c070bfc2afa6b2}{void {\bfseries Serialize\-Header} (bool write\-To\-Bitstream, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream)}\label{struct_rak_net_1_1_cloud_query_result_af4e1e11366d3eb29b8c070bfc2afa6b2}
+
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_a3398bf5f8a624a03095d505d8540e588}{void {\bfseries Serialize\-Num\-Rows} (bool write\-To\-Bitstream, uint32\-\_\-t \&num\-Rows, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream)}\label{struct_rak_net_1_1_cloud_query_result_a3398bf5f8a624a03095d505d8540e588}
+
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_aa2908fcc2e68c9cc48e6a73bdae5eb76}{void {\bfseries Serialize\-Cloud\-Query\-Rows} (bool write\-To\-Bitstream, uint32\-\_\-t \&num\-Rows, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream, \hyperlink{class_rak_net_1_1_cloud_allocator}{Cloud\-Allocator} $\ast$allocator)}\label{struct_rak_net_1_1_cloud_query_result_aa2908fcc2e68c9cc48e6a73bdae5eb76}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_a8bdf20f346c90347e08e977d79ed8870}{\hyperlink{struct_rak_net_1_1_cloud_query}{Cloud\-Query} \hyperlink{struct_rak_net_1_1_cloud_query_result_a8bdf20f346c90347e08e977d79ed8870}{cloud\-Query}}\label{struct_rak_net_1_1_cloud_query_result_a8bdf20f346c90347e08e977d79ed8870}
+
+\begin{DoxyCompactList}\small\item\em Query originally passed to Download() \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_a3ce6689d7869fa04098a74d1c00edfb1}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_cloud_query_row}{Cloud\-Query\-Row} $\ast$ $>$ \hyperlink{struct_rak_net_1_1_cloud_query_result_a3ce6689d7869fa04098a74d1c00edfb1}{rows\-Returned}}\label{struct_rak_net_1_1_cloud_query_result_a3ce6689d7869fa04098a74d1c00edfb1}
+
+\begin{DoxyCompactList}\small\item\em Results returned from query. If there were multiple keys in \hyperlink{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}{Cloud\-Query\-::keys} then see result\-Key\-Indices. \end{DoxyCompactList}\item 
+\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ uint32\-\_\-t $>$ \hyperlink{struct_rak_net_1_1_cloud_query_result_a75b780f5d71d00177effa21cc4f7a670}{result\-Key\-Indices}
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_result_a84851dcf1bbd9a531c819b73e4c41c87}{bool \hyperlink{struct_rak_net_1_1_cloud_query_result_a84851dcf1bbd9a531c819b73e4c41c87}{subscribe\-To\-Results}}\label{struct_rak_net_1_1_cloud_query_result_a84851dcf1bbd9a531c819b73e4c41c87}
+
+\begin{DoxyCompactList}\small\item\em Whatever was passed to \hyperlink{class_rak_net_1_1_cloud_client_a97bcdfb7e824f979efa7491d3c837204}{Cloud\-Client\-::\-Get()} as \hyperlink{struct_rak_net_1_1_cloud_query_a7c8c441b2801141bbba54946cc9ee4f7}{Cloud\-Query\-::subscribe\-To\-Results}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_rak_net_1_1_cloud_query_result_a75b780f5d71d00177effa21cc4f7a670}{\index{Rak\-Net\-::\-Cloud\-Query\-Result@{Rak\-Net\-::\-Cloud\-Query\-Result}!result\-Key\-Indices@{result\-Key\-Indices}}
+\index{result\-Key\-Indices@{result\-Key\-Indices}!RakNet::CloudQueryResult@{Rak\-Net\-::\-Cloud\-Query\-Result}}
+\subsubsection[{result\-Key\-Indices}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Structures\-::\-List}$<$uint32\-\_\-t$>$ Rak\-Net\-::\-Cloud\-Query\-Result\-::result\-Key\-Indices}}\label{struct_rak_net_1_1_cloud_query_result_a75b780f5d71d00177effa21cc4f7a670}
+If there were multiple keys in \hyperlink{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}{Cloud\-Query\-::keys}, then each key is processed in order and the result concatenated to rows\-Returned The starting index of each query is written to result\-Key\-Indices For example, if \hyperlink{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}{Cloud\-Query\-::keys} had 4 keys, returning 3 rows, 0, rows, 5 rows, and 12 rows then result\-Key\-Indices would be 0, 3, 3, 8 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/Cloud\-Common.\-h\end{DoxyCompactItemize}

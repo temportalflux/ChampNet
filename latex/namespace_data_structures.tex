@@ -1,0 +1,118 @@
+\hypertarget{namespace_data_structures}{\section{Data\-Structures Namespace Reference}
+\label{namespace_data_structures}\index{Data\-Structures@{Data\-Structures}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_data_structures_1_1_binary_search_tree}{Binary\-Search\-Tree}
+\begin{DoxyCompactList}\small\item\em A binary search tree and an A\-V\-L balanced binary search tree. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_a_v_l_balanced_binary_search_tree}{A\-V\-L\-Balanced\-Binary\-Search\-Tree}
+\begin{DoxyCompactList}\small\item\em An \hyperlink{class_data_structures_1_1_a_v_l_balanced_binary_search_tree}{A\-V\-L\-Balanced\-Binary\-Search\-Tree} is a binary tree that is always balanced. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_data_structures_1_1_page}{Page}
+\item 
+class \hyperlink{class_data_structures_1_1_b_plus_tree}{B\-Plus\-Tree}
+\item 
+class \hyperlink{class_data_structures_1_1_byte_pool}{Byte\-Pool}
+\item 
+class \hyperlink{class_data_structures_1_1_byte_queue}{Byte\-Queue}
+\item 
+struct \hyperlink{struct_data_structures_1_1_hash_index}{Hash\-Index}
+\item 
+class \hyperlink{class_data_structures_1_1_hash}{Hash}
+\begin{DoxyCompactList}\small\item\em Using a string as a identifier for a node, store an allocated pointer to that node. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_heap}{Heap}
+\item 
+class \hyperlink{class_data_structures_1_1_circular_linked_list}{Circular\-Linked\-List}
+\begin{DoxyCompactList}\small\item\em (Circular) Linked \hyperlink{class_data_structures_1_1_list}{List} A\-D\-T (Doubly Linked Pointer to Node Style) -\/ \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_linked_list}{Linked\-List}
+\item 
+class \hyperlink{class_data_structures_1_1_list}{List}
+\begin{DoxyCompactList}\small\item\em Array based implementation of a list. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_map}{Map}
+\item 
+class \hyperlink{class_data_structures_1_1_memory_pool}{Memory\-Pool}
+\item 
+class \hyperlink{class_data_structures_1_1_m_l_key_ref}{M\-L\-Key\-Ref}
+\item 
+class \hyperlink{class_data_structures_1_1_multilist}{Multilist}
+\begin{DoxyCompactList}\small\item\em The multilist, representing an abstract data type that generally holds lists. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_ordered_channel_heap}{Ordered\-Channel\-Heap}
+\item 
+class \hyperlink{class_data_structures_1_1_ordered_list}{Ordered\-List}
+\item 
+class \hyperlink{class_data_structures_1_1_queue}{Queue}
+\begin{DoxyCompactList}\small\item\em A queue implemented as an array with a read and write index. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_queue_linked_list}{Queue\-Linked\-List}
+\begin{DoxyCompactList}\small\item\em A queue implemented using a linked list. Rarely used. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_data_structures_1_1_range_node}{Range\-Node}
+\item 
+class \hyperlink{class_data_structures_1_1_range_list}{Range\-List}
+\item 
+class \hyperlink{class_data_structures_1_1_table}{Table}
+\begin{DoxyCompactList}\small\item\em Holds a set of columns, a set of rows, and rows times columns cells. \end{DoxyCompactList}\item 
+class \hyperlink{class_data_structures_1_1_threadsafe_allocating_queue}{Threadsafe\-Allocating\-Queue}
+\item 
+class \hyperlink{class_data_structures_1_1_tree}{Tree}
+\item 
+class \hyperlink{class_data_structures_1_1_weighted_graph}{Weighted\-Graph}
+\item 
+class \hyperlink{class_data_structures_1_1_single_producer_consumer}{Single\-Producer\-Consumer}
+\begin{DoxyCompactList}\small\item\em A single producer consumer implementation without critical sections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_data_structures_a976ed408bf7e723e5d6fefb59cf40125}{typedef uint32\-\_\-t {\bfseries Default\-Index\-Type}}\label{namespace_data_structures_a976ed408bf7e723e5d6fefb59cf40125}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class key\-\_\-type $>$ }\\int \hyperlink{namespace_data_structures_a141573e51ef42434451188a050e9a577}{default\-Map\-Key\-Comparison} (const key\-\_\-type \&a, const key\-\_\-type \&b)
+\item 
+{\footnotesize template$<$class template\-Type $>$ }\\void \hyperlink{namespace_data_structures_a4122fd2c409644863e7cb884c2f95bc4}{Delete\-Ptr\-\_\-\-Rak\-Net} (template\-Type \&ptr, const char $\ast$file, unsigned int line)
+\item 
+{\footnotesize template$<$class template\-Type $>$ }\\void \hyperlink{namespace_data_structures_ac554257c583d96878931af2bd10bbe2f}{Delete\-Ptr} (template\-Type \&ptr)
+\item 
+\hypertarget{namespace_data_structures_a7121bfdce3827886832c6966eb3fbf64}{{\footnotesize template$<$class key\-\_\-type , class data\-\_\-type $>$ }\\int {\bfseries default\-Ordered\-List\-Comparison} (const key\-\_\-type \&a, const data\-\_\-type \&b)}\label{namespace_data_structures_a7121bfdce3827886832c6966eb3fbf64}
+
+\item 
+\hypertarget{namespace_data_structures_afc5f5975263bc574b36bd99c3720dc83}{{\footnotesize template$<$class range\-\_\-type $>$ }\\int {\bfseries Range\-Node\-Comp} (const range\-\_\-type \&a, const \hyperlink{struct_data_structures_1_1_range_node}{Range\-Node}$<$ range\-\_\-type $>$ \&b)}\label{namespace_data_structures_afc5f5975263bc574b36bd99c3720dc83}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_data_structures_a2f6832c889cf38a2f1132838dfd1044f}{{\footnotesize template$<$class Linked\-List\-Type $>$ }\\class R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Linked\-List}}\label{namespace_data_structures_a2f6832c889cf38a2f1132838dfd1044f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The namespace \hyperlink{namespace_data_structures}{Data\-Structures} was only added to avoid compiler errors for commonly named data structures As these data structures are stand-\/alone, you can use them outside of \hyperlink{namespace_rak_net}{Rak\-Net} for your own projects if you wish. 
+
+\subsection{Function Documentation}
+\hypertarget{namespace_data_structures_a141573e51ef42434451188a050e9a577}{\index{Data\-Structures@{Data\-Structures}!default\-Map\-Key\-Comparison@{default\-Map\-Key\-Comparison}}
+\index{default\-Map\-Key\-Comparison@{default\-Map\-Key\-Comparison}!DataStructures@{Data\-Structures}}
+\subsubsection[{default\-Map\-Key\-Comparison}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class key\-\_\-type $>$ int Data\-Structures\-::default\-Map\-Key\-Comparison (
+\begin{DoxyParamCaption}
+\item[{const key\-\_\-type \&}]{a, }
+\item[{const key\-\_\-type \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{namespace_data_structures_a141573e51ef42434451188a050e9a577}
+The default comparison has to be first so it can be called as a default parameter. It then is followed by Map\-Node, followed by Node\-Comparison\-Func \hypertarget{namespace_data_structures_ac554257c583d96878931af2bd10bbe2f}{\index{Data\-Structures@{Data\-Structures}!Delete\-Ptr@{Delete\-Ptr}}
+\index{Delete\-Ptr@{Delete\-Ptr}!DataStructures@{Data\-Structures}}
+\subsubsection[{Delete\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class template\-Type $>$ void Data\-Structures\-::\-Delete\-Ptr (
+\begin{DoxyParamCaption}
+\item[{template\-Type \&}]{ptr}
+\end{DoxyParamCaption}
+)}}\label{namespace_data_structures_ac554257c583d96878931af2bd10bbe2f}
+Can be used with \hyperlink{class_data_structures_1_1_multilist_a4e49b2800f3cfebdc4fa22e3ded43689}{Multilist\-::\-For\-Each} Assuming the \hyperlink{class_data_structures_1_1_multilist}{Multilist} holds pointers, will delete those pointers \hypertarget{namespace_data_structures_a4122fd2c409644863e7cb884c2f95bc4}{\index{Data\-Structures@{Data\-Structures}!Delete\-Ptr\-\_\-\-Rak\-Net@{Delete\-Ptr\-\_\-\-Rak\-Net}}
+\index{Delete\-Ptr\-\_\-\-Rak\-Net@{Delete\-Ptr\-\_\-\-Rak\-Net}!DataStructures@{Data\-Structures}}
+\subsubsection[{Delete\-Ptr\-\_\-\-Rak\-Net}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class template\-Type $>$ void Data\-Structures\-::\-Delete\-Ptr\-\_\-\-Rak\-Net (
+\begin{DoxyParamCaption}
+\item[{template\-Type \&}]{ptr, }
+\item[{const char $\ast$}]{file, }
+\item[{unsigned int}]{line}
+\end{DoxyParamCaption}
+)}}\label{namespace_data_structures_a4122fd2c409644863e7cb884c2f95bc4}
+Can be used with \hyperlink{class_data_structures_1_1_multilist_a4e49b2800f3cfebdc4fa22e3ded43689}{Multilist\-::\-For\-Each} Assuming the \hyperlink{class_data_structures_1_1_multilist}{Multilist} holds pointers, will delete those pointers 

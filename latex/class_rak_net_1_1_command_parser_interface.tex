@@ -1,0 +1,293 @@
+\hypertarget{class_rak_net_1_1_command_parser_interface}{\section{Rak\-Net\-:\-:Command\-Parser\-Interface Class Reference}
+\label{class_rak_net_1_1_command_parser_interface}\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+}
+
+
+The interface used by command parsers.  
+
+
+
+
+{\ttfamily \#include $<$Command\-Parser\-Interface.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Command\-Parser\-Interface\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_command_parser_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ \hyperlink{class_rak_net_1_1_command_parser_interface_af9f1b817f383b52f9ad6451def11d35b}{Get\-Name} (void) const =0
+\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_a98004a0af5237980fdc160f6c6fcdc79}{On\-New\-Incoming\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport)
+\begin{DoxyCompactList}\small\item\em A callback for when {\itshape system\-Address} has connected to us. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_aa275db3922ed1c27fc5ee7ecd6913d4b}{On\-Connection\-Lost} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport)
+\begin{DoxyCompactList}\small\item\em A callback for when {\itshape system\-Address} has disconnected, either gracefully or forcefully. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_a6abf857d697bb11230ac0b153c17624a}{Send\-Help} (\hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)=0
+\begin{DoxyCompactList}\small\item\em A callback for when you are expected to send a brief description of your parser to {\itshape system\-Address}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_rak_net_1_1_command_parser_interface_ac568282654986ad63d680d68a98cf757}{On\-Command} (const char $\ast$command, unsigned num\-Parameters, char $\ast$$\ast$parameter\-List, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, const char $\ast$original\-String)=0
+\begin{DoxyCompactList}\small\item\em Given {\itshape command} with parameters {\itshape parameter\-List} , do whatever processing you wish. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_a9bdc4fa618f324e8f3c0f188009e6958}{On\-Transport\-Change} (\hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport)
+\begin{DoxyCompactList}\small\item\em This is called every time transport interface is registered. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a9f207727d0831815cc39962d89212e48}{virtual bool {\bfseries Get\-Registered\-Command} (const char $\ast$command, \hyperlink{struct_rak_net_1_1_registered_command}{Registered\-Command} $\ast$rc)}\label{class_rak_net_1_1_command_parser_interface_a9f207727d0831815cc39962d89212e48}
+
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_aab6c595af15b74651c94384580af6a9a}{virtual void {\bfseries Send\-Command\-List} (\hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)}\label{class_rak_net_1_1_command_parser_interface_aab6c595af15b74651c94384580af6a9a}
+
+\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_abe62e54c5f3e0dde2f88b48ce479d4c6}{Register\-Command} (unsigned char parameter\-Count, const char $\ast$command, const char $\ast$command\-Help)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_a5b01f9370d1bffee84caf3da9fae5dfe}{Return\-Result} (bool res, const char $\ast$command, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)
+\begin{DoxyCompactList}\small\item\em Just writes a string to the remote system based on the result ( {\itshape res} ) of your operation. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a50f235a34b5c43cf3f6d744ebe0d693f}{virtual void {\bfseries Return\-Result} (char $\ast$res, const char $\ast$command, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)}\label{class_rak_net_1_1_command_parser_interface_a50f235a34b5c43cf3f6d744ebe0d693f}
+
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a5ebeb5082e99589ebd50c88716014465}{virtual void {\bfseries Return\-Result} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} res, const char $\ast$command, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)}\label{class_rak_net_1_1_command_parser_interface_a5ebeb5082e99589ebd50c88716014465}
+
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a4799f901b346c36631ad20c60562e75b}{virtual void {\bfseries Return\-Result} (int res, const char $\ast$command, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)}\label{class_rak_net_1_1_command_parser_interface_a4799f901b346c36631ad20c60562e75b}
+
+\item 
+virtual void \hyperlink{class_rak_net_1_1_command_parser_interface_a628e6ddfdeaecfb7d6120f7db3780d91}{Return\-Result} (const char $\ast$command, \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} $\ast$transport, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address)
+\begin{DoxyCompactList}\small\item\em Just writes a string to the remote system when you are calling a function that has no return value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_aa1ab14246a6e7531aefcdbf49fbca042}{static void {\bfseries Parse\-Console\-String} (char $\ast$str, const char delineator, unsigned char delineator\-Toggle, unsigned $\ast$num\-Parameters, char $\ast$$\ast$parameter\-List, unsigned parameter\-List\-Length)}\label{class_rak_net_1_1_command_parser_interface_aa1ab14246a6e7531aefcdbf49fbca042}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a693eb4febc4fea6e6710ab20cf657eb7}{static const unsigned char {\bfseries V\-A\-R\-I\-A\-B\-L\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-S}}\label{class_rak_net_1_1_command_parser_interface_a693eb4febc4fea6e6710ab20cf657eb7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_command_parser_interface_a1b92c2ad6cec6f92baf4f85e0cfa8504}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ const char \\*
+$\ast$, \hyperlink{struct_rak_net_1_1_registered_command}{Registered\-Command}, \\*
+\hyperlink{namespace_rak_net_a10d1d43d98fc240d38ff39f47dd29db0}{Registered\-Command\-Comp} $>$ {\bfseries command\-List}}\label{class_rak_net_1_1_command_parser_interface_a1b92c2ad6cec6f92baf4f85e0cfa8504}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The interface used by command parsers. 
+
+\hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} provides a set of functions and interfaces that plug into the \hyperlink{class_rak_net_1_1_console_server}{Console\-Server} class. Each \hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} works at the same time as other interfaces in the system. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_command_parser_interface_af9f1b817f383b52f9ad6451def11d35b}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!Get\-Name@{Get\-Name}}
+\index{Get\-Name@{Get\-Name}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{Get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual const char$\ast$ Rak\-Net\-::\-Command\-Parser\-Interface\-::\-Get\-Name (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_command_parser_interface_af9f1b817f383b52f9ad6451def11d35b}
+You are responsible for overriding this function and returning a static string, which will identifier your parser. This should return a static string \begin{DoxyReturn}{Returns}
+The name that you return. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_log_command_parser_a037b5b2323e7135c85bbcb3a271e4890}{Rak\-Net\-::\-Log\-Command\-Parser}, and \hyperlink{class_rak_net_1_1_rak_net_command_parser_ab7529704693ad768ef769f5fe49911cd}{Rak\-Net\-::\-Rak\-Net\-Command\-Parser}.
+
+\hypertarget{class_rak_net_1_1_command_parser_interface_ac568282654986ad63d680d68a98cf757}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!On\-Command@{On\-Command}}
+\index{On\-Command@{On\-Command}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{On\-Command}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Rak\-Net\-::\-Command\-Parser\-Interface\-::\-On\-Command (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{command, }
+\item[{unsigned}]{num\-Parameters, }
+\item[{char $\ast$$\ast$}]{parameter\-List, }
+\item[{{\bf Transport\-Interface} $\ast$}]{transport, }
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{const char $\ast$}]{original\-String}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_command_parser_interface_ac568282654986ad63d680d68a98cf757}
+
+
+Given {\itshape command} with parameters {\itshape parameter\-List} , do whatever processing you wish. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & The command to process \\
+\hline
+\mbox{\tt in}  & {\em num\-Parameters} & How many parameters were passed along with the command \\
+\hline
+\mbox{\tt in}  & {\em parameter\-List} & The list of parameters. parameter\-List\mbox{[}0\mbox{]} is the first parameter and so on. \\
+\hline
+\mbox{\tt in}  & {\em transport} & The transport interface we can use to write to \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The player that sent this command. \\
+\hline
+\mbox{\tt in}  & {\em original\-String} & The string that was actually sent over the network, in case you want to do your own parsing \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_log_command_parser_aceb0d8004cef19e78cd630b68c680c63}{Rak\-Net\-::\-Log\-Command\-Parser}, and \hyperlink{class_rak_net_1_1_rak_net_command_parser_a34a1aa5896a8d854cd7fc88675c45533}{Rak\-Net\-::\-Rak\-Net\-Command\-Parser}.
+
+\hypertarget{class_rak_net_1_1_command_parser_interface_aa275db3922ed1c27fc5ee7ecd6913d4b}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!On\-Connection\-Lost@{On\-Connection\-Lost}}
+\index{On\-Connection\-Lost@{On\-Connection\-Lost}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{On\-Connection\-Lost}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-On\-Connection\-Lost (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Transport\-Interface} $\ast$}]{transport}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_aa275db3922ed1c27fc5ee7ecd6913d4b}
+
+
+A callback for when {\itshape system\-Address} has disconnected, either gracefully or forcefully. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player that has disconnected. \\
+\hline
+\mbox{\tt in}  & {\em transport} & The transport interface that sent us this information. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_log_command_parser_a8d46296b09f54817d0200e8a557bc802}{Rak\-Net\-::\-Log\-Command\-Parser}.
+
+\hypertarget{class_rak_net_1_1_command_parser_interface_a98004a0af5237980fdc160f6c6fcdc79}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!On\-New\-Incoming\-Connection@{On\-New\-Incoming\-Connection}}
+\index{On\-New\-Incoming\-Connection@{On\-New\-Incoming\-Connection}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{On\-New\-Incoming\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-On\-New\-Incoming\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Transport\-Interface} $\ast$}]{transport}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_a98004a0af5237980fdc160f6c6fcdc79}
+
+
+A callback for when {\itshape system\-Address} has connected to us. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player that has connected. \\
+\hline
+\mbox{\tt in}  & {\em transport} & The transport interface that sent us this information. Can be used to send messages to this or other players. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_log_command_parser_a399c67161aa82888fe2facf7bfda3c53}{Rak\-Net\-::\-Log\-Command\-Parser}.
+
+\hypertarget{class_rak_net_1_1_command_parser_interface_a9bdc4fa618f324e8f3c0f188009e6958}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!On\-Transport\-Change@{On\-Transport\-Change}}
+\index{On\-Transport\-Change@{On\-Transport\-Change}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{On\-Transport\-Change}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-On\-Transport\-Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Transport\-Interface} $\ast$}]{transport}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_a9bdc4fa618f324e8f3c0f188009e6958}
+
+
+This is called every time transport interface is registered. 
+
+If you want to save a copy of the \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} pointer This is the place to do it 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em transport} & The new \hyperlink{class_rak_net_1_1_transport_interface}{Transport\-Interface} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_rak_net_1_1_log_command_parser_a87fb1e549a73610575f8ec89077d9fdc}{Rak\-Net\-::\-Log\-Command\-Parser}.
+
+\hypertarget{class_rak_net_1_1_command_parser_interface_abe62e54c5f3e0dde2f88b48ce479d4c6}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!Register\-Command@{Register\-Command}}
+\index{Register\-Command@{Register\-Command}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{Register\-Command}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-Register\-Command (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{parameter\-Count, }
+\item[{const char $\ast$}]{command, }
+\item[{const char $\ast$}]{command\-Help}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_abe62e54c5f3e0dde2f88b48ce479d4c6}
+Registers a command. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameter\-Count} & How many parameters your command requires. If you want to accept a variable number of commands, pass Command\-Parser\-Interface\-::\-V\-A\-R\-I\-A\-B\-L\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-S \\
+\hline
+\mbox{\tt in}  & {\em command} & A pointer to a S\-T\-A\-T\-I\-C string that has your command. I keep a copy of the pointer here so don't deallocate the string. \\
+\hline
+\mbox{\tt in}  & {\em command\-Help} & A pointer to a S\-T\-A\-T\-I\-C string that has the help information for your command. I keep a copy of the pointer here so don't deallocate the string. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_command_parser_interface_a5b01f9370d1bffee84caf3da9fae5dfe}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!Return\-Result@{Return\-Result}}
+\index{Return\-Result@{Return\-Result}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{Return\-Result}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-Return\-Result (
+\begin{DoxyParamCaption}
+\item[{bool}]{res, }
+\item[{const char $\ast$}]{command, }
+\item[{{\bf Transport\-Interface} $\ast$}]{transport, }
+\item[{const {\bf System\-Address} \&}]{system\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_a5b01f9370d1bffee84caf3da9fae5dfe}
+
+
+Just writes a string to the remote system based on the result ( {\itshape res} ) of your operation. 
+
+This is not necessary to call, but makes it easier to return results of function calls. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em res} & The result to write \\
+\hline
+\mbox{\tt in}  & {\em command} & The command that this result came from \\
+\hline
+\mbox{\tt in}  & {\em transport} & The transport interface that will be written to \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The player this result will be sent to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_command_parser_interface_a628e6ddfdeaecfb7d6120f7db3780d91}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!Return\-Result@{Return\-Result}}
+\index{Return\-Result@{Return\-Result}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{Return\-Result}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-Return\-Result (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{command, }
+\item[{{\bf Transport\-Interface} $\ast$}]{transport, }
+\item[{const {\bf System\-Address} \&}]{system\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_command_parser_interface_a628e6ddfdeaecfb7d6120f7db3780d91}
+
+
+Just writes a string to the remote system when you are calling a function that has no return value. 
+
+This is not necessary to call, but makes it easier to return results of function calls. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em res} & The result to write \\
+\hline
+\mbox{\tt in}  & {\em command} & The command that this result came from \\
+\hline
+\mbox{\tt in}  & {\em transport} & The transport interface that will be written to \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The player this result will be sent to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_command_parser_interface_a6abf857d697bb11230ac0b153c17624a}{\index{Rak\-Net\-::\-Command\-Parser\-Interface@{Rak\-Net\-::\-Command\-Parser\-Interface}!Send\-Help@{Send\-Help}}
+\index{Send\-Help@{Send\-Help}!RakNet::CommandParserInterface@{Rak\-Net\-::\-Command\-Parser\-Interface}}
+\subsubsection[{Send\-Help}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Command\-Parser\-Interface\-::\-Send\-Help (
+\begin{DoxyParamCaption}
+\item[{{\bf Transport\-Interface} $\ast$}]{transport, }
+\item[{const {\bf System\-Address} \&}]{system\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_rak_net_1_1_command_parser_interface_a6abf857d697bb11230ac0b153c17624a}
+
+
+A callback for when you are expected to send a brief description of your parser to {\itshape system\-Address}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em transport} & The transport interface we can use to write to \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The player that requested help. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_rak_net_1_1_log_command_parser_a6e7b04559fd0ba7e65d52f85a47b3819}{Rak\-Net\-::\-Log\-Command\-Parser}, and \hyperlink{class_rak_net_1_1_rak_net_command_parser_ad7cff9f3086a6390fd72d4ca2826f271}{Rak\-Net\-::\-Rak\-Net\-Command\-Parser}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_command_parser_interface_8h}{Command\-Parser\-Interface.\-h}\end{DoxyCompactItemize}

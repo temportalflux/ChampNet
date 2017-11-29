@@ -1,0 +1,121 @@
+\hypertarget{class_data_structures_1_1_single_producer_consumer}{\section{Data\-Structures\-:\-:Single\-Producer\-Consumer$<$ Single\-Producer\-Consumer\-Type $>$ Class Template Reference}
+\label{class_data_structures_1_1_single_producer_consumer}\index{Data\-Structures\-::\-Single\-Producer\-Consumer$<$ Single\-Producer\-Consumer\-Type $>$@{Data\-Structures\-::\-Single\-Producer\-Consumer$<$ Single\-Producer\-Consumer\-Type $>$}}
+}
+
+
+A single producer consumer implementation without critical sections.  
+
+
+
+
+{\ttfamily \#include $<$Single\-Producer\-Consumer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Single\-Producer\-Consumer\-Type $\ast$ \hyperlink{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}{Write\-Lock} (void)
+\item 
+void \hyperlink{class_data_structures_1_1_single_producer_consumer_adde3995822744b048b9e1df7a8bb02ff}{Cancel\-Write\-Lock} (Single\-Producer\-Consumer\-Type $\ast$cancel\-To\-Location)
+\item 
+\hypertarget{class_data_structures_1_1_single_producer_consumer_a2c5554a0297476b8f69e39b2721e1e23}{void \hyperlink{class_data_structures_1_1_single_producer_consumer_a2c5554a0297476b8f69e39b2721e1e23}{Write\-Unlock} (void)}\label{class_data_structures_1_1_single_producer_consumer_a2c5554a0297476b8f69e39b2721e1e23}
+
+\begin{DoxyCompactList}\small\item\em Call when you are done writing to a block of memory returned by \hyperlink{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}{Write\-Lock()} \end{DoxyCompactList}\item 
+Single\-Producer\-Consumer\-Type $\ast$ \hyperlink{class_data_structures_1_1_single_producer_consumer_a114026663fff4b0b5dac65f7b6b742c8}{Read\-Lock} (void)
+\item 
+\hypertarget{class_data_structures_1_1_single_producer_consumer_aa08c579304d9a91f96a4e285324864eb}{void \hyperlink{class_data_structures_1_1_single_producer_consumer_aa08c579304d9a91f96a4e285324864eb}{Cancel\-Read\-Lock} (Single\-Producer\-Consumer\-Type $\ast$cancel\-To\-Location)}\label{class_data_structures_1_1_single_producer_consumer_aa08c579304d9a91f96a4e285324864eb}
+
+\begin{DoxyCompactList}\small\item\em param\mbox{[}in\mbox{]} Which \hyperlink{class_data_structures_1_1_single_producer_consumer_a114026663fff4b0b5dac65f7b6b742c8}{Read\-Lock()} to cancel. \end{DoxyCompactList}\item 
+void \hyperlink{class_data_structures_1_1_single_producer_consumer_ab0440d6f877601c03b75deb1edbc94f6}{Read\-Unlock} (void)
+\item 
+\hypertarget{class_data_structures_1_1_single_producer_consumer_a78853698d03871f26074d1b13a2772a8}{void \hyperlink{class_data_structures_1_1_single_producer_consumer_a78853698d03871f26074d1b13a2772a8}{Clear} (void)}\label{class_data_structures_1_1_single_producer_consumer_a78853698d03871f26074d1b13a2772a8}
+
+\begin{DoxyCompactList}\small\item\em Clear is not thread-\/safe and none of the lock or unlock functions should be called while it is running. \end{DoxyCompactList}\item 
+int \hyperlink{class_data_structures_1_1_single_producer_consumer_a4109a63f86171ccd3461082108f6febf}{Size} (void) const 
+\item 
+bool \hyperlink{class_data_structures_1_1_single_producer_consumer_ab2d92e6bb0d68b8a1974cfd9eac90ed8}{Check\-Read\-Unlock\-Order} (const Single\-Producer\-Consumer\-Type $\ast$data) const 
+\item 
+bool \hyperlink{class_data_structures_1_1_single_producer_consumer_ad96259b75b794e8451ec29a40018f19d}{Read\-Is\-Locked} (void) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Single\-Producer\-Consumer\-Type$>$class Data\-Structures\-::\-Single\-Producer\-Consumer$<$ Single\-Producer\-Consumer\-Type $>$}
+
+A single producer consumer implementation without critical sections. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_data_structures_1_1_single_producer_consumer_adde3995822744b048b9e1df7a8bb02ff}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Cancel\-Write\-Lock@{Cancel\-Write\-Lock}}
+\index{Cancel\-Write\-Lock@{Cancel\-Write\-Lock}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Cancel\-Write\-Lock}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type$>$ void {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Cancel\-Write\-Lock (
+\begin{DoxyParamCaption}
+\item[{Single\-Producer\-Consumer\-Type $\ast$}]{cancel\-To\-Location}
+\end{DoxyParamCaption}
+)}}\label{class_data_structures_1_1_single_producer_consumer_adde3995822744b048b9e1df7a8bb02ff}
+Call if you don't want to write to a block of data from \hyperlink{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}{Write\-Lock()} after all. Cancelling locks cancels all locks back up to the data passed. So if you lock twice and cancel using the first lock, the second lock is ignored 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cancel\-To\-Location} & Which \hyperlink{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}{Write\-Lock()} to cancel. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_data_structures_1_1_single_producer_consumer_ab2d92e6bb0d68b8a1974cfd9eac90ed8}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Check\-Read\-Unlock\-Order@{Check\-Read\-Unlock\-Order}}
+\index{Check\-Read\-Unlock\-Order@{Check\-Read\-Unlock\-Order}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Check\-Read\-Unlock\-Order}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type$>$ bool {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Check\-Read\-Unlock\-Order (
+\begin{DoxyParamCaption}
+\item[{const Single\-Producer\-Consumer\-Type $\ast$}]{data}
+\end{DoxyParamCaption}
+) const}}\label{class_data_structures_1_1_single_producer_consumer_ab2d92e6bb0d68b8a1974cfd9eac90ed8}
+Make sure that the pointer we done reading for the call to Read\-Unlock is the right pointer. param\mbox{[}in\mbox{]} A previous pointer returned by \hyperlink{class_data_structures_1_1_single_producer_consumer_a114026663fff4b0b5dac65f7b6b742c8}{Read\-Lock()} \hypertarget{class_data_structures_1_1_single_producer_consumer_ad96259b75b794e8451ec29a40018f19d}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Read\-Is\-Locked@{Read\-Is\-Locked}}
+\index{Read\-Is\-Locked@{Read\-Is\-Locked}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Read\-Is\-Locked}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type $>$ bool {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Read\-Is\-Locked (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_data_structures_1_1_single_producer_consumer_ad96259b75b794e8451ec29a40018f19d}
+Returns if Read\-Unlock was called before Read\-Lock \begin{DoxyReturn}{Returns}
+If the read is locked 
+\end{DoxyReturn}
+\hypertarget{class_data_structures_1_1_single_producer_consumer_a114026663fff4b0b5dac65f7b6b742c8}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Read\-Lock@{Read\-Lock}}
+\index{Read\-Lock@{Read\-Lock}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Read\-Lock}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type $>$ Single\-Producer\-Consumer\-Type $\ast$ {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Read\-Lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_data_structures_1_1_single_producer_consumer_a114026663fff4b0b5dac65f7b6b742c8}
+Read\-Lock must be immediately followed by Read\-Unlock. These two functions must be called in the same thread. 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & No data is availble to read \\
+\hline
+{\em Non-\/zero} & The data previously written to, in another thread, by Write\-Lock followed by Write\-Unlock. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_data_structures_1_1_single_producer_consumer_ab0440d6f877601c03b75deb1edbc94f6}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Read\-Unlock@{Read\-Unlock}}
+\index{Read\-Unlock@{Read\-Unlock}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Read\-Unlock}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type $>$ void {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Read\-Unlock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_data_structures_1_1_single_producer_consumer_ab0440d6f877601c03b75deb1edbc94f6}
+Signals that we are done reading the the data from the least recent call of Read\-Lock. At this point that pointer is no longer valid, and should no longer be read. \hypertarget{class_data_structures_1_1_single_producer_consumer_a4109a63f86171ccd3461082108f6febf}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Size@{Size}}
+\index{Size@{Size}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type $>$ int {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_data_structures_1_1_single_producer_consumer_a4109a63f86171ccd3461082108f6febf}
+This function will estimate how many elements are waiting to be read. It's threadsafe enough that the value returned is stable, but not threadsafe enough to give accurate results. \begin{DoxyReturn}{Returns}
+An E\-S\-T\-I\-M\-A\-T\-E of how many data elements are waiting to be read 
+\end{DoxyReturn}
+\hypertarget{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}{\index{Data\-Structures\-::\-Single\-Producer\-Consumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}!Write\-Lock@{Write\-Lock}}
+\index{Write\-Lock@{Write\-Lock}!DataStructures::SingleProducerConsumer@{Data\-Structures\-::\-Single\-Producer\-Consumer}}
+\subsubsection[{Write\-Lock}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Single\-Producer\-Consumer\-Type $>$ Single\-Producer\-Consumer\-Type $\ast$ {\bf Data\-Structures\-::\-Single\-Producer\-Consumer}$<$ Single\-Producer\-Consumer\-Type $>$\-::Write\-Lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_data_structures_1_1_single_producer_consumer_a875f6c2177c1ab29106472162b75c038}
+Write\-Lock must be immediately followed by Write\-Unlock. These two functions must be called in the same thread. \begin{DoxyReturn}{Returns}
+A pointer to a block of data you can write to. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_single_producer_consumer_8h}{Single\-Producer\-Consumer.\-h}\end{DoxyCompactItemize}

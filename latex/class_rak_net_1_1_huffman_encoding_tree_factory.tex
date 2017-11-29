@@ -1,0 +1,115 @@
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory}{\section{Rak\-Net\-:\-:Huffman\-Encoding\-Tree\-Factory Class Reference}
+\label{class_rak_net_1_1_huffman_encoding_tree_factory}\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+}
+
+
+Creates instances of the class \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree}.  
+
+
+
+
+{\ttfamily \#include $<$D\-S\-\_\-\-Huffman\-Encoding\-Tree\-Factory.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_a1653ab2de9f12d5016b78eff1e01c57a}{\hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_a1653ab2de9f12d5016b78eff1e01c57a}{Huffman\-Encoding\-Tree\-Factory} ()}\label{class_rak_net_1_1_huffman_encoding_tree_factory_a1653ab2de9f12d5016b78eff1e01c57a}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_a37d4d51372e6fa4533edd536ce148b0a}{Reset} (void)
+\begin{DoxyCompactList}\small\item\em Reset the frequency table. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_a8a030e488032340006ac5587c01ad846}{Add\-To\-Frequency\-Table} (unsigned char $\ast$array, int size)
+\begin{DoxyCompactList}\small\item\em Pass an array of bytes to this to add those elements to the frequency table. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_a73e99fa4d2e3adbb0c6f214e1c16ff4e}{Get\-Frequency\-Table} (unsigned int \-\_\-frequency\mbox{[}256\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the frequency table to the array passed. Retrieve the frequency table. \end{DoxyCompactList}\item 
+unsigned int $\ast$ \hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_aa0b6723d43859de6adf598771b19d312}{Get\-Frequency\-Table} (void)
+\begin{DoxyCompactList}\small\item\em Returns the frequency table as a pointer. \end{DoxyCompactList}\item 
+\hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree} $\ast$ \hyperlink{class_rak_net_1_1_huffman_encoding_tree_factory_a95784ea75a396e9a6313744c4020381d}{Generate\-Tree} (void)
+\begin{DoxyCompactList}\small\item\em Generate a \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Creates instances of the class \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree}. 
+
+This class takes a frequency table and given that frequence table, will generate an instance of \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_a8a030e488032340006ac5587c01ad846}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}!Add\-To\-Frequency\-Table@{Add\-To\-Frequency\-Table}}
+\index{Add\-To\-Frequency\-Table@{Add\-To\-Frequency\-Table}!RakNet::HuffmanEncodingTreeFactory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+\subsubsection[{Add\-To\-Frequency\-Table}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory\-::\-Add\-To\-Frequency\-Table (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{array, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_factory_a8a030e488032340006ac5587c01ad846}
+
+
+Pass an array of bytes to this to add those elements to the frequency table. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em array} & the data to insert into the frequency table \\
+\hline
+\mbox{\tt in}  & {\em size} & the size of the data to insert \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_a95784ea75a396e9a6313744c4020381d}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}!Generate\-Tree@{Generate\-Tree}}
+\index{Generate\-Tree@{Generate\-Tree}!RakNet::HuffmanEncodingTreeFactory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+\subsubsection[{Generate\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Huffman\-Encoding\-Tree}$\ast$ Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory\-::\-Generate\-Tree (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_factory_a95784ea75a396e9a6313744c4020381d}
+
+
+Generate a \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree}. 
+
+You can also use Get\-Frequency\-Table and Generate\-From\-Frequency\-Table in the tree itself \begin{DoxyReturn}{Returns}
+The generated instance of \hyperlink{class_rak_net_1_1_huffman_encoding_tree}{Huffman\-Encoding\-Tree} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_a73e99fa4d2e3adbb0c6f214e1c16ff4e}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}!Get\-Frequency\-Table@{Get\-Frequency\-Table}}
+\index{Get\-Frequency\-Table@{Get\-Frequency\-Table}!RakNet::HuffmanEncodingTreeFactory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+\subsubsection[{Get\-Frequency\-Table}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory\-::\-Get\-Frequency\-Table (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\-\_\-frequency\mbox{[}256\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_factory_a73e99fa4d2e3adbb0c6f214e1c16ff4e}
+
+
+Copies the frequency table to the array passed. Retrieve the frequency table. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-frequency} & The frequency table used currently \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_aa0b6723d43859de6adf598771b19d312}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}!Get\-Frequency\-Table@{Get\-Frequency\-Table}}
+\index{Get\-Frequency\-Table@{Get\-Frequency\-Table}!RakNet::HuffmanEncodingTreeFactory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+\subsubsection[{Get\-Frequency\-Table}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int$\ast$ Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory\-::\-Get\-Frequency\-Table (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_factory_aa0b6723d43859de6adf598771b19d312}
+
+
+Returns the frequency table as a pointer. 
+
+\begin{DoxyReturn}{Returns}
+the address of the frenquency table 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_huffman_encoding_tree_factory_a37d4d51372e6fa4533edd536ce148b0a}{\index{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}!Reset@{Reset}}
+\index{Reset@{Reset}!RakNet::HuffmanEncodingTreeFactory@{Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory}}
+\subsubsection[{Reset}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Huffman\-Encoding\-Tree\-Factory\-::\-Reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_huffman_encoding_tree_factory_a37d4d51372e6fa4533edd536ce148b0a}
+
+
+Reset the frequency table. 
+
+You don't need to call this unless you want to reuse the class for a new tree 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_d_s___huffman_encoding_tree_factory_8h}{D\-S\-\_\-\-Huffman\-Encoding\-Tree\-Factory.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,41 @@
+\hypertarget{struct_rak_net_1_1_last_serialization_result}{\section{Rak\-Net\-:\-:Last\-Serialization\-Result Struct Reference}
+\label{struct_rak_net_1_1_last_serialization_result}\index{Rak\-Net\-::\-Last\-Serialization\-Result@{Rak\-Net\-::\-Last\-Serialization\-Result}}
+}
+
+
+{\ttfamily \#include $<$Replica\-Manager3.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_last_serialization_result_a685b9acd1abbef8600ff1be14515fe86}{void {\bfseries Alloc\-B\-S} (void)}\label{struct_rak_net_1_1_last_serialization_result_a685b9acd1abbef8600ff1be14515fe86}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rak_net_1_1_replica3}{Rak\-Net\-::\-Replica3} $\ast$ \hyperlink{struct_rak_net_1_1_last_serialization_result_acef6e348bfcacf510597437f53fcde97}{replica}
+\item 
+\hypertarget{struct_rak_net_1_1_last_serialization_result_a960937a3d1808e222d111e2dbb1e0253}{Rak\-Net\-::\-Time {\bfseries when\-Last\-Serialized}}\label{struct_rak_net_1_1_last_serialization_result_a960937a3d1808e222d111e2dbb1e0253}
+
+\item 
+\hypertarget{struct_rak_net_1_1_last_serialization_result_a969665b4e07a4f4b5bc4377250d07cf7}{\hyperlink{struct_rak_net_1_1_last_serialization_result_b_s}{Last\-Serialization\-Result\-B\-S} $\ast$ {\bfseries last\-Serialization\-Result\-B\-S}}\label{struct_rak_net_1_1_last_serialization_result_a969665b4e07a4f4b5bc4377250d07cf7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the serialized data for an object the last time it was sent. Used by Connection\-\_\-\-R\-M3\-::\-On\-Autoserialize\-Interval() and Connection\-\_\-\-R\-M3\-::\-Send\-Serialize\-If\-Changed() 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_rak_net_1_1_last_serialization_result_acef6e348bfcacf510597437f53fcde97}{\index{Rak\-Net\-::\-Last\-Serialization\-Result@{Rak\-Net\-::\-Last\-Serialization\-Result}!replica@{replica}}
+\index{replica@{replica}!RakNet::LastSerializationResult@{Rak\-Net\-::\-Last\-Serialization\-Result}}
+\subsubsection[{replica}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-::\-Replica3}$\ast$ Rak\-Net\-::\-Last\-Serialization\-Result\-::replica}}\label{struct_rak_net_1_1_last_serialization_result_acef6e348bfcacf510597437f53fcde97}
+The replica instance we serialized \begin{DoxyNote}{Note}
+replica M\-U\-S\-T be the first member of this struct because I cast from replica to \hyperlink{struct_rak_net_1_1_last_serialization_result}{Last\-Serialization\-Result} in Update() 
+\end{DoxyNote}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_replica_manager3_8h}{Replica\-Manager3.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,317 @@
+\hypertarget{class_rak_net_1_1_t_m___team}{\section{Rak\-Net\-:\-:T\-M\-\_\-\-Team Class Reference}
+\label{class_rak_net_1_1_t_m___team}\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+}
+
+
+A team, containing a list of \hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} instances.  
+
+
+
+
+{\ttfamily \#include $<$Team\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_t_m___team_a87a78e948571d83b71d5cf017466e597}{Set\-Member\-Limit} (\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga236290d3c5e0d6b3b4559ba851f02bed}{Team\-Member\-Limit} \-\_\-team\-Member\-Limit, \hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_gadd1e99b7724ceb0f6794f46de31a6b02}{No\-Team\-Id} no\-Team\-Subcategory)
+\begin{DoxyCompactList}\small\item\em Set the maximum number of members that can join this team. Defaults to 65535 Setting the limit lower than the existing number of members kicks members out, and assigns no\-Team\-Subcategory to them if they have no other team to go to Setting the limit higher allows members to join in. If a member has a pending request to join this team, they join automatically and I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-T\-E\-A\-M\-\_\-\-A\-S\-S\-I\-G\-N\-E\-D will be returned for those members. \end{DoxyCompactList}\item 
+\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga236290d3c5e0d6b3b4559ba851f02bed}{Team\-Member\-Limit} \hyperlink{class_rak_net_1_1_t_m___team_a6ed06f391bde64b4236888add1b24d45}{Get\-Member\-Limit} (void) const 
+\item 
+\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga236290d3c5e0d6b3b4559ba851f02bed}{Team\-Member\-Limit} \hyperlink{class_rak_net_1_1_t_m___team_aed0b3d7b34bcd78e75ab9eee20de29fa}{Get\-Member\-Limit\-Setting} (void) const 
+\item 
+bool \hyperlink{class_rak_net_1_1_t_m___team_a2b6e3fd997f75116a4edcf81457d34ee}{Set\-Join\-Permissions} (Join\-Permissions \-\_\-join\-Permissions)
+\begin{DoxyCompactList}\small\item\em Who can join this team under what conditions, while the team is not full To not allow new joins, pass 0 To allow all new joins under any circumstances, bitwise-\/\-O\-R all permission defines. For an invite-\/only team, use A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-S\-P\-E\-C\-I\-F\-I\-C\-\_\-\-T\-E\-A\-M only and only allow the requester to call \hyperlink{class_rak_net_1_1_t_m___team_member_a964be9af8c1d4e91367406379502ef56}{T\-M\-\_\-\-Team\-Member\-::\-Request\-Team()} upon invitiation through your game code. Defaults to allow all. \end{DoxyCompactList}\item 
+Join\-Permissions \hyperlink{class_rak_net_1_1_t_m___team_a90ca145afac142885bb592e6f5edb33d}{Get\-Join\-Permissions} (void) const 
+\item 
+void \hyperlink{class_rak_net_1_1_t_m___team_a6bf18129be73f9083a68d8bb2d819d54}{Leave\-Team} (\hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} $\ast$team\-Member, \hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_gadd1e99b7724ceb0f6794f46de31a6b02}{No\-Team\-Id} no\-Team\-Subcategory)
+\begin{DoxyCompactList}\small\item\em Removes a member from a team he or she is on. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rak_net_1_1_t_m___team_a7ed675e6a384db5352cb47e5e086a626}{Get\-Balancing\-Applies} (void) const 
+\item 
+void \hyperlink{class_rak_net_1_1_t_m___team_a71637fd686bbb325cf1e3006278931ae}{Get\-Team\-Members} (\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} $\ast$ $>$ \&\-\_\-team\-Members) const 
+\item 
+unsigned int \hyperlink{class_rak_net_1_1_t_m___team_a8c3ac3a9b2e0de386756c4cf6687fa2a}{Get\-Team\-Members\-Count} (void) const 
+\item 
+\hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} $\ast$ \hyperlink{class_rak_net_1_1_t_m___team_ae10c0984e9b12b00e17eefe50760af67}{Get\-Team\-Member\-By\-Index} (unsigned int index) const 
+\item 
+Network\-I\-D \hyperlink{class_rak_net_1_1_t_m___team_a893303762f3cb2659fc0af0cac69bf2e}{Get\-Network\-I\-D} (void) const 
+\item 
+\hyperlink{class_rak_net_1_1_t_m___world}{T\-M\-\_\-\-World} $\ast$ \hyperlink{class_rak_net_1_1_t_m___team_a4b700230bd53ce3379acda1a108261aa}{Get\-T\-M\-\_\-\-World} (void) const 
+\item 
+void \hyperlink{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}{Serialize\-Construction} (\hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$construction\-Bitstream)
+\begin{DoxyCompactList}\small\item\em Used by the host to serialize the initial state of this object to a new system. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rak_net_1_1_t_m___team_a67edfd216d56e072201e455061403d2a}{Deserialize\-Construction} (\hyperlink{class_rak_net_1_1_team_manager}{Team\-Manager} $\ast$team\-Manager, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$construction\-Bitstream)
+\begin{DoxyCompactList}\small\item\em Used by non-\/host systems to read the bit\-Stream written by \hyperlink{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}{Serialize\-Construction()} \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_t_m___team_ab4a4b6dc6432941d46a78cfe6a662a16}{Set\-Owner} (void $\ast$o)
+\item 
+void $\ast$ \hyperlink{class_rak_net_1_1_t_m___team_a860eb964acf3b60f38789b15c7fd1bcf}{Get\-Owner} (void) const 
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a7644dfa3b4e280436eab1f5d74750c3d}{unsigned int \hyperlink{class_rak_net_1_1_t_m___team_a7644dfa3b4e280436eab1f5d74750c3d}{Get\-World\-Index} (void) const }\label{class_rak_net_1_1_t_m___team_a7644dfa3b4e280436eab1f5d74750c3d}
+
+\begin{DoxyCompactList}\small\item\em Return world-\/$>$Get\-Team\-Index(this) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a4c5daaa828ee5aae060787390c27020b}{static unsigned long {\bfseries To\-Uint32} (const Network\-I\-D \&g)}\label{class_rak_net_1_1_t_m___team_a4c5daaa828ee5aae060787390c27020b}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a2d1d0b321b015afecf39c32ff6ab49b6}{void {\bfseries Remove\-From\-Team\-Member\-List} (\hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} $\ast$team\-Member)}\label{class_rak_net_1_1_t_m___team_a2d1d0b321b015afecf39c32ff6ab49b6}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_ae89678b104e2e60111ac671d649d39a1}{unsigned int {\bfseries Get\-Member\-With\-Requested\-Single\-Team\-Switch} (\hyperlink{class_rak_net_1_1_t_m___team}{T\-M\-\_\-\-Team} $\ast$team)}\label{class_rak_net_1_1_t_m___team_ae89678b104e2e60111ac671d649d39a1}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_aee801b0ab28abf3929d75357eeae1ba6}{Network\-I\-D {\bfseries I\-D}}\label{class_rak_net_1_1_t_m___team_aee801b0ab28abf3929d75357eeae1ba6}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a3d6a9cfa6ae2db36b1c7d36ed91abcf7}{\hyperlink{class_rak_net_1_1_t_m___world}{T\-M\-\_\-\-World} $\ast$ {\bfseries world}}\label{class_rak_net_1_1_t_m___team_a3d6a9cfa6ae2db36b1c7d36ed91abcf7}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a561f046ee39b4cf97c338d6b9edf3fec}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} $\ast$ $>$ {\bfseries team\-Members}}\label{class_rak_net_1_1_t_m___team_a561f046ee39b4cf97c338d6b9edf3fec}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a123e6cc50d64fc090db70261d07b7d4a}{Join\-Permissions {\bfseries join\-Permissions}}\label{class_rak_net_1_1_t_m___team_a123e6cc50d64fc090db70261d07b7d4a}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_aa1821be65b9c0fb819367d50bf190c31}{bool {\bfseries balancing\-Applies}}\label{class_rak_net_1_1_t_m___team_aa1821be65b9c0fb819367d50bf190c31}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a27c0c3e4edb747ee8c20913a318852e9}{\hyperlink{group___t_e_a_m___m_a_n_a_g_e_r___g_r_o_u_p_ga236290d3c5e0d6b3b4559ba851f02bed}{Team\-Member\-Limit} {\bfseries team\-Member\-Limit}}\label{class_rak_net_1_1_t_m___team_a27c0c3e4edb747ee8c20913a318852e9}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a785562c63ab18667d7699c928069c1f7}{void $\ast$ {\bfseries owner}}\label{class_rak_net_1_1_t_m___team_a785562c63ab18667d7699c928069c1f7}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a1c849d724e23da543213088c6bc98353}{class {\bfseries T\-M\-\_\-\-World}}\label{class_rak_net_1_1_t_m___team_a1c849d724e23da543213088c6bc98353}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_a11ad3f6dfe86143c6914f3aae4e553a7}{class {\bfseries T\-M\-\_\-\-Team\-Member}}\label{class_rak_net_1_1_t_m___team_a11ad3f6dfe86143c6914f3aae4e553a7}
+
+\item 
+\hypertarget{class_rak_net_1_1_t_m___team_afa7230b4b3ca79f8b3b50b4b5ae6034a}{class {\bfseries Team\-Manager}}\label{class_rak_net_1_1_t_m___team_afa7230b4b3ca79f8b3b50b4b5ae6034a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A team, containing a list of \hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} instances. 
+
+Contains lists of \hyperlink{class_rak_net_1_1_t_m___team_member}{T\-M\-\_\-\-Team\-Member} instances Best used as a composite member of your \char`\"{}\-Team\char`\"{} or \char`\"{}\-Player\-List\char`\"{} class(es). When using with \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3}, call T\-M\-\_\-\-Team\-::\-Reference\-Team() in \hyperlink{class_rak_net_1_1_replica3_a8e18c95612054b601ce0149f91a5a34d}{Replica3\-::\-Deserialize\-Construction()} and \hyperlink{class_rak_net_1_1_t_m___team_a67edfd216d56e072201e455061403d2a}{T\-M\-\_\-\-Team\-::\-Deserialize\-Construction()} in \hyperlink{class_rak_net_1_1_replica3_a7d612c095fa5d81c1c6fabaa1a0f2501}{Replica3\-::\-Post\-Deserialize\-Construction()} There is otherwise no need to manually serialize the class, as operations are networked internally. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_t_m___team_a67edfd216d56e072201e455061403d2a}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Deserialize\-Construction@{Deserialize\-Construction}}
+\index{Deserialize\-Construction@{Deserialize\-Construction}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Deserialize\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Deserialize\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Team\-Manager} $\ast$}]{team\-Manager, }
+\item[{{\bf Bit\-Stream} $\ast$}]{construction\-Bitstream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_a67edfd216d56e072201e455061403d2a}
+
+
+Used by non-\/host systems to read the bit\-Stream written by \hyperlink{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}{Serialize\-Construction()} 
+
+On non-\/host systems, after creating existing objects, call \hyperlink{class_rak_net_1_1_t_m___team_a67edfd216d56e072201e455061403d2a}{Deserialize\-Construction()} to read and setup that object Creating the actual Team and Team\-Member objects should be handled by your game code, or a system such as \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} \hypertarget{class_rak_net_1_1_t_m___team_a7ed675e6a384db5352cb47e5e086a626}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Balancing\-Applies@{Get\-Balancing\-Applies}}
+\index{Get\-Balancing\-Applies@{Get\-Balancing\-Applies}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Balancing\-Applies}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Balancing\-Applies (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a7ed675e6a384db5352cb47e5e086a626}
+\begin{DoxyReturn}{Returns}
+What was passed as the {\itshape apply\-Balancing} parameter \hyperlink{class_rak_net_1_1_t_m___world_ad6a408626e8bd92a9bdcb3dc8709c581}{T\-M\-\_\-\-World\-::\-Reference\-Team()} when this team was added. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a90ca145afac142885bb592e6f5edb33d}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Join\-Permissions@{Get\-Join\-Permissions}}
+\index{Get\-Join\-Permissions@{Get\-Join\-Permissions}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Join\-Permissions}]{\setlength{\rightskip}{0pt plus 5cm}Join\-Permissions Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Join\-Permissions (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a90ca145afac142885bb592e6f5edb33d}
+\begin{DoxyReturn}{Returns}
+Whatever was passed to \hyperlink{class_rak_net_1_1_t_m___team_a2b6e3fd997f75116a4edcf81457d34ee}{Set\-Join\-Permissions()}, or the default. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a6ed06f391bde64b4236888add1b24d45}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Member\-Limit@{Get\-Member\-Limit}}
+\index{Get\-Member\-Limit@{Get\-Member\-Limit}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Member\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Team\-Member\-Limit} Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Member\-Limit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a6ed06f391bde64b4236888add1b24d45}
+\begin{DoxyReturn}{Returns}
+If team balancing is on, the most members that can be on this team that would not either unbalance it or exceed the value passed to \hyperlink{class_rak_net_1_1_t_m___team_a87a78e948571d83b71d5cf017466e597}{Set\-Member\-Limit()}. If team balancing is off, the same as \hyperlink{class_rak_net_1_1_t_m___team_aed0b3d7b34bcd78e75ab9eee20de29fa}{Get\-Member\-Limit\-Setting()} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_aed0b3d7b34bcd78e75ab9eee20de29fa}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Member\-Limit\-Setting@{Get\-Member\-Limit\-Setting}}
+\index{Get\-Member\-Limit\-Setting@{Get\-Member\-Limit\-Setting}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Member\-Limit\-Setting}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Team\-Member\-Limit} Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Member\-Limit\-Setting (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_aed0b3d7b34bcd78e75ab9eee20de29fa}
+\begin{DoxyReturn}{Returns}
+What was passed to \hyperlink{class_rak_net_1_1_t_m___team_a87a78e948571d83b71d5cf017466e597}{Set\-Member\-Limit()} or the default 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a893303762f3cb2659fc0af0cac69bf2e}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Network\-I\-D@{Get\-Network\-I\-D}}
+\index{Get\-Network\-I\-D@{Get\-Network\-I\-D}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Network\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}Network\-I\-D Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Network\-I\-D (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a893303762f3cb2659fc0af0cac69bf2e}
+\begin{DoxyReturn}{Returns}
+The team\-I\-D parameter passed to \hyperlink{class_rak_net_1_1_t_m___world_ad6a408626e8bd92a9bdcb3dc8709c581}{T\-M\-\_\-\-World\-::\-Reference\-Team()} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a860eb964acf3b60f38789b15c7fd1bcf}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Owner@{Get\-Owner}}
+\index{Get\-Owner@{Get\-Owner}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Owner}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Owner (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a860eb964acf3b60f38789b15c7fd1bcf}
+\begin{DoxyReturn}{Returns}
+Whatever was passed to \hyperlink{class_rak_net_1_1_t_m___team_ab4a4b6dc6432941d46a78cfe6a662a16}{Set\-Owner()} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_ae10c0984e9b12b00e17eefe50760af67}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Team\-Member\-By\-Index@{Get\-Team\-Member\-By\-Index}}
+\index{Get\-Team\-Member\-By\-Index@{Get\-Team\-Member\-By\-Index}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Team\-Member\-By\-Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-M\-\_\-\-Team\-Member}$\ast$ Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Team\-Member\-By\-Index (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_ae10c0984e9b12b00e17eefe50760af67}
+\begin{DoxyReturn}{Returns}
+A team member on this team. Members are stored in the order they are added 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em index} & A value between 0 and \hyperlink{class_rak_net_1_1_t_m___team_a8c3ac3a9b2e0de386756c4cf6687fa2a}{Get\-Team\-Members\-Count()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_t_m___team_a71637fd686bbb325cf1e3006278931ae}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Team\-Members@{Get\-Team\-Members}}
+\index{Get\-Team\-Members@{Get\-Team\-Members}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Team\-Members}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Team\-Members (
+\begin{DoxyParamCaption}
+\item[{{\bf Data\-Structures\-::\-List}$<$ {\bf T\-M\-\_\-\-Team\-Member} $\ast$ $>$ \&}]{\-\_\-team\-Members}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a71637fd686bbb325cf1e3006278931ae}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em All} & team members of this team \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_t_m___team_a8c3ac3a9b2e0de386756c4cf6687fa2a}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-Team\-Members\-Count@{Get\-Team\-Members\-Count}}
+\index{Get\-Team\-Members\-Count@{Get\-Team\-Members\-Count}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-Team\-Members\-Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-Team\-Members\-Count (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a8c3ac3a9b2e0de386756c4cf6687fa2a}
+\begin{DoxyReturn}{Returns}
+The number of team members on this team 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a4b700230bd53ce3379acda1a108261aa}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Get\-T\-M\-\_\-\-World@{Get\-T\-M\-\_\-\-World}}
+\index{Get\-T\-M\-\_\-\-World@{Get\-T\-M\-\_\-\-World}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Get\-T\-M\-\_\-\-World}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-M\-\_\-\-World}$\ast$ Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Get\-T\-M\-\_\-\-World (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_t_m___team_a4b700230bd53ce3379acda1a108261aa}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_rak_net_1_1_t_m___world}{T\-M\-\_\-\-World} instance that was used when calling \hyperlink{class_rak_net_1_1_t_m___world_a13c60cbb4d1894aece9e1b1b9887601f}{T\-M\-\_\-\-World\-::\-Reference\-Team\-Member()} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a6bf18129be73f9083a68d8bb2d819d54}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Leave\-Team@{Leave\-Team}}
+\index{Leave\-Team@{Leave\-Team}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Leave\-Team}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Leave\-Team (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-M\-\_\-\-Team\-Member} $\ast$}]{team\-Member, }
+\item[{{\bf No\-Team\-Id}}]{no\-Team\-Subcategory}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_a6bf18129be73f9083a68d8bb2d819d54}
+
+
+Removes a member from a team he or she is on. 
+
+Identical to team\-Member-\/$>$Leave\-Team(this, no\-Team\-Subcategory); See Team\-Member\-::\-Leave\-Team() for details. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em team\-Member} & Which team member to remove \\
+\hline
+\mbox{\tt in}  & {\em no\-Team\-Subcategory} & If the team member has been removed from all teams, which subcategory of No\-Team\-Id to set them to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Serialize\-Construction@{Serialize\-Construction}}
+\index{Serialize\-Construction@{Serialize\-Construction}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Serialize\-Construction}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Serialize\-Construction (
+\begin{DoxyParamCaption}
+\item[{{\bf Bit\-Stream} $\ast$}]{construction\-Bitstream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}
+
+
+Used by the host to serialize the initial state of this object to a new system. 
+
+On the host, when sending existing objects to a new system, call \hyperlink{class_rak_net_1_1_t_m___team_ab48e4f2b8324b0de9024788b987b079c}{Serialize\-Construction()} on each of those objects to serialize creation state. Creating the actual Team and Team\-Member objects should be handled by your game code, or a system such as \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} \hypertarget{class_rak_net_1_1_t_m___team_a2b6e3fd997f75116a4edcf81457d34ee}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Set\-Join\-Permissions@{Set\-Join\-Permissions}}
+\index{Set\-Join\-Permissions@{Set\-Join\-Permissions}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Set\-Join\-Permissions}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Set\-Join\-Permissions (
+\begin{DoxyParamCaption}
+\item[{Join\-Permissions}]{\-\_\-join\-Permissions}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_a2b6e3fd997f75116a4edcf81457d34ee}
+
+
+Who can join this team under what conditions, while the team is not full To not allow new joins, pass 0 To allow all new joins under any circumstances, bitwise-\/\-O\-R all permission defines. For an invite-\/only team, use A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-S\-P\-E\-C\-I\-F\-I\-C\-\_\-\-T\-E\-A\-M only and only allow the requester to call \hyperlink{class_rak_net_1_1_t_m___team_member_a964be9af8c1d4e91367406379502ef56}{T\-M\-\_\-\-Team\-Member\-::\-Request\-Team()} upon invitiation through your game code. Defaults to allow all. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-join\-Permissions} & Bitwise combination of A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-A\-N\-Y\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E\-\_\-\-T\-E\-A\-M, A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-S\-P\-E\-C\-I\-F\-I\-C\-\_\-\-T\-E\-A\-M, A\-L\-L\-O\-W\-\_\-\-J\-O\-I\-N\-\_\-\-R\-E\-B\-A\-L\-A\-N\-C\-I\-N\-G \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false On invalid or unnecessary operation. Otherwise returns true 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_a87a78e948571d83b71d5cf017466e597}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Set\-Member\-Limit@{Set\-Member\-Limit}}
+\index{Set\-Member\-Limit@{Set\-Member\-Limit}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Set\-Member\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Set\-Member\-Limit (
+\begin{DoxyParamCaption}
+\item[{{\bf Team\-Member\-Limit}}]{\-\_\-team\-Member\-Limit, }
+\item[{{\bf No\-Team\-Id}}]{no\-Team\-Subcategory}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_a87a78e948571d83b71d5cf017466e597}
+
+
+Set the maximum number of members that can join this team. Defaults to 65535 Setting the limit lower than the existing number of members kicks members out, and assigns no\-Team\-Subcategory to them if they have no other team to go to Setting the limit higher allows members to join in. If a member has a pending request to join this team, they join automatically and I\-D\-\_\-\-T\-E\-A\-M\-\_\-\-B\-A\-L\-A\-N\-C\-E\-R\-\_\-\-T\-E\-A\-M\-\_\-\-A\-S\-S\-I\-G\-N\-E\-D will be returned for those members. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-team\-Member\-Limit} & The new limit \\
+\hline
+\mbox{\tt in}  & {\em no\-Team\-Subcategory} & Which no\-Team\-Subcategory to assign to members that now have no team. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false On invalid or unnecessary operation. Otherwise returns true 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_t_m___team_ab4a4b6dc6432941d46a78cfe6a662a16}{\index{Rak\-Net\-::\-T\-M\-\_\-\-Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}!Set\-Owner@{Set\-Owner}}
+\index{Set\-Owner@{Set\-Owner}!RakNet::TM_Team@{Rak\-Net\-::\-T\-M\-\_\-\-Team}}
+\subsubsection[{Set\-Owner}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-T\-M\-\_\-\-Team\-::\-Set\-Owner (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{o}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_t_m___team_ab4a4b6dc6432941d46a78cfe6a662a16}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em o} & Stores a void$\ast$ for your own use. If using composition, this is useful to store a pointer to the containing object. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_team_manager_8h}{Team\-Manager.\-h}\end{DoxyCompactItemize}

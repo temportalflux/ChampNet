@@ -1,0 +1,223 @@
+\hypertarget{class_rak_net_1_1_telnet_transport}{\section{Rak\-Net\-:\-:Telnet\-Transport Class Reference}
+\label{class_rak_net_1_1_telnet_transport}\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}}
+}
+
+
+Use \hyperlink{class_rak_net_1_1_telnet_transport}{Telnet\-Transport} to easily allow windows telnet to connect to your \hyperlink{class_rak_net_1_1_console_server}{Console\-Server}.  
+
+
+
+
+{\ttfamily \#include $<$Telnet\-Transport.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Telnet\-Transport\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_telnet_transport}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_telnet_transport_1_1_telnet_client}{Telnet\-Client}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_telnet_transport_ac7e1ba9b678c42a55d695eb95d734c1f}{Start} (unsigned short port, bool server\-Mode)
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_aed8b626c88d646661364c04fcd3bce42}{void \hyperlink{class_rak_net_1_1_telnet_transport_aed8b626c88d646661364c04fcd3bce42}{Stop} (void)}\label{class_rak_net_1_1_telnet_transport_aed8b626c88d646661364c04fcd3bce42}
+
+\begin{DoxyCompactList}\small\item\em Stop the transport provider. You can clear memory and shutdown threads here. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_telnet_transport_a8ade1309ba09713f3fe9f7039b927a7e}{Send} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address, const char $\ast$data,...)
+\item 
+void \hyperlink{class_rak_net_1_1_telnet_transport_af75d0de84994e8f964b14ae8a0b16640}{Close\-Connection} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address)
+\item 
+\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$ \hyperlink{class_rak_net_1_1_telnet_transport_aa8094ab92c365840955273594a74727d}{Receive} (void)
+\item 
+void \hyperlink{class_rak_net_1_1_telnet_transport_afca9e49ae0e91c04bfe3426245412023}{Deallocate\-Packet} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_telnet_transport_afc57238959dfd0088900f82c94d2203c}{Has\-New\-Incoming\-Connection} (void)
+\item 
+\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_telnet_transport_a892143e429d375ddf2cbac2813a04c54}{Has\-Lost\-Connection} (void)
+\item 
+\hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} $\ast$ \hyperlink{class_rak_net_1_1_telnet_transport_a2712370b9f8ba79908bab6067f3c067e}{Get\-Command\-Parser} (void)
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a1a555e9646d5d64ce955028cfcab9fb6}{void {\bfseries Set\-Send\-Suffix} (const char $\ast$suffix)}\label{class_rak_net_1_1_telnet_transport_a1a555e9646d5d64ce955028cfcab9fb6}
+
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a2d569dadf28b44ca852f182c14098997}{void {\bfseries Set\-Send\-Prefix} (const char $\ast$prefix)}\label{class_rak_net_1_1_telnet_transport_a2d569dadf28b44ca852f182c14098997}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a61cb26a18d8f0ba64b2a783b22bf1392}{void {\bfseries Auto\-Allocate} (void)}\label{class_rak_net_1_1_telnet_transport_a61cb26a18d8f0ba64b2a783b22bf1392}
+
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a21a5624e1b31ebe6791869775e348d50}{bool {\bfseries Reassemble\-Line} (\hyperlink{struct_rak_net_1_1_telnet_transport_1_1_telnet_client}{Telnet\-Transport\-::\-Telnet\-Client} $\ast$telnet\-Client, unsigned char c)}\label{class_rak_net_1_1_telnet_transport_a21a5624e1b31ebe6791869775e348d50}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a1544ac0615d7e078116d654277cec6d6}{\hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} $\ast$ {\bfseries tcp\-Interface}}\label{class_rak_net_1_1_telnet_transport_a1544ac0615d7e078116d654277cec6d6}
+
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a4d7961d7b6ecba6be3f766c55c49c94a}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_telnet_transport_1_1_telnet_client}{Telnet\-Client} $\ast$ $>$ {\bfseries remote\-Clients}}\label{class_rak_net_1_1_telnet_transport_a4d7961d7b6ecba6be3f766c55c49c94a}
+
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a2185ea993b999834089d7871676433eb}{char $\ast$ {\bfseries send\-Suffix}}\label{class_rak_net_1_1_telnet_transport_a2185ea993b999834089d7871676433eb}
+
+\item 
+\hypertarget{class_rak_net_1_1_telnet_transport_a822b38befb361068c6bbd4d15d65f1b7}{char $\ast$ {\bfseries send\-Prefix}}\label{class_rak_net_1_1_telnet_transport_a822b38befb361068c6bbd4d15d65f1b7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Use \hyperlink{class_rak_net_1_1_telnet_transport}{Telnet\-Transport} to easily allow windows telnet to connect to your \hyperlink{class_rak_net_1_1_console_server}{Console\-Server}. 
+
+To run Windows telnet, go to your start menu, click run, and in the edit box type \char`\"{}telnet $<$\-I\-P$>$\char`\"{} where $<$\-I\-P$>$ is the ip address.\par
+ of your \hyperlink{class_rak_net_1_1_console_server}{Console\-Server} (most likely the same I\-P as your game).\par
+ This implementation always echos commands. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_telnet_transport_af75d0de84994e8f964b14ae8a0b16640}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Close\-Connection@{Close\-Connection}}
+\index{Close\-Connection@{Close\-Connection}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Close\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Telnet\-Transport\-::\-Close\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf System\-Address}}]{system\-Address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_af75d0de84994e8f964b14ae8a0b16640}
+Disconnect {\itshape system\-Address} . The binary address and port defines the \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} structure. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player/address to disconnect \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a089cdab96f00d399988c3a23db039201}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_afca9e49ae0e91c04bfe3426245412023}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Deallocate\-Packet@{Deallocate\-Packet}}
+\index{Deallocate\-Packet@{Deallocate\-Packet}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Deallocate\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Telnet\-Transport\-::\-Deallocate\-Packet (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_afca9e49ae0e91c04bfe3426245412023}
+Deallocate the \hyperlink{struct_rak_net_1_1_packet}{Packet} structure returned by Receive 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em The} & packet to deallocate \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a889932d752ad7a3e14108cd0b5371b7a}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_a2712370b9f8ba79908bab6067f3c067e}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Get\-Command\-Parser@{Get\-Command\-Parser}}
+\index{Get\-Command\-Parser@{Get\-Command\-Parser}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Get\-Command\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command\-Parser\-Interface}$\ast$ Rak\-Net\-::\-Telnet\-Transport\-::\-Get\-Command\-Parser (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_a2712370b9f8ba79908bab6067f3c067e}
+Your transport provider can itself have command parsers if the transport layer has user-\/modifiable features For example, your transport layer may have a password which you want remote users to be able to set or you may want to allow remote users to turn on or off command echo \begin{DoxyReturn}{Returns}
+0 if you do not need a command parser -\/ otherwise the desired derivation of \hyperlink{class_rak_net_1_1_command_parser_interface}{Command\-Parser\-Interface} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_ad96ea3ff016ad1a7590e1f63d5efd6b0}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_a892143e429d375ddf2cbac2813a04c54}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Has\-Lost\-Connection@{Has\-Lost\-Connection}}
+\index{Has\-Lost\-Connection@{Has\-Lost\-Connection}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Has\-Lost\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf System\-Address} Rak\-Net\-::\-Telnet\-Transport\-::\-Has\-Lost\-Connection (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_a892143e429d375ddf2cbac2813a04c54}
+If a system loses the connection, you should queue that event and return the system\-Address/address of that player in this function. \begin{DoxyReturn}{Returns}
+The System\-Address/address of the system 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a7ee1400724af8c3d94555c4c5ca189c5}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_afc57238959dfd0088900f82c94d2203c}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Has\-New\-Incoming\-Connection@{Has\-New\-Incoming\-Connection}}
+\index{Has\-New\-Incoming\-Connection@{Has\-New\-Incoming\-Connection}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Has\-New\-Incoming\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf System\-Address} Rak\-Net\-::\-Telnet\-Transport\-::\-Has\-New\-Incoming\-Connection (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_afc57238959dfd0088900f82c94d2203c}
+If a new system connects to you, you should queue that event and return the system\-Address/address of that player in this function. \begin{DoxyReturn}{Returns}
+The System\-Address/address of the system 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a78f3977421deabf57046773112d07626}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_aa8094ab92c365840955273594a74727d}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Receive@{Receive}}
+\index{Receive@{Receive}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Receive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Packet}$\ast$ Rak\-Net\-::\-Telnet\-Transport\-::\-Receive (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_aa8094ab92c365840955273594a74727d}
+Return a string. The string should be allocated and written to \hyperlink{struct_rak_net_1_1_packet_a63e46b85c8ca156b205a124e54659614}{Packet\-::data} . The byte length should be written to \hyperlink{struct_rak_net_1_1_packet_a114883d23f7133c77808651a33420d0f}{Packet\-::length} . The player/address should be written to \hyperlink{struct_rak_net_1_1_packet_abf432112847cb3ce458935b8a5ae4089}{Packet\-::system\-Address} If your transport protocol adds special formatting to the data stream you should parse it out before returning it in the packet and thus only return a string in \hyperlink{struct_rak_net_1_1_packet_a63e46b85c8ca156b205a124e54659614}{Packet\-::data} \begin{DoxyReturn}{Returns}
+The packet structure containing the result of Receive, or 0 if no data is available 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a2d458e6e575f700f292c42b7566d15c9}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_a8ade1309ba09713f3fe9f7039b927a7e}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Send@{Send}}
+\index{Send@{Send}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Send}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Telnet\-Transport\-::\-Send (
+\begin{DoxyParamCaption}
+\item[{{\bf System\-Address}}]{system\-Address, }
+\item[{const char $\ast$}]{data, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_a8ade1309ba09713f3fe9f7039b927a7e}
+Send a null-\/terminated string to {\itshape system\-Address} If your transport method requires particular formatting of the outgoing data (e.\-g. you don't just send strings) you can do it here and parse it out in \hyperlink{class_rak_net_1_1_telnet_transport_aa8094ab92c365840955273594a74727d}{Receive()}. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The player to send the string to \\
+\hline
+\mbox{\tt in}  & {\em data} & format specifier -\/ same as R\-A\-K\-N\-E\-T\-\_\-\-D\-E\-B\-U\-G\-\_\-\-P\-R\-I\-N\-T\-F \\
+\hline
+\mbox{\tt in}  & {\em ...} & format specification arguments -\/ same as R\-A\-K\-N\-E\-T\-\_\-\-D\-E\-B\-U\-G\-\_\-\-P\-R\-I\-N\-T\-F \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_ab77f9c90719f38340bdbcb4ffdbf192a}{Rak\-Net\-::\-Transport\-Interface}.
+
+\hypertarget{class_rak_net_1_1_telnet_transport_ac7e1ba9b678c42a55d695eb95d734c1f}{\index{Rak\-Net\-::\-Telnet\-Transport@{Rak\-Net\-::\-Telnet\-Transport}!Start@{Start}}
+\index{Start@{Start}!RakNet::TelnetTransport@{Rak\-Net\-::\-Telnet\-Transport}}
+\subsubsection[{Start}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Telnet\-Transport\-::\-Start (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{port, }
+\item[{bool}]{server\-Mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_telnet_transport_ac7e1ba9b678c42a55d695eb95d734c1f}
+Start the transport provider on the indicated port. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & The port to start the transport provider on \\
+\hline
+\mbox{\tt in}  & {\em server\-Mode} & If true, you should allow incoming connections (I don't actually use this anywhere) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true on success, false on failure. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_rak_net_1_1_transport_interface_a309a38aa455b6b72f1c760276f3fb6a8}{Rak\-Net\-::\-Transport\-Interface}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_telnet_transport_8h}{Telnet\-Transport.\-h}\end{DoxyCompactItemize}

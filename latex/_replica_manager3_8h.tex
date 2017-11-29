@@ -1,0 +1,111 @@
+\hypertarget{_replica_manager3_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Replica\-Manager3.h File Reference}
+\label{_replica_manager3_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Replica\-Manager3.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Replica\-Manager3.\-h}}
+}
+
+
+Contains the third iteration of the Replica\-Manager class.  
+
+
+{\ttfamily \#include \char`\"{}Native\-Feature\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Bit\-Stream.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Packet\-Priority.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Plugin\-Interface2.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Network\-I\-D\-Object.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-Ordered\-List.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-Queue.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_p_r_o}{Rak\-Net\-::\-P\-R\-O}
+\item 
+class \hyperlink{class_rak_net_1_1_replica_manager3}{Rak\-Net\-::\-Replica\-Manager3}
+\begin{DoxyCompactList}\small\item\em System to help automate game object construction, destruction, and serialization. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_replica_manager3_1_1_r_m3_world}{Rak\-Net\-::\-Replica\-Manager3\-::\-R\-M3\-World}
+\item 
+struct \hyperlink{struct_rak_net_1_1_last_serialization_result_b_s}{Rak\-Net\-::\-Last\-Serialization\-Result\-B\-S}
+\item 
+struct \hyperlink{struct_rak_net_1_1_last_serialization_result}{Rak\-Net\-::\-Last\-Serialization\-Result}
+\item 
+struct \hyperlink{struct_rak_net_1_1_serialize_parameters}{Rak\-Net\-::\-Serialize\-Parameters}
+\item 
+struct \hyperlink{struct_rak_net_1_1_deserialize_parameters}{Rak\-Net\-::\-Deserialize\-Parameters}
+\item 
+class \hyperlink{class_rak_net_1_1_connection___r_m3}{Rak\-Net\-::\-Connection\-\_\-\-R\-M3}
+\begin{DoxyCompactList}\small\item\em Each remote system is represented by \hyperlink{class_rak_net_1_1_connection___r_m3}{Connection\-\_\-\-R\-M3}. Used to allocate \hyperlink{class_rak_net_1_1_replica3}{Replica3} and track which instances have been allocated. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_replica3}{Rak\-Net\-::\-Replica3}
+\begin{DoxyCompactList}\small\item\em Base class for your replicated objects for the \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} system. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_replica3_composite}{Rak\-Net\-::\-Replica3\-Composite$<$ parent\-\_\-type $>$}
+\begin{DoxyCompactList}\small\item\em Use \hyperlink{class_rak_net_1_1_replica3}{Replica3} through composition instead of inheritance by containing an instance of this templated class Calls to parent class for all functions Parent class must still define and functions though! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\-\_\-t \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga44b59af8e882248f61aa41d8ace38bf7}{Rak\-Net\-::\-World\-Id}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Send\-Serialize\-If\-Changed\-Result} \{ {\bfseries S\-S\-I\-C\-R\-\_\-\-S\-E\-N\-T\-\_\-\-D\-A\-T\-A}, 
+{\bfseries S\-S\-I\-C\-R\-\_\-\-D\-I\-D\-\_\-\-N\-O\-T\-\_\-\-S\-E\-N\-D\-\_\-\-D\-A\-T\-A}, 
+{\bfseries S\-S\-I\-C\-R\-\_\-\-N\-E\-V\-E\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E}
+ \}
+\item 
+enum \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga16aaecf3c23582f0de6652b348ccfa38}{Rak\-Net\-::\-R\-M3\-Construction\-State} \{ \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38a508beae91f54ce89c22160c43a608fe1}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-S\-E\-N\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38a830fdf9eb729456bb62c8f3116afe260}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38a526a86138ec25d79d3981860bd09d4e3}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-E\-X\-I\-S\-T\-S\-\_\-\-R\-E\-M\-O\-T\-E\-L\-Y\-\_\-\-D\-O\-\_\-\-N\-O\-T\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38a7340e8e1ecf573595a196376ac02eb3c}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-N\-E\-V\-E\-R\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T}, 
+\\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38a28922f257ecef864a4490ec6aae6a48b}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-N\-O\-\_\-\-A\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga16aaecf3c23582f0de6652b348ccfa38afd4d901f7fd70e9fa64c911d427a14a0}{Rak\-Net\-::\-R\-M3\-C\-S\-\_\-\-M\-A\-X}
+ \}
+\begin{DoxyCompactList}\small\item\em Return codes for Connection\-\_\-\-R\-M3\-::\-Get\-Construction\-State() and Replica3\-::\-Query\-Construction() \end{DoxyCompactList}\item 
+enum \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga400c157a937f062bd8a3c19a49d33541}{Rak\-Net\-::\-R\-M3\-Destruction\-State} \{ \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga400c157a937f062bd8a3c19a49d33541a8659a52c28938633a464e505249dcdcf}{Rak\-Net\-::\-R\-M3\-D\-S\-\_\-\-S\-E\-N\-D\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga400c157a937f062bd8a3c19a49d33541a12b9942935d79a55fc3943466e4b1204}{Rak\-Net\-::\-R\-M3\-D\-S\-\_\-\-D\-O\-\_\-\-N\-O\-T\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga400c157a937f062bd8a3c19a49d33541a84680d8d2b68f5360a11fb2dd50a335f}{Rak\-Net\-::\-R\-M3\-D\-S\-\_\-\-N\-O\-\_\-\-A\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga400c157a937f062bd8a3c19a49d33541a7651f853d06fc836b035bbf91aa6a266}{Rak\-Net\-::\-R\-M3\-D\-S\-\_\-\-M\-A\-X}
+ \}
+\item 
+enum \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga993da25eb23b67455e2438971c51429c}{Rak\-Net\-::\-R\-M3\-Serialization\-Result} \{ \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca574f9c4ac43601e7e49ff56a796a3fe2}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-B\-R\-O\-A\-D\-C\-A\-S\-T\-\_\-\-I\-D\-E\-N\-T\-I\-C\-A\-L\-L\-Y}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca03ccf6a7cb2e7bc303525529c3cf2fa3}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-B\-R\-O\-A\-D\-C\-A\-S\-T\-\_\-\-I\-D\-E\-N\-T\-I\-C\-A\-L\-L\-Y\-\_\-\-F\-O\-R\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca433b42251411758236dff004c87d0814}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E\-D\-\_\-\-U\-N\-I\-Q\-U\-E\-L\-Y}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca80ff6894a8a24e8ec6bd6895501628b5}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E\-D\-\_\-\-A\-L\-W\-A\-Y\-S}, 
+\\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca065bb061cfc67fc94c4ddc147cd9e525}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E\-D\-\_\-\-A\-L\-W\-A\-Y\-S\-\_\-\-I\-D\-E\-N\-T\-I\-C\-A\-L\-L\-Y}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca60f8e6fa13b204ae52d20844e00b2a36}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-D\-O\-\_\-\-N\-O\-T\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429ca113936a2cd1690f9d2d3abfdf85d665c}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-N\-E\-V\-E\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E\-\_\-\-F\-O\-R\-\_\-\-T\-H\-I\-S\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga993da25eb23b67455e2438971c51429cab220e8bd7e6c81016a4436c1767fc48d}{Rak\-Net\-::\-R\-M3\-S\-R\-\_\-\-M\-A\-X}
+ \}
+\item 
+enum \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga9a29b413d7f2b9cb21c16457631d3aef}{Rak\-Net\-::\-R\-M3\-Query\-Serialization\-Result} \{ \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga9a29b413d7f2b9cb21c16457631d3aefac2394e5a4e4008d90c922bed6932303d}{Rak\-Net\-::\-R\-M3\-Q\-S\-R\-\_\-\-C\-A\-L\-L\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga9a29b413d7f2b9cb21c16457631d3aefac45e556d9b4239415bd63e5bede8ca51}{Rak\-Net\-::\-R\-M3\-Q\-S\-R\-\_\-\-D\-O\-\_\-\-N\-O\-T\-\_\-\-C\-A\-L\-L\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga9a29b413d7f2b9cb21c16457631d3aefa22b7a36a8c1481cc6345d8c4efbe4aac}{Rak\-Net\-::\-R\-M3\-Q\-S\-R\-\_\-\-N\-E\-V\-E\-R\-\_\-\-C\-A\-L\-L\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga9a29b413d7f2b9cb21c16457631d3aefa2cd620253580e8d24a1b7957799c3d7a}{Rak\-Net\-::\-R\-M3\-Q\-S\-R\-\_\-\-M\-A\-X}
+ \}
+\item 
+enum {\bfseries R\-M3\-Action\-On\-Pop\-Connection} \{ {\bfseries R\-M3\-A\-O\-P\-C\-\_\-\-D\-O\-\_\-\-N\-O\-T\-H\-I\-N\-G}, 
+{\bfseries R\-M3\-A\-O\-P\-C\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-R\-E\-P\-L\-I\-C\-A}, 
+{\bfseries R\-M3\-A\-O\-P\-C\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-R\-E\-P\-L\-I\-C\-A\-\_\-\-A\-N\-D\-\_\-\-B\-R\-O\-A\-D\-C\-A\-S\-T\-\_\-\-D\-E\-S\-T\-R\-U\-C\-T\-I\-O\-N}, 
+{\bfseries R\-M3\-A\-O\-P\-C\-\_\-\-M\-A\-X}
+ \}
+\item 
+enum \hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_ga91a588da9d58bc86b8fb7e4f27ddcf7e}{Rak\-Net\-::\-Replica3\-P2\-P\-Mode} \{ \\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7eae6bb229afa26313b6aa4c11320e630d5}{Rak\-Net\-::\-R3\-P2\-P\-M\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-O\-W\-N\-E\-R}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7ea47ff84aa5cdf83b800d551ab607b1d1f}{Rak\-Net\-::\-R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7eac0b780c5f936449de42e6032e6bca4e6}{Rak\-Net\-::\-R3\-P2\-P\-M\-\_\-\-M\-U\-L\-T\-I\-\_\-\-O\-W\-N\-E\-R\-\_\-\-N\-O\-T\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}, 
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7ead8f368971bbf8939507a5f0550e1af04}{Rak\-Net\-::\-R3\-P2\-P\-M\-\_\-\-S\-T\-A\-T\-I\-C\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}, 
+\\*
+\hyperlink{group___r_e_p_l_i_c_a___m_a_n_a_g_e_r___g_r_o_u_p3_gga91a588da9d58bc86b8fb7e4f27ddcf7ea3b8743fa18228e729bcad3e2a89c7752}{Rak\-Net\-::\-R3\-P2\-P\-M\-\_\-\-S\-T\-A\-T\-I\-C\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-N\-O\-T\-\_\-\-C\-U\-R\-R\-E\-N\-T\-L\-Y\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the third iteration of the Replica\-Manager class. 

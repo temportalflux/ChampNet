@@ -1,0 +1,193 @@
+\hypertarget{class_rak_net_1_1_nat_type_detection_server}{\section{Rak\-Net\-:\-:Nat\-Type\-Detection\-Server Class Reference}
+\label{class_rak_net_1_1_nat_type_detection_server}\index{Rak\-Net\-::\-Nat\-Type\-Detection\-Server@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}}
+}
+
+
+Server code for Nat\-Type\-Detection.  
+
+
+
+
+{\ttfamily \#include $<$Nat\-Type\-Detection\-Server.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Nat\-Type\-Detection\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_nat_type_detection_server}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_nat_type_detection_server_1_1_n_a_t_detection_attempt}{N\-A\-T\-Detection\-Attempt}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries N\-A\-T\-Detection\-State} \{ \\*
+{\bfseries S\-T\-A\-T\-E\-\_\-\-N\-O\-N\-E}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-N\-O\-N\-E\-\_\-1}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-N\-O\-N\-E\-\_\-2}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-F\-U\-L\-L\-\_\-\-C\-O\-N\-E\-\_\-1}, 
+\\*
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-F\-U\-L\-L\-\_\-\-C\-O\-N\-E\-\_\-2}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-A\-D\-D\-R\-E\-S\-S\-\_\-\-R\-E\-S\-T\-R\-I\-C\-T\-E\-D\-\_\-1}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-A\-D\-D\-R\-E\-S\-S\-\_\-\-R\-E\-S\-T\-R\-I\-C\-T\-E\-D\-\_\-2}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-P\-O\-R\-T\-\_\-\-R\-E\-S\-T\-R\-I\-C\-T\-E\-D\-\_\-1}, 
+\\*
+{\bfseries S\-T\-A\-T\-E\-\_\-\-T\-E\-S\-T\-I\-N\-G\-\_\-\-P\-O\-R\-T\-\_\-\-R\-E\-S\-T\-R\-I\-C\-T\-E\-D\-\_\-2}, 
+{\bfseries S\-T\-A\-T\-E\-\_\-\-D\-O\-N\-E}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_nat_type_detection_server_a7f98c268bfa2c0762a577679e753f31a}{Startup} (const char $\ast$non\-Rak\-Net\-I\-P2, const char $\ast$non\-Rak\-Net\-I\-P3, const char $\ast$non\-Rak\-Net\-I\-P4)
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a724e26f61621af8b741345610112474c}{void {\bfseries Shutdown} (void)}\label{class_rak_net_1_1_nat_type_detection_server_a724e26f61621af8b741345610112474c}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a7df6c37944e93fac0f440666ee619cef}{virtual void \hyperlink{class_rak_net_1_1_nat_type_detection_server_a7df6c37944e93fac0f440666ee619cef}{Update} (void)}\label{class_rak_net_1_1_nat_type_detection_server_a7df6c37944e93fac0f440666ee619cef}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_nat_type_detection_server_a3e57afed0cc9d4db4834c6ddb07c834c}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_nat_type_detection_server_a98f60d8ef3b1542dff0c81464fb0cad8}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_ad8b6833fe13629dd6154ca87cfccd379}{virtual void {\bfseries On\-R\-N\-S2\-Recv} (\hyperlink{struct_rak_net_1_1_r_n_s2_recv_struct}{R\-N\-S2\-Recv\-Struct} $\ast$recv\-Struct)}\label{class_rak_net_1_1_nat_type_detection_server_ad8b6833fe13629dd6154ca87cfccd379}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a72e42dff56ac4016c809f04a83f4255b}{virtual void {\bfseries Dealloc\-R\-N\-S2\-Recv\-Struct} (\hyperlink{struct_rak_net_1_1_r_n_s2_recv_struct}{R\-N\-S2\-Recv\-Struct} $\ast$s, const char $\ast$file, unsigned int line)}\label{class_rak_net_1_1_nat_type_detection_server_a72e42dff56ac4016c809f04a83f4255b}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a71ef6b85df6b0a8f67e057d4254803fd}{virtual \hyperlink{struct_rak_net_1_1_r_n_s2_recv_struct}{R\-N\-S2\-Recv\-Struct} $\ast$ {\bfseries Alloc\-R\-N\-S2\-Recv\-Struct} (const char $\ast$file, unsigned int line)}\label{class_rak_net_1_1_nat_type_detection_server_a71ef6b85df6b0a8f67e057d4254803fd}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_ad3e3d567d92b6659f2cdef4738e979af}{void {\bfseries On\-Detection\-Request} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_nat_type_detection_server_ad3e3d567d92b6659f2cdef4738e979af}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a033c3b10f3238fd65a707e7dd9f6c5e9}{unsigned int {\bfseries Get\-Detection\-Attempt\-Index} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&sa)}\label{class_rak_net_1_1_nat_type_detection_server_a033c3b10f3238fd65a707e7dd9f6c5e9}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a1319527cb180f98080cb7e300f66125e}{unsigned int {\bfseries Get\-Detection\-Attempt\-Index} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_nat_type_detection_server_a1319527cb180f98080cb7e300f66125e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a66ce57a4d6e4f7e557212fc996342dff}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}\\*
+$<$ \hyperlink{struct_rak_net_1_1_r_n_s2_recv_struct}{R\-N\-S2\-Recv\-Struct} $\ast$ $>$ {\bfseries buffered\-Packets}}\label{class_rak_net_1_1_nat_type_detection_server_a66ce57a4d6e4f7e557212fc996342dff}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a13332a428e9b8df2399f63148c770afe}{\hyperlink{class_rak_net_1_1_simple_mutex}{Simple\-Mutex} {\bfseries buffered\-Packets\-Mutex}}\label{class_rak_net_1_1_nat_type_detection_server_a13332a428e9b8df2399f63148c770afe}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_acdf1c2b2210b185e6ceaebb8786db4df}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_nat_type_detection_server_1_1_n_a_t_detection_attempt}{N\-A\-T\-Detection\-Attempt} $>$ {\bfseries nat\-Detection\-Attempts}}\label{class_rak_net_1_1_nat_type_detection_server_acdf1c2b2210b185e6ceaebb8786db4df}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a9f0415467e2e2b4a3739cb5e1ca22395}{\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$ {\bfseries s1p2}}\label{class_rak_net_1_1_nat_type_detection_server_a9f0415467e2e2b4a3739cb5e1ca22395}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a8dc02b8f2867a5874d48774d979eaeef}{\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$ {\bfseries s2p3}}\label{class_rak_net_1_1_nat_type_detection_server_a8dc02b8f2867a5874d48774d979eaeef}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_ad824a0bd896b8561254b46d4217bba63}{\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$ {\bfseries s3p4}}\label{class_rak_net_1_1_nat_type_detection_server_ad824a0bd896b8561254b46d4217bba63}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_ac424468c0ed82f894674961a1f6cddc6}{\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$ {\bfseries s4p5}}\label{class_rak_net_1_1_nat_type_detection_server_ac424468c0ed82f894674961a1f6cddc6}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_aba122c35a9778366c284db84ef8bc78b}{char {\bfseries s3p4\-Address} \mbox{[}64\mbox{]}}\label{class_rak_net_1_1_nat_type_detection_server_aba122c35a9778366c284db84ef8bc78b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Server code for Nat\-Type\-Detection. 
+
+Sends to a remote system on certain ports and addresses to determine what type of router, if any, that client is behind Requires that the server have 4 external I\-P addresses 
+\begin{DoxyEnumerate}
+\item Server has 1 instance of \hyperlink{namespace_rak_net}{Rak\-Net}. Server has four external ip addresses S1 to S4. Five ports are used in total P1 to P5. \hyperlink{namespace_rak_net}{Rak\-Net} is bound to S1\-P1. Sockets are bound to S1\-P2, S2\-P3, S3\-P4, S4\-P5 
+\item Client with one port using \hyperlink{namespace_rak_net}{Rak\-Net} (C1). Another port not using anything (C2). 
+\item C1 connects to S1\-P1 for normal communication. 
+\item S4\-P5 sends to C2. If arrived, no N\-A\-T. Done. (If didn't arrive, S4\-P5 potentially banned, do not use again). 
+\item S2\-P3 sends to C1 (Different address, different port, to previously used port on client). If received, Full-\/cone nat. Done. (If didn't arrive, S2\-P3 potentially banned, do not use again). 
+\item S1\-P2 sends to C1 (Same address, different port, to previously used port on client). If received, address-\/restricted cone nat. Done. 
+\item Server via \hyperlink{namespace_rak_net}{Rak\-Net} connection tells C1 to send to to S3\-P4. If address of C1 as seen by S3\-P4 is the same as the address of C1 as seen by S1\-P1 (\hyperlink{namespace_rak_net}{Rak\-Net} connection), then port-\/restricted cone nat. Done 
+\item Else symmetric nat. Done. 
+\end{DoxyEnumerate}See also \href{http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html}{\tt http\-://www.\-jenkinssoftware.\-com/raknet/manual/natpunchthrough.\-html} \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_rak_net_1_1_nat_punchthrough_server}{Nat\-Punchthrough\-Server} 
+
+\hyperlink{class_rak_net_1_1_nat_type_detection_client}{Nat\-Type\-Detection\-Client} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a98f60d8ef3b1542dff0c81464fb0cad8}{\index{Rak\-Net\-::\-Nat\-Type\-Detection\-Server@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::NatTypeDetectionServer@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Nat\-Type\-Detection\-Server\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_nat_type_detection_server_a98f60d8ef3b1542dff0c81464fb0cad8}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a3e57afed0cc9d4db4834c6ddb07c834c}{\index{Rak\-Net\-::\-Nat\-Type\-Detection\-Server@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::NatTypeDetectionServer@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Nat\-Type\-Detection\-Server\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_nat_type_detection_server_a3e57afed0cc9d4db4834c6ddb07c834c}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_nat_type_detection_server_a7f98c268bfa2c0762a577679e753f31a}{\index{Rak\-Net\-::\-Nat\-Type\-Detection\-Server@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}!Startup@{Startup}}
+\index{Startup@{Startup}!RakNet::NatTypeDetectionServer@{Rak\-Net\-::\-Nat\-Type\-Detection\-Server}}
+\subsubsection[{Startup}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Nat\-Type\-Detection\-Server\-::\-Startup (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{non\-Rak\-Net\-I\-P2, }
+\item[{const char $\ast$}]{non\-Rak\-Net\-I\-P3, }
+\item[{const char $\ast$}]{non\-Rak\-Net\-I\-P4}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_nat_type_detection_server_a7f98c268bfa2c0762a577679e753f31a}
+Start the system, binding to 3 external I\-Ps not already in use\-S 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em non\-Rak\-Net\-I\-P2} & First unused external I\-P \\
+\hline
+\mbox{\tt in}  & {\em non\-Rak\-Net\-I\-P3} & Second unused external I\-P \\
+\hline
+\mbox{\tt in}  & {\em non\-Rak\-Net\-I\-P4} & Third unused external I\-P \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_nat_type_detection_server_8h}{Nat\-Type\-Detection\-Server.\-h}\end{DoxyCompactItemize}

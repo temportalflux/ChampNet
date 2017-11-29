@@ -1,0 +1,102 @@
+\hypertarget{class_event_with_i_d}{\section{Event\-With\-I\-D Class Reference}
+\label{class_event_with_i_d}\index{Event\-With\-I\-D@{Event\-With\-I\-D}}
+}
+Inheritance diagram for Event\-With\-I\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.545455cm]{class_event_with_i_d}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_with_i_d_a48c52561770e754764bce60a37b18b7c}{{\bfseries Event\-With\-I\-D} (byte id)}\label{class_event_with_i_d_a48c52561770e754764bce60a37b18b7c}
+
+\item 
+override int \hyperlink{class_event_with_i_d_af466d916c98ef18a2ca2b3aa4579754e}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_i_d_ae82063a78a0cd34dc852e3ae590e35c0}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_i_d_acc9b0d1c6a8fc474fb1aeb0f93d47602}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint \hyperlink{class_event_with_i_d_a4b58cdaef622cb06405b6829a160cef5}{client\-I\-D}
+\begin{DoxyCompactList}\small\item\em The player identifier \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_with_i_d_ae82063a78a0cd34dc852e3ae590e35c0}{\index{Event\-With\-I\-D@{Event\-With\-I\-D}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!EventWithID@{Event\-With\-I\-D}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-I\-D.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_i_d_ae82063a78a0cd34dc852e3ae590e35c0}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{class_event_with_i_d_af466d916c98ef18a2ca2b3aa4579754e}{\index{Event\-With\-I\-D@{Event\-With\-I\-D}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!EventWithID@{Event\-With\-I\-D}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}override int Event\-With\-I\-D.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_i_d_af466d916c98ef18a2ca2b3aa4579754e}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data 
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost \hypertarget{class_event_with_i_d_acc9b0d1c6a8fc474fb1aeb0f93d47602}{\index{Event\-With\-I\-D@{Event\-With\-I\-D}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!EventWithID@{Event\-With\-I\-D}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-I\-D.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_i_d_acc9b0d1c6a8fc474fb1aeb0f93d47602}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_event_with_i_d_a4b58cdaef622cb06405b6829a160cef5}{\index{Event\-With\-I\-D@{Event\-With\-I\-D}!client\-I\-D@{client\-I\-D}}
+\index{client\-I\-D@{client\-I\-D}!EventWithID@{Event\-With\-I\-D}}
+\subsubsection[{client\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}uint Event\-With\-I\-D.\-client\-I\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_event_with_i_d_a4b58cdaef622cb06405b6829a160cef5}
+
+
+The player identifier 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/events/Event\-With\-I\-D.\-cs\end{DoxyCompactItemize}

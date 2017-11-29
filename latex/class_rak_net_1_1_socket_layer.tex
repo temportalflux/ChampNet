@@ -1,0 +1,149 @@
+\hypertarget{class_rak_net_1_1_socket_layer}{\section{Rak\-Net\-:\-:Socket\-Layer Class Reference}
+\label{class_rak_net_1_1_socket_layer}\index{Rak\-Net\-::\-Socket\-Layer@{Rak\-Net\-::\-Socket\-Layer}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_socket_layer_a6d641db61068fe8d656e2a92d7bbd42c}{\hyperlink{class_rak_net_1_1_socket_layer_a6d641db61068fe8d656e2a92d7bbd42c}{Socket\-Layer} ()}\label{class_rak_net_1_1_socket_layer_a6d641db61068fe8d656e2a92d7bbd42c}
+
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \hyperlink{class_rak_net_1_1_socket_layer_a0b8b75fb3728bf34003a1110e9056323}{Get\-Sub\-Net\-For\-Socket\-And\-Ip} (\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- in\-Sock, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} in\-Ip\-String)
+\item 
+static void \hyperlink{class_rak_net_1_1_socket_layer_ab0a3c5d72235d0e5f7c5c0bcd1fa9c32}{Get\-My\-I\-P} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} addresses\mbox{[}M\-A\-X\-I\-M\-U\-M\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L\-\_\-\-I\-D\-S\mbox{]})
+\item 
+static unsigned short \hyperlink{class_rak_net_1_1_socket_layer_a1470933b6131c5127f442abdc59df170}{Get\-Local\-Port} (\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- s)
+\item 
+\hypertarget{class_rak_net_1_1_socket_layer_af717c69524bd78b9d21345a660f79143}{static void {\bfseries Get\-System\-Address\-\_\-\-Old} (\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- s, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $\ast$system\-Address\-Out)}\label{class_rak_net_1_1_socket_layer_af717c69524bd78b9d21345a660f79143}
+
+\item 
+\hypertarget{class_rak_net_1_1_socket_layer_a89555aaa45d61b7c14819201b8dbc520}{static void {\bfseries Get\-System\-Address} (\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- s, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $\ast$system\-Address\-Out)}\label{class_rak_net_1_1_socket_layer_a89555aaa45d61b7c14819201b8dbc520}
+
+\item 
+\hypertarget{class_rak_net_1_1_socket_layer_a327844f0901c0c9f2be022cc8d82bb0e}{static void {\bfseries Set\-Socket\-Options} (\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- listen\-Socket, bool blocking\-Socket, bool set\-Broadcast)}\label{class_rak_net_1_1_socket_layer_a327844f0901c0c9f2be022cc8d82bb0e}
+
+\item 
+\hypertarget{class_rak_net_1_1_socket_layer_a8b7800c1235c82d331331eb9e0f4b691}{static bool {\bfseries Get\-First\-Bindable\-I\-P} (char first\-Bindable\mbox{[}128\mbox{]}, int ip\-Proto)}\label{class_rak_net_1_1_socket_layer_a8b7800c1235c82d331331eb9e0f4b691}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_socket_layer_a1470933b6131c5127f442abdc59df170}{\index{Rak\-Net\-::\-Socket\-Layer@{Rak\-Net\-::\-Socket\-Layer}!Get\-Local\-Port@{Get\-Local\-Port}}
+\index{Get\-Local\-Port@{Get\-Local\-Port}!RakNet::SocketLayer@{Rak\-Net\-::\-Socket\-Layer}}
+\subsubsection[{Get\-Local\-Port}]{\setlength{\rightskip}{0pt plus 5cm}static unsigned short Rak\-Net\-::\-Socket\-Layer\-::\-Get\-Local\-Port (
+\begin{DoxyParamCaption}
+\item[{\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\-}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_rak_net_1_1_socket_layer_a1470933b6131c5127f442abdc59df170}
+Call sendto (U\-D\-P obviously) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & the socket \\
+\hline
+\mbox{\tt in}  & {\em data} & The byte buffer to send \\
+\hline
+\mbox{\tt in}  & {\em length} & The length of the {\itshape data} in bytes \\
+\hline
+\mbox{\tt in}  & {\em ip} & The address of the remote host in dotted notation. \\
+\hline
+\mbox{\tt in}  & {\em port} & The port number to send to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero on failure. Call sendto' (U\-D\-P obviously) It won't reach the recipient, except on a L\-A\-N However, this is good for opening routers / firewalls 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & the socket \\
+\hline
+\mbox{\tt in}  & {\em data} & The byte buffer to send \\
+\hline
+\mbox{\tt in}  & {\em length} & The length of the {\itshape data} in bytes \\
+\hline
+\mbox{\tt in}  & {\em ip} & The address of the remote host in dotted notation. \\
+\hline
+\mbox{\tt in}  & {\em port} & The port number to send to. \\
+\hline
+\mbox{\tt in}  & {\em ttl} & Max hops of datagram \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero on failure. Call sendto (U\-D\-P obviously) 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & the socket \\
+\hline
+\mbox{\tt in}  & {\em data} & The byte buffer to send \\
+\hline
+\mbox{\tt in}  & {\em length} & The length of the {\itshape data} in bytes \\
+\hline
+\mbox{\tt in}  & {\em binary\-Address} & The address of the remote host in binary format. \\
+\hline
+\mbox{\tt in}  & {\em port} & The port number to send to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero on failure. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_socket_layer_ab0a3c5d72235d0e5f7c5c0bcd1fa9c32}{\index{Rak\-Net\-::\-Socket\-Layer@{Rak\-Net\-::\-Socket\-Layer}!Get\-My\-I\-P@{Get\-My\-I\-P}}
+\index{Get\-My\-I\-P@{Get\-My\-I\-P}!RakNet::SocketLayer@{Rak\-Net\-::\-Socket\-Layer}}
+\subsubsection[{Get\-My\-I\-P}]{\setlength{\rightskip}{0pt plus 5cm}static void Rak\-Net\-::\-Socket\-Layer\-::\-Get\-My\-I\-P (
+\begin{DoxyParamCaption}
+\item[{{\bf System\-Address}}]{addresses\mbox{[}\-M\-A\-X\-I\-M\-U\-M\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L\-\_\-\-I\-D\-S\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_rak_net_1_1_socket_layer_ab0a3c5d72235d0e5f7c5c0bcd1fa9c32}
+Sets the socket flags to nonblocking 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em listen\-Socket} & the socket to set Retrieve all local I\-P address in a string format. \\
+\hline
+\mbox{\tt in}  & {\em s} & The socket whose port we are referring to \\
+\hline
+\mbox{\tt in}  & {\em ip\-List} & An array of ip address in dotted notation. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_socket_layer_a0b8b75fb3728bf34003a1110e9056323}{\index{Rak\-Net\-::\-Socket\-Layer@{Rak\-Net\-::\-Socket\-Layer}!Get\-Sub\-Net\-For\-Socket\-And\-Ip@{Get\-Sub\-Net\-For\-Socket\-And\-Ip}}
+\index{Get\-Sub\-Net\-For\-Socket\-And\-Ip@{Get\-Sub\-Net\-For\-Socket\-And\-Ip}!RakNet::SocketLayer@{Rak\-Net\-::\-Socket\-Layer}}
+\subsubsection[{Get\-Sub\-Net\-For\-Socket\-And\-Ip}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Rak\-Net\-::\-Rak\-String} Rak\-Net\-::\-Socket\-Layer\-::\-Get\-Sub\-Net\-For\-Socket\-And\-Ip (
+\begin{DoxyParamCaption}
+\item[{\-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\-}]{in\-Sock, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{in\-Ip\-String}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_rak_net_1_1_socket_layer_a0b8b75fb3728bf34003a1110e9056323}
+Write {\itshape data} of length {\itshape length} to {\itshape write\-Socket} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em write\-Socket} & The socket to write to \\
+\hline
+\mbox{\tt in}  & {\em data} & The data to write \\
+\hline
+\mbox{\tt in}  & {\em length} & The length of {\itshape data} Read data from a socket \\
+\hline
+\mbox{\tt in}  & {\em s} & the socket \\
+\hline
+\mbox{\tt in}  & {\em rak\-Peer} & The instance of rak\-Peer containing the recv\-From C callback \\
+\hline
+\mbox{\tt in}  & {\em error\-Code} & An error code if an error occured . \\
+\hline
+\mbox{\tt in}  & {\em connection\-Socket\-Index} & Which of the sockets in \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} we are using \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if you successfully read data, false on error. Given a socket and I\-P, retrieves the subnet mask, on linux the socket is unused 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in\-Sock} & the socket \\
+\hline
+\mbox{\tt in}  & {\em in\-Ip\-String} & The ip of the interface you wish to retrieve the subnet mask from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the ip dotted subnet mask if successful, otherwise returns empty string (\char`\"{}\char`\"{}) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_socket_layer_8h}{Socket\-Layer.\-h}\end{DoxyCompactItemize}

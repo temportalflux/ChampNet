@@ -1,0 +1,137 @@
+\hypertarget{class_data_structures_1_1_b_plus_tree}{\section{Data\-Structures\-:\-:B\-Plus\-Tree$<$ Key\-Type, Data\-Type, order $>$ Class Template Reference}
+\label{class_data_structures_1_1_b_plus_tree}\index{Data\-Structures\-::\-B\-Plus\-Tree$<$ Key\-Type, Data\-Type, order $>$@{Data\-Structures\-::\-B\-Plus\-Tree$<$ Key\-Type, Data\-Type, order $>$}}
+}
+
+
+{\ttfamily \#include $<$D\-S\-\_\-\-B\-Plus\-Tree.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aa0ecdf41d260dd15cf57dec86052f35f}{void {\bfseries Set\-Pool\-Page\-Size} (int size)}\label{class_data_structures_1_1_b_plus_tree_aa0ecdf41d260dd15cf57dec86052f35f}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aee8a1b00f0ed25dc368dd464364a0098}{bool {\bfseries Get} (const Key\-Type key, Data\-Type \&out) const }\label{class_data_structures_1_1_b_plus_tree_aee8a1b00f0ed25dc368dd464364a0098}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a93480fa15a725c118927b4348eaa3197}{bool {\bfseries Delete} (const Key\-Type key)}\label{class_data_structures_1_1_b_plus_tree_a93480fa15a725c118927b4348eaa3197}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a090dbcd47c705a995e5b1c8edef2c95c}{bool {\bfseries Delete} (const Key\-Type key, Data\-Type \&out)}\label{class_data_structures_1_1_b_plus_tree_a090dbcd47c705a995e5b1c8edef2c95c}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_abbfee8f6cb57f3a4b855c7b880196015}{bool {\bfseries Insert} (const Key\-Type key, const Data\-Type \&data)}\label{class_data_structures_1_1_b_plus_tree_abbfee8f6cb57f3a4b855c7b880196015}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_abe3120d0a4822be3eca4e9835d9d2a1a}{void {\bfseries Clear} (void)}\label{class_data_structures_1_1_b_plus_tree_abe3120d0a4822be3eca4e9835d9d2a1a}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a350138159df5e5f885a30270ef1409dc}{unsigned {\bfseries Size} (void) const }\label{class_data_structures_1_1_b_plus_tree_a350138159df5e5f885a30270ef1409dc}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ac8e7b0969a81b3fffc8a8d0933bf55e8}{bool {\bfseries Is\-Empty} (void) const }\label{class_data_structures_1_1_b_plus_tree_ac8e7b0969a81b3fffc8a8d0933bf55e8}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ab3794a44684972dd5e2d45f7ad895ef5}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries Get\-List\-Head} (void) const }\label{class_data_structures_1_1_b_plus_tree_ab3794a44684972dd5e2d45f7ad895ef5}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a60ae9643d4a785271617560704ad984e}{Data\-Type {\bfseries Get\-Data\-Head} (void) const }\label{class_data_structures_1_1_b_plus_tree_a60ae9643d4a785271617560704ad984e}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a13b0bb9cfe607796ac9655531b7c8d27}{void {\bfseries Print\-Leaves} (void)}\label{class_data_structures_1_1_b_plus_tree_a13b0bb9cfe607796ac9655531b7c8d27}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ae9d219abdf3c1e4eb92f86386f02a155}{void {\bfseries For\-Each\-Leaf} (void($\ast$func)(\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$leaf, int index))}\label{class_data_structures_1_1_b_plus_tree_ae9d219abdf3c1e4eb92f86386f02a155}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a80e720c175d3bf3612f2cb1777f90053}{void {\bfseries For\-Each\-Data} (void($\ast$func)(Data\-Type input, int index))}\label{class_data_structures_1_1_b_plus_tree_a80e720c175d3bf3612f2cb1777f90053}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aa95c0d019b5d7b34b9a0c56a5b46813a}{void {\bfseries Print\-Graph} (void)}\label{class_data_structures_1_1_b_plus_tree_aa95c0d019b5d7b34b9a0c56a5b46813a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_af2df9815c4b1a9bda8d426c14e873bb6}{void {\bfseries Validate\-Tree\-Recursive} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur)}\label{class_data_structures_1_1_b_plus_tree_af2df9815c4b1a9bda8d426c14e873bb6}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a5ff8a5876ab576982650b7fb02205a48}{void {\bfseries Delete\-From\-Page\-At\-Index} (const int index, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur)}\label{class_data_structures_1_1_b_plus_tree_a5ff8a5876ab576982650b7fb02205a48}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a0d8c994dbc67e9a9d23a5a829b6e84e8}{void {\bfseries Free\-Pages} (void)}\label{class_data_structures_1_1_b_plus_tree_a0d8c994dbc67e9a9d23a5a829b6e84e8}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ada2880997cd13505338358ce2c5365ac}{bool {\bfseries Get\-Index\-Of} (const Key\-Type key, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$page, int $\ast$out) const }\label{class_data_structures_1_1_b_plus_tree_ada2880997cd13505338358ce2c5365ac}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a84da41ad11bd71d28d510b9941b9ae78}{void {\bfseries Shift\-Keys\-Left} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur)}\label{class_data_structures_1_1_b_plus_tree_a84da41ad11bd71d28d510b9941b9ae78}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a46efd46dde7ff95cb0f5d3ddae9156e7}{bool {\bfseries Can\-Rotate\-Left} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, int child\-Index)}\label{class_data_structures_1_1_b_plus_tree_a46efd46dde7ff95cb0f5d3ddae9156e7}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a398b17d14837d5092d2d572ed742ce51}{bool {\bfseries Can\-Rotate\-Right} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, int child\-Index)}\label{class_data_structures_1_1_b_plus_tree_a398b17d14837d5092d2d572ed742ce51}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aaa78c3ef86a10f0f403ea3145bf27dcd}{void {\bfseries Rotate\-Right} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, int child\-Index, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action)}\label{class_data_structures_1_1_b_plus_tree_aaa78c3ef86a10f0f403ea3145bf27dcd}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_af6ac3613a87554754db36216ce3d27b0}{void {\bfseries Rotate\-Left} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, int child\-Index, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action)}\label{class_data_structures_1_1_b_plus_tree_af6ac3613a87554754db36216ce3d27b0}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_adba3c8c7e7fb630a52ed41350dde27ea}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries Insert\-Into\-Node} (const Key\-Type key, const Data\-Type \&child\-Data, int insertion\-Index, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$node\-Data, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action)}\label{class_data_structures_1_1_b_plus_tree_adba3c8c7e7fb630a52ed41350dde27ea}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ae459abd650445f328e74f11ddfa0e9fe}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries Insert\-Branch\-Down} (const Key\-Type key, const Data\-Type \&data, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action, bool $\ast$success)}\label{class_data_structures_1_1_b_plus_tree_ae459abd650445f328e74f11ddfa0e9fe}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ad061eceac63ffdc684c3b8777e36925e}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries Get\-Leaf\-From\-Key} (const Key\-Type key) const }\label{class_data_structures_1_1_b_plus_tree_ad061eceac63ffdc684c3b8777e36925e}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a62ad6d18868d637a258a0cd0b26b5e73}{bool {\bfseries Find\-Delete\-Rebalance} (const Key\-Type key, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, bool $\ast$underflow, Key\-Type right\-Root\-Key, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action, Data\-Type \&out)}\label{class_data_structures_1_1_b_plus_tree_a62ad6d18868d637a258a0cd0b26b5e73}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aee940b30b35605a776913b81ebed718f}{bool {\bfseries Fix\-Underflow} (int branch\-Index, \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur, Key\-Type right\-Root\-Key, \hyperlink{struct_data_structures_1_1_b_plus_tree_1_1_return_action}{Return\-Action} $\ast$return\-Action)}\label{class_data_structures_1_1_b_plus_tree_aee940b30b35605a776913b81ebed718f}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ad6f6b2ccc94f4ec8bf4e5ac5c96a5f67}{void {\bfseries Shift\-Node\-Left} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur)}\label{class_data_structures_1_1_b_plus_tree_ad6f6b2ccc94f4ec8bf4e5ac5c96a5f67}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_ae83f0e9a65601d1eb9136fd0c38efb80}{void {\bfseries Shift\-Node\-Right} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$cur)}\label{class_data_structures_1_1_b_plus_tree_ae83f0e9a65601d1eb9136fd0c38efb80}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a020c0a1da18064a095707eaa5ce1a55e}{static void {\bfseries Print\-Leaf} (\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$leaf, int index)}\label{class_data_structures_1_1_b_plus_tree_a020c0a1da18064a095707eaa5ce1a55e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a204cdd55060f14a2e5dbbaa4768859df}{\hyperlink{class_data_structures_1_1_memory_pool}{Memory\-Pool}$<$ \hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, \\*
+Data\-Type, order $>$ $>$ {\bfseries page\-Pool}}\label{class_data_structures_1_1_b_plus_tree_a204cdd55060f14a2e5dbbaa4768859df}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_a6a2002e71af1cfd4abc759c63bfc768e}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries root}}\label{class_data_structures_1_1_b_plus_tree_a6a2002e71af1cfd4abc759c63bfc768e}
+
+\item 
+\hypertarget{class_data_structures_1_1_b_plus_tree_aa6bbdd2d1c1df48f7b41d71c2f035d03}{\hyperlink{struct_data_structures_1_1_page}{Page}$<$ Key\-Type, Data\-Type, order $>$ $\ast$ {\bfseries leftmost\-Leaf}}\label{class_data_structures_1_1_b_plus_tree_aa6bbdd2d1c1df48f7b41d71c2f035d03}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Key\-Type, class Data\-Type, int order$>$class Data\-Structures\-::\-B\-Plus\-Tree$<$ Key\-Type, Data\-Type, order $>$}
+
+A B\-Plus tree Written with efficiency and speed in mind. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_d_s___b_plus_tree_8h}{D\-S\-\_\-\-B\-Plus\-Tree.\-h}\end{DoxyCompactItemize}

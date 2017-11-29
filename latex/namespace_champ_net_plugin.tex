@@ -1,0 +1,230 @@
+\hypertarget{namespace_champ_net_plugin}{\section{Package Champ\-Net\-Plugin}
+\label{namespace_champ_net_plugin}\index{Champ\-Net\-Plugin@{Champ\-Net\-Plugin}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_champ_net_plugin_1_1_network}{Network}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_champ_net_plugin_a95f023a4e052d535ba21ff3bbb13b24c}{typedef void($\ast$ {\bfseries Func\-Call\-Back} )(const char $\ast$message, int color, int size)}\label{namespace_champ_net_plugin_a95f023a4e052d535ba21ff3bbb13b24c}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Message\-I\-Ds} \{ \\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-A\-N\-K\-\_\-\-U\-P\-D\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-I\-F\-I\-C\-A\-T\-I\-O\-N, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-M\-I\-S\-S\-I\-N\-G} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-L\-O\-S\-T, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-T\-T\-E\-M\-P\-T\-\_\-\-F\-A\-I\-L\-E\-D, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-C\-E\-H\-O\-L\-D\-E\-R} = I\-D\-\_\-\-U\-S\-E\-R\-\_\-\-P\-A\-C\-K\-E\-T\-\_\-\-E\-N\-U\-M, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+\\*
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-A\-N\-K\-\_\-\-I\-N\-T\-E\-G\-R\-A\-T\-I\-O\-N}
+ \}
+\item 
+enum {\bfseries Message\-I\-Ds} \{ \\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-A\-N\-K\-\_\-\-U\-P\-D\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-I\-F\-I\-C\-A\-T\-I\-O\-N, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-M\-I\-S\-S\-I\-N\-G} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-L\-O\-S\-T, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D} = 16, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-T\-T\-E\-M\-P\-T\-\_\-\-F\-A\-I\-L\-E\-D, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-J\-E\-C\-T\-E\-D} = 17, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-C\-E\-H\-O\-L\-D\-E\-R} = I\-D\-\_\-\-U\-S\-E\-R\-\_\-\-P\-A\-C\-K\-E\-T\-\_\-\-E\-N\-U\-M, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-J\-O\-I\-N\-E\-D} = 135, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-M\-O\-V\-E\-M\-E\-N\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+\\*
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-U\-P\-D\-A\-T\-E\-\_\-\-G\-A\-M\-E\-S\-T\-A\-T\-E}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-P\-L\-A\-Y\-E\-R}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+{\bfseries I\-D\-\_\-\-B\-A\-T\-T\-L\-E\-\_\-\-R\-E\-S\-U\-L\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-L\-E\-F\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+\\*
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+\\*
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-C\-O\-R\-E\-\_\-\-U\-P}, 
+{\bfseries I\-D\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-R\-A\-N\-K\-\_\-\-I\-N\-T\-E\-G\-R\-A\-T\-I\-O\-N}
+ \}
+\item 
+enum {\bfseries Color} \{ \\*
+{\bfseries Red}, 
+{\bfseries Green}, 
+{\bfseries Blue}, 
+{\bfseries Black}, 
+\\*
+{\bfseries White}, 
+{\bfseries Yellow}, 
+{\bfseries Orange}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_champ_net_plugin_a849f82c5f4de7d9a7cf5d56644a5ebf2}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Create} ()}\label{namespace_champ_net_plugin_a849f82c5f4de7d9a7cf5d56644a5ebf2}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a5a62b238f68c59b131074192f76a332f}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void {\bfseries Register\-Debug\-Callback} (Func\-Call\-Back call\-Back)}\label{namespace_champ_net_plugin_a5a62b238f68c59b131074192f76a332f}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a7380724b368807f88b5cbe3037a8a9d8}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Destroy} ()}\label{namespace_champ_net_plugin_a7380724b368807f88b5cbe3037a8a9d8}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a53b12084325aeaf2abd475f3b5d19627}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Start\-Server} (int port, int max\-Clients)}\label{namespace_champ_net_plugin_a53b12084325aeaf2abd475f3b5d19627}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_ab92621bbf98ccf055d3a884220d5577e}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Start\-Client} ()}\label{namespace_champ_net_plugin_ab92621bbf98ccf055d3a884220d5577e}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_ae65d85077ea14169471c94ef9412db81}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Connect\-To\-Server} (const char $\ast$address, int port)}\label{namespace_champ_net_plugin_ae65d85077ea14169471c94ef9412db81}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a6fb34db2c53b323bf7c1ff054de6b5f5}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Fetch\-Packets} ()}\label{namespace_champ_net_plugin_a6fb34db2c53b323bf7c1ff054de6b5f5}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_abb7c7dca9d557ab9cd6b29fbb6a75785}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void $\ast$ {\bfseries Poll\-Packet} (bool \&valid\-Packet)}\label{namespace_champ_net_plugin_abb7c7dca9d557ab9cd6b29fbb6a75785}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_aeada1879c38a3ec33c57b15ba63fa53d}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G const char $\ast$ {\bfseries Get\-Packet\-Address} (void $\ast$packet\-Ptr, unsigned int \&length)}\label{namespace_champ_net_plugin_aeada1879c38a3ec33c57b15ba63fa53d}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_acd1de52a8a043992fd80521d459ba977}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G \\*
+unsigned char $\ast$ {\bfseries Get\-Packet\-Data} (void $\ast$packet\-Ptr, unsigned int \&length, unsigned long \&transmit\-Time)}\label{namespace_champ_net_plugin_acd1de52a8a043992fd80521d459ba977}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a713f269ee3388251cca3c05b331bcb77}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void {\bfseries Free\-Packet} (void $\ast$packet\-Ptr)}\label{namespace_champ_net_plugin_a713f269ee3388251cca3c05b331bcb77}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_aa200f86d409d3024b59ff9398b531797}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void {\bfseries Send\-Byte\-Array} (const char $\ast$address, int port, char $\ast$byte\-Array, int byte\-Array\-Size)}\label{namespace_champ_net_plugin_aa200f86d409d3024b59ff9398b531797}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a50b06a48ff0ffb5f98dc98a8b29546ad}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void {\bfseries Send\-Data} (const char $\ast$address, char $\ast$byte\-Array, int byte\-Array\-Size, \hyperlink{_packet_priority_8h_a659378374e516180f93640c79f59705c}{Packet\-Priority} $\ast$priority, \hyperlink{_packet_priority_8h_ae41fa01235e99dced384d137fa874a7e}{Packet\-Reliability} $\ast$reliability, int channel, bool broadcast)}\label{namespace_champ_net_plugin_a50b06a48ff0ffb5f98dc98a8b29546ad}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_ad73dddb34e26ec660742e00a0d41fee5}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G void {\bfseries Disconnect} ()}\label{namespace_champ_net_plugin_ad73dddb34e26ec660742e00a0d41fee5}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_af5f2e2b6f71b6e0ddca62b9d7ed7e272}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G const char $\ast$ {\bfseries Get\-Address} ()}\label{namespace_champ_net_plugin_af5f2e2b6f71b6e0ddca62b9d7ed7e272}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_aa96d47e69a072b231173aa4c85aa398e}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Write\-Time\-Stamp} (char $\ast$buffer, const Rak\-Net\-::\-Time \&time1, const Rak\-Net\-::\-Time \&time2)}\label{namespace_champ_net_plugin_aa96d47e69a072b231173aa4c85aa398e}
+
+\item 
+\hypertarget{namespace_champ_net_plugin_a5ad9510066afac2127464e36a72bc9b0}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G int {\bfseries Read\-Time\-Stamp} (const char $\ast$buffer, Rak\-Net\-::\-Time \&time1, Rak\-Net\-::\-Time \&time2)}\label{namespace_champ_net_plugin_a5ad9510066afac2127464e36a72bc9b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_champ_net_plugin_a6f246146f350188f1518f4dedb72f374}{C\-H\-A\-M\-P\-N\-E\-T\-\_\-\-P\-L\-U\-G\-I\-N\-\_\-\-S\-Y\-M\-T\-A\-G \\*
+\hyperlink{class_champ_net_1_1_network}{Champ\-Net\-::\-Network} $\ast$ {\bfseries gp\-Network} = 0}\label{namespace_champ_net_plugin_a6f246146f350188f1518f4dedb72f374}
+
+\end{DoxyCompactItemize}

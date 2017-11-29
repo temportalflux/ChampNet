@@ -1,0 +1,81 @@
+\hypertarget{class_rak_net_1_1_file_list_progress}{\section{Rak\-Net\-:\-:File\-List\-Progress Class Reference}
+\label{class_rak_net_1_1_file_list_progress}\index{Rak\-Net\-::\-File\-List\-Progress@{Rak\-Net\-::\-File\-List\-Progress}}
+}
+
+
+Callback interface set with File\-List\-::\-Set\-Callback() in case you want progress notifications when \hyperlink{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}{File\-List\-::\-Add\-Files\-From\-Directory()} is called.  
+
+
+
+
+{\ttfamily \#include $<$File\-List.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:File\-List\-Progress\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_file_list_progress}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_file_list_progress_a32e9ee5b00bc4518202cd0dcf36d0ba7}{virtual void \hyperlink{class_rak_net_1_1_file_list_progress_a32e9ee5b00bc4518202cd0dcf36d0ba7}{On\-Add\-Files\-From\-Directory\-Started} (\hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$file\-List, char $\ast$dir)}\label{class_rak_net_1_1_file_list_progress_a32e9ee5b00bc4518202cd0dcf36d0ba7}
+
+\begin{DoxyCompactList}\small\item\em First callback called when \hyperlink{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}{File\-List\-::\-Add\-Files\-From\-Directory()} starts. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_progress_ad3919d586c578255ecd543fde45eaf5c}{virtual void \hyperlink{class_rak_net_1_1_file_list_progress_ad3919d586c578255ecd543fde45eaf5c}{On\-Directory} (\hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$file\-List, char $\ast$dir, unsigned int directories\-Remaining)}\label{class_rak_net_1_1_file_list_progress_ad3919d586c578255ecd543fde45eaf5c}
+
+\begin{DoxyCompactList}\small\item\em Called for each directory, when that directory begins processing. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_progress_af8ee3a3b95dc9eb4851af6055fb4f82b}{virtual void \hyperlink{class_rak_net_1_1_file_list_progress_af8ee3a3b95dc9eb4851af6055fb4f82b}{On\-File} (\hyperlink{class_rak_net_1_1_file_list}{File\-List} $\ast$file\-List, char $\ast$dir, char $\ast$file\-Name, unsigned int file\-Size)}\label{class_rak_net_1_1_file_list_progress_af8ee3a3b95dc9eb4851af6055fb4f82b}
+
+\begin{DoxyCompactList}\small\item\em Called for each file, when that file begins processing. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_file_list_progress_a095e3b79e163c22c0b1ccc7e1e71c8b9}{On\-File\-Push} (const char $\ast$file\-Name, unsigned int file\-Length\-Bytes, unsigned int offset, unsigned int bytes\-Being\-Sent, bool done, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} target\-System, unsigned short set\-Id)
+\begin{DoxyCompactList}\small\item\em This function is called when we are sending a file to a remote system. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_progress_ac4856959e3d72933a287e5736935afc4}{virtual void \hyperlink{class_rak_net_1_1_file_list_progress_ac4856959e3d72933a287e5736935afc4}{On\-File\-Pushes\-Complete} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address, unsigned short set\-Id)}\label{class_rak_net_1_1_file_list_progress_ac4856959e3d72933a287e5736935afc4}
+
+\begin{DoxyCompactList}\small\item\em This function is called when all files have been read and are being transferred to a remote system. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_file_list_progress_a496ab33afd5f48473d42b8095095a908}{virtual void \hyperlink{class_rak_net_1_1_file_list_progress_a496ab33afd5f48473d42b8095095a908}{On\-Send\-Aborted} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address)}\label{class_rak_net_1_1_file_list_progress_a496ab33afd5f48473d42b8095095a908}
+
+\begin{DoxyCompactList}\small\item\em This function is called when a send to a system was aborted (probably due to disconnection) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Callback interface set with File\-List\-::\-Set\-Callback() in case you want progress notifications when \hyperlink{class_rak_net_1_1_file_list_a9ff81c1d5fb8ad1897fd6b6b12108cf8}{File\-List\-::\-Add\-Files\-From\-Directory()} is called. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_file_list_progress_a095e3b79e163c22c0b1ccc7e1e71c8b9}{\index{Rak\-Net\-::\-File\-List\-Progress@{Rak\-Net\-::\-File\-List\-Progress}!On\-File\-Push@{On\-File\-Push}}
+\index{On\-File\-Push@{On\-File\-Push}!RakNet::FileListProgress@{Rak\-Net\-::\-File\-List\-Progress}}
+\subsubsection[{On\-File\-Push}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-File\-List\-Progress\-::\-On\-File\-Push (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\-Name, }
+\item[{unsigned int}]{file\-Length\-Bytes, }
+\item[{unsigned int}]{offset, }
+\item[{unsigned int}]{bytes\-Being\-Sent, }
+\item[{bool}]{done, }
+\item[{{\bf System\-Address}}]{target\-System, }
+\item[{unsigned short}]{set\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_file_list_progress_a095e3b79e163c22c0b1ccc7e1e71c8b9}
+
+
+This function is called when we are sending a file to a remote system. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & The name of the file being sent \\
+\hline
+\mbox{\tt in}  & {\em file\-Length\-Bytes} & How long the file is \\
+\hline
+\mbox{\tt in}  & {\em offset} & The offset in bytes into the file that we are sending \\
+\hline
+\mbox{\tt in}  & {\em bytes\-Being\-Sent} & How many bytes we are sending this push \\
+\hline
+\mbox{\tt in}  & {\em done} & If this file is now done with this push \\
+\hline
+\mbox{\tt in}  & {\em target\-System} & Who we are sending to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_file_list_8h}{File\-List.\-h}\end{DoxyCompactItemize}

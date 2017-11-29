@@ -1,0 +1,47 @@
+\hypertarget{_message_filter_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Message\-Filter.h File Reference}
+\label{_message_filter_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Message\-Filter.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Message\-Filter.\-h}}
+}
+
+
+Message filter plugin. Assigns systems to Filter\-Sets. Each Filter\-Set limits what messages are allowed. This is a security related plugin.  
+
+
+{\ttfamily \#include \char`\"{}Native\-Feature\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Plugin\-Interface2.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-Ordered\-List.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}D\-S\-\_\-\-Hash.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_filter_set}{Rak\-Net\-::\-Filter\-Set}
+\item 
+struct \hyperlink{struct_rak_net_1_1_filtered_system}{Rak\-Net\-::\-Filtered\-System}
+\item 
+class \hyperlink{class_rak_net_1_1_message_filter}{Rak\-Net\-::\-Message\-Filter}
+\begin{DoxyCompactList}\small\item\em Assigns systems to Filter\-Sets. Each \hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} limits what kinds of messages are allowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_message_filter_8h_ae4d315ced89fd4074f5e3b1b3e2a4e29}{\#define \hyperlink{_message_filter_8h_ae4d315ced89fd4074f5e3b1b3e2a4e29}{M\-E\-S\-S\-A\-G\-E\-\_\-\-F\-I\-L\-T\-E\-R\-\_\-\-M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-I\-D}~256}\label{_message_filter_8h_ae4d315ced89fd4074f5e3b1b3e2a4e29}
+
+\begin{DoxyCompactList}\small\item\em Message\-Identifier (I\-D\-\_\-$\ast$) values shoudln't go higher than this. Change it if you do. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_rak_net_a9a83d9915b367b7a3830849ff1cd206a}{int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Rak\-Net\-::\-Message\-Filter\-Str\-Comp} (char $\ast$const \&key, char $\ast$const \&data)}\label{namespace_rak_net_a9a83d9915b367b7a3830849ff1cd206a}
+
+\item 
+\hypertarget{namespace_rak_net_a9b42225885a01cb9b0749efddb5f8f30}{int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Rak\-Net\-::\-Filter\-Set\-Comp} (const int \&key, Filter\-Set $\ast$const \&data)}\label{namespace_rak_net_a9b42225885a01cb9b0749efddb5f8f30}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Message filter plugin. Assigns systems to Filter\-Sets. Each Filter\-Set limits what messages are allowed. This is a security related plugin. 

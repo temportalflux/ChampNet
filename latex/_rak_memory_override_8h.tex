@@ -1,0 +1,182 @@
+\hypertarget{_rak_memory_override_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Memory\-Override.h File Reference}
+\label{_rak_memory_override_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Memory\-Override.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Memory\-Override.\-h}}
+}
+
+
+If \-\_\-\-U\-S\-E\-\_\-\-R\-A\-K\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E is defined, memory allocations go through rak\-Malloc, rak\-Realloc, and rak\-Free.  
+
+
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Defines.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$new$>$}\\*
+{\ttfamily \#include \char`\"{}Rak\-Alloca.\-h\char`\"{}}\\*
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rak_memory_override_8h_a7190bbda4327864c5e35e6ae59cb96f1}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Malloc} (void $\ast$($\ast$user\-Function)(size\-\_\-t size))}\label{_rak_memory_override_8h_a7190bbda4327864c5e35e6ae59cb96f1}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a675c429fa299ef50630d3a1d302b5525}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Realloc} (void $\ast$($\ast$user\-Function)(void $\ast$p, size\-\_\-t size))}\label{_rak_memory_override_8h_a675c429fa299ef50630d3a1d302b5525}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a6739912016f2f23a86c55e84301e30ab}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Free} (void($\ast$user\-Function)(void $\ast$p))}\label{_rak_memory_override_8h_a6739912016f2f23a86c55e84301e30ab}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a1a26d4e004d6c7235849e7a06ef892b3}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Malloc\-\_\-\-Ex} (void $\ast$($\ast$user\-Function)(size\-\_\-t size, const char $\ast$file, unsigned int line))}\label{_rak_memory_override_8h_a1a26d4e004d6c7235849e7a06ef892b3}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ac9b6c7d71b96281ea681b5fb4b30a482}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Realloc\-\_\-\-Ex} (void $\ast$($\ast$user\-Function)(void $\ast$p, size\-\_\-t size, const char $\ast$file, unsigned int line))}\label{_rak_memory_override_8h_ac9b6c7d71b96281ea681b5fb4b30a482}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a704865b9c1fd85082077bda943bf71ba}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Free\-\_\-\-Ex} (void($\ast$user\-Function)(void $\ast$p, const char $\ast$file, unsigned int line))}\label{_rak_memory_override_8h_a704865b9c1fd85082077bda943bf71ba}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a11d817ec43f2a6aba67c979c5c4f1362}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-Notify\-Out\-Of\-Memory} (void($\ast$user\-Function)(const char $\ast$file, const long line))}\label{_rak_memory_override_8h_a11d817ec43f2a6aba67c979c5c4f1362}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ad9b9b4fad00cab089ab7e27ae41848f3}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-D\-L\-Malloc\-M\-Map} (void $\ast$($\ast$user\-Function)(size\-\_\-t size))}\label{_rak_memory_override_8h_ad9b9b4fad00cab089ab7e27ae41848f3}
+
+\item 
+\hypertarget{_rak_memory_override_8h_aa1492bb514966d3bf5aeb7964d84a1a9}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-D\-L\-Malloc\-Direct\-M\-Map} (void $\ast$($\ast$user\-Function)(size\-\_\-t size))}\label{_rak_memory_override_8h_aa1492bb514966d3bf5aeb7964d84a1a9}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ae8755116b78d1951674d00af43c1ec88}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Set\-D\-L\-Malloc\-M\-Unmap} (int($\ast$user\-Function)(void $\ast$ptr, size\-\_\-t size))}\label{_rak_memory_override_8h_ae8755116b78d1951674d00af43c1ec88}
+
+\item 
+\hypertarget{namespace_rak_net_a42cc97e251adb58965692886763c1400}{{\footnotesize template$<$class Type $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W} (const char $\ast$file, unsigned int line)}\label{namespace_rak_net_a42cc97e251adb58965692886763c1400}
+
+\item 
+\hypertarget{namespace_rak_net_a4272a3177741414ca1f0cefb71498bdf}{{\footnotesize template$<$class Type , class P1 $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W\-\_\-1} (const char $\ast$file, unsigned int line, const P1 \&p1)}\label{namespace_rak_net_a4272a3177741414ca1f0cefb71498bdf}
+
+\item 
+\hypertarget{namespace_rak_net_ab20fdc4d28f0485178e358c62d2ac0f5}{{\footnotesize template$<$class Type , class P1 , class P2 $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W\-\_\-2} (const char $\ast$file, unsigned int line, const P1 \&p1, const P2 \&p2)}\label{namespace_rak_net_ab20fdc4d28f0485178e358c62d2ac0f5}
+
+\item 
+\hypertarget{namespace_rak_net_aaa0ebd22bb4403c112b2895b5678e6b2}{{\footnotesize template$<$class Type , class P1 , class P2 , class P3 $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W\-\_\-3} (const char $\ast$file, unsigned int line, const P1 \&p1, const P2 \&p2, const P3 \&p3)}\label{namespace_rak_net_aaa0ebd22bb4403c112b2895b5678e6b2}
+
+\item 
+\hypertarget{namespace_rak_net_a55e576481ad81aae8e18e07d67457be4}{{\footnotesize template$<$class Type , class P1 , class P2 , class P3 , class P4 $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W\-\_\-4} (const char $\ast$file, unsigned int line, const P1 \&p1, const P2 \&p2, const P3 \&p3, const P4 \&p4)}\label{namespace_rak_net_a55e576481ad81aae8e18e07d67457be4}
+
+\item 
+\hypertarget{namespace_rak_net_a698451f74317c4c40f64a94db75a16a1}{{\footnotesize template$<$class Type $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T Type $\ast$ {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-N\-E\-W\-\_\-\-A\-R\-R\-A\-Y} (const int count, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_a698451f74317c4c40f64a94db75a16a1}
+
+\item 
+\hypertarget{namespace_rak_net_ab8a5bdde3b78f58e78ee665e0233abde}{{\footnotesize template$<$class Type $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-D\-E\-L\-E\-T\-E} (Type $\ast$buff, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_ab8a5bdde3b78f58e78ee665e0233abde}
+
+\item 
+\hypertarget{namespace_rak_net_adb9431ae8d1a73248982f37faa49f4e5}{{\footnotesize template$<$class Type $>$ }\\R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void {\bfseries Rak\-Net\-::\-O\-P\-\_\-\-D\-E\-L\-E\-T\-E\-\_\-\-A\-R\-R\-A\-Y} (Type $\ast$buff, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_adb9431ae8d1a73248982f37faa49f4e5}
+
+\item 
+\hypertarget{namespace_rak_net_a3777c7e87d859d2764f96f4904258533}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Malloc} (size\-\_\-t size)}\label{namespace_rak_net_a3777c7e87d859d2764f96f4904258533}
+
+\item 
+\hypertarget{namespace_rak_net_ac4e54ee03fc404178545ae2f4e1c9ed1}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Realloc} (void $\ast$p, size\-\_\-t size)}\label{namespace_rak_net_ac4e54ee03fc404178545ae2f4e1c9ed1}
+
+\item 
+\hypertarget{namespace_rak_net_a40725fa3a350665615707a759571e58c}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Free} (void $\ast$p)}\label{namespace_rak_net_a40725fa3a350665615707a759571e58c}
+
+\item 
+\hypertarget{namespace_rak_net_acc243d041303d776a0eb6b5b78e3ae68}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Malloc\-\_\-\-Ex} (size\-\_\-t size, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_acc243d041303d776a0eb6b5b78e3ae68}
+
+\item 
+\hypertarget{namespace_rak_net_a781c27d82a55ccb252ec0b4e1b6ff4c6}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Realloc\-\_\-\-Ex} (void $\ast$p, size\-\_\-t size, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_a781c27d82a55ccb252ec0b4e1b6ff4c6}
+
+\item 
+\hypertarget{namespace_rak_net_ae4a385efe920b012a5452c2f76a6bff5}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Rak\-Net\-::\-\_\-\-Rak\-Free\-\_\-\-Ex} (void $\ast$p, const char $\ast$file, unsigned int line)}\label{namespace_rak_net_ae4a385efe920b012a5452c2f76a6bff5}
+
+\item 
+\hypertarget{namespace_rak_net_afa7b6ea4f437a2f1eb5af40ec595ec37}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-M\-Map} (size\-\_\-t size)}\label{namespace_rak_net_afa7b6ea4f437a2f1eb5af40ec595ec37}
+
+\item 
+\hypertarget{namespace_rak_net_a425c716852e4688667f16175f8ccdd9d}{void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T $\ast$ {\bfseries Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-Direct\-M\-Map} (size\-\_\-t size)}\label{namespace_rak_net_a425c716852e4688667f16175f8ccdd9d}
+
+\item 
+\hypertarget{namespace_rak_net_a24792bf0d5864e4830a301db56059f9d}{int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-M\-Unmap} (void $\ast$p, size\-\_\-t size)}\label{namespace_rak_net_a24792bf0d5864e4830a301db56059f9d}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a07a9248980508467c0fcc72390dffbef}{void {\bfseries Use\-Raknet\-Fixed\-Heap} (size\-\_\-t initial\-Capacity, void $\ast$($\ast$your\-M\-Map\-Function)(size\-\_\-t size)=Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-M\-Map, void $\ast$($\ast$your\-Direct\-M\-Map\-Function)(size\-\_\-t size)=Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-Direct\-M\-Map, int($\ast$your\-M\-Unmap\-Function)(void $\ast$p, size\-\_\-t size)=Rak\-Net\-::\-\_\-\-D\-L\-Malloc\-M\-Unmap)}\label{_rak_memory_override_8h_a07a9248980508467c0fcc72390dffbef}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a29e0131e4d447f9590fe534523f13b27}{void {\bfseries Free\-Rak\-Net\-Fixed\-Heap} (void)}\label{_rak_memory_override_8h_a29e0131e4d447f9590fe534523f13b27}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rak_memory_override_8h_a1aea27069cfa149c5a2c833d4899e2eb}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries rak\-Malloc} )(size\-\_\-t size)}\label{_rak_memory_override_8h_a1aea27069cfa149c5a2c833d4899e2eb}
+
+\item 
+\hypertarget{_rak_memory_override_8h_abeb999577dd69d4f0f0a2edf91c6e0fd}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries rak\-Realloc} )(void $\ast$p, size\-\_\-t size)}\label{_rak_memory_override_8h_abeb999577dd69d4f0f0a2edf91c6e0fd}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a8ee3457a85d54bf656cadcba67224968}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void($\ast$ {\bfseries rak\-Free} )(void $\ast$p)}\label{_rak_memory_override_8h_a8ee3457a85d54bf656cadcba67224968}
+
+\item 
+\hypertarget{_rak_memory_override_8h_af5594a49369994aed51c57a94dafff29}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries rak\-Malloc\-\_\-\-Ex} )(size\-\_\-t size, const char $\ast$file, unsigned int line)}\label{_rak_memory_override_8h_af5594a49369994aed51c57a94dafff29}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a0e91ca46a0ba5f06403846bef6ff6b5e}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries rak\-Realloc\-\_\-\-Ex} )(void $\ast$p, size\-\_\-t size, const char $\ast$file, unsigned int line)}\label{_rak_memory_override_8h_a0e91ca46a0ba5f06403846bef6ff6b5e}
+
+\item 
+\hypertarget{_rak_memory_override_8h_adaadb4582ec0cdb9c7189541a273271e}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void($\ast$ {\bfseries rak\-Free\-\_\-\-Ex} )(void $\ast$p, const char $\ast$file, unsigned int line)}\label{_rak_memory_override_8h_adaadb4582ec0cdb9c7189541a273271e}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a8e3a56ae91a1dfd92b1271c41208d5be}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void($\ast$ {\bfseries notify\-Out\-Of\-Memory} )(const char $\ast$file, const long line)}\label{_rak_memory_override_8h_a8e3a56ae91a1dfd92b1271c41208d5be}
+
+\item 
+\hypertarget{_rak_memory_override_8h_acf55999ba5855725fda4513e9a8de1aa}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries dl\-Malloc\-M\-Map} )(size\-\_\-t size)}\label{_rak_memory_override_8h_acf55999ba5855725fda4513e9a8de1aa}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ad5a8fc276382feab852d95865978644d}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$ {\bfseries dl\-Malloc\-Direct\-M\-Map} )(size\-\_\-t size)}\label{_rak_memory_override_8h_ad5a8fc276382feab852d95865978644d}
+
+\item 
+\hypertarget{_rak_memory_override_8h_afbb9b74667c57853346fbda53e12a084}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T int($\ast$ {\bfseries dl\-Malloc\-M\-Unmap} )(void $\ast$ptr, size\-\_\-t size)}\label{_rak_memory_override_8h_afbb9b74667c57853346fbda53e12a084}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a41c11a44a2e1f4b06ca0435aae5c89fd}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void \\*
+$\ast$($\ast$)(size\-\_\-t size) {\bfseries Get\-Malloc} ()}\label{_rak_memory_override_8h_a41c11a44a2e1f4b06ca0435aae5c89fd}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ad1882b45276861ba0431ebf524984218}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$)(void \\*
+$\ast$p, size\-\_\-t size) {\bfseries Get\-Realloc} ()}\label{_rak_memory_override_8h_ad1882b45276861ba0431ebf524984218}
+
+\item 
+\hypertarget{_rak_memory_override_8h_aa6108bf4d6d5eb9ba8c194005f45e513}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void($\ast$)(void $\ast$p) {\bfseries Get\-Free} ()}\label{_rak_memory_override_8h_aa6108bf4d6d5eb9ba8c194005f45e513}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ad373814b63bc0ab5cead0485d31d31ca}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void \\*
+$\ast$($\ast$)(size\-\_\-t size, const char \\*
+$\ast$file, unsigned int line) {\bfseries Get\-Malloc\-\_\-\-Ex} ()}\label{_rak_memory_override_8h_ad373814b63bc0ab5cead0485d31d31ca}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a54e21e839e9742ad7bbff6c4b10bfeff}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void $\ast$($\ast$)(void \\*
+$\ast$p, size\-\_\-t size, const char \\*
+$\ast$file, unsigned int line) {\bfseries Get\-Realloc\-\_\-\-Ex} ()}\label{_rak_memory_override_8h_a54e21e839e9742ad7bbff6c4b10bfeff}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a9521d72ca3a28d3ff2db3f427f77a84c}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void($\ast$)(void $\ast$p, \\*
+const char $\ast$file, unsigned int \\*
+line) {\bfseries Get\-Free\-\_\-\-Ex} ()}\label{_rak_memory_override_8h_a9521d72ca3a28d3ff2db3f427f77a84c}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ac840ec64dc15e0556ab3164300fb584b}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void \\*
+$\ast$($\ast$)(size\-\_\-t size) {\bfseries Get\-D\-L\-Malloc\-M\-Map} ()}\label{_rak_memory_override_8h_ac840ec64dc15e0556ab3164300fb584b}
+
+\item 
+\hypertarget{_rak_memory_override_8h_ad7e5fc03349fbc056249a564a4b89af0}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T void \\*
+$\ast$($\ast$)(size\-\_\-t size) {\bfseries Get\-D\-L\-Malloc\-Direct\-M\-Map} ()}\label{_rak_memory_override_8h_ad7e5fc03349fbc056249a564a4b89af0}
+
+\item 
+\hypertarget{_rak_memory_override_8h_a0ae4775988576e08bdd7841475aef9c0}{R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T int($\ast$)(void \\*
+$\ast$ptr, size\-\_\-t size) {\bfseries Get\-D\-L\-Malloc\-M\-Unmap} ()}\label{_rak_memory_override_8h_a0ae4775988576e08bdd7841475aef9c0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+If \-\_\-\-U\-S\-E\-\_\-\-R\-A\-K\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E is defined, memory allocations go through rak\-Malloc, rak\-Realloc, and rak\-Free. 

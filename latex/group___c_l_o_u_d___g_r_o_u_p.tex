@@ -1,0 +1,33 @@
+\hypertarget{group___c_l_o_u_d___g_r_o_u_p}{\section{Cloud\-Computing}
+\label{group___c_l_o_u_d___g_r_o_u_p}\index{Cloud\-Computing@{Cloud\-Computing}}
+}
+
+
+Contains the \hyperlink{class_rak_net_1_1_cloud_client}{Cloud\-Client} and \hyperlink{class_rak_net_1_1_cloud_server}{Cloud\-Server} plugins.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rak_net_1_1_cloud_client}{Rak\-Net\-::\-Cloud\-Client}
+\begin{DoxyCompactList}\small\item\em Performs \hyperlink{class_rak_net_1_1_cloud_client_aa561b024fd2f02c7f19c1cc36cfd2382}{Post()} and \hyperlink{class_rak_net_1_1_cloud_client_a97bcdfb7e824f979efa7491d3c837204}{Get()} operations on Cloud\-Memory\-Server. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_cloud_client_callback}{Rak\-Net\-::\-Cloud\-Client\-Callback}
+\item 
+class \hyperlink{class_rak_net_1_1_cloud_allocator}{Rak\-Net\-::\-Cloud\-Allocator}
+\item 
+struct \hyperlink{struct_rak_net_1_1_cloud_key}{Rak\-Net\-::\-Cloud\-Key}
+\item 
+struct \hyperlink{struct_rak_net_1_1_cloud_query}{Rak\-Net\-::\-Cloud\-Query}
+\item 
+struct \hyperlink{struct_rak_net_1_1_cloud_query_row}{Rak\-Net\-::\-Cloud\-Query\-Row}
+\item 
+struct \hyperlink{struct_rak_net_1_1_cloud_query_result}{Rak\-Net\-::\-Cloud\-Query\-Result}
+\item 
+class \hyperlink{class_rak_net_1_1_cloud_server_query_filter}{Rak\-Net\-::\-Cloud\-Server\-Query\-Filter}
+\begin{DoxyCompactList}\small\item\em Zero or more instances of \hyperlink{class_rak_net_1_1_cloud_server_query_filter}{Cloud\-Server\-Query\-Filter} can be attached to \hyperlink{class_rak_net_1_1_cloud_server}{Cloud\-Server} to restrict client queries All attached instances of \hyperlink{class_rak_net_1_1_cloud_server_query_filter}{Cloud\-Server\-Query\-Filter} on each corresponding operation, from all directly connected clients If any attached instance returns false for a given operation, that operation is silently rejected. \end{DoxyCompactList}\item 
+class \hyperlink{class_rak_net_1_1_cloud_server}{Rak\-Net\-::\-Cloud\-Server}
+\begin{DoxyCompactList}\small\item\em Stores client data, and allows cross-\/server communication to retrieve this data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the \hyperlink{class_rak_net_1_1_cloud_client}{Cloud\-Client} and \hyperlink{class_rak_net_1_1_cloud_server}{Cloud\-Server} plugins. The \hyperlink{class_rak_net_1_1_cloud_server}{Cloud\-Server} plugins operates on requests from the \hyperlink{class_rak_net_1_1_cloud_client}{Cloud\-Client} plugin. The servers are in a fully connected mesh topology, which the clients are connected to any server. Clients can interact with each other by posting and subscribing to memory updates, without being directly connected or even knowing about each other. 

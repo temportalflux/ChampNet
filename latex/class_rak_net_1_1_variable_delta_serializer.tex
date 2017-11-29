@@ -1,0 +1,376 @@
+\hypertarget{class_rak_net_1_1_variable_delta_serializer}{\section{Rak\-Net\-:\-:Variable\-Delta\-Serializer Class Reference}
+\label{class_rak_net_1_1_variable_delta_serializer}\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+}
+
+
+Class to compare memory values of variables in a current state to a prior state Results of the comparisons will be written to a bit\-Stream, such that only changed variables get written\par
+ Can be used with \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} to Serialize a \hyperlink{class_rak_net_1_1_replica3}{Replica3} per-\/variable, rather than comparing the entire object against itself\par
+ Usage\-:\par
+ B\-R$>$  
+
+
+
+
+{\ttfamily \#include $<$Variable\-Delta\-Serializer.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List}
+\item 
+struct \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_deserialization_context}{Deserialization\-Context}
+\item 
+struct \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History}
+\item 
+struct \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context} $\ast$context, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \-\_\-guid, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$\-\_\-bit\-Stream, uint32\-\_\-t \-\_\-send\-Receipt)
+\begin{DoxyCompactList}\small\item\em Call before doing one or more Serialize\-Variable calls when the data will be sent U\-N\-R\-E\-L\-I\-A\-B\-L\-E\-\_\-\-W\-I\-T\-H\-\_\-\-A\-C\-K\-\_\-\-R\-E\-C\-E\-I\-P\-T The last value of each variable will be saved per remote system. Additionally, a history of {\itshape \-\_\-send\-Receipts} is stored to determine what to resend on packetloss. When variables are lost, they will be flagged dirty and always resent to the system that lost it Disadvantages\-: Every variable for every remote system is copied internally, in addition to a history list of what variables changed for which {\itshape \-\_\-send\-Receipt}. Very memory and C\-P\-U intensive for multiple connections. Advantages\-: When data needs to be resent by \hyperlink{namespace_rak_net}{Rak\-Net}, \hyperlink{namespace_rak_net}{Rak\-Net} can only resend the value it currently has. This allows the application to control the resend, sending the most recent value of the variable. The end result is that bandwidth is used more efficiently because old data is never sent. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context} $\ast$context, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \-\_\-guid, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$\-\_\-bit\-Stream)
+\begin{DoxyCompactList}\small\item\em Call before doing one or more Serialize\-Variable calls for data that may be sent differently to every remote system (such as an invisibility flag that only teammates can see) The last value of each variable will be saved per remote system. Unlike \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, send receipts are not necessary Disadvantages\-: Every variable for every remote system is copied internally. Very memory and C\-P\-U intensive for multiple connections. Advantages\-: When data is sent differently depending on the recipient, this system can make things easier to use and is as efficient as it can be. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context} $\ast$context, bool \-\_\-is\-First\-Serialize\-To\-This\-System, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$\-\_\-bit\-Stream)
+\begin{DoxyCompactList}\small\item\em Call before doing one or more Serialize\-Variable calls for data that is sent with the same value to every remote system (such as health, position, etc.) This is the most common type of serialization, and also the most efficient Disadvantages\-: A copy of every variable still needs to be held, although only once Advantages\-: After the first serialization, the last serialized bit\-Stream will be used for subsequent sends. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}{End\-Serialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context} $\ast$context)
+\begin{DoxyCompactList}\small\item\em Call after \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()}, then after calling \hyperlink{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{Serialize\-Variable()} one or more times. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{Begin\-Deserialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_deserialization_context}{Deserialization\-Context} $\ast$context, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$\-\_\-bit\-Stream)
+\begin{DoxyCompactList}\small\item\em Call when you receive the \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} written by \hyperlink{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{Serialize\-Variable()}, before calling \hyperlink{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}{Deserialize\-Variable()} \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_aa004336b73a3e8f2a0ea37526ca06249}{End\-Deserialize} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_deserialization_context}{Deserialization\-Context} $\ast$context)
+\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{Add\-Remote\-System\-Variable\-History} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_aa11acde48680b36f5312c1729c057a26}{Remove\-Remote\-System\-Variable\-History} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad82bd595c1111ef536285f401138ebb4}{On\-Pre\-Serialize\-Tick} (void)
+\item 
+void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a55fc78fe99dae4f7727fa190429ec255}{On\-Message\-Receipt} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid, uint32\-\_\-t receipt\-Id, bool message\-Arrived)
+\item 
+{\footnotesize template$<$class Var\-Type $>$ }\\void \hyperlink{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{Serialize\-Variable} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_serialization_context}{Serialization\-Context} $\ast$context, const Var\-Type \&variable)
+\item 
+{\footnotesize template$<$class Var\-Type $>$ }\\bool \hyperlink{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}{Deserialize\-Variable} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_deserialization_context}{Deserialization\-Context} $\ast$context, Var\-Type \&variable)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a238dc1ef069b33be079c7aafef66c6c7}{void {\bfseries Free\-Vars\-Associated\-With\-Receipt} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid, uint32\-\_\-t receipt\-Id)}\label{class_rak_net_1_1_variable_delta_serializer_a238dc1ef069b33be079c7aafef66c6c7}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_aa063fbd31b6292cd64d36a5fa172c315}{void {\bfseries Dirty\-And\-Free\-Vars\-Associated\-With\-Receipt} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid, uint32\-\_\-t receipt\-Id)}\label{class_rak_net_1_1_variable_delta_serializer_aa063fbd31b6292cd64d36a5fa172c315}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_affae641077b786c77cf5373abf824207}{unsigned int {\bfseries Get\-Vars\-Written\-Per\-Remote\-System\-List\-Index} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_variable_delta_serializer_affae641077b786c77cf5373abf824207}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a2a606cdd6f5dbc37bd153b0f8dc20ce3}{void {\bfseries Remove\-Remote\-System\-Variable\-History} (void)}\label{class_rak_net_1_1_variable_delta_serializer_a2a606cdd6f5dbc37bd153b0f8dc20ce3}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a0a9316f258d4c360be4e31207b2f1442}{\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History} $\ast$ {\bfseries Get\-Remote\-System\-Variable\-History} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_variable_delta_serializer_a0a9316f258d4c360be4e31207b2f1442}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a85572881fd34c2a7bf010dfd54fb19e6}{\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List} $\ast$ {\bfseries Alloc\-Changed\-Variables\-List} (void)}\label{class_rak_net_1_1_variable_delta_serializer_a85572881fd34c2a7bf010dfd54fb19e6}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ae193aa8eb65b49ce18996132482cd968}{void {\bfseries Free\-Changed\-Variables\-List} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List} $\ast$changed\-Variables)}\label{class_rak_net_1_1_variable_delta_serializer_ae193aa8eb65b49ce18996132482cd968}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a582eca95bd0774710993fd5e8abc1ee4}{void {\bfseries Store\-Changed\-Variables\-List} (\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History} $\ast$variable\-History, \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List} $\ast$changed\-Variables, uint32\-\_\-t send\-Receipt)}\label{class_rak_net_1_1_variable_delta_serializer_a582eca95bd0774710993fd5e8abc1ee4}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a0d6e15b545949488357118cdea055a6a}{\hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History} $\ast$ {\bfseries Start\-Variable\-History\-Write} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_variable_delta_serializer_a0d6e15b545949488357118cdea055a6a}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a23862292bd18270b03526fce96842670}{unsigned int {\bfseries Get\-Remote\-System\-History\-List\-Index} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_variable_delta_serializer_a23862292bd18270b03526fce96842670}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_aec1594cced3f552478f4b6a1e053979f}{static int {\bfseries Updated\-Variables\-List\-Ptr\-Comp} (const uint32\-\_\-t \&key, \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List} $\ast$const \&data)}\label{class_rak_net_1_1_variable_delta_serializer_aec1594cced3f552478f4b6a1e053979f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History} $\ast$ $>$ \hyperlink{class_rak_net_1_1_variable_delta_serializer_add5fe9e2912394be108cbe924c53c39b}{remote\-System\-Variable\-History\-List}
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_accfc67f45826b3aa612880654e553dc0}{\hyperlink{class_data_structures_1_1_memory_pool}{Data\-Structures\-::\-Memory\-Pool}\\*
+$<$ \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_changed_variables_list}{Changed\-Variables\-List} $>$ {\bfseries updated\-Variables\-Memory\-Pool}}\label{class_rak_net_1_1_variable_delta_serializer_accfc67f45826b3aa612880654e553dc0}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ad3a7ca6857f44b07f9c8f0acab946217}{bool {\bfseries did\-Comparison\-This\-Tick}}\label{class_rak_net_1_1_variable_delta_serializer_ad3a7ca6857f44b07f9c8f0acab946217}
+
+\item 
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a76871cc416c4c905af5178853106deff}{\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} {\bfseries identical\-Serialization\-Bs}}\label{class_rak_net_1_1_variable_delta_serializer_a76871cc416c4c905af5178853106deff}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to compare memory values of variables in a current state to a prior state Results of the comparisons will be written to a bit\-Stream, such that only changed variables get written\par
+ Can be used with \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} to Serialize a \hyperlink{class_rak_net_1_1_replica3}{Replica3} per-\/variable, rather than comparing the entire object against itself\par
+ Usage\-:\par
+ B\-R$>$ 
+
+
+\begin{DoxyEnumerate}
+\item Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()}. In the case of \hyperlink{class_rak_net_1_1_replica3}{Replica3}, this would be in the Serialize() call\par
+
+\item For each variable of the type in step 1, call Serialize(). The same variables must be serialized every tick()\par
+
+\item Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}{End\-Serialize()}\par
+
+\item Repeat step 1 for each of the other categories of how to send varaibles\par
+ B\-R$>$ On the receiver\-:\par
+ B\-R$>$
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{Begin\-Deserialize()}. In the case of \hyperlink{class_rak_net_1_1_replica3}{Replica3}, this would be in the Deserialize() call\par
+
+\item Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}{Deserialize\-Variable()} for each variable, in the same order as was Serialized()\par
+
+\item Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}{End\-Serialize()}\par
+ \begin{DoxySeeAlso}{See Also}
+The \hyperlink{class_rak_net_1_1_replica_manager3}{Replica\-Manager3} sample 
+\end{DoxySeeAlso}
+
+\end{DoxyEnumerate}
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Add\-Remote\-System\-Variable\-History@{Add\-Remote\-System\-Variable\-History}}
+\index{Add\-Remote\-System\-Variable\-History@{Add\-Remote\-System\-Variable\-History}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Add\-Remote\-System\-Variable\-History}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Add\-Remote\-System\-Variable\-History (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}
+\hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()} and \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()} require knowledge of when connections are added and dropped Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{Add\-Remote\-System\-Variable\-History()} and Remove\-Remote\-System\-Variable\-History() to notify the system of these events 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-guid} & Which system we are sending to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Begin\-Deserialize@{Begin\-Deserialize}}
+\index{Begin\-Deserialize@{Begin\-Deserialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Begin\-Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Begin\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Deserialization\-Context} $\ast$}]{context, }
+\item[{{\bf Bit\-Stream} $\ast$}]{\-\_\-bit\-Stream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}
+
+
+Call when you receive the \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} written by \hyperlink{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{Serialize\-Variable()}, before calling \hyperlink{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}{Deserialize\-Variable()} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Holds the context of this group of deserialize calls. This can be a stack object just passed to the function. \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-bit\-Stream} & Pass the bit\-Stream originally passed to and written to by serialize calls \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Begin\-Identical\-Serialize@{Begin\-Identical\-Serialize}}
+\index{Begin\-Identical\-Serialize@{Begin\-Identical\-Serialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Begin\-Identical\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Begin\-Identical\-Serialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Serialization\-Context} $\ast$}]{context, }
+\item[{bool}]{\-\_\-is\-First\-Serialize\-To\-This\-System, }
+\item[{{\bf Bit\-Stream} $\ast$}]{\-\_\-bit\-Stream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}
+
+
+Call before doing one or more Serialize\-Variable calls for data that is sent with the same value to every remote system (such as health, position, etc.) This is the most common type of serialization, and also the most efficient Disadvantages\-: A copy of every variable still needs to be held, although only once Advantages\-: After the first serialization, the last serialized bit\-Stream will be used for subsequent sends. 
+
+\begin{DoxyPrecond}{Precondition}
+Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad82bd595c1111ef536285f401138ebb4}{On\-Pre\-Serialize\-Tick()} before doing any calls to \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} for each of your objects, once per game tick 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Holds the context of this group of serialize calls. This can be a stack object just passed to the function. \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-is\-First\-Serialize\-To\-This\-System} & Pass true if this is the first time ever serializing to this system (the initial download). This way all variables will be written, rather than checking against prior sent values. \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-bit\-Steam} & Which bit\-Stream to write to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Begin\-Unique\-Serialize@{Begin\-Unique\-Serialize}}
+\index{Begin\-Unique\-Serialize@{Begin\-Unique\-Serialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Begin\-Unique\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Begin\-Unique\-Serialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Serialization\-Context} $\ast$}]{context, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{\-\_\-guid, }
+\item[{{\bf Bit\-Stream} $\ast$}]{\-\_\-bit\-Stream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}
+
+
+Call before doing one or more Serialize\-Variable calls for data that may be sent differently to every remote system (such as an invisibility flag that only teammates can see) The last value of each variable will be saved per remote system. Unlike \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, send receipts are not necessary Disadvantages\-: Every variable for every remote system is copied internally. Very memory and C\-P\-U intensive for multiple connections. Advantages\-: When data is sent differently depending on the recipient, this system can make things easier to use and is as efficient as it can be. 
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{Add\-Remote\-System\-Variable\-History()} and Remove\-Remote\-System\-Variable\-History() must be called for new and lost connections 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Holds the context of this group of serialize calls. This can be a stack object just passed to the function. \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-guid} & Which system we are sending to \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-bit\-Steam} & Which bit\-Stream to write to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Begin\-Unreliable\-Acked\-Serialize@{Begin\-Unreliable\-Acked\-Serialize}}
+\index{Begin\-Unreliable\-Acked\-Serialize@{Begin\-Unreliable\-Acked\-Serialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Begin\-Unreliable\-Acked\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Begin\-Unreliable\-Acked\-Serialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Serialization\-Context} $\ast$}]{context, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{\-\_\-guid, }
+\item[{{\bf Bit\-Stream} $\ast$}]{\-\_\-bit\-Stream, }
+\item[{uint32\-\_\-t}]{\-\_\-send\-Receipt}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}
+
+
+Call before doing one or more Serialize\-Variable calls when the data will be sent U\-N\-R\-E\-L\-I\-A\-B\-L\-E\-\_\-\-W\-I\-T\-H\-\_\-\-A\-C\-K\-\_\-\-R\-E\-C\-E\-I\-P\-T The last value of each variable will be saved per remote system. Additionally, a history of {\itshape \-\_\-send\-Receipts} is stored to determine what to resend on packetloss. When variables are lost, they will be flagged dirty and always resent to the system that lost it Disadvantages\-: Every variable for every remote system is copied internally, in addition to a history list of what variables changed for which {\itshape \-\_\-send\-Receipt}. Very memory and C\-P\-U intensive for multiple connections. Advantages\-: When data needs to be resent by \hyperlink{namespace_rak_net}{Rak\-Net}, \hyperlink{namespace_rak_net}{Rak\-Net} can only resend the value it currently has. This allows the application to control the resend, sending the most recent value of the variable. The end result is that bandwidth is used more efficiently because old data is never sent. 
+
+\begin{DoxyPrecond}{Precondition}
+Upon getting I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-L\-O\-S\-S or I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a55fc78fe99dae4f7727fa190429ec255}{On\-Message\-Receipt()} 
+
+\hyperlink{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{Add\-Remote\-System\-Variable\-History()} and Remove\-Remote\-System\-Variable\-History() must be called for new and lost connections 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Holds the context of this group of serialize calls. This can be a stack object just passed to the function. \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-guid} & Which system we are sending to \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-bit\-Steam} & Which bit\-Stream to write to \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-send\-Receipt} & Returned from \hyperlink{class_rak_net_1_1_rak_peer_a9232bd1bc9c1a223ecef8682133f95ac}{Rak\-Peer\-::\-Increment\-Next\-Send\-Receipt()} and passed to the Send() or Send\-Lists() function. Identifies this update for I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-L\-O\-S\-S and I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Deserialize\-Variable@{Deserialize\-Variable}}
+\index{Deserialize\-Variable@{Deserialize\-Variable}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Deserialize\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Var\-Type $>$ bool Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Deserialize\-Variable (
+\begin{DoxyParamCaption}
+\item[{{\bf Deserialization\-Context} $\ast$}]{context, }
+\item[{Var\-Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_rak_net_1_1_variable_delta_serializer_ac7784665aecbdb82c929878c8a5a3007}
+Call to deserialize into a variable \begin{DoxyPrecond}{Precondition}
+You have called \hyperlink{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{Begin\-Deserialize()} 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+Be sure to call \hyperlink{class_rak_net_1_1_variable_delta_serializer_aa004336b73a3e8f2a0ea37526ca06249}{End\-Deserialize()} after finishing all deserializations 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Same context pointer passed to \hyperlink{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{Begin\-Deserialize()} \\
+\hline
+\mbox{\tt in}  & {\em variable} & A variable to write to the bit\-Stream passed to {\itshape context} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_aa004336b73a3e8f2a0ea37526ca06249}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!End\-Deserialize@{End\-Deserialize}}
+\index{End\-Deserialize@{End\-Deserialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{End\-Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-End\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Deserialization\-Context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_aa004336b73a3e8f2a0ea37526ca06249}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Same context pointer passed to \hyperlink{class_rak_net_1_1_variable_delta_serializer_a5cea057c2704378cc1268af235ff7b1e}{Begin\-Deserialize()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!End\-Serialize@{End\-Serialize}}
+\index{End\-Serialize@{End\-Serialize}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{End\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-End\-Serialize (
+\begin{DoxyParamCaption}
+\item[{{\bf Serialization\-Context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}
+
+
+Call after \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()}, then after calling \hyperlink{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{Serialize\-Variable()} one or more times. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Same context pointer passed to \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a55fc78fe99dae4f7727fa190429ec255}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!On\-Message\-Receipt@{On\-Message\-Receipt}}
+\index{On\-Message\-Receipt@{On\-Message\-Receipt}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{On\-Message\-Receipt}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-On\-Message\-Receipt (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid, }
+\item[{uint32\-\_\-t}]{receipt\-Id, }
+\item[{bool}]{message\-Arrived}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_a55fc78fe99dae4f7727fa190429ec255}
+Call when getting I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-L\-O\-S\-S or I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D for a particular system Example\-:
+
+uint32\-\_\-t msg\-Number; memcpy(\&msg\-Number, packet-\/$>$data+1, 4); Data\-Structures\-::\-List$<$\-Replica3$\ast$$>$ replica\-List\-Out; replica\-Manager.\-Get\-Replicas\-Created\-By\-Me(replica\-List\-Out); unsigned int idx; for (idx=0; idx $<$ replica\-List\-Out.\-Get\-Size(); idx++) \{ ((Sample\-Replica$\ast$)replica\-List\-Out\mbox{[}idx\mbox{]})-\/$>$Notify\-Replica\-Of\-Message\-Delivery\-Status(packet-\/$>$guid,msg\-Number, packet-\/$>$data\mbox{[}0\mbox{]}==I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D); \}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em guid} & Which system we are sending to \\
+\hline
+\mbox{\tt in}  & {\em receipt\-Id} & Encoded in bytes 1-\/4 inclusive of I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-L\-O\-S\-S and I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D \\
+\hline
+\mbox{\tt in}  & {\em message\-Arrived} & True for I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D, false otherwise \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_ad82bd595c1111ef536285f401138ebb4}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!On\-Pre\-Serialize\-Tick@{On\-Pre\-Serialize\-Tick}}
+\index{On\-Pre\-Serialize\-Tick@{On\-Pre\-Serialize\-Tick}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{On\-Pre\-Serialize\-Tick}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-On\-Pre\-Serialize\-Tick (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_ad82bd595c1111ef536285f401138ebb4}
+\hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} requires knowledge of when serialization has started for an object across multiple systems This way it can setup the flag to do new comparisons against the last sent values, rather than just resending the last sent bit\-Stream For \hyperlink{class_rak_net_1_1_replica3}{Replica3}, overload and call this from \hyperlink{class_rak_net_1_1_replica3_a1f633cb586ee48c3f3026f1af1053ba6}{Replica3\-::\-On\-User\-Replica\-Pre\-Serialize\-Tick()} \hypertarget{class_rak_net_1_1_variable_delta_serializer_aa11acde48680b36f5312c1729c057a26}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Remove\-Remote\-System\-Variable\-History@{Remove\-Remote\-System\-Variable\-History}}
+\index{Remove\-Remote\-System\-Variable\-History@{Remove\-Remote\-System\-Variable\-History}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Remove\-Remote\-System\-Variable\-History}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Remove\-Remote\-System\-Variable\-History (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_variable_delta_serializer_aa11acde48680b36f5312c1729c057a26}
+\hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()} and \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()} require knowledge of when connections are added and dropped Call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a36242a91f3fd4891d20b804792b60daf}{Add\-Remote\-System\-Variable\-History()} and Remove\-Remote\-System\-Variable\-History() to notify the system of these events 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-guid} & Which system we are sending to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!Serialize\-Variable@{Serialize\-Variable}}
+\index{Serialize\-Variable@{Serialize\-Variable}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{Serialize\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Var\-Type $>$ void Rak\-Net\-::\-Variable\-Delta\-Serializer\-::\-Serialize\-Variable (
+\begin{DoxyParamCaption}
+\item[{{\bf Serialization\-Context} $\ast$}]{context, }
+\item[{const Var\-Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_rak_net_1_1_variable_delta_serializer_a1f770773fb03107c9bf6c1acd301a8d6}
+Call to Serialize a variable Will write to the bit\-Steam passed to {\itshape context} true, variable\-Value if the variable has changed or has never been written. Otherwise will write false. \begin{DoxyPrecond}{Precondition}
+You have called \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} 
+
+Will also require calling \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad82bd595c1111ef536285f401138ebb4}{On\-Pre\-Serialize\-Tick()} if using \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+Be sure to call \hyperlink{class_rak_net_1_1_variable_delta_serializer_a08a27cab67d35fd2fa80fefcc6a0ff13}{End\-Serialize()} after finishing all serializations 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & Same context pointer passed to \hyperlink{class_rak_net_1_1_variable_delta_serializer_ae755cec2f8482621b134f1537a818d98}{Begin\-Unreliable\-Acked\-Serialize()}, \hyperlink{class_rak_net_1_1_variable_delta_serializer_ad3c9911d1d42bd432d622c98097f14a3}{Begin\-Unique\-Serialize()}, or \hyperlink{class_rak_net_1_1_variable_delta_serializer_a3ba21dc59bc10fa337c02d79a785e344}{Begin\-Identical\-Serialize()} \\
+\hline
+\mbox{\tt in}  & {\em variable} & A variable to write to the bit\-Stream passed to {\itshape context} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_rak_net_1_1_variable_delta_serializer_add5fe9e2912394be108cbe924c53c39b}{\index{Rak\-Net\-::\-Variable\-Delta\-Serializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}!remote\-System\-Variable\-History\-List@{remote\-System\-Variable\-History\-List}}
+\index{remote\-System\-Variable\-History\-List@{remote\-System\-Variable\-History\-List}!RakNet::VariableDeltaSerializer@{Rak\-Net\-::\-Variable\-Delta\-Serializer}}
+\subsubsection[{remote\-System\-Variable\-History\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Structures\-::\-List}$<${\bf Remote\-System\-Variable\-History}$\ast$$>$ Rak\-Net\-::\-Variable\-Delta\-Serializer\-::remote\-System\-Variable\-History\-List\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_rak_net_1_1_variable_delta_serializer_add5fe9e2912394be108cbe924c53c39b}
+A list of \hyperlink{struct_rak_net_1_1_variable_delta_serializer_1_1_remote_system_variable_history}{Remote\-System\-Variable\-History} indexed by guid, one per connection that we serialize to List is added to when Serialize\-Construction is called, and removed from when Serialize\-Destruction is called, or when a given connection is dropped 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/Variable\-Delta\-Serializer.\-h\end{DoxyCompactItemize}

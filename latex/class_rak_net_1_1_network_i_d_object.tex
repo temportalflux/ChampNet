@@ -1,0 +1,119 @@
+\hypertarget{class_rak_net_1_1_network_i_d_object}{\section{Rak\-Net\-:\-:Network\-I\-D\-Object Class Reference}
+\label{class_rak_net_1_1_network_i_d_object}\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+}
+
+
+Unique shared ids for each object instance.  
+
+
+
+
+{\ttfamily \#include $<$Network\-I\-D\-Object.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Network\-I\-D\-Object\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_rak_net_1_1_network_i_d_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_rak_net_1_1_network_i_d_object_abb1048648224a0c27fea7cb04f444310}{Set\-Network\-I\-D\-Manager} (\hyperlink{class_rak_net_1_1_network_i_d_manager}{Network\-I\-D\-Manager} $\ast$manager)
+\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_ac3be9f98153dfb91a16d16a8a63aca3d}{virtual \hyperlink{class_rak_net_1_1_network_i_d_manager}{Network\-I\-D\-Manager} $\ast$ \hyperlink{class_rak_net_1_1_network_i_d_object_ac3be9f98153dfb91a16d16a8a63aca3d}{Get\-Network\-I\-D\-Manager} (void) const }\label{class_rak_net_1_1_network_i_d_object_ac3be9f98153dfb91a16d16a8a63aca3d}
+
+\begin{DoxyCompactList}\small\item\em Returns what was passed to Set\-Network\-I\-D\-Manager. \end{DoxyCompactList}\item 
+virtual Network\-I\-D \hyperlink{class_rak_net_1_1_network_i_d_object_a4e2454899578ba16379491fc0aa45bb6}{Get\-Network\-I\-D} (void)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_network_i_d_object_a5ebfffe7c5bb1a87888b9c3bd940cf35}{Set\-Network\-I\-D} (Network\-I\-D id)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_network_i_d_object_a4cc5a498e4cd73194d7406350dd7a4c6}{Set\-Parent} (void $\ast$\-\_\-parent)
+\item 
+virtual void $\ast$ \hyperlink{class_rak_net_1_1_network_i_d_object_a6f48e0e1854cbc49cde9e9c9f7d3f679}{Get\-Parent} (void) const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_aa88968a38decf8659bc5e55e8193818b}{Network\-I\-D \hyperlink{class_rak_net_1_1_network_i_d_object_aa88968a38decf8659bc5e55e8193818b}{network\-I\-D}}\label{class_rak_net_1_1_network_i_d_object_aa88968a38decf8659bc5e55e8193818b}
+
+\begin{DoxyCompactList}\small\item\em The network I\-D of this object. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_a9deff1896e1bc8b3fa5cb3dfb3b441af}{\hyperlink{class_rak_net_1_1_network_i_d_manager}{Network\-I\-D\-Manager} $\ast$ {\bfseries network\-I\-D\-Manager}}\label{class_rak_net_1_1_network_i_d_object_a9deff1896e1bc8b3fa5cb3dfb3b441af}
+
+\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_a0df64530ef4626519c4e9999ad753a77}{void $\ast$ \hyperlink{class_rak_net_1_1_network_i_d_object_a0df64530ef4626519c4e9999ad753a77}{parent}}\label{class_rak_net_1_1_network_i_d_object_a0df64530ef4626519c4e9999ad753a77}
+
+\begin{DoxyCompactList}\small\item\em The parent set by \hyperlink{class_rak_net_1_1_network_i_d_object_a4cc5a498e4cd73194d7406350dd7a4c6}{Set\-Parent()} \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_a432357e461fae499cef98ceec470a38e}{\hyperlink{class_rak_net_1_1_network_i_d_object}{Network\-I\-D\-Object} $\ast$ {\bfseries next\-Instance\-For\-Network\-I\-D\-Manager}}\label{class_rak_net_1_1_network_i_d_object_a432357e461fae499cef98ceec470a38e}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_network_i_d_object_a2f909b82ae78a67063d99a148bd64f5c}{class {\bfseries Network\-I\-D\-Manager}}\label{class_rak_net_1_1_network_i_d_object_a2f909b82ae78a67063d99a148bd64f5c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unique shared ids for each object instance. 
+
+A class you can derive from to make it easier to represent every networked object with an integer. This way you can refer to objects over the network. One system should return true for Is\-Network\-I\-D\-Authority() and the rest should return false. When an object needs to be created, have the the one system create the object. Then have that system send a message to all other systems, and include the value returned from \hyperlink{class_rak_net_1_1_network_i_d_object_a4e2454899578ba16379491fc0aa45bb6}{Get\-Network\-I\-D()} in that packet. All other systems should then create the same class of object, and call \hyperlink{class_rak_net_1_1_network_i_d_object_a5ebfffe7c5bb1a87888b9c3bd940cf35}{Set\-Network\-I\-D()} on that class with the Network\-I\-D in the packet. \begin{DoxySeeAlso}{See Also}
+the manual for more information on this. 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_network_i_d_object_a4e2454899578ba16379491fc0aa45bb6}{\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}!Get\-Network\-I\-D@{Get\-Network\-I\-D}}
+\index{Get\-Network\-I\-D@{Get\-Network\-I\-D}!RakNet::NetworkIDObject@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+\subsubsection[{Get\-Network\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}virtual Network\-I\-D Rak\-Net\-::\-Network\-I\-D\-Object\-::\-Get\-Network\-I\-D (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_network_i_d_object_a4e2454899578ba16379491fc0aa45bb6}
+Returns the Network\-I\-D that you can use to refer to this object over the network. \begin{DoxyPrecond}{Precondition}
+You must first call Set\-Network\-I\-D\-Manager before using this function 
+\end{DoxyPrecond}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-N\-E\-T\-W\-O\-R\-K\-\_\-\-I\-D} & U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-N\-E\-T\-W\-O\-R\-K\-\_\-\-I\-D is returned Is\-Network\-I\-D\-Authority() is false and \hyperlink{class_rak_net_1_1_network_i_d_object_a5ebfffe7c5bb1a87888b9c3bd940cf35}{Set\-Network\-I\-D()} was not previously called. This is also returned if you call this function in the constructor. \\
+\hline
+{\em 0-\/65534} & Any other value is a valid Network\-I\-D. Network\-I\-Ds start at 0 and go to 65534, wrapping at that point. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_rak_net_1_1_network_i_d_object_a6f48e0e1854cbc49cde9e9c9f7d3f679}{\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}!Get\-Parent@{Get\-Parent}}
+\index{Get\-Parent@{Get\-Parent}!RakNet::NetworkIDObject@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+\subsubsection[{Get\-Parent}]{\setlength{\rightskip}{0pt plus 5cm}virtual void$\ast$ Rak\-Net\-::\-Network\-I\-D\-Object\-::\-Get\-Parent (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_network_i_d_object_a6f48e0e1854cbc49cde9e9c9f7d3f679}
+Return what was passed to Set\-Parent \begin{DoxyReturn}{Returns}
+The value passed to Set\-Parent, or 0 if it was never called. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_network_i_d_object_a5ebfffe7c5bb1a87888b9c3bd940cf35}{\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}!Set\-Network\-I\-D@{Set\-Network\-I\-D}}
+\index{Set\-Network\-I\-D@{Set\-Network\-I\-D}!RakNet::NetworkIDObject@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+\subsubsection[{Set\-Network\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Network\-I\-D\-Object\-::\-Set\-Network\-I\-D (
+\begin{DoxyParamCaption}
+\item[{Network\-I\-D}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_network_i_d_object_a5ebfffe7c5bb1a87888b9c3bd940cf35}
+Sets the Network\-I\-D for this instance. Usually this is called by the clients and determined from the servers. However, if you save multiplayer games you would likely use This on load as well. \hypertarget{class_rak_net_1_1_network_i_d_object_abb1048648224a0c27fea7cb04f444310}{\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}!Set\-Network\-I\-D\-Manager@{Set\-Network\-I\-D\-Manager}}
+\index{Set\-Network\-I\-D\-Manager@{Set\-Network\-I\-D\-Manager}!RakNet::NetworkIDObject@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+\subsubsection[{Set\-Network\-I\-D\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Network\-I\-D\-Object\-::\-Set\-Network\-I\-D\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf Network\-I\-D\-Manager} $\ast$}]{manager}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_network_i_d_object_abb1048648224a0c27fea7cb04f444310}
+Sets the manager class from which to request unique network I\-Ds Unlike previous versions, the \hyperlink{class_rak_net_1_1_network_i_d_object}{Network\-I\-D\-Object} relies on a manager class to provide I\-Ds, rather than using statics, So you can have more than one set of I\-Ds on the same system. \hypertarget{class_rak_net_1_1_network_i_d_object_a4cc5a498e4cd73194d7406350dd7a4c6}{\index{Rak\-Net\-::\-Network\-I\-D\-Object@{Rak\-Net\-::\-Network\-I\-D\-Object}!Set\-Parent@{Set\-Parent}}
+\index{Set\-Parent@{Set\-Parent}!RakNet::NetworkIDObject@{Rak\-Net\-::\-Network\-I\-D\-Object}}
+\subsubsection[{Set\-Parent}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Network\-I\-D\-Object\-::\-Set\-Parent (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{\-\_\-parent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_network_i_d_object_a4cc5a498e4cd73194d7406350dd7a4c6}
+Your class does not have to derive from \hyperlink{class_rak_net_1_1_network_i_d_object}{Network\-I\-D\-Object}, although that is the easiest way to implement this. If you want this to be a member object of another class, rather than inherit, then call \hyperlink{class_rak_net_1_1_network_i_d_object_a4cc5a498e4cd73194d7406350dd7a4c6}{Set\-Parent()} with a pointer to the parent class instance. G\-E\-T\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-F\-R\-O\-M\-\_\-\-I\-D will then return the parent rather than this instance. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_network_i_d_object_8h}{Network\-I\-D\-Object.\-h}\end{DoxyCompactItemize}

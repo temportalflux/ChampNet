@@ -1,0 +1,284 @@
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client}{\section{Rak\-Net\-:\-:Nat\-Punchthrough\-Client Class Reference}
+\label{class_rak_net_1_1_nat_punchthrough_client}\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+}
+
+
+Client code for N\-A\-T\-Punchthrough.  
+
+
+
+
+{\ttfamily \#include $<$Nat\-Punchthrough\-Client.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Nat\-Punchthrough\-Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_nat_punchthrough_client}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_addr_and_guid}{Addr\-And\-Guid}
+\item 
+struct \hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_d_s_t_and_fac}{D\-S\-T\-And\-Fac}
+\item 
+struct \hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_send_ping}{Send\-Ping}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_ab830402dee86fc7b557e098f4ccdd4f1}{Find\-Router\-Port\-Stride} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&facilitator)
+\item 
+bool \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a92dbda7c976d5973c5cd6a3e0aea95c0}{Open\-N\-A\-T} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} destination, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&facilitator)
+\item 
+\hyperlink{struct_rak_net_1_1_punchthrough_configuration}{Punchthrough\-Configuration} $\ast$ \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a6131cc61e5af13399db4358fbb7b0d15}{Get\-Punchthrough\-Configuration} (void)
+\item 
+void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a7bc339aacd4c7f355ebfbab17059c4a0}{Set\-Debug\-Interface} (\hyperlink{struct_rak_net_1_1_nat_punchthrough_debug_interface}{Nat\-Punchthrough\-Debug\-Interface} $\ast$i)
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a621163bc6be3e7d6f6c6b4d9c8e5f938}{void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a621163bc6be3e7d6f6c6b4d9c8e5f938}{Get\-U\-P\-N\-P\-Port\-Mappings} (char $\ast$external\-Port, char $\ast$internal\-Port, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&nat\-Punchthrough\-Server\-Address)}\label{class_rak_net_1_1_nat_punchthrough_client_a621163bc6be3e7d6f6c6b4d9c8e5f938}
+
+\begin{DoxyCompactList}\small\item\em Get the port mappings you should pass to U\-P\-N\-P (for miniupnpc-\/1.\-6.\-20120410, for the function U\-P\-N\-P\-\_\-\-Add\-Port\-Mapping) \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_afdb000c77864073b54260e4e882a3010}{virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_afdb000c77864073b54260e4e882a3010}{Update} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_afdb000c77864073b54260e4e882a3010}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a417a0812408c178e1e95d8983389e286}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a9819ed681b72317c2c97fc1f2abfc947}{On\-New\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, bool is\-Incoming)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a67db8e781fea747763df43240a29a84f}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_abec4863d26aa274f92e710245669d13b}{virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_abec4863d26aa274f92e710245669d13b}{On\-Attach} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_abec4863d26aa274f92e710245669d13b}
+
+\begin{DoxyCompactList}\small\item\em Called when the interface is attached. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a5f57399d9383c6bb3ff9a3ce64326572}{virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a5f57399d9383c6bb3ff9a3ce64326572}{On\-Detach} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a5f57399d9383c6bb3ff9a3ce64326572}
+
+\begin{DoxyCompactList}\small\item\em Called when the interface is detached. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a1563e46fb5626c93da63a39e549f9147}{virtual void \hyperlink{class_rak_net_1_1_nat_punchthrough_client_a1563e46fb5626c93da63a39e549f9147}{On\-Rak\-Peer\-Shutdown} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a1563e46fb5626c93da63a39e549f9147}
+
+\begin{DoxyCompactList}\small\item\em Called when \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} is shutdown. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a61a4f659a4a6e5235443d92202ab1b46}{void {\bfseries Clear} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a61a4f659a4a6e5235443d92202ab1b46}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a0d48fd9e340ffdef814f21b479783d7c}{struct \\*
+\hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_send_ping}{Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-Send\-Ping} {\bfseries sp}}\label{class_rak_net_1_1_nat_punchthrough_client_a0d48fd9e340ffdef814f21b479783d7c}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ {\bfseries H\-A\-S\-\_\-\-P\-O\-R\-T\-\_\-\-S\-T\-R\-I\-D\-E}, 
+{\bfseries U\-N\-K\-N\-O\-W\-N\-\_\-\-P\-O\-R\-T\-\_\-\-S\-T\-R\-I\-D\-E}, 
+{\bfseries C\-A\-L\-C\-U\-L\-A\-T\-I\-N\-G\-\_\-\-P\-O\-R\-T\-\_\-\-S\-T\-R\-I\-D\-E}, 
+{\bfseries I\-N\-C\-A\-P\-A\-B\-L\-E\-\_\-\-P\-O\-R\-T\-\_\-\-S\-T\-R\-I\-D\-E}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ae060232df249f3873e392c256d7d192c}{void {\bfseries On\-Failure\-Notification} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_nat_punchthrough_client_ae060232df249f3873e392c256d7d192c}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a3e1e300d307ce14980391871106c5b28}{void {\bfseries On\-Get\-Most\-Recent\-Port} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_nat_punchthrough_client_a3e1e300d307ce14980391871106c5b28}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ab5288c08890a42e31ab078a60f86abeb}{void {\bfseries On\-Connect\-At\-Time} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_nat_punchthrough_client_ab5288c08890a42e31ab078a60f86abeb}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a982d5de6139791a1383e234a21dad57d}{unsigned int {\bfseries Get\-Pending\-Open\-N\-A\-T\-Index} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} destination, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&facilitator)}\label{class_rak_net_1_1_nat_punchthrough_client_a982d5de6139791a1383e234a21dad57d}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_adf49f62627311fc85bad19c8b61d8546}{void {\bfseries Send\-Punchthrough} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} destination, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&facilitator)}\label{class_rak_net_1_1_nat_punchthrough_client_adf49f62627311fc85bad19c8b61d8546}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a272159ea12229f201c9d264da79559f2}{void {\bfseries Queue\-Open\-N\-A\-T} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} destination, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&facilitator)}\label{class_rak_net_1_1_nat_punchthrough_client_a272159ea12229f201c9d264da79559f2}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a8210cfd7a27ab5551362c7c826b4a342}{void {\bfseries Send\-Queued\-Open\-N\-A\-T} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a8210cfd7a27ab5551362c7c826b4a342}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ad1348e04305a6d5cbbc39434c723815f}{void {\bfseries Send\-T\-T\-L} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&sa)}\label{class_rak_net_1_1_nat_punchthrough_client_ad1348e04305a6d5cbbc39434c723815f}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a7e44f858286ee9057c19e596e1ebc6d7}{void {\bfseries Send\-Out\-Of\-Band} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} sa, \hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Message\-I\-D} oob\-Id)}\label{class_rak_net_1_1_nat_punchthrough_client_a7e44f858286ee9057c19e596e1ebc6d7}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a64244c5c73a56c461dd35f65357660b4}{void {\bfseries On\-Punchthrough\-Failure} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a64244c5c73a56c461dd35f65357660b4}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a0df37a851d63f4f0c2c0e1e02506a3d2}{void {\bfseries On\-Ready\-For\-Next\-Punchthrough} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_a0df37a851d63f4f0c2c0e1e02506a3d2}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_af7caa65b7bfba1bd8782bb982f43b060}{void {\bfseries Push\-Failure} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_af7caa65b7bfba1bd8782bb982f43b060}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_aa18e049e7bcb2fa66f385f648c591d3d}{bool {\bfseries Remove\-From\-Failure\-Queue} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_aa18e049e7bcb2fa66f385f648c591d3d}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_abaab51c8d76f4c35f50bb62fa268a89e}{void {\bfseries Push\-Success} (void)}\label{class_rak_net_1_1_nat_punchthrough_client_abaab51c8d76f4c35f50bb62fa268a89e}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a479a0e5d9b4cd46f8c74b15bb0ece7c0}{void {\bfseries Increment\-External\-Attempt\-Count} (Rak\-Net\-::\-Time time, Rak\-Net\-::\-Time delta)}\label{class_rak_net_1_1_nat_punchthrough_client_a479a0e5d9b4cd46f8c74b15bb0ece7c0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_af0bf1732b3c216e26dddd35ac9b0d09b}{unsigned short {\bfseries most\-Recent\-External\-Port}}\label{class_rak_net_1_1_nat_punchthrough_client_af0bf1732b3c216e26dddd35ac9b0d09b}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ade9a2b8f40cdd447c13ce5a0e69e1da8}{\hyperlink{struct_rak_net_1_1_punchthrough_configuration}{Punchthrough\-Configuration} {\bfseries pc}}\label{class_rak_net_1_1_nat_punchthrough_client_ade9a2b8f40cdd447c13ce5a0e69e1da8}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_aad4712a0686de7a9882d5214ff1b3b98}{\hyperlink{struct_rak_net_1_1_nat_punchthrough_debug_interface}{Nat\-Punchthrough\-Debug\-Interface} $\ast$ {\bfseries nat\-Punchthrough\-Debug\-Interface}}\label{class_rak_net_1_1_nat_punchthrough_client_aad4712a0686de7a9882d5214ff1b3b98}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a76f363b04f7b2fe72f9c447810ad9b40}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_addr_and_guid}{Addr\-And\-Guid} $>$ {\bfseries failed\-Attempt\-List}}\label{class_rak_net_1_1_nat_punchthrough_client_a76f363b04f7b2fe72f9c447810ad9b40}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a09ec532d4e5825b33ad878215ecbf371}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}$<$ \hyperlink{struct_rak_net_1_1_nat_punchthrough_client_1_1_d_s_t_and_fac}{D\-S\-T\-And\-Fac} $>$ {\bfseries queued\-Open\-Nat}}\label{class_rak_net_1_1_nat_punchthrough_client_a09ec532d4e5825b33ad878215ecbf371}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a4554464dfd6f31b423fd917ac0c7ceca}{unsigned short {\bfseries port\-Stride}}\label{class_rak_net_1_1_nat_punchthrough_client_a4554464dfd6f31b423fd917ac0c7ceca}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a3013ea7e11ff767a3c94fa17a1a610ed}{enum \\*
+Rak\-Net\-::\-Nat\-Punchthrough\-Client\-:: \{ ... \}  {\bfseries has\-Port\-Stride}}\label{class_rak_net_1_1_nat_punchthrough_client_a3013ea7e11ff767a3c94fa17a1a610ed}
+
+\item 
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ad6e9c1a852d96bad03766aee65f96be0}{Rak\-Net\-::\-Time {\bfseries port\-Stride\-Cal\-Timeout}}\label{class_rak_net_1_1_nat_punchthrough_client_ad6e9c1a852d96bad03766aee65f96be0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Client code for N\-A\-T\-Punchthrough. 
+
+Maintain connection to \hyperlink{class_rak_net_1_1_nat_punchthrough_server}{Nat\-Punchthrough\-Server} to process incoming connection attempts through \hyperlink{class_rak_net_1_1_nat_punchthrough_client}{Nat\-Punchthrough\-Client}\par
+ Client will send datagrams to port to estimate next port\par
+ Will simultaneously connect with another client once ports are estimated. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_rak_net_1_1_nat_type_detection_client}{Nat\-Type\-Detection\-Client} See also \href{http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html}{\tt http\-://www.\-jenkinssoftware.\-com/raknet/manual/natpunchthrough.\-html} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_ab830402dee86fc7b557e098f4ccdd4f1}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!Find\-Router\-Port\-Stride@{Find\-Router\-Port\-Stride}}
+\index{Find\-Router\-Port\-Stride@{Find\-Router\-Port\-Stride}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{Find\-Router\-Port\-Stride}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-Find\-Router\-Port\-Stride (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{facilitator}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_nat_punchthrough_client_ab830402dee86fc7b557e098f4ccdd4f1}
+If the instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} running N\-A\-T\-Punchthrough\-Server was bound to two I\-P addresses, then you can call \hyperlink{class_rak_net_1_1_nat_punchthrough_client_ab830402dee86fc7b557e098f4ccdd4f1}{Find\-Router\-Port\-Stride()} This will determine the stride that your router uses when assigning ports, if your router is full-\/cone This function is also called automatically when you call Open\-N\-A\-T -\/ however, calling it earlier when you are connected to the facilitator will speed up the process 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination} & The system to punch. Must already be connected to {\itshape facilitator} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a6131cc61e5af13399db4358fbb7b0d15}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!Get\-Punchthrough\-Configuration@{Get\-Punchthrough\-Configuration}}
+\index{Get\-Punchthrough\-Configuration@{Get\-Punchthrough\-Configuration}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{Get\-Punchthrough\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Punchthrough\-Configuration}$\ast$ Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-Get\-Punchthrough\-Configuration (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_nat_punchthrough_client_a6131cc61e5af13399db4358fbb7b0d15}
+Modify the system configuration if desired Don't modify the variables in the structure while punchthrough is in progress \hypertarget{class_rak_net_1_1_nat_punchthrough_client_a67db8e781fea747763df43240a29a84f}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_nat_punchthrough_client_a67db8e781fea747763df43240a29a84f}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a9819ed681b72317c2c97fc1f2abfc947}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!On\-New\-Connection@{On\-New\-Connection}}
+\index{On\-New\-Connection@{On\-New\-Connection}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{On\-New\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-On\-New\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{bool}]{is\-Incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_nat_punchthrough_client_a9819ed681b72317c2c97fc1f2abfc947}
+Called when we got a new connection 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & Address of the new connection \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em is\-Incoming} & If true, this is I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, or the equivalent \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_abf13327cc10f772ba06dff8f2687f8ae}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a417a0812408c178e1e95d8983389e286}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_nat_punchthrough_client_a417a0812408c178e1e95d8983389e286}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a92dbda7c976d5973c5cd6a3e0aea95c0}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!Open\-N\-A\-T@{Open\-N\-A\-T}}
+\index{Open\-N\-A\-T@{Open\-N\-A\-T}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{Open\-N\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-Open\-N\-A\-T (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{destination, }
+\item[{const {\bf System\-Address} \&}]{facilitator}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_nat_punchthrough_client_a92dbda7c976d5973c5cd6a3e0aea95c0}
+Punchthrough a N\-A\-T. Doesn't connect, just tries to setup the routing table 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em destination} & The system to punch. Must already be connected to {\itshape facilitator} \\
+\hline
+\mbox{\tt in}  & {\em facilitator} & A system we are already connected to running the \hyperlink{class_rak_net_1_1_nat_punchthrough_server}{Nat\-Punchthrough\-Server} plugin \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+Open\-N\-A\-T\-Group() You will get \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3affdbfc82c9c5d38c9c1f99d3244ed865}{I\-D\-\_\-\-N\-A\-T\-\_\-\-P\-U\-N\-C\-H\-T\-H\-R\-O\-U\-G\-H\-\_\-\-S\-U\-C\-C\-E\-E\-D\-E\-D} on success You will get \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3ab4a8fb1b8f1cf8d84c1ca12bce33554e}{I\-D\-\_\-\-N\-A\-T\-\_\-\-T\-A\-R\-G\-E\-T\-\_\-\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}, \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3afada41cc29bd7576f36f4adab1d0bc05}{I\-D\-\_\-\-N\-A\-T\-\_\-\-T\-A\-R\-G\-E\-T\-\_\-\-U\-N\-R\-E\-S\-P\-O\-N\-S\-I\-V\-E}, \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3a0a8781eb6bf0d36ced05ecba17c8d6ca}{I\-D\-\_\-\-N\-A\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-T\-O\-\_\-\-T\-A\-R\-G\-E\-T\-\_\-\-L\-O\-S\-T}, \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3ac5d56d718ed0c497a00d57fae678fe54}{I\-D\-\_\-\-N\-A\-T\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-I\-N\-\_\-\-P\-R\-O\-G\-R\-E\-S\-S}, or \hyperlink{_message_identifiers_8h_ac1b471af280629f5ace02e586d5bcfd3abcd2f6fe83d1ab366fe70163bbb141d7}{I\-D\-\_\-\-N\-A\-T\-\_\-\-P\-U\-N\-C\-H\-T\-H\-R\-O\-U\-G\-H\-\_\-\-F\-A\-I\-L\-E\-D} on failures of various types However, if you lose connection to the facilitator, you may not necessarily get above 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_nat_punchthrough_client_a7bc339aacd4c7f355ebfbab17059c4a0}{\index{Rak\-Net\-::\-Nat\-Punchthrough\-Client@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}!Set\-Debug\-Interface@{Set\-Debug\-Interface}}
+\index{Set\-Debug\-Interface@{Set\-Debug\-Interface}!RakNet::NatPunchthroughClient@{Rak\-Net\-::\-Nat\-Punchthrough\-Client}}
+\subsubsection[{Set\-Debug\-Interface}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Nat\-Punchthrough\-Client\-::\-Set\-Debug\-Interface (
+\begin{DoxyParamCaption}
+\item[{{\bf Nat\-Punchthrough\-Debug\-Interface} $\ast$}]{i}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_nat_punchthrough_client_a7bc339aacd4c7f355ebfbab17059c4a0}
+Sets a callback to be called with debug messages 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Pointer to an interface. The pointer is stored, so don't delete it while in progress. Pass 0 to clear. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_nat_punchthrough_client_8h}{Nat\-Punchthrough\-Client.\-h}\end{DoxyCompactItemize}

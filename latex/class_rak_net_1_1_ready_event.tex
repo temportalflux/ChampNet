@@ -1,0 +1,444 @@
+\hypertarget{class_rak_net_1_1_ready_event}{\section{Rak\-Net\-:\-:Ready\-Event Class Reference}
+\label{class_rak_net_1_1_ready_event}\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}}
+}
+
+
+Peer to peer synchronized ready and unready events.  
+
+
+
+
+{\ttfamily \#include $<$Ready\-Event.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Ready\-Event\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_ready_event}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_ready_event_1_1_ready_event_node}{Ready\-Event\-Node}
+\item 
+struct \hyperlink{struct_rak_net_1_1_ready_event_1_1_remote_system}{Remote\-System}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event} (int event\-Id, bool is\-Ready)
+\item 
+void \hyperlink{class_rak_net_1_1_ready_event_abc3c01527d0faf6b47e43ce0e3a0159c}{Force\-Completion} (int event\-Id)
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_ab8b4e32689f5c54d0ce7c6deed2eb7e6}{Delete\-Event} (int event\-Id)
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_a3e316ae7568001e5c2d9624f156a2ee8}{Is\-Event\-Set} (int event\-Id)
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_a90747ab26a89d426317dfa1d4f414fde}{Is\-Event\-Completion\-Processing} (int event\-Id) const 
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{Is\-Event\-Completed} (int event\-Id) const 
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_ad10f179c0565882651ca2bde5bf50a45}{Has\-Event} (int event\-Id)
+\item 
+unsigned \hyperlink{class_rak_net_1_1_ready_event_ad56242dec80dd75f05c1eb96458e0bf8}{Get\-Event\-List\-Size} (void) const 
+\item 
+int \hyperlink{class_rak_net_1_1_ready_event_adb53c9c21d8e88b1a5fbb3e241fe5f91}{Get\-Event\-At\-Index} (unsigned index) const 
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_aaf6bfa53f4be43cb4d9fe40911faefdf}{Add\-To\-Wait\-List} (int event\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_ae7cb534890f2ab044f2b81e9b3205bc8}{Remove\-From\-Wait\-List} (int event\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+bool \hyperlink{class_rak_net_1_1_ready_event_a1b1d658e1be6b128b013c20eed2bf580}{Is\-In\-Wait\-List} (int event\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+unsigned \hyperlink{class_rak_net_1_1_ready_event_ab620a94cd56f7a6a82aa5e680322cb89}{Get\-Remote\-Wait\-List\-Size} (int event\-Id) const 
+\item 
+\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{class_rak_net_1_1_ready_event_af38ea2b77651a37774e31bdbf5d663de}{Get\-From\-Wait\-List\-At\-Index} (int event\-Id, unsigned index) const 
+\item 
+\hyperlink{group___r_e_a_d_y___e_v_e_n_t___g_r_o_u_p_gaf87e91389822570de07c01ccb37b0bbf}{Ready\-Event\-System\-Status} \hyperlink{class_rak_net_1_1_ready_event_a43a6b3450223af740ef2a66bb3db6f87}{Get\-Ready\-Status} (int event\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)
+\item 
+void \hyperlink{class_rak_net_1_1_ready_event_a6355b9958259b6e645bb335a1b7b34a1}{Set\-Send\-Channel} (unsigned char new\-Channel)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a714ed279d9c026734ef58c713bc455aa}{static int {\bfseries Remote\-System\-Comp\-By\-Guid} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&key, const \hyperlink{struct_rak_net_1_1_ready_event_1_1_remote_system}{Remote\-System} \&data)}\label{class_rak_net_1_1_ready_event_a714ed279d9c026734ef58c713bc455aa}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_ae80eee9ab162558f840b53983a20e0de}{static int {\bfseries Ready\-Event\-Node\-Comp} (const int \&key, \hyperlink{struct_rak_net_1_1_ready_event_1_1_ready_event_node}{Ready\-Event\-::\-Ready\-Event\-Node} $\ast$const \&data)}\label{class_rak_net_1_1_ready_event_ae80eee9ab162558f840b53983a20e0de}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_ready_event_a2dd5308b4ee75a877c53404477a3c637}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_ready_event_acf26f69ce62bcbfe5077c61aa2c40f45}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a26a546e1fad47a20aee022aad42446df}{virtual void \hyperlink{class_rak_net_1_1_ready_event_a26a546e1fad47a20aee022aad42446df}{On\-Rak\-Peer\-Shutdown} (void)}\label{class_rak_net_1_1_ready_event_a26a546e1fad47a20aee022aad42446df}
+
+\begin{DoxyCompactList}\small\item\em Called when \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} is shutdown. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_ready_event_abfdeb476677809e346340b594ba3e8df}{void {\bfseries Clear} (void)}\label{class_rak_net_1_1_ready_event_abfdeb476677809e346340b594ba3e8df}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_ad7d2bbcf84ec021a147e02ab38bd0779}{void {\bfseries Send\-Ready\-State\-Query} (unsigned event\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_ready_event_ad7d2bbcf84ec021a147e02ab38bd0779}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_af520e55ca73e3ae18d46d57fe3bd4cc7}{void {\bfseries Send\-Ready\-Update} (unsigned event\-Index, unsigned system\-Index, bool force\-If\-Not\-Default)}\label{class_rak_net_1_1_ready_event_af520e55ca73e3ae18d46d57fe3bd4cc7}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_aa784fad9f99f90b3d4e7d72153eaf712}{void {\bfseries Broadcast\-Ready\-Update} (unsigned event\-Index, bool force\-If\-Not\-Default)}\label{class_rak_net_1_1_ready_event_aa784fad9f99f90b3d4e7d72153eaf712}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a4126e3410ab430297b182653cf03e05b}{void {\bfseries Remove\-From\-All\-Lists} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_ready_event_a4126e3410ab430297b182653cf03e05b}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a9658d9187e653e6a70ca787c5fe35b00}{void {\bfseries On\-Ready\-Event\-Query} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_ready_event_a9658d9187e653e6a70ca787c5fe35b00}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a17b7637767ad847de415a70663c13ade}{void {\bfseries Push\-Completion\-Packet} (unsigned event\-Id)}\label{class_rak_net_1_1_ready_event_a17b7637767ad847de415a70663c13ade}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a3d97deca0ae33e0fe3c18d905ac6a0fd}{bool {\bfseries Add\-To\-Wait\-List\-Internal} (unsigned event\-Index, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} guid)}\label{class_rak_net_1_1_ready_event_a3d97deca0ae33e0fe3c18d905ac6a0fd}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a34f4121e1aeb135923a0ca76a6e0ef67}{void {\bfseries On\-Ready\-Event\-Force\-All\-Set} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_ready_event_a34f4121e1aeb135923a0ca76a6e0ef67}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_ac1a05938224ae827285eacfc9648e8c5}{void {\bfseries On\-Ready\-Event\-Packet\-Update} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_ready_event_ac1a05938224ae827285eacfc9648e8c5}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a4183346192b955a648d5f5a0109fdbed}{void {\bfseries Update\-Ready\-Status} (unsigned event\-Index)}\label{class_rak_net_1_1_ready_event_a4183346192b955a648d5f5a0109fdbed}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a4157333874e9cf0b038edf5165fc9e35}{bool {\bfseries Is\-Event\-Completed\-By\-Index} (unsigned event\-Index) const }\label{class_rak_net_1_1_ready_event_a4157333874e9cf0b038edf5165fc9e35}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a5e280fe9ba2c8791783afc659b9c4157}{unsigned {\bfseries Create\-New\-Event} (int event\-Id, bool is\-Ready)}\label{class_rak_net_1_1_ready_event_a5e280fe9ba2c8791783afc659b9c4157}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_ab19cca26204561a893ed03a6671c8d50}{bool {\bfseries Set\-Event\-By\-Index} (int event\-Index, bool is\-Ready)}\label{class_rak_net_1_1_ready_event_ab19cca26204561a893ed03a6671c8d50}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_adc22ed2c55d19dfd7c2dfccf5e6323bf}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ int, \hyperlink{struct_rak_net_1_1_ready_event_1_1_ready_event_node}{Ready\-Event\-Node} \\*
+$\ast$, Ready\-Event\-::\-Ready\-Event\-Node\-Comp $>$ {\bfseries ready\-Event\-Node\-List}}\label{class_rak_net_1_1_ready_event_adc22ed2c55d19dfd7c2dfccf5e6323bf}
+
+\item 
+\hypertarget{class_rak_net_1_1_ready_event_a751025b4ae2d3138e349426bc71d37e7}{unsigned char {\bfseries channel}}\label{class_rak_net_1_1_ready_event_a751025b4ae2d3138e349426bc71d37e7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Peer to peer synchronized ready and unready events. 
+
+For peer to peer networks in a fully connected mesh.\par
+ Solves the problem of how to tell if all peers, relative to all other peers, are in a certain ready state.\par
+ For example, if A is connected to B and C, A may see that B and C are ready, but does not know if B is ready to C, or vice-\/versa.\par
+ This plugin uses two stages to solve that problem, first, everyone I know about is ready. Second, everyone I know about is ready to everyone they know about.\par
+ The user will get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-S\-E\-T and I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-U\-N\-S\-E\-T as the signal flag is set or unset\par
+ The user will get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-L\-L\-\_\-\-S\-E\-T when all systems are done waiting for all other systems, in which case the event is considered complete, and no longer tracked.\par
+ \begin{DoxySeeAlso}{See Also}
+Fully\-Connected\-Mesh2 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_ready_event_aaf6bfa53f4be43cb4d9fe40911faefdf}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Add\-To\-Wait\-List@{Add\-To\-Wait\-List}}
+\index{Add\-To\-Wait\-List@{Add\-To\-Wait\-List}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Add\-To\-Wait\-List}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Add\-To\-Wait\-List (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_aaf6bfa53f4be43cb4d9fe40911faefdf}
+Adds a system to wait for to signal an event before considering the event complete and returning I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-L\-L\-\_\-\-S\-E\-T. As we add systems, if this event was previously set to true with Set\-Event, these systems will get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-S\-E\-T. As these systems disconnect (directly or indirectly through the router) they are removed. \begin{DoxyNote}{Note}
+If the event completion process has already started, you cannot add more systems, as this would cause the completion process to fail 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined number previously passed to Set\-Event that has not yet completed \\
+\hline
+\mbox{\tt in}  & {\em guid} & An address to wait for event replies from. Pass U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-A\-D\-D\-R\-E\-S\-S for all currently connected systems. Until all systems in this list have called Set\-Event with this I\-D and true, and have this system in the list, we won't get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-M\-P\-L\-E\-T\-E \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on unknown event\-Id (this should be considered an error) 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_ab8b4e32689f5c54d0ce7c6deed2eb7e6}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Delete\-Event@{Delete\-Event}}
+\index{Delete\-Event@{Delete\-Event}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Delete\-Event}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Delete\-Event (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_ab8b4e32689f5c54d0ce7c6deed2eb7e6}
+Deletes an event. We will no longer wait for this event, and any systems that we know have set the event will be forgotten. Call this to clear memory when events are completed and you know you will never need them again. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. False (failure) on unknown event\-Id 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_abc3c01527d0faf6b47e43ce0e3a0159c}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Force\-Completion@{Force\-Completion}}
+\index{Force\-Completion@{Force\-Completion}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Force\-Completion}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Ready\-Event\-::\-Force\-Completion (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_abc3c01527d0faf6b47e43ce0e3a0159c}
+When systems can call \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event()} with is\-Ready==false, it is possible for one system to return true from \hyperlink{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{Is\-Event\-Completed()} while the other systems return false This can occur if a system \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event()} with is\-Ready==false while the completion message is still being transmitted. If your game has the situation where some action should be taken on all systems when \hyperlink{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{Is\-Event\-Completed()} is true for any system, then call \hyperlink{class_rak_net_1_1_ready_event_abc3c01527d0faf6b47e43ce0e3a0159c}{Force\-Completion()} when the action begins. This will force all systems to return true from \hyperlink{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{Is\-Event\-Completed()}. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier to immediately set as completed \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_ready_event_adb53c9c21d8e88b1a5fbb3e241fe5f91}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Get\-Event\-At\-Index@{Get\-Event\-At\-Index}}
+\index{Get\-Event\-At\-Index@{Get\-Event\-At\-Index}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Get\-Event\-At\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Rak\-Net\-::\-Ready\-Event\-::\-Get\-Event\-At\-Index (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_adb53c9c21d8e88b1a5fbb3e241fe5f91}
+Returns the event I\-D stored at a particular index. Event\-I\-Ds are stored sorted from least to greatest. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em index} & Index into the array, from 0 to \hyperlink{class_rak_net_1_1_ready_event_ad56242dec80dd75f05c1eb96458e0bf8}{Get\-Event\-List\-Size()} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The event I\-D stored at a particular index 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_ad56242dec80dd75f05c1eb96458e0bf8}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Get\-Event\-List\-Size@{Get\-Event\-List\-Size}}
+\index{Get\-Event\-List\-Size@{Get\-Event\-List\-Size}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Get\-Event\-List\-Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned Rak\-Net\-::\-Ready\-Event\-::\-Get\-Event\-List\-Size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_ad56242dec80dd75f05c1eb96458e0bf8}
+Returns the total number of events stored in the system. \begin{DoxyReturn}{Returns}
+The total number of events stored in the system. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_af38ea2b77651a37774e31bdbf5d663de}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Get\-From\-Wait\-List\-At\-Index@{Get\-From\-Wait\-List\-At\-Index}}
+\index{Get\-From\-Wait\-List\-At\-Index@{Get\-From\-Wait\-List\-At\-Index}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Get\-From\-Wait\-List\-At\-Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-G\-U\-I\-D} Rak\-Net\-::\-Ready\-Event\-::\-Get\-From\-Wait\-List\-At\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{unsigned}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_af38ea2b77651a37774e31bdbf5d663de}
+Returns the system address of a system at a particular index, for this event. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\mbox{\tt in}  & {\em index} & Index into the array, from 0 to Get\-Wait\-List\-Size() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The system address of a system at a particular index, for this event. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a43a6b3450223af740ef2a66bb3db6f87}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Get\-Ready\-Status@{Get\-Ready\-Status}}
+\index{Get\-Ready\-Status@{Get\-Ready\-Status}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Get\-Ready\-Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ready\-Event\-System\-Status} Rak\-Net\-::\-Ready\-Event\-::\-Get\-Ready\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_a43a6b3450223af740ef2a66bb3db6f87}
+For a remote system, find out what their ready status is (waiting, signaled, complete). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\mbox{\tt in}  & {\em guid} & Which system we are checking up on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The status of this system, for this particular event. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group___r_e_a_d_y___e_v_e_n_t___g_r_o_u_p_gaf87e91389822570de07c01ccb37b0bbf}{Ready\-Event\-System\-Status} 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_ready_event_ab620a94cd56f7a6a82aa5e680322cb89}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Get\-Remote\-Wait\-List\-Size@{Get\-Remote\-Wait\-List\-Size}}
+\index{Get\-Remote\-Wait\-List\-Size@{Get\-Remote\-Wait\-List\-Size}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Get\-Remote\-Wait\-List\-Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned Rak\-Net\-::\-Ready\-Event\-::\-Get\-Remote\-Wait\-List\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_ab620a94cd56f7a6a82aa5e680322cb89}
+Returns the total number of systems we are waiting on for this event. Does not include yourself 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total number of systems we are waiting on for this event. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_ad10f179c0565882651ca2bde5bf50a45}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Has\-Event@{Has\-Event}}
+\index{Has\-Event@{Has\-Event}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Has\-Event}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Has\-Event (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_ad10f179c0565882651ca2bde5bf50a45}
+Returns if this is a known event. Events may be known even if we never ourselves referenced them with Set\-Event, because other systems created them via I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-S\-E\-T. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if we have this event, false otherwise 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Is\-Event\-Completed@{Is\-Event\-Completed}}
+\index{Is\-Event\-Completed@{Is\-Event\-Completed}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Is\-Event\-Completed}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Is\-Event\-Completed (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}
+Returns if the wait list is a subset of the completion list. Call this after all systems you want to wait for have been added with Add\-To\-Wait\-List If you are waiting for a specific number of systems (such as players later connecting), also check Get\-Remote\-Wait\-List\-Size(event\-Id) to be equal to 1 less than the total number of participants. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on completion. False (failure) on unknown event\-Id, or the set is not completed. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a90747ab26a89d426317dfa1d4f414fde}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Is\-Event\-Completion\-Processing@{Is\-Event\-Completion\-Processing}}
+\index{Is\-Event\-Completion\-Processing@{Is\-Event\-Completion\-Processing}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Is\-Event\-Completion\-Processing}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Is\-Event\-Completion\-Processing (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_ready_event_a90747ab26a89d426317dfa1d4f414fde}
+Returns if the event is about to be ready and we are negotiating the final packets. This will usually only be true for a very short time, after which Is\-Event\-Completed should return true. While this is true you cannot add to the wait list, or \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event()} is\-Ready to false anymore. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if any other system has completed processing. Will always be true if \hyperlink{class_rak_net_1_1_ready_event_a8c4600be8271b798ea0158cef9261462}{Is\-Event\-Completed()} is true 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a3e316ae7568001e5c2d9624f156a2ee8}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Is\-Event\-Set@{Is\-Event\-Set}}
+\index{Is\-Event\-Set@{Is\-Event\-Set}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Is\-Event\-Set}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Is\-Event\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_a3e316ae7568001e5c2d9624f156a2ee8}
+Returns what was passed to \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event()} \begin{DoxyReturn}{Returns}
+The value of is\-Ready passed to \hyperlink{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{Set\-Event()}. Also returns false on unknown event. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a1b1d658e1be6b128b013c20eed2bf580}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Is\-In\-Wait\-List@{Is\-In\-Wait\-List}}
+\index{Is\-In\-Wait\-List@{Is\-In\-Wait\-List}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Is\-In\-Wait\-List}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Is\-In\-Wait\-List (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_a1b1d658e1be6b128b013c20eed2bf580}
+Returns if a particular system is waiting on a particular event. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier \\
+\hline
+\mbox{\tt in}  & {\em guid} & The system we are checking up on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this system is waiting on this event, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_acf26f69ce62bcbfe5077c61aa2c40f45}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Ready\-Event\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_ready_event_acf26f69ce62bcbfe5077c61aa2c40f45}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_ready_event_a2dd5308b4ee75a877c53404477a3c637}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Ready\-Event\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_ready_event_a2dd5308b4ee75a877c53404477a3c637}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_ready_event_ae7cb534890f2ab044f2b81e9b3205bc8}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Remove\-From\-Wait\-List@{Remove\-From\-Wait\-List}}
+\index{Remove\-From\-Wait\-List@{Remove\-From\-Wait\-List}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Remove\-From\-Wait\-List}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Remove\-From\-Wait\-List (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_ae7cb534890f2ab044f2b81e9b3205bc8}
+Removes systems from the wait list, which should have been previously added with Add\-To\-Wait\-List \begin{DoxyNote}{Note}
+Systems that directly or indirectly disconnect from us are automatically removed from the wait list 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em guid} & The system to remove from the wait list. Pass U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-R\-A\-K\-N\-E\-T\-\_\-\-G\-U\-I\-D for all currently connected systems. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on unknown event\-Id (this should be considered an error) 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Set\-Event@{Set\-Event}}
+\index{Set\-Event@{Set\-Event}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Set\-Event}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Ready\-Event\-::\-Set\-Event (
+\begin{DoxyParamCaption}
+\item[{int}]{event\-Id, }
+\item[{bool}]{is\-Ready}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_af7caed0bdee19e21bdd91ff34ff73b31}
+Sets or updates the initial ready state for our local system. If event\-Id is an unknown event the event is created. If event\-Id was previously used and you want to reuse it, call Delete\-Event first, or else you will keep the same event signals from before Systems previously or later added through \hyperlink{class_rak_net_1_1_ready_event_aaf6bfa53f4be43cb4d9fe40911faefdf}{Add\-To\-Wait\-List()} with the same {\itshape event\-Id} when is\-Ready=true will get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-S\-E\-T Systems previously added through Add\-To\-Wait\-List with the same {\itshape event\-Id} will get I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-U\-N\-S\-E\-T For both I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-S\-E\-T and I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-U\-N\-S\-E\-T, event\-Id is encoded in bytes 1 through 1+sizeof(int) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event\-Id} & A user-\/defined identifier to wait on. This can be a sequence counter, an event identifier, or anything else you want. \\
+\hline
+\mbox{\tt in}  & {\em is\-Ready} & True to signal we are ready to proceed with this event, false to unsignal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if event status is I\-D\-\_\-\-R\-E\-A\-D\-Y\-\_\-\-E\-V\-E\-N\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-A\-L\-L\-\_\-\-S\-E\-T, or if we are setting to a status we are already in (no change). Otherwise true 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_ready_event_a6355b9958259b6e645bb335a1b7b34a1}{\index{Rak\-Net\-::\-Ready\-Event@{Rak\-Net\-::\-Ready\-Event}!Set\-Send\-Channel@{Set\-Send\-Channel}}
+\index{Set\-Send\-Channel@{Set\-Send\-Channel}!RakNet::ReadyEvent@{Rak\-Net\-::\-Ready\-Event}}
+\subsubsection[{Set\-Send\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Ready\-Event\-::\-Set\-Send\-Channel (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{new\-Channel}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_ready_event_a6355b9958259b6e645bb335a1b7b34a1}
+This channel will be used for all \hyperlink{class_rak_net_1_1_rak_peer_a1ee7422f744ab606c92b4ed4b28db40e}{Rak\-Peer\-::\-Send} calls 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em new\-Channel} & The channel to use for internal \hyperlink{class_rak_net_1_1_rak_peer_a1ee7422f744ab606c92b4ed4b28db40e}{Rak\-Peer\-::\-Send} calls from this system. Defaults to 0. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_ready_event_8h}{Ready\-Event.\-h}\end{DoxyCompactItemize}

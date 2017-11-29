@@ -1,0 +1,102 @@
+\hypertarget{class_event_with_score}{\section{Event\-With\-Score Class Reference}
+\label{class_event_with_score}\index{Event\-With\-Score@{Event\-With\-Score}}
+}
+Inheritance diagram for Event\-With\-Score\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_event_with_score}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_with_score_afed686cec337ad6ba846ce5975194e09}{{\bfseries Event\-With\-Score} (byte id)}\label{class_event_with_score_afed686cec337ad6ba846ce5975194e09}
+
+\item 
+override int \hyperlink{class_event_with_score_ab5f63f2cd2bd7c3a63daaf04bf97d50a}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_score_a101e7edd3e63e1cf8db19f52d54c0041}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_with_score_accd96632d7beb8ef3bf539f6c8eec7c9}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint \hyperlink{class_event_with_score_a521dbdffa1ed1b2a08a671d881f66062}{score}
+\begin{DoxyCompactList}\small\item\em The player Score \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_with_score_a101e7edd3e63e1cf8db19f52d54c0041}{\index{Event\-With\-Score@{Event\-With\-Score}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!EventWithScore@{Event\-With\-Score}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Score.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_score_a101e7edd3e63e1cf8db19f52d54c0041}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{class_event_with_score_ab5f63f2cd2bd7c3a63daaf04bf97d50a}{\index{Event\-With\-Score@{Event\-With\-Score}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!EventWithScore@{Event\-With\-Score}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}override int Event\-With\-Score.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_score_ab5f63f2cd2bd7c3a63daaf04bf97d50a}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data 
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost Modifier\-: Christopher Brennan \hypertarget{class_event_with_score_accd96632d7beb8ef3bf539f6c8eec7c9}{\index{Event\-With\-Score@{Event\-With\-Score}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!EventWithScore@{Event\-With\-Score}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Score.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_score_accd96632d7beb8ef3bf539f6c8eec7c9}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_event_with_score_a521dbdffa1ed1b2a08a671d881f66062}{\index{Event\-With\-Score@{Event\-With\-Score}!score@{score}}
+\index{score@{score}!EventWithScore@{Event\-With\-Score}}
+\subsubsection[{score}]{\setlength{\rightskip}{0pt plus 5cm}uint Event\-With\-Score.\-score\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_event_with_score_a521dbdffa1ed1b2a08a671d881f66062}
+
+
+The player Score 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/events/Event\-With\-Score.\-cs\end{DoxyCompactItemize}

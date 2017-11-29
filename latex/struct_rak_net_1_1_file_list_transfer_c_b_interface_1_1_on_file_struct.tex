@@ -1,0 +1,62 @@
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct}{\section{Rak\-Net\-:\-:File\-List\-Transfer\-C\-B\-Interface\-:\-:On\-File\-Struct Struct Reference}
+\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct}\index{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct@{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct}}
+}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a28aaa643d16a0928566be451b9bb7216}{unsigned \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a28aaa643d16a0928566be451b9bb7216}{file\-Index}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a28aaa643d16a0928566be451b9bb7216}
+
+\begin{DoxyCompactList}\small\item\em The index into the set of files, from 0 to number\-Of\-Files\-In\-This\-Set. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a15482268287ed754ea8e01aa8952c673}{char \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a15482268287ed754ea8e01aa8952c673}{file\-Name} \mbox{[}512\mbox{]}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a15482268287ed754ea8e01aa8952c673}
+
+\begin{DoxyCompactList}\small\item\em The name of the file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a0c1f3b78a003439699946355776fb865}{char $\ast$ \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a0c1f3b78a003439699946355776fb865}{file\-Data}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a0c1f3b78a003439699946355776fb865}
+
+\begin{DoxyCompactList}\small\item\em The data pointed to by the file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a01e1896e18a7cb73f5b820eff4e9c00c}{Bit\-Size\-\_\-t \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a01e1896e18a7cb73f5b820eff4e9c00c}{byte\-Length\-Of\-This\-File}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a01e1896e18a7cb73f5b820eff4e9c00c}
+
+\begin{DoxyCompactList}\small\item\em The amount of data to be downloaded for this file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a60a1e88744b97fb2598da7bef79096a1}{Bit\-Size\-\_\-t \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a60a1e88744b97fb2598da7bef79096a1}{bytes\-Downloaded\-For\-This\-File}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a60a1e88744b97fb2598da7bef79096a1}
+
+\begin{DoxyCompactList}\small\item\em How many bytes of this file has been downloaded. \end{DoxyCompactList}\item 
+unsigned short \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_abbfbb86de031c99ac81438e1d4a350b4}{set\-I\-D}
+\begin{DoxyCompactList}\small\item\em Files are transmitted in sets, where more than one set of files can be transmitted at the same time. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a22cc04a1f56c2e423434f166c1ca6a8a}{unsigned \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a22cc04a1f56c2e423434f166c1ca6a8a}{number\-Of\-Files\-In\-This\-Set}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a22cc04a1f56c2e423434f166c1ca6a8a}
+
+\begin{DoxyCompactList}\small\item\em The number of files that are in this set. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ac6c772c697a0c81cd8306b10cf6af039}{unsigned \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ac6c772c697a0c81cd8306b10cf6af039}{byte\-Length\-Of\-This\-Set}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ac6c772c697a0c81cd8306b10cf6af039}
+
+\begin{DoxyCompactList}\small\item\em The total length of the transmitted files for this set, after being uncompressed. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a964493d4d13c1dc60945e6008d12970c}{unsigned \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a964493d4d13c1dc60945e6008d12970c}{bytes\-Downloaded\-For\-This\-Set}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a964493d4d13c1dc60945e6008d12970c}
+
+\begin{DoxyCompactList}\small\item\em The total length, in bytes, downloaded for this set. \end{DoxyCompactList}\item 
+\hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad9134e6310c8a685a6db27de4d81b32e}{context}
+\begin{DoxyCompactList}\small\item\em User data passed to one of the functions in the \hyperlink{class_rak_net_1_1_file_list}{File\-List} class. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad16e5bd930e0a9a5e09c4f9efd4899dd}{\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad16e5bd930e0a9a5e09c4f9efd4899dd}{sender\-System\-Address}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad16e5bd930e0a9a5e09c4f9efd4899dd}
+
+\begin{DoxyCompactList}\small\item\em Who sent this file. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a26eb022c51ff5cea4779be0637343667}{\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a26eb022c51ff5cea4779be0637343667}{sender\-Guid}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_a26eb022c51ff5cea4779be0637343667}
+
+\begin{DoxyCompactList}\small\item\em Who sent this file. Not valid when using T\-C\-P, only \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} (U\-D\-P) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad9134e6310c8a685a6db27de4d81b32e}{\index{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct@{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct}!context@{context}}
+\index{context@{context}!RakNet::FileListTransferCBInterface::OnFileStruct@{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct}}
+\subsubsection[{context}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List\-Node\-Context} Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct\-::context}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_ad9134e6310c8a685a6db27de4d81b32e}
+
+
+User data passed to one of the functions in the \hyperlink{class_rak_net_1_1_file_list}{File\-List} class. 
+
+However, on error, this is instead changed to one of the enumerations in the Patch\-Context structure. \hypertarget{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_abbfbb86de031c99ac81438e1d4a350b4}{\index{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct@{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct}!set\-I\-D@{set\-I\-D}}
+\index{set\-I\-D@{set\-I\-D}!RakNet::FileListTransferCBInterface::OnFileStruct@{Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct}}
+\subsubsection[{set\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short Rak\-Net\-::\-File\-List\-Transfer\-C\-B\-Interface\-::\-On\-File\-Struct\-::set\-I\-D}}\label{struct_rak_net_1_1_file_list_transfer_c_b_interface_1_1_on_file_struct_abbfbb86de031c99ac81438e1d4a350b4}
+
+
+Files are transmitted in sets, where more than one set of files can be transmitted at the same time. 
+
+This is the identifier for the set, which is returned by \hyperlink{class_rak_net_1_1_file_list_transfer_afc31c7d166bfb3fb60944624e27ce388}{File\-List\-Transfer\-::\-Setup\-Receive} 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_file_list_transfer_c_b_interface_8h}{File\-List\-Transfer\-C\-B\-Interface.\-h}\end{DoxyCompactItemize}

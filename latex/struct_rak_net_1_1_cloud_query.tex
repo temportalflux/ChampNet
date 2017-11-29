@@ -1,0 +1,41 @@
+\hypertarget{struct_rak_net_1_1_cloud_query}{\section{Rak\-Net\-:\-:Cloud\-Query Struct Reference}
+\label{struct_rak_net_1_1_cloud_query}\index{Rak\-Net\-::\-Cloud\-Query@{Rak\-Net\-::\-Cloud\-Query}}
+}
+
+
+{\ttfamily \#include $<$Cloud\-Common.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_a158dc88e85971ce14259561ec2a96809}{void {\bfseries Serialize} (bool write\-To\-Bitstream, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$bit\-Stream)}\label{struct_rak_net_1_1_cloud_query_a158dc88e85971ce14259561ec2a96809}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{struct_rak_net_1_1_cloud_key}{Cloud\-Key} $>$ \hyperlink{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}{keys}
+\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_ae31a898074fcfc16a03ba8b9c20be242}{uint32\-\_\-t \hyperlink{struct_rak_net_1_1_cloud_query_ae31a898074fcfc16a03ba8b9c20be242}{starting\-Row\-Index}}\label{struct_rak_net_1_1_cloud_query_ae31a898074fcfc16a03ba8b9c20be242}
+
+\begin{DoxyCompactList}\small\item\em If limiting the number of rows to return, this is the starting offset into the list. Has no effect unless max\-Rows\-To\-Return is $>$ 0. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_a6810e00768754e88ae1825c6eea6b265}{uint32\-\_\-t \hyperlink{struct_rak_net_1_1_cloud_query_a6810e00768754e88ae1825c6eea6b265}{max\-Rows\-To\-Return}}\label{struct_rak_net_1_1_cloud_query_a6810e00768754e88ae1825c6eea6b265}
+
+\begin{DoxyCompactList}\small\item\em Maximum number of rows to return. Actual number may still be less than this. Pass 0 to mean no-\/limit. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_cloud_query_a7c8c441b2801141bbba54946cc9ee4f7}{bool \hyperlink{struct_rak_net_1_1_cloud_query_a7c8c441b2801141bbba54946cc9ee4f7}{subscribe\-To\-Results}}\label{struct_rak_net_1_1_cloud_query_a7c8c441b2801141bbba54946cc9ee4f7}
+
+\begin{DoxyCompactList}\small\item\em If true, automatically get updates as the results returned to you change. Unsubscribe with Cloud\-Memory\-Client\-::\-Unsubscribe() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data members used to query the cloud 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}{\index{Rak\-Net\-::\-Cloud\-Query@{Rak\-Net\-::\-Cloud\-Query}!keys@{keys}}
+\index{keys@{keys}!RakNet::CloudQuery@{Rak\-Net\-::\-Cloud\-Query}}
+\subsubsection[{keys}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Structures\-::\-List}$<${\bf Cloud\-Key}$>$ Rak\-Net\-::\-Cloud\-Query\-::keys}}\label{struct_rak_net_1_1_cloud_query_a3a01154505b9a605142a8c95235d75ea}
+List of keys to query. Must be at least of length 1. This query is run on uploads from all clients, and those that match the combination of primary\-Key and secondary\-Key are potentially returned If you pass more than one key at a time, the results are concatenated so if you need to differentiate between queries then send two different queries 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/Cloud\-Common.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+\hypertarget{interface_i_serializing}{\section{I\-Serializing Interface Reference}
+\label{interface_i_serializing}\index{I\-Serializing@{I\-Serializing}}
+}
+Inheritance diagram for I\-Serializing\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_i_serializing}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}{\index{I\-Serializing@{I\-Serializing}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ISerializing@{I\-Serializing}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void I\-Serializing.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)}}\label{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+Implemented in \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Game\-State}, and \hyperlink{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{Game\-State.\-Player}.
+
+\hypertarget{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}{\index{I\-Serializing@{I\-Serializing}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!ISerializing@{I\-Serializing}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int I\-Serializing.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data 
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost 
+
+Implemented in \hyperlink{class_game_state_a57d152b243c11aa86e7ba0f07b4bd0dd}{Game\-State}, and \hyperlink{struct_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}{Game\-State.\-Player}.
+
+\hypertarget{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{\index{I\-Serializing@{I\-Serializing}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ISerializing@{I\-Serializing}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void I\-Serializing.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)}}\label{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+Implemented in \hyperlink{class_game_state_af57a06c77a763e8b57841bab79c9b12f}{Game\-State}, and \hyperlink{struct_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}{Game\-State.\-Player}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/events/I\-Serializing.\-cs\end{DoxyCompactItemize}

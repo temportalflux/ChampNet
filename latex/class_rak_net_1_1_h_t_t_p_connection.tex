@@ -1,0 +1,166 @@
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection}{\section{Rak\-Net\-:\-:H\-T\-T\-P\-Connection Class Reference}
+\label{class_rak_net_1_1_h_t_t_p_connection}\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+}
+
+
+Use \hyperlink{class_rak_net_1_1_h_t_t_p_connection}{H\-T\-T\-P\-Connection} to communicate with a web server.  
+
+
+
+
+{\ttfamily \#include $<$H\-T\-T\-P\-Connection.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_h_t_t_p_connection_1_1_bad_response}{Bad\-Response}
+\begin{DoxyCompactList}\small\item\em Encapsulates a raw H\-T\-T\-P response and response code. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_h_t_t_p_connection_1_1_outgoing_command}{Outgoing\-Command}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a476dfc8417c5ba51f29bcebf24f1685e}{Response\-Codes} \{ {\bfseries No\-Body} =1001, 
+{\bfseries O\-K} =200, 
+{\bfseries Deleted} =1002
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_ad2b619ad773b90f4e76cf4cfd0e8b99d}{\hyperlink{class_rak_net_1_1_h_t_t_p_connection_ad2b619ad773b90f4e76cf4cfd0e8b99d}{H\-T\-T\-P\-Connection} ()}\label{class_rak_net_1_1_h_t_t_p_connection_ad2b619ad773b90f4e76cf4cfd0e8b99d}
+
+\begin{DoxyCompactList}\small\item\em Returns a H\-T\-T\-P object associated with this tcp connection. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a141477df97a0f86b6f2d4d3a95a1baf2}{Init} (\hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} $\ast$\-\_\-tcp, const char $\ast$host, unsigned short port=80)
+\item 
+void \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}{Post} (const char $\ast$path, const char $\ast$data, const char $\ast$\-\_\-content\-Type=\char`\"{}application/x-\/www-\/form-\/urlencoded\char`\"{})
+\item 
+void \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ac853da0128efafd138d379beb9e4de67}{Get} (const char $\ast$path)
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a46f1fd6bec3066d45192381e2c664091}{bool \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a46f1fd6bec3066d45192381e2c664091}{Has\-Read} (void) const }\label{class_rak_net_1_1_h_t_t_p_connection_a46f1fd6bec3066d45192381e2c664091}
+
+\begin{DoxyCompactList}\small\item\em Is there a Read result ready? \end{DoxyCompactList}\item 
+\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ac932aee66fc03a34e00bd0e3d956f499}{Read} (void)
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a0e4fadf7bf4a758b088d79ad436bd28c}{void \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a0e4fadf7bf4a758b088d79ad436bd28c}{Update} (void)}\label{class_rak_net_1_1_h_t_t_p_connection_a0e4fadf7bf4a758b088d79ad436bd28c}
+
+\begin{DoxyCompactList}\small\item\em Call periodically to do time-\/based updates. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a5bf0b91909e4936e46255089347060fe}{\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a5bf0b91909e4936e46255089347060fe}{Get\-Server\-Address} (void) const }\label{class_rak_net_1_1_h_t_t_p_connection_a5bf0b91909e4936e46255089347060fe}
+
+\begin{DoxyCompactList}\small\item\em Returns the address of the server we are connected to. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a7b1a42b83ba1e8d800f34b3a69ea259a}{Process\-T\-C\-P\-Packet} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a9a37f734680829915bd782dfaea5cda9}{\hyperlink{class_rak_net_1_1_h_t_t_p_connection}{H\-T\-T\-P\-Connection} \& {\bfseries operator=} (const \hyperlink{class_rak_net_1_1_h_t_t_p_connection}{H\-T\-T\-P\-Connection} \&rhs)}\label{class_rak_net_1_1_h_t_t_p_connection_a9a37f734680829915bd782dfaea5cda9}
+
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_adf5e4381c2076eb67d753b75dc19f15d}{bool \hyperlink{class_rak_net_1_1_h_t_t_p_connection_adf5e4381c2076eb67d753b75dc19f15d}{Has\-Bad\-Response} (int $\ast$code, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} $\ast$data)}\label{class_rak_net_1_1_h_t_t_p_connection_adf5e4381c2076eb67d753b75dc19f15d}
+
+\begin{DoxyCompactList}\small\item\em Queued events of failed exchanges with the H\-T\-T\-P server. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a011655483785704a389ad23ca5cbd5e3}{bool \hyperlink{class_rak_net_1_1_h_t_t_p_connection_a011655483785704a389ad23ca5cbd5e3}{Is\-Busy} (void) const }\label{class_rak_net_1_1_h_t_t_p_connection_a011655483785704a389ad23ca5cbd5e3}
+
+\begin{DoxyCompactList}\small\item\em Returns false if the connection is not doing anything else. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_ab746c28c128b04f5d43288c82be7dbe9}{int {\bfseries Get\-State} (void) const }\label{class_rak_net_1_1_h_t_t_p_connection_ab746c28c128b04f5d43288c82be7dbe9}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_add319aa1727f6721c5c29d551da2ba2e}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}\\*
+$<$ \hyperlink{struct_rak_net_1_1_h_t_t_p_connection_1_1_outgoing_command}{Outgoing\-Command} $>$ {\bfseries outgoing\-Command}}\label{class_rak_net_1_1_h_t_t_p_connection_add319aa1727f6721c5c29d551da2ba2e}
+
+\item 
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a27232022c95bb8f72cb41923c235f84b}{\hyperlink{struct_rak_net_1_1_h_t_t_p_connection_1_1_outgoing_command}{Outgoing\-Command} {\bfseries current\-Processing\-Command}}\label{class_rak_net_1_1_h_t_t_p_connection_a27232022c95bb8f72cb41923c235f84b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Use \hyperlink{class_rak_net_1_1_h_t_t_p_connection}{H\-T\-T\-P\-Connection} to communicate with a web server. 
+
+Start an instance of \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} via the Start() command. Instantiate a new instance of \hyperlink{class_rak_net_1_1_h_t_t_p_connection}{H\-T\-T\-P\-Connection}, and associate \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} with the class in the constructor. Use \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}{Post()} to send commands to the web server, and Process\-Data\-Packet() to update the connection with packets returned from \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} that have the system address of the web server This class will handle connecting and reconnecting as necessary.
+
+Note that only one \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}{Post()} can be handled at a time. \begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000001}{Deprecated}], use \hyperlink{class_rak_net_1_1_h_t_t_p_connection2}{H\-T\-T\-P\-Connection2} \end{DoxyRefDesc}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a476dfc8417c5ba51f29bcebf24f1685e}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Response\-Codes@{Response\-Codes}}
+\index{Response\-Codes@{Response\-Codes}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Response\-Codes}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Response\-Codes}}}\label{class_rak_net_1_1_h_t_t_p_connection_a476dfc8417c5ba51f29bcebf24f1685e}
+Results of H\-T\-T\-P requests. Standard response codes are $<$ 999 ( define H\-T\-T\-P codes and our internal codes as needed ) 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_ac853da0128efafd138d379beb9e4de67}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Get@{Get}}
+\index{Get@{Get}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Get}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Get (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_h_t_t_p_connection_ac853da0128efafd138d379beb9e4de67}
+Get a file from a webserver 
+\begin{DoxyParams}{Parameters}
+{\em path} & the path on the remote server you want to G\-E\-T from. For example \char`\"{}index.\-html\char`\"{} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a141477df97a0f86b6f2d4d3a95a1baf2}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Init@{Init}}
+\index{Init@{Init}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-C\-P\-Interface} $\ast$}]{\-\_\-tcp, }
+\item[{const char $\ast$}]{host, }
+\item[{unsigned short}]{port = {\ttfamily 80}}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_h_t_t_p_connection_a141477df97a0f86b6f2d4d3a95a1baf2}
+\begin{DoxyPrecond}{Precondition}
+tcp should already be started 
+\end{DoxyPrecond}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Post@{Post}}
+\index{Post@{Post}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Post}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Post (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{const char $\ast$}]{data, }
+\item[{const char $\ast$}]{\-\_\-content\-Type = {\ttfamily \char`\"{}application/x-\/www-\/form-\/urlencoded\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}
+Submit data to the H\-T\-T\-P server H\-T\-T\-P only allows one request at a time per connection
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{class_rak_net_1_1_h_t_t_p_connection_a011655483785704a389ad23ca5cbd5e3}{Is\-Busy()}==false 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em path} & the path on the remote server you want to P\-O\-S\-T to. For example \char`\"{}index.\-html\char`\"{} \\
+\hline
+{\em data} & A N\-U\-L\-L terminated string to submit to the server \\
+\hline
+{\em content\-Type} & \char`\"{}\-Content-\/\-Type\-:\char`\"{} passed to post. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_a7b1a42b83ba1e8d800f34b3a69ea259a}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Process\-T\-C\-P\-Packet@{Process\-T\-C\-P\-Packet}}
+\index{Process\-T\-C\-P\-Packet@{Process\-T\-C\-P\-Packet}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Process\-T\-C\-P\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Process\-T\-C\-P\-Packet (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_h_t_t_p_connection_a7b1a42b83ba1e8d800f34b3a69ea259a}
+Process an H\-T\-T\-P data packet returned from \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} Returns true when we have gotten all the data from the H\-T\-T\-P server. If this returns true then it's safe to \hyperlink{class_rak_net_1_1_h_t_t_p_connection_ae13eeb1d5063b5bb3e083c9ecd217708}{Post()} another request Deallocate the packet as usual via \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} 
+\begin{DoxyParams}{Parameters}
+{\em packet} & N\-U\-L\-L or a packet associated with our host and port \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_h_t_t_p_connection_ac932aee66fc03a34e00bd0e3d956f499}{\index{Rak\-Net\-::\-H\-T\-T\-P\-Connection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}!Read@{Read}}
+\index{Read@{Read}!RakNet::HTTPConnection@{Rak\-Net\-::\-H\-T\-T\-P\-Connection}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-::\-Rak\-String} Rak\-Net\-::\-H\-T\-T\-P\-Connection\-::\-Read (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_h_t_t_p_connection_ac932aee66fc03a34e00bd0e3d956f499}
+Get one result from the server \begin{DoxyPrecond}{Precondition}
+Has\-Result must return true 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_h_t_t_p_connection_8h}{H\-T\-T\-P\-Connection.\-h}\end{DoxyCompactItemize}

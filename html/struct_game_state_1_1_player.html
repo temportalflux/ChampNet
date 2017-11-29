@@ -38,7 +38,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,13 +105,14 @@ Inheritance diagram for GameState.Player:</div>
  <div class="center">
   <img src="struct_game_state_1_1_player.png" usemap="#GameState.Player_map" alt=""/>
   <map id="GameState.Player_map" name="GameState.Player_map">
+<area href="interface_i_serializing.html" alt="ISerializing" shape="rect" coords="0,0,113,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a58e1b4e7eaca487703abf36826e41c45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58e1b4e7eaca487703abf36826e41c45"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSize</b> ()</td></tr>
+<tr class="memitem:a58e1b4e7eaca487703abf36826e41c45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#a58e1b4e7eaca487703abf36826e41c45">GetSize</a> ()</td></tr>
+<tr class="memdesc:a58e1b4e7eaca487703abf36826e41c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the packet (the size for a potential byte[])  <a href="#a58e1b4e7eaca487703abf36826e41c45">More...</a><br/></td></tr>
 <tr class="separator:a58e1b4e7eaca487703abf36826e41c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8df830f0a0bcfbfb263a634d125c3a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5">Serialize</a> (ref byte[] data, ref int lastIndex)</td></tr>
 <tr class="memdesc:aa8df830f0a0bcfbfb263a634d125c3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes data from this event into a byte array  <a href="#aa8df830f0a0bcfbfb263a634d125c3a5">More...</a><br/></td></tr>
@@ -148,9 +153,9 @@ Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>velocity</b></td><
 <tr class="memitem:a8f25769e000454ef477d359f44a5ed31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f25769e000454ef477d359f44a5ed31"></a>
 Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>accelleration</b></td></tr>
 <tr class="separator:a8f25769e000454ef477d359f44a5ed31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a4794af9943bc989eb1479b80c3b34b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a4794af9943bc989eb1479b80c3b34b"></a>
+<tr class="memitem:a3cff343fceb3dc315d2371fc8fe25ec6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cff343fceb3dc315d2371fc8fe25ec6"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>inBattle</b></td></tr>
-<tr class="separator:a7a4794af9943bc989eb1479b80c3b34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a3cff343fceb3dc315d2371fc8fe25ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a4d13459cad9bd58e058ddc6387af70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a4d13459cad9bd58e058ddc6387af70"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td></tr>
 <tr class="separator:a3a4d13459cad9bd58e058ddc6387af70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,11 +163,65 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td></tr>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>rank</b></td></tr>
 <tr class="separator:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf24de01e14055dc940d0493753484f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebf24de01e14055dc940d0493753484f"></a>
-PlayerReference&#160;</td><td class="memItemRight" valign="bottom"><b>objectReference</b></td></tr>
+<a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><b>objectReference</b></td></tr>
 <tr class="separator:aebf24de01e14055dc940d0493753484f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1f7e0b5bc335c32c3be71e3653787a6"></a>
 RenderTexture&#160;</td><td class="memItemRight" valign="bottom"><b>cameraTexture</b></td></tr>
 <tr class="separator:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bef4cd92306bd5cf330c4756e63686c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bef4cd92306bd5cf330c4756e63686c"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>clientID</b></td></tr>
+<tr class="separator:a1bef4cd92306bd5cf330c4756e63686c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71d68698435ee1c625237b1f2b377cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac71d68698435ee1c625237b1f2b377cb"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerID</b></td></tr>
+<tr class="separator:ac71d68698435ee1c625237b1f2b377cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1600ee9b9d01027e5304e991be11407"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1600ee9b9d01027e5304e991be11407"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>localID</b></td></tr>
+<tr class="separator:ab1600ee9b9d01027e5304e991be11407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6638478952037ab0d1b3b0a3c496a820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6638478952037ab0d1b3b0a3c496a820"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a6638478952037ab0d1b3b0a3c496a820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b350ee750dd994b421ad4332448112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54b350ee750dd994b421ad4332448112"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>colorR</b></td></tr>
+<tr class="separator:a54b350ee750dd994b421ad4332448112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26c9551e961a1f601fd689f3677ce277"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26c9551e961a1f601fd689f3677ce277"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>colorG</b></td></tr>
+<tr class="separator:a26c9551e961a1f601fd689f3677ce277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f992ed5676471f80c6ba3c9ce0f505"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3f992ed5676471f80c6ba3c9ce0f505"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>colorB</b></td></tr>
+<tr class="separator:ad3f992ed5676471f80c6ba3c9ce0f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0342f6d74f9c08351cd0c5139ac55de6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0342f6d74f9c08351cd0c5139ac55de6"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>posX</b></td></tr>
+<tr class="separator:a0342f6d74f9c08351cd0c5139ac55de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a831daac1ac1f3da9ec90a9c2247b3b2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a831daac1ac1f3da9ec90a9c2247b3b2f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>posY</b></td></tr>
+<tr class="separator:a831daac1ac1f3da9ec90a9c2247b3b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71e7ca3fb57c91895254d8c2741a36b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af71e7ca3fb57c91895254d8c2741a36b"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>posZ</b></td></tr>
+<tr class="separator:af71e7ca3fb57c91895254d8c2741a36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc72f7f23db9714a20ac1b08fda0288"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcc72f7f23db9714a20ac1b08fda0288"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>velX</b></td></tr>
+<tr class="separator:afcc72f7f23db9714a20ac1b08fda0288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5fa5186567b76be447afe96e86c9f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e5fa5186567b76be447afe96e86c9f9"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>velY</b></td></tr>
+<tr class="separator:a9e5fa5186567b76be447afe96e86c9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69e80093c2205d374bfcab9baa3f57c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af69e80093c2205d374bfcab9baa3f57c"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>velZ</b></td></tr>
+<tr class="separator:af69e80093c2205d374bfcab9baa3f57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d726c8aaa2bb433e9d6d3e09c945328"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d726c8aaa2bb433e9d6d3e09c945328"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>accX</b></td></tr>
+<tr class="separator:a0d726c8aaa2bb433e9d6d3e09c945328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a126f3ac6426ce52effd7ccd14c5f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13a126f3ac6426ce52effd7ccd14c5f0"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>accY</b></td></tr>
+<tr class="separator:a13a126f3ac6426ce52effd7ccd14c5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec98fdec68ed34c3ff6bf202d4ac446"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abec98fdec68ed34c3ff6bf202d4ac446"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>accZ</b></td></tr>
+<tr class="separator:abec98fdec68ed34c3ff6bf202d4ac446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7333a06ea194848f12090be762cdd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac7333a06ea194848f12090be762cdd6"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td></tr>
+<tr class="separator:aac7333a06ea194848f12090be762cdd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43dd8a9e79c35d9615596fb6ab25d653"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>rank</b></td></tr>
+<tr class="separator:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -171,6 +230,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a1cdc9de8183b220e87632f7f6a7147d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cdc9de8183b220e87632f7f6a7147d0"></a>
 static int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE_MAX_NAME</b> = 10</td></tr>
 <tr class="separator:a1cdc9de8183b220e87632f7f6a7147d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d0264ca6adfedb582e22f59a550fc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16d0264ca6adfedb582e22f59a550fc5"></a>
+static const int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE_MAX_NAME</b> = 10</td></tr>
+<tr class="separator:a16d0264ca6adfedb582e22f59a550fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE</b></td></tr>
+<tr class="separator:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -221,6 +285,37 @@ Properties</h2></td></tr>
 </dl>
 <p>Author: Dustin Yost </p>
 
+<p>Implements <a class="el" href="interface_i_serializing.html#a92f8ba3a06d21e7b01e37411e4e3145c">ISerializing</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58e1b4e7eaca487703abf36826e41c45"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameState.Player.GetSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the size of the packet (the size for a potential byte[]) </p>
+<dl class="section return"><dt>Returns</dt><dd>the integer length of a byte array to hold this event's data </dd></dl>
+<p>Author: Dustin Yost </p>
+
+<p>Implements <a class="el" href="interface_i_serializing.html#a9e6ea0afaeac8d1d57e20579f87bebe2">ISerializing</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="aa8df830f0a0bcfbfb263a634d125c3a5"></a>
@@ -265,9 +360,54 @@ Properties</h2></td></tr>
 </dl>
 <p>Author: Dustin Yost </p>
 
+<p>Implements <a class="el" href="interface_i_serializing.html#ac31a44c2358a197e774fa3f79cc80356">ISerializing</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a07b452f69128e1f3f6d3bb575c2976f1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int GameState.Player.SIZE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= 0</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) + (SIZE_MAX_NAME * (<span class="keyword">sizeof</span>(char) * 2))</div>
+<div class="line">            </div>
+<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
+<div class="line">            </div>
+<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
+<div class="line">            </div>
+<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
+<div class="line">            </div>
+<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">bool</span>)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
+<div class="line">            </div>
+<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="ada2d068d3d5f973f73abac805c162d17"></a>
 <div class="memitem">
 <div class="memproto">
@@ -323,8 +463,9 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs</li>
+<li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_game_state_8h_source.html">GameState.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,47 @@
+\hypertarget{class_rak_net_1_1_incremental_read_interface}{\section{Rak\-Net\-:\-:Incremental\-Read\-Interface Class Reference}
+\label{class_rak_net_1_1_incremental_read_interface}\index{Rak\-Net\-::\-Incremental\-Read\-Interface@{Rak\-Net\-::\-Incremental\-Read\-Interface}}
+}
+Inheritance diagram for Rak\-Net\-:\-:Incremental\-Read\-Interface\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_incremental_read_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual unsigned int \hyperlink{class_rak_net_1_1_incremental_read_interface_a5b27c63c358c8934aac4f6a8ce830622}{Get\-File\-Part} (const char $\ast$filename, unsigned int start\-Read\-Bytes, unsigned int num\-Bytes\-To\-Read, void $\ast$preallocated\-Destination, \hyperlink{struct_file_list_node_context}{File\-List\-Node\-Context} context)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_incremental_read_interface_a5b27c63c358c8934aac4f6a8ce830622}{\index{Rak\-Net\-::\-Incremental\-Read\-Interface@{Rak\-Net\-::\-Incremental\-Read\-Interface}!Get\-File\-Part@{Get\-File\-Part}}
+\index{Get\-File\-Part@{Get\-File\-Part}!RakNet::IncrementalReadInterface@{Rak\-Net\-::\-Incremental\-Read\-Interface}}
+\subsubsection[{Get\-File\-Part}]{\setlength{\rightskip}{0pt plus 5cm}virtual unsigned int Rak\-Net\-::\-Incremental\-Read\-Interface\-::\-Get\-File\-Part (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{unsigned int}]{start\-Read\-Bytes, }
+\item[{unsigned int}]{num\-Bytes\-To\-Read, }
+\item[{void $\ast$}]{preallocated\-Destination, }
+\item[{{\bf File\-List\-Node\-Context}}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_incremental_read_interface_a5b27c63c358c8934aac4f6a8ce830622}
+Read part of a file into {\itshape destination} Return the number of bytes written. Return 0 when file is done. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & Filename to read \\
+\hline
+\mbox{\tt in}  & {\em start\-Read\-Bytes} & What offset from the start of the file to read from \\
+\hline
+\mbox{\tt in}  & {\em num\-Bytes\-To\-Read} & How many bytes to read. This is also how many bytes have been allocated to preallocated\-Destination \\
+\hline
+\mbox{\tt out}  & {\em preallocated\-Destination} & Write your data here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes read, or 0 if none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/Incremental\-Read\-Interface.\-h\end{DoxyCompactItemize}

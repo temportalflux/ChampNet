@@ -1,0 +1,147 @@
+\hypertarget{class_rak_net_1_1_string_table}{\section{Rak\-Net\-:\-:String\-Table Class Reference}
+\label{class_rak_net_1_1_string_table}\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}}
+}
+
+
+Writes a string index, instead of the whole string.  
+
+
+
+
+{\ttfamily \#include $<$String\-Table.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_string_table_a7da5d7b252198829fc71b1d83ad23e4b}{Add\-String} (const char $\ast$str, bool copy\-String)
+\item 
+void \hyperlink{class_rak_net_1_1_string_table_ad72386a9d2ee67529f8e1c2ee0075342}{Encode\-String} (const char $\ast$input, int max\-Chars\-To\-Write, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$output)
+\item 
+bool \hyperlink{class_rak_net_1_1_string_table_a50d83aa562f438cd26c1469e3a3aa3fc}{Decode\-String} (char $\ast$output, int max\-Chars\-To\-Write, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$input)
+\item 
+\hypertarget{class_rak_net_1_1_string_table_a0107c35a886a84fc13434c9bd13ff166}{\hyperlink{class_rak_net_1_1_string_table_a0107c35a886a84fc13434c9bd13ff166}{String\-Table} ()}\label{class_rak_net_1_1_string_table_a0107c35a886a84fc13434c9bd13ff166}
+
+\begin{DoxyCompactList}\small\item\em Private Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_rak_net_1_1_string_table}{String\-Table} $\ast$ \hyperlink{class_rak_net_1_1_string_table_a617d718082882aff164a1b7438dcaf02}{Instance} (void)
+\item 
+\hypertarget{class_rak_net_1_1_string_table_a97a4694667352c36c51482bc5eaa65cc}{static void \hyperlink{class_rak_net_1_1_string_table_a97a4694667352c36c51482bc5eaa65cc}{Add\-Reference} (void)}\label{class_rak_net_1_1_string_table_a97a4694667352c36c51482bc5eaa65cc}
+
+\begin{DoxyCompactList}\small\item\em Used so I can allocate and deallocate this singleton at runtime. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_string_table_a9e4ff943574ceb7c3a545725a428e0e7}{static void \hyperlink{class_rak_net_1_1_string_table_a9e4ff943574ceb7c3a545725a428e0e7}{Remove\-Reference} (void)}\label{class_rak_net_1_1_string_table_a9e4ff943574ceb7c3a545725a428e0e7}
+
+\begin{DoxyCompactList}\small\item\em Used so I can allocate and deallocate this singleton at runtime. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_string_table_af5e8803a9ced2dfe6f9dceba6e1d9742}{Log\-String\-Not\-Found} (const char $\ast$str\-Name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_string_table_a7e11d0dac6df380aa1217fe2bf84552d}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ char $\ast$, \hyperlink{struct_str_and_bool}{Str\-And\-Bool}, \\*
+Str\-And\-Bool\-Comp $>$ {\bfseries ordered\-String\-List}}\label{class_rak_net_1_1_string_table_a7e11d0dac6df380aa1217fe2bf84552d}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_string_table_a1abd5e46239e1e0df0d6cf7d16e452b1}{static \hyperlink{class_rak_net_1_1_string_table}{String\-Table} $\ast$ \hyperlink{class_rak_net_1_1_string_table_a1abd5e46239e1e0df0d6cf7d16e452b1}{instance}}\label{class_rak_net_1_1_string_table_a1abd5e46239e1e0df0d6cf7d16e452b1}
+
+\begin{DoxyCompactList}\small\item\em Singleton instance. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_string_table_a8d06ed198a1f574d5998370dd7540590}{static int {\bfseries reference\-Count}}\label{class_rak_net_1_1_string_table_a8d06ed198a1f574d5998370dd7540590}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Writes a string index, instead of the whole string. 
+
+This is an even more efficient alternative to \hyperlink{class_rak_net_1_1_string_compressor}{String\-Compressor} in that it writes a single byte from a lookup table and only does compression.\par
+ if the string does not already exist in the table.\par
+ All string tables must match on all systems -\/ hence you must add all the strings in the same order on all systems.\par
+ Furthermore, this must be done before sending packets that use this class, since the strings are ordered for fast lookup. Adding after that time would mess up all the indices so don't do it.\par
+ Don't use this class to write strings which were not previously registered with Add\-String, since you just waste bandwidth then. Use \hyperlink{class_rak_net_1_1_string_compressor}{String\-Compressor} instead. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_string_table_a7da5d7b252198829fc71b1d83ad23e4b}{\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}!Add\-String@{Add\-String}}
+\index{Add\-String@{Add\-String}!RakNet::StringTable@{Rak\-Net\-::\-String\-Table}}
+\subsubsection[{Add\-String}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-String\-Table\-::\-Add\-String (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{bool}]{copy\-String}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_string_table_a7da5d7b252198829fc71b1d83ad23e4b}
+Add a string to the string table. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em str} & The string to add to the string table \\
+\hline
+\mbox{\tt in}  & {\em copy\-String} & true to make a copy of the passed string (takes more memory), false to not do so (if your string is in static memory). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_string_table_a50d83aa562f438cd26c1469e3a3aa3fc}{\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}!Decode\-String@{Decode\-String}}
+\index{Decode\-String@{Decode\-String}!RakNet::StringTable@{Rak\-Net\-::\-String\-Table}}
+\subsubsection[{Decode\-String}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-String\-Table\-::\-Decode\-String (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{output, }
+\item[{int}]{max\-Chars\-To\-Write, }
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{input}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_string_table_a50d83aa562f438cd26c1469e3a3aa3fc}
+Writes input to output, uncompressed. Takes care of the null terminator for you. Relies on the \hyperlink{class_rak_net_1_1_string_compressor}{String\-Compressor} class, which is automatically reference counted in the constructor and destructor in \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer}. You can call the reference counting functions yourself if you wish too. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em output} & A block of bytes to receive the output \\
+\hline
+\mbox{\tt in}  & {\em max\-Chars\-To\-Write} & Size, in bytes, of {\itshape output} . A N\-U\-L\-L terminator will always be appended to the output string. If the max\-Chars\-To\-Write is not large enough, the string will be truncated. \\
+\hline
+\mbox{\tt in}  & {\em input} & The bitstream containing the compressed string \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_string_table_ad72386a9d2ee67529f8e1c2ee0075342}{\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}!Encode\-String@{Encode\-String}}
+\index{Encode\-String@{Encode\-String}!RakNet::StringTable@{Rak\-Net\-::\-String\-Table}}
+\subsubsection[{Encode\-String}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-String\-Table\-::\-Encode\-String (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{input, }
+\item[{int}]{max\-Chars\-To\-Write, }
+\item[{{\bf Rak\-Net\-::\-Bit\-Stream} $\ast$}]{output}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_string_table_ad72386a9d2ee67529f8e1c2ee0075342}
+Writes input to output, compressed. Takes care of the null terminator for you. Relies on the \hyperlink{class_rak_net_1_1_string_compressor}{String\-Compressor} class, which is automatically reference counted in the constructor and destructor in \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer}. You can call the reference counting functions yourself if you wish too. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em input} & Pointer to an A\-S\-C\-I\-I string \\
+\hline
+\mbox{\tt in}  & {\em max\-Chars\-To\-Write} & The size of {\itshape input} \\
+\hline
+\mbox{\tt out}  & {\em output} & The bitstream to write the compressed string to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_string_table_a617d718082882aff164a1b7438dcaf02}{\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}!Instance@{Instance}}
+\index{Instance@{Instance}!RakNet::StringTable@{Rak\-Net\-::\-String\-Table}}
+\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String\-Table}$\ast$ Rak\-Net\-::\-String\-Table\-::\-Instance (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_rak_net_1_1_string_table_a617d718082882aff164a1b7438dcaf02}
+static function because only static functions can access static members The \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} constructor adds a reference to this class, so don't call this until an instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} exists, or unless you call Add\-Reference yourself. \begin{DoxyReturn}{Returns}
+the unique instance of the \hyperlink{class_rak_net_1_1_string_table}{String\-Table} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_string_table_af5e8803a9ced2dfe6f9dceba6e1d9742}{\index{Rak\-Net\-::\-String\-Table@{Rak\-Net\-::\-String\-Table}!Log\-String\-Not\-Found@{Log\-String\-Not\-Found}}
+\index{Log\-String\-Not\-Found@{Log\-String\-Not\-Found}!RakNet::StringTable@{Rak\-Net\-::\-String\-Table}}
+\subsubsection[{Log\-String\-Not\-Found}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-String\-Table\-::\-Log\-String\-Not\-Found (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str\-Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_rak_net_1_1_string_table_af5e8803a9ced2dfe6f9dceba6e1d9742}
+Called when you mess up and send a string using this class that was not registered with Add\-String 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em max\-Chars\-To\-Write} & Size, in bytes, of {\itshape output} . A N\-U\-L\-L terminator will always be appended to the output string. If the max\-Chars\-To\-Write is not large enough, the string will be truncated. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_string_table_8h}{String\-Table.\-h}\end{DoxyCompactItemize}

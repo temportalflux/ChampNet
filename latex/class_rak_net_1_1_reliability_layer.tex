@@ -1,0 +1,249 @@
+\hypertarget{class_rak_net_1_1_reliability_layer}{\section{Rak\-Net\-:\-:Reliability\-Layer Class Reference}
+\label{class_rak_net_1_1_reliability_layer}\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}}
+}
+
+
+Datagram reliable, ordered, unordered and sequenced sends. Flow control. Message splitting, reassembly, and coalescence.  
+
+
+
+
+{\ttfamily \#include $<$Reliability\-Layer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_ae9130c179782a6f8c27cd9c1385818dc}{void \hyperlink{class_rak_net_1_1_reliability_layer_ae9130c179782a6f8c27cd9c1385818dc}{Reset} (bool reset\-Variables, int M\-T\-U\-Size, bool \-\_\-use\-Security)}\label{class_rak_net_1_1_reliability_layer_ae9130c179782a6f8c27cd9c1385818dc}
+
+\begin{DoxyCompactList}\small\item\em Resets the layer for reuse. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_reliability_layer_a52cf9a398cfe611e1af920a19e65787a}{Set\-Timeout\-Time} (Rak\-Net\-::\-Time\-M\-S time)
+\item 
+Rak\-Net\-::\-Time\-M\-S \hyperlink{class_rak_net_1_1_reliability_layer_a36dcac9c07138222392a4c1314c23a8f}{Get\-Timeout\-Time} (void)
+\item 
+bool \hyperlink{class_rak_net_1_1_reliability_layer_ad4705443cbdb957b9351cfffdd23a81b}{Handle\-Socket\-Receive\-From\-Connected\-Player} (const char $\ast$buffer, unsigned int length, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{class_rak_net_1_1_plugin_interface2}{Plugin\-Interface2} $\ast$ $>$ \&message\-Handler\-List, int M\-T\-U\-Size, \hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$s, \hyperlink{class_rak_net_1_1_rak_net_random}{Rak\-Net\-Random} $\ast$rnr, C\-C\-Time\-Type time\-Read, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} \&update\-Bit\-Stream)
+\item 
+Bit\-Size\-\_\-t \hyperlink{class_rak_net_1_1_reliability_layer_a9dcac79ba7f4f69424c586f267dbf0a1}{Receive} (unsigned char $\ast$$\ast$data)
+\item 
+bool \hyperlink{class_rak_net_1_1_reliability_layer_a1c0cec3e2e22dc8a5e66906f659e226a}{Send} (char $\ast$data, Bit\-Size\-\_\-t number\-Of\-Bits\-To\-Send, \hyperlink{_packet_priority_8h_a659378374e516180f93640c79f59705c}{Packet\-Priority} priority, \hyperlink{_packet_priority_8h_ae41fa01235e99dced384d137fa874a7e}{Packet\-Reliability} reliability, unsigned char ordering\-Channel, bool make\-Data\-Copy, int M\-T\-U\-Size, C\-C\-Time\-Type current\-Time, uint32\-\_\-t receipt)
+\item 
+void \hyperlink{class_rak_net_1_1_reliability_layer_ab49b383b349560bbb4f72643db3e1ea0}{Update} (\hyperlink{class_rak_net_1_1_rak_net_socket2}{Rak\-Net\-Socket2} $\ast$s, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, int M\-T\-U\-Size, C\-C\-Time\-Type time, unsigned bits\-Per\-Second\-Limit, \hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{class_rak_net_1_1_plugin_interface2}{Plugin\-Interface2} $\ast$ $>$ \&message\-Handler\-List, \hyperlink{class_rak_net_1_1_rak_net_random}{Rak\-Net\-Random} $\ast$rnr, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} \&update\-Bit\-Stream)
+\item 
+bool \hyperlink{class_rak_net_1_1_reliability_layer_aefec7668d83301e70d97f2a5f174b6f3}{Is\-Dead\-Connection} (void) const 
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a4c641454132f1b0d79969100e46dbf3f}{void \hyperlink{class_rak_net_1_1_reliability_layer_a4c641454132f1b0d79969100e46dbf3f}{Kill\-Connection} (void)}\label{class_rak_net_1_1_reliability_layer_a4c641454132f1b0d79969100e46dbf3f}
+
+\begin{DoxyCompactList}\small\item\em Causes Is\-Dead\-Connection to return true. \end{DoxyCompactList}\item 
+\hyperlink{struct_rak_net_1_1_rak_net_statistics}{Rak\-Net\-Statistics} $\ast$ \hyperlink{class_rak_net_1_1_reliability_layer_a09e4d34890b2f3163616efd717c6069f}{Get\-Statistics} (\hyperlink{struct_rak_net_1_1_rak_net_statistics}{Rak\-Net\-Statistics} $\ast$rns)
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a7a3a10ac55b09d57e218d18c33b78c30}{bool \hyperlink{class_rak_net_1_1_reliability_layer_a7a3a10ac55b09d57e218d18c33b78c30}{Is\-Outgoing\-Data\-Waiting} (void)}\label{class_rak_net_1_1_reliability_layer_a7a3a10ac55b09d57e218d18c33b78c30}
+
+\begin{DoxyCompactList}\small\item\em Are we waiting for any data to be sent out or be processed by the player? \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_ad075031c8b983bbc1c746299a1715604}{bool {\bfseries Are\-Acks\-Waiting} (void)}\label{class_rak_net_1_1_reliability_layer_ad075031c8b983bbc1c746299a1715604}
+
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_aca330628f5062afa30e2f17d2fb94435}{void {\bfseries Apply\-Network\-Simulator} (double \-\_\-max\-Send\-B\-P\-S, Rak\-Net\-::\-Time\-M\-S \-\_\-min\-Extra\-Ping, Rak\-Net\-::\-Time\-M\-S \-\_\-extra\-Ping\-Variance)}\label{class_rak_net_1_1_reliability_layer_aca330628f5062afa30e2f17d2fb94435}
+
+\item 
+bool \hyperlink{class_rak_net_1_1_reliability_layer_a4ed34ffa73cea88a216c8e345e6878ea}{Is\-Network\-Simulator\-Active} (void)
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_aa755dd7681a63c4f7c30aa3c4fe032d5}{void {\bfseries Set\-Split\-Message\-Progress\-Interval} (int interval)}\label{class_rak_net_1_1_reliability_layer_aa755dd7681a63c4f7c30aa3c4fe032d5}
+
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a811d61b8474830e4087a39e84d72f928}{void {\bfseries Set\-Unreliable\-Timeout} (Rak\-Net\-::\-Time\-M\-S timeout\-M\-S)}\label{class_rak_net_1_1_reliability_layer_a811d61b8474830e4087a39e84d72f928}
+
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a97ed79b752b105253bae9f41b27084b6}{bool \hyperlink{class_rak_net_1_1_reliability_layer_a97ed79b752b105253bae9f41b27084b6}{Ack\-Timeout} (Rak\-Net\-::\-Time cur\-Time)}\label{class_rak_net_1_1_reliability_layer_a97ed79b752b105253bae9f41b27084b6}
+
+\begin{DoxyCompactList}\small\item\em Has a lot of time passed since the last ack. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_add29e3317a025e57db1808fb3135f964}{C\-C\-Time\-Type {\bfseries Get\-Next\-Send\-Time} (void) const }\label{class_rak_net_1_1_reliability_layer_add29e3317a025e57db1808fb3135f964}
+
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a5db5f50a831b367428e5685faead5aa4}{C\-C\-Time\-Type {\bfseries Get\-Time\-Between\-Packets} (void) const }\label{class_rak_net_1_1_reliability_layer_a5db5f50a831b367428e5685faead5aa4}
+
+\item 
+\hypertarget{class_rak_net_1_1_reliability_layer_a8e99f221877f6048a4c8fa53784039c2}{Rak\-Net\-::\-Time\-M\-S {\bfseries Get\-Time\-Last\-Datagram\-Arrived} (void) const }\label{class_rak_net_1_1_reliability_layer_a8e99f221877f6048a4c8fa53784039c2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Datagram reliable, ordered, unordered and sequenced sends. Flow control. Message splitting, reassembly, and coalescence. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_reliability_layer_a09e4d34890b2f3163616efd717c6069f}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Get\-Statistics@{Get\-Statistics}}
+\index{Get\-Statistics@{Get\-Statistics}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Get\-Statistics}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-Statistics}$\ast$ Rak\-Net\-::\-Reliability\-Layer\-::\-Get\-Statistics (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-Statistics} $\ast$}]{rns}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a09e4d34890b2f3163616efd717c6069f}
+Get Statistics \begin{DoxyReturn}{Returns}
+A pointer to a static struct, filled out with current statistical information. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_reliability_layer_a36dcac9c07138222392a4c1314c23a8f}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Get\-Timeout\-Time@{Get\-Timeout\-Time}}
+\index{Get\-Timeout\-Time@{Get\-Timeout\-Time}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Get\-Timeout\-Time}]{\setlength{\rightskip}{0pt plus 5cm}Rak\-Net\-::\-Time\-M\-S Rak\-Net\-::\-Reliability\-Layer\-::\-Get\-Timeout\-Time (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a36dcac9c07138222392a4c1314c23a8f}
+Returns the value passed to Set\-Timeout\-Time. or the default if it was never called 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em the} & value passed to Set\-Timeout\-Time \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_reliability_layer_ad4705443cbdb957b9351cfffdd23a81b}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Handle\-Socket\-Receive\-From\-Connected\-Player@{Handle\-Socket\-Receive\-From\-Connected\-Player}}
+\index{Handle\-Socket\-Receive\-From\-Connected\-Player@{Handle\-Socket\-Receive\-From\-Connected\-Player}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Handle\-Socket\-Receive\-From\-Connected\-Player}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Reliability\-Layer\-::\-Handle\-Socket\-Receive\-From\-Connected\-Player (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{unsigned int}]{length, }
+\item[{{\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Data\-Structures\-::\-List}$<$ {\bf Plugin\-Interface2} $\ast$ $>$ \&}]{message\-Handler\-List, }
+\item[{int}]{M\-T\-U\-Size, }
+\item[{{\bf Rak\-Net\-Socket2} $\ast$}]{s, }
+\item[{{\bf Rak\-Net\-Random} $\ast$}]{rnr, }
+\item[{C\-C\-Time\-Type}]{time\-Read, }
+\item[{{\bf Bit\-Stream} \&}]{update\-Bit\-Stream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_ad4705443cbdb957b9351cfffdd23a81b}
+Packets are read directly from the socket layer and skip the reliability layer because unconnected players do not use the reliability layer This function takes packet data after a player has been confirmed as connected. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & The socket data \\
+\hline
+\mbox{\tt in}  & {\em length} & The length of the socket data \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The player that this data is from \\
+\hline
+\mbox{\tt in}  & {\em message\-Handler\-List} & A list of registered plugins \\
+\hline
+\mbox{\tt in}  & {\em M\-T\-U\-Size} & maximum datagram size \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Success \\
+\hline
+{\em false} & Modified packet \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_rak_net_1_1_reliability_layer_aefec7668d83301e70d97f2a5f174b6f3}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Is\-Dead\-Connection@{Is\-Dead\-Connection}}
+\index{Is\-Dead\-Connection@{Is\-Dead\-Connection}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Is\-Dead\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Reliability\-Layer\-::\-Is\-Dead\-Connection (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_reliability_layer_aefec7668d83301e70d97f2a5f174b6f3}
+Were you ever unable to deliver a packet despite retries? \begin{DoxyReturn}{Returns}
+true means the connection has been lost. Otherwise not. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_reliability_layer_a4ed34ffa73cea88a216c8e345e6878ea}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Is\-Network\-Simulator\-Active@{Is\-Network\-Simulator\-Active}}
+\index{Is\-Network\-Simulator\-Active@{Is\-Network\-Simulator\-Active}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Is\-Network\-Simulator\-Active}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Reliability\-Layer\-::\-Is\-Network\-Simulator\-Active (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a4ed34ffa73cea88a216c8e345e6878ea}
+Returns if you previously called Apply\-Network\-Simulator \begin{DoxyReturn}{Returns}
+If you previously called Apply\-Network\-Simulator 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_reliability_layer_a9dcac79ba7f4f69424c586f267dbf0a1}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Receive@{Receive}}
+\index{Receive@{Receive}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Receive}]{\setlength{\rightskip}{0pt plus 5cm}Bit\-Size\-\_\-t Rak\-Net\-::\-Reliability\-Layer\-::\-Receive (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$$\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a9dcac79ba7f4f69424c586f267dbf0a1}
+This allocates bytes and writes a user-\/level message to those bytes. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em data} & The message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns number of B\-I\-T\-S put into the buffer 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_reliability_layer_a1c0cec3e2e22dc8a5e66906f659e226a}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Send@{Send}}
+\index{Send@{Send}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Send}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Reliability\-Layer\-::\-Send (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{data, }
+\item[{Bit\-Size\-\_\-t}]{number\-Of\-Bits\-To\-Send, }
+\item[{{\bf Packet\-Priority}}]{priority, }
+\item[{{\bf Packet\-Reliability}}]{reliability, }
+\item[{unsigned char}]{ordering\-Channel, }
+\item[{bool}]{make\-Data\-Copy, }
+\item[{int}]{M\-T\-U\-Size, }
+\item[{C\-C\-Time\-Type}]{current\-Time, }
+\item[{uint32\-\_\-t}]{receipt}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a1c0cec3e2e22dc8a5e66906f659e226a}
+Puts data on the send queue 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The data to send \\
+\hline
+\mbox{\tt in}  & {\em number\-Of\-Bits\-To\-Send} & The length of {\itshape data} in bits \\
+\hline
+\mbox{\tt in}  & {\em priority} & The priority level for the send \\
+\hline
+\mbox{\tt in}  & {\em reliability} & The reliability type for the send \\
+\hline
+\mbox{\tt in}  & {\em ordering\-Channel} & 0 to 31. Specifies what channel to use, for relational ordering and sequencing of packets. \\
+\hline
+\mbox{\tt in}  & {\em make\-Data\-Copy} & If true {\itshape data} will be copied. Otherwise, only a pointer will be stored. \\
+\hline
+\mbox{\tt in}  & {\em M\-T\-U\-Size} & maximum datagram size \\
+\hline
+\mbox{\tt in}  & {\em current\-Time} & Current time, as per \hyperlink{namespace_rak_net_ada73d8160aa36bffbba9e3eb092147cc}{Rak\-Net\-::\-Get\-Time\-M\-S()} \\
+\hline
+\mbox{\tt in}  & {\em receipt} & This number will be returned back with I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-A\-C\-K\-E\-D or I\-D\-\_\-\-S\-N\-D\-\_\-\-R\-E\-C\-E\-I\-P\-T\-\_\-\-L\-O\-S\-S and is only returned with the reliability types that contain R\-E\-C\-E\-I\-P\-T in the name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True or false for success or failure. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_reliability_layer_a52cf9a398cfe611e1af920a19e65787a}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Set\-Timeout\-Time@{Set\-Timeout\-Time}}
+\index{Set\-Timeout\-Time@{Set\-Timeout\-Time}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Set\-Timeout\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Reliability\-Layer\-::\-Set\-Timeout\-Time (
+\begin{DoxyParamCaption}
+\item[{Rak\-Net\-::\-Time\-M\-S}]{time}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_a52cf9a398cfe611e1af920a19e65787a}
+Set the time, in M\-S, to use before considering ourselves disconnected after not being able to deliver a reliable packet Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & Time, in M\-S \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_reliability_layer_ab49b383b349560bbb4f72643db3e1ea0}{\index{Rak\-Net\-::\-Reliability\-Layer@{Rak\-Net\-::\-Reliability\-Layer}!Update@{Update}}
+\index{Update@{Update}!RakNet::ReliabilityLayer@{Rak\-Net\-::\-Reliability\-Layer}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Reliability\-Layer\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-Socket2} $\ast$}]{s, }
+\item[{{\bf System\-Address} \&}]{system\-Address, }
+\item[{int}]{M\-T\-U\-Size, }
+\item[{C\-C\-Time\-Type}]{time, }
+\item[{unsigned}]{bits\-Per\-Second\-Limit, }
+\item[{{\bf Data\-Structures\-::\-List}$<$ {\bf Plugin\-Interface2} $\ast$ $>$ \&}]{message\-Handler\-List, }
+\item[{{\bf Rak\-Net\-Random} $\ast$}]{rnr, }
+\item[{{\bf Bit\-Stream} \&}]{update\-Bit\-Stream}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_reliability_layer_ab49b383b349560bbb4f72643db3e1ea0}
+Call once per game cycle. Handles internal lists and actually does the send. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & the communication end point \\
+\hline
+\mbox{\tt in}  & {\em system\-Address} & The Unique Player Identifier who shouldhave sent some packets \\
+\hline
+\mbox{\tt in}  & {\em M\-T\-U\-Size} & maximum datagram size \\
+\hline
+\mbox{\tt in}  & {\em time} & current system time \\
+\hline
+\mbox{\tt in}  & {\em max\-Bits\-Per\-Second} & if non-\/zero, enforces that outgoing bandwidth does not exceed this amount \\
+\hline
+\mbox{\tt in}  & {\em message\-Handler\-List} & A list of registered plugins \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_reliability_layer_8h}{Reliability\-Layer.\-h}\end{DoxyCompactItemize}

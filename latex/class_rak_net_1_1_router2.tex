@@ -1,0 +1,282 @@
+\hypertarget{class_rak_net_1_1_router2}{\section{Rak\-Net\-:\-:Router2 Class Reference}
+\label{class_rak_net_1_1_router2}\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}}
+}
+
+
+Class interface for the \hyperlink{class_rak_net_1_1_router2}{Router2} system.  
+
+
+
+
+{\ttfamily \#include $<$Router2.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Router2\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_router2}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_router2_1_1_connection_request_system}{Connection\-Request\-System}
+\item 
+struct \hyperlink{struct_rak_net_1_1_router2_1_1_connnect_request}{Connnect\-Request}
+\item 
+struct \hyperlink{struct_rak_net_1_1_router2_1_1_forwarded_connection}{Forwarded\-Connection}
+\item 
+struct \hyperlink{struct_rak_net_1_1_router2_1_1_mini_punch_request}{Mini\-Punch\-Request}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Router2\-Request\-States} \{ {\bfseries R2\-R\-S\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-S\-T\-A\-T\-E\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G}, 
+{\bfseries R\-E\-Q\-U\-E\-S\-T\-\_\-\-S\-T\-A\-T\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_router2_aef586b4fc73d446119225e05384c8515}{Set\-Socket\-Family} (unsigned short \-\_\-socket\-Family)
+\item 
+void \hyperlink{class_rak_net_1_1_router2_a8d86939663f286f21a8aefeea615565b}{Establish\-Routing} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid)
+\begin{DoxyCompactList}\small\item\em Query all connected systems to connect through them to a third system. System will return I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G\-\_\-\-N\-O\-\_\-\-P\-A\-T\-H if unable to connect. Else you will get I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_router2_a60d0f2bffeed81aabcde1daa6d0cd79d}{Set\-Maximum\-Forwarding\-Requests} (int max)
+\item 
+\hypertarget{class_rak_net_1_1_router2_ada3cd3f17fadd1466d0ad0ed693fbf69}{void \hyperlink{class_rak_net_1_1_router2_ada3cd3f17fadd1466d0ad0ed693fbf69}{Set\-Debug\-Interface} (\hyperlink{struct_rak_net_1_1_router2_debug_interface}{Router2\-Debug\-Interface} $\ast$\-\_\-debug\-Interface)}\label{class_rak_net_1_1_router2_ada3cd3f17fadd1466d0ad0ed693fbf69}
+
+\begin{DoxyCompactList}\small\item\em For testing and debugging. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_router2_a3f096833e216ffb5c3c79a45fa26fc3b}{\hyperlink{struct_rak_net_1_1_router2_debug_interface}{Router2\-Debug\-Interface} $\ast$ \hyperlink{class_rak_net_1_1_router2_a3f096833e216ffb5c3c79a45fa26fc3b}{Get\-Debug\-Interface} (void) const }\label{class_rak_net_1_1_router2_a3f096833e216ffb5c3c79a45fa26fc3b}
+
+\begin{DoxyCompactList}\small\item\em Get the pointer passed to \hyperlink{class_rak_net_1_1_router2_ada3cd3f17fadd1466d0ad0ed693fbf69}{Set\-Debug\-Interface()} \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_router2_a825d62c2f01def72c58815b609cf4bbf}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+\hypertarget{class_rak_net_1_1_router2_a6d06f99cdd31fabd9e0dc1f0e19d0f39}{virtual void \hyperlink{class_rak_net_1_1_router2_a6d06f99cdd31fabd9e0dc1f0e19d0f39}{Update} (void)}\label{class_rak_net_1_1_router2_a6d06f99cdd31fabd9e0dc1f0e19d0f39}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_router2_a428635762452b03a115043e4628837b9}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_router2_ac3be692d08e4ccce030c201038346f1d}{On\-Failed\-Connection\-Attempt} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga3e92f686bace869b78c10508c58e0825}{P\-I2\-\_\-\-Failed\-Connection\-Attempt\-Reason} failed\-Connection\-Attempt\-Reason)
+\item 
+\hypertarget{class_rak_net_1_1_router2_a59bb4fa9ae67bdc0c3761c2bd5bce6b7}{virtual void \hyperlink{class_rak_net_1_1_router2_a59bb4fa9ae67bdc0c3761c2bd5bce6b7}{On\-Rak\-Peer\-Shutdown} (void)}\label{class_rak_net_1_1_router2_a59bb4fa9ae67bdc0c3761c2bd5bce6b7}
+
+\begin{DoxyCompactList}\small\item\em Called when \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} is shutdown. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_router2_aca4ac55a38bf9d85f1f1719da91876ce}{unsigned int {\bfseries Get\-Connection\-Request\-Index} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid)}\label{class_rak_net_1_1_router2_aca4ac55a38bf9d85f1f1719da91876ce}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_router2_acc98e75c4dc3f84d9ebd2d853b7fb151}{bool {\bfseries Update\-Forwarding} (\hyperlink{struct_rak_net_1_1_router2_1_1_connnect_request}{Connnect\-Request} $\ast$connection\-Request)}\label{class_rak_net_1_1_router2_acc98e75c4dc3f84d9ebd2d853b7fb151}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_afa4f7227b9bea786e4e9b0068ae0cef0}{void {\bfseries Remove\-Connection\-Request} (unsigned int connection\-Request\-Index)}\label{class_rak_net_1_1_router2_afa4f7227b9bea786e4e9b0068ae0cef0}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a76d811588d6c8efba886231adf78ed09}{void {\bfseries Request\-Forwarding} (\hyperlink{struct_rak_net_1_1_router2_1_1_connnect_request}{Connnect\-Request} $\ast$connection\-Request)}\label{class_rak_net_1_1_router2_a76d811588d6c8efba886231adf78ed09}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a9879ac26bf3cb0890558124d3c99ca5c}{void {\bfseries On\-Query\-Forwarding} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_a9879ac26bf3cb0890558124d3c99ca5c}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a34fdba6917b7a673e77d547020591c06}{void {\bfseries On\-Query\-Forwarding\-Reply} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_a34fdba6917b7a673e77d547020591c06}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a8729ea8016a2f46d79f01fdecdf90d13}{void {\bfseries On\-Request\-Forwarding} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_a8729ea8016a2f46d79f01fdecdf90d13}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_adb4c4457892d96a77b2b4a5126a11fca}{void {\bfseries On\-Rerouted} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_adb4c4457892d96a77b2b4a5126a11fca}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ad65e787648cec225b76019d704dca413}{void {\bfseries On\-Mini\-Punch\-Reply} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_ad65e787648cec225b76019d704dca413}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_acc835ce3d787893cec9ea234c47b0fa6}{void {\bfseries On\-Mini\-Punch\-Reply\-Bounce} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_acc835ce3d787893cec9ea234c47b0fa6}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a051d1ab75e9778f03fa4ed544948b2dd}{bool {\bfseries On\-Forwarding\-Success} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_router2_a051d1ab75e9778f03fa4ed544948b2dd}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_aedbaae33d16d0a7c7c8f121e346f7363}{int {\bfseries Get\-Largest\-Ping\-Among\-Connected\-Systems} (void) const }\label{class_rak_net_1_1_router2_aedbaae33d16d0a7c7c8f121e346f7363}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ae06fa8bab280d3d6aa0d3d2de062ec45}{void {\bfseries Return\-To\-User} (\hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Message\-I\-D} message\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid, const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, bool was\-Generated\-Locally)}\label{class_rak_net_1_1_router2_ae06fa8bab280d3d6aa0d3d2de062ec45}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_acf632c62f7e21fc8b91c05c4b87b15f7}{bool {\bfseries Connect\-Internal} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid, bool return\-Connection\-Lost\-On\-Failure)}\label{class_rak_net_1_1_router2_acf632c62f7e21fc8b91c05c4b87b15f7}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a60b29d59a7ec4d217c1ab34e04ed9181}{void {\bfseries Clear\-Connection\-Requests} (void)}\label{class_rak_net_1_1_router2_a60b29d59a7ec4d217c1ab34e04ed9181}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a919ce3fd2a1bb46c5df59fa6640e2d39}{void {\bfseries Clear\-Minipunches} (void)}\label{class_rak_net_1_1_router2_a919ce3fd2a1bb46c5df59fa6640e2d39}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a02b21891222c5e365051a1a40500d236}{void {\bfseries Clear\-Forwarded\-Connections} (void)}\label{class_rak_net_1_1_router2_a02b21891222c5e365051a1a40500d236}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ace8965777e62fbd115b2aa7e458e6424}{void {\bfseries Clear\-All} (void)}\label{class_rak_net_1_1_router2_ace8965777e62fbd115b2aa7e458e6424}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ae021a22d4843a347f01dfd7343fa372c}{int {\bfseries Return\-Failure\-On\-Cannot\-Forward} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} source\-Guid, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid)}\label{class_rak_net_1_1_router2_ae021a22d4843a347f01dfd7343fa372c}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a3d5d6fbf4208bd3d7370d8ad9dd215fd}{void {\bfseries Send\-Failure\-On\-Cannot\-Forward} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} source\-Guid, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid)}\label{class_rak_net_1_1_router2_a3d5d6fbf4208bd3d7370d8ad9dd215fd}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a2941eb16a50e5d478d176e8e75a849dc}{void {\bfseries Send\-Forwarding\-Success} (\hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Message\-I\-D} message\-Id, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} source\-Guid, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid, unsigned short source\-To\-Dst\-Port)}\label{class_rak_net_1_1_router2_a2941eb16a50e5d478d176e8e75a849dc}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_aa7d758c774f49a74d8b1a7d04e7ace6e}{void {\bfseries Send\-O\-O\-B\-From\-Rak\-Net\-Port} (Out\-Of\-Band\-Identifiers oob, \hyperlink{class_rak_net_1_1_bit_stream}{Bit\-Stream} $\ast$extra\-Data, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} sa)}\label{class_rak_net_1_1_router2_aa7d758c774f49a74d8b1a7d04e7ace6e}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a40c6733df588acf0a2fac5cc84056714}{void {\bfseries Send\-O\-O\-B\-From\-Specified\-Socket} (Out\-Of\-Band\-Identifiers oob, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} sa, \-\_\-\-\_\-\-U\-D\-P\-S\-O\-C\-K\-E\-T\-\_\-\-\_\- socket)}\label{class_rak_net_1_1_router2_a40c6733df588acf0a2fac5cc84056714}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a0c51d38c4953799abe7cbb1e4a481eca}{void {\bfseries Send\-O\-O\-B\-Messages} (\hyperlink{struct_rak_net_1_1_router2_1_1_mini_punch_request}{Mini\-Punch\-Request} $\ast$mpr)}\label{class_rak_net_1_1_router2_a0c51d38c4953799abe7cbb1e4a481eca}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_router2_a5445c1ba97de8bc9839b72bec41d7269}{\hyperlink{class_rak_net_1_1_u_d_p_forwarder}{U\-D\-P\-Forwarder} $\ast$ {\bfseries udp\-Forwarder}}\label{class_rak_net_1_1_router2_a5445c1ba97de8bc9839b72bec41d7269}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ac24f3a9adce18558aa066d50063b1b66}{int {\bfseries maximum\-Forwarding\-Requests}}\label{class_rak_net_1_1_router2_ac24f3a9adce18558aa066d50063b1b66}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a5bf52f1b925d85ab244cd591bbee61ea}{\hyperlink{class_rak_net_1_1_simple_mutex}{Simple\-Mutex} {\bfseries connection\-Requests\-Mutex}}\label{class_rak_net_1_1_router2_a5bf52f1b925d85ab244cd591bbee61ea}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a1474d01dcf128e68d10871eebf1f7019}{\hyperlink{class_rak_net_1_1_simple_mutex}{Simple\-Mutex} {\bfseries mini\-Punches\-In\-Progress\-Mutex}}\label{class_rak_net_1_1_router2_a1474d01dcf128e68d10871eebf1f7019}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a9701c72f70f28c33a27223d46416d99a}{\hyperlink{class_rak_net_1_1_simple_mutex}{Simple\-Mutex} {\bfseries forwarded\-Connection\-List\-Mutex}}\label{class_rak_net_1_1_router2_a9701c72f70f28c33a27223d46416d99a}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ac0004a5d9109c5ee678da1b0a5e868e4}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_router2_1_1_connnect_request}{Connnect\-Request} $\ast$ $>$ {\bfseries connection\-Requests}}\label{class_rak_net_1_1_router2_ac0004a5d9109c5ee678da1b0a5e868e4}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ad05ecc890128830c7c4e1ed6430edd9b}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_router2_1_1_mini_punch_request}{Mini\-Punch\-Request} $>$ {\bfseries mini\-Punches\-In\-Progress}}\label{class_rak_net_1_1_router2_ad05ecc890128830c7c4e1ed6430edd9b}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a4ff221cecbe4cff23ce575fed20537d9}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_router2_1_1_forwarded_connection}{Forwarded\-Connection} $>$ {\bfseries forwarded\-Connection\-List}}\label{class_rak_net_1_1_router2_a4ff221cecbe4cff23ce575fed20537d9}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_ad9b0652fe2529cb667d1f33e86aa2a91}{\hyperlink{struct_rak_net_1_1_router2_debug_interface}{Router2\-Debug\-Interface} $\ast$ {\bfseries debug\-Interface}}\label{class_rak_net_1_1_router2_ad9b0652fe2529cb667d1f33e86aa2a91}
+
+\item 
+\hypertarget{class_rak_net_1_1_router2_a818a9e7691d951f74b88be156b4c2825}{unsigned short {\bfseries socket\-Family}}\label{class_rak_net_1_1_router2_a818a9e7691d951f74b88be156b4c2825}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class interface for the \hyperlink{class_rak_net_1_1_router2}{Router2} system. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_router2_a8d86939663f286f21a8aefeea615565b}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!Establish\-Routing@{Establish\-Routing}}
+\index{Establish\-Routing@{Establish\-Routing}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{Establish\-Routing}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Router2\-::\-Establish\-Routing (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{endpoint\-Guid}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_router2_a8d86939663f286f21a8aefeea615565b}
+
+
+Query all connected systems to connect through them to a third system. System will return I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G\-\_\-\-N\-O\-\_\-\-P\-A\-T\-H if unable to connect. Else you will get I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D. 
+
+On I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-F\-O\-R\-W\-A\-R\-D\-I\-N\-G\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D, Establish\-Routing as follows\-:
+
+\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} bs(packet-\/$>$data, packet-\/$>$length, false); bs.\-Ignore\-Bytes(sizeof(\-Message\-I\-D)); \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} endpoint\-Guid; bs.\-Read(endpoint\-Guid); unsigned short source\-To\-Dest\-Port; bs.\-Read(source\-To\-Dest\-Port); char ip\-Address\-String\mbox{[}32\mbox{]}; packet-\/$>$system\-Address.\-To\-String(false, ip\-Address\-String); rak\-Peer\-Interface-\/$>$Establish\-Routing(ip\-Address\-String, source\-To\-Dest\-Port, 0,0);
+
+\begin{DoxyNote}{Note}
+The \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} for a connection should not be used -\/ always use Rak\-Net\-Guid as the address can change at any time. When the address changes, you will get I\-D\-\_\-\-R\-O\-U\-T\-E\-R\-\_\-2\-\_\-\-R\-E\-R\-O\-U\-T\-E\-D 
+\end{DoxyNote}
+\hypertarget{class_rak_net_1_1_router2_a428635762452b03a115043e4628837b9}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Router2\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_router2_a428635762452b03a115043e4628837b9}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_router2_ac3be692d08e4ccce030c201038346f1d}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!On\-Failed\-Connection\-Attempt@{On\-Failed\-Connection\-Attempt}}
+\index{On\-Failed\-Connection\-Attempt@{On\-Failed\-Connection\-Attempt}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{On\-Failed\-Connection\-Attempt}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Router2\-::\-On\-Failed\-Connection\-Attempt (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet, }
+\item[{{\bf P\-I2\-\_\-\-Failed\-Connection\-Attempt\-Reason}}]{failed\-Connection\-Attempt\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_router2_ac3be692d08e4ccce030c201038346f1d}
+Called when a connection attempt fails 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & \hyperlink{struct_rak_net_1_1_packet}{Packet} to be returned to the user \\
+\hline
+\mbox{\tt in}  & {\em failed\-Connection\-Reason} & Why the connection failed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a9504489498df14b6efa5ca9bd39aede4}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_router2_a825d62c2f01def72c58815b609cf4bbf}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Router2\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_router2_a825d62c2f01def72c58815b609cf4bbf}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_router2_a60d0f2bffeed81aabcde1daa6d0cd79d}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!Set\-Maximum\-Forwarding\-Requests@{Set\-Maximum\-Forwarding\-Requests}}
+\index{Set\-Maximum\-Forwarding\-Requests@{Set\-Maximum\-Forwarding\-Requests}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{Set\-Maximum\-Forwarding\-Requests}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Router2\-::\-Set\-Maximum\-Forwarding\-Requests (
+\begin{DoxyParamCaption}
+\item[{int}]{max}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_router2_a60d0f2bffeed81aabcde1daa6d0cd79d}
+Set the maximum number of bidirectional connections this system will support Defaults to 0 \hypertarget{class_rak_net_1_1_router2_aef586b4fc73d446119225e05384c8515}{\index{Rak\-Net\-::\-Router2@{Rak\-Net\-::\-Router2}!Set\-Socket\-Family@{Set\-Socket\-Family}}
+\index{Set\-Socket\-Family@{Set\-Socket\-Family}!RakNet::Router2@{Rak\-Net\-::\-Router2}}
+\subsubsection[{Set\-Socket\-Family}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Router2\-::\-Set\-Socket\-Family (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{\-\_\-socket\-Family}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_router2_aef586b4fc73d446119225e05384c8515}
+Sets the socket family to use, either I\-P\-V4 or I\-P\-V6 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em socket\-Family} & For I\-P\-V4, use A\-F\-\_\-\-I\-N\-E\-T (default). For I\-P\-V6, use A\-F\-\_\-\-I\-N\-E\-T6. To autoselect, use A\-F\-\_\-\-U\-N\-S\-P\-E\-C. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_router2_8h}{Router2.\-h}\end{DoxyCompactItemize}

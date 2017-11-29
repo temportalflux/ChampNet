@@ -1,0 +1,189 @@
+\hypertarget{class_rak_net_1_1_two_way_authentication}{\section{Rak\-Net\-:\-:Two\-Way\-Authentication Class Reference}
+\label{class_rak_net_1_1_two_way_authentication}\index{Rak\-Net\-::\-Two\-Way\-Authentication@{Rak\-Net\-::\-Two\-Way\-Authentication}}
+}
+
+
+Implements two way authentication.  
+
+
+
+
+{\ttfamily \#include $<$Two\-Way\-Authentication.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Two\-Way\-Authentication\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_two_way_authentication}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_two_way_authentication_1_1_nonce_and_remote_system_request}{Nonce\-And\-Remote\-System\-Request}
+\item 
+struct \hyperlink{struct_rak_net_1_1_two_way_authentication_1_1_nonce_generator}{Nonce\-Generator}
+\item 
+struct \hyperlink{struct_rak_net_1_1_two_way_authentication_1_1_pending_challenge}{Pending\-Challenge}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_two_way_authentication_af3168d8bfabeb0fd17008e514a24736b}{Add\-Password} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} identifier, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} password)
+\begin{DoxyCompactList}\small\item\em Adds a password to the list of passwords the system will accept. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rak_net_1_1_two_way_authentication_aa2e65f464fc887dc753a351e7e9fb797}{Challenge} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} identifier, \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} remote\-System)
+\begin{DoxyCompactList}\small\item\em Challenge another system for the specified identifier. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_ad66d0d154535ef461f3ba6be4ac3e14d}{void \hyperlink{class_rak_net_1_1_two_way_authentication_ad66d0d154535ef461f3ba6be4ac3e14d}{Clear} (void)}\label{class_rak_net_1_1_two_way_authentication_ad66d0d154535ef461f3ba6be4ac3e14d}
+
+\begin{DoxyCompactList}\small\item\em Free all memory. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a09f52ebca8a86540a1270a76027e9503}{virtual void \hyperlink{class_rak_net_1_1_two_way_authentication_a09f52ebca8a86540a1270a76027e9503}{Update} (void)}\label{class_rak_net_1_1_two_way_authentication_a09f52ebca8a86540a1270a76027e9503}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_two_way_authentication_a692b2d35df56e4a4c0550808d67864cc}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a21174af5198820e661c3c8ea1bf5c599}{virtual void \hyperlink{class_rak_net_1_1_two_way_authentication_a21174af5198820e661c3c8ea1bf5c599}{On\-Rak\-Peer\-Shutdown} (void)}\label{class_rak_net_1_1_two_way_authentication_a21174af5198820e661c3c8ea1bf5c599}
+
+\begin{DoxyCompactList}\small\item\em Called when \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} is shutdown. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_rak_net_1_1_two_way_authentication_ad683e107f9c25a5d833b55d547374c02}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a098079707e5196c783f122699f9b3a43}{\hyperlink{class_data_structures_1_1_queue}{Data\-Structures\-::\-Queue}\\*
+$<$ \hyperlink{struct_rak_net_1_1_two_way_authentication_1_1_pending_challenge}{Pending\-Challenge} $>$ {\bfseries outgoing\-Challenges}}\label{class_rak_net_1_1_two_way_authentication_a098079707e5196c783f122699f9b3a43}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_aa2d22284ea40e6a1e6bf1c62508e773c}{void {\bfseries Push\-To\-User} (\hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Message\-I\-D} message\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} password, \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Rak\-Net\-::\-Address\-Or\-G\-U\-I\-D} remote\-System)}\label{class_rak_net_1_1_two_way_authentication_aa2d22284ea40e6a1e6bf1c62508e773c}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_aa4fb05369f4fe0b1fe58e507aa433234}{void {\bfseries On\-Nonce\-Request} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_two_way_authentication_aa4fb05369f4fe0b1fe58e507aa433234}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_adb3d1c86dfde1e2936742b86f338d778}{void {\bfseries On\-Nonce\-Reply} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_two_way_authentication_adb3d1c86dfde1e2936742b86f338d778}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_ad09abd45101517c051abe3bb1eaa0f39}{\hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} {\bfseries On\-Hashed\-Nonce\-And\-Password} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_two_way_authentication_ad09abd45101517c051abe3bb1eaa0f39}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a8628a25977ed9ebf1fe9b67bcb09b3fa}{void {\bfseries On\-Password\-Result} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_two_way_authentication_a8628a25977ed9ebf1fe9b67bcb09b3fa}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a145fad4caff6d1db1c3dabd9b060366e}{void {\bfseries Hash} (char thier\-Nonce\mbox{[}T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-N\-O\-N\-C\-E\-\_\-\-L\-E\-N\-G\-T\-H\mbox{]}, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} password, char out\mbox{[}H\-A\-S\-H\-E\-D\-\_\-\-N\-O\-N\-C\-E\-\_\-\-A\-N\-D\-\_\-\-P\-W\-\_\-\-L\-E\-N\-G\-T\-H\mbox{]})}\label{class_rak_net_1_1_two_way_authentication_a145fad4caff6d1db1c3dabd9b060366e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a89b2d290e5760d34bf1f44b7e4363553}{\hyperlink{class_data_structures_1_1_hash}{Data\-Structures\-::\-Hash}\\*
+$<$ \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String}, \\*
+\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String}, \\*
+16, \hyperlink{class_rak_net_1_1_rak_string_a79f546baedf74c64a820297b40590250}{Rak\-Net\-::\-Rak\-String\-::\-To\-Integer} $>$ {\bfseries passwords}}\label{class_rak_net_1_1_two_way_authentication_a89b2d290e5760d34bf1f44b7e4363553}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a105195e0b6c3e3f97d82058e59f63832}{Rak\-Net\-::\-Time {\bfseries when\-Last\-Timeout\-Check}}\label{class_rak_net_1_1_two_way_authentication_a105195e0b6c3e3f97d82058e59f63832}
+
+\item 
+\hypertarget{class_rak_net_1_1_two_way_authentication_a4c3268cb78d14bc8504a3e5b923d7e20}{\hyperlink{struct_rak_net_1_1_two_way_authentication_1_1_nonce_generator}{Nonce\-Generator} {\bfseries nonce\-Generator}}\label{class_rak_net_1_1_two_way_authentication_a4c3268cb78d14bc8504a3e5b923d7e20}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements two way authentication. 
+
+Given two systems, each of whom known a common password / identifier pair, verify the password without transmitting it This can be used to determine what permissions are should be allowed to the other system If the other system should not send any data until authentication passes, you can use the \hyperlink{class_rak_net_1_1_message_filter}{Message\-Filter} plugin for this. Call \hyperlink{class_rak_net_1_1_message_filter_a480178a464758a5c61dffb631a4d37e7}{Message\-Filter\-::\-Set\-Allow\-Message\-I\-D()} including I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-N\-E\-G\-O\-T\-I\-A\-T\-I\-O\-N when doing so. Also attach \hyperlink{class_rak_net_1_1_message_filter}{Message\-Filter} first in the list of plugins \begin{DoxyNote}{Note}
+If other systems challenges us, and fails, you will get I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-H\-A\-L\-L\-E\-N\-G\-E\-\_\-\-F\-A\-I\-L\-E\-D. 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_two_way_authentication_af3168d8bfabeb0fd17008e514a24736b}{\index{Rak\-Net\-::\-Two\-Way\-Authentication@{Rak\-Net\-::\-Two\-Way\-Authentication}!Add\-Password@{Add\-Password}}
+\index{Add\-Password@{Add\-Password}!RakNet::TwoWayAuthentication@{Rak\-Net\-::\-Two\-Way\-Authentication}}
+\subsubsection[{Add\-Password}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Two\-Way\-Authentication\-::\-Add\-Password (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{identifier, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{password}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_two_way_authentication_af3168d8bfabeb0fd17008e514a24736b}
+
+
+Adds a password to the list of passwords the system will accept. 
+
+Each password, which is secret and not transmitted, is identified by {\itshape identifier}. {\itshape identifier} is transmitted in plaintext with the request. It is only needed because the system supports multiple password. It is used to only hash against once password on the remote system, rather than having to hash against every known password. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em identifier} & A unique identifier representing this password. This is transmitted in plaintext and should be considered insecure \\
+\hline
+\mbox{\tt in}  & {\em password} & The password to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on identifier==password, either identifier or password is blank, or identifier is already in use 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_two_way_authentication_aa2e65f464fc887dc753a351e7e9fb797}{\index{Rak\-Net\-::\-Two\-Way\-Authentication@{Rak\-Net\-::\-Two\-Way\-Authentication}!Challenge@{Challenge}}
+\index{Challenge@{Challenge}!RakNet::TwoWayAuthentication@{Rak\-Net\-::\-Two\-Way\-Authentication}}
+\subsubsection[{Challenge}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Two\-Way\-Authentication\-::\-Challenge (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{identifier, }
+\item[{{\bf Address\-Or\-G\-U\-I\-D}}]{remote\-System}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_two_way_authentication_aa2e65f464fc887dc753a351e7e9fb797}
+
+
+Challenge another system for the specified identifier. 
+
+After calling Challenge, you will get back I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-S\-U\-C\-C\-E\-S\-S, I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-O\-U\-T\-G\-O\-I\-N\-G\-\_\-\-C\-H\-A\-L\-L\-E\-N\-G\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T, or I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-O\-U\-T\-G\-O\-I\-N\-G\-\_\-\-C\-H\-A\-L\-L\-E\-N\-G\-E\-\_\-\-F\-A\-I\-L\-E\-D I\-D\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N\-\_\-\-S\-U\-C\-C\-E\-S\-S will be returned if and only if the other system has called \hyperlink{class_rak_net_1_1_two_way_authentication_af3168d8bfabeb0fd17008e514a24736b}{Add\-Password()} with the same identifier pair as this system. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em identifier} & A unique identifier representing this password. This is transmitted in plaintext and should be considered insecure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on remote system not connected, or identifier not previously added with \hyperlink{class_rak_net_1_1_two_way_authentication_af3168d8bfabeb0fd17008e514a24736b}{Add\-Password()} 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_two_way_authentication_ad683e107f9c25a5d833b55d547374c02}{\index{Rak\-Net\-::\-Two\-Way\-Authentication@{Rak\-Net\-::\-Two\-Way\-Authentication}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::TwoWayAuthentication@{Rak\-Net\-::\-Two\-Way\-Authentication}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Two\-Way\-Authentication\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_two_way_authentication_ad683e107f9c25a5d833b55d547374c02}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_two_way_authentication_a692b2d35df56e4a4c0550808d67864cc}{\index{Rak\-Net\-::\-Two\-Way\-Authentication@{Rak\-Net\-::\-Two\-Way\-Authentication}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::TwoWayAuthentication@{Rak\-Net\-::\-Two\-Way\-Authentication}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Two\-Way\-Authentication\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_two_way_authentication_a692b2d35df56e4a4c0550808d67864cc}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_two_way_authentication_8h}{Two\-Way\-Authentication.\-h}\end{DoxyCompactItemize}

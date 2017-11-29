@@ -1,0 +1,100 @@
+\hypertarget{class_data_structures_1_1_weighted_graph}{\section{Data\-Structures\-:\-:Weighted\-Graph$<$ node\-\_\-type, weight\-\_\-type, allow\-\_\-unlinked\-Nodes $>$ Class Template Reference}
+\label{class_data_structures_1_1_weighted_graph}\index{Data\-Structures\-::\-Weighted\-Graph$<$ node\-\_\-type, weight\-\_\-type, allow\-\_\-unlinked\-Nodes $>$@{Data\-Structures\-::\-Weighted\-Graph$<$ node\-\_\-type, weight\-\_\-type, allow\-\_\-unlinked\-Nodes $>$}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_data_structures_1_1_weighted_graph_1_1_node_and_parent}{Node\-And\-Parent}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ab697e42de015f040beafe130da1b76b5}{{\bfseries Weighted\-Graph} (const \hyperlink{class_data_structures_1_1_weighted_graph}{Weighted\-Graph} \&original\-\_\-copy)}\label{class_data_structures_1_1_weighted_graph_ab697e42de015f040beafe130da1b76b5}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_acbae80df6e3d282616e24b47b6fb10de}{\hyperlink{class_data_structures_1_1_weighted_graph}{Weighted\-Graph} \& {\bfseries operator=} (const \hyperlink{class_data_structures_1_1_weighted_graph}{Weighted\-Graph} \&original\-\_\-copy)}\label{class_data_structures_1_1_weighted_graph_acbae80df6e3d282616e24b47b6fb10de}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ac2f5ba3910a6cfd634e6a33e8c68f89d}{void {\bfseries Add\-Node} (const node\-\_\-type \&node)}\label{class_data_structures_1_1_weighted_graph_ac2f5ba3910a6cfd634e6a33e8c68f89d}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_abf55d60605fb5ad3deca6fb7a1cf38ac}{void {\bfseries Remove\-Node} (const node\-\_\-type \&node)}\label{class_data_structures_1_1_weighted_graph_abf55d60605fb5ad3deca6fb7a1cf38ac}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_adc378f34b57faf0885d7edacea35d9d8}{void {\bfseries Add\-Connection} (const node\-\_\-type \&node1, const node\-\_\-type \&node2, weight\-\_\-type weight)}\label{class_data_structures_1_1_weighted_graph_adc378f34b57faf0885d7edacea35d9d8}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a3e6a2a94aa9cf4c3c46922e51a9e8cc8}{void {\bfseries Remove\-Connection} (const node\-\_\-type \&node1, const node\-\_\-type \&node2)}\label{class_data_structures_1_1_weighted_graph_a3e6a2a94aa9cf4c3c46922e51a9e8cc8}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a7b598441f4ed3ff1ffbda47d5e6f3153}{bool {\bfseries Has\-Connection} (const node\-\_\-type \&node1, const node\-\_\-type \&node2)}\label{class_data_structures_1_1_weighted_graph_a7b598441f4ed3ff1ffbda47d5e6f3153}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ae3903323e2315b7cb2850a8ff1fcbf76}{void {\bfseries Print} (void)}\label{class_data_structures_1_1_weighted_graph_ae3903323e2315b7cb2850a8ff1fcbf76}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ae728c1f41989d531588829916f7b28ae}{void {\bfseries Clear} (void)}\label{class_data_structures_1_1_weighted_graph_ae728c1f41989d531588829916f7b28ae}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ae7fcebbbd48228744e31a6c4d1750e9e}{bool {\bfseries Get\-Shortest\-Path} (\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ node\-\_\-type $>$ \&path, node\-\_\-type start\-Node, node\-\_\-type end\-Node, weight\-\_\-type I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-W\-E\-I\-G\-H\-T)}\label{class_data_structures_1_1_weighted_graph_ae7fcebbbd48228744e31a6c4d1750e9e}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_af6ae09481c0c13f41def60dc4ed6a9f1}{bool {\bfseries Get\-Spanning\-Tree} (\hyperlink{class_data_structures_1_1_tree}{Data\-Structures\-::\-Tree}$<$ node\-\_\-type $>$ \&out\-Tree, \hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ node\-\_\-type $>$ $\ast$input\-Nodes, node\-\_\-type start\-Node, weight\-\_\-type I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-W\-E\-I\-G\-H\-T)}\label{class_data_structures_1_1_weighted_graph_af6ae09481c0c13f41def60dc4ed6a9f1}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a66f4034521b47d5e331b0f08a37afc36}{unsigned {\bfseries Get\-Node\-Count} (void) const }\label{class_data_structures_1_1_weighted_graph_a66f4034521b47d5e331b0f08a37afc36}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a67427257d69b16e530f8e9bdfed7e6bb}{unsigned {\bfseries Get\-Connection\-Count} (unsigned node\-Index) const }\label{class_data_structures_1_1_weighted_graph_a67427257d69b16e530f8e9bdfed7e6bb}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a3a2958a36405b1c4e441c5560e660813}{void {\bfseries Get\-Connection\-At\-Index} (unsigned node\-Index, unsigned connection\-Index, node\-\_\-type \&out\-Node, weight\-\_\-type \&out\-Weight) const }\label{class_data_structures_1_1_weighted_graph_a3a2958a36405b1c4e441c5560e660813}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ad53ce73bf226c91905d0d81c97c1a4db}{node\-\_\-type {\bfseries Get\-Node\-At\-Index} (unsigned node\-Index) const }\label{class_data_structures_1_1_weighted_graph_ad53ce73bf226c91905d0d81c97c1a4db}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a6b27537b51fc124f107b1ab44ad81f76}{static void {\bfseries I\-M\-P\-L\-E\-M\-E\-N\-T\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-M\-P\-A\-R\-I\-S\-O\-N} (void)}\label{class_data_structures_1_1_weighted_graph_a6b27537b51fc124f107b1ab44ad81f76}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_abb95a374208eb9c62101aae4c00f9072}{void {\bfseries Clear\-Dijkstra} (void)}\label{class_data_structures_1_1_weighted_graph_abb95a374208eb9c62101aae4c00f9072}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ac1f514b3abe06d47cb5991d592f16e17}{void {\bfseries Generate\-Disjktra\-Matrix} (node\-\_\-type start\-Node, weight\-\_\-type I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-W\-E\-I\-G\-H\-T)}\label{class_data_structures_1_1_weighted_graph_ac1f514b3abe06d47cb5991d592f16e17}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a9b7213f0f01a226cd7033d4a84b7cdf8}{\hyperlink{class_data_structures_1_1_map}{Data\-Structures\-::\-Map}$<$ node\-\_\-type, \\*
+\hyperlink{class_data_structures_1_1_map}{Data\-Structures\-::\-Map}$<$ node\-\_\-type, \\*
+weight\-\_\-type $>$ $\ast$ $>$ {\bfseries adjacency\-Lists}}\label{class_data_structures_1_1_weighted_graph_a9b7213f0f01a226cd7033d4a84b7cdf8}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ac48608c2c44bfa4f9655c05eddd56940}{bool {\bfseries is\-Valid\-Path}}\label{class_data_structures_1_1_weighted_graph_ac48608c2c44bfa4f9655c05eddd56940}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a2f42d391d260dabc17b2c6096753839a}{node\-\_\-type {\bfseries root\-Node}}\label{class_data_structures_1_1_weighted_graph_a2f42d391d260dabc17b2c6096753839a}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_ac034f7d08bcf8f4c63fe4f5e7d888cd9}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ node\-\_\-type, node\-\_\-type $>$ {\bfseries cost\-Matrix\-Indices}}\label{class_data_structures_1_1_weighted_graph_ac034f7d08bcf8f4c63fe4f5e7d888cd9}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a121ddaacaed31a2ad5e3f5313f3561d0}{weight\-\_\-type $\ast$ {\bfseries cost\-Matrix}}\label{class_data_structures_1_1_weighted_graph_a121ddaacaed31a2ad5e3f5313f3561d0}
+
+\item 
+\hypertarget{class_data_structures_1_1_weighted_graph_a685964d9ffea0f84739693b569db80fa}{node\-\_\-type $\ast$ {\bfseries least\-Node\-Array}}\label{class_data_structures_1_1_weighted_graph_a685964d9ffea0f84739693b569db80fa}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_d_s___weighted_graph_8h}{D\-S\-\_\-\-Weighted\-Graph.\-h}\end{DoxyCompactItemize}

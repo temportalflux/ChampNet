@@ -1,0 +1,59 @@
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue}{\section{Data\-Structures\-:\-:Threadsafe\-Allocating\-Queue$<$ structure\-Type $>$ Class Template Reference}
+\label{class_data_structures_1_1_threadsafe_allocating_queue}\index{Data\-Structures\-::\-Threadsafe\-Allocating\-Queue$<$ structure\-Type $>$@{Data\-Structures\-::\-Threadsafe\-Allocating\-Queue$<$ structure\-Type $>$}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a768320d1f04005713d0d94bd3b5a7f43}{void {\bfseries Push} (structure\-Type $\ast$s)}\label{class_data_structures_1_1_threadsafe_allocating_queue_a768320d1f04005713d0d94bd3b5a7f43}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aad86452e470ac42bbfe656aed0b192a2}{structure\-Type $\ast$ {\bfseries Pop\-Inaccurate} (void)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aad86452e470ac42bbfe656aed0b192a2}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aeaee4f85f6aa6870a2eb57c533ba13f5}{structure\-Type $\ast$ {\bfseries Pop} (void)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aeaee4f85f6aa6870a2eb57c533ba13f5}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a833da782723daa209092fa29b29fbc94}{void {\bfseries Set\-Page\-Size} (int size)}\label{class_data_structures_1_1_threadsafe_allocating_queue_a833da782723daa209092fa29b29fbc94}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a0e9dcb3ab5bb94af7535c41468a233c0}{bool {\bfseries Is\-Empty} (void)}\label{class_data_structures_1_1_threadsafe_allocating_queue_a0e9dcb3ab5bb94af7535c41468a233c0}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aeffe0642e5cea2431c976415955a1460}{structure\-Type $\ast$ {\bfseries operator\mbox{[}$\,$\mbox{]}} (unsigned int position)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aeffe0642e5cea2431c976415955a1460}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aa7a9ab0c4effa28652d64eb7624c810f}{void {\bfseries Remove\-At\-Index} (unsigned int position)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aa7a9ab0c4effa28652d64eb7624c810f}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aa2887f954c636f22b9463383ec7eb144}{unsigned int {\bfseries Size} (void)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aa2887f954c636f22b9463383ec7eb144}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_aa95962ea9808cd598c13048c31c52c6e}{structure\-Type $\ast$ {\bfseries Allocate} (const char $\ast$file, unsigned int line)}\label{class_data_structures_1_1_threadsafe_allocating_queue_aa95962ea9808cd598c13048c31c52c6e}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a0eec464ecd7aa8af770e1ceb406661bf}{void {\bfseries Deallocate} (structure\-Type $\ast$s, const char $\ast$file, unsigned int line)}\label{class_data_structures_1_1_threadsafe_allocating_queue_a0eec464ecd7aa8af770e1ceb406661bf}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a48ffb49251ed59f0fbf54d0226e374e0}{void {\bfseries Clear} (const char $\ast$file, unsigned int line)}\label{class_data_structures_1_1_threadsafe_allocating_queue_a48ffb49251ed59f0fbf54d0226e374e0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_ad03957d4e81bbe15a87872844fa766f6}{\hyperlink{class_data_structures_1_1_memory_pool}{Memory\-Pool}$<$ structure\-Type $>$ {\bfseries memory\-Pool}}\label{class_data_structures_1_1_threadsafe_allocating_queue_ad03957d4e81bbe15a87872844fa766f6}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_a299a4e4656551dad54609a7f6cf2052b}{\hyperlink{class_rak_net_1_1_simple_mutex}{Rak\-Net\-::\-Simple\-Mutex} {\bfseries memory\-Pool\-Mutex}}\label{class_data_structures_1_1_threadsafe_allocating_queue_a299a4e4656551dad54609a7f6cf2052b}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_ae89e097ad6d19614990c8566a55ec7a7}{\hyperlink{class_data_structures_1_1_queue}{Queue}$<$ structure\-Type $\ast$ $>$ {\bfseries queue}}\label{class_data_structures_1_1_threadsafe_allocating_queue_ae89e097ad6d19614990c8566a55ec7a7}
+
+\item 
+\hypertarget{class_data_structures_1_1_threadsafe_allocating_queue_ad77392386453ce0a79db5e49b3f4c8ba}{\hyperlink{class_rak_net_1_1_simple_mutex}{Rak\-Net\-::\-Simple\-Mutex} {\bfseries queue\-Mutex}}\label{class_data_structures_1_1_threadsafe_allocating_queue_ad77392386453ce0a79db5e49b3f4c8ba}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_d_s___threadsafe_allocating_queue_8h}{D\-S\-\_\-\-Threadsafe\-Allocating\-Queue.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+\hypertarget{class_rak_net_1_1_r_p_c4_global_registration}{\section{Rak\-Net\-:\-:R\-P\-C4\-Global\-Registration Class Reference}
+\label{class_rak_net_1_1_r_p_c4_global_registration}\index{Rak\-Net\-::\-R\-P\-C4\-Global\-Registration@{Rak\-Net\-::\-R\-P\-C4\-Global\-Registration}}
+}
+
+
+Instantiate this class globally if you want to register a function with \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} at the global space.  
+
+
+
+
+{\ttfamily \#include $<$R\-P\-C4\-Plugin.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_r_p_c4_global_registration_a6d5f662a81ff75bfcb958c6c670ccd54}{\hyperlink{class_rak_net_1_1_r_p_c4_global_registration_a6d5f662a81ff75bfcb958c6c670ccd54}{R\-P\-C4\-Global\-Registration} (const char $\ast$unique\-I\-D, void($\ast$function\-Pointer)(\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$user\-Data, \hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet))}\label{class_rak_net_1_1_r_p_c4_global_registration_a6d5f662a81ff75bfcb958c6c670ccd54}
+
+\begin{DoxyCompactList}\small\item\em Queue a call to \hyperlink{class_rak_net_1_1_r_p_c4_a62122f90344dbfc064f9b14e0f565b23}{R\-P\-C4\-::\-Register\-Function()} globally. Actual call occurs once \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} is attached to an instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} or \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface}. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_r_p_c4_global_registration_aca6185838711ac942cb97e014c258f03}{\hyperlink{class_rak_net_1_1_r_p_c4_global_registration_aca6185838711ac942cb97e014c258f03}{R\-P\-C4\-Global\-Registration} (const char $\ast$unique\-I\-D, void($\ast$function\-Pointer)(\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$user\-Data, \hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet), int call\-Priority)}\label{class_rak_net_1_1_r_p_c4_global_registration_aca6185838711ac942cb97e014c258f03}
+
+\begin{DoxyCompactList}\small\item\em Queue a call to \hyperlink{class_rak_net_1_1_r_p_c4_a923fe77794363d8ec6094da98fd40d03}{R\-P\-C4\-::\-Register\-Slot()} globally. Actual call occurs once \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} is attached to an instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} or \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface}. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_r_p_c4_global_registration_a286b2b786c333952646bdc8ecf847486}{\hyperlink{class_rak_net_1_1_r_p_c4_global_registration_a286b2b786c333952646bdc8ecf847486}{R\-P\-C4\-Global\-Registration} (const char $\ast$unique\-I\-D, void($\ast$function\-Pointer)(\hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$user\-Data, \hyperlink{class_rak_net_1_1_bit_stream}{Rak\-Net\-::\-Bit\-Stream} $\ast$return\-Data, \hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet))}\label{class_rak_net_1_1_r_p_c4_global_registration_a286b2b786c333952646bdc8ecf847486}
+
+\begin{DoxyCompactList}\small\item\em Queue a call to \hyperlink{class_rak_net_1_1_r_p_c4_a274362402c9476feb9575d06b75a5263}{R\-P\-C4\-::\-Register\-Blocking\-Function()} globally. Actual call occurs once \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} is attached to an instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} or \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface}. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_r_p_c4_global_registration_a31eb00ac83c6e6316b4e49a5891eaf8e}{\hyperlink{class_rak_net_1_1_r_p_c4_global_registration_a31eb00ac83c6e6316b4e49a5891eaf8e}{R\-P\-C4\-Global\-Registration} (const char $\ast$unique\-I\-D, \hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Message\-I\-D} message\-Id)}\label{class_rak_net_1_1_r_p_c4_global_registration_a31eb00ac83c6e6316b4e49a5891eaf8e}
+
+\begin{DoxyCompactList}\small\item\em Queue a call to \hyperlink{class_rak_net_1_1_r_p_c4_a71f5f6d32e12adf3715d9c5faea25439}{R\-P\-C4\-::\-Register\-Local\-Callback()} globally. Actual call occurs once \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} is attached to an instance of \hyperlink{class_rak_net_1_1_rak_peer}{Rak\-Peer} or \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instantiate this class globally if you want to register a function with \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} at the global space. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_r_p_c4_plugin_8h}{R\-P\-C4\-Plugin.\-h}\end{DoxyCompactItemize}

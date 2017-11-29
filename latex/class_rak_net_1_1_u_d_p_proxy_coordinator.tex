@@ -1,0 +1,152 @@
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator}{\section{Rak\-Net\-:\-:U\-D\-P\-Proxy\-Coordinator Class Reference}
+\label{class_rak_net_1_1_u_d_p_proxy_coordinator}\index{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}}
+}
+
+
+Middleman between \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server} and \hyperlink{class_rak_net_1_1_u_d_p_proxy_client}{U\-D\-P\-Proxy\-Client}, maintaining a list of \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server}, and managing state for clients to find an available forwarding server.  
+
+
+
+
+{\ttfamily \#include $<$U\-D\-P\-Proxy\-Coordinator.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:U\-D\-P\-Proxy\-Coordinator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_u_d_p_proxy_coordinator}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_forwarding_request}{Forwarding\-Request}
+\item 
+struct \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_sender_and_target_address}{Sender\-And\-Target\-Address}
+\item 
+struct \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_server_with_ping}{Server\-With\-Ping}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_u_d_p_proxy_coordinator_adce074b9622b9f8940d5da1e22d2e827}{Set\-Remote\-Login\-Password} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} password)
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a7b4d697fb8ac5d0a022a2a317aad08ce}{virtual void \hyperlink{class_rak_net_1_1_u_d_p_proxy_coordinator_a7b4d697fb8ac5d0a022a2a317aad08ce}{Update} (void)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a7b4d697fb8ac5d0a022a2a317aad08ce}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_u_d_p_proxy_coordinator_a5be9954434489ab6c0004db520fc9447}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_u_d_p_proxy_coordinator_ac5998f29e20816a2e3f29d6a4d17a78d}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_ae921afb0757c7af584365c4a26552dea}{void {\bfseries On\-Forwarding\-Request\-From\-Client\-To\-Coordinator} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_ae921afb0757c7af584365c4a26552dea}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a32d7e7c0aca9b8d331375df8a84f8329}{void {\bfseries On\-Login\-Request\-From\-Server\-To\-Coordinator} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a32d7e7c0aca9b8d331375df8a84f8329}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_ac93fd212dc01e02e9e3ed15dfb84218a}{void {\bfseries On\-Forwarding\-Reply\-From\-Server\-To\-Coordinator} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_ac93fd212dc01e02e9e3ed15dfb84218a}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a6a16805323ad42f7c56fc1778ed2ac28}{void {\bfseries On\-Ping\-Servers\-Reply\-From\-Client\-To\-Coordinator} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a6a16805323ad42f7c56fc1778ed2ac28}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a96e27a251bdbaf1881536915b3942ef4}{void {\bfseries Try\-Next\-Server} (\hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_sender_and_target_address}{Sender\-And\-Target\-Address} sata, \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_forwarding_request}{Forwarding\-Request} $\ast$fw)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a96e27a251bdbaf1881536915b3942ef4}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a00a005d55eaa3ed652e56499914ca906}{void {\bfseries Send\-All\-Busy} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} sender\-Client\-Address, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} target\-Client\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} target\-Client\-Guid, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} requesting\-Address)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a00a005d55eaa3ed652e56499914ca906}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a629700a9cef39b4152e1132d9a357982}{void {\bfseries Clear} (void)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a629700a9cef39b4152e1132d9a357982}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_ae80cef72eb730921a9948d078ae2ada2}{void {\bfseries Send\-Forwarding\-Request} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} source\-Address, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} target\-Address, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} server\-Address, Rak\-Net\-::\-Time\-M\-S timeout\-On\-No\-Data\-M\-S)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_ae80cef72eb730921a9948d078ae2ada2}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a8e2532cd2659fc6fef5c602e1a9bf796}{static int {\bfseries Server\-With\-Ping\-Comp} (const unsigned short \&key, const \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_server_with_ping}{U\-D\-P\-Proxy\-Coordinator\-::\-Server\-With\-Ping} \&data)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a8e2532cd2659fc6fef5c602e1a9bf796}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a91e6881f60fc14ee5e4aca7e5f5dda45}{static int {\bfseries Forwarding\-Request\-Comp} (const \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_sender_and_target_address}{Sender\-And\-Target\-Address} \&key, \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_forwarding_request}{Forwarding\-Request} $\ast$const \&data)}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a91e6881f60fc14ee5e4aca7e5f5dda45}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_aa158012c694da7aaed3dac591520695f}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $>$ {\bfseries server\-List}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_aa158012c694da7aaed3dac591520695f}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a28fc5f9c482f15720a061f2a99c7a823}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_sender_and_target_address}{Sender\-And\-Target\-Address}, \\*
+\hyperlink{struct_rak_net_1_1_u_d_p_proxy_coordinator_1_1_forwarding_request}{Forwarding\-Request} \\*
+$\ast$, Forwarding\-Request\-Comp $>$ {\bfseries forwarding\-Request\-List}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a28fc5f9c482f15720a061f2a99c7a823}
+
+\item 
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a1ce808d02bf71d034f0f5f0b8df666d3}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries remote\-Login\-Password}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a1ce808d02bf71d034f0f5f0b8df666d3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Middleman between \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server} and \hyperlink{class_rak_net_1_1_u_d_p_proxy_client}{U\-D\-P\-Proxy\-Client}, maintaining a list of \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server}, and managing state for clients to find an available forwarding server. 
+
+When N\-A\-T Punchthrough fails, it is possible to use a non-\/\-N\-A\-T system to forward messages from us to the recipient, and vice-\/versa The class to forward messages is \hyperlink{class_rak_net_1_1_u_d_p_forwarder}{U\-D\-P\-Forwarder}, and it is triggered over the network via the \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server} plugin. The \hyperlink{class_rak_net_1_1_u_d_p_proxy_client}{U\-D\-P\-Proxy\-Client} connects to \hyperlink{class_rak_net_1_1_u_d_p_proxy_coordinator}{U\-D\-P\-Proxy\-Coordinator} to get a list of servers running \hyperlink{class_rak_net_1_1_u_d_p_proxy_server}{U\-D\-P\-Proxy\-Server}, and the coordinator will relay our forwarding request 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_ac5998f29e20816a2e3f29d6a4d17a78d}{\index{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::UDPProxyCoordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_ac5998f29e20816a2e3f29d6a4d17a78d}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_a5be9954434489ab6c0004db520fc9447}{\index{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::UDPProxyCoordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_a5be9954434489ab6c0004db520fc9447}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_u_d_p_proxy_coordinator_adce074b9622b9f8940d5da1e22d2e827}{\index{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}!Set\-Remote\-Login\-Password@{Set\-Remote\-Login\-Password}}
+\index{Set\-Remote\-Login\-Password@{Set\-Remote\-Login\-Password}!RakNet::UDPProxyCoordinator@{Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator}}
+\subsubsection[{Set\-Remote\-Login\-Password}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-U\-D\-P\-Proxy\-Coordinator\-::\-Set\-Remote\-Login\-Password (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{password}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_u_d_p_proxy_coordinator_adce074b9622b9f8940d5da1e22d2e827}
+For U\-D\-P\-Proxy\-Servers logging in remotely, they must pass a password to \hyperlink{class_rak_net_1_1_u_d_p_proxy_server_a32edaff2aec11cce6a138897b0e2a158}{U\-D\-P\-Proxy\-Server\-::\-Login\-To\-Coordinator()}. It must match the password set here. If no password is set, they cannot login remotely. By default, no password is set 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_u_d_p_proxy_coordinator_8h}{U\-D\-P\-Proxy\-Coordinator.\-h}\end{DoxyCompactItemize}

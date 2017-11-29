@@ -1,0 +1,40 @@
+\hypertarget{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p}{\section{R\-P\-C}
+\label{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p}\index{R\-P\-C@{R\-P\-C}}
+}
+
+
+Remote procedure calls, without external dependencies.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rak_net_1_1_r_p_c4}{Rak\-Net\-::\-R\-P\-C4}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} plugin is just an association between a C function pointer and a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_gac20c52e6dc585406689d52db29925bba}{Rak\-Net\-::\-R\-P\-C\-Error\-Codes} \{ \hyperlink{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_ggac20c52e6dc585406689d52db29925bbaa832e0495ea50b9a373d201a3e28f086b}{Rak\-Net\-::\-R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D}
+ \}
+\begin{DoxyCompactList}\small\item\em Error codes returned by a remote system as to why an R\-P\-C function call cannot execute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Remote procedure calls, without external dependencies. This should not be used at the same time as R\-P\-C3. This is a less functional version of R\-P\-C3, and is here for users that do not want the Boost dependency of R\-P\-C3. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_gac20c52e6dc585406689d52db29925bba}{\index{R\-P\-C@{R\-P\-C}!R\-P\-C\-Error\-Codes@{R\-P\-C\-Error\-Codes}}
+\index{R\-P\-C\-Error\-Codes@{R\-P\-C\-Error\-Codes}!RPC@{R\-P\-C}}
+\subsubsection[{R\-P\-C\-Error\-Codes}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Rak\-Net\-::\-R\-P\-C\-Error\-Codes}}}\label{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_gac20c52e6dc585406689d52db29925bba}
+
+
+Error codes returned by a remote system as to why an R\-P\-C function call cannot execute. 
+
+Error code follows packet I\-D I\-D\-\_\-\-R\-P\-C\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-E\-R\-R\-O\-R, that is packet-\/$>$data\mbox{[}1\mbox{]}\par
+ Name of the function will be appended starting at packet-\/$>$data\mbox{[}2\mbox{]} \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D@{R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D}!R\-P\-C@{R\-P\-C}}\index{R\-P\-C@{R\-P\-C}!R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D@{R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D}}\item[{\em 
+\hypertarget{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_ggac20c52e6dc585406689d52db29925bbaa832e0495ea50b9a373d201a3e28f086b}{R\-P\-C\-\_\-\-E\-R\-R\-O\-R\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R\-E\-D}\label{group___r_p_c___p_l_u_g_i_n___g_r_o_u_p_ggac20c52e6dc585406689d52db29925bbaa832e0495ea50b9a373d201a3e28f086b}
+}]Named function was not registered with Register\-Function(). Check your spelling. \end{description}
+\end{Desc}

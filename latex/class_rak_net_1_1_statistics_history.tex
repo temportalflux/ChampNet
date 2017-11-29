@@ -1,0 +1,150 @@
+\hypertarget{class_rak_net_1_1_statistics_history}{\section{Rak\-Net\-:\-:Statistics\-History Class Reference}
+\label{class_rak_net_1_1_statistics_history}\index{Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}}
+}
+
+
+Input numerical values over time. Get sum, average, highest, lowest, standard deviation on recent or all-\/time values.  
+
+
+
+
+{\ttfamily \#include $<$Statistics\-History.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_statistics_history_1_1_time_and_value}{Time\-And\-Value}
+\item 
+struct \hyperlink{struct_rak_net_1_1_statistics_history_1_1_time_and_value_queue}{Time\-And\-Value\-Queue}
+\item 
+struct \hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object}{Tracked\-Object}
+\item 
+struct \hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object_data}{Tracked\-Object\-Data}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries S\-H\-Error\-Code} \{ {\bfseries S\-H\-\_\-\-O\-K}, 
+{\bfseries S\-H\-\_\-\-U\-K\-N\-O\-W\-N\-\_\-\-O\-B\-J\-E\-C\-T}, 
+{\bfseries S\-H\-\_\-\-U\-K\-N\-O\-W\-N\-\_\-\-K\-E\-Y}, 
+{\bfseries S\-H\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}
+ \}
+\item 
+enum {\bfseries S\-H\-Sort\-Operation} \{ \\*
+{\bfseries S\-H\-\_\-\-D\-O\-\_\-\-N\-O\-T\-\_\-\-S\-O\-R\-T}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-S\-U\-M\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-S\-U\-M\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-S\-U\-M\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+\\*
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-S\-U\-M\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-S\-U\-M\-\_\-\-O\-F\-\_\-\-S\-Q\-U\-A\-R\-E\-S\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-S\-U\-M\-\_\-\-O\-F\-\_\-\-S\-Q\-U\-A\-R\-E\-S\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-A\-V\-E\-R\-A\-G\-E\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+\\*
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-A\-V\-E\-R\-A\-G\-E\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-A\-V\-E\-R\-A\-G\-E\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-A\-V\-E\-R\-A\-G\-E\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-H\-I\-G\-H\-E\-S\-T\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+\\*
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-H\-I\-G\-H\-E\-S\-T\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-L\-O\-W\-E\-S\-T\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-R\-E\-C\-E\-N\-T\-\_\-\-L\-O\-W\-E\-S\-T\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-H\-I\-G\-H\-E\-S\-T\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+\\*
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-H\-I\-G\-H\-E\-S\-T\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-L\-O\-W\-E\-S\-T\-\_\-\-A\-S\-C\-E\-N\-D\-I\-N\-G}, 
+{\bfseries S\-H\-\_\-\-S\-O\-R\-T\-\_\-\-B\-Y\-\_\-\-L\-O\-N\-G\-\_\-\-T\-E\-R\-M\-\_\-\-L\-O\-W\-E\-S\-T\-\_\-\-D\-E\-S\-C\-E\-N\-D\-I\-N\-G}
+ \}
+\item 
+enum \hyperlink{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0b}{S\-H\-Data\-Category} \{ \hyperlink{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba98c350223aab0b252a92a03a4657b251}{D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E}, 
+\hyperlink{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba2540de6b5166cf35499dbfeb15b96d98}{D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_aca8760a1e948038a32c892154b176319}{void {\bfseries Set\-Default\-Time\-To\-Track} (Time default\-Time\-To\-Track)}\label{class_rak_net_1_1_statistics_history_aca8760a1e948038a32c892154b176319}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_aa005fbe0071ea6f76ed7969dff0fdd1c}{Time {\bfseries Get\-Default\-Time\-To\-Track} (void) const }\label{class_rak_net_1_1_statistics_history_aa005fbe0071ea6f76ed7969dff0fdd1c}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_aa36636973f27b8ca74f2bb289a8c3f53}{bool {\bfseries Add\-Object} (\hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object_data}{Tracked\-Object\-Data} tod)}\label{class_rak_net_1_1_statistics_history_aa36636973f27b8ca74f2bb289a8c3f53}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_ae69b34d4935225ba60d3050f8dad51bf}{bool {\bfseries Remove\-Object} (uint64\-\_\-t object\-Id, void $\ast$$\ast$user\-Data)}\label{class_rak_net_1_1_statistics_history_ae69b34d4935225ba60d3050f8dad51bf}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a7d4bfcbaa5b0513a112512623848bfcc}{void {\bfseries Remove\-Object\-At\-Index} (unsigned int index)}\label{class_rak_net_1_1_statistics_history_a7d4bfcbaa5b0513a112512623848bfcc}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a8754cc1e1a9d05067425ad5e2a64d3a5}{void {\bfseries Clear} (void)}\label{class_rak_net_1_1_statistics_history_a8754cc1e1a9d05067425ad5e2a64d3a5}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_aec920850b36973ec7e80fc5563b4eb31}{unsigned int {\bfseries Get\-Object\-Count} (void) const }\label{class_rak_net_1_1_statistics_history_aec920850b36973ec7e80fc5563b4eb31}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a48d31a001a51d40ca4210beea171e846}{\hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object_data}{Statistics\-History\-::\-Tracked\-Object\-Data} $\ast$ {\bfseries Get\-Object\-At\-Index} (unsigned int index) const }\label{class_rak_net_1_1_statistics_history_a48d31a001a51d40ca4210beea171e846}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a1e4fdc6e9719412901f98a12d97c0b96}{unsigned int {\bfseries Get\-Object\-Index} (uint64\-\_\-t object\-Id) const }\label{class_rak_net_1_1_statistics_history_a1e4fdc6e9719412901f98a12d97c0b96}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a246ec8aab515503ce6fea00960c23089}{bool {\bfseries Add\-Value\-By\-Object\-I\-D} (uint64\-\_\-t object\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} key, S\-H\-Value\-Type val, Time cur\-Time, bool combine\-Equal\-Times)}\label{class_rak_net_1_1_statistics_history_a246ec8aab515503ce6fea00960c23089}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a3b1bfe8be2696ca4f6ddcf6c1ee5d44c}{void {\bfseries Add\-Value\-By\-Index} (unsigned int index, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} key, S\-H\-Value\-Type val, Time cur\-Time, bool combine\-Equal\-Times)}\label{class_rak_net_1_1_statistics_history_a3b1bfe8be2696ca4f6ddcf6c1ee5d44c}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a0404292dc14a5b67a6bcee1b4d37c048}{S\-H\-Error\-Code {\bfseries Get\-History\-For\-Key} (uint64\-\_\-t object\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} key, \hyperlink{struct_rak_net_1_1_statistics_history_1_1_time_and_value_queue}{Time\-And\-Value\-Queue} $\ast$$\ast$values, Time cur\-Time) const }\label{class_rak_net_1_1_statistics_history_a0404292dc14a5b67a6bcee1b4d37c048}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_ab9d22addb440f5b245dd553da89683ff}{bool {\bfseries Get\-History\-Sorted} (uint64\-\_\-t object\-Id, S\-H\-Sort\-Operation sort\-Type, \hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{struct_rak_net_1_1_statistics_history_1_1_time_and_value_queue}{Time\-And\-Value\-Queue} $\ast$ $>$ \&values) const }\label{class_rak_net_1_1_statistics_history_ab9d22addb440f5b245dd553da89683ff}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a6f0cf5a0131a950543907aff546b0f0b}{void {\bfseries Merge\-All\-Objects\-On\-Key} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} key, \hyperlink{struct_rak_net_1_1_statistics_history_1_1_time_and_value_queue}{Time\-And\-Value\-Queue} $\ast$tavq\-Output, \hyperlink{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0b}{S\-H\-Data\-Category} data\-Category) const }\label{class_rak_net_1_1_statistics_history_a6f0cf5a0131a950543907aff546b0f0b}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a4bdae9905d79c7df767f3911f849d2fc}{void {\bfseries Get\-Unique\-Key\-List} (\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}$<$ \hyperlink{class_rak_net_1_1_rak_string}{Rak\-String} $>$ \&keys)}\label{class_rak_net_1_1_statistics_history_a4bdae9905d79c7df767f3911f849d2fc}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a83d254d700e6512181b74ad1cbf4aa3a}{static int {\bfseries Tracked\-Object\-Comp} (const uint64\-\_\-t \&key, \hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object}{Tracked\-Object} $\ast$const \&data)}\label{class_rak_net_1_1_statistics_history_a83d254d700e6512181b74ad1cbf4aa3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_a648ca5b204dfecd66de40a39484c390c}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ uint64\-\_\-t, \hyperlink{struct_rak_net_1_1_statistics_history_1_1_tracked_object}{Tracked\-Object} \\*
+$\ast$, Tracked\-Object\-Comp $>$ {\bfseries objects}}\label{class_rak_net_1_1_statistics_history_a648ca5b204dfecd66de40a39484c390c}
+
+\item 
+\hypertarget{class_rak_net_1_1_statistics_history_aed8ba33abe5a8ed4d6a08355702c0402}{Time {\bfseries time\-To\-Track}}\label{class_rak_net_1_1_statistics_history_aed8ba33abe5a8ed4d6a08355702c0402}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Input numerical values over time. Get sum, average, highest, lowest, standard deviation on recent or all-\/time values. 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0b}{\index{Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}!S\-H\-Data\-Category@{S\-H\-Data\-Category}}
+\index{S\-H\-Data\-Category@{S\-H\-Data\-Category}!RakNet::StatisticsHistory@{Rak\-Net\-::\-Statistics\-History}}
+\subsubsection[{S\-H\-Data\-Category}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Rak\-Net\-::\-Statistics\-History\-::\-S\-H\-Data\-Category}}}\label{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E@{D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E}!Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}}\index{Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}!D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E@{D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E}}\item[{\em 
+\hypertarget{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba98c350223aab0b252a92a03a4657b251}{D\-C\-\_\-\-D\-I\-S\-C\-R\-E\-T\-E}\label{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba98c350223aab0b252a92a03a4657b251}
+}]Insert values from one set into the other set, in time order Values at the same time end up in the final set twice Use when you have additional data points to add to a graph \index{D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S@{D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S}!Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}}\index{Rak\-Net\-::\-Statistics\-History@{Rak\-Net\-::\-Statistics\-History}!D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S@{D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S}}\item[{\em 
+\hypertarget{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba2540de6b5166cf35499dbfeb15b96d98}{D\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-O\-U\-S}\label{class_rak_net_1_1_statistics_history_a197b0da149b5168c77891e3f9d289a0ba2540de6b5166cf35499dbfeb15b96d98}
+}]Add values from one set to values from the other set, at corresponding times If value at time t does not exist in the other set, linearly extrapolate value for other set based on nearest two data points long\-Term$\ast$ values are unknown using this method Use to add two graphs together \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_statistics_history_8h}{Statistics\-History.\-h}\end{DoxyCompactItemize}

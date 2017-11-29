@@ -1,0 +1,150 @@
+\hypertarget{_rak_net_types_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Net\-Types.h File Reference}
+\label{_rak_net_types_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Net\-Types.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rak\-Net\-Types.\-h}}
+}
+
+
+Types used by \hyperlink{namespace_rak_net}{Rak\-Net}, most of which involve user code.  
+
+
+{\ttfamily \#include \char`\"{}Rak\-Net\-Defines.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Native\-Types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rak\-Net\-Time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Windows\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}X\-Box360\-Includes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Socket\-Includes.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_public_key}{Rak\-Net\-::\-Public\-Key}
+\begin{DoxyCompactList}\small\item\em Passed to \hyperlink{class_rak_net_1_1_rak_peer_interface_a451dd5d225277fe5806d3d700551fb76}{Rak\-Peer\-Interface\-::\-Connect()} \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_socket_descriptor}{Rak\-Net\-::\-Socket\-Descriptor}
+\begin{DoxyCompactList}\small\item\em Describes the local socket to use for \hyperlink{class_rak_net_1_1_rak_peer_a92d493cb617381a6e750f7df6e768927}{Rak\-Peer\-::\-Startup}. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_system_address}{Rak\-Net\-::\-System\-Address}
+\begin{DoxyCompactList}\small\item\em Network address for a system. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-::\-Rak\-Net\-G\-U\-I\-D}
+\item 
+struct \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Rak\-Net\-::\-Address\-Or\-G\-U\-I\-D}
+\item 
+struct \hyperlink{struct_rak_net_1_1_packet}{Rak\-Net\-::\-Packet}
+\begin{DoxyCompactList}\small\item\em This represents a user message from another system. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_rak_net_1_1uint24__t}{Rak\-Net\-::uint24\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rak_net_types_8h_ac5eb6b4755b74c50cb76155d08b6e2ff}{\#define \hyperlink{_rak_net_types_8h_ac5eb6b4755b74c50cb76155d08b6e2ff}{B\-I\-T\-S\-\_\-\-T\-O\-\_\-\-B\-Y\-T\-E\-S}(x)~(((x)+7)$>$$>$3)}\label{_rak_net_types_8h_ac5eb6b4755b74c50cb76155d08b6e2ff}
+
+\begin{DoxyCompactList}\small\item\em Given a number of bits, return how many bytes are needed to represent that. \end{DoxyCompactList}\item 
+\hypertarget{_rak_net_types_8h_a4c1e0708f6f9b121ca602cd8ceddd670}{\#define {\bfseries B\-Y\-T\-E\-S\-\_\-\-T\-O\-\_\-\-B\-I\-T\-S}(x)~((x)$<$$<$3)}\label{_rak_net_types_8h_a4c1e0708f6f9b121ca602cd8ceddd670}
+
+\item 
+\hypertarget{_rak_net_types_8h_a123f55e39d7666a55ea7bae5b2beaf7c}{\#define {\bfseries P\-R\-I\-N\-T\-F\-\_\-64\-\_\-\-B\-I\-T\-\_\-\-M\-O\-D\-I\-F\-I\-E\-R}~\char`\"{}ll\char`\"{}}\label{_rak_net_types_8h_a123f55e39d7666a55ea7bae5b2beaf7c}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \hyperlink{namespace_rak_net_a707ca8f7aef0ea1fe295e1028af90c8c}{Rak\-Net\-::\-Unique\-I\-D\-Type}
+\item 
+\hypertarget{namespace_rak_net_a98fdd3ad5240fa553366e1fa5cb87dab}{typedef unsigned short {\bfseries Rak\-Net\-::\-System\-Index}}\label{namespace_rak_net_a98fdd3ad5240fa553366e1fa5cb87dab}
+
+\item 
+\hypertarget{namespace_rak_net_a6bbdec5502352e049b5f2f818a09d476}{typedef unsigned char {\bfseries Rak\-Net\-::\-R\-P\-C\-Index}}\label{namespace_rak_net_a6bbdec5502352e049b5f2f818a09d476}
+
+\item 
+\hypertarget{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{typedef unsigned char \hyperlink{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}{Rak\-Net\-::\-Message\-I\-D}}\label{namespace_rak_net_a1b2f3bf4bad2bb6a8360a12295fbed0c}
+
+\begin{DoxyCompactList}\small\item\em First byte of a network message. \end{DoxyCompactList}\item 
+\hypertarget{namespace_rak_net_a99df97eaa89c9c5bd2aeefade616791d}{typedef uint32\-\_\-t {\bfseries Rak\-Net\-::\-Bit\-Size\-\_\-t}}\label{namespace_rak_net_a99df97eaa89c9c5bd2aeefade616791d}
+
+\item 
+\hypertarget{namespace_rak_net_aa01f9a52ab66ff73d60f1f6cad103a84}{typedef uint64\-\_\-t {\bfseries Rak\-Net\-::\-Network\-I\-D}}\label{namespace_rak_net_aa01f9a52ab66ff73d60f1f6cad103a84}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Startup\-Result} \{ \\*
+{\bfseries R\-A\-K\-N\-E\-T\-\_\-\-S\-T\-A\-R\-T\-E\-D}, 
+{\bfseries R\-A\-K\-N\-E\-T\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-S\-T\-A\-R\-T\-E\-D}, 
+{\bfseries I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-O\-C\-K\-E\-T\-\_\-\-D\-E\-S\-C\-R\-I\-P\-T\-O\-R\-S}, 
+{\bfseries I\-N\-V\-A\-L\-I\-D\-\_\-\-M\-A\-X\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}, 
+\\*
+{\bfseries S\-O\-C\-K\-E\-T\-\_\-\-F\-A\-M\-I\-L\-Y\-\_\-\-N\-O\-T\-\_\-\-S\-U\-P\-P\-O\-R\-T\-E\-D}, 
+{\bfseries S\-O\-C\-K\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-I\-N\-\_\-\-U\-S\-E}, 
+{\bfseries S\-O\-C\-K\-E\-T\-\_\-\-F\-A\-I\-L\-E\-D\-\_\-\-T\-O\-\_\-\-B\-I\-N\-D}, 
+{\bfseries S\-O\-C\-K\-E\-T\-\_\-\-F\-A\-I\-L\-E\-D\-\_\-\-T\-E\-S\-T\-\_\-\-S\-E\-N\-D}, 
+\\*
+{\bfseries P\-O\-R\-T\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-B\-E\-\_\-\-Z\-E\-R\-O}, 
+{\bfseries F\-A\-I\-L\-E\-D\-\_\-\-T\-O\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-N\-E\-T\-W\-O\-R\-K\-\_\-\-T\-H\-R\-E\-A\-D}, 
+{\bfseries C\-O\-U\-L\-D\-\_\-\-N\-O\-T\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E\-\_\-\-G\-U\-I\-D}, 
+{\bfseries S\-T\-A\-R\-T\-U\-P\-\_\-\-O\-T\-H\-E\-R\-\_\-\-F\-A\-I\-L\-U\-R\-E}
+ \}
+\item 
+enum {\bfseries Connection\-Attempt\-Result} \{ \\*
+{\bfseries C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-T\-T\-E\-M\-P\-T\-\_\-\-S\-T\-A\-R\-T\-E\-D}, 
+{\bfseries I\-N\-V\-A\-L\-I\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}, 
+{\bfseries C\-A\-N\-N\-O\-T\-\_\-\-R\-E\-S\-O\-L\-V\-E\-\_\-\-D\-O\-M\-A\-I\-N\-\_\-\-N\-A\-M\-E}, 
+{\bfseries A\-L\-R\-E\-A\-D\-Y\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D\-\_\-\-T\-O\-\_\-\-E\-N\-D\-P\-O\-I\-N\-T}, 
+\\*
+{\bfseries C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-A\-T\-T\-E\-M\-P\-T\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-\_\-\-I\-N\-\_\-\-P\-R\-O\-G\-R\-E\-S\-S}, 
+{\bfseries S\-E\-C\-U\-R\-I\-T\-Y\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N\-\_\-\-F\-A\-I\-L\-E\-D}
+ \}
+\item 
+enum \hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138}{Rak\-Net\-::\-Connection\-State} \{ \\*
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138a41122f01ef32b9c407cddd0e9182876b}{Rak\-Net\-::\-I\-S\-\_\-\-P\-E\-N\-D\-I\-N\-G}, 
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138a2b53e3b7cb8ed3e43207fe5ed08893af}{Rak\-Net\-::\-I\-S\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-N\-G}, 
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138ad547bfb144fa5b169991b179fda0d007}{Rak\-Net\-::\-I\-S\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}, 
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138a52bfe2ab90f28b8ebff543809829f7f0}{Rak\-Net\-::\-I\-S\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-N\-G}, 
+\\*
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138afe8d758dec1c59c14662ea85b5ff883e}{Rak\-Net\-::\-I\-S\-\_\-\-S\-I\-L\-E\-N\-T\-L\-Y\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-N\-G}, 
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138a82261f4327b53e538c68b233d09aa9ea}{Rak\-Net\-::\-I\-S\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-E\-D}, 
+\hyperlink{namespace_rak_net_a84a0fb005391f71130dd341f77f62138ae10c6ccb6cfa04d2f55306773457456b}{Rak\-Net\-::\-I\-S\-\_\-\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}
+ \}
+\begin{DoxyCompactList}\small\item\em Returned from Rak\-Peer\-Interface\-::\-Get\-Connection\-State() \end{DoxyCompactList}\item 
+enum \hyperlink{namespace_rak_net_a415b479158fd361610df230a53b35b02}{Rak\-Net\-::\-Public\-Key\-Mode} \{ \hyperlink{namespace_rak_net_a415b479158fd361610df230a53b35b02a3f17d85881df517153e6a1b08a4bc165}{Rak\-Net\-::\-P\-K\-M\-\_\-\-I\-N\-S\-E\-C\-U\-R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}, 
+\hyperlink{namespace_rak_net_a415b479158fd361610df230a53b35b02a46fe00b3d7ebc580008d591e9b16d505}{Rak\-Net\-::\-P\-K\-M\-\_\-\-A\-C\-C\-E\-P\-T\-\_\-\-A\-N\-Y\-\_\-\-P\-U\-B\-L\-I\-C\-\_\-\-K\-E\-Y}, 
+\hyperlink{namespace_rak_net_a415b479158fd361610df230a53b35b02a62028368b6f6f9ec461c6d982aca2e89}{Rak\-Net\-::\-P\-K\-M\-\_\-\-U\-S\-E\-\_\-\-K\-N\-O\-W\-N\-\_\-\-P\-U\-B\-L\-I\-C\-\_\-\-K\-E\-Y}, 
+\hyperlink{namespace_rak_net_a415b479158fd361610df230a53b35b02add05a6daf150749ca2def6a48a4dd968}{Rak\-Net\-::\-P\-K\-M\-\_\-\-U\-S\-E\-\_\-\-T\-W\-O\-\_\-\-W\-A\-Y\-\_\-\-A\-U\-T\-H\-E\-N\-T\-I\-C\-A\-T\-I\-O\-N}
+ \}
+\begin{DoxyCompactList}\small\item\em Used with the Public\-Key structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_rak_net_a33f012bd0ab6ec08d3bd2b4f66d5cac1}{bool {\bfseries Rak\-Net\-::\-Non\-Numeric\-Host\-String} (const char $\ast$host)}\label{namespace_rak_net_a33f012bd0ab6ec08d3bd2b4f66d5cac1}
+
+\item 
+\hypertarget{namespace_rak_net_a8137eff86673d466e6e6e7c69ea5482a}{const Rak\-Net\-G\-U\-I\-D {\bfseries Rak\-Net\-::\-U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-R\-A\-K\-N\-E\-T\-\_\-\-G\-U\-I\-D} ((uint64\-\_\-t)-\/1)}\label{namespace_rak_net_a8137eff86673d466e6e6e7c69ea5482a}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_rak_net_a638118e00a7648a35633d2a5cd870a85}{const int {\bfseries Rak\-Net\-::\-M\-A\-X\-\_\-\-R\-P\-C\-\_\-\-M\-A\-P\-\_\-\-S\-I\-Z\-E} =((R\-P\-C\-Index)-\/1)-\/1}\label{namespace_rak_net_a638118e00a7648a35633d2a5cd870a85}
+
+\item 
+\hypertarget{namespace_rak_net_a49ebc4ab527b8c56391302c22994f678}{const int {\bfseries Rak\-Net\-::\-U\-N\-D\-E\-F\-I\-N\-E\-D\-\_\-\-R\-P\-C\-\_\-\-I\-N\-D\-E\-X} =((R\-P\-C\-Index)-\/1)}\label{namespace_rak_net_a49ebc4ab527b8c56391302c22994f678}
+
+\item 
+\hypertarget{namespace_rak_net_a80c95b4ed53f42911a6fa92b85e929cf}{const System\-Address \hyperlink{namespace_rak_net_a80c95b4ed53f42911a6fa92b85e929cf}{Rak\-Net\-::\-U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-A\-D\-D\-R\-E\-S\-S}}\label{namespace_rak_net_a80c95b4ed53f42911a6fa92b85e929cf}
+
+\begin{DoxyCompactList}\small\item\em Index of an invalid \hyperlink{struct_rak_net_1_1_system_address}{System\-Address}. \end{DoxyCompactList}\item 
+\hypertarget{namespace_rak_net_a763ec1cdea3634fd4364f003419ec7af}{const System\-Index \hyperlink{namespace_rak_net_a763ec1cdea3634fd4364f003419ec7af}{Rak\-Net\-::\-U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-P\-L\-A\-Y\-E\-R\-\_\-\-I\-N\-D\-E\-X} = 65535}\label{namespace_rak_net_a763ec1cdea3634fd4364f003419ec7af}
+
+\begin{DoxyCompactList}\small\item\em Index of an unassigned player. \end{DoxyCompactList}\item 
+\hypertarget{namespace_rak_net_a3fd38ad7440c9f89899a9f54335d5f24}{const Network\-I\-D \hyperlink{namespace_rak_net_a3fd38ad7440c9f89899a9f54335d5f24}{Rak\-Net\-::\-U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-N\-E\-T\-W\-O\-R\-K\-\_\-\-I\-D} = (uint64\-\_\-t) -\/1}\label{namespace_rak_net_a3fd38ad7440c9f89899a9f54335d5f24}
+
+\begin{DoxyCompactList}\small\item\em Unassigned object I\-D. \end{DoxyCompactList}\item 
+\hypertarget{namespace_rak_net_aa1f6b57ffe681cefd3d0857552fbcce6}{const int {\bfseries Rak\-Net\-::\-P\-I\-N\-G\-\_\-\-T\-I\-M\-E\-S\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-S\-I\-Z\-E} = 5}\label{namespace_rak_net_aa1f6b57ffe681cefd3d0857552fbcce6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Types used by \hyperlink{namespace_rak_net}{Rak\-Net}, most of which involve user code. 

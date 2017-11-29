@@ -1,0 +1,376 @@
+\hypertarget{class_rak_net_1_1_message_filter}{\section{Rak\-Net\-:\-:Message\-Filter Class Reference}
+\label{class_rak_net_1_1_message_filter}\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}}
+}
+
+
+Assigns systems to Filter\-Sets. Each \hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} limits what kinds of messages are allowed.  
+
+
+
+
+{\ttfamily \#include $<$Message\-Filter.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Message\-Filter\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_message_filter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_ad207896513cde1caabbe15dec09905ed}{Set\-Auto\-Add\-New\-Connections\-To\-Filter} (int filter\-Set\-I\-D)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a480178a464758a5c61dffb631a4d37e7}{Set\-Allow\-Message\-I\-D} (bool allow, int message\-I\-D\-Start, int message\-I\-D\-End, int filter\-Set\-I\-D)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a9358562591bdafa115abd66c05bfce9b}{Set\-Allow\-R\-P\-C4} (bool allow, const char $\ast$unique\-I\-D, int filter\-Set\-I\-D)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a30227e441526fedf5ae3cc0f5c98f070}{Set\-Action\-On\-Disallowed\-Message} (bool kick\-On\-Disallowed, bool ban\-On\-Disallowed, Rak\-Net\-::\-Time\-M\-S ban\-Time\-M\-S, int filter\-Set\-I\-D)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_af7b8fecc161af465177dd3ba34c20d05}{Set\-Disallowed\-Message\-Callback} (int filter\-Set\-I\-D, void $\ast$user\-Data, void($\ast$invalid\-Message\-Callback)(\hyperlink{class_rak_net_1_1_rak_peer_interface}{Rak\-Peer\-Interface} $\ast$peer, \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D, int filter\-Set\-I\-D, void $\ast$user\-Data, unsigned char message\-I\-D))
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a4583f67ca1a4145926ad9f40f54852b8}{Set\-Timeout\-Callback} (int filter\-Set\-I\-D, void $\ast$user\-Data, void($\ast$invalid\-Message\-Callback)(\hyperlink{class_rak_net_1_1_rak_peer_interface}{Rak\-Peer\-Interface} $\ast$peer, \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D, int filter\-Set\-I\-D, void $\ast$user\-Data))
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a9f0d7e572f0942e8464a81455f05e81a}{Set\-Filter\-Max\-Time} (int allowed\-Time\-M\-S, bool ban\-On\-Exceed, Rak\-Net\-::\-Time\-M\-S ban\-Time\-M\-S, int filter\-Set\-I\-D)
+\item 
+int \hyperlink{class_rak_net_1_1_message_filter_abe03dc6ec1d3aee02c26317b5a49fc34}{Get\-System\-Filter\-Set} (\hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_abcf11f3fbd390c94d90ddd7f88545788}{Set\-System\-Filter\-Set} (\hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D, int filter\-Set\-I\-D)
+\item 
+unsigned \hyperlink{class_rak_net_1_1_message_filter_acd631be69f9a3a1d08e7637268fd373d}{Get\-System\-Count} (int filter\-Set\-I\-D) const 
+\item 
+unsigned \hyperlink{class_rak_net_1_1_message_filter_ae97438fe5afb0ba7053b0a076691993f}{Get\-Filter\-Set\-Count} (void) const 
+\item 
+int \hyperlink{class_rak_net_1_1_message_filter_a8ea14d83f33442201f4de159c339f8d9}{Get\-Filter\-Set\-I\-D\-By\-Index} (unsigned index)
+\item 
+void \hyperlink{class_rak_net_1_1_message_filter_a8ff3f21fe8dd99d0981ddefbe83471bf}{Delete\-Filter\-Set} (int filter\-Set\-I\-D)
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_a4a266d5969acabfa66be942d5b0588b2}{virtual void \hyperlink{class_rak_net_1_1_message_filter_a4a266d5969acabfa66be942d5b0588b2}{Update} (void)}\label{class_rak_net_1_1_message_filter_a4a266d5969acabfa66be942d5b0588b2}
+
+\begin{DoxyCompactList}\small\item\em Update is called every time a packet is checked for . \end{DoxyCompactList}\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_message_filter_ab3a96d9d18086da2cd8ee834116ff5e4}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_message_filter_aa596e84f76f6ce1c8a20464de498b786}{On\-New\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, bool is\-Incoming)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_message_filter_a786df4d598682ab2ed1db4dc341a08b3}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_ae2d416c3ebede73088cf219cf9309e4e}{void {\bfseries Clear} (void)}\label{class_rak_net_1_1_message_filter_ae2d416c3ebede73088cf219cf9309e4e}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_aadb0843dd0f4447b6b60b53c4461e3b8}{void {\bfseries Deallocate\-Filter\-Set} (\hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} $\ast$filter\-Set)}\label{class_rak_net_1_1_message_filter_aadb0843dd0f4447b6b60b53c4461e3b8}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_ad87187e65f3a4757597a2a3b44368744}{\hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} $\ast$ {\bfseries Get\-Filter\-Set\-By\-I\-D} (int filter\-Set\-I\-D)}\label{class_rak_net_1_1_message_filter_ad87187e65f3a4757597a2a3b44368744}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_a1a2b7fd76e9f63c8a5846074fb38f8c0}{void {\bfseries On\-Invalid\-Message} (\hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} $\ast$filter\-Set, \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D} system\-Address, unsigned char message\-I\-D)}\label{class_rak_net_1_1_message_filter_a1a2b7fd76e9f63c8a5846074fb38f8c0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_a6f704ba334635b18cfc8dd35926ef453}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ int, \hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} \\*
+$\ast$, Filter\-Set\-Comp $>$ {\bfseries filter\-List}}\label{class_rak_net_1_1_message_filter_a6f704ba334635b18cfc8dd35926ef453}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_aacd02849eb8ebedf98fe9a8aea972602}{\hyperlink{class_data_structures_1_1_hash}{Data\-Structures\-::\-Hash}\\*
+$<$ \hyperlink{struct_rak_net_1_1_address_or_g_u_i_d}{Address\-Or\-G\-U\-I\-D}, \\*
+\hyperlink{struct_rak_net_1_1_filtered_system}{Filtered\-System}, \\*
+2048, Address\-Or\-G\-U\-I\-D\-::\-To\-Integer $>$ {\bfseries system\-List}}\label{class_rak_net_1_1_message_filter_aacd02849eb8ebedf98fe9a8aea972602}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_a88f51085675a0576870fd5561fd381d1}{int {\bfseries auto\-Add\-New\-Connections\-To\-Filter}}\label{class_rak_net_1_1_message_filter_a88f51085675a0576870fd5561fd381d1}
+
+\item 
+\hypertarget{class_rak_net_1_1_message_filter_a11190439ba26cafa4baf928e5234bb2f}{Rak\-Net\-::\-Time {\bfseries when\-Last\-Timeout\-Check}}\label{class_rak_net_1_1_message_filter_a11190439ba26cafa4baf928e5234bb2f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Assigns systems to Filter\-Sets. Each \hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set} limits what kinds of messages are allowed. 
+
+The \hyperlink{class_rak_net_1_1_message_filter}{Message\-Filter} plugin is used for security where you limit what systems can send what kind of messages.\par
+ You implicitly define Filter\-Sets, and add allowed message I\-Ds to these Filter\-Sets.\par
+ You then add systems to these filters, such that those systems are limited to sending what the filters allows.\par
+ You can automatically assign systems to a filter.\par
+ You can automatically kick and possibly ban users that stay in a filter too long, or send the wrong message.\par
+ Each system is a member of either zero or one filters.\par
+ Add this plugin before any plugin you wish to filter (most likely just add this plugin before any other). 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_message_filter_a8ff3f21fe8dd99d0981ddefbe83471bf}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Delete\-Filter\-Set@{Delete\-Filter\-Set}}
+\index{Delete\-Filter\-Set@{Delete\-Filter\-Set}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Delete\-Filter\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Delete\-Filter\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a8ff3f21fe8dd99d0981ddefbe83471bf}
+Delete a \hyperlink{struct_rak_net_1_1_filter_set}{Filter\-Set}. All systems formerly subscribed to this filter are now unrestricted. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & The I\-D of the filter set to delete. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_ae97438fe5afb0ba7053b0a076691993f}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Get\-Filter\-Set\-Count@{Get\-Filter\-Set\-Count}}
+\index{Get\-Filter\-Set\-Count@{Get\-Filter\-Set\-Count}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Get\-Filter\-Set\-Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned Rak\-Net\-::\-Message\-Filter\-::\-Get\-Filter\-Set\-Count (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_message_filter_ae97438fe5afb0ba7053b0a076691993f}
+Returns the total number of filter sets. \begin{DoxyReturn}{Returns}
+The total number of filter sets. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_message_filter_a8ea14d83f33442201f4de159c339f8d9}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Get\-Filter\-Set\-I\-D\-By\-Index@{Get\-Filter\-Set\-I\-D\-By\-Index}}
+\index{Get\-Filter\-Set\-I\-D\-By\-Index@{Get\-Filter\-Set\-I\-D\-By\-Index}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Get\-Filter\-Set\-I\-D\-By\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Rak\-Net\-::\-Message\-Filter\-::\-Get\-Filter\-Set\-I\-D\-By\-Index (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a8ea14d83f33442201f4de159c339f8d9}
+Returns the I\-D of a filter set, by index 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em An} & index between 0 and \hyperlink{class_rak_net_1_1_message_filter_ae97438fe5afb0ba7053b0a076691993f}{Get\-Filter\-Set\-Count()}-\/1 inclusive \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_acd631be69f9a3a1d08e7637268fd373d}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Get\-System\-Count@{Get\-System\-Count}}
+\index{Get\-System\-Count@{Get\-System\-Count}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Get\-System\-Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned Rak\-Net\-::\-Message\-Filter\-::\-Get\-System\-Count (
+\begin{DoxyParamCaption}
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_message_filter_acd631be69f9a3a1d08e7637268fd373d}
+Returns the number of systems subscribed to a particular filter set Using anything other than -\/1 for {\itshape filter\-Set\-I\-D} is slow, so you should store the returned value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & The filter set to limit to. Use -\/1 for none (just returns the total number of filter systems in that case). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_abe03dc6ec1d3aee02c26317b5a49fc34}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Get\-System\-Filter\-Set@{Get\-System\-Filter\-Set}}
+\index{Get\-System\-Filter\-Set@{Get\-System\-Filter\-Set}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Get\-System\-Filter\-Set}]{\setlength{\rightskip}{0pt plus 5cm}int Rak\-Net\-::\-Message\-Filter\-::\-Get\-System\-Filter\-Set (
+\begin{DoxyParamCaption}
+\item[{{\bf Address\-Or\-G\-U\-I\-D}}]{address\-Or\-G\-U\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_abe03dc6ec1d3aee02c26317b5a49fc34}
+Get the filter\-Set\-I\-D a system is using. Returns -\/1 for none. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em address\-Or\-G\-U\-I\-D} & The system we are referring to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_a786df4d598682ab2ed1db4dc341a08b3}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Message\-Filter\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_message_filter_a786df4d598682ab2ed1db4dc341a08b3}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_message_filter_aa596e84f76f6ce1c8a20464de498b786}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!On\-New\-Connection@{On\-New\-Connection}}
+\index{On\-New\-Connection@{On\-New\-Connection}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{On\-New\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Message\-Filter\-::\-On\-New\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{bool}]{is\-Incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_message_filter_aa596e84f76f6ce1c8a20464de498b786}
+Called when we got a new connection 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & Address of the new connection \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em is\-Incoming} & If true, this is I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, or the equivalent \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_abf13327cc10f772ba06dff8f2687f8ae}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_message_filter_ab3a96d9d18086da2cd8ee834116ff5e4}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Message\-Filter\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rak_net_1_1_message_filter_ab3a96d9d18086da2cd8ee834116ff5e4}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_message_filter_a30227e441526fedf5ae3cc0f5c98f070}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Action\-On\-Disallowed\-Message@{Set\-Action\-On\-Disallowed\-Message}}
+\index{Set\-Action\-On\-Disallowed\-Message@{Set\-Action\-On\-Disallowed\-Message}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Action\-On\-Disallowed\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Action\-On\-Disallowed\-Message (
+\begin{DoxyParamCaption}
+\item[{bool}]{kick\-On\-Disallowed, }
+\item[{bool}]{ban\-On\-Disallowed, }
+\item[{Rak\-Net\-::\-Time\-M\-S}]{ban\-Time\-M\-S, }
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a30227e441526fedf5ae3cc0f5c98f070}
+What action to take on a disallowed message. You can kick or not. You can add them to the ban list for some time By default no action is taken. The message is simply ignored. param\mbox{[}in\mbox{]} 0 for permanent ban, $>$0 for ban time in milliseconds. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em kick\-On\-Disallowed} & kick the system that sent a disallowed message. \\
+\hline
+\mbox{\tt in}  & {\em ban\-On\-Disallowed} & ban the system that sent a disallowed message. See {\itshape ban\-Time\-M\-S} for the ban duration \\
+\hline
+\mbox{\tt in}  & {\em ban\-Time\-M\-S} & Passed to the milliseconds parameter of \hyperlink{class_rak_net_1_1_rak_peer_ad403c131efe8bfe6f3c5280e110b9b2d}{Rak\-Peer\-::\-Add\-To\-Ban\-List}. \\
+\hline
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_a480178a464758a5c61dffb631a4d37e7}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Allow\-Message\-I\-D@{Set\-Allow\-Message\-I\-D}}
+\index{Set\-Allow\-Message\-I\-D@{Set\-Allow\-Message\-I\-D}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Allow\-Message\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Allow\-Message\-I\-D (
+\begin{DoxyParamCaption}
+\item[{bool}]{allow, }
+\item[{int}]{message\-I\-D\-Start, }
+\item[{int}]{message\-I\-D\-End, }
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a480178a464758a5c61dffb631a4d37e7}
+Allow a range of message I\-Ds Always allowed by default\-: I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D through I\-D\-\_\-\-D\-O\-W\-N\-L\-O\-A\-D\-\_\-\-P\-R\-O\-G\-R\-E\-S\-S Usually you specify a range to make it easier to add new enumerations without having to constantly refer back to this function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em allow} & True to allow this message I\-D, false to disallow. By default, all message\-I\-Ds except the noted types are disallowed. This includes messages from other plugins! \\
+\hline
+\mbox{\tt in}  & {\em message\-I\-D\-Start} & The first I\-D\-\_\-$\ast$ message to allow in the range. Inclusive. \\
+\hline
+\mbox{\tt in}  & {\em message\-I\-D\-End} & The last I\-D\-\_\-$\ast$ message to allow in the range. Inclusive. \\
+\hline
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_a9358562591bdafa115abd66c05bfce9b}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Allow\-R\-P\-C4@{Set\-Allow\-R\-P\-C4}}
+\index{Set\-Allow\-R\-P\-C4@{Set\-Allow\-R\-P\-C4}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Allow\-R\-P\-C4}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Allow\-R\-P\-C4 (
+\begin{DoxyParamCaption}
+\item[{bool}]{allow, }
+\item[{const char $\ast$}]{unique\-I\-D, }
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a9358562591bdafa115abd66c05bfce9b}
+Allow a specific \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} call \begin{DoxyPrecond}{Precondition}
+\hyperlink{class_rak_net_1_1_message_filter}{Message\-Filter} must be attached before \hyperlink{class_rak_net_1_1_r_p_c4}{R\-P\-C4} 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em unique\-I\-D} & Identifier passed to Register\-Function() \\
+\hline
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_ad207896513cde1caabbe15dec09905ed}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Auto\-Add\-New\-Connections\-To\-Filter@{Set\-Auto\-Add\-New\-Connections\-To\-Filter}}
+\index{Set\-Auto\-Add\-New\-Connections\-To\-Filter@{Set\-Auto\-Add\-New\-Connections\-To\-Filter}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Auto\-Add\-New\-Connections\-To\-Filter}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Auto\-Add\-New\-Connections\-To\-Filter (
+\begin{DoxyParamCaption}
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_ad207896513cde1caabbe15dec09905ed}
+Automatically add all new systems to a particular filter Defaults to -\/1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & Which filter to add new systems to. $<$0 for do not add. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_af7b8fecc161af465177dd3ba34c20d05}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Disallowed\-Message\-Callback@{Set\-Disallowed\-Message\-Callback}}
+\index{Set\-Disallowed\-Message\-Callback@{Set\-Disallowed\-Message\-Callback}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Disallowed\-Message\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Disallowed\-Message\-Callback (
+\begin{DoxyParamCaption}
+\item[{int}]{filter\-Set\-I\-D, }
+\item[{void $\ast$}]{user\-Data, }
+\item[{void($\ast$)({\bf Rak\-Peer\-Interface} $\ast$peer, {\bf Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D, int filter\-Set\-I\-D, void $\ast$user\-Data, unsigned char message\-I\-D)}]{invalid\-Message\-Callback}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_af7b8fecc161af465177dd3ba34c20d05}
+Set a user callback to be called on an invalid message for a particular filter\-Set 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\mbox{\tt in}  & {\em user\-Data} & A pointer passed with the callback \\
+\hline
+\mbox{\tt in}  & {\em invalid\-Message\-Callback} & A pointer to a C function to be called back with the specified parameters. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_a9f0d7e572f0942e8464a81455f05e81a}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Filter\-Max\-Time@{Set\-Filter\-Max\-Time}}
+\index{Set\-Filter\-Max\-Time@{Set\-Filter\-Max\-Time}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Filter\-Max\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Filter\-Max\-Time (
+\begin{DoxyParamCaption}
+\item[{int}]{allowed\-Time\-M\-S, }
+\item[{bool}]{ban\-On\-Exceed, }
+\item[{Rak\-Net\-::\-Time\-M\-S}]{ban\-Time\-M\-S, }
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a9f0d7e572f0942e8464a81455f05e81a}
+Limit how long a connection can stay in a particular filter\-Set\-I\-D. After this time, the connection is kicked and possibly banned. By default there is no limit to how long a connection can stay in a particular filter set. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em allowed\-Time\-M\-S} & How many milliseconds to allow a connection to stay in this filter set. \\
+\hline
+\mbox{\tt in}  & {\em ban\-On\-Exceed} & True or false to ban the system, or not, when {\itshape allowed\-Time\-M\-S} is exceeded \\
+\hline
+\mbox{\tt in}  & {\em ban\-Time\-M\-S} & Passed to the milliseconds parameter of \hyperlink{class_rak_net_1_1_rak_peer_ad403c131efe8bfe6f3c5280e110b9b2d}{Rak\-Peer\-::\-Add\-To\-Ban\-List}. \\
+\hline
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_abcf11f3fbd390c94d90ddd7f88545788}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-System\-Filter\-Set@{Set\-System\-Filter\-Set}}
+\index{Set\-System\-Filter\-Set@{Set\-System\-Filter\-Set}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-System\-Filter\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-System\-Filter\-Set (
+\begin{DoxyParamCaption}
+\item[{{\bf Address\-Or\-G\-U\-I\-D}}]{address\-Or\-G\-U\-I\-D, }
+\item[{int}]{filter\-Set\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_abcf11f3fbd390c94d90ddd7f88545788}
+Assign a system to a filter set. Systems are automatically added to filter sets (or not) based on \hyperlink{class_rak_net_1_1_message_filter_ad207896513cde1caabbe15dec09905ed}{Set\-Auto\-Add\-New\-Connections\-To\-Filter()} This function is used to change the filter set a system is using, to add it to a new filter set, or to remove it from all existin filter sets. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em address\-Or\-G\-U\-I\-D} & The system we are referring to \\
+\hline
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. If -\/1, the system will be removed from all filter sets. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_message_filter_a4583f67ca1a4145926ad9f40f54852b8}{\index{Rak\-Net\-::\-Message\-Filter@{Rak\-Net\-::\-Message\-Filter}!Set\-Timeout\-Callback@{Set\-Timeout\-Callback}}
+\index{Set\-Timeout\-Callback@{Set\-Timeout\-Callback}!RakNet::MessageFilter@{Rak\-Net\-::\-Message\-Filter}}
+\subsubsection[{Set\-Timeout\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Message\-Filter\-::\-Set\-Timeout\-Callback (
+\begin{DoxyParamCaption}
+\item[{int}]{filter\-Set\-I\-D, }
+\item[{void $\ast$}]{user\-Data, }
+\item[{void($\ast$)({\bf Rak\-Peer\-Interface} $\ast$peer, {\bf Address\-Or\-G\-U\-I\-D} address\-Or\-G\-U\-I\-D, int filter\-Set\-I\-D, void $\ast$user\-Data)}]{invalid\-Message\-Callback}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_message_filter_a4583f67ca1a4145926ad9f40f54852b8}
+Set a user callback to be called when a user is disconnected due to Set\-Filter\-Max\-Time 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filter\-Set\-I\-D} & A user defined I\-D to represent a filter set. If no filter with this I\-D exists, one will be created with default settings. \\
+\hline
+\mbox{\tt in}  & {\em user\-Data} & A pointer passed with the callback \\
+\hline
+\mbox{\tt in}  & {\em invalid\-Message\-Callback} & A pointer to a C function to be called back with the specified parameters. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_message_filter_8h}{Message\-Filter.\-h}\end{DoxyCompactItemize}

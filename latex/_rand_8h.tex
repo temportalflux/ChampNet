@@ -1,0 +1,91 @@
+\hypertarget{_rand_8h}{\section{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rand.h File Reference}
+\label{_rand_8h}\index{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rand.\-h@{/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\-Rand.\-h}}
+}
+
+
+{\bfseries }\mbox{[}Internal\mbox{]} Random number generator  
+
+
+{\ttfamily \#include \char`\"{}Export.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rak_net_1_1_rak_net_random}{Rak\-Net\-::\-Rak\-Net\-Random}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_rak_net}{Rak\-Net}
+\begin{DoxyCompactList}\small\item\em Simple class to send changes between directories. In essence, a simple autopatcher that can be used for transmitting levels, skins, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T \hyperlink{_rand_8h_ab906455689fe29d53488741dcb85144c}{seed\-M\-T} (unsigned int seed)
+\item 
+\hypertarget{_rand_8h_a52b4c380a6150ce7db938d246579c781}{unsigned int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T {\bfseries reload\-M\-T} (void)}\label{_rand_8h_a52b4c380a6150ce7db938d246579c781}
+
+\item 
+unsigned int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T \hyperlink{_rand_8h_a98d797c74449c6e22cbffb43e123a8cc}{random\-M\-T} (void)
+\item 
+float R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T \hyperlink{_rand_8h_ae7e667ae86b7729c6b86565b157085ee}{frandom\-M\-T} (void)
+\item 
+void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T \hyperlink{_rand_8h_a4cb8c468a6fed51061e03bdb36f7e57d}{fill\-Buffer\-M\-T} (void $\ast$buffer, unsigned int bytes)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\bfseries }\mbox{[}Internal\mbox{]} Random number generator 
+
+\subsection{Function Documentation}
+\hypertarget{_rand_8h_a4cb8c468a6fed51061e03bdb36f7e57d}{\index{Rand.\-h@{Rand.\-h}!fill\-Buffer\-M\-T@{fill\-Buffer\-M\-T}}
+\index{fill\-Buffer\-M\-T@{fill\-Buffer\-M\-T}!Rand.h@{Rand.\-h}}
+\subsubsection[{fill\-Buffer\-M\-T}]{\setlength{\rightskip}{0pt plus 5cm}void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T fill\-Buffer\-M\-T (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{unsigned int}]{bytes}
+\end{DoxyParamCaption}
+)}}\label{_rand_8h_a4cb8c468a6fed51061e03bdb36f7e57d}
+Randomizes a buffer \begin{DoxyNote}{Note}
+not thread\-Safe, use an instance of Rak\-Net\-Random if necessary per thread 
+\end{DoxyNote}
+\hypertarget{_rand_8h_ae7e667ae86b7729c6b86565b157085ee}{\index{Rand.\-h@{Rand.\-h}!frandom\-M\-T@{frandom\-M\-T}}
+\index{frandom\-M\-T@{frandom\-M\-T}!Rand.h@{Rand.\-h}}
+\subsubsection[{frandom\-M\-T}]{\setlength{\rightskip}{0pt plus 5cm}float R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T frandom\-M\-T (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_rand_8h_ae7e667ae86b7729c6b86565b157085ee}
+Gets a random float \begin{DoxyNote}{Note}
+not thread\-Safe, use an instance of Rak\-Net\-Random if necessary per thread 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+0 to 1.\-0f, inclusive 
+\end{DoxyReturn}
+\hypertarget{_rand_8h_a98d797c74449c6e22cbffb43e123a8cc}{\index{Rand.\-h@{Rand.\-h}!random\-M\-T@{random\-M\-T}}
+\index{random\-M\-T@{random\-M\-T}!Rand.h@{Rand.\-h}}
+\subsubsection[{random\-M\-T}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T random\-M\-T (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_rand_8h_a98d797c74449c6e22cbffb43e123a8cc}
+Gets a random unsigned int \begin{DoxyNote}{Note}
+not thread\-Safe, use an instance of Rak\-Net\-Random if necessary per thread 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+an integer random value. 
+\end{DoxyReturn}
+\hypertarget{_rand_8h_ab906455689fe29d53488741dcb85144c}{\index{Rand.\-h@{Rand.\-h}!seed\-M\-T@{seed\-M\-T}}
+\index{seed\-M\-T@{seed\-M\-T}!Rand.h@{Rand.\-h}}
+\subsubsection[{seed\-M\-T}]{\setlength{\rightskip}{0pt plus 5cm}void R\-A\-K\-\_\-\-D\-L\-L\-\_\-\-E\-X\-P\-O\-R\-T seed\-M\-T (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}}\label{_rand_8h_ab906455689fe29d53488741dcb85144c}
+Initialise seed for Random Generator \begin{DoxyNote}{Note}
+not thread\-Safe, use an instance of Rak\-Net\-Random if necessary per thread 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em seed} & The seed value for the random number generator. \\
+\hline
+\end{DoxyParams}

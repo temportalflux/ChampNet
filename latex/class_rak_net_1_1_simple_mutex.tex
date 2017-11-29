@@ -1,0 +1,34 @@
+\hypertarget{class_rak_net_1_1_simple_mutex}{\section{Rak\-Net\-:\-:Simple\-Mutex Class Reference}
+\label{class_rak_net_1_1_simple_mutex}\index{Rak\-Net\-::\-Simple\-Mutex@{Rak\-Net\-::\-Simple\-Mutex}}
+}
+
+
+An easy to use mutex.  
+
+
+
+
+{\ttfamily \#include $<$Simple\-Mutex.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_simple_mutex_a522ff1d052bc2639437d11c5fa99ed93}{void {\bfseries Lock} (void)}\label{class_rak_net_1_1_simple_mutex_a522ff1d052bc2639437d11c5fa99ed93}
+
+\item 
+\hypertarget{class_rak_net_1_1_simple_mutex_a9fbe11373018314f3edea9f2a4cda7ad}{void {\bfseries Unlock} (void)}\label{class_rak_net_1_1_simple_mutex_a9fbe11373018314f3edea9f2a4cda7ad}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An easy to use mutex. 
+
+I wrote this because the version that comes with Windows is too complicated and requires too much code to use. \begin{DoxyRemark}{Remarks}
+Previously I used this everywhere, and in fact for a year or two \hyperlink{namespace_rak_net}{Rak\-Net} was totally threadsafe. While doing profiling, I saw that this function was incredibly slow compared to the blazing performance of everything else, so switched to single producer / consumer everywhere. Now the user thread of \hyperlink{namespace_rak_net}{Rak\-Net} is not threadsafe, but it's 100\-X faster than before. 
+\end{DoxyRemark}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_simple_mutex_8h}{Simple\-Mutex.\-h}\end{DoxyCompactItemize}

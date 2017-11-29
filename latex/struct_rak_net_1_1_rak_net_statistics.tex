@@ -1,0 +1,82 @@
+\hypertarget{struct_rak_net_1_1_rak_net_statistics}{\section{Rak\-Net\-:\-:Rak\-Net\-Statistics Struct Reference}
+\label{struct_rak_net_1_1_rak_net_statistics}\index{Rak\-Net\-::\-Rak\-Net\-Statistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}}
+}
+
+
+Network Statisics Usage.  
+
+
+
+
+{\ttfamily \#include $<$Rak\-Net\-Statistics.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a9f6845ae79dda83c3361e0dc35427854}{\hyperlink{struct_rak_net_1_1_rak_net_statistics}{Rak\-Net\-Statistics} \& {\bfseries operator+=} (const \hyperlink{struct_rak_net_1_1_rak_net_statistics}{Rak\-Net\-Statistics} \&other)}\label{struct_rak_net_1_1_rak_net_statistics_a9f6845ae79dda83c3361e0dc35427854}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a4197b81e3222a38189543f6148f9419a}{uint64\-\_\-t \hyperlink{struct_rak_net_1_1_rak_net_statistics_a4197b81e3222a38189543f6148f9419a}{value\-Over\-Last\-Second} \mbox{[}R\-N\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C\-O\-N\-D\-\_\-\-M\-E\-T\-R\-I\-C\-S\-\_\-\-C\-O\-U\-N\-T\mbox{]}}\label{struct_rak_net_1_1_rak_net_statistics_a4197b81e3222a38189543f6148f9419a}
+
+\begin{DoxyCompactList}\small\item\em For each type in R\-N\-S\-Per\-Second\-Metrics, what is the value over the last 1 second? \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_ae67e3487f97e23a4d7ca72f4a55b0912}{uint64\-\_\-t \hyperlink{struct_rak_net_1_1_rak_net_statistics_ae67e3487f97e23a4d7ca72f4a55b0912}{running\-Total} \mbox{[}R\-N\-S\-\_\-\-P\-E\-R\-\_\-\-S\-E\-C\-O\-N\-D\-\_\-\-M\-E\-T\-R\-I\-C\-S\-\_\-\-C\-O\-U\-N\-T\mbox{]}}\label{struct_rak_net_1_1_rak_net_statistics_ae67e3487f97e23a4d7ca72f4a55b0912}
+
+\begin{DoxyCompactList}\small\item\em For each type in R\-N\-S\-Per\-Second\-Metrics, what is the total value over the lifetime of the connection? \end{DoxyCompactList}\item 
+Rak\-Net\-::\-Time\-U\-S \hyperlink{struct_rak_net_1_1_rak_net_statistics_aa4de4877ca5c69f70c4176e6d50b69ce}{connection\-Start\-Time}
+\item 
+bool \hyperlink{struct_rak_net_1_1_rak_net_statistics_a7e8881dd2f72099037a69ba3cd0b989d}{is\-Limited\-By\-Congestion\-Control}
+\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_aa83e53ef2fc8353a8111929fa869eb5e}{uint64\-\_\-t \hyperlink{struct_rak_net_1_1_rak_net_statistics_aa83e53ef2fc8353a8111929fa869eb5e}{B\-P\-S\-Limit\-By\-Congestion\-Control}}\label{struct_rak_net_1_1_rak_net_statistics_aa83e53ef2fc8353a8111929fa869eb5e}
+
+\begin{DoxyCompactList}\small\item\em If {\itshape is\-Limited\-By\-Congestion\-Control} is true, what is the limit, in bytes per second? \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_acea90f1f18f76fdc30d9debc45f1ccb4}{bool \hyperlink{struct_rak_net_1_1_rak_net_statistics_acea90f1f18f76fdc30d9debc45f1ccb4}{is\-Limited\-By\-Outgoing\-Bandwidth\-Limit}}\label{struct_rak_net_1_1_rak_net_statistics_acea90f1f18f76fdc30d9debc45f1ccb4}
+
+\begin{DoxyCompactList}\small\item\em Is our current send rate throttled by a call to \hyperlink{class_rak_net_1_1_rak_peer_a9c67c61c6eebed7a4ed8bc2ea2813b56}{Rak\-Peer\-::\-Set\-Per\-Connection\-Outgoing\-Bandwidth\-Limit()}? \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_ac26fb5ed5e4352d958d6a06ddbb82138}{uint64\-\_\-t \hyperlink{struct_rak_net_1_1_rak_net_statistics_ac26fb5ed5e4352d958d6a06ddbb82138}{B\-P\-S\-Limit\-By\-Outgoing\-Bandwidth\-Limit}}\label{struct_rak_net_1_1_rak_net_statistics_ac26fb5ed5e4352d958d6a06ddbb82138}
+
+\begin{DoxyCompactList}\small\item\em If {\itshape is\-Limited\-By\-Outgoing\-Bandwidth\-Limit} is true, what is the limit, in bytes per second? \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a437086be4e5d907f72de273aa8d50e0f}{unsigned int \hyperlink{struct_rak_net_1_1_rak_net_statistics_a437086be4e5d907f72de273aa8d50e0f}{message\-In\-Send\-Buffer} \mbox{[}N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-R\-I\-O\-R\-I\-T\-I\-E\-S\mbox{]}}\label{struct_rak_net_1_1_rak_net_statistics_a437086be4e5d907f72de273aa8d50e0f}
+
+\begin{DoxyCompactList}\small\item\em For each priority level, how many messages are waiting to be sent out? \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_aaba55c95f5ea9698068f3fdae9ec7604}{double \hyperlink{struct_rak_net_1_1_rak_net_statistics_aaba55c95f5ea9698068f3fdae9ec7604}{bytes\-In\-Send\-Buffer} \mbox{[}N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-R\-I\-O\-R\-I\-T\-I\-E\-S\mbox{]}}\label{struct_rak_net_1_1_rak_net_statistics_aaba55c95f5ea9698068f3fdae9ec7604}
+
+\begin{DoxyCompactList}\small\item\em For each priority level, how many bytes are waiting to be sent out? \end{DoxyCompactList}\item 
+unsigned int \hyperlink{struct_rak_net_1_1_rak_net_statistics_a6afad117322d397a65bccf2475e42d04}{messages\-In\-Resend\-Buffer}
+\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a58f50bb872e04f31946b3571ab548446}{uint64\-\_\-t \hyperlink{struct_rak_net_1_1_rak_net_statistics_a58f50bb872e04f31946b3571ab548446}{bytes\-In\-Resend\-Buffer}}\label{struct_rak_net_1_1_rak_net_statistics_a58f50bb872e04f31946b3571ab548446}
+
+\begin{DoxyCompactList}\small\item\em How many bytes are waiting in the resend buffer. See also messages\-In\-Resend\-Buffer. \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a9b089df46c6c965c68fe5eabb00dfb75}{float \hyperlink{struct_rak_net_1_1_rak_net_statistics_a9b089df46c6c965c68fe5eabb00dfb75}{packetloss\-Last\-Second}}\label{struct_rak_net_1_1_rak_net_statistics_a9b089df46c6c965c68fe5eabb00dfb75}
+
+\begin{DoxyCompactList}\small\item\em Over the last second, what was our packetloss? This number will range from 0.\-0 (for none) to 1.\-0 (for 100\%) \end{DoxyCompactList}\item 
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a4b86428f78da4893ca8b270508db328a}{float \hyperlink{struct_rak_net_1_1_rak_net_statistics_a4b86428f78da4893ca8b270508db328a}{packetloss\-Total}}\label{struct_rak_net_1_1_rak_net_statistics_a4b86428f78da4893ca8b270508db328a}
+
+\begin{DoxyCompactList}\small\item\em What is the average total packetloss over the lifetime of the connection? \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Network Statisics Usage. 
+
+Store Statistics information related to network usage 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_aa4de4877ca5c69f70c4176e6d50b69ce}{\index{Rak\-Net\-::\-Rak\-Net\-Statistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}!connection\-Start\-Time@{connection\-Start\-Time}}
+\index{connection\-Start\-Time@{connection\-Start\-Time}!RakNet::RakNetStatistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}}
+\subsubsection[{connection\-Start\-Time}]{\setlength{\rightskip}{0pt plus 5cm}Rak\-Net\-::\-Time\-U\-S Rak\-Net\-::\-Rak\-Net\-Statistics\-::connection\-Start\-Time}}\label{struct_rak_net_1_1_rak_net_statistics_aa4de4877ca5c69f70c4176e6d50b69ce}
+When did the connection start? \begin{DoxySeeAlso}{See Also}
+\hyperlink{namespace_rak_net_a0eb59672707865b233dd68a54db6c59f}{Rak\-Net\-::\-Get\-Time\-U\-S()} 
+\end{DoxySeeAlso}
+\hypertarget{struct_rak_net_1_1_rak_net_statistics_a7e8881dd2f72099037a69ba3cd0b989d}{\index{Rak\-Net\-::\-Rak\-Net\-Statistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}!is\-Limited\-By\-Congestion\-Control@{is\-Limited\-By\-Congestion\-Control}}
+\index{is\-Limited\-By\-Congestion\-Control@{is\-Limited\-By\-Congestion\-Control}!RakNet::RakNetStatistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}}
+\subsubsection[{is\-Limited\-By\-Congestion\-Control}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Rak\-Net\-Statistics\-::is\-Limited\-By\-Congestion\-Control}}\label{struct_rak_net_1_1_rak_net_statistics_a7e8881dd2f72099037a69ba3cd0b989d}
+Is our current send rate throttled by congestion control? This value should be true if you send more data per second than your bandwidth capacity \hypertarget{struct_rak_net_1_1_rak_net_statistics_a6afad117322d397a65bccf2475e42d04}{\index{Rak\-Net\-::\-Rak\-Net\-Statistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}!messages\-In\-Resend\-Buffer@{messages\-In\-Resend\-Buffer}}
+\index{messages\-In\-Resend\-Buffer@{messages\-In\-Resend\-Buffer}!RakNet::RakNetStatistics@{Rak\-Net\-::\-Rak\-Net\-Statistics}}
+\subsubsection[{messages\-In\-Resend\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Rak\-Net\-::\-Rak\-Net\-Statistics\-::messages\-In\-Resend\-Buffer}}\label{struct_rak_net_1_1_rak_net_statistics_a6afad117322d397a65bccf2475e42d04}
+How many messages are waiting in the resend buffer? This includes messages waiting for an ack, so should normally be a small value If the value is rising over time, you are exceeding the bandwidth capacity. See B\-P\-S\-Limit\-By\-Congestion\-Control 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_rak_net_statistics_8h}{Rak\-Net\-Statistics.\-h}\end{DoxyCompactItemize}

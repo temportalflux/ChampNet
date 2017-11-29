@@ -1,0 +1,144 @@
+\hypertarget{class_net_interface}{\section{Net\-Interface Class Reference}
+\label{class_net_interface}\index{Net\-Interface@{Net\-Interface}}
+}
+
+
+The interface to work with the plugin to fetch and send packet data  
+
+
+Inheritance diagram for Net\-Interface\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_net_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_net_interface_a565fb35ea7ed5e364902aa8bd0bc6bf9}{Connect} (string address, int port)
+\begin{DoxyCompactList}\small\item\em Starts the client, connects the specified address and port. \end{DoxyCompactList}\item 
+void \hyperlink{class_net_interface_ae0be68e392f32d422325ac54fcaa7cae}{Disconnect} ()
+\begin{DoxyCompactList}\small\item\em Disconnects from the server. \end{DoxyCompactList}\item 
+void \hyperlink{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}{Dispatch} (Event\-Network evt)
+\begin{DoxyCompactList}\small\item\em Dispatches the specified event. \end{DoxyCompactList}\item 
+void \hyperlink{class_net_interface_a0cf4580da2218baff890af79fd606722}{Dispatch} (Event\-Network evt, string address, int port)
+\begin{DoxyCompactList}\small\item\em Dispatches the specified event. \end{DoxyCompactList}\item 
+Key\-Value\-Pair$<$ string, int $>$ \hyperlink{class_net_interface_a18dfbf82b7c690b9abf4ae9ed9aaddcd}{get\-Server} ()
+\begin{DoxyCompactList}\small\item\em Gets the server I\-P details. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_net_interface}{Net\-Interface} \hyperlink{class_net_interface_a58a14d53d9e16a56849ecf2d13141d30}{I\-N\-S\-T\-A\-N\-C\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The interface to work with the plugin to fetch and send packet data 
+
+Author\-: Dustin Yost 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_net_interface_a565fb35ea7ed5e364902aa8bd0bc6bf9}{\index{Net\-Interface@{Net\-Interface}!Connect@{Connect}}
+\index{Connect@{Connect}!NetInterface@{Net\-Interface}}
+\subsubsection[{Connect}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Connect (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_a565fb35ea7ed5e364902aa8bd0bc6bf9}
+
+
+Starts the client, connects the specified address and port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address.\\
+\hline
+{\em port} & The port.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost \hypertarget{class_net_interface_ae0be68e392f32d422325ac54fcaa7cae}{\index{Net\-Interface@{Net\-Interface}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!NetInterface@{Net\-Interface}}
+\subsubsection[{Disconnect}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Disconnect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_ae0be68e392f32d422325ac54fcaa7cae}
+
+
+Disconnects from the server. 
+
+Author\-: Dustin Yost \hypertarget{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}{\index{Net\-Interface@{Net\-Interface}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!NetInterface@{Net\-Interface}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{Event\-Network}]{evt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}
+
+
+Dispatches the specified event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & The evt.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_net_interface_a0cf4580da2218baff890af79fd606722}{\index{Net\-Interface@{Net\-Interface}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!NetInterface@{Net\-Interface}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{Event\-Network}]{evt, }
+\item[{string}]{address, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_a0cf4580da2218baff890af79fd606722}
+
+
+Dispatches the specified event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & The event.\\
+\hline
+{\em address} & The server address.\\
+\hline
+{\em port} & The server port.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Jake Ruth \hypertarget{class_net_interface_a18dfbf82b7c690b9abf4ae9ed9aaddcd}{\index{Net\-Interface@{Net\-Interface}!get\-Server@{get\-Server}}
+\index{get\-Server@{get\-Server}!NetInterface@{Net\-Interface}}
+\subsubsection[{get\-Server}]{\setlength{\rightskip}{0pt plus 5cm}Key\-Value\-Pair$<$string, int$>$ Net\-Interface.\-get\-Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_a18dfbf82b7c690b9abf4ae9ed9aaddcd}
+
+
+Gets the server I\-P details. 
+
+\begin{DoxyReturn}{Returns}
+the server address/port
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Property Documentation}
+\hypertarget{class_net_interface_a58a14d53d9e16a56849ecf2d13141d30}{\index{Net\-Interface@{Net\-Interface}!I\-N\-S\-T\-A\-N\-C\-E@{I\-N\-S\-T\-A\-N\-C\-E}}
+\index{I\-N\-S\-T\-A\-N\-C\-E@{I\-N\-S\-T\-A\-N\-C\-E}!NetInterface@{Net\-Interface}}
+\subsubsection[{I\-N\-S\-T\-A\-N\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Net\-Interface} Net\-Interface.\-I\-N\-S\-T\-A\-N\-C\-E\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}}\label{class_net_interface_a58a14d53d9e16a56849ecf2d13141d30}
+
+
+Gets the instance. 
+
+The instance. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/Net\-Interface.\-cs\end{DoxyCompactItemize}

@@ -1,0 +1,701 @@
+\hypertarget{class_rak_net_1_1_rackspace}{\section{Rak\-Net\-:\-:Rackspace Class Reference}
+\label{class_rak_net_1_1_rackspace}\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}}
+}
+
+
+Code that uses the \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} class to communicate with the \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} A\-P\-I servers.  
+
+
+
+
+{\ttfamily \#include $<$Rackspace.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_rackspace_1_1_rackspace_operation}{Rackspace\-Operation}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \hyperlink{class_rak_net_1_1_rackspace_ae2cddeea6dfa83a9aa480666723812c8}{Authenticate} (\hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} $\ast$\-\_\-tcp\-Interface, const char $\ast$\-\_\-authentication\-U\-R\-L, const char $\ast$\-\_\-rackspace\-Cloud\-Username, const char $\ast$\-\_\-api\-Access\-Key)
+\begin{DoxyCompactList}\small\item\em Authenticate with \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} servers, required before executing any commands. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers} (void)
+\begin{DoxyCompactList}\small\item\em Get a list of running servers. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a8251a4c5262426ccec93089f669856eb}{List\-Servers\-With\-Details} (void)
+\begin{DoxyCompactList}\small\item\em Get a list of running servers, with extended details on each server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_ade33ad85f93d1348b139b7b0da241479}{Create\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} name, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} image\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} flavor\-Id)
+\begin{DoxyCompactList}\small\item\em Create a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}{Get\-Server\-Details} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id)
+\begin{DoxyCompactList}\small\item\em Get details on a particular server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_aee8be6944eeb73bcadee60bb52726604}{Update\-Server\-Name\-Or\-Password} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} new\-Name, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} new\-Password)
+\begin{DoxyCompactList}\small\item\em Changes the name or password for a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a9aaadd52478d59561ab01ca1f3604693}{Delete\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id)
+\begin{DoxyCompactList}\small\item\em Deletes a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a2a528ddfbf131fa09d43cc31476906cf}{List\-Server\-Addresses} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id)
+\begin{DoxyCompactList}\small\item\em Lists the I\-P addresses available to a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_ab062acbfde2d8fe5c0089060e29b6d11}{Share\-Server\-Address} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} ip\-Address)
+\begin{DoxyCompactList}\small\item\em Shares an I\-P address with a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_ad00e9ea6b35ef5d1cba747d74a575956}{Delete\-Server\-Address} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} ip\-Address)
+\begin{DoxyCompactList}\small\item\em Stops sharing an I\-P address with a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a5b14f302a39a912a4c22723d83526d44}{Reboot\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} reboot\-Type)
+\begin{DoxyCompactList}\small\item\em Reboots a server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a98b922f8490bc06fd245d9e18a3106a5}{Rebuild\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} image\-Id)
+\begin{DoxyCompactList}\small\item\em Rebuilds a server with a different image (harddrive contents) \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a1fa543b08cb603d054341d0b4c1a5eaa}{Resize\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} flavor\-Id)
+\begin{DoxyCompactList}\small\item\em Changes the hardware configuration of a server. This does not take effect until you call \hyperlink{class_rak_net_1_1_rackspace_aadf705ac8ae049f680c29e9b446bba37}{Confirm\-Resized\-Server()} \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_aadf705ac8ae049f680c29e9b446bba37}{Confirm\-Resized\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id)
+\begin{DoxyCompactList}\small\item\em Confirm a resize for the specified server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_af4c0a5ebf46b7db29b0816efe529fc87}{Revert\-Resized\-Server} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id)
+\begin{DoxyCompactList}\small\item\em Reverts a resize for the specified server. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a9214e75866cb1dab1595cfa896213472}{List\-Flavors} (void)
+\begin{DoxyCompactList}\small\item\em List all flavors (hardware configs, primarily memory) \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_ab6af88f36056425a508c5b594f05b151}{Get\-Flavor\-Details} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} flavor\-Id)
+\begin{DoxyCompactList}\small\item\em Get extended details about a specific flavor. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{List\-Images} (void)
+\begin{DoxyCompactList}\small\item\em List all images (software configs, including operating systems), which includes images you create yourself. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}{Create\-Image} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} server\-Id, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} image\-Name)
+\begin{DoxyCompactList}\small\item\em Images a running server. This essentially copies the harddrive, and lets you start a server with the same harddrive contents later. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a52b8cc8ee03b5296741a65224a3e1429}{Get\-Image\-Details} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} image\-Id)
+\begin{DoxyCompactList}\small\item\em Get extended details about a particular image. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_afd356905181b1a4fcb122514f5d07835}{Delete\-Image} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} image\-Id)
+\begin{DoxyCompactList}\small\item\em Delete a custom image created with \hyperlink{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}{Create\-Image()} \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a30089576573f2bbdcab57e2f40bd369a}{List\-Shared\-I\-P\-Groups} (void)
+\begin{DoxyCompactList}\small\item\em List I\-P groups. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_rackspace_a451db961d0eff895223a2287d80c1007}{List\-Shared\-I\-P\-Groups\-With\-Details} (void)
+\begin{DoxyCompactList}\small\item\em List I\-P groups with extended details. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_a6bd02aaadff3a889cc626f64c6ac0b0f}{void {\bfseries Create\-Shared\-I\-P\-Group} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} name, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} optional\-Server\-Id)}\label{class_rak_net_1_1_rackspace_a6bd02aaadff3a889cc626f64c6ac0b0f}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a302fe939d47a3af6582db940c7b15910}{void {\bfseries Get\-Shared\-I\-P\-Group\-Details} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} group\-Id)}\label{class_rak_net_1_1_rackspace_a302fe939d47a3af6582db940c7b15910}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a19fc074472fbf10b7af8aaa9875023f4}{void {\bfseries Delete\-Shared\-I\-P\-Group} (\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} group\-Id)}\label{class_rak_net_1_1_rackspace_a19fc074472fbf10b7af8aaa9875023f4}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a9f00f9d6b2a04ac9247de25962ea8ad8}{void \hyperlink{class_rak_net_1_1_rackspace_a9f00f9d6b2a04ac9247de25962ea8ad8}{Add\-Event\-Callback} (\hyperlink{class_rak_net_1_1_rackspace2_event_callback}{Rackspace2\-Event\-Callback} $\ast$callback)}\label{class_rak_net_1_1_rackspace_a9f00f9d6b2a04ac9247de25962ea8ad8}
+
+\begin{DoxyCompactList}\small\item\em Adds a callback to the list of callbacks to be called when any of the above functions finish executing The callbacks are called in the order they are added. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_a5d6ac702f5de2351340319f252610dd5}{void \hyperlink{class_rak_net_1_1_rackspace_a5d6ac702f5de2351340319f252610dd5}{Remove\-Event\-Callback} (\hyperlink{class_rak_net_1_1_rackspace2_event_callback}{Rackspace2\-Event\-Callback} $\ast$callback)}\label{class_rak_net_1_1_rackspace_a5d6ac702f5de2351340319f252610dd5}
+
+\begin{DoxyCompactList}\small\item\em Removes a callback from the list of callbacks to be called when any of the above functions finish executing The callbacks are called in the order they are added. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_aeed723cacf1585518e95457ca31df30f}{void \hyperlink{class_rak_net_1_1_rackspace_aeed723cacf1585518e95457ca31df30f}{Clear\-Event\-Callbacks} (void)}\label{class_rak_net_1_1_rackspace_aeed723cacf1585518e95457ca31df30f}
+
+\begin{DoxyCompactList}\small\item\em Removes all callbacks. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_a524db08379166c1693ebe90bc38e36f7}{void \hyperlink{class_rak_net_1_1_rackspace_a524db08379166c1693ebe90bc38e36f7}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)}\label{class_rak_net_1_1_rackspace_a524db08379166c1693ebe90bc38e36f7}
+
+\begin{DoxyCompactList}\small\item\em Call this anytime \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} returns a packet. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_a7535ff8bed3bd2e7234dcaf11f99f197}{void \hyperlink{class_rak_net_1_1_rackspace_a7535ff8bed3bd2e7234dcaf11f99f197}{On\-Closed\-Connection} (\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} system\-Address)}\label{class_rak_net_1_1_rackspace_a7535ff8bed3bd2e7234dcaf11f99f197}
+
+\begin{DoxyCompactList}\small\item\em Call this when \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} returns something other than U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-A\-D\-D\-R\-E\-S\-S from Has\-Lost\-Connection() \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_rackspace_a854189af1a23f947008d966409bd5876}{void \hyperlink{class_rak_net_1_1_rackspace_a854189af1a23f947008d966409bd5876}{Add\-Operation} (Rackspace\-Operation\-Type type, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} http\-Command, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} operation, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} xml)}\label{class_rak_net_1_1_rackspace_a854189af1a23f947008d966409bd5876}
+
+\begin{DoxyCompactList}\small\item\em Mostly for internal use, but you can use it to execute an operation with more complex xml if desired See the Rackspace.\-cpp on how to use it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_af3cf70c0a306514868eba9c8d70dab72}{static const char $\ast$ \hyperlink{class_rak_net_1_1_rackspace_af3cf70c0a306514868eba9c8d70dab72}{Event\-Type\-To\-String} (\hyperlink{namespace_rak_net_a120cf6e1a0904cff45269f14c3c4c289}{Rackspace\-Event\-Type} event\-Type)}\label{class_rak_net_1_1_rackspace_af3cf70c0a306514868eba9c8d70dab72}
+
+\begin{DoxyCompactList}\small\item\em String representation of each Rackspace\-Event\-Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a6d9a08bab0265f9b163f33be3171bdf9}{bool {\bfseries Has\-Operation\-Of\-Type} (Rackspace\-Operation\-Type t)}\label{class_rak_net_1_1_rackspace_a6d9a08bab0265f9b163f33be3171bdf9}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_ab04633f7ecfd6a4160354aaebe361a69}{unsigned int {\bfseries Get\-Operation\-Of\-Type\-Index} (Rackspace\-Operation\-Type t)}\label{class_rak_net_1_1_rackspace_ab04633f7ecfd6a4160354aaebe361a69}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aa4607b030132d14a4cfbfbfd1158c89f}{bool {\bfseries Execute\-Operation} (\hyperlink{struct_rak_net_1_1_rackspace_1_1_rackspace_operation}{Rackspace\-Operation} \&ro)}\label{class_rak_net_1_1_rackspace_aa4607b030132d14a4cfbfbfd1158c89f}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aa0b0de53b0053f82a773e349ab543c26}{void {\bfseries Read\-Line} (const char $\ast$data, const char $\ast$string\-Start, \hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} \&output)}\label{class_rak_net_1_1_rackspace_aa0b0de53b0053f82a773e349ab543c26}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_af5eebe3cb958153efa0d23aa4559e8f4}{bool {\bfseries Connect\-To\-Server\-Management\-Domain} (\hyperlink{struct_rak_net_1_1_rackspace_1_1_rackspace_operation}{Rackspace\-Operation} \&ro)}\label{class_rak_net_1_1_rackspace_af5eebe3cb958153efa0d23aa4559e8f4}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_af365dda4165dca6336e11abd04e38606}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{class_rak_net_1_1_rackspace2_event_callback}{Rackspace2\-Event\-Callback} $\ast$ $>$ {\bfseries event\-Callbacks}}\label{class_rak_net_1_1_rackspace_af365dda4165dca6336e11abd04e38606}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aba506c461e7411abff7944c86d1feca4}{\hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} $\ast$ {\bfseries tcp\-Interface}}\label{class_rak_net_1_1_rackspace_aba506c461e7411abff7944c86d1feca4}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_afc4b2040d142a8c944abe8c6997a5a00}{\hyperlink{class_data_structures_1_1_list}{Data\-Structures\-::\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_rackspace_1_1_rackspace_operation}{Rackspace\-Operation} $>$ {\bfseries operations}}\label{class_rak_net_1_1_rackspace_afc4b2040d142a8c944abe8c6997a5a00}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_ae65638afd7bb528063fe969029c4fb5b}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries server\-Management\-U\-R\-L}}\label{class_rak_net_1_1_rackspace_ae65638afd7bb528063fe969029c4fb5b}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aced6f50865bfba179f5dbaf1b968bbfc}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries server\-Management\-Domain}}\label{class_rak_net_1_1_rackspace_aced6f50865bfba179f5dbaf1b968bbfc}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_adf020195f6b04c0422a8f5ca05948b71}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries server\-Management\-Path}}\label{class_rak_net_1_1_rackspace_adf020195f6b04c0422a8f5ca05948b71}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a06b56631b1ba183ab242e124a93dd9b2}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries storage\-U\-R\-L}}\label{class_rak_net_1_1_rackspace_a06b56631b1ba183ab242e124a93dd9b2}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a4445d8c2be819cedb03c0edc2b6d3a51}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries storage\-Domain}}\label{class_rak_net_1_1_rackspace_a4445d8c2be819cedb03c0edc2b6d3a51}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a988351a225201886fdd3cd1dda829990}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries storage\-Path}}\label{class_rak_net_1_1_rackspace_a988351a225201886fdd3cd1dda829990}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_af292fbdd39baedcfbca37037e655eecd}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries cdn\-Management\-U\-R\-L}}\label{class_rak_net_1_1_rackspace_af292fbdd39baedcfbca37037e655eecd}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aac0dc399420feba51fedf4581a51ea92}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries cdn\-Management\-Domain}}\label{class_rak_net_1_1_rackspace_aac0dc399420feba51fedf4581a51ea92}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a99f9100555adffe87bd00e4730d2afba}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries cdn\-Management\-Path}}\label{class_rak_net_1_1_rackspace_a99f9100555adffe87bd00e4730d2afba}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a5bd0c0db082f20f76b5eb775849a0e05}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries storage\-Token}}\label{class_rak_net_1_1_rackspace_a5bd0c0db082f20f76b5eb775849a0e05}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_a603c417365d44bc0d1f29305b0e04ab2}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries auth\-Token}}\label{class_rak_net_1_1_rackspace_a603c417365d44bc0d1f29305b0e04ab2}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aa3f06b938833a02fb8c56bed3e7a2560}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries rackspace\-Cloud\-Username}}\label{class_rak_net_1_1_rackspace_aa3f06b938833a02fb8c56bed3e7a2560}
+
+\item 
+\hypertarget{class_rak_net_1_1_rackspace_aaf97df322f57abf468e54a01bc3a0b66}{\hyperlink{class_rak_net_1_1_rak_string}{Rak\-Net\-::\-Rak\-String} {\bfseries api\-Access\-Key}}\label{class_rak_net_1_1_rackspace_aaf97df322f57abf468e54a01bc3a0b66}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code that uses the \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface} class to communicate with the \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} A\-P\-I servers. 
+
+\begin{DoxyPrecond}{Precondition}
+Compile \hyperlink{namespace_rak_net}{Rak\-Net} with O\-P\-E\-N\-\_\-\-S\-S\-L\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-U\-P\-P\-O\-R\-T set to 1 
+
+Packets returned from T\-C\-P\-Interface\-::\-On\-Receive() must be passed to \hyperlink{class_rak_net_1_1_rackspace_a524db08379166c1693ebe90bc38e36f7}{Rackspace\-::\-On\-Receive()} 
+
+Packets returned from \hyperlink{class_rak_net_1_1_t_c_p_interface_a068fe8bafc2ec11e3f8c02ebae831242}{T\-C\-P\-Interface\-::\-Has\-Lost\-Connection()} must be passed to \hyperlink{class_rak_net_1_1_rackspace_a7535ff8bed3bd2e7234dcaf11f99f197}{Rackspace\-::\-On\-Closed\-Connection()} 
+\end{DoxyPrecond}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_rackspace_ae2cddeea6dfa83a9aa480666723812c8}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Authenticate@{Authenticate}}
+\index{Authenticate@{Authenticate}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Authenticate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf System\-Address} Rak\-Net\-::\-Rackspace\-::\-Authenticate (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-C\-P\-Interface} $\ast$}]{\-\_\-tcp\-Interface, }
+\item[{const char $\ast$}]{\-\_\-authentication\-U\-R\-L, }
+\item[{const char $\ast$}]{\-\_\-rackspace\-Cloud\-Username, }
+\item[{const char $\ast$}]{\-\_\-api\-Access\-Key}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_ae2cddeea6dfa83a9aa480666723812c8}
+
+
+Authenticate with \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} servers, required before executing any commands. 
+
+All requests to authenticate and operate against Cloud Servers are performed using S\-S\-L over H\-T\-T\-P (H\-T\-T\-P\-S) on T\-C\-P port 443. Times out after 24 hours -\/ if you get R\-E\-T\-\_\-\-Authenticate\-\_\-\-Unauthorized in the Rackspace\-Event\-Callback callback, call again \begin{DoxySeeAlso}{See Also}
+Rackspace\-Event\-Callback\-::\-On\-Authentication\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \-\_\-tcp\-Interface} & An instance of \hyperlink{class_rak_net_1_1_t_c_p_interface}{T\-C\-P\-Interface}, build with O\-P\-E\-N\-\_\-\-S\-S\-L\-\_\-\-C\-L\-I\-E\-N\-T\-\_\-\-S\-U\-P\-P\-O\-R\-T 1 and already started \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-authentication\-U\-R\-L} & See \href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} . U\-S-\/based accounts authenticate through auth.\-api.\-rackspacecloud.\-com. U\-K-\/based accounts authenticate through lon.\-auth.\-api.\-rackspacecloud.\-com \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-rackspace\-Cloud\-Username} & Username you registered with \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} on their website \\
+\hline
+\mbox{\tt in}  & {\em \-\_\-api\-Access\-Key} & Obtain your A\-P\-I access key from the \hyperlink{class_rak_net_1_1_rackspace}{Rackspace} Cloud Control Panel in the Your Account A\-P\-I Access section. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the authentication server, or U\-N\-A\-S\-S\-I\-G\-N\-E\-D\-\_\-\-S\-Y\-S\-T\-E\-M\-\_\-\-A\-D\-D\-R\-E\-S\-S if the connection attempt failed 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_rackspace_aadf705ac8ae049f680c29e9b446bba37}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Confirm\-Resized\-Server@{Confirm\-Resized\-Server}}
+\index{Confirm\-Resized\-Server@{Confirm\-Resized\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Confirm\-Resized\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Confirm\-Resized\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_aadf705ac8ae049f680c29e9b446bba37}
+
+
+Confirm a resize for the specified server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Confirm\-Resized\-Server\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_a1fa543b08cb603d054341d0b4c1a5eaa}{Resize\-Server()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Create\-Image@{Create\-Image}}
+\index{Create\-Image@{Create\-Image}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Create\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Create\-Image (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{image\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}
+
+
+Images a running server. This essentially copies the harddrive, and lets you start a server with the same harddrive contents later. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Create\-Image\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{List\-Images()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em image\-Name} & What to call this image \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_ade33ad85f93d1348b139b7b0da241479}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Create\-Server@{Create\-Server}}
+\index{Create\-Server@{Create\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Create\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Create\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{name, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{image\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{flavor\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_ade33ad85f93d1348b139b7b0da241479}
+
+
+Create a server. 
+
+Create a server with a given image (harddrive contents) and flavor (hardware configuration) Get the available images with \hyperlink{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{List\-Images()} Get the available flavors with \hyperlink{class_rak_net_1_1_rackspace_a9214e75866cb1dab1595cfa896213472}{List\-Flavors()} It is possible to configure the server in more detail. See the X\-M\-L schema at \href{http://docs.rackspacecloud.com/servers/api/v1.0}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0} You can execute such a custom command by calling \hyperlink{class_rak_net_1_1_rackspace_a854189af1a23f947008d966409bd5876}{Add\-Operation()} manually. See the implementation of Create\-Server for how to do so. The server takes a while to build. Call \hyperlink{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}{Get\-Server\-Details()} to get the current build status. Server id to pass to \hyperlink{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}{Get\-Server\-Details()} is returned in the field $<$server ... id=\char`\"{}1234\char`\"{}$>$ \begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Create\-Server\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & Name of the server. Only alphanumeric characters, periods, and hyphens are valid. Server Name cannot start or end with a period or hyphen. \\
+\hline
+\mbox{\tt in}  & {\em image\-Id} & Which image (harddrive contents, including O\-S) to use \\
+\hline
+\mbox{\tt in}  & {\em flavor\-Id} & Which flavor (hardware config) to use, primarily how much memory is available. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_afd356905181b1a4fcb122514f5d07835}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Delete\-Image@{Delete\-Image}}
+\index{Delete\-Image@{Delete\-Image}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Delete\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Delete\-Image (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{image\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_afd356905181b1a4fcb122514f5d07835}
+
+
+Delete a custom image created with \hyperlink{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}{Create\-Image()} 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Delete\-Image\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{List\-Images()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image\-Id} & Which image \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a9aaadd52478d59561ab01ca1f3604693}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Delete\-Server@{Delete\-Server}}
+\index{Delete\-Server@{Delete\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Delete\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Delete\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a9aaadd52478d59561ab01ca1f3604693}
+
+
+Deletes a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Delete\-Server\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to get details on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_ad00e9ea6b35ef5d1cba747d74a575956}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Delete\-Server\-Address@{Delete\-Server\-Address}}
+\index{Delete\-Server\-Address@{Delete\-Server\-Address}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Delete\-Server\-Address}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Delete\-Server\-Address (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{ip\-Address}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_ad00e9ea6b35ef5d1cba747d74a575956}
+
+
+Stops sharing an I\-P address with a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Delete\-Server\-Address\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em ip\-Address} & Which I\-P address. You can call \hyperlink{class_rak_net_1_1_rackspace_a2a528ddfbf131fa09d43cc31476906cf}{List\-Server\-Addresses()} to get the list of addresses for the specified server \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_ab6af88f36056425a508c5b594f05b151}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Get\-Flavor\-Details@{Get\-Flavor\-Details}}
+\index{Get\-Flavor\-Details@{Get\-Flavor\-Details}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Get\-Flavor\-Details}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Get\-Flavor\-Details (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{flavor\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_ab6af88f36056425a508c5b594f05b151}
+
+
+Get extended details about a specific flavor. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Get\-Flavor\-Details\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_a9214e75866cb1dab1595cfa896213472}{List\-Flavors()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flavor\-Id} & Which flavor (hardware config) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a52b8cc8ee03b5296741a65224a3e1429}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Get\-Image\-Details@{Get\-Image\-Details}}
+\index{Get\-Image\-Details@{Get\-Image\-Details}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Get\-Image\-Details}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Get\-Image\-Details (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{image\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a52b8cc8ee03b5296741a65224a3e1429}
+
+
+Get extended details about a particular image. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Get\-Image\-Details\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{List\-Images()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image\-Id} & Which image \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Get\-Server\-Details@{Get\-Server\-Details}}
+\index{Get\-Server\-Details@{Get\-Server\-Details}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Get\-Server\-Details}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Get\-Server\-Details (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}
+
+
+Get details on a particular server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Get\-Server\-Details\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to get details on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a9214e75866cb1dab1595cfa896213472}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Flavors@{List\-Flavors}}
+\index{List\-Flavors@{List\-Flavors}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Flavors}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Flavors (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a9214e75866cb1dab1595cfa896213472}
+
+
+List all flavors (hardware configs, primarily memory) 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Flavors\-Result() 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Images@{List\-Images}}
+\index{List\-Images@{List\-Images}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Images}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Images (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_afa4e6049bbde4c0c24e0e424155ea984}
+
+
+List all images (software configs, including operating systems), which includes images you create yourself. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Images\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_a32887a0d78af376a72e8f0351d655570}{Create\-Image()} 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_a2a528ddfbf131fa09d43cc31476906cf}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Server\-Addresses@{List\-Server\-Addresses}}
+\index{List\-Server\-Addresses@{List\-Server\-Addresses}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Server\-Addresses}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Server\-Addresses (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a2a528ddfbf131fa09d43cc31476906cf}
+
+
+Lists the I\-P addresses available to a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Server\-Addresses\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Servers@{List\-Servers}}
+\index{List\-Servers@{List\-Servers}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Servers}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Servers (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}
+
+
+Get a list of running servers. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Servers\-Result() 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_a8251a4c5262426ccec93089f669856eb}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Servers\-With\-Details@{List\-Servers\-With\-Details}}
+\index{List\-Servers\-With\-Details@{List\-Servers\-With\-Details}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Servers\-With\-Details}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Servers\-With\-Details (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a8251a4c5262426ccec93089f669856eb}
+
+
+Get a list of running servers, with extended details on each server. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{class_rak_net_1_1_rackspace_a90511872666452548f7ce7e6b1645394}{Get\-Server\-Details()} 
+
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Servers\-With\-Details\-Result() 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_a30089576573f2bbdcab57e2f40bd369a}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Shared\-I\-P\-Groups@{List\-Shared\-I\-P\-Groups}}
+\index{List\-Shared\-I\-P\-Groups@{List\-Shared\-I\-P\-Groups}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Shared\-I\-P\-Groups}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Shared\-I\-P\-Groups (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a30089576573f2bbdcab57e2f40bd369a}
+
+
+List I\-P groups. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Shared\-I\-P\-Groups\-Result() 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_a451db961d0eff895223a2287d80c1007}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!List\-Shared\-I\-P\-Groups\-With\-Details@{List\-Shared\-I\-P\-Groups\-With\-Details}}
+\index{List\-Shared\-I\-P\-Groups\-With\-Details@{List\-Shared\-I\-P\-Groups\-With\-Details}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{List\-Shared\-I\-P\-Groups\-With\-Details}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-List\-Shared\-I\-P\-Groups\-With\-Details (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a451db961d0eff895223a2287d80c1007}
+
+
+List I\-P groups with extended details. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-List\-Shared\-I\-P\-Groups\-With\-Details\-Result() 
+\end{DoxySeeAlso}
+\hypertarget{class_rak_net_1_1_rackspace_a5b14f302a39a912a4c22723d83526d44}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Reboot\-Server@{Reboot\-Server}}
+\index{Reboot\-Server@{Reboot\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Reboot\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Reboot\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{reboot\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a5b14f302a39a912a4c22723d83526d44}
+
+
+Reboots a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Reboot\-Server\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em reboot\-Type} & Should be either \char`\"{}\-H\-A\-R\-D\char`\"{} or \char`\"{}\-S\-O\-F\-T\char`\"{} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a98b922f8490bc06fd245d9e18a3106a5}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Rebuild\-Server@{Rebuild\-Server}}
+\index{Rebuild\-Server@{Rebuild\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Rebuild\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Rebuild\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{image\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a98b922f8490bc06fd245d9e18a3106a5}
+
+
+Rebuilds a server with a different image (harddrive contents) 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Rebuild\-Server\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em image\-Id} & Which image (harddrive contents, including O\-S) to use \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_a1fa543b08cb603d054341d0b4c1a5eaa}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Resize\-Server@{Resize\-Server}}
+\index{Resize\-Server@{Resize\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Resize\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Resize\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{flavor\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_a1fa543b08cb603d054341d0b4c1a5eaa}
+
+
+Changes the hardware configuration of a server. This does not take effect until you call \hyperlink{class_rak_net_1_1_rackspace_aadf705ac8ae049f680c29e9b446bba37}{Confirm\-Resized\-Server()} 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Resize\-Server\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_af4c0a5ebf46b7db29b0816efe529fc87}{Revert\-Resized\-Server()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em flavor\-Id} & Which flavor (hardware config) to use, primarily how much memory is available. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_af4c0a5ebf46b7db29b0816efe529fc87}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Revert\-Resized\-Server@{Revert\-Resized\-Server}}
+\index{Revert\-Resized\-Server@{Revert\-Resized\-Server}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Revert\-Resized\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Revert\-Resized\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_af4c0a5ebf46b7db29b0816efe529fc87}
+
+
+Reverts a resize for the specified server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Revert\-Resized\-Server\-Result() 
+
+\hyperlink{class_rak_net_1_1_rackspace_a1fa543b08cb603d054341d0b4c1a5eaa}{Resize\-Server()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_ab062acbfde2d8fe5c0089060e29b6d11}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Share\-Server\-Address@{Share\-Server\-Address}}
+\index{Share\-Server\-Address@{Share\-Server\-Address}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Share\-Server\-Address}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Share\-Server\-Address (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{ip\-Address}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_ab062acbfde2d8fe5c0089060e29b6d11}
+
+
+Shares an I\-P address with a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Share\-Server\-Address\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to operate on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em ip\-Address} & Which I\-P address. You can call \hyperlink{class_rak_net_1_1_rackspace_a2a528ddfbf131fa09d43cc31476906cf}{List\-Server\-Addresses()} to get the list of addresses for the specified server \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_rackspace_aee8be6944eeb73bcadee60bb52726604}{\index{Rak\-Net\-::\-Rackspace@{Rak\-Net\-::\-Rackspace}!Update\-Server\-Name\-Or\-Password@{Update\-Server\-Name\-Or\-Password}}
+\index{Update\-Server\-Name\-Or\-Password@{Update\-Server\-Name\-Or\-Password}!RakNet::Rackspace@{Rak\-Net\-::\-Rackspace}}
+\subsubsection[{Update\-Server\-Name\-Or\-Password}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Rackspace\-::\-Update\-Server\-Name\-Or\-Password (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{server\-Id, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{new\-Name, }
+\item[{{\bf Rak\-Net\-::\-Rak\-String}}]{new\-Password}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_rackspace_aee8be6944eeb73bcadee60bb52726604}
+
+
+Changes the name or password for a server. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf}{\tt http\-://docs.\-rackspacecloud.\-com/servers/api/v1.\-0/cs-\/devguide-\/20110112.\-pdf} 
+
+Rackspace\-Event\-Callback\-::\-On\-Update\-Server\-Name\-Or\-Password\-Result() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em server\-Id} & Which server to get details on. You can call \hyperlink{class_rak_net_1_1_rackspace_a46e4d34b49522f0c352c75d812b59fda}{List\-Servers()} to get the list of active servers. \\
+\hline
+\mbox{\tt in}  & {\em new\-Name} & The new server name. Leave blank to leave unchanged. Only alphanumeric characters, periods, and hyphens are valid. Server Name cannot start or end with a period or hyphen. \\
+\hline
+\mbox{\tt in}  & {\em new\-Password} & The new server password. Leave blank to leave unchanged. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_rackspace_8h}{Rackspace.\-h}\end{DoxyCompactItemize}

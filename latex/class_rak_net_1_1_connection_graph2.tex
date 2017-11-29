@@ -1,0 +1,248 @@
+\hypertarget{class_rak_net_1_1_connection_graph2}{\section{Rak\-Net\-:\-:Connection\-Graph2 Class Reference}
+\label{class_rak_net_1_1_connection_graph2}\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}}
+}
+
+
+A one hop connection graph.  
+
+
+
+
+{\ttfamily \#include $<$Connection\-Graph2.\-h$>$}
+
+Inheritance diagram for Rak\-Net\-:\-:Connection\-Graph2\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rak_net_1_1_connection_graph2}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_remote_system}{Remote\-System}
+\item 
+struct \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_system_address_and_guid}{System\-Address\-And\-Guid}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_rak_net_1_1_connection_graph2_a4806ed13f28469618cffbff3bf3459a1}{Get\-Connection\-List\-For\-Remote\-System} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} remote\-System\-Guid, \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} $\ast$sa\-Out, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} $\ast$guid\-Out, unsigned int $\ast$out\-Length)
+\begin{DoxyCompactList}\small\item\em Given a remote system identified by \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}, return the list of System\-Addresses and Rak\-Net\-G\-U\-I\-Ds they are connected to. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_a19de5fac28b1ae358999e0d9789385ac}{bool \hyperlink{class_rak_net_1_1_connection_graph2_a19de5fac28b1ae358999e0d9789385ac}{Connection\-Exists} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} g1, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} g2)}\label{class_rak_net_1_1_connection_graph2_a19de5fac28b1ae358999e0d9789385ac}
+
+\begin{DoxyCompactList}\small\item\em Returns if g1 is connected to g2. \end{DoxyCompactList}\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_a51aa05cce39f5d2788907276e5fb7bc4}{uint16\-\_\-t \hyperlink{class_rak_net_1_1_connection_graph2_a51aa05cce39f5d2788907276e5fb7bc4}{Get\-Ping\-Between\-Systems} (\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} g1, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} g2) const }\label{class_rak_net_1_1_connection_graph2_a51aa05cce39f5d2788907276e5fb7bc4}
+
+\begin{DoxyCompactList}\small\item\em Returns the average ping between two systems in the connection graph. Returns -\/1 if no connection exists between those systems. \end{DoxyCompactList}\item 
+\hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \hyperlink{class_rak_net_1_1_connection_graph2_a08103e2820bb625f791a8d12c774698f}{Get\-Lowest\-Average\-Ping\-System} (void) const 
+\item 
+void \hyperlink{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}{Set\-Auto\-Process\-New\-Connections} (bool b)
+\begin{DoxyCompactList}\small\item\em If called with false, then new connections are only added to the connection graph when you call Process\-New\-Connection();. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rak_net_1_1_connection_graph2_a09f51bf45db6b4fd02a191eff1dec894}{Get\-Auto\-Process\-New\-Connections} (void) const 
+\begin{DoxyCompactList}\small\item\em Returns value passed to \hyperlink{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}{Set\-Auto\-Process\-New\-Connections()} \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_connection_graph2_a45f7d21038030a9fec3aa7e50f46b8ff}{Add\-Participant} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D)
+\begin{DoxyCompactList}\small\item\em If you call Set\-Auto\-Process\-New\-Connections(false);, then you will need to manually call Process\-New\-Connection() on new connections. \end{DoxyCompactList}\item 
+void \hyperlink{class_rak_net_1_1_connection_graph2_a3ab46435da8f6dc2c392d9b47bae7ef7}{Get\-Participant\-List} (\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}$<$ \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} $>$ \&participant\-List)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_a4fc8d8e21fa362540cfa379d8a413ad6}{static int {\bfseries System\-Address\-And\-Guid\-Comp} (const \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_system_address_and_guid}{System\-Address\-And\-Guid} \&key, const \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_system_address_and_guid}{System\-Address\-And\-Guid} \&data)}\label{class_rak_net_1_1_connection_graph2_a4fc8d8e21fa362540cfa379d8a413ad6}
+
+\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_a5ae9eaefd7d018cf233e197eb988c35f}{static int {\bfseries Remote\-System\-Comp} (const \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} \&key, \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_remote_system}{Remote\-System} $\ast$const \&data)}\label{class_rak_net_1_1_connection_graph2_a5ae9eaefd7d018cf233e197eb988c35f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_rak_net_1_1_connection_graph2_a33dcad1914b524d483d69f3b9633dd36}{On\-Closed\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga376cc546fd6892c2ead48cd51796c8b8}{P\-I2\-\_\-\-Lost\-Connection\-Reason} lost\-Connection\-Reason)
+\item 
+virtual void \hyperlink{class_rak_net_1_1_connection_graph2_a5fc7c446326e17cbccfba7f37ce2b42d}{On\-New\-Connection} (const \hyperlink{struct_rak_net_1_1_system_address}{System\-Address} \&system\-Address, \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} rak\-Net\-G\-U\-I\-D, bool is\-Incoming)
+\item 
+virtual \hyperlink{group___p_l_u_g_i_n___i_n_t_e_r_f_a_c_e___g_r_o_u_p_ga89998adaafb29e5d879113b992161085}{Plugin\-Receive\-Result} \hyperlink{class_rak_net_1_1_connection_graph2_a952ce38786f2156945d5af7797ff70e8}{On\-Receive} (\hyperlink{struct_rak_net_1_1_packet}{Packet} $\ast$packet)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_a28b85c315499a99e9792642a5e4abb64}{\hyperlink{class_data_structures_1_1_ordered_list}{Data\-Structures\-::\-Ordered\-List}\\*
+$<$ \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}, \hyperlink{struct_rak_net_1_1_connection_graph2_1_1_remote_system}{Remote\-System} \\*
+$\ast$, Connection\-Graph2\-::\-Remote\-System\-Comp $>$ {\bfseries remote\-Systems}}\label{class_rak_net_1_1_connection_graph2_a28b85c315499a99e9792642a5e4abb64}
+
+\item 
+\hypertarget{class_rak_net_1_1_connection_graph2_af858d228371ca8aafb44cf9d6ee74923}{bool {\bfseries auto\-Process\-New\-Connections}}\label{class_rak_net_1_1_connection_graph2_af858d228371ca8aafb44cf9d6ee74923}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A one hop connection graph. 
+
+Sends I\-D\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-L\-O\-S\-T, I\-D\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-N\-O\-T\-I\-F\-I\-C\-A\-T\-I\-O\-N, I\-D\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\par
+ All identifiers are followed by \hyperlink{struct_rak_net_1_1_system_address}{System\-Address}, then \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D} Also stores the list for you, which you can access with Get\-Connection\-List\-For\-Remote\-System 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_rak_net_1_1_connection_graph2_a45f7d21038030a9fec3aa7e50f46b8ff}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Add\-Participant@{Add\-Participant}}
+\index{Add\-Participant@{Add\-Participant}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Add\-Participant}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Connection\-Graph2\-::\-Add\-Participant (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_connection_graph2_a45f7d21038030a9fec3aa7e50f46b8ff}
+
+
+If you call Set\-Auto\-Process\-New\-Connections(false);, then you will need to manually call Process\-New\-Connection() on new connections. 
+
+On I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N or I\-D\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D, adds that system to the graph Do not call Process\-New\-Connection() manually otherwise 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em The} & packet-\/$>$\hyperlink{struct_rak_net_1_1_system_address}{System\-Address} member \\
+\hline
+\mbox{\tt in}  & {\em The} & packet-\/$>$guid member \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_connection_graph2_a09f51bf45db6b4fd02a191eff1dec894}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Get\-Auto\-Process\-New\-Connections@{Get\-Auto\-Process\-New\-Connections}}
+\index{Get\-Auto\-Process\-New\-Connections@{Get\-Auto\-Process\-New\-Connections}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Get\-Auto\-Process\-New\-Connections}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Connection\-Graph2\-::\-Get\-Auto\-Process\-New\-Connections (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_connection_graph2_a09f51bf45db6b4fd02a191eff1dec894}
+
+
+Returns value passed to \hyperlink{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}{Set\-Auto\-Process\-New\-Connections()} 
+
+\begin{DoxyReturn}{Returns}
+Value passed to \hyperlink{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}{Set\-Auto\-Process\-New\-Connections()}, or the default of true if it was never called 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_connection_graph2_a4806ed13f28469618cffbff3bf3459a1}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Get\-Connection\-List\-For\-Remote\-System@{Get\-Connection\-List\-For\-Remote\-System}}
+\index{Get\-Connection\-List\-For\-Remote\-System@{Get\-Connection\-List\-For\-Remote\-System}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Get\-Connection\-List\-For\-Remote\-System}]{\setlength{\rightskip}{0pt plus 5cm}bool Rak\-Net\-::\-Connection\-Graph2\-::\-Get\-Connection\-List\-For\-Remote\-System (
+\begin{DoxyParamCaption}
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{remote\-System\-Guid, }
+\item[{{\bf System\-Address} $\ast$}]{sa\-Out, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D} $\ast$}]{guid\-Out, }
+\item[{unsigned int $\ast$}]{out\-Length}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_connection_graph2_a4806ed13f28469618cffbff3bf3459a1}
+
+
+Given a remote system identified by \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}, return the list of System\-Addresses and Rak\-Net\-G\-U\-I\-Ds they are connected to. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em remote\-System\-Guid} & Which system we are referring to. This only works for remote systems, not ourselves. \\
+\hline
+\mbox{\tt out}  & {\em sa\-Out} & A preallocated array to hold the output list of \hyperlink{struct_rak_net_1_1_system_address}{System\-Address}. Can be 0 if you don't care. \\
+\hline
+\mbox{\tt out}  & {\em guid\-Out} & A preallocated array to hold the output list of \hyperlink{struct_rak_net_1_1_rak_net_g_u_i_d}{Rak\-Net\-G\-U\-I\-D}. Can be 0 if you don't care. \\
+\hline
+\mbox{\tt in,out}  & {\em out\-Length} & On input, the size of {\itshape sa\-Out} and {\itshape guid\-Out}. On output, modified to reflect the number of elements actually written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\itshape remote\-System\-Guid} was found. Otherwise false, and {\itshape sa\-Out}, {\itshape guid\-Out} remain unchanged. {\itshape out\-Length} will be set to 0. 
+\end{DoxyReturn}
+\hypertarget{class_rak_net_1_1_connection_graph2_a08103e2820bb625f791a8d12c774698f}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Get\-Lowest\-Average\-Ping\-System@{Get\-Lowest\-Average\-Ping\-System}}
+\index{Get\-Lowest\-Average\-Ping\-System@{Get\-Lowest\-Average\-Ping\-System}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Get\-Lowest\-Average\-Ping\-System}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rak\-Net\-G\-U\-I\-D} Rak\-Net\-::\-Connection\-Graph2\-::\-Get\-Lowest\-Average\-Ping\-System (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_rak_net_1_1_connection_graph2_a08103e2820bb625f791a8d12c774698f}
+Returns the system with the lowest average ping among all its connections. If you need one system in the peer to peer group to relay data, have the Fully\-Connected\-Mesh2 host call this function after host migration, and use that system \hypertarget{class_rak_net_1_1_connection_graph2_a3ab46435da8f6dc2c392d9b47bae7ef7}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Get\-Participant\-List@{Get\-Participant\-List}}
+\index{Get\-Participant\-List@{Get\-Participant\-List}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Get\-Participant\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Connection\-Graph2\-::\-Get\-Participant\-List (
+\begin{DoxyParamCaption}
+\item[{{\bf Data\-Structures\-::\-Ordered\-List}$<$ {\bf Rak\-Net\-G\-U\-I\-D}, {\bf Rak\-Net\-G\-U\-I\-D} $>$ \&}]{participant\-List}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_connection_graph2_a3ab46435da8f6dc2c392d9b47bae7ef7}
+Get the participants added with \hyperlink{class_rak_net_1_1_connection_graph2_a45f7d21038030a9fec3aa7e50f46b8ff}{Add\-Participant()} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em participant\-List} & Participants added with \hyperlink{class_rak_net_1_1_connection_graph2_a45f7d21038030a9fec3aa7e50f46b8ff}{Add\-Participant()}; \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_rak_net_1_1_connection_graph2_a33dcad1914b524d483d69f3b9633dd36}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!On\-Closed\-Connection@{On\-Closed\-Connection}}
+\index{On\-Closed\-Connection@{On\-Closed\-Connection}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{On\-Closed\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Connection\-Graph2\-::\-On\-Closed\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{{\bf P\-I2\-\_\-\-Lost\-Connection\-Reason}}]{lost\-Connection\-Reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_connection_graph2_a33dcad1914b524d483d69f3b9633dd36}
+Called when a connection is dropped because the user called \hyperlink{class_rak_net_1_1_rak_peer_a95e3806fce8552e322236abcf105cbf9}{Rak\-Peer\-::\-Close\-Connection()} for a particular system 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & The system whose connection was closed \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em lost\-Connection\-Reason} & How the connection was closed\-: manually, connection lost, or notification of disconnection \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_a80c7612ca1a5dcfeec0b52d8049a71ea}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_connection_graph2_a5fc7c446326e17cbccfba7f37ce2b42d}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!On\-New\-Connection@{On\-New\-Connection}}
+\index{On\-New\-Connection@{On\-New\-Connection}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{On\-New\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Rak\-Net\-::\-Connection\-Graph2\-::\-On\-New\-Connection (
+\begin{DoxyParamCaption}
+\item[{const {\bf System\-Address} \&}]{system\-Address, }
+\item[{{\bf Rak\-Net\-G\-U\-I\-D}}]{rak\-Net\-G\-U\-I\-D, }
+\item[{bool}]{is\-Incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_connection_graph2_a5fc7c446326e17cbccfba7f37ce2b42d}
+Called when we got a new connection 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em system\-Address} & Address of the new connection \\
+\hline
+\mbox{\tt in}  & {\em rak\-Net\-Guid} & The guid of the specified system \\
+\hline
+\mbox{\tt in}  & {\em is\-Incoming} & If true, this is I\-D\-\_\-\-N\-E\-W\-\_\-\-I\-N\-C\-O\-M\-I\-N\-G\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N, or the equivalent \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_abf13327cc10f772ba06dff8f2687f8ae}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_connection_graph2_a952ce38786f2156945d5af7797ff70e8}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!On\-Receive@{On\-Receive}}
+\index{On\-Receive@{On\-Receive}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{On\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Plugin\-Receive\-Result} Rak\-Net\-::\-Connection\-Graph2\-::\-On\-Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_rak_net_1_1_connection_graph2_a952ce38786f2156945d5af7797ff70e8}
+On\-Receive is called for every packet. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em packet} & the packet that is being returned to the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True to allow the game and other plugins to get this message, false to absorb it 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_rak_net_1_1_plugin_interface2_aa86f33263c1648f11b8a006469272639}{Rak\-Net\-::\-Plugin\-Interface2}.
+
+\hypertarget{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}{\index{Rak\-Net\-::\-Connection\-Graph2@{Rak\-Net\-::\-Connection\-Graph2}!Set\-Auto\-Process\-New\-Connections@{Set\-Auto\-Process\-New\-Connections}}
+\index{Set\-Auto\-Process\-New\-Connections@{Set\-Auto\-Process\-New\-Connections}!RakNet::ConnectionGraph2@{Rak\-Net\-::\-Connection\-Graph2}}
+\subsubsection[{Set\-Auto\-Process\-New\-Connections}]{\setlength{\rightskip}{0pt plus 5cm}void Rak\-Net\-::\-Connection\-Graph2\-::\-Set\-Auto\-Process\-New\-Connections (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)}}\label{class_rak_net_1_1_connection_graph2_ac9dca829641bf0f83ac829409afe4cc5}
+
+
+If called with false, then new connections are only added to the connection graph when you call Process\-New\-Connection();. 
+
+This is useful if you want to perform validation before connecting a system to a mesh, or if you want a submesh (for example a server cloud) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em b} & True to automatically call Process\-New\-Connection() on any new connection, false to not do so. Defaults to true. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Libs/include/\-Rak\-Net/\hyperlink{_connection_graph2_8h}{Connection\-Graph2.\-h}\end{DoxyCompactItemize}
