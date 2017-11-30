@@ -30681,7 +30681,7 @@ RectTransform:
   m_GameObject: {fileID: 1395927616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 90}
-  m_LocalScale: {x: 0.040983606, y: 0.040983606, z: 0.040983606}
+  m_LocalScale: {x: 0.029336266, y: 0.029336266, z: 0.029336266}
   m_Children:
   - {fileID: 2083072909}
   - {fileID: 1545019284}
@@ -30717,7 +30717,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1445738013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 207.88889, y: 113, z: 0}
+  m_LocalPosition: {x: 294, y: 161.4375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 200915389}
@@ -31011,7 +31011,10 @@ GameObject:
   - component: {fileID: 1809785471}
   - component: {fileID: 1809785473}
   - component: {fileID: 1809785472}
-  m_Layer: 8
+  - component: {fileID: 1809785474}
+  - component: {fileID: 1809785475}
+  - component: {fileID: 1809785476}
+  m_Layer: 9
   m_Name: Grass (Enemy)
   m_TagString: Grass
   m_Icon: {fileID: 0}
@@ -33627,6 +33630,50 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!19719996 &1809785474
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1809785470}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+--- !u!114 &1809785475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1809785470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21597d792b5502b49885b12454a4f4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1809785476
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1809785470}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1866934277
 GameObject:
   m_ObjectHideFlags: 0
