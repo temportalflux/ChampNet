@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerReference : MonoBehaviour {
 
+	private PlayerCharacterController _pcc;
+	public PlayerCharacterController pcc
+	{
+		get { return _pcc == null ? _pcc = GetComponent<PlayerCharacterController> () : _pcc; }
+	}
+
     public Transform sprite;
     public SpriteRenderer overlay;
     public Transform moveTarget;
@@ -106,16 +112,7 @@ public class PlayerReference : MonoBehaviour {
         SpriteRenderer s = t.GetComponent<SpriteRenderer>();
         s.color = this.playerInfo.color;
 
-        if (this._anim != null) // can happen during instantiation of object (via setInfo)
-        {
-            _anim.SetFloat("velX", this.playerInfo.velocity.x);
-            _anim.SetFloat("velY", this.playerInfo.velocity.y);
-            _anim.SetBool("walking", Mathf.Abs(this.playerInfo.velocity.x) > 0.001f || Mathf.Abs(this.playerInfo.velocity.y) > 0.001f);
-        }
-        else
-        {
-            _anim = GetComponentInChildren<Animator>();
-        }
+        
     }
 
     public GameState.Player getInfo()
@@ -146,6 +143,25 @@ public class PlayerReference : MonoBehaviour {
         // Integrate all physics
         this.playerInfo.integratePhysics(Time.deltaTime);
         this.moveTarget.position = this.playerInfo.position;
+
+		if (this._anim != null) // can happen during instantiation of object (via setInfo)
+		{
+			Vector3 displacement = this.moveTarget.position - this.transform.position;
+			if (Mathf.Abs (displacement.x) > Mathf.Abs (displacement.y))
+				displacement.y = 0;
+			else
+				displacement.x = 0;
+
+			_anim.SetFloat("velX", displacement.x);
+			_anim.SetFloat("velY", displacement.y);
+			_anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
+
+			Debug.Log (displacement);
+		}
+		else
+		{
+			_anim = GetComponentInChildren<Animator>();
+		}
 
         this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
 
