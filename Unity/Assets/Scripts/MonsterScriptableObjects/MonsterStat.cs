@@ -38,5 +38,6 @@ public class MonsterStat : ScriptableObject
             availableAttacks.RemoveAt(types.Count - 1);
             Debug.LogWarning("available attacks can only be a max of four");
         }
+        
     }
 }

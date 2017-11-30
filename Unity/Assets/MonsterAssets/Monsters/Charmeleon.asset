@@ -9,15 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
-  m_Name: Grassmon
+  m_Name: Charmeleon
   m_EditorClassIdentifier: 
-  monsterName: Venusaur
+  monsterName: Charmeleon
   types: 01000000
-  maxHp: 80
-  attack: 100
-  defense: 123
-  specialAttack: 122
-  specialDefense: 120
+  maxHp: 58
+  attack: 64
+  defense: 58
+  specialAttack: 80
+  specialDefense: 65
   speed: 80
   availableAttacks:
-  - {fileID: 11400000, guid: c7a2934f86dec29479e5e257fbc88d9d, type: 2}
+  - {fileID: 11400000, guid: 4a9a9f1e5ffcd8546ba8a0edbb71a325, type: 2}
+  - {fileID: 11400000, guid: 07ec8204a3e5fba4c979e067ad840359, type: 2}
+  - {fileID: 11400000, guid: 7b757d18f84ae2b4ebcb65b77384f341, type: 2}

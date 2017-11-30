@@ -14,10 +14,11 @@ public enum MonsterType
     GRASS
 }
 
-public enum PhysicalOrSpecial
+public enum MoveKind
 {
     PHYSICAL,
-    SPECIAL
+    SPECIAL,
+    STATUS
 }
 
 [Serializable]
@@ -26,7 +27,7 @@ public class AttackObject : ScriptableObject
 {
     public string attackName;
     public MonsterType type;
-    public PhysicalOrSpecial physicalOrSpecial;
+    public MoveKind physicalOrSpecial;
     public bool doesDamage;
     public int power;
 

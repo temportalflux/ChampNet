@@ -36,17 +36,17 @@ public class MonsterDataObject //: MonoBehaviour
         //_hp = GetMaxHp;
     }
 
-    public int GetMonsterAttackStat(PhysicalOrSpecial physicalOrSpecial)
+    public int GetMonsterAttackStat(MoveKind physicalOrSpecial)
     {
-        if (physicalOrSpecial == PhysicalOrSpecial.PHYSICAL)
+        if (physicalOrSpecial == MoveKind.PHYSICAL)
             return GetAttack;
 
         return GetSpecialAttack;
     }
 
-    public int GetMonsterDefenseStat(PhysicalOrSpecial physicalOrSpecial)
+    public int GetMonsterDefenseStat(MoveKind physicalOrSpecial)
     {
-        if (physicalOrSpecial == PhysicalOrSpecial.PHYSICAL)
+        if (physicalOrSpecial == MoveKind.PHYSICAL)
             return GetDefense;
 
         return GetSpecialDefense;
