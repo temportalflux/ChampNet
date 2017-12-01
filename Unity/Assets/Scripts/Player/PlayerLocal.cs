@@ -88,6 +88,27 @@ public class PlayerLocal : PlayerReference
         }
 
     }
-    
+
+    /// <summary>
+    /// Only used to test scoreboard incrementation
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="type"></param>
+    /// <param name="action"></param>
+    /// <Author> Christopher Brennan </Author>
+    public void down(InputDevice device, InputResponse.UpdateEvent type, MappedButton action)
+    {
+
+        GameState.Player info = this.getInfo();
+
+        switch (action)
+        {
+            case MappedButton.DENY:
+                NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
+                break;
+            default:
+                break;
+        }
+    }
 
 }

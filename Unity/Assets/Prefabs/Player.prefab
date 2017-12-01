@@ -343,7 +343,7 @@ MonoBehaviour:
   inputId: 1
   listenerButtons:
   - type: 1
-    key: 3
+    key: 2
     useKeyboard: 1
     useMouse: 0
     useGamepad: 1
@@ -351,8 +351,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114064580263914160}
-          m_MethodName: challengeRandomPlayer
-          m_Mode: 1
+          m_MethodName: down
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

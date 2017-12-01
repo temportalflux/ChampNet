@@ -1,3 +1,13 @@
+/*
+Names and ID: Christopher Brennan: 1028443, Dustin Yost: 0984932, Jacob Ruth: 0890406
+Course Info: EGP-405-01 
+Project Name: Project 3: Synchronized Networking
+Due: 11/22/17
+Certificate of Authenticity (standard practice): “We certify that this work is entirely our own.  
+The assessor of this project may reproduce this project and provide copies to other academic staff, 
+and/or communicate a copy of this project to a plagiarism-checking service, which may retain a copy of the project on its database.”
+*/
+
 #include "StateServer.h"
 
 #include "ChampNetPlugin.h"
@@ -491,6 +501,39 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 			//*/
+		case ChampNetPlugin::ID_CLIENT_SCORE_UP: // used to increment a client score by 1 // proof that scoreboard works
+			{
+
+				std::string addressSender = packet->getAddress();
+
+				unsigned int pPacketLength = 0;
+
+				PacketPlayerScoreboardInfo* pPacket = packet->getPacketAs<PacketPlayerScoreboardInfo>(pPacketLength);
+				unsigned int clientID = pPacket->clientID;
+				unsigned int playerID = pPacket->playerID;
+
+				// Integrate the win and increment by 1 into the gamestate
+				this->mpGameState->players[playerID].wins = (pPacket->score + 1);
+
+				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), true, clientID);
+			}
+		break;
+		case ChampNetPlugin::ID_CLIENT_RANK_INTEGRATION:
+		{
+			std::string addressSender = packet->getAddress();
+
+			unsigned int pPacketLength = 0;
+
+			PacketPlayerScoreboardInfo* pPacket = packet->getPacketAs<PacketPlayerScoreboardInfo>(pPacketLength);
+			unsigned int clientID = pPacket->clientID;
+			unsigned int playerID = pPacket->playerID;
+
+			// Integrate the win and increment by 1 into the gamestate
+			this->mpGameState->players[playerID].rank = (pPacket->score);
+
+			//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE, addressSender.c_str(), true, clientID);
+		}
+		break;
 		default:
 			std::cout << "Received packet with id " << packet->getID() << " with length " << packet->getDataLength() << '\n';
 			break;

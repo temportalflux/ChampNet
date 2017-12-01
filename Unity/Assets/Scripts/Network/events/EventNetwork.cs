@@ -50,6 +50,8 @@ public class EventNetwork : ISerializing
         case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
             return new EventNetwork.EventBattleResult();
             //*/
+            case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_SCORE_UP:
+                return new EventGameState(ChampNetPlugin.MessageIDs.ID_CLIENT_SCORE_UP);
             default:
                 return new EventNetwork((byte)id);
         }

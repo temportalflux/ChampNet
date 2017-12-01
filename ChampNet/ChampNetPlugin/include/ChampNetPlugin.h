@@ -59,6 +59,11 @@ extern "C"
 			// Notification to clients that the server has been disconnected
 			ID_DISCONNECT,
 
+			// Increment Client Score by 1
+			ID_CLIENT_SCORE_UP,
+			// recieve new rank
+			ID_CLIENT_RANK_INTEGRATION,
+
 		};
 
 		// Create a network to connect with
