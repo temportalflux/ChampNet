@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -234,7 +236,6 @@
     <Compile Include="Assets\MonsterDataObjectEditor.cs" />
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\PlayerLocalSpawn.cs" />
-    <Compile Include="Assets\ScoreBoard.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitSerializeAttribute.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitTest.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
@@ -251,12 +252,16 @@
     <Compile Include="Assets\Scripts\Network\events\EventClientLeft.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventConnected.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventGameState.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventIncrementScore.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventNetwork.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventRequestMovement.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventRequestPlayer.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventSendRank.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithID.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithLocation.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithPlayerID.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventWithRank.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventWithScore.cs" />
     <Compile Include="Assets\Scripts\Network\events\ISerializing.cs" />
     <Compile Include="Assets\Scripts\Network\NetInterface.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
@@ -274,6 +279,8 @@
     <Compile Include="Assets\Scripts\Transitions\TransitionShader.cs" />
     <Compile Include="Assets\Scripts\UI\ConnectMenu.cs" />
     <Compile Include="Assets\Scripts\UI\MiniMap\MinimapHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreBoard.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreboardIncrementTest.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
     <Compile Include="Assets\UIMenuSelection.cs" />
   </ItemGroup>
