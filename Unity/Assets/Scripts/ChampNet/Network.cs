@@ -23,14 +23,26 @@ namespace ChampNetPlugin
         ID_CLIENT_CONNECTION_REJECTED = 17,
 
         // Client-Sent Messages
-        // 1) Sent to server to notify it of an incoming client
+        // C->S: ask server to join
         ID_CLIENT_JOINED = 135,
-        // Sent to server to notify all clients of an updated position
+        // C->S: ask server to move player
         ID_PLAYER_REQUEST_MOVEMENT,
-        // Sent to server to request a battle with some other player
+
+        // Battle Messages
+        // C->S: request a battle with some other player
+        // S->B: forwarded packet for request
         ID_BATTLE_REQUEST,
-        // Sent to server to accept or deny battle with some requesting player
+        // B->S: accept or deny battle with some requesting player
+        // S->A: forwarded packet for response (mainly for denial)
         ID_BATTLE_RESPONSE,
+        // S->AB: prompt battle actions from A and B
+        ID_BATTLE_PROMPT_SELECTION,
+        // AB->S: Respond to PROMPT_SELECTION with a selection for battle
+        ID_BATTLE_SELECTION,
+        // S->AB: notify clients of outcome of battle
+        ID_BATTLE_RESULT,
+        // AB->S: Tell server the client has acknowledged the battle result and is return to normal space
+        ID_BATTLE_RESULT_RESPONSE,
 
         // Server-Sent Messages
         // 2) Sent to clients to notify them of the values for some spawning user
@@ -38,8 +50,6 @@ namespace ChampNetPlugin
         ID_UPDATE_GAMESTATE,
         // 3) Sent to clients to mandate their ID
         ID_CLIENT_REQUEST_PLAYER,
-        // Send to all clients to notify them of a battle result
-        ID_BATTLE_RESULT,
         // Sent to server and forwarded to clients notifying them a user has left the server
         ID_CLIENT_LEFT,
         // Notification to clients that the server has been disconnected

@@ -61,4 +61,36 @@ struct PacketBattleResponse
 	bool accepted;
 };
 
+struct PacketBattlePromptSelection
+{
+	unsigned char id;
+
+	unsigned int playerAId;
+	// -1 if invalid
+	int playerASelection;
+	// -1 if invalid
+	int playerAChoice;
+
+	unsigned int playerBId;
+	// -1 if invalid
+	int playerBSelection;
+	// -1 if invalid
+	int playerBChoice;
+
+};
+
+struct PacketBattleSelection
+{
+	unsigned char id;
+	unsigned int playerId;
+	unsigned int playerIdOpponent;
+	unsigned int selection;
+	unsigned int choice;
+};
+
 #pragma pack(pop)
+
+enum BattleSelection : unsigned int
+{
+	ATTACK, SWAP, FLEE,
+};
