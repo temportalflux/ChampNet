@@ -237,6 +237,8 @@
     <Compile Include="Assets\Scripts\Attribute\BitSerializeAttribute.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitTest.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
+    <Compile Include="Assets\Scripts\Battles\BattleTester.cs" />
+    <Compile Include="Assets\Scripts\Battles\BattleUIController.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />

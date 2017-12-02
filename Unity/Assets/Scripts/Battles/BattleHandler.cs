@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleHandler : MonoBehaviour {
+// Author: Jake Ruth
+public class BattleHandler : MonoBehaviour
+{
+    public enum BattleState
+    {
+        WAITING_ON_INPUT,
+        DISPLAYING_TURN
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void SetUpBattle(KeeperSystem playerA, KeeperSystem playerB)
+    {
+        
+    }
 }
