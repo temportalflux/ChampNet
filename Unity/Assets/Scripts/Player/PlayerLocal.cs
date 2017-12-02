@@ -22,7 +22,7 @@ public class PlayerLocal : PlayerReference
     /// </remarks>
     public void challengeRandomPlayer()
     {
-        PlayerReference player = GameManager.INSTANCE.getRandomPlayer();
+        PlayerReference player = GameManager.INSTANCE.getRandomPlayer(this.playerInfo);
         if (player != null)
         {
             this.requestBattle(player);

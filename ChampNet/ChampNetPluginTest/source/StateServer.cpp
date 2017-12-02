@@ -486,15 +486,21 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// TODO: This will be moved to post-battle
 				if (pPacket->accepted)
 				{
+					/*
 					// Notify all users of a battle winner
 					PacketUserIDTriple packetBattleResult[1];
 					packetBattleResult->id = ChampNetPlugin::ID_BATTLE_RESULT;
 					// Rearrange the ids so it is valid with who requested the battle
 					packetBattleResult->playerIdSender = pPacket->playerIdReceiver;
 					packetBattleResult->playerIdReceiver = pPacket->playerIdSender;
+					//*/
 					// get a random winner
-					packetBattleResult->playerIdThird = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
-					this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
+					//packetBattleResult->playerIdThird = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
+
+					unsigned int winner = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
+					this->mpGameState->players[winner].wins++;
+
+					//this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
 				}
 
 			}

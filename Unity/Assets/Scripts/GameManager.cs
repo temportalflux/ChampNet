@@ -96,9 +96,11 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public PlayerReference getRandomPlayer()
+    public PlayerReference getRandomPlayer(GameState.Player notMe)
     {
         List<GameState.Player> players = new List<GameState.Player>(this.state.players.Values);
+        // Remove the notMe entry if it exists
+        players.RemoveAt(players.FindIndex(new Predicate<GameState.Player>(p => p.playerID == notMe.playerID)));
         if (players.Count > 0)
         {
             int index = UnityEngine.Random.Range(0, players.Count);
