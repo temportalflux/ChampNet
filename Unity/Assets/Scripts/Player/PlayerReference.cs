@@ -5,10 +5,6 @@ using UnityEngine;
 public class PlayerReference : MonoBehaviour {
 
 	protected PlayerCharacterController _pcc;
-    protected PlayerCharacterController pcc
-	{
-		get { return _pcc == null ? _pcc = GetComponent<PlayerCharacterController> () : _pcc; }
-	}
 
     public Transform sprite;
     public SpriteRenderer overlay;
@@ -47,9 +43,9 @@ public class PlayerReference : MonoBehaviour {
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
-        
+        this._pcc = GetComponent<PlayerCharacterController>();
     }
 
     protected GameState.Player playerInfo;

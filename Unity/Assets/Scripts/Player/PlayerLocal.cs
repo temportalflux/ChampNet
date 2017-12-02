@@ -8,8 +8,9 @@ public class PlayerLocal : PlayerReference
 {
     protected PlayerInputController _pic;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _pic = GetComponent<PlayerInputController>();
     }
 
