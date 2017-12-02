@@ -489,14 +489,23 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					// Update gamestate for in battle
 					this->mpGameState->players[pPacket->playerIdSender].inBattle = true;
 					this->mpGameState->players[pPacket->playerIdReceiver].inBattle = true;
+					this->mpGameState->players[pPacket->playerIdSender].battleOpponentId = pPacket->playerIdReceiver;
+					this->mpGameState->players[pPacket->playerIdReceiver].battleOpponentId = pPacket->playerIdSender;
+
+					PacketBattlePromptSelection promptSelection[1];
+					promptSelection->id = ChampNetPlugin::ID_BATTLE_PROMPT_SELECTION;
+					promptSelection->playerAId = pPacket->playerIdReceiver;
+					promptSelection->playerASelection = -1;
+					promptSelection->playerAChoice = -1;
+					promptSelection->playerBId = pPacket->playerIdSender;
+					promptSelection->playerBSelection = -1;
+					promptSelection->playerBChoice = -1;
 
 					// Update battlers' gamestates then send battle packet
-					//this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressSender, false);
-					//this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressReceiver, false);
-					
-					//PacketUserIDTriple packetBattleResult[1];
-					
-					//this->sendPacket();
+					this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressSender, false);
+					this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressReceiver, false);
+					this->sendPacket(addressSender, promptSelection, false);
+					this->sendPacket(addressReceiver, promptSelection, false);
 				}
 
 
@@ -514,14 +523,83 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					// get a random winner
 					//packetBattleResult->playerIdThird = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
 
-					unsigned int winner = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
-					this->mpGameState->players[winner].wins++;
-					this->mpGameState->players[pPacket->playerIdSender].inBattle = false;
-					this->mpGameState->players[pPacket->playerIdReceiver].inBattle = false;
+					//unsigned int winner = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
+					//this->mpGameState->players[winner].wins++;
+					//this->mpGameState->players[pPacket->playerIdSender].inBattle = false;
+					//this->mpGameState->players[pPacket->playerIdReceiver].inBattle = false;
 
 					//this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
 				}
 
+			}
+			break;
+		case ChampNetPlugin::ID_BATTLE_PROMPT_SELECTION:
+			// INVALID
+			break;
+		case ChampNetPlugin::ID_BATTLE_SELECTION:
+			{
+				// Get Packet
+				unsigned int pPacketLength = 0;
+				PacketBattleSelection* pPacket = packet->getPacketAs<PacketBattleSelection>(pPacketLength);
+				unsigned int playerID = pPacket->playerId;
+
+				// Cache response in server-side only data
+				this->mpGameState->players[playerID].lastBattleSelection = pPacket->selection;
+				this->mpGameState->players[playerID].lastBattleChoice = pPacket->choice;
+
+				// Check if other player has responded
+				int opponentIDOptional = this->mpGameState->players[playerID].battleOpponentId;
+				unsigned int opponentID;
+				if (opponentIDOptional >= 0 &&
+					// assign opponentID to the unsigned version of opponentIDOptional (which can be negative)
+					// and then check if it's selection is valid (they have already submitted)
+					this->mpGameState->players[(opponentID = (unsigned int)opponentIDOptional)].lastBattleSelection >= 0)
+				{
+
+					GameState::Player incoming = this->mpGameState->players[playerID];
+					GameState::Player opponent = this->mpGameState->players[opponentID];
+					const char *addressIncoming = this->getClientAddressFrom(playerID);
+					const char *addressOpponent = this->getClientAddressFrom(opponentID);
+
+					// Construct prompt selection packet with updated cache data
+					PacketBattlePromptSelection promptSelection[1];
+					promptSelection->id = ChampNetPlugin::ID_BATTLE_PROMPT_SELECTION;
+
+					promptSelection->playerAId = opponent.playerID;
+					promptSelection->playerASelection = opponent.lastBattleSelection;
+					promptSelection->playerAChoice = opponent.lastBattleChoice;
+
+					promptSelection->playerBId = incoming.playerID;
+					promptSelection->playerBSelection = incoming.lastBattleSelection;
+					promptSelection->playerBChoice = incoming.lastBattleChoice;
+
+					// Send prompt
+					this->sendPacket(addressIncoming, promptSelection, false);
+					this->sendPacket(addressOpponent, promptSelection, false);
+
+					// Invalid cached selection info
+					this->mpGameState->players[playerID].lastBattleSelection = -1;
+					this->mpGameState->players[playerID].lastBattleChoice = -1;
+					this->mpGameState->players[opponentID].lastBattleSelection = -1;
+					this->mpGameState->players[opponentID].lastBattleChoice = -1;
+
+				}
+
+			}
+			break;
+		case ChampNetPlugin::ID_BATTLE_RESULT:
+			// INVALID
+			break;
+		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:
+			{
+				// Get Packet
+				unsigned int pPacketLength = 0;
+				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+				// Get the playerID
+				unsigned int playerID = pPacket->dataID;
+				// Player is telling us they have left the result dialog, so they are out of the battle
+				this->mpGameState->players[playerID].inBattle = false;
+				this->mpGameState->players[playerID].battleOpponentId = -1;
 			}
 			break;
 			//*/

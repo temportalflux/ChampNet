@@ -37,6 +37,11 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.inBattle = false;
 	player.wins = 0;
 	player.rank = 0;
+
+	player.battleOpponentId = -1;
+	player.lastBattleSelection = -1;
+	player.lastBattleChoice = -1;
+
 	this->players[playerID] = player;
 }
 

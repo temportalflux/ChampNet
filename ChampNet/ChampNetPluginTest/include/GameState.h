@@ -58,6 +58,15 @@ public:
 		unsigned int wins;
 		// Rank of player on the scoreboard
 		unsigned int rank;
+
+		// Not serialized
+		// the playerId of the opponent, -1 if invalid, otherwise >= 0
+		int battleOpponentId;
+		// the last selection in battles, -1 if invalid, otherwise >= 0
+		int lastBattleSelection;
+		// the last selection choice in battle, -1 if invalid, otherwise >= 0
+		int lastBattleChoice;
+
 	};
 
 	// The ID of the client this gamestate is in
