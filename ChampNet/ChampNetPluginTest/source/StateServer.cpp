@@ -453,8 +453,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			std::cout << "Connection lost\n";
 			this->stopRunning();
 			break;
-			/*
-		
+			///*
 		case ChampNetPlugin::ID_BATTLE_REQUEST:
 			// User (playerIdSender) is requesting User (playerIdReceiver) to battle
 			{
@@ -464,7 +463,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// Get the address of the sender (the challenger/requester) for reporting purposes
 				std::string addressSender = packet->getAddress();
 				// Get the address of the receiver
-				std::string *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver];
+				std::string *addressReceiver = this->mpClientAddresses[this->mpPlayerIdToClientId[pPacket->playerIdReceiver]];
 				// Report out the request
 				std::cout << "Forwarding battle request from "
 					<< pPacket->playerIdSender << " at " << addressSender << " to "
@@ -480,7 +479,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				PacketBattleResponse* pPacket = packet->getPacketAs<PacketBattleResponse>(pPacketLength);
 
 				// Get the address of the receiver (the challenger/requester)
-				const char *addressReceiver = this->mpPlayerAddresses[pPacket->playerIdReceiver]->c_str();
+				const char *addressReceiver = this->mpClientAddresses[this->mpPlayerIdToClientId[pPacket->playerIdReceiver]]->c_str();
 				// Forward the packet - forward the response to the one who requested the battle
 				this->sendPacket(addressReceiver, pPacket, false);
 
