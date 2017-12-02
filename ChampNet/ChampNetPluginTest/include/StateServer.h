@@ -114,6 +114,8 @@ public:
 
 	void sendGameState(unsigned char msgID, const char* sender = NULL, bool broadcast = true, int clientID = -1);
 
+	const char* getClientAddressFrom(unsigned int playerID);
+
 };
 
 #endif // CHAMPNET_SERVER_SERVER_H

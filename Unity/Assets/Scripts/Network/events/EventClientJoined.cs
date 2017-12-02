@@ -23,6 +23,7 @@ public class EventClientJoined : EventNetwork
     public override int GetSize()
     {
         return base.GetSize() + (
+            sizeof(int) +
             this.players.Length * (sizeof(int) + (sizeof(char) * GameState.Player.SIZE_MAX_NAME) + (sizeof(float) * 3))
         );
     }

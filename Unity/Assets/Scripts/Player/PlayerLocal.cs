@@ -6,12 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputController))]
 public class PlayerLocal : PlayerReference
 {
-    protected PlayerCharacterController _pcc;
     protected PlayerInputController _pic;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _pcc = GetComponent<PlayerCharacterController>();
+        base.Awake();
         _pic = GetComponent<PlayerInputController>();
     }
 
@@ -23,7 +22,7 @@ public class PlayerLocal : PlayerReference
     /// </remarks>
     public void challengeRandomPlayer()
     {
-        PlayerReference player = GameManager.INSTANCE.getRandomPlayer();
+        PlayerReference player = GameManager.INSTANCE.getRandomPlayer(this.playerInfo);
         if (player != null)
         {
             this.requestBattle(player);

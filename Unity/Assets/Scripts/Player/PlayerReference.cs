@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class PlayerReference : MonoBehaviour {
 
-	private PlayerCharacterController _pcc;
-	public PlayerCharacterController pcc
-	{
-		get { return _pcc == null ? _pcc = GetComponent<PlayerCharacterController> () : _pcc; }
-	}
+	protected PlayerCharacterController _pcc;
 
     public Transform sprite;
     public SpriteRenderer overlay;
@@ -47,9 +43,9 @@ public class PlayerReference : MonoBehaviour {
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
-        
+        this._pcc = GetComponent<PlayerCharacterController>();
     }
 
     protected GameState.Player playerInfo;
