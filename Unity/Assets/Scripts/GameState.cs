@@ -96,10 +96,19 @@ public class GameState : ScriptableObject, ISerializing
         [Tooltip("The acceleration of the player")]
         public Vector3 accelleration;
 
-        // Other
+        // Battle
 
         [Tooltip("If the player is in battle")]
         public bool inBattle;
+
+        public enum EnumBattleSelection
+        {
+
+        }
+
+        public EnumBattleSelection battleSelection;
+
+        public int battleChoice;
 
         // scoreboard data
 
