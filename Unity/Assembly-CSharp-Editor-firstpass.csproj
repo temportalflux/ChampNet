@@ -124,9 +124,6 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/2017.2.0f3/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
- </Reference>
  <Reference Include="XInputDotNetPure">
  <HintPath>C:/Users/jacob.ruth/Desktop/FinalForReal/Unity/Assets/Plugins/UnIput/UnityInput2017/XInputDotNet/Plugins/XInputDotNetPure.dll</HintPath>
  </Reference>

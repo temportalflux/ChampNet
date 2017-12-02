@@ -9,9 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
-  m_Name: Charmeleon
+  m_Name: 0005-Charmeleon
   m_EditorClassIdentifier: 
   monsterName: Charmeleon
+  monsterPicture: {fileID: 21300000, guid: 03a074e6f984f9047a69bebf12bc1047, type: 3}
   types: 01000000
   maxHp: 58
   attack: 64

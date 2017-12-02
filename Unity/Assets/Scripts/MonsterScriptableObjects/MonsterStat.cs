@@ -12,6 +12,7 @@ public class MonsterStat : ScriptableObject
 {
     [Header("Monster Stats")]
     public string monsterName;
+	public Sprite monsterPicture;
     public List<MonsterType> types;
     [Space]
     //[Header("")] // used to create a space in the inspector to space things apart
