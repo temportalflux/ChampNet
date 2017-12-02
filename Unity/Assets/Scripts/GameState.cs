@@ -101,13 +101,28 @@ public class GameState : ScriptableObject, ISerializing
         [Tooltip("If the player is in battle")]
         public bool inBattle;
 
+        /// <summary>
+        /// The player <see cref="ID"/> of the opponent.
+        /// </summary>
+        public ID playerIDOpponent;
+
+        /// <summary>
+        /// Options of types of battle moves.
+        /// </summary>
         public enum EnumBattleSelection
         {
-
+            ATTACK, SWAP, FLEE,
         }
 
+        /// <summary>
+        /// The type of action the player makes in battle.
+        /// </summary>
         public EnumBattleSelection battleSelection;
 
+        /// <summary>
+        /// The descriptor for the type of action (narrows down choice to options like
+        /// which attack a cretin makes, or what cretin is being swapped to).
+        /// </summary>
         public int battleChoice;
 
         // scoreboard data
