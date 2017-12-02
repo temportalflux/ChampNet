@@ -156,7 +156,7 @@ public class PlayerReference : MonoBehaviour {
 			_anim.SetFloat("velY", displacement.y);
 			_anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
 
-			Debug.Log (displacement);
+			//Debug.Log (displacement);
 		}
 		else
 		{

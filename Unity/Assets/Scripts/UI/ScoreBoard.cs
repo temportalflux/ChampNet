@@ -94,7 +94,7 @@ public class ScoreBoard : MonoBehaviour {
             var newNameText = text.NameObject.AddComponent<Text>();
 
             // set text info
-            newNameText.text = ("Empty rank: " + currentText);
+            newNameText.text = ("N/A");
             // set alignment for RectTransform
             newNameText.alignment = TextAnchor.MiddleCenter;
             // set font size to what we wanted
@@ -132,7 +132,7 @@ public class ScoreBoard : MonoBehaviour {
             var newWinText = text.WinObject.AddComponent<Text>();
 
             // set this to N/A as their is no one there to display a win
-            newWinText.text = "N/A";
+            newWinText.text = "0";
             newWinText.alignment = TextAnchor.MiddleCenter;
             newWinText.fontSize = text.fontSize;
             newWinText.fontStyle = text.fontStyle;
@@ -158,7 +158,6 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     private void Update()
     {
-        DisplayScoreBoard();
 
         // used for single camera
         //foreach (RankText text in rankText)
@@ -234,9 +233,6 @@ public class ScoreBoard : MonoBehaviour {
         // checks both local and connected players
         foreach (KeyValuePair<uint, GameState.Player> player in GameManager.INSTANCE.state.players)
         {
-            //if (player.Value.objectReference.getID() == scoreBoard.ID)
-            //{
-            //}
             if (player.Value.objectReference.score > scoreBoard.score)
             {
                 // check if you are lower in the rankings (higher number means lower in ranking) or check if you are even ranked
