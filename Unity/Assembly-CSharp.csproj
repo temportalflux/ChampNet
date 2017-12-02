@@ -103,6 +103,7 @@
      <Compile Include="Assets\Scripts\UI\ScoreBoard.cs" />
      <Compile Include="Assets\Scripts\UI\ScoreboardIncrementTest.cs" />
      <Compile Include="Assets\Scripts\UI\UIInput.cs" />
+     <Compile Include="Assets\TallGrass.cs" />
      <Compile Include="Assets\UIMenuSelection.cs" />
      <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\Docs.txt" />
      <None Include="Assets\Plugins\UnIput\UnityInput2017\XInputDotNet\MITLicense.txt" />

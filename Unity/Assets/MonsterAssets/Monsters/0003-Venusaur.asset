@@ -9,18 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
-  m_Name: Ivysaur
+  m_Name: 0003-Venusaur
   m_EditorClassIdentifier: 
-  monsterName: Ivysaur
+  monsterName: Venusaur
+  monsterPicture: {fileID: 21300000, guid: d58267906d2b3dc44a4d459530a6a91f, type: 3}
   types: 03000000
-  maxHp: 60
-  attack: 62
-  defense: 63
-  specialAttack: 80
-  specialDefense: 80
-  speed: 60
+  maxHp: 80
+  attack: 82
+  defense: 83
+  specialAttack: 100
+  specialDefense: 100
+  speed: 80
   availableAttacks:
+  - {fileID: 11400000, guid: 75d6e237cb383be4ba0162ed57d10209, type: 2}
   - {fileID: 11400000, guid: 908aac141eed9ad4aa616eeffcc7b298, type: 2}
   - {fileID: 11400000, guid: 07ec8204a3e5fba4c979e067ad840359, type: 2}
   - {fileID: 11400000, guid: ea6e4eaea7188584886993d80cc7c94a, type: 2}
-  - {fileID: 11400000, guid: 75d6e237cb383be4ba0162ed57d10209, type: 2}
