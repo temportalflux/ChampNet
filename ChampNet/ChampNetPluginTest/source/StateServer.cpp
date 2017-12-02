@@ -479,9 +479,26 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				PacketBattleResponse* pPacket = packet->getPacketAs<PacketBattleResponse>(pPacketLength);
 
 				// Get the address of the receiver (the challenger/requester)
-				const char *addressReceiver = this->mpClientAddresses[this->mpPlayerIdToClientId[pPacket->playerIdReceiver]]->c_str();
+				const char *addressSender = this->getClientAddressFrom(pPacket->playerIdSender);
+				const char *addressReceiver = this->getClientAddressFrom(pPacket->playerIdReceiver);
 				// Forward the packet - forward the response to the one who requested the battle
 				this->sendPacket(addressReceiver, pPacket, false);
+
+				if (pPacket->accepted)
+				{
+					// Update gamestate for in battle
+					this->mpGameState->players[pPacket->playerIdSender].inBattle = true;
+					this->mpGameState->players[pPacket->playerIdReceiver].inBattle = true;
+
+					// Update battlers' gamestates then send battle packet
+					//this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressSender, false);
+					//this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressReceiver, false);
+					
+					//PacketUserIDTriple packetBattleResult[1];
+					
+					//this->sendPacket();
+				}
+
 
 				// TODO: This will be moved to post-battle
 				if (pPacket->accepted)
@@ -499,6 +516,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 					unsigned int winner = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
 					this->mpGameState->players[winner].wins++;
+					this->mpGameState->players[pPacket->playerIdSender].inBattle = false;
+					this->mpGameState->players[pPacket->playerIdReceiver].inBattle = false;
 
 					//this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
 				}
@@ -730,4 +749,9 @@ void StateServer::deserializePlayerRequests(ChampNet::Packet *pPacket, PlayerReq
 		requests[localID].colorB = *((float *)dataHead); dataHead += sizeof(float);
 	}
 
+}
+
+const char* StateServer::getClientAddressFrom(unsigned int playerID)
+{
+	return this->mpClientAddresses[this->mpPlayerIdToClientId[playerID]]->c_str();
 }
