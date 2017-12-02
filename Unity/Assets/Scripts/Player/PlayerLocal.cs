@@ -6,12 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputController))]
 public class PlayerLocal : PlayerReference
 {
-    protected PlayerCharacterController _pcc;
     protected PlayerInputController _pic;
 
     private void Awake()
     {
-        _pcc = GetComponent<PlayerCharacterController>();
         _pic = GetComponent<PlayerInputController>();
     }
 

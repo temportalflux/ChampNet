@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerReference : MonoBehaviour {
 
-	private PlayerCharacterController _pcc;
-	public PlayerCharacterController pcc
+	protected PlayerCharacterController _pcc;
+    protected PlayerCharacterController pcc
 	{
 		get { return _pcc == null ? _pcc = GetComponent<PlayerCharacterController> () : _pcc; }
 	}
