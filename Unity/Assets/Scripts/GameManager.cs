@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     private bool inGame;
     public MainCamera mainCamera;
 
-    private ScoreBoard scoreBoard;
+    private ScoreBoard scoreBoardVar;
 
     void Awake()
     {
@@ -90,7 +90,7 @@ public class GameManager : Singleton<GameManager>
             if (playerInfo.objectReference != null)
             {
                 Destroy(playerInfo.objectReference.gameObject);
-                scoreBoard.removePlayerOnLeave(playerInfo.playerID);
+                scoreBoardVar.removePlayerOnLeave(playerInfo.playerID);
             }
             this.state.RemovePlayer(playerInfo);
         }
@@ -152,6 +152,6 @@ public class GameManager : Singleton<GameManager>
 
     public void grabScoreBoard()
     {
-        this.scoreBoard = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
+        this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
 }
