@@ -4,7 +4,7 @@
 Inheritance diagram for Event\-With\-Player\-I\-D\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.545455cm]{class_event_with_player_i_d}
+\includegraphics[height=5.000000cm]{class_event_with_player_i_d}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -12,89 +12,17 @@ Inheritance diagram for Event\-With\-Player\-I\-D\-:\begin{figure}[H]
 \item 
 \hypertarget{class_event_with_player_i_d_a44a3302e35cd05c5501f6e6056be55ea}{{\bfseries Event\-With\-Player\-I\-D} (byte id)}\label{class_event_with_player_i_d_a44a3302e35cd05c5501f6e6056be55ea}
 
-\item 
-override int \hyperlink{class_event_with_player_i_d_a85e4b721aa1481d394d4c520d0103e74}{Get\-Size} ()
-\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
-override void \hyperlink{class_event_with_player_i_d_a2492f5877e206df522bf181b10d2aeda}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
-\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
-override void \hyperlink{class_event_with_player_i_d_a3decca39195fe4e2fda1f8d57ca35a5f}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
-\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-uint \hyperlink{class_event_with_player_i_d_a41340c3a625e17bb56c31cc937db338e}{player\-I\-D}
-\begin{DoxyCompactList}\small\item\em The player identifier \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hypertarget{class_event_with_player_i_d_abf768ead936c23973ed05335bc346581}{uint {\bfseries client\-I\-D}}\label{class_event_with_player_i_d_abf768ead936c23973ed05335bc346581}
 
+\item 
+\hypertarget{class_event_with_player_i_d_a41340c3a625e17bb56c31cc937db338e}{uint {\bfseries player\-I\-D}}\label{class_event_with_player_i_d_a41340c3a625e17bb56c31cc937db338e}
 
-\subsection{Member Function Documentation}
-\hypertarget{class_event_with_player_i_d_a2492f5877e206df522bf181b10d2aeda}{\index{Event\-With\-Player\-I\-D@{Event\-With\-Player\-I\-D}!Deserialize@{Deserialize}}
-\index{Deserialize@{Deserialize}!EventWithPlayerID@{Event\-With\-Player\-I\-D}}
-\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Player\-I\-D.\-Deserialize (
-\begin{DoxyParamCaption}
-\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
-\item[{ref int}]{last\-Index}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_player_i_d_a2492f5877e206df522bf181b10d2aeda}
-
-
-Deserializes data from a byte array into this event's data 
-
-
-\begin{DoxyParams}{Parameters}
-{\em data} & The data.\\
-\hline
-{\em last\-Index} & The last index.\\
-\hline
-\end{DoxyParams}
-
-
-Author\-: Dustin Yost \hypertarget{class_event_with_player_i_d_a85e4b721aa1481d394d4c520d0103e74}{\index{Event\-With\-Player\-I\-D@{Event\-With\-Player\-I\-D}!Get\-Size@{Get\-Size}}
-\index{Get\-Size@{Get\-Size}!EventWithPlayerID@{Event\-With\-Player\-I\-D}}
-\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}override int Event\-With\-Player\-I\-D.\-Get\-Size (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_player_i_d_a85e4b721aa1481d394d4c520d0103e74}
-
-
-Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
-
-\begin{DoxyReturn}{Returns}
-the integer length of a byte array to hold this event's data 
-\end{DoxyReturn}
-
-
-Author\-: Dustin Yost \hypertarget{class_event_with_player_i_d_a3decca39195fe4e2fda1f8d57ca35a5f}{\index{Event\-With\-Player\-I\-D@{Event\-With\-Player\-I\-D}!Serialize@{Serialize}}
-\index{Serialize@{Serialize}!EventWithPlayerID@{Event\-With\-Player\-I\-D}}
-\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-With\-Player\-I\-D.\-Serialize (
-\begin{DoxyParamCaption}
-\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
-\item[{ref int}]{last\-Index}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_with_player_i_d_a3decca39195fe4e2fda1f8d57ca35a5f}
-
-
-Serializes data from this event into a byte array 
-
-
-\begin{DoxyParams}{Parameters}
-{\em data} & The data.\\
-\hline
-{\em last\-Index} & The last index.\\
-\hline
-\end{DoxyParams}
-
-
-Author\-: Dustin Yost 
-
-\subsection{Member Data Documentation}
-\hypertarget{class_event_with_player_i_d_a41340c3a625e17bb56c31cc937db338e}{\index{Event\-With\-Player\-I\-D@{Event\-With\-Player\-I\-D}!player\-I\-D@{player\-I\-D}}
-\index{player\-I\-D@{player\-I\-D}!EventWithPlayerID@{Event\-With\-Player\-I\-D}}
-\subsubsection[{player\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}uint Event\-With\-Player\-I\-D.\-player\-I\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_event_with_player_i_d_a41340c3a625e17bb56c31cc937db338e}
-
-
-The player identifier 
-
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

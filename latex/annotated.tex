@@ -3,11 +3,22 @@ Here are the classes, structs, unions and interfaces with brief descriptions\-:\
 \item\contentsline{section}{\hyperlink{class_attack_object}{Attack\-Object} }{\pageref{class_attack_object}}{}
 \item\contentsline{section}{\hyperlink{class_attack_object_editor}{Attack\-Object\-Editor} }{\pageref{class_attack_object_editor}}{}
 \item\contentsline{section}{\hyperlink{class_battle_handler}{Battle\-Handler} }{\pageref{class_battle_handler}}{}
+\item\contentsline{section}{\hyperlink{class_battle_tester}{Battle\-Tester} }{\pageref{class_battle_tester}}{}
+\item\contentsline{section}{\hyperlink{class_battle_tester_editor}{Battle\-Tester\-Editor} }{\pageref{class_battle_tester_editor}}{}
+\item\contentsline{section}{\hyperlink{class_battle_u_i_controller}{Battle\-U\-I\-Controller} }{\pageref{class_battle_u_i_controller}}{}
 \item\contentsline{section}{\hyperlink{class_bit_serialize_attribute}{Bit\-Serialize\-Attribute} \\*Handles (de)serializing of specific fields. Valid types include\-: bool, byte, char, (u)short, (u)int, (u)long, float, double, \hyperlink{interface_i_serializing}{I\-Serializing}, and any composite arrays of the former. If the Mono\-Behaviour being serialized is \hyperlink{interface_i_serializing}{I\-Serializing}, the \hyperlink{interface_i_serializing}{I\-Serializing} methods are treated as additions to all fields marked with Bit\-Serialize }{\pageref{class_bit_serialize_attribute}}{}
 \item\contentsline{section}{\hyperlink{class_bit_test}{Bit\-Test} }{\pageref{class_bit_test}}{}
+\item\contentsline{section}{\hyperlink{class_bit_test2}{Bit\-Test2} }{\pageref{class_bit_test2}}{}
 \item\contentsline{section}{\hyperlink{class_camera_blit}{Camera\-Blit} }{\pageref{class_camera_blit}}{}
 \item\contentsline{section}{\hyperlink{class_camera_controller}{Camera\-Controller} }{\pageref{class_camera_controller}}{}
 \item\contentsline{section}{\hyperlink{class_camera_pixel_corrector}{Camera\-Pixel\-Corrector} }{\pageref{class_camera_pixel_corrector}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle}{Event\-Battle} }{\pageref{class_event_battle}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_prompt_selection}{Event\-Battle\-Prompt\-Selection} }{\pageref{class_event_battle_prompt_selection}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_request}{Event\-Battle\-Request} }{\pageref{class_event_battle_request}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_response}{Event\-Battle\-Response} }{\pageref{class_event_battle_response}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_result}{Event\-Battle\-Result} }{\pageref{class_event_battle_result}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_result_response}{Event\-Battle\-Result\-Response} }{\pageref{class_event_battle_result_response}}{}
+\item\contentsline{section}{\hyperlink{class_event_battle_selection}{Event\-Battle\-Selection} }{\pageref{class_event_battle_selection}}{}
 \item\contentsline{section}{\hyperlink{class_event_client_joined}{Event\-Client\-Joined} }{\pageref{class_event_client_joined}}{}
 \item\contentsline{section}{\hyperlink{class_event_client_left}{Event\-Client\-Left} }{\pageref{class_event_client_left}}{}
 \item\contentsline{section}{\hyperlink{class_event_connected}{Event\-Connected} \\*Event\-: Notification that the client has been accepted to the server }{\pageref{class_event_connected}}{}
@@ -15,10 +26,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions\-:\
 \item\contentsline{section}{\hyperlink{class_event_disconnected}{Event\-Disconnected} }{\pageref{class_event_disconnected}}{}
 \item\contentsline{section}{\hyperlink{class_event_game_state}{Event\-Game\-State} \\*Event\-: A gamestate update }{\pageref{class_event_game_state}}{}
 \item\contentsline{section}{\hyperlink{class_event_increment_score}{Event\-Increment\-Score} \\*Only used to increment a player score by 1 to prove that scoreboard works }{\pageref{class_event_increment_score}}{}
+\item\contentsline{section}{\hyperlink{class_event_network}{Event\-Network} \\*A base class for network events \href{https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx}{\tt https\-://msdn.\-microsoft.\-com/en-\/us/library/system.\-runtime.\-interopservices.\-unmanagedtype(v=vs.\-110).\-aspx} }{\pageref{class_event_network}}{}
 \item\contentsline{section}{\hyperlink{class_event_request_movement}{Event\-Request\-Movement} }{\pageref{class_event_request_movement}}{}
-\item\contentsline{section}{\hyperlink{class_event_request_player}{Event\-Request\-Player} }{\pageref{class_event_request_player}}{}
 \item\contentsline{section}{\hyperlink{class_event_send_rank}{Event\-Send\-Rank} \\*Only used to increment a player score by 1 to prove that scoreboard works }{\pageref{class_event_send_rank}}{}
-\item\contentsline{section}{\hyperlink{class_event_with_i_d}{Event\-With\-I\-D} }{\pageref{class_event_with_i_d}}{}
 \item\contentsline{section}{\hyperlink{class_event_with_location}{Event\-With\-Location} }{\pageref{class_event_with_location}}{}
 \item\contentsline{section}{\hyperlink{class_event_with_player_i_d}{Event\-With\-Player\-I\-D} }{\pageref{class_event_with_player_i_d}}{}
 \item\contentsline{section}{\hyperlink{class_event_with_rank}{Event\-With\-Rank} }{\pageref{class_event_with_rank}}{}
@@ -40,7 +50,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions\-:\
 \item\contentsline{section}{\hyperlink{class_champ_net_plugin_1_1_network}{Champ\-Net\-Plugin.\-Network} }{\pageref{class_champ_net_plugin_1_1_network}}{}
 \item\contentsline{section}{\hyperlink{class_champ_net_1_1_network}{Champ\-Net\-::\-Network} }{\pageref{class_champ_net_1_1_network}}{}
 \item\contentsline{section}{\hyperlink{class_champ_net_1_1_packet}{Champ\-Net\-::\-Packet} }{\pageref{class_champ_net_1_1_packet}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_battle_prompt_selection}{Packet\-Battle\-Prompt\-Selection} }{\pageref{struct_packet_battle_prompt_selection}}{}
 \item\contentsline{section}{\hyperlink{struct_packet_battle_response}{Packet\-Battle\-Response} }{\pageref{struct_packet_battle_response}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection} }{\pageref{struct_packet_battle_selection}}{}
 \item\contentsline{section}{\hyperlink{struct_packet_client_player_i_d}{Packet\-Client\-Player\-I\-D} }{\pageref{struct_packet_client_player_i_d}}{}
 \item\contentsline{section}{\hyperlink{struct_packet_general}{Packet\-General} }{\pageref{struct_packet_general}}{}
 \item\contentsline{section}{\hyperlink{struct_packet_player_position}{Packet\-Player\-Position} }{\pageref{struct_packet_player_position}}{}

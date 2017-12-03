@@ -9,7 +9,7 @@ Event\-: A gamestate update
 Inheritance diagram for Event\-Game\-State\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_event_game_state}
+\includegraphics[height=3.000000cm]{class_event_game_state}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -22,6 +22,7 @@ override void \hyperlink{class_event_game_state_ac8d792c7dea5e0d703d317a66bcd4cd
 \begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
 override void \hyperlink{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}{Execute} ()
 \begin{DoxyCompactList}\small\item\em Processes this event to affect the actual environment \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -37,7 +38,7 @@ Author\-: Dustin Yost
 \item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
 \item[{ref int}]{last\-Index}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_game_state_ac8d792c7dea5e0d703d317a66bcd4cdf}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_game_state_ac8d792c7dea5e0d703d317a66bcd4cdf}
 
 
 Deserializes data from a byte array into this event's data 
@@ -51,18 +52,26 @@ Deserializes data from a byte array into this event's data
 \end{DoxyParams}
 
 
-Author\-: Dustin Yost \hypertarget{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}{\index{Event\-Game\-State@{Event\-Game\-State}!Execute@{Execute}}
+Author\-: Dustin Yost 
+
+Reimplemented from \hyperlink{class_event_network_af31b288f5029d8542122abe985f7df18}{Event\-Network}.
+
+\hypertarget{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}{\index{Event\-Game\-State@{Event\-Game\-State}!Execute@{Execute}}
 \index{Execute@{Execute}!EventGameState@{Event\-Game\-State}}
 \subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-Game\-State.\-Execute (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}
 
 
 Processes this event to affect the actual environment 
 
 Author\-: Dustin Yost 
+
+Reimplemented from \hyperlink{class_event_network_aa5e94745568f3049a2b798c066087114}{Event\-Network}.
+
+
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

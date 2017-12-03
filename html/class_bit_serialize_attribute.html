@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,18 +104,18 @@ Inheritance diagram for BitSerializeAttribute:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac8580fdb91b6ed5544f1bd976c867f52"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ac8580fdb91b6ed5544f1bd976c867f52">Serialize</a> (MonoBehaviour mono)</td></tr>
-<tr class="memdesc:ac8580fdb91b6ed5544f1bd976c867f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a monobehavior to a byte array, using BitSerialize and <a class="el" href="interface_i_serializing.html">ISerializing</a>  <a href="#ac8580fdb91b6ed5544f1bd976c867f52">More...</a><br/></td></tr>
-<tr class="separator:ac8580fdb91b6ed5544f1bd976c867f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3">Serialize&lt; T &gt;</a> (T mono)</td></tr>
+<tr class="memdesc:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a monobehavior to a byte array, using BitSerialize and <a class="el" href="interface_i_serializing.html">ISerializing</a>  <a href="#a0d934db4b1bdd25dbb3ef5ba6536f6c3">More...</a><br/></td></tr>
+<tr class="separator:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#a45dcbeb6ab33c11f4d6cc4971bb4ba55">GetSizeOf</a> (object value)</td></tr>
 <tr class="memdesc:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to determine the size of some object (effectively sizeof(object))  <a href="#a45dcbeb6ab33c11f4d6cc4971bb4ba55">More...</a><br/></td></tr>
 <tr class="separator:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#aca1cc7a1f81cfffcf0ae04058d2da2c9">CopyTo</a> (ref byte[] dest, ref int offset, byte[] source)</td></tr>
 <tr class="memdesc:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write some byte array into another byte array at some offset  <a href="#aca1cc7a1f81cfffcf0ae04058d2da2c9">More...</a><br/></td></tr>
 <tr class="separator:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6b302aa05fc83b760a77776941f55b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ad6b302aa05fc83b760a77776941f55b5">Deserialize</a> (MonoBehaviour mono, byte[] data)</td></tr>
-<tr class="memdesc:ad6b302aa05fc83b760a77776941f55b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a byte array into a monobehavior  <a href="#ad6b302aa05fc83b760a77776941f55b5">More...</a><br/></td></tr>
-<tr class="separator:ad6b302aa05fc83b760a77776941f55b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae92d448c6f7bf6ffab890747e1737c65"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ae92d448c6f7bf6ffab890747e1737c65">Deserialize&lt; T &gt;</a> (T mono, byte[] data)</td></tr>
+<tr class="memdesc:ae92d448c6f7bf6ffab890747e1737c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a byte array into a monobehavior  <a href="#ae92d448c6f7bf6ffab890747e1737c65">More...</a><br/></td></tr>
+<tr class="separator:ae92d448c6f7bf6ffab890747e1737c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles (de)serializing of specific fields. Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, <a class="el" href="interface_i_serializing.html">ISerializing</a>, and any composite arrays of the former. If the MonoBehaviour being serialized is <a class="el" href="interface_i_serializing.html">ISerializing</a>, the <a class="el" href="interface_i_serializing.html">ISerializing</a> methods are treated as additions to all fields marked with BitSerialize </p>
@@ -171,7 +171,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad6b302aa05fc83b760a77776941f55b5"></a>
+<a class="anchor" id="ae92d448c6f7bf6ffab890747e1737c65"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -179,9 +179,9 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void BitSerializeAttribute.Deserialize </td>
+          <td class="memname">static void BitSerializeAttribute.Deserialize&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">MonoBehaviour&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>mono</em>, </td>
         </tr>
         <tr>
@@ -247,7 +247,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac8580fdb91b6ed5544f1bd976c867f52"></a>
+<a class="anchor" id="a0d934db4b1bdd25dbb3ef5ba6536f6c3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -255,9 +255,9 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static byte [] BitSerializeAttribute.Serialize </td>
+          <td class="memname">static byte [] BitSerializeAttribute.Serialize&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">MonoBehaviour&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>mono</em></td><td>)</td>
           <td></td>
         </tr>

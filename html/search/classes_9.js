@@ -1,7 +1,9 @@
 var searchData=
 [
   ['packet',['Packet',['../class_champ_net_1_1_packet.html',1,'ChampNet']]],
+  ['packetbattlepromptselection',['PacketBattlePromptSelection',['../struct_packet_battle_prompt_selection.html',1,'']]],
   ['packetbattleresponse',['PacketBattleResponse',['../struct_packet_battle_response.html',1,'']]],
+  ['packetbattleselection',['PacketBattleSelection',['../struct_packet_battle_selection.html',1,'']]],
   ['packetclientplayerid',['PacketClientPlayerID',['../struct_packet_client_player_i_d.html',1,'']]],
   ['packetgeneral',['PacketGeneral',['../struct_packet_general.html',1,'']]],
   ['packetplayerposition',['PacketPlayerPosition',['../struct_packet_player_position.html',1,'']]],

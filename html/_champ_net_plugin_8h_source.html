@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,110 +110,125 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// Author: Dustin Yost</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">namespace </span>ChampNetPlugin {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">enum</span> MessageIDs</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// RakNet messages (unsued for clients)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="comment">// The connection was severed</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="comment">// The connection was dropped</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ID_CLIENT_MISSING = ID_CONNECTION_LOST,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="comment">// RakNet Messages (used for clients)</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            ID_CLIENT_CONNECTION_REJECTED = ID_CONNECTION_ATTEMPT_FAILED,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="comment">// placeholder - For tracking in C# script</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            ID_PLACEHOLDER = ID_USER_PACKET_ENUM,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="comment">// Client-Sent Messages</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// 1) Sent to server to notify it of an incoming client</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            ID_CLIENT_JOINED,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="comment">// Sent to server to notify all clients of an updated position</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            ID_PLAYER_REQUEST_MOVEMENT,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// Sent to server to request a battle with some other player</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            ID_BATTLE_REQUEST,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="comment">// Sent to server to accept or deny battle with some requesting player</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            ID_BATTLE_RESPONSE,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="comment">// Server-Sent Messages</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">// 2) Sent to clients to notify them of the values for some spawning user</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="comment">// Sender uses to place self, peers use to place a dummy unit</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ID_UPDATE_GAMESTATE,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// 3) Sent to clients to mandate their ID</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            ID_CLIENT_REQUEST_PLAYER,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="comment">// Send to all clients to notify them of a battle result</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            ID_BATTLE_RESULT,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// Sent to server and forwarded to clients notifying them a user has left the server</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ID_CLIENT_LEFT,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">// Notification to clients that the server has been disconnected</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            ID_DISCONNECT,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="comment">// Increment Client Score by 1</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            ID_CLIENT_SCORE_UP,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">// recieve new rank</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            ID_CLIENT_RANK_INTEGRATION,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        };</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Create a network to connect with</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> Create();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">typedef</span> void(*FuncCallBack)(<span class="keyword">const</span> <span class="keywordtype">char</span>* message, <span class="keywordtype">int</span> color, <span class="keywordtype">int</span> size);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">enum class</span> Color { Red, Green, Blue, Black, White, Yellow, Orange };</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> RegisterDebugCallback(FuncCallBack callBack);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">// C: Client</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">// S: Server</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">// A: Client A</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// B: Client B</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">// all: all Clients</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">enum</span> MessageIDs</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="comment">// RakNet messages (unsued for clients)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            ID_CLIENT_CONNECTION = ID_NEW_INCOMING_CONNECTION,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="comment">// The connection was severed</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            ID_CLIENT_DISCONNECTION = ID_DISCONNECTION_NOTIFICATION,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// The connection was dropped</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            ID_CLIENT_MISSING = ID_CONNECTION_LOST,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="comment">// RakNet Messages (used for clients)</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            ID_CLIENT_CONNECTION_ACCEPTED = ID_CONNECTION_REQUEST_ACCEPTED,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            ID_CLIENT_CONNECTION_REJECTED = ID_CONNECTION_ATTEMPT_FAILED,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// placeholder - For tracking in C# script</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            ID_PLACEHOLDER = ID_USER_PACKET_ENUM,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// Client-Sent Messages</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">// C-&gt;S: ask server to join</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            ID_CLIENT_JOINED,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">// C-&gt;S: ask server to move player</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            ID_PLAYER_REQUEST_MOVEMENT,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">// Battle Messages</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="comment">// C-&gt;S: request a battle with some other player</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">// S-&gt;B: forwarded packet for request</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            ID_BATTLE_REQUEST, <span class="comment">// PacketUserIDDouble</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">// B-&gt;S: accept or deny battle with some requesting player</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="comment">// S-&gt;A: forwarded packet for response (mainly for denial)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            ID_BATTLE_RESPONSE, <span class="comment">// PacketBattleResponse</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// S-&gt;AB: prompt battle actions from A and B</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ID_BATTLE_PROMPT_SELECTION, <span class="comment">// PacketBattlePromptSelection</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">// AB-&gt;S: Respond to PROMPT_SELECTION with a selection for battle</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            ID_BATTLE_SELECTION, <span class="comment">// PacketBattleSelection</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">// S-&gt;AB: notify clients of outcome of battle</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            ID_BATTLE_RESULT, <span class="comment">// PacketUserIDTriple</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// AB-&gt;S: Tell server the client has acknowledged the battle result and is return to normal space</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            ID_BATTLE_RESULT_RESPONSE, <span class="comment">// PacketUserID</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">// Server-Sent Messages</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="comment">// 2) Sent to clients to notify them of the values for some spawning user</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="comment">// Sender uses to place self, peers use to place a dummy unit</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            ID_UPDATE_GAMESTATE,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment">// 3) Sent to clients to mandate their ID</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            ID_CLIENT_REQUEST_PLAYER,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="comment">// Sent to server and forwarded to clients notifying them a user has left the server</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            ID_CLIENT_LEFT,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// Notification to clients that the server has been disconnected</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            ID_DISCONNECT,</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> send_log(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> Color &amp;color);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// Destroy the network (must call Create prior) (must call when owning object is destroyed)</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> Destroy();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="comment">// Increment Client Score by 1</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ID_CLIENT_SCORE_UP,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">// recieve new rank</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            ID_CLIENT_RANK_INTEGRATION,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">// Start a server with the specified credentials using this object</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> StartServer(<span class="keywordtype">int</span> port, <span class="keywordtype">int</span> maxClients);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// Start a client using this object</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> StartClient();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// Connect this CLIENT to some server using the specified credentials</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> ConnectToServer(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// Fetch all incoming packets. Must call prior to PollPacket. Must be called after Create and before Destroy. Returns the quantity of packets in the queue after fetch.</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> FetchPackets();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// Create a network to connect with</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> Create();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">typedef</span> void(*FuncCallBack)(<span class="keyword">const</span> <span class="keywordtype">char</span>* message, <span class="keywordtype">int</span> color, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">enum class</span> Color { Red, Green, Blue, Black, White, Yellow, Orange };</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> RegisterDebugCallback(FuncCallBack callBack);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> send_log(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> Color &amp;color);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Poll the packet queue. Returns a pointer to the first packet, and removes that packet from the queue. If valid is true, then the packet can be processed, else the packet does not exist (no packets presently in the queue).</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span>* PollPacket(<span class="keywordtype">bool</span> &amp;validPacket);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Destroy the network (must call Create prior) (must call when owning object is destroyed)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> Destroy();</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">// Returns the packet&#39;s address, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keyword">const</span> <span class="keywordtype">char</span>* GetPacketAddress(<span class="keywordtype">void</span>* packetPtr, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;length);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">// Start a server with the specified credentials using this object</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> StartServer(<span class="keywordtype">int</span> port, <span class="keywordtype">int</span> maxClients);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Returns the packet&#39;s data, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* GetPacketData(<span class="keywordtype">void</span>* packetPtr, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;length, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;transmitTime);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Start a client using this object</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> StartClient();</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> FreePacket(<span class="keywordtype">void</span>* packetPtr);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// Connect this CLIENT to some server using the specified credentials</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> ConnectToServer(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">int</span> port);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendByteArray(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">int</span> port, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendData(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize, PacketPriority *priority, PacketReliability *reliability, <span class="keywordtype">int</span> channel, <span class="keywordtype">bool</span> broadcast);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// Disconnect from the interface</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> Disconnect();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="comment">// Returns the current peer interface address</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keyword">const</span> <span class="keywordtype">char</span>* GetAddress();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> WriteTimeStamp(<span class="keywordtype">char</span> *buffer, <span class="keyword">const</span> RakNet::Time &amp;time1, <span class="keyword">const</span> RakNet::Time &amp;time2); <span class="comment">// Added By Jake</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// Fetch all incoming packets. Must call prior to PollPacket. Must be called after Create and before Destroy. Returns the quantity of packets in the queue after fetch.</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> FetchPackets();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">// Poll the packet queue. Returns a pointer to the first packet, and removes that packet from the queue. If valid is true, then the packet can be processed, else the packet does not exist (no packets presently in the queue).</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span>* PollPacket(<span class="keywordtype">bool</span> &amp;validPacket);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">// Returns the packet&#39;s address, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keyword">const</span> <span class="keywordtype">char</span>* GetPacketAddress(<span class="keywordtype">void</span>* packetPtr, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;length);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">// Returns the packet&#39;s data, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* GetPacketData(<span class="keywordtype">void</span>* packetPtr, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;length, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;transmitTime);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> ReadTimeStamp(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, RakNet::Time &amp;time1, RakNet::Time &amp;time2); <span class="comment">// Added By Jake</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    };</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif // __cplusplus</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif // _CHAMPNET_PLUGIN_PLUGIN_H</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> FreePacket(<span class="keywordtype">void</span>* packetPtr);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendByteArray(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">int</span> port, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> SendData(<span class="keyword">const</span> <span class="keywordtype">char</span>* address, <span class="keywordtype">char</span>* byteArray, <span class="keywordtype">int</span> byteArraySize, PacketPriority *priority, PacketReliability *reliability, <span class="keywordtype">int</span> channel, <span class="keywordtype">bool</span> broadcast);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">// Disconnect from the interface</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">void</span> Disconnect();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="comment">// Returns the current peer interface address</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keyword">const</span> <span class="keywordtype">char</span>* GetAddress();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> WriteTimeStamp(<span class="keywordtype">char</span> *buffer, <span class="keyword">const</span> RakNet::Time &amp;time1, <span class="keyword">const</span> RakNet::Time &amp;time2); <span class="comment">// Added By Jake</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        CHAMPNET_PLUGIN_SYMTAG <span class="keywordtype">int</span> ReadTimeStamp(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, RakNet::Time &amp;time1, RakNet::Time &amp;time2); <span class="comment">// Added By Jake</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    };</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif // __cplusplus</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif // _CHAMPNET_PLUGIN_PLUGIN_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

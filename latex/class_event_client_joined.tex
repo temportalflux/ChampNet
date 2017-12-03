@@ -4,7 +4,7 @@
 Inheritance diagram for Event\-Client\-Joined\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_event_client_joined}
+\includegraphics[height=3.000000cm]{class_event_client_joined}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -13,16 +13,69 @@ Inheritance diagram for Event\-Client\-Joined\-:\begin{figure}[H]
 \hypertarget{class_event_client_joined_adad9451ea1a292d0b4f6ce9465065bc4}{{\bfseries Event\-Client\-Joined} (Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} player\-Requests)}\label{class_event_client_joined_adad9451ea1a292d0b4f6ce9465065bc4}
 
 \item 
-\hypertarget{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}{override int {\bfseries Get\-Size} ()}\label{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}
-
+override int \hyperlink{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+override void \hyperlink{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}{override void {\bfseries Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)}\label{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}
+\hypertarget{class_event_client_joined_ac439707fdbda89656780d392ceb5033e}{Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} {\bfseries players}}\label{class_event_client_joined_ac439707fdbda89656780d392ceb5033e}
 
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
 Client-\/$>$Server\-: Tell server that we joined Server-\/$>$Client\-: Tell the client of its I\-D and first player\-I\-D 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}{\index{Event\-Client\-Joined@{Event\-Client\-Joined}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!EventClientJoined@{Event\-Client\-Joined}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}override int Event\-Client\-Joined.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost 
+
+Reimplemented from \hyperlink{class_event_network_a627a22414c184cd4fbe4f23a25877166}{Event\-Network}.
+
+\hypertarget{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}{\index{Event\-Client\-Joined@{Event\-Client\-Joined}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!EventClientJoined@{Event\-Client\-Joined}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}override void Event\-Client\-Joined.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+Reimplemented from \hyperlink{class_event_network_ae2574cdc2bb836f3e41628ff1c095238}{Event\-Network}.
+
+
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

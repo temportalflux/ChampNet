@@ -7,6 +7,14 @@ Inheritance diagram for Game\-State.\-Player\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{struct_game_state_1_1_player}
 \end{center}
 \end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{struct_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Enum\-Battle\-Selection} \{ {\bfseries A\-T\-T\-A\-C\-K}, 
+{\bfseries S\-W\-A\-P}, 
+{\bfseries F\-L\-E\-E}
+ \}
+\begin{DoxyCompactList}\small\item\em Options of types of battle moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,6 +60,12 @@ void \hyperlink{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{
 \hypertarget{struct_game_state_1_1_player_a3cff343fceb3dc315d2371fc8fe25ec6}{bool {\bfseries in\-Battle}}\label{struct_game_state_1_1_player_a3cff343fceb3dc315d2371fc8fe25ec6}
 
 \item 
+I\-D \hyperlink{struct_game_state_1_1_player_aaed188c94b7f6be4dabe39744aa818ca}{player\-I\-D\-Opponent}
+\begin{DoxyCompactList}\small\item\em The player I\-D of the opponent. \end{DoxyCompactList}\item 
+\hyperlink{struct_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Enum\-Battle\-Selection} \hyperlink{struct_game_state_1_1_player_a123c8ee2ef6e66e88bcca1a80f73ab4a}{battle\-Selection}
+\begin{DoxyCompactList}\small\item\em The type of action the player makes in battle. \end{DoxyCompactList}\item 
+int \hyperlink{struct_game_state_1_1_player_a3bfa8ea6e2067982474dc4f6073061c5}{battle\-Choice}
+\begin{DoxyCompactList}\small\item\em The descriptor for the type of action (narrows down choice to options like which attack a cretin makes, or what cretin is being swapped to). \end{DoxyCompactList}\item 
 \hypertarget{struct_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{uint {\bfseries wins}}\label{struct_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}
 
 \item 
@@ -117,6 +131,15 @@ void \hyperlink{struct_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{
 \item 
 \hypertarget{struct_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}{unsigned int {\bfseries rank}}\label{struct_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}
 
+\item 
+\hypertarget{struct_game_state_1_1_player_ae60a4f411ef984c6d649d98c65b274bd}{int {\bfseries battle\-Opponent\-Id}}\label{struct_game_state_1_1_player_ae60a4f411ef984c6d649d98c65b274bd}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_a2383ab7d3783c5122f3e68230069eb2e}{int {\bfseries last\-Battle\-Selection}}\label{struct_game_state_1_1_player_a2383ab7d3783c5122f3e68230069eb2e}
+
+\item 
+\hypertarget{struct_game_state_1_1_player_adf61e3258c2170b7b66355389cca541f}{int {\bfseries last\-Battle\-Choice}}\label{struct_game_state_1_1_player_adf61e3258c2170b7b66355389cca541f}
+
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
@@ -136,6 +159,16 @@ static const int {\bfseries S\-I\-Z\-E}
 \item 
 bool \hyperlink{struct_game_state_1_1_player_affd7c601a6d763dafdc59a58c415e9e7}{is\-Local}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em If the player id is from a local player (controlled on this game) or networked (controlled by a peer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{struct_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Enum\-Battle\-Selection@{Enum\-Battle\-Selection}}
+\index{Enum\-Battle\-Selection@{Enum\-Battle\-Selection}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{Enum\-Battle\-Selection}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Game\-State.\-Player.\-Enum\-Battle\-Selection}}}\label{struct_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}
+
+
+Options of types of battle moves. 
+
 
 
 \subsection{Member Function Documentation}
@@ -212,6 +245,27 @@ Implements \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}
 
 
 \subsection{Member Data Documentation}
+\hypertarget{struct_game_state_1_1_player_a3bfa8ea6e2067982474dc4f6073061c5}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!battle\-Choice@{battle\-Choice}}
+\index{battle\-Choice@{battle\-Choice}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{battle\-Choice}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-State.\-Player.\-battle\-Choice}}\label{struct_game_state_1_1_player_a3bfa8ea6e2067982474dc4f6073061c5}
+
+
+The descriptor for the type of action (narrows down choice to options like which attack a cretin makes, or what cretin is being swapped to). 
+
+\hypertarget{struct_game_state_1_1_player_a123c8ee2ef6e66e88bcca1a80f73ab4a}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!battle\-Selection@{battle\-Selection}}
+\index{battle\-Selection@{battle\-Selection}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{battle\-Selection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Enum\-Battle\-Selection} Game\-State.\-Player.\-battle\-Selection}}\label{struct_game_state_1_1_player_a123c8ee2ef6e66e88bcca1a80f73ab4a}
+
+
+The type of action the player makes in battle. 
+
+\hypertarget{struct_game_state_1_1_player_aaed188c94b7f6be4dabe39744aa818ca}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!player\-I\-D\-Opponent@{player\-I\-D\-Opponent}}
+\index{player\-I\-D\-Opponent@{player\-I\-D\-Opponent}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{player\-I\-D\-Opponent}]{\setlength{\rightskip}{0pt plus 5cm}I\-D Game\-State.\-Player.\-player\-I\-D\-Opponent}}\label{struct_game_state_1_1_player_aaed188c94b7f6be4dabe39744aa818ca}
+
+
+The player I\-D of the opponent. 
+
 \hypertarget{struct_game_state_1_1_player_a07b452f69128e1f3f6d3bb575c2976f1}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
 \index{S\-I\-Z\-E@{S\-I\-Z\-E}!GameState::Player@{Game\-State\-::\-Player}}
 \subsubsection[{S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const int Game\-State.\-Player.\-S\-I\-Z\-E\hspace{0.3cm}{\ttfamily [static]}}}\label{struct_game_state_1_1_player_a07b452f69128e1f3f6d3bb575c2976f1}

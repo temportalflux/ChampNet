@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,53 +112,68 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_RESPONSE</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
 <b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <br/>
-&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
-<b>ID_CLIENT_LEFT</b>, 
+&#160;&#160;<b>ID_CLIENT_LEFT</b>, 
 <b>ID_DISCONNECT</b>, 
 <b>ID_CLIENT_SCORE_UP</b>, 
+<b>ID_CLIENT_RANK_UPDATE</b>, 
 <br/>
-&#160;&#160;<b>ID_CLIENT_RANK_UPDATE</b>, 
-<b>ID_CLIENT_CONNECTION</b> = ID_NEW_INCOMING_CONNECTION, 
+&#160;&#160;<b>ID_CLIENT_CONNECTION</b> = ID_NEW_INCOMING_CONNECTION, 
 <b>ID_CLIENT_DISCONNECTION</b> = ID_DISCONNECTION_NOTIFICATION, 
 <b>ID_CLIENT_MISSING</b> = ID_CONNECTION_LOST, 
+<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = ID_CONNECTION_REQUEST_ACCEPTED, 
 <br/>
-&#160;&#160;<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = ID_CONNECTION_REQUEST_ACCEPTED, 
-<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
+&#160;&#160;<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
 <b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
 <b>ID_CLIENT_CONNECTION_REJECTED</b> = ID_CONNECTION_ATTEMPT_FAILED, 
+<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
-<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
 <b>ID_PLACEHOLDER</b> = ID_USER_PACKET_ENUM, 
 <b>ID_CLIENT_JOINED</b>, 
+<b>ID_CLIENT_JOINED</b> = 135, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_JOINED</b> = 135, 
-<b>ID_CLIENT_JOINED</b> = 135, 
+<b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <br/>
-&#160;&#160;<b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
+&#160;&#160;<b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_REQUEST</b>, 
-<b>ID_BATTLE_REQUEST</b>, 
+<b>ID_BATTLE_RESPONSE</b>, 
 <br/>
 &#160;&#160;<b>ID_BATTLE_RESPONSE</b>, 
 <b>ID_BATTLE_RESPONSE</b>, 
-<b>ID_BATTLE_RESPONSE</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_UPDATE_GAMESTATE</b>, 
 <br/>
 &#160;&#160;<b>ID_UPDATE_GAMESTATE</b>, 
-<b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
-<br/>
-&#160;&#160;<b>ID_CLIENT_REQUEST_PLAYER</b>, 
-<b>ID_BATTLE_RESULT</b>, 
-<b>ID_BATTLE_RESULT</b>, 
-<b>ID_BATTLE_RESULT</b>, 
+<b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_LEFT</b>, 
 <b>ID_CLIENT_LEFT</b>, 
@@ -183,53 +198,68 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_RESPONSE</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
 <b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <br/>
-&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
-<b>ID_CLIENT_LEFT</b>, 
+&#160;&#160;<b>ID_CLIENT_LEFT</b>, 
 <b>ID_DISCONNECT</b>, 
 <b>ID_CLIENT_SCORE_UP</b>, 
+<b>ID_CLIENT_RANK_UPDATE</b>, 
 <br/>
-&#160;&#160;<b>ID_CLIENT_RANK_UPDATE</b>, 
-<b>ID_CLIENT_CONNECTION</b> = ID_NEW_INCOMING_CONNECTION, 
+&#160;&#160;<b>ID_CLIENT_CONNECTION</b> = ID_NEW_INCOMING_CONNECTION, 
 <b>ID_CLIENT_DISCONNECTION</b> = ID_DISCONNECTION_NOTIFICATION, 
 <b>ID_CLIENT_MISSING</b> = ID_CONNECTION_LOST, 
+<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = ID_CONNECTION_REQUEST_ACCEPTED, 
 <br/>
-&#160;&#160;<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = ID_CONNECTION_REQUEST_ACCEPTED, 
-<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
+&#160;&#160;<b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
 <b>ID_CLIENT_CONNECTION_ACCEPTED</b> = 16, 
 <b>ID_CLIENT_CONNECTION_REJECTED</b> = ID_CONNECTION_ATTEMPT_FAILED, 
+<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
-<b>ID_CLIENT_CONNECTION_REJECTED</b> = 17, 
 <b>ID_PLACEHOLDER</b> = ID_USER_PACKET_ENUM, 
 <b>ID_CLIENT_JOINED</b>, 
+<b>ID_CLIENT_JOINED</b> = 135, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_JOINED</b> = 135, 
-<b>ID_CLIENT_JOINED</b> = 135, 
+<b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
 <br/>
-&#160;&#160;<b>ID_PLAYER_REQUEST_MOVEMENT</b>, 
+&#160;&#160;<b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_REQUEST</b>, 
 <b>ID_BATTLE_REQUEST</b>, 
-<b>ID_BATTLE_REQUEST</b>, 
+<b>ID_BATTLE_RESPONSE</b>, 
 <br/>
 &#160;&#160;<b>ID_BATTLE_RESPONSE</b>, 
 <b>ID_BATTLE_RESPONSE</b>, 
-<b>ID_BATTLE_RESPONSE</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_PROMPT_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<b>ID_BATTLE_SELECTION</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<br/>
+&#160;&#160;<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<b>ID_BATTLE_RESULT_RESPONSE</b>, 
+<b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_UPDATE_GAMESTATE</b>, 
 <br/>
 &#160;&#160;<b>ID_UPDATE_GAMESTATE</b>, 
-<b>ID_UPDATE_GAMESTATE</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <b>ID_CLIENT_REQUEST_PLAYER</b>, 
-<br/>
-&#160;&#160;<b>ID_CLIENT_REQUEST_PLAYER</b>, 
-<b>ID_BATTLE_RESULT</b>, 
-<b>ID_BATTLE_RESULT</b>, 
-<b>ID_BATTLE_RESULT</b>, 
+<b>ID_CLIENT_REQUEST_PLAYER</b>, 
 <br/>
 &#160;&#160;<b>ID_CLIENT_LEFT</b>, 
 <b>ID_CLIENT_LEFT</b>, 

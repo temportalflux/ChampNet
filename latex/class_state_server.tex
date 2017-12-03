@@ -53,6 +53,9 @@ bool \hyperlink{class_state_server_a23120a56bdaa4d5e9d555b05e6ba1e8e}{find\-Next
 \item 
 \hypertarget{class_state_server_a7d80660aa2ef7ab52ce8c86752abf145}{void {\bfseries send\-Game\-State} (unsigned char msg\-I\-D, const char $\ast$sender=N\-U\-L\-L, bool broadcast=true, int client\-I\-D=-\/1)}\label{class_state_server_a7d80660aa2ef7ab52ce8c86752abf145}
 
+\item 
+\hypertarget{class_state_server_a38e2d8121f6df0cde34f459cee2f6617}{const char $\ast$ {\bfseries get\-Client\-Address\-From} (unsigned int player\-I\-D)}\label{class_state_server_a38e2d8121f6df0cde34f459cee2f6617}
+
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -86,7 +89,10 @@ Author\-: Dustin Yost Finds the next available player slot, returning -\/1 if no
 \item[{{\bf Champ\-Net\-::\-Packet} $\ast$}]{packet}
 \end{DoxyParamCaption}
 )}}\label{class_state_server_a8983232b9935b74fda71ed409b45c7fd}
-Author\-: Dustin Yost Handles the usage of all the different packet identifiers \hypertarget{class_state_server_a680525d2a1036dbbefaf21a7057fb39e}{\index{State\-Server@{State\-Server}!on\-Input@{on\-Input}}
+Author\-: Dustin Yost Handles the usage of all the different packet identifiers 
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\hypertarget{class_state_server_a680525d2a1036dbbefaf21a7057fb39e}{\index{State\-Server@{State\-Server}!on\-Input@{on\-Input}}
 \index{on\-Input@{on\-Input}!StateServer@{State\-Server}}
 \subsubsection[{on\-Input}]{\setlength{\rightskip}{0pt plus 5cm}void State\-Server\-::on\-Input (
 \begin{DoxyParamCaption}

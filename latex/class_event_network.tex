@@ -1,0 +1,214 @@
+\hypertarget{class_event_network}{\section{Event\-Network Class Reference}
+\label{class_event_network}\index{Event\-Network@{Event\-Network}}
+}
+
+
+A base class for network events \href{https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx}{\tt https\-://msdn.\-microsoft.\-com/en-\/us/library/system.\-runtime.\-interopservices.\-unmanagedtype(v=vs.\-110).\-aspx}  
+
+
+Inheritance diagram for Event\-Network\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_event_network}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_network_a1f1a80ff09325571c5a27a45fb056d66}{{\bfseries Event\-Network} (byte id)}\label{class_event_network_a1f1a80ff09325571c5a27a45fb056d66}
+
+\item 
+virtual int \hyperlink{class_event_network_a627a22414c184cd4fbe4f23a25877166}{Get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_event_network_af31b288f5029d8542122abe985f7df18}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_event_network_ae2574cdc2bb836f3e41628ff1c095238}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_event_network_aa5e94745568f3049a2b798c066087114}{Execute} ()
+\begin{DoxyCompactList}\small\item\em Processes this event to affect the actual environment \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_event_network}{Event\-Network} \hyperlink{class_event_network_a9cf2940f859a4c2d168fbfe83e6a19e8}{create\-Event} (int id)
+\begin{DoxyCompactList}\small\item\em Creates an event from a packet identifier \end{DoxyCompactList}\item 
+static void \hyperlink{class_event_network_adf54898a5ba1d6efc5f24bd58cf84b8e}{Write\-To} (ref byte\mbox{[}$\,$\mbox{]} dest, ref int offset, byte\mbox{[}$\,$\mbox{]} source)
+\begin{DoxyCompactList}\small\item\em Write some byte array into another byte array at some offset \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+byte \hyperlink{class_event_network_adff900346978771c10eddbe469755039}{event\-I\-D}
+\begin{DoxyCompactList}\small\item\em The event identifier (Champ\-Net\-Plugin\-::\-Message\-Ids) \end{DoxyCompactList}\item 
+float \hyperlink{class_event_network_a1417c775954bdd96b119af2d4707db9e}{delta\-Time}
+\begin{DoxyCompactList}\small\item\em The amount of time it took to get the packet from source to destination \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A base class for network events \href{https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx}{\tt https\-://msdn.\-microsoft.\-com/en-\/us/library/system.\-runtime.\-interopservices.\-unmanagedtype(v=vs.\-110).\-aspx} 
+
+Author\-: Dustin Yost 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_network_a9cf2940f859a4c2d168fbfe83e6a19e8}{\index{Event\-Network@{Event\-Network}!create\-Event@{create\-Event}}
+\index{create\-Event@{create\-Event}!EventNetwork@{Event\-Network}}
+\subsubsection[{create\-Event}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Event\-Network} Event\-Network.\-create\-Event (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_event_network_a9cf2940f859a4c2d168fbfe83e6a19e8}
+
+
+Creates an event from a packet identifier 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Some \hyperlink{class_event_network}{Event\-Network} object
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost \hypertarget{class_event_network_af31b288f5029d8542122abe985f7df18}{\index{Event\-Network@{Event\-Network}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!EventNetwork@{Event\-Network}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Event\-Network.\-Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_network_af31b288f5029d8542122abe985f7df18}
+
+
+Deserializes data from a byte array into this event's data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+Implements \hyperlink{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}{I\-Serializing}.
+
+
+
+Reimplemented in \hyperlink{class_event_game_state_ac8d792c7dea5e0d703d317a66bcd4cdf}{Event\-Game\-State}.
+
+\hypertarget{class_event_network_aa5e94745568f3049a2b798c066087114}{\index{Event\-Network@{Event\-Network}!Execute@{Execute}}
+\index{Execute@{Execute}!EventNetwork@{Event\-Network}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Event\-Network.\-Execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_network_aa5e94745568f3049a2b798c066087114}
+
+
+Processes this event to affect the actual environment 
+
+Author\-: Dustin Yost 
+
+Reimplemented in \hyperlink{class_event_disconnected_a68523999bd55e4525522e5587ba82c3b}{Event\-Disconnected}, \hyperlink{class_event_connection_rejected_a9d02c1d1f11f34b796a2429f6374c9ce}{Event\-Connection\-Rejected}, \hyperlink{class_event_game_state_a9cf710bdb22c50a1e3af2615508861b6}{Event\-Game\-State}, \hyperlink{class_event_connected_ae8af518ac79381830f7ed283de10c82c}{Event\-Connected}, \hyperlink{class_event_battle_response_a3168ba71869e7eb77b6cd25165384ae8}{Event\-Battle\-Response}, \hyperlink{class_event_battle_request_a870561ee05467ac4b18b8f9dc0370be9}{Event\-Battle\-Request}, and \hyperlink{class_event_battle_result_ae2c6d5e3e01daef4de97df2e481fcac5}{Event\-Battle\-Result}.
+
+\hypertarget{class_event_network_a627a22414c184cd4fbe4f23a25877166}{\index{Event\-Network@{Event\-Network}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!EventNetwork@{Event\-Network}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Event\-Network.\-Get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_network_a627a22414c184cd4fbe4f23a25877166}
+
+
+Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
+
+\begin{DoxyReturn}{Returns}
+the integer length of a byte array to hold this event's data
+\end{DoxyReturn}
+
+
+Author\-: Dustin Yost 
+
+Implements \hyperlink{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}{I\-Serializing}.
+
+
+
+Reimplemented in \hyperlink{class_event_client_joined_ad556a9c7eeb4a425ecf86ec271009241}{Event\-Client\-Joined}.
+
+\hypertarget{class_event_network_ae2574cdc2bb836f3e41628ff1c095238}{\index{Event\-Network@{Event\-Network}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!EventNetwork@{Event\-Network}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Event\-Network.\-Serialize (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{ref int}]{last\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_event_network_ae2574cdc2bb836f3e41628ff1c095238}
+
+
+Serializes data from this event into a byte array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+{\em last\-Index} & The last index.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+Implements \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{I\-Serializing}.
+
+
+
+Reimplemented in \hyperlink{class_event_client_joined_a10a9f8d247e3446fec1cc7a1eb13e6a0}{Event\-Client\-Joined}.
+
+\hypertarget{class_event_network_adf54898a5ba1d6efc5f24bd58cf84b8e}{\index{Event\-Network@{Event\-Network}!Write\-To@{Write\-To}}
+\index{Write\-To@{Write\-To}!EventNetwork@{Event\-Network}}
+\subsubsection[{Write\-To}]{\setlength{\rightskip}{0pt plus 5cm}static void Event\-Network.\-Write\-To (
+\begin{DoxyParamCaption}
+\item[{ref byte\mbox{[}$\,$\mbox{]}}]{dest, }
+\item[{ref int}]{offset, }
+\item[{byte\mbox{[}$\,$\mbox{]}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_event_network_adf54898a5ba1d6efc5f24bd58cf84b8e}
+
+
+Write some byte array into another byte array at some offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & The data to copy.\\
+\hline
+{\em offset} & The offset in bytes.\\
+\hline
+{\em source} & The data object to copy into at the offset.\\
+\hline
+\end{DoxyParams}
+
+
+Author\-: Dustin Yost 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_event_network_a1417c775954bdd96b119af2d4707db9e}{\index{Event\-Network@{Event\-Network}!delta\-Time@{delta\-Time}}
+\index{delta\-Time@{delta\-Time}!EventNetwork@{Event\-Network}}
+\subsubsection[{delta\-Time}]{\setlength{\rightskip}{0pt plus 5cm}float Event\-Network.\-delta\-Time}}\label{class_event_network_a1417c775954bdd96b119af2d4707db9e}
+
+
+The amount of time it took to get the packet from source to destination 
+
+\hypertarget{class_event_network_adff900346978771c10eddbe469755039}{\index{Event\-Network@{Event\-Network}!event\-I\-D@{event\-I\-D}}
+\index{event\-I\-D@{event\-I\-D}!EventNetwork@{Event\-Network}}
+\subsubsection[{event\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}byte Event\-Network.\-event\-I\-D}}\label{class_event_network_adff900346978771c10eddbe469755039}
+
+
+The event identifier (Champ\-Net\-Plugin\-::\-Message\-Ids) 
+
+Author\-: Dustin Yost 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Network/events/Event\-Network.\-cs\end{DoxyCompactItemize}

@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,18 +98,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae98ad166b3e39dcf0dbb5f536bf26e75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae98ad166b3e39dcf0dbb5f536bf26e75"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Heal</b> ()</td></tr>
 <tr class="separator:ae98ad166b3e39dcf0dbb5f536bf26e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9145305fbb393ee4dc8c1b67fcad6761"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9145305fbb393ee4dc8c1b67fcad6761"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetMonsterAttackStat</b> (PhysicalOrSpecial physicalOrSpecial)</td></tr>
-<tr class="separator:a9145305fbb393ee4dc8c1b67fcad6761"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a587fff4654429213fd8d33df977b9be8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a587fff4654429213fd8d33df977b9be8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetMonsterDefenseStat</b> (PhysicalOrSpecial physicalOrSpecial)</td></tr>
-<tr class="separator:a587fff4654429213fd8d33df977b9be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dd85baaa39abaac720a36b71db7536e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster_data_object.html#a6dd85baaa39abaac720a36b71db7536e">GetMonsterAttackStat</a> (MoveKind physicalOrSpecial, bool applyStatStages=false)</td></tr>
+<tr class="memdesc:a6dd85baaa39abaac720a36b71db7536e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the attack stat based on the move kind  <a href="#a6dd85baaa39abaac720a36b71db7536e">More...</a><br/></td></tr>
+<tr class="separator:a6dd85baaa39abaac720a36b71db7536e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eda550eeb621625d872b66b1c27eba7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster_data_object.html#a1eda550eeb621625d872b66b1c27eba7">GetMonsterDefenseStat</a> (MoveKind physicalOrSpecial, bool applyStatStages=false)</td></tr>
+<tr class="memdesc:a1eda550eeb621625d872b66b1c27eba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the defense stat based on the move kind.  <a href="#a1eda550eeb621625d872b66b1c27eba7">More...</a><br/></td></tr>
+<tr class="separator:a1eda550eeb621625d872b66b1c27eba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a32f219c168636419992aa379f59c9ff0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32f219c168636419992aa379f59c9ff0"></a>
 <a class="el" href="class_monster_stat.html">MonsterStat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>monsterStat</b></td></tr>
 <tr class="separator:a32f219c168636419992aa379f59c9ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1197136faf77c440906bade6ee2b690"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1197136faf77c440906bade6ee2b690"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>statStageAttack</b></td></tr>
+<tr class="separator:ac1197136faf77c440906bade6ee2b690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a292ad39496e69386b877f3ddaeb123"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a292ad39496e69386b877f3ddaeb123"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>statStageDefense</b></td></tr>
+<tr class="separator:a0a292ad39496e69386b877f3ddaeb123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70677e28a5a8ba6ae3a2cad0ffdb0c47"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70677e28a5a8ba6ae3a2cad0ffdb0c47"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>statStageSpecialAttack</b></td></tr>
+<tr class="separator:a70677e28a5a8ba6ae3a2cad0ffdb0c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aca4196d55b289763cced6b55b2ddc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1aca4196d55b289763cced6b55b2ddc8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>statStageSpecialDefense</b></td></tr>
+<tr class="separator:a1aca4196d55b289763cced6b55b2ddc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6572a7633fc1cd965e2c6c0ab7b86f9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6572a7633fc1cd965e2c6c0ab7b86f9f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>statStageSpeed</b></td></tr>
+<tr class="separator:a6572a7633fc1cd965e2c6c0ab7b86f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -144,6 +159,95 @@ List&lt; <a class="el" href="class_attack_object.html">AttackObject</a> &gt;&#16
 int&#160;</td><td class="memItemRight" valign="bottom"><b>CurrentHP</b><code> [get, set]</code></td></tr>
 <tr class="separator:a3fb8d9a68f08c27657016a72c94faad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6dd85baaa39abaac720a36b71db7536e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MonsterDataObject.GetMonsterAttackStat </td>
+          <td>(</td>
+          <td class="paramtype">MoveKind&#160;</td>
+          <td class="paramname"><em>physicalOrSpecial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>applyStatStages</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the attack stat based on the move kind </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">physicalOrSpecial</td><td>is the move physical or special?</td></tr>
+    <tr><td class="paramname">applyStatStages</td><td>if <code>true</code> then the stat stages are applied</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the modified attack stat</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1eda550eeb621625d872b66b1c27eba7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MonsterDataObject.GetMonsterDefenseStat </td>
+          <td>(</td>
+          <td class="paramtype">MoveKind&#160;</td>
+          <td class="paramname"><em>physicalOrSpecial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>applyStatStages</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the defense stat based on the move kind. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">physicalOrSpecial</td><td>is the move physical or special?</td></tr>
+    <tr><td class="paramname">applyStatStages</td><td>if <code>true</code> then the stat stages are applied</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the modified defense stat</dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterDataObject.cs</li>
 </ul>

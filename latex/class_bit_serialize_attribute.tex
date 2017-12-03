@@ -15,13 +15,13 @@ Inheritance diagram for Bit\-Serialize\-Attribute\-:\begin{figure}[H]
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static byte\mbox{[}$\,$\mbox{]} \hyperlink{class_bit_serialize_attribute_ac8580fdb91b6ed5544f1bd976c867f52}{Serialize} (Mono\-Behaviour mono)
+static byte\mbox{[}$\,$\mbox{]} \hyperlink{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}{Serialize$<$ T $>$} (T mono)
 \begin{DoxyCompactList}\small\item\em Serialize a monobehavior to a byte array, using Bit\-Serialize and \hyperlink{interface_i_serializing}{I\-Serializing} \end{DoxyCompactList}\item 
 static int \hyperlink{class_bit_serialize_attribute_a45dcbeb6ab33c11f4d6cc4971bb4ba55}{Get\-Size\-Of} (object value)
 \begin{DoxyCompactList}\small\item\em Attempts to determine the size of some object (effectively sizeof(object)) \end{DoxyCompactList}\item 
 static void \hyperlink{class_bit_serialize_attribute_aca1cc7a1f81cfffcf0ae04058d2da2c9}{Copy\-To} (ref byte\mbox{[}$\,$\mbox{]} dest, ref int offset, byte\mbox{[}$\,$\mbox{]} source)
 \begin{DoxyCompactList}\small\item\em Write some byte array into another byte array at some offset \end{DoxyCompactList}\item 
-static void \hyperlink{class_bit_serialize_attribute_ad6b302aa05fc83b760a77776941f55b5}{Deserialize} (Mono\-Behaviour mono, byte\mbox{[}$\,$\mbox{]} data)
+static void \hyperlink{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}{Deserialize$<$ T $>$} (T mono, byte\mbox{[}$\,$\mbox{]} data)
 \begin{DoxyCompactList}\small\item\em Deserialize a byte array into a monobehavior \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -55,14 +55,14 @@ Write some byte array into another byte array at some offset
 \end{DoxyParams}
 
 
-Author\-: Dustin Yost \hypertarget{class_bit_serialize_attribute_ad6b302aa05fc83b760a77776941f55b5}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Deserialize@{Deserialize}}
-\index{Deserialize@{Deserialize}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static void Bit\-Serialize\-Attribute.\-Deserialize (
+Author\-: Dustin Yost \hypertarget{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Deserialize$<$ T $>$@{Deserialize$<$ T $>$}}
+\index{Deserialize$<$ T $>$@{Deserialize$<$ T $>$}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
+\subsubsection[{Deserialize$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}static void Bit\-Serialize\-Attribute.\-Deserialize$<$ T $>$ (
 \begin{DoxyParamCaption}
-\item[{Mono\-Behaviour}]{mono, }
+\item[{T}]{mono, }
 \item[{byte\mbox{[}$\,$\mbox{]}}]{data}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_ad6b302aa05fc83b760a77776941f55b5}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}
 
 
 Deserialize a byte array into a monobehavior 
@@ -93,13 +93,13 @@ Attempts to determine the size of some object (effectively sizeof(object))
 \begin{DoxyReturn}{Returns}
 The size of some object, using sizeof for primitive objects, recursive behavior for arrays, and Get\-Size for \hyperlink{interface_i_serializing}{I\-Serializing}
 \end{DoxyReturn}
-\hypertarget{class_bit_serialize_attribute_ac8580fdb91b6ed5544f1bd976c867f52}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Serialize@{Serialize}}
-\index{Serialize@{Serialize}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Bit\-Serialize\-Attribute.\-Serialize (
+\hypertarget{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Serialize$<$ T $>$@{Serialize$<$ T $>$}}
+\index{Serialize$<$ T $>$@{Serialize$<$ T $>$}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
+\subsubsection[{Serialize$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Bit\-Serialize\-Attribute.\-Serialize$<$ T $>$ (
 \begin{DoxyParamCaption}
-\item[{Mono\-Behaviour}]{mono}
+\item[{T}]{mono}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_ac8580fdb91b6ed5544f1bd976c867f52}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}
 
 
 Serialize a monobehavior to a byte array, using Bit\-Serialize and \hyperlink{interface_i_serializing}{I\-Serializing} 

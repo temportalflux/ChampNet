@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -151,7 +151,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> accepted;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="struct_packet_battle_prompt_selection.html">   64</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_packet_battle_prompt_selection.html">PacketBattlePromptSelection</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> id;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerAId;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// -1 if invalid</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> playerASelection;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// -1 if invalid</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> playerAChoice;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerBId;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// -1 if invalid</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> playerBSelection;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// -1 if invalid</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> playerBChoice;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="struct_packet_battle_selection.html">   82</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_packet_battle_selection.html">PacketBattleSelection</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> id;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerId;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerIdOpponent;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> selection;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> choice;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">enum</span> BattleSelection : <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    ATTACK, SWAP, FLEE,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
 <div class="ttc" id="struct_packet_user_i_d_double_html"><div class="ttname"><a href="struct_packet_user_i_d_double.html">PacketUserIDDouble</a></div><div class="ttdef"><b>Definition:</b> Packets.h:41</div></div>
 <div class="ttc" id="struct_packet_general_html"><div class="ttname"><a href="struct_packet_general.html">PacketGeneral</a></div><div class="ttdef"><b>Definition:</b> Packets.h:7</div></div>
 <div class="ttc" id="struct_packet_client_player_i_d_html"><div class="ttname"><a href="struct_packet_client_player_i_d.html">PacketClientPlayerID</a></div><div class="ttdef"><b>Definition:</b> Packets.h:18</div></div>
@@ -159,6 +191,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="struct_packet_user_i_d_triple_html"><div class="ttname"><a href="struct_packet_user_i_d_triple.html">PacketUserIDTriple</a></div><div class="ttdef"><b>Definition:</b> Packets.h:48</div></div>
 <div class="ttc" id="struct_packet_user_i_d_html"><div class="ttname"><a href="struct_packet_user_i_d.html">PacketUserID</a></div><div class="ttdef"><b>Definition:</b> Packets.h:12</div></div>
 <div class="ttc" id="struct_packet_player_scoreboard_info_html"><div class="ttname"><a href="struct_packet_player_scoreboard_info.html">PacketPlayerScoreboardInfo</a></div><div class="ttdef"><b>Definition:</b> Packets.h:25</div></div>
+<div class="ttc" id="struct_packet_battle_selection_html"><div class="ttname"><a href="struct_packet_battle_selection.html">PacketBattleSelection</a></div><div class="ttdef"><b>Definition:</b> Packets.h:82</div></div>
+<div class="ttc" id="struct_packet_battle_prompt_selection_html"><div class="ttname"><a href="struct_packet_battle_prompt_selection.html">PacketBattlePromptSelection</a></div><div class="ttdef"><b>Definition:</b> Packets.h:64</div></div>
 <div class="ttc" id="struct_packet_battle_response_html"><div class="ttname"><a href="struct_packet_battle_response.html">PacketBattleResponse</a></div><div class="ttdef"><b>Definition:</b> Packets.h:56</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

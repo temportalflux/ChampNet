@@ -1,7 +1,9 @@
 var searchData=
 [
   ['packet',['Packet',['../class_champ_net_1_1_packet.html',1,'ChampNet']]],
+  ['packetbattlepromptselection',['PacketBattlePromptSelection',['../struct_packet_battle_prompt_selection.html',1,'']]],
   ['packetbattleresponse',['PacketBattleResponse',['../struct_packet_battle_response.html',1,'']]],
+  ['packetbattleselection',['PacketBattleSelection',['../struct_packet_battle_selection.html',1,'']]],
   ['packetclientplayerid',['PacketClientPlayerID',['../struct_packet_client_player_i_d.html',1,'']]],
   ['packetgeneral',['PacketGeneral',['../struct_packet_general.html',1,'']]],
   ['packetplayerposition',['PacketPlayerPosition',['../struct_packet_player_position.html',1,'']]],
@@ -13,7 +15,7 @@ var searchData=
   ['performancetracker',['PerformanceTracker',['../class_performance_tracker.html',1,'']]],
   ['player',['Player',['../struct_game_state_1_1_player.html',1,'GameState']]],
   ['playercharactercontroller',['PlayerCharacterController',['../class_player_character_controller.html',1,'']]],
-  ['playerid',['playerID',['../class_event_with_player_i_d.html#a41340c3a625e17bb56c31cc937db338e',1,'EventWithPlayerID']]],
+  ['playeridopponent',['playerIDOpponent',['../struct_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca',1,'GameState::Player']]],
   ['playerinputcontroller',['PlayerInputController',['../class_player_input_controller.html',1,'']]],
   ['playerlocal',['PlayerLocal',['../class_player_local.html',1,'']]],
   ['playerlocalmultiplayer',['PlayerLocalMultiplayer',['../class_player_local_multiplayer.html',1,'']]],

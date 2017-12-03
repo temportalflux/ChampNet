@@ -7,16 +7,29 @@
 \hypertarget{class_monster_data_object_ae98ad166b3e39dcf0dbb5f536bf26e75}{void {\bfseries Heal} ()}\label{class_monster_data_object_ae98ad166b3e39dcf0dbb5f536bf26e75}
 
 \item 
-\hypertarget{class_monster_data_object_a9145305fbb393ee4dc8c1b67fcad6761}{int {\bfseries Get\-Monster\-Attack\-Stat} (Physical\-Or\-Special physical\-Or\-Special)}\label{class_monster_data_object_a9145305fbb393ee4dc8c1b67fcad6761}
-
-\item 
-\hypertarget{class_monster_data_object_a587fff4654429213fd8d33df977b9be8}{int {\bfseries Get\-Monster\-Defense\-Stat} (Physical\-Or\-Special physical\-Or\-Special)}\label{class_monster_data_object_a587fff4654429213fd8d33df977b9be8}
-
-\end{DoxyCompactItemize}
+int \hyperlink{class_monster_data_object_a6dd85baaa39abaac720a36b71db7536e}{Get\-Monster\-Attack\-Stat} (Move\-Kind physical\-Or\-Special, bool apply\-Stat\-Stages=false)
+\begin{DoxyCompactList}\small\item\em Get the attack stat based on the move kind \end{DoxyCompactList}\item 
+int \hyperlink{class_monster_data_object_a1eda550eeb621625d872b66b1c27eba7}{Get\-Monster\-Defense\-Stat} (Move\-Kind physical\-Or\-Special, bool apply\-Stat\-Stages=false)
+\begin{DoxyCompactList}\small\item\em Get the defense stat based on the move kind. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{class_monster_data_object_a32f219c168636419992aa379f59c9ff0}{\hyperlink{class_monster_stat}{Monster\-Stat} {\bfseries monster\-Stat}}\label{class_monster_data_object_a32f219c168636419992aa379f59c9ff0}
+
+\item 
+\hypertarget{class_monster_data_object_ac1197136faf77c440906bade6ee2b690}{int {\bfseries stat\-Stage\-Attack}}\label{class_monster_data_object_ac1197136faf77c440906bade6ee2b690}
+
+\item 
+\hypertarget{class_monster_data_object_a0a292ad39496e69386b877f3ddaeb123}{int {\bfseries stat\-Stage\-Defense}}\label{class_monster_data_object_a0a292ad39496e69386b877f3ddaeb123}
+
+\item 
+\hypertarget{class_monster_data_object_a70677e28a5a8ba6ae3a2cad0ffdb0c47}{int {\bfseries stat\-Stage\-Special\-Attack}}\label{class_monster_data_object_a70677e28a5a8ba6ae3a2cad0ffdb0c47}
+
+\item 
+\hypertarget{class_monster_data_object_a1aca4196d55b289763cced6b55b2ddc8}{int {\bfseries stat\-Stage\-Special\-Defense}}\label{class_monster_data_object_a1aca4196d55b289763cced6b55b2ddc8}
+
+\item 
+\hypertarget{class_monster_data_object_a6572a7633fc1cd965e2c6c0ab7b86f9f}{int {\bfseries stat\-Stage\-Speed}}\label{class_monster_data_object_a6572a7633fc1cd965e2c6c0ab7b86f9f}
 
 \end{DoxyCompactItemize}
 \subsection*{Properties}
@@ -52,6 +65,53 @@
 \hypertarget{class_monster_data_object_a3fb8d9a68f08c27657016a72c94faad2}{int {\bfseries Current\-H\-P}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{class_monster_data_object_a3fb8d9a68f08c27657016a72c94faad2}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_monster_data_object_a6dd85baaa39abaac720a36b71db7536e}{\index{Monster\-Data\-Object@{Monster\-Data\-Object}!Get\-Monster\-Attack\-Stat@{Get\-Monster\-Attack\-Stat}}
+\index{Get\-Monster\-Attack\-Stat@{Get\-Monster\-Attack\-Stat}!MonsterDataObject@{Monster\-Data\-Object}}
+\subsubsection[{Get\-Monster\-Attack\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}int Monster\-Data\-Object.\-Get\-Monster\-Attack\-Stat (
+\begin{DoxyParamCaption}
+\item[{Move\-Kind}]{physical\-Or\-Special, }
+\item[{bool}]{apply\-Stat\-Stages = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_monster_data_object_a6dd85baaa39abaac720a36b71db7536e}
+
+
+Get the attack stat based on the move kind 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\-Or\-Special} & is the move physical or special?\\
+\hline
+{\em apply\-Stat\-Stages} & if {\ttfamily true} then the stat stages are applied\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the modified attack stat
+\end{DoxyReturn}
+\hypertarget{class_monster_data_object_a1eda550eeb621625d872b66b1c27eba7}{\index{Monster\-Data\-Object@{Monster\-Data\-Object}!Get\-Monster\-Defense\-Stat@{Get\-Monster\-Defense\-Stat}}
+\index{Get\-Monster\-Defense\-Stat@{Get\-Monster\-Defense\-Stat}!MonsterDataObject@{Monster\-Data\-Object}}
+\subsubsection[{Get\-Monster\-Defense\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}int Monster\-Data\-Object.\-Get\-Monster\-Defense\-Stat (
+\begin{DoxyParamCaption}
+\item[{Move\-Kind}]{physical\-Or\-Special, }
+\item[{bool}]{apply\-Stat\-Stages = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_monster_data_object_a1eda550eeb621625d872b66b1c27eba7}
+
+
+Get the defense stat based on the move kind. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\-Or\-Special} & is the move physical or special?\\
+\hline
+{\em apply\-Stat\-Stages} & if {\ttfamily true} then the stat stages are applied\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the modified defense stat
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

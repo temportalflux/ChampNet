@@ -19,9 +19,9 @@ void \hyperlink{class_net_interface_a565fb35ea7ed5e364902aa8bd0bc6bf9}{Connect} 
 \begin{DoxyCompactList}\small\item\em Starts the client, connects the specified address and port. \end{DoxyCompactList}\item 
 void \hyperlink{class_net_interface_ae0be68e392f32d422325ac54fcaa7cae}{Disconnect} ()
 \begin{DoxyCompactList}\small\item\em Disconnects from the server. \end{DoxyCompactList}\item 
-void \hyperlink{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}{Dispatch} (Event\-Network evt)
+void \hyperlink{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}{Dispatch} (\hyperlink{class_event_network}{Event\-Network} evt)
 \begin{DoxyCompactList}\small\item\em Dispatches the specified event. \end{DoxyCompactList}\item 
-void \hyperlink{class_net_interface_a0cf4580da2218baff890af79fd606722}{Dispatch} (Event\-Network evt, string address, int port)
+void \hyperlink{class_net_interface_a0cf4580da2218baff890af79fd606722}{Dispatch} (\hyperlink{class_event_network}{Event\-Network} evt, string address, int port)
 \begin{DoxyCompactList}\small\item\em Dispatches the specified event. \end{DoxyCompactList}\item 
 Key\-Value\-Pair$<$ string, int $>$ \hyperlink{class_net_interface_a18dfbf82b7c690b9abf4ae9ed9aaddcd}{get\-Server} ()
 \begin{DoxyCompactList}\small\item\em Gets the server I\-P details. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -75,7 +75,7 @@ Author\-: Dustin Yost \hypertarget{class_net_interface_a3ed4f694a9f2083af9ea38ed
 \index{Dispatch@{Dispatch}!NetInterface@{Net\-Interface}}
 \subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Dispatch (
 \begin{DoxyParamCaption}
-\item[{Event\-Network}]{evt}
+\item[{{\bf Event\-Network}}]{evt}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_net_interface_a3ed4f694a9f2083af9ea38ed2a554404}
 
@@ -91,7 +91,7 @@ Dispatches the specified event.
 \index{Dispatch@{Dispatch}!NetInterface@{Net\-Interface}}
 \subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void Net\-Interface.\-Dispatch (
 \begin{DoxyParamCaption}
-\item[{Event\-Network}]{evt, }
+\item[{{\bf Event\-Network}}]{evt, }
 \item[{string}]{address, }
 \item[{int}]{port}
 \end{DoxyParamCaption}

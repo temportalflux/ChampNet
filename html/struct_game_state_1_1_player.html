@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
@@ -107,6 +108,15 @@ Inheritance diagram for GameState.Player:</div>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9f54c5eca1e60acbaa2074e981f51615"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">EnumBattleSelection</a> { <b>ATTACK</b>, 
+<b>SWAP</b>, 
+<b>FLEE</b>
+ }</td></tr>
+<tr class="memdesc:a9f54c5eca1e60acbaa2074e981f51615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options of types of battle moves.  <a href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">More...</a><br/></td></tr>
+<tr class="separator:a9f54c5eca1e60acbaa2074e981f51615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a58e1b4e7eaca487703abf36826e41c45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#a58e1b4e7eaca487703abf36826e41c45">GetSize</a> ()</td></tr>
@@ -154,6 +164,15 @@ Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>accelleration</b><
 <tr class="memitem:a3cff343fceb3dc315d2371fc8fe25ec6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cff343fceb3dc315d2371fc8fe25ec6"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>inBattle</b></td></tr>
 <tr class="separator:a3cff343fceb3dc315d2371fc8fe25ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaed188c94b7f6be4dabe39744aa818ca"><td class="memItemLeft" align="right" valign="top">ID&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca">playerIDOpponent</a></td></tr>
+<tr class="memdesc:aaed188c94b7f6be4dabe39744aa818ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The player ID of the opponent.  <a href="#aaed188c94b7f6be4dabe39744aa818ca">More...</a><br/></td></tr>
+<tr class="separator:aaed188c94b7f6be4dabe39744aa818ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123c8ee2ef6e66e88bcca1a80f73ab4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">EnumBattleSelection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#a123c8ee2ef6e66e88bcca1a80f73ab4a">battleSelection</a></td></tr>
+<tr class="memdesc:a123c8ee2ef6e66e88bcca1a80f73ab4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of action the player makes in battle.  <a href="#a123c8ee2ef6e66e88bcca1a80f73ab4a">More...</a><br/></td></tr>
+<tr class="separator:a123c8ee2ef6e66e88bcca1a80f73ab4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfa8ea6e2067982474dc4f6073061c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_state_1_1_player.html#a3bfa8ea6e2067982474dc4f6073061c5">battleChoice</a></td></tr>
+<tr class="memdesc:a3bfa8ea6e2067982474dc4f6073061c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The descriptor for the type of action (narrows down choice to options like which attack a cretin makes, or what cretin is being swapped to).  <a href="#a3bfa8ea6e2067982474dc4f6073061c5">More...</a><br/></td></tr>
+<tr class="separator:a3bfa8ea6e2067982474dc4f6073061c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a4d13459cad9bd58e058ddc6387af70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a4d13459cad9bd58e058ddc6387af70"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td></tr>
 <tr class="separator:a3a4d13459cad9bd58e058ddc6387af70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,6 +239,15 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td>
 <tr class="memitem:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43dd8a9e79c35d9615596fb6ab25d653"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>rank</b></td></tr>
 <tr class="separator:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60a4f411ef984c6d649d98c65b274bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae60a4f411ef984c6d649d98c65b274bd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>battleOpponentId</b></td></tr>
+<tr class="separator:ae60a4f411ef984c6d649d98c65b274bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2383ab7d3783c5122f3e68230069eb2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2383ab7d3783c5122f3e68230069eb2e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>lastBattleSelection</b></td></tr>
+<tr class="separator:a2383ab7d3783c5122f3e68230069eb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf61e3258c2170b7b66355389cca541f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf61e3258c2170b7b66355389cca541f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>lastBattleChoice</b></td></tr>
+<tr class="separator:adf61e3258c2170b7b66355389cca541f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -240,6 +268,21 @@ Properties</h2></td></tr>
 <tr class="memdesc:affd7c601a6d763dafdc59a58c415e9e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the player id is from a local player (controlled on this game) or networked (controlled by a peer)  <a href="#affd7c601a6d763dafdc59a58c415e9e7">More...</a><br/></td></tr>
 <tr class="separator:affd7c601a6d763dafdc59a58c415e9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a9f54c5eca1e60acbaa2074e981f51615"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Options of types of battle moves. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aaf7c5b93f45be35c3501626cb6759c0b"></a>
 <div class="memitem">
@@ -363,6 +406,48 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3bfa8ea6e2067982474dc4f6073061c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameState.Player.battleChoice</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The descriptor for the type of action (narrows down choice to options like which attack a cretin makes, or what cretin is being swapped to). </p>
+
+</div>
+</div>
+<a class="anchor" id="a123c8ee2ef6e66e88bcca1a80f73ab4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">EnumBattleSelection</a> GameState.Player.battleSelection</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of action the player makes in battle. </p>
+
+</div>
+</div>
+<a class="anchor" id="aaed188c94b7f6be4dabe39744aa818ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID GameState.Player.playerIDOpponent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The player ID of the opponent. </p>
+
+</div>
+</div>
 <a class="anchor" id="a07b452f69128e1f3f6d3bb575c2976f1"></a>
 <div class="memitem">
 <div class="memproto">

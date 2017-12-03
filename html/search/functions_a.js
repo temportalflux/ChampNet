@@ -1,7 +1,10 @@
 var searchData=
 [
+  ['sendbattleoption',['SendBattleOption',['../class_battle_handler.html#a259e910a8ef50cbe1f610b8abdfeb3dd',1,'BattleHandler']]],
   ['senddisconnectpacket',['sendDisconnectPacket',['../class_state_server.html#a4ba2a2bde5a70c0aa50ad936ca88ad44',1,'StateServer']]],
   ['sendpacket',['sendPacket',['../class_state_server.html#ab03b5fe855178bbfa7ec2741b7a08172',1,'StateServer::sendPacket(const char *address, char *data, int dataSize, bool broadcast)'],['../class_state_server.html#a88bda7a0bfd4878781f4676e3b4b19bd',1,'StateServer::sendPacket(const char *address, T *packet, bool broadcast)']]],
-  ['serialize',['Serialize',['../class_bit_serialize_attribute.html#ac8580fdb91b6ed5544f1bd976c867f52',1,'BitSerializeAttribute.Serialize()'],['../struct_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5',1,'GameState.Player.Serialize()'],['../class_game_state.html#af57a06c77a763e8b57841bab79c9b12f',1,'GameState.Serialize()'],['../class_event_with_i_d.html#acc9b0d1c6a8fc474fb1aeb0f93d47602',1,'EventWithID.Serialize()'],['../class_event_with_player_i_d.html#a3decca39195fe4e2fda1f8d57ca35a5f',1,'EventWithPlayerID.Serialize()'],['../class_event_with_rank.html#a590f1c4561dbc363ab6167101ba5139d',1,'EventWithRank.Serialize()'],['../class_event_with_score.html#accd96632d7beb8ef3bf539f6c8eec7c9',1,'EventWithScore.Serialize()'],['../interface_i_serializing.html#ac31a44c2358a197e774fa3f79cc80356',1,'ISerializing.Serialize()']]],
+  ['serialize',['Serialize',['../struct_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5',1,'GameState.Player.Serialize()'],['../class_game_state.html#af57a06c77a763e8b57841bab79c9b12f',1,'GameState.Serialize()'],['../class_event_client_joined.html#a10a9f8d247e3446fec1cc7a1eb13e6a0',1,'EventClientJoined.Serialize()'],['../class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238',1,'EventNetwork.Serialize()'],['../interface_i_serializing.html#ac31a44c2358a197e774fa3f79cc80356',1,'ISerializing.Serialize()']]],
+  ['serialize_3c_20t_20_3e',['Serialize&lt; T &gt;',['../class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3',1,'BitSerializeAttribute']]],
+  ['setupbattle',['SetUpBattle',['../class_battle_handler.html#ad07ba8dd758a56e3a1532e53f90e1932',1,'BattleHandler']]],
   ['start',['start',['../class_state_server.html#aaeb4f49e47304f186f87f79a3612b085',1,'StateServer']]]
 ];

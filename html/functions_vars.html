@@ -72,6 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_prop.html"><span>Properties</span></a></li>
     </ul>
   </div>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,11 +93,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="contents">
 &#160;<ul>
-<li>clientID
-: <a class="el" href="class_event_with_i_d.html#a4b58cdaef622cb06405b6829a160cef5">EventWithID</a>
+<li>battleChoice
+: <a class="el" href="struct_game_state_1_1_player.html#a3bfa8ea6e2067982474dc4f6073061c5">GameState.Player</a>
 </li>
-<li>playerID
-: <a class="el" href="class_event_with_player_i_d.html#a41340c3a625e17bb56c31cc937db338e">EventWithPlayerID</a>
+<li>battleSelection
+: <a class="el" href="struct_game_state_1_1_player.html#a123c8ee2ef6e66e88bcca1a80f73ab4a">GameState.Player</a>
+</li>
+<li>deltaTime
+: <a class="el" href="class_event_network.html#a1417c775954bdd96b119af2d4707db9e">EventNetwork</a>
+</li>
+<li>eventID
+: <a class="el" href="class_event_network.html#adff900346978771c10eddbe469755039">EventNetwork</a>
+</li>
+<li>playerIDOpponent
+: <a class="el" href="struct_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca">GameState.Player</a>
 </li>
 <li>rank
 : <a class="el" href="class_event_with_rank.html#ab7a5557f1fe949d90945003b566d33db">EventWithRank</a>

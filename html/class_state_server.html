@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,6 +148,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (unsign
 <tr class="memitem:a7d80660aa2ef7ab52ce8c86752abf145"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d80660aa2ef7ab52ce8c86752abf145"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sendGameState</b> (unsigned char msgID, const char *sender=NULL, bool broadcast=true, int clientID=-1)</td></tr>
 <tr class="separator:a7d80660aa2ef7ab52ce8c86752abf145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e2d8121f6df0cde34f459cee2f6617"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38e2d8121f6df0cde34f459cee2f6617"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>getClientAddressFrom</b> (unsigned int playerID)</td></tr>
+<tr class="separator:a38e2d8121f6df0cde34f459cee2f6617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_state_application"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_state_application')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_state_application.html">StateApplication</a></td></tr>
 <tr class="memitem:ac3a41cc62a72833dd5ca1ff39ba4a65f inherit pub_methods_class_state_application"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3a41cc62a72833dd5ca1ff39ba4a65f"></a>
 const void&#160;</td><td class="memItemRight" valign="bottom"><b>stopRunning</b> ()</td></tr>
@@ -238,6 +241,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Author: Dustin Yost Handles the usage of all the different packet identifiers </p>
+<ul>
+<li></li>
+</ul>
 
 </div>
 </div>
