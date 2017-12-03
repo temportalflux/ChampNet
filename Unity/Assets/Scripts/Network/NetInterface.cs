@@ -137,8 +137,7 @@ public class NetInterface : Singleton<NetInterface>
         EventNetwork evt = EventNetwork.createEvent(id);
         evt.deltaTime = transmitDeltaTime;
         // Read off the data of the packet
-        int lastIndex = 0;
-        evt.Deserialize(data, ref lastIndex);
+        BitSerializeAttribute.Deserialize(evt, data);
         // Push the event + data into the queue for processing
         events.Enqueue(evt);
     }
@@ -205,11 +204,7 @@ public class NetInterface : Singleton<NetInterface>
     /// </remarks>
     public void Dispatch(EventNetwork evt, string address, int port)
     {
-        // Create the data array for the event
-        byte[] data = new byte[evt.GetSize()];
-        // Serialize the event data
-        int lastIndex = 0;
-        evt.Serialize(ref data, ref lastIndex);
+        byte[] data = BitSerializeAttribute.Serialize(evt);
         // Send the event to the address
         Netty.SendByteArray(address, port, data, data.Length);
     }

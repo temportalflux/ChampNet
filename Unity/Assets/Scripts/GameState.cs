@@ -163,7 +163,7 @@ public class GameState : ScriptableObject, ISerializing
             // write player id
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.localID));
             // write name
-            char[] characters = this.name.ToCharArray();
+            char[] characters = this.name != null ? this.name.ToCharArray() : new char[0];
             int nameLength = Mathf.Min(characters.Length, SIZE_MAX_NAME);
             EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(nameLength));
             for (int i = 0; i < nameLength; i++)

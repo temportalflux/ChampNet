@@ -9,8 +9,11 @@ using UnityEngine;
 public class EventRequestMovement : EventWithLocation
 {
     
-    private float velX;
-    private float velY;
+    [BitSerialize]
+    public float velX;
+
+    [BitSerialize]
+    public float velY;
 
     public EventRequestMovement() : base((byte)ChampNetPlugin.MessageIDs.ID_PLAYER_REQUEST_MOVEMENT)
     {
@@ -24,20 +27,6 @@ public class EventRequestMovement : EventWithLocation
         this.posY = posY;
         this.velX = velX;
         this.velY = velY;
-    }
-
-    override public int GetSize()
-    {
-        return base.GetSize() + sizeof(System.Single) * 2; // super + velX,velZ
-    }
-
-    override public void Serialize(ref byte[] data, ref int lastIndex)
-    {
-        base.Serialize(ref data, ref lastIndex);
-
-        WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velX));
-        WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velY));
-
     }
 
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Only used to increment a player score by 1 to prove that scoreboard works
 /// </summary>
+[System.Obsolete("This should be calculated by server")]
 public class EventIncrementScore : EventWithScore
 {
 
