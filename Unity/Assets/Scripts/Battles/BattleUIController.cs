@@ -102,7 +102,7 @@ public class BattleUIController : MonoBehaviour
         menuState = MenuState.MAIN_MENU;
     }
 
-    public void ButtonClicked(int buttonIndex)
+    public void ButtonClicked(uint buttonIndex)
     {
         switch (menuState)
         {
