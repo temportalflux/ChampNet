@@ -17,7 +17,9 @@ public class ConnectMenu : MonoBehaviour {
         public Color color;
     }
 
+    //[System.Diagnostics.CodeAnalysis.SuppressMessage(null, "CS0414")]
     private string txtAddress = "127.0.0.1", txtPort = "425", txtPlayerCount = "1";
+    //[System.Diagnostics.CodeAnalysis.SuppressMessage(null, "CS0414")]
     private string errorPort = null, errorConnect = null, errorPlayerCount = null;
     private Vector2 scrollPosition = Vector2.zero;
 

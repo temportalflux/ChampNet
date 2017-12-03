@@ -8,8 +8,8 @@ using UnityEngine;
  */
 public class EventClientJoined : EventNetwork
 {
-
-    private ConnectMenu.PlayerDescriptor[] players;
+    
+    public ConnectMenu.PlayerDescriptor[] players;
 
     public EventClientJoined() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_JOINED)
     {

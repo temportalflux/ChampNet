@@ -103,8 +103,13 @@ public class BitSerializeAttribute : Attribute
         Type monoType = mono.GetType();
 
         // Retreive the fields from the mono instance, sorted by declaration order
-        FieldInfo[] objectFields = monoType.GetFields(BindingFlags.Instance | BindingFlags.Public).OrderBy(f => f.MetadataToken).ToArray();
-    
+        FieldInfo[] objectFields = monoType.GetFields(
+            BindingFlags.Instance | BindingFlags.Public // | BindingFlags.NonPublic
+        );//.OrderBy(f => f.MetadataToken).ToArray();
+        List<FieldInfo> objectFieldList = new List<FieldInfo>(objectFields);
+        objectFieldList.Sort(new Comparison<FieldInfo>((a, b) => { return b.MetadataToken - a.MetadataToken; }));
+        objectFields = objectFieldList.ToArray();
+
         // search all fields and find the attribute [BitSerialize]
         for (int i = 0; i < objectFields.Length; i++)
         {
@@ -116,7 +121,7 @@ public class BitSerializeAttribute : Attribute
                 object fieldObj = objectFields[i].GetValue(mono);
 
                 // confirm fields are in the correct order
-                //Debug.Log(objectFields[i].Name);
+                Debug.Log(objectFields[i].Name);
 
                 // Get the sizeof the object
                 int size = BitSerializeAttribute.GetSizeOf(fieldObj);
@@ -167,7 +172,15 @@ public class BitSerializeAttribute : Attribute
             else
             {
                 // multiply the size of the inner type by the number of entries (there is at least 1)
-                return sizeof(int) + fieldArray.Count * GetSizeOf(fieldArray[0]);
+                int entrySize = GetSizeOf(fieldArray[0]);
+                if (entrySize >= 0)
+                {
+                    return sizeof(int) + fieldArray.Count * entrySize;
+                }
+                else
+                {
+                    return -1;
+                }
             }
         }
         // It is not an array, try primitive
@@ -182,6 +195,7 @@ public class BitSerializeAttribute : Attribute
         // Cannot determine size
         else
         {
+            Debug.LogError("Could not determine size of " + type);
             return -1;
         }
     }
