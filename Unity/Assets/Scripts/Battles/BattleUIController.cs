@@ -38,7 +38,7 @@ public class BattleUIController : MonoBehaviour
                 case MenuState.MAIN_MENU:
                     break;
                 case MenuState.ATTACK_MENU:
-                    List<AttackObject> availableAttacks = battleHandler.localKeeper.monsters[battleHandler.localCreitenIndex].GetAvailableAttacks;
+                    List<AttackObject> availableAttacks = battleHandler.LocalKeeper.monsters[battleHandler.LocalCretinIndex].GetAvailableAttacks;
                     for (int i = 0; i < attackButtons.Length; i++)
                     {
                         bool hasMatchingAttack = i < availableAttacks.Count;
@@ -53,19 +53,13 @@ public class BattleUIController : MonoBehaviour
                     break;
                 case MenuState.SWITCH_MENU:
                     List<MonsterDataObject> availableMonsters;
-                    availableMonsters = battleHandler.localKeeper.monsters;
-                    for (int i = 0; i < creitenButtons.Length; i++)
+                    availableMonsters = battleHandler.LocalKeeper.monsters;
+                    for (int i = 0; i < cretinButtons.Length; i++)
                     {
                         bool hasMatchingMonster = i < availableMonsters.Count;
-                        creitenButtons[i].interactable = hasMatchingMonster;
-                        if (hasMatchingMonster)
-                        {
-                            creitenButtons[i].GetComponentInChildren<Text>().text = availableMonsters[i].GetMonsterName;
-                        }
-                        else
-                        {
-                            creitenButtons[i].GetComponentInChildren<Text>().text = "N/A";
-                        }
+                        cretinButtons[i].interactable = hasMatchingMonster || battleHandler.LocalCretinIndex == i;
+
+                        cretinButtons[i].GetComponentInChildren<Text>().text = hasMatchingMonster ? availableMonsters[i].GetMonsterName : "N/A";
                     }
                     break;
                 case MenuState.FORFEIT_MENU:
@@ -93,7 +87,7 @@ public class BattleUIController : MonoBehaviour
     public Button[] attackButtons;
 
     [Header("Switch Variables")]
-    public Button[] creitenButtons;
+    public Button[] cretinButtons;
 
     //[Header("Items Variables")]
     // coming soon. HA....
@@ -128,20 +122,26 @@ public class BattleUIController : MonoBehaviour
                     case 4:
                         menuState = MenuState.FORFEIT_MENU;
                         break;
+                    default:
+                        break;
                 }
 
                 break;
             case MenuState.ATTACK_MENU:
-                // **** selected an attack
+
+                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.ATTACK, buttonIndex);
                 menuState = MenuState.WAITING;
 
                 break;
             case MenuState.ITEM_MENU:
+
                 // Eventually do something... maybe.
+                menuState = MenuState.MAIN_MENU;
 
                 break;
             case MenuState.SWITCH_MENU:
-                // **** selected a creiten to switch to
+
+                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.SWAP, buttonIndex);
                 menuState = MenuState.WAITING;
 
                 break;
@@ -149,13 +149,15 @@ public class BattleUIController : MonoBehaviour
                 switch (buttonIndex)
                 {
                     case 1:
+                        battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.FLEE, 0);
                         break;
-                    case 2:
+                    default:
                         BackButtonClicked();
                         break;
                 }
                 break;
             case MenuState.WAITING:
+                SetFlavorText("Waiting for opponnet's response");
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -166,5 +168,10 @@ public class BattleUIController : MonoBehaviour
     {
         if (menuState != MenuState.WAITING)
             menuState = MenuState.MAIN_MENU;
+    }
+
+    public void SetFlavorText(string text)
+    {
+        waitingText.text = text;
     }
 }

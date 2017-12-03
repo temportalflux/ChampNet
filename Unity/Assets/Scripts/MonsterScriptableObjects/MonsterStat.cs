@@ -15,7 +15,6 @@ public class MonsterStat : ScriptableObject
 	public Sprite monsterPicture;
     public List<MonsterType> types;
     [Space]
-    //[Header("")] // used to create a space in the inspector to space things apart
     public int maxHp;
     public int attack;
     public int defense;
@@ -23,7 +22,6 @@ public class MonsterStat : ScriptableObject
     public int specialDefense;
     public int speed;
     [Space]
-    //[Header("")] // used to create a space in the inspector to space things apart
     public List<AttackObject> availableAttacks;
 
     void OnValidate()

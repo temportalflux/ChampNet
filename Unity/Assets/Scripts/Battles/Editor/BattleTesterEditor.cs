@@ -15,15 +15,28 @@ public class BattleTesterEditor : Editor
 
         GUILayout.Space(10f);
 
-        if (!t.isBattleSetup)
+        if (t == null)
+            return;
+
+        if (!t.IsBattleSetup)
         {
             if (GUILayout.Button("Setup Battle Handler"))
             {
-                if(t.localPlayerTest != null && t.otherPlayerTest != null)
+                if (t.localPlayerTest == null || t.otherPlayerTest == null)
+                    return;
+
+                foreach (MonsterDataObject o in t.localPlayerTest.monsters)
                 {
-                    t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest);
-                    t.isBattleSetup = true;
+                    o.Heal();
                 }
+
+                foreach (MonsterDataObject o in t.otherPlayerTest.monsters)
+                {
+                    o.Heal();
+                }
+
+                t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest);
+                t.IsBattleSetup = true;
             }
         }
         else
@@ -63,9 +76,40 @@ public class BattleTesterEditor : Editor
                 t.battleUIController.BackButtonClicked();
             }
 
+            GUILayout.Space(10.0f);
+
             if (GUILayout.Button("Other selects random attack"))
             {
-                
+                int selectionIndex = Random.Range(0,
+                    t.battleHandler.OtherKeeper.monsters[t.battleHandler.OtherCretinIndex].GetAvailableAttacks
+                        .Count);
+
+                t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.ATTACK,
+                    selectionIndex);
+            }
+
+            if (GUILayout.Button("Other sends out random cretin"))
+            {
+                int whileCount = 0;
+                while (whileCount < 20)
+                {
+                    int selectionIndex = Random.Range(0, t.battleHandler.OtherKeeper.monsters.Count);
+
+                    if (t.battleHandler.OtherKeeper.monsters[selectionIndex].CurrentHP > 0)
+                    {
+                        if (selectionIndex != t.battleHandler.OtherCretinIndex)
+                        {
+                            t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP,
+                                selectionIndex);
+                            break;
+                        }
+                    }
+            
+                    whileCount++;
+                }
+
+                if(whileCount >= 20)
+                    Debug.Log("No swap made");
             }
         }
     }
