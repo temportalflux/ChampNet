@@ -24,7 +24,7 @@ public class ScoreboardIncrementTest : MonoBehaviour
         switch (action)
         {
             case MappedButton.DENY:
-                NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
+                //NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
                 break;
             default:
                 break;

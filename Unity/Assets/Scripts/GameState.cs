@@ -414,7 +414,7 @@ public class GameState : ScriptableObject, ISerializing
 
     public void SpawnLocalMultiplayer()
     {
-        NetInterface.INSTANCE.Dispatch(new EventRequestPlayer(this.clientID, (uint)this.playersLocal.Count));
+        //NetInterface.INSTANCE.Dispatch(new EventRequestPlayer(this.clientID, (uint)this.playersLocal.Count));
     }
 
     public void SpawnLocalPlayer()

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -255,6 +257,13 @@
     <Compile Include="Assets\Scripts\MonsterDataObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattle.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattlePromptSelection.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattleRequest.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattleResponse.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattleResult.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattleResultResponse.cs" />
+    <Compile Include="Assets\Scripts\Network\events\EventBattleSelection.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventClientJoined.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventClientLeft.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventConnected.cs" />
@@ -262,9 +271,7 @@
     <Compile Include="Assets\Scripts\Network\events\EventIncrementScore.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventNetwork.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventRequestMovement.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventRequestPlayer.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventSendRank.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventWithID.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithLocation.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithPlayerID.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithRank.cs" />

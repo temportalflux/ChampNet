@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventClientLeft : EventWithID
+public class EventClientLeft : EventNetwork
 {
+
+    [BitSerialize]
+    public uint clientID;
 
     public EventClientLeft() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_LEFT)
     {

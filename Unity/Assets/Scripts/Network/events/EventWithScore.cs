@@ -5,8 +5,7 @@ using UnityEngine;
 [System.Obsolete("This should be calculated by server")]
 public class EventWithScore : EventWithPlayerID
 {
-
-
+    
     /// <summary>
     /// The player Score
     /// </summary>
@@ -14,6 +13,7 @@ public class EventWithScore : EventWithPlayerID
     public uint score;
 
     public EventWithScore(byte id) : base(id)
-    { }
+    {
+    }
 
 }

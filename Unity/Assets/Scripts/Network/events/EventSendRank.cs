@@ -8,20 +8,17 @@ using UnityEngine;
 public class EventSendRank : EventWithRank
 {
 
+    // TODO: THIS IS BROKEN
+
     public EventSendRank() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_RANK_UPDATE)
     {
+        //this.setIDs(0, 0);
     }
 
     public EventSendRank(uint clientID, uint playerID, uint rank) : this()
     {
-        this.clientID = clientID;
-        this.playerID = playerID;
+        //this.setIDs(clientID, playerID);
         this.rank = rank;
-    }
-
-    override public void Serialize(ref byte[] data, ref int lastIndex)
-    {
-        base.Serialize(ref data, ref lastIndex);
     }
 
 }

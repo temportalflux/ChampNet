@@ -39,7 +39,7 @@ public class PlayerLocal : PlayerReference
     /// </remarks>
     public void requestBattle(PlayerReference player)
     {
-        NetInterface.INSTANCE.Dispatch(new EventNetwork.EventBattleRequest(this.getID(), player.getID()));
+        NetInterface.INSTANCE.Dispatch(new EventBattleRequest(this.getID(), player.getID()));
     }
 
     public override void setInfo(GameState.Player info)
@@ -103,7 +103,7 @@ public class PlayerLocal : PlayerReference
         switch (action)
         {
             case MappedButton.DENY:
-                NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
+                //NetInterface.INSTANCE.Dispatch(new EventIncrementScore(info.clientID, info.playerID, info.wins));
                 break;
             default:
                 break;

@@ -247,7 +247,7 @@ public class ScoreBoard : MonoBehaviour {
                         scoreBoard.score = player.Value.objectReference.score;
                         scoreBoard.name = player.Value.objectReference.name;
                         // return player.Value.objectReference; // return player Reference
-                        NetInterface.INSTANCE.Dispatch(new EventSendRank(player.Value.clientID, player.Value.playerID, player.Value.objectReference.rank));
+                        //NetInterface.INSTANCE.Dispatch(new EventSendRank(player.Value.clientID, player.Value.playerID, player.Value.objectReference.rank));
 
                         // dispatch event to server to set new rank
                     }

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventWithPlayerID : EventWithID
+public class EventWithPlayerID : EventNetwork
 {
 
-    /// <summary>
-    /// The player identifier
-    /// </summary>
+    [BitSerialize]
+    public uint clientID;
+
     [BitSerialize]
     public uint playerID;
 
     public EventWithPlayerID(byte id) : base(id)
-    { }
+    {
+    }
 
 }

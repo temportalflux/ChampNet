@@ -10,20 +10,17 @@ using UnityEngine;
 public class EventIncrementScore : EventWithScore
 {
 
+    // THIS IS BROKEN
+
     public EventIncrementScore() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_SCORE_UP)
     {
+        //this.setIDs(0, 0);
     }
 
     public EventIncrementScore(uint clientID, uint playerID, uint score) : this()
     {
-        this.clientID = clientID;
-        this.playerID = playerID;
+        //this.setIDs(clientID, playerID);
         this.score = score;
-    }
-
-    override public void Serialize(ref byte[] data, ref int lastIndex)
-    {
-        base.Serialize(ref data, ref lastIndex);
     }
 
 }
