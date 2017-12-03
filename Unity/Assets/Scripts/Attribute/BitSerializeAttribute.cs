@@ -15,6 +15,7 @@ using UnityEngineInternal;
 using UnityEditorInternal;
 using System;
 using System.Reflection;
+using System.Linq;
 
 /// <summary>
 /// Handles (de)serializing of specific fields.
@@ -31,7 +32,7 @@ public class BitSerializeAttribute : Attribute
     private static Dictionary<Type, Int32> primitiveSizes = new Dictionary<Type, int>()
     {
         {typeof(Boolean), sizeof(Boolean)}, // bool
-        {typeof(Byte), sizeof(Byte)}, // byte
+        {typeof(Byte), 1}, // byte
         {typeof(Char), sizeof(Char)}, // char
         {typeof(Int16), sizeof(Int16)}, // short
         {typeof(Int32), sizeof(Int32)}, // int
@@ -41,6 +42,7 @@ public class BitSerializeAttribute : Attribute
         {typeof(UInt64), sizeof(UInt64)}, // ulong
         {typeof(Single), sizeof(Single)}, // float
         {typeof(Double), sizeof(Double)}, // double
+        {typeof(Color), sizeof(Single)*3}, // color
     };
 
     /// <summary>
@@ -48,7 +50,7 @@ public class BitSerializeAttribute : Attribute
     /// </summary>
     /// <param name="mono">The monobehavior to serialize</param>
     /// <returns>A byte array of data formatted in the order of fields and extra data according to ISerializing</returns>
-    public static byte[] Serialize(MonoBehaviour mono)
+    public static byte[] Serialize<T>(T mono)
     {
         // Find all the bitserializable fields in the object
         uint totalBitSize;
@@ -92,7 +94,7 @@ public class BitSerializeAttribute : Attribute
     /// <param name="mono">The MonoBehaviour with BitSerialize fields</param>
     /// <param name="totalBitSize">The total bytes of the BitSerialize fields</param>
     /// <returns></returns>
-    private static List<KeyValuePair<FieldInfo, int>> GetAttributeFields(MonoBehaviour mono, out uint totalBitSize)
+    private static List<KeyValuePair<FieldInfo, int>> GetAttributeFields<T>(T mono, out uint totalBitSize)
     {
         List<KeyValuePair<FieldInfo, int>> attributes = new List<KeyValuePair<FieldInfo, int>>();
         totalBitSize = 0;
@@ -100,9 +102,9 @@ public class BitSerializeAttribute : Attribute
         // Get the type of the object
         Type monoType = mono.GetType();
 
-        // Retreive the fields from the mono instance
-        FieldInfo[] objectFields = monoType.GetFields(BindingFlags.Instance | BindingFlags.Public);
-
+        // Retreive the fields from the mono instance, sorted by declaration order
+        FieldInfo[] objectFields = monoType.GetFields(BindingFlags.Instance | BindingFlags.Public).OrderBy(f => f.MetadataToken).ToArray();
+    
         // search all fields and find the attribute [BitSerialize]
         for (int i = 0; i < objectFields.Length; i++)
         {
@@ -111,8 +113,13 @@ public class BitSerializeAttribute : Attribute
             // if we detect any attribute
             if (attribute != null)
             {
+                object fieldObj = objectFields[i].GetValue(mono);
+
+                // confirm fields are in the correct order
+                //Debug.Log(objectFields[i].Name);
+
                 // Get the sizeof the object
-                int size = BitSerializeAttribute.GetSizeOf(objectFields[i].GetValue(mono));
+                int size = BitSerializeAttribute.GetSizeOf(fieldObj);
                 // A valid size was found
                 if (size >= 0)
                 {
@@ -168,7 +175,7 @@ public class BitSerializeAttribute : Attribute
         {
             return BitSerializeAttribute.primitiveSizes[type];
         }
-        else if (type == typeof(ISerializing))
+        else if (typeof(ISerializing).IsAssignableFrom(type))
         {
             return (value as ISerializing).GetSize();
         }
@@ -215,9 +222,9 @@ public class BitSerializeAttribute : Attribute
         // It is not an array, try primitive
         else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
         {
-            CopyTo(ref destination, ref offset, GetBytes(value, type));
+            CopyTo(ref destination, ref offset, SerializePrimitive(value, type));
         }
-        else if (type.IsInstanceOfType(typeof(ISerializing)))
+        else if (typeof(ISerializing).IsAssignableFrom(type))
         {
             (value as ISerializing).Serialize(ref destination, ref offset);
         }
@@ -229,10 +236,11 @@ public class BitSerializeAttribute : Attribute
     /// <param name="value">The PRIMITIVE object to convert to bytes via System.BitConverter.GetBytes</param>
     /// <param name="type">The type of the primitive</param>
     /// <returns></returns>
-    private static byte[] GetBytes(object value, Type type)
+    private static byte[] SerializePrimitive(object value, Type type = null)
     {
+        if (type == null) type = value.GetType();
         if (type == typeof(Boolean)) return System.BitConverter.GetBytes((Boolean)value);
-        else if (type == typeof(Byte)) return System.BitConverter.GetBytes((Byte)value);
+        else if (type == typeof(Byte)) return new byte[] { (byte)value };
         else if (type == typeof(Char)) return System.BitConverter.GetBytes((Char)value);
         else if (type == typeof(Int16)) return System.BitConverter.GetBytes((Int16)value);
         else if (type == typeof(Int32)) return System.BitConverter.GetBytes((Int32)value);
@@ -242,6 +250,11 @@ public class BitSerializeAttribute : Attribute
         else if (type == typeof(UInt64)) return System.BitConverter.GetBytes((UInt64)value);
         else if (type == typeof(Single)) return System.BitConverter.GetBytes((Single)value);
         else if (type == typeof(Double)) return System.BitConverter.GetBytes((Double)value);
+        else if (type == typeof(Color))
+            return SerializePrimitive(((Color)value).r) // serialize red
+                .Concat(SerializePrimitive(((Color)value).g)) // serialize green
+                .Concat(SerializePrimitive(((Color)value).b)) // serialize blue
+                .ToArray();
         else return null;
     }
 
@@ -266,7 +279,7 @@ public class BitSerializeAttribute : Attribute
     /// </summary>
     /// <param name="mono">The monobehavior to set data in</param>
     /// <param name="data">A byte array of data created with Serialize</param>
-    public static void Deserialize(MonoBehaviour mono, byte[] data)
+    public static void Deserialize<T>(T mono, byte[] data)
     {
         // Find all the bitserializable fields in the object
         uint totalBitSize;
@@ -359,24 +372,39 @@ public class BitSerializeAttribute : Attribute
         // It is not an array, try primitive
         else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
         {
-            if (type == typeof(Boolean)) { obj = System.BitConverter.ToBoolean(data, offset); offset += sizeof(Boolean); }
-            else if (type == typeof(Byte)) { obj = (byte)System.BitConverter.ToInt16(data, offset); offset += sizeof(Byte); }
-            else if (type == typeof(Char)) { obj = System.BitConverter.ToChar(data, offset); offset += sizeof(Char); }
-            else if (type == typeof(Int16)) { obj = System.BitConverter.ToInt16(data, offset); offset += sizeof(Int16); }
-            else if (type == typeof(Int32)) { obj = System.BitConverter.ToInt32(data, offset); offset += sizeof(Int32); }
-            else if (type == typeof(Int64)) { obj = System.BitConverter.ToInt64(data, offset); offset += sizeof(Int64); }
-            else if (type == typeof(UInt16)) { obj = System.BitConverter.ToUInt16(data, offset); offset += sizeof(UInt16); }
-            else if (type == typeof(UInt32)) { obj = System.BitConverter.ToUInt32(data, offset); offset += sizeof(UInt32); }
-            else if (type == typeof(UInt64)) { obj = System.BitConverter.ToUInt64(data, offset); offset += sizeof(UInt64); }
-            else if (type == typeof(Single)) { obj = System.BitConverter.ToSingle(data, offset); offset += sizeof(Single); }
-            else if (type == typeof(Double)) { obj = System.BitConverter.ToDouble(data, offset); offset += sizeof(Double); }
+            obj = DeserializePrimitive(data, ref offset, type);
         }
-        else if (type.IsInstanceOfType(typeof(ISerializing)))
+        else if (typeof(ISerializing).IsAssignableFrom(type))
         {
             // Requires an empty constructor
-            obj = type.GetConstructor(new Type[] { }).Invoke(new object[] { });
+            obj = Activator.CreateInstance(type, new object[] { });
             (obj as ISerializing).Deserialize(data, ref offset);
         }
+    }
+
+    private static object DeserializePrimitive(byte[] data, ref int offset, Type type)
+    {
+        object obj = null;
+        if (type == typeof(Boolean)) { obj = System.BitConverter.ToBoolean(data, offset); offset += sizeof(Boolean); }
+        else if (type == typeof(Byte)) { obj = data[offset]; offset += 1; }
+        else if (type == typeof(Char)) { obj = System.BitConverter.ToChar(data, offset); offset += sizeof(Char); }
+        else if (type == typeof(Int16)) { obj = System.BitConverter.ToInt16(data, offset); offset += sizeof(Int16); }
+        else if (type == typeof(Int32)) { obj = System.BitConverter.ToInt32(data, offset); offset += sizeof(Int32); }
+        else if (type == typeof(Int64)) { obj = System.BitConverter.ToInt64(data, offset); offset += sizeof(Int64); }
+        else if (type == typeof(UInt16)) { obj = System.BitConverter.ToUInt16(data, offset); offset += sizeof(UInt16); }
+        else if (type == typeof(UInt32)) { obj = System.BitConverter.ToUInt32(data, offset); offset += sizeof(UInt32); }
+        else if (type == typeof(UInt64)) { obj = System.BitConverter.ToUInt64(data, offset); offset += sizeof(UInt64); }
+        else if (type == typeof(Single)) { obj = System.BitConverter.ToSingle(data, offset); offset += sizeof(Single); }
+        else if (type == typeof(Double)) { obj = System.BitConverter.ToDouble(data, offset); offset += sizeof(Double); }
+        else if (type == typeof(Color))
+        {
+            obj = new Color(
+                (Single)DeserializePrimitive(data, ref offset, typeof(Single)), // r
+                (Single)DeserializePrimitive(data, ref offset, typeof(Single)), // g
+                (Single)DeserializePrimitive(data, ref offset, typeof(Single)) // b
+            );
+        }
+        return obj;
     }
 
 }

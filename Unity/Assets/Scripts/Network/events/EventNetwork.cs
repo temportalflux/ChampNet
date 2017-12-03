@@ -63,8 +63,12 @@ public class EventNetwork : ISerializing
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    private byte eventID;
+    [BitSerialize]
+    public byte eventID;
 
+    /// <summary>
+    /// The amount of time it took to get the packet from source to destination
+    /// </summary>
     public float deltaTime;
     
     public EventNetwork(byte id)
@@ -81,7 +85,7 @@ public class EventNetwork : ISerializing
     /// </remarks>
     virtual public int GetSize()
     {
-        return sizeof(byte); // id
+        return 0;
     }
 
     /// <summary>
@@ -94,11 +98,6 @@ public class EventNetwork : ISerializing
     /// </remarks>
     virtual public void Deserialize(byte[] data, ref int lastIndex)
     {
-
-        // Read the event identifier
-        this.eventID = data[0];
-        lastIndex += sizeof(byte);
-        
     }
     
     /// <summary>
@@ -111,11 +110,6 @@ public class EventNetwork : ISerializing
     /// </remarks>
     virtual public void Serialize(ref byte[] data, ref int lastIndex)
     {
-
-        // Write the event identifier
-        data[lastIndex] = (byte)this.eventID;
-        lastIndex += sizeof(byte);
-
     }
     
     /// <summary>
@@ -145,55 +139,12 @@ public class EventNetwork : ISerializing
         //ChampNetPlugin.MessageIDs message = (ChampNetPlugin.MessageIDs)this.id;
         //Debug.Log("Execute event with id: " + message + "(" + this.id + ")");
     }
-   
+      
     
 
-    /**
-     * Event: Notification from server of our user id
-     */
-    public class EventUserID : EventWithID
-    {
 
-        public EventUserID() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_REQUEST_PLAYER)
-        {
-        }
 
-        override public void Execute()
-        {
-            Debug.Log("Got user id " + this.clientID);
-            // This is where a player can be spawned
-            //GameManager.INSTANCE.SpawnPlayerWithID(this.playerID);
-        }
 
-    }
-    
-    
-
-    
-
-    /**
-     * Event: Notification that some user has spawned at some location
-     */
-    public class EventUserSpawn : EventWithID
-    {
-        public EventUserSpawn() : base((byte)ChampNetPlugin.MessageIDs.ID_UPDATE_GAMESTATE)
-        {
-        }
-
-        override public void Execute()
-        {
-            Debug.Log("User " + this.clientID + " spawned");
-            GameState.Player playerInfo = new GameState.Player();
-            playerInfo.playerID = this.clientID;
-            playerInfo.position = Vector3.zero;
-            playerInfo.velocity = Vector3.zero;
-            playerInfo.accelleration = Vector3.zero;
-            //GameManager.INSTANCE.spawnPlayer(playerInfo);
-        }
-
-    }
-
-    
 
     /**
      * A base event to (de)serialize two playerIDs
