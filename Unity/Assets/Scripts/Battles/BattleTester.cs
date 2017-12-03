@@ -11,10 +11,16 @@ public class BattleTester : MonoBehaviour
     public KeeperSystem localPlayerTest;
     public KeeperSystem otherPlayerTest;
 
-    [HideInInspector] public bool isBattleSetup;
+    protected bool isBattleSetup;
+
+    public bool IsBattleSetup
+    {
+        get { return isBattleSetup; }
+        set { isBattleSetup = value; }
+    }
 
     void Start()
     {
-        isBattleSetup = false;
+        IsBattleSetup = false;
     }
 }

@@ -18,6 +18,13 @@ public class MonsterDataObject //: MonoBehaviour
     public int GetSpeed { get { return monsterStat.speed; } }
     public List<AttackObject> GetAvailableAttacks { get { return monsterStat.availableAttacks; } }
 
+    // stat stages
+    public int statStageAttack;
+    public int statStageDefense;
+    public int statStageSpecialAttack;
+    public int statStageSpecialDefense;
+    public int statStageSpeed;
+
     private int _hp;
 
     public int CurrentHP
@@ -36,19 +43,45 @@ public class MonsterDataObject //: MonoBehaviour
         //_hp = GetMaxHp;
     }
 
-    public int GetMonsterAttackStat(MoveKind physicalOrSpecial)
+    /// <summary>
+    /// Get the attack stat based on the move kind
+    /// </summary>
+    /// <param name="physicalOrSpecial">is the move physical or special?</param>
+    /// <param name="applyStatStages">if <code>true</code> then the stat stages are applied</param>
+    /// <returns>the modified attack stat</returns>
+    public int GetMonsterAttackStat(MoveKind physicalOrSpecial, bool applyStatStages = false)
     {
-        if (physicalOrSpecial == MoveKind.PHYSICAL)
-            return GetAttack;
+        int attackStat = physicalOrSpecial == MoveKind.PHYSICAL ? GetAttack : GetSpecialAttack;
 
-        return GetSpecialAttack;
+        if (!applyStatStages)
+            return attackStat;
+
+        int statStage = physicalOrSpecial == MoveKind.PHYSICAL ? statStageAttack : statStageSpecialAttack;
+        float statModifier = (2 + Mathf.Abs(statStage)) / 2.0f;
+        if (statStage < 0)
+            statModifier = 1 / statModifier;
+
+        return (int) (attackStat * statModifier);
     }
 
-    public int GetMonsterDefenseStat(MoveKind physicalOrSpecial)
+    /// <summary>
+    /// Get the defense stat based on the move kind.
+    /// </summary>
+    /// <param name="physicalOrSpecial">is the move physical or special?</param>
+    /// <param name="applyStatStages">if <code>true</code> then the stat stages are applied</param>
+    /// <returns>the modified defense stat</returns>
+    public int GetMonsterDefenseStat(MoveKind physicalOrSpecial, bool applyStatStages = false)
     {
-        if (physicalOrSpecial == MoveKind.PHYSICAL)
-            return GetDefense;
+        int defenseStat = physicalOrSpecial == MoveKind.PHYSICAL ? GetDefense : GetSpecialDefense;
 
-        return GetSpecialDefense;
+        if (!applyStatStages)
+            return defenseStat;
+
+        int statStage = physicalOrSpecial == MoveKind.PHYSICAL ? statStageDefense : statStageSpecialDefense;
+        float statModifier = (2 + Mathf.Abs(statStage)) / 2.0f;
+        if (statStage < 0)
+            statModifier = 1 / statModifier;
+
+        return (int) (defenseStat * statModifier);
     }
 }
