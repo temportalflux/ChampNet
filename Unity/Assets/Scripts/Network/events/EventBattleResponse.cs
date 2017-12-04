@@ -8,7 +8,7 @@ using UnityEngine;
 public class EventBattleResponse : EventBattle
 {
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public bool accepted;
 
     public EventBattleResponse() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE) { }
