@@ -53,7 +53,7 @@ public class GameState : ScriptableObject, ISerializing
     /// A state class for all Player objects
     /// </summary>
     [System.Serializable]
-    public struct Player : ISerializing
+    public class Player : ISerializing
     {
 
         /// <summary>

@@ -38,7 +38,7 @@ public class BattleUIController : MonoBehaviour
                 case MenuState.MAIN_MENU:
                     break;
                 case MenuState.ATTACK_MENU:
-                    List<AttackObject> availableAttacks = battleHandler.LocalKeeper.monsters[battleHandler.LocalCretinIndex].GetAvailableAttacks;
+                    List<AttackObject> availableAttacks = battleHandler.participant1.currentCretin.GetAvailableAttacks;
                     for (int i = 0; i < attackButtons.Length; i++)
                     {
                         bool hasMatchingAttack = i < availableAttacks.Count;
@@ -52,12 +52,12 @@ public class BattleUIController : MonoBehaviour
                 case MenuState.ITEM_MENU:
                     break;
                 case MenuState.SWITCH_MENU:
-                    List<MonsterDataObject> availableMonsters;
-                    availableMonsters = battleHandler.LocalKeeper.monsters;
+                    Debug.Assert(battleHandler.participant1.isPlayer());
+                    List<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
                     for (int i = 0; i < cretinButtons.Length; i++)
                     {
                         bool hasMatchingMonster = i < availableMonsters.Count;
-                        cretinButtons[i].interactable = hasMatchingMonster || battleHandler.LocalCretinIndex == i;
+                        cretinButtons[i].interactable = hasMatchingMonster || battleHandler.participant1.currentCretinIndex == i;
 
                         cretinButtons[i].GetComponentInChildren<Text>().text = hasMatchingMonster ? availableMonsters[i].GetMonsterName : "N/A";
                     }

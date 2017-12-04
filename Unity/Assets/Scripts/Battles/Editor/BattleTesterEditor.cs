@@ -25,14 +25,20 @@ public class BattleTesterEditor : Editor
                 if (t.localPlayerTest == null || t.otherPlayerTest == null)
                     return;
 
-                foreach (MonsterDataObject o in t.localPlayerTest.getInfo().monsters)
+                if (t.localPlayerTest.isPlayer())
                 {
-                    o.Heal();
+                    foreach (MonsterDataObject o in t.localPlayerTest.playerController.monsters)
+                    {
+                        o.Heal();
+                    }
                 }
 
-                foreach (MonsterDataObject o in t.otherPlayerTest.getInfo().monsters)
+                if (t.otherPlayerTest.isPlayer())
                 {
-                    o.Heal();
+                    foreach (MonsterDataObject o in t.otherPlayerTest.playerController.monsters)
+                    {
+                        o.Heal();
+                    }
                 }
 
                 t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest);
@@ -81,7 +87,7 @@ public class BattleTesterEditor : Editor
             if (GUILayout.Button("Other selects random attack"))
             {
                 uint selectionIndex = (uint)Random.Range(0,
-                    t.battleHandler.OtherKeeper.monsters[t.battleHandler.OtherCretinIndex].GetAvailableAttacks
+                    t.battleHandler.participant2.currentCretin.GetAvailableAttacks
                         .Count);
 
                 t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.ATTACK, selectionIndex);
@@ -92,11 +98,11 @@ public class BattleTesterEditor : Editor
                 int whileCount = 0;
                 while (whileCount < 20)
                 {
-                    uint selectionIndex = (uint)Random.Range(0, t.battleHandler.OtherKeeper.monsters.Count);
+                    uint selectionIndex = (uint)Random.Range(0, t.battleHandler.participant2.playerController.monsters.Count);
 
-                    if (t.battleHandler.OtherKeeper.monsters[(int)selectionIndex].CurrentHP > 0)
+                    if (t.battleHandler.participant2.playerController.monsters[(int)selectionIndex].CurrentHP > 0)
                     {
-                        if (selectionIndex != t.battleHandler.OtherCretinIndex)
+                        if (selectionIndex != t.battleHandler.participant2.currentCretinIndex)
                         {
                             t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP, selectionIndex);
                             break;

@@ -8,8 +8,8 @@ public class BattleTester : MonoBehaviour
     public BattleHandler battleHandler;
     public BattleUIController battleUIController;
 
-    public PlayerReference localPlayerTest;
-    public PlayerReference otherPlayerTest;
+    public BattleParticipant localPlayerTest;
+    public BattleParticipant otherPlayerTest;
 
     protected bool isBattleSetup;
 
