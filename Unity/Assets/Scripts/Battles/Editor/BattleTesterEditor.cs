@@ -25,12 +25,12 @@ public class BattleTesterEditor : Editor
                 if (t.localPlayerTest == null || t.otherPlayerTest == null)
                     return;
 
-                foreach (MonsterDataObject o in t.localPlayerTest.monsters)
+                foreach (MonsterDataObject o in t.localPlayerTest.getInfo().monsters)
                 {
                     o.Heal();
                 }
 
-                foreach (MonsterDataObject o in t.otherPlayerTest.monsters)
+                foreach (MonsterDataObject o in t.otherPlayerTest.getInfo().monsters)
                 {
                     o.Heal();
                 }
@@ -80,12 +80,11 @@ public class BattleTesterEditor : Editor
 
             if (GUILayout.Button("Other selects random attack"))
             {
-                int selectionIndex = Random.Range(0,
+                uint selectionIndex = (uint)Random.Range(0,
                     t.battleHandler.OtherKeeper.monsters[t.battleHandler.OtherCretinIndex].GetAvailableAttacks
                         .Count);
 
-                t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.ATTACK,
-                    selectionIndex);
+                t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.ATTACK, selectionIndex);
             }
 
             if (GUILayout.Button("Other sends out random cretin"))
@@ -93,14 +92,13 @@ public class BattleTesterEditor : Editor
                 int whileCount = 0;
                 while (whileCount < 20)
                 {
-                    int selectionIndex = Random.Range(0, t.battleHandler.OtherKeeper.monsters.Count);
+                    uint selectionIndex = (uint)Random.Range(0, t.battleHandler.OtherKeeper.monsters.Count);
 
-                    if (t.battleHandler.OtherKeeper.monsters[selectionIndex].CurrentHP > 0)
+                    if (t.battleHandler.OtherKeeper.monsters[(int)selectionIndex].CurrentHP > 0)
                     {
                         if (selectionIndex != t.battleHandler.OtherCretinIndex)
                         {
-                            t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP,
-                                selectionIndex);
+                            t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP, selectionIndex);
                             break;
                         }
                     }

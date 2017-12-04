@@ -11,11 +11,11 @@ public class EventBattlePromptSelection : EventNetwork
     [BitSerialize]
     public int _playerASelection;
 
-    public EventBattleSelection.EnumSelection playerASelection
+    public GameState.Player.EnumBattleSelection playerASelection
     {
         get
         {
-            return (EventBattleSelection.EnumSelection)this._playerASelection;
+            return (GameState.Player.EnumBattleSelection)this._playerASelection;
         }
     }
 
@@ -28,11 +28,11 @@ public class EventBattlePromptSelection : EventNetwork
     [BitSerialize]
     public int _playerBSelection;
 
-    public EventBattleSelection.EnumSelection playerBSelection
+    public GameState.Player.EnumBattleSelection playerBSelection
     {
         get
         {
-            return (EventBattleSelection.EnumSelection)this._playerBSelection;
+            return (GameState.Player.EnumBattleSelection)this._playerBSelection;
         }
     }
 
@@ -42,5 +42,10 @@ public class EventBattlePromptSelection : EventNetwork
     public EventBattlePromptSelection() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_PROMPT_SELECTION)
     {
     }
-    
+
+    public override void Execute()
+    {
+        base.Execute();
+
+    }
 }

@@ -125,6 +125,12 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public int battleChoice;
 
+        /// <summary>
+        /// A list of all the cretins the player has
+        /// NOT SERIALIZED
+        /// </summary>
+        public List<MonsterDataObject> monsters;
+
         // scoreboard data
 
         [Tooltip("Total number of wins since entering the server")]

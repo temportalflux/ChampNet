@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-// Author: Jake Ruth
+/// <summary>
+/// 
+/// </summary>
+/// <author>Jake Ruth</author>
 public class KeeperSystem : MonoBehaviour
 {
-    public string keepername;
-
-    public List<MonsterDataObject> monsters;
-    public int wins;
-    public int losses;
+    
 }
 
