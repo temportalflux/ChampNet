@@ -43,4 +43,9 @@ public class EventBattlePromptSelection : EventNetwork
     {
     }
 
+    public override void Execute()
+    {
+        base.Execute();
+
+    }
 }
