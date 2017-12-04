@@ -40,6 +40,8 @@ public class GameManager : Singleton<GameManager>
     /// The object to handle transitioning between scenes
     /// </summary>
     public SceneTransition transition;
+
+    public GameObject playerPrefab, playerNetworkPrefab;
     
     /// <summary>
     /// The game state
@@ -178,6 +180,31 @@ public class GameManager : Singleton<GameManager>
     public void grabScoreBoard()
     {
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
+    }
+
+    public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
+    {
+        AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("BatleSceneV2", LoadSceneMode.Additive);
+        StartCoroutine(SetUpBattleOnLoadComplete(loadSceneAsync, p1, p2, isNetwokedBattle));
+    }
+
+    private IEnumerator SetUpBattleOnLoadComplete(AsyncOperation loadSceneAsync, BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
+    {
+        // Wait until the scene has been loaded
+        while (!loadSceneAsync.isDone)
+            yield return null;
+
+        GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+
+        BattleHandler battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+        battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
+    }
+
+    public void UnloadBattleScene()
+    {
+        AsyncOperation unloadSceneAsync = SceneManager.UnloadSceneAsync("BatleSceneV2");
+
+        GameObject.FindGameObjectWithTag("HUD").SetActive(true);
     }
 }
 

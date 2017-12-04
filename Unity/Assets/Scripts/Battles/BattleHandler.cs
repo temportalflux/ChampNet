@@ -23,52 +23,20 @@ public class BattleHandler : MonoBehaviour
     /// </summary>
     public bool isNetworked;
     
-    private PlayerReference _localKeeper;
-    private int _localCretinIndex;
-
-    private PlayerReference _otherKeeper;
-    private int _otherCretinIndex;
-
-    // Used for local battles
-    private GameState.Player.EnumBattleSelection _localSelection;
-    private int _localSelectionIndex = -1;
-    private GameState.Player.EnumBattleSelection _otherSelection;
-    private int _otherSelectionIndex = -1;
-
-    // Getters and Setters
-    public GameState.Player LocalKeeper
-    {
-        get { return _localKeeper.getInfo(); }
-        //set { _localKeeper = value; }
-    }
-    public GameState.Player OtherKeeper
-    {
-        get { return _otherKeeper.getInfo(); }
-        //set { _otherKeeper = value; }
-    }
-    public int LocalCretinIndex
-    {
-        get { return _localCretinIndex; }
-        //set { _localCretinIndex = value; }
-    }
-    public int OtherCretinIndex
-    {
-        get { return _otherCretinIndex; }
-        //set { _otherCretinIndex = value; }
-    }
+    public BattleParticipant participant1;
+    public BattleParticipant participant2;
 
     /// <summary>
     /// Called To set up the battle scene. Must be called at the start
     /// </summary>
-    /// <param name="localKeeperSystem">The local player</param>
-    /// <param name="otherKeeperSystem">Other opponent player</param>
-    public void SetUpBattle(PlayerReference localKeeperSystem, PlayerReference otherKeeperSystem)
+    /// <param name="first">The local player</param>
+    /// <param name="second">Other opponent player</param>
+    /// <param name="isNetworkedBattle">Is the battle a networked battle or not</param>
+    public void SetUpBattle(BattleParticipant first, BattleParticipant second, bool isNetworkedBattle)
     {
-        _localKeeper = localKeeperSystem;
-        _localCretinIndex = 0;
-
-        _otherKeeper = otherKeeperSystem;
-        _otherCretinIndex = 0;
+        isNetworked = isNetworkedBattle;
+        this.participant1 = first;
+        this.participant2 = second;
     }
 
     /// <summary>
@@ -96,19 +64,19 @@ public class BattleHandler : MonoBehaviour
             // The executor is the player
             if (isLocalPlayer)
             {
-                _localSelection = selection;
-                _localSelectionIndex = (int)selectionIndex;
+                this.participant1.selection = selection;
+                this.participant1.selectionChoice = (int)selectionIndex - 1;
             }
             // The executor is the AI
             else
             {
-                _otherSelection = selection;
-                _otherSelectionIndex = (int)selectionIndex;
+                this.participant2.selection = selection;
+                this.participant2.selectionChoice = (int)selectionIndex - 1;
             }
             // Both have picked their selection
-            if (_localSelectionIndex != -1 && _otherSelectionIndex != -1)
+            if (this.participant1.selectionChoice != -1 && this.participant2.selectionChoice != -1)
             {
-                StartCoroutine(HandleResponse(_localSelection, _localSelectionIndex - 1, _otherSelection, _otherSelectionIndex - 1));
+                StartCoroutine(HandleResponse(this.participant1, this.participant2));
             }
         }
 
@@ -123,17 +91,17 @@ public class BattleHandler : MonoBehaviour
     /// <param name="otherSelection">The selection for the other keeper</param>
     /// <param name="otherSelectionIndex">the index for the selection for the other keeper</param>
     [ToDo("handle a death")]
-    public IEnumerator HandleResponse(GameState.Player.EnumBattleSelection localSelection, int localSelectionIndex, GameState.Player.EnumBattleSelection otherSelection, int otherSelectionIndex)
+    public IEnumerator HandleResponse(BattleParticipant local, BattleParticipant networkOrAI)
     {
         // Check to see if either selection was to flee
-        if (localSelection == GameState.Player.EnumBattleSelection.FLEE)
+        if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
             // Local keeper fled
             battleUIController.SetFlavorText("You Fled the battle");
             yield return  new WaitForSeconds(2.0f);
         }
 
-        if (otherSelection == GameState.Player.EnumBattleSelection.FLEE)
+        if (networkOrAI.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
             // other keeper fled
             battleUIController.SetFlavorText("Your opponent Fled the battle");
@@ -141,34 +109,33 @@ public class BattleHandler : MonoBehaviour
         }
 
         // Check to see if either selection was to switch
-        if (localSelection == GameState.Player.EnumBattleSelection.SWAP)
+        if (local.selection == GameState.Player.EnumBattleSelection.SWAP)
         {
             // local keeper swapped a creiten
-            battleUIController.SetFlavorText("You swapped in " + LocalKeeper.monsters[localSelectionIndex].GetMonsterName);
+            battleUIController.SetFlavorText("You swapped in " + local.currentCretin.GetMonsterName);
             yield return  new WaitForSeconds(2.0f);
         }
 
-        if (otherSelection == GameState.Player.EnumBattleSelection.SWAP)
+        if (networkOrAI.selection == GameState.Player.EnumBattleSelection.SWAP)
         {
             // other keeper swapped a creiten
-            battleUIController.SetFlavorText("Your opponent swapped in " + OtherKeeper.monsters[otherSelectionIndex].GetMonsterName);
+            battleUIController.SetFlavorText("Your opponent swapped in " + networkOrAI.currentCretin.GetMonsterName);
             yield return new WaitForSeconds(2.0f);
         }
 
         // Calculate who attacks first
-        bool localCreitenIsFaster = LocalKeeper.monsters[LocalCretinIndex].GetSpeed >
-                                    OtherKeeper.monsters[OtherCretinIndex].GetSpeed;
+        bool localCreitenIsFaster = local.currentCretin.GetSpeed > networkOrAI.currentCretin.GetSpeed;
 
         // check to see if either selection was to attack, ordered based on certin speed
         if (localCreitenIsFaster)
         {
             // Check "local" first
-            if (localSelection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (local.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(true, localSelectionIndex);
+                ApplyAttack(true, local.selectionChoice);
 
-                battleUIController.SetFlavorText(string.Format("{0} Used {1}", LocalKeeper.monsters[LocalCretinIndex].GetMonsterName, LocalKeeper.monsters[LocalCretinIndex]
-                    .GetAvailableAttacks[localSelectionIndex].attackName));
+                battleUIController.SetFlavorText(string.Format("{0} Used {1}", local.currentCretin.GetMonsterName,
+                    local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
                 // check to see if any of the current cretins are dead
@@ -176,37 +143,37 @@ public class BattleHandler : MonoBehaviour
 
             }
             // then check other (network or AI)
-            if (otherSelection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(false, otherSelectionIndex);
+                ApplyAttack(false, networkOrAI.selectionChoice);
 
-                battleUIController.SetFlavorText(string.Format("{0} Used {1}", OtherKeeper.monsters[OtherCretinIndex].GetMonsterName, OtherKeeper.monsters[OtherCretinIndex]
-                    .GetAvailableAttacks[otherSelectionIndex].attackName));
+                battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
+                    networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
             }
         }
         else
         {
-            if (otherSelection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(false, otherSelectionIndex);
+                ApplyAttack(false, networkOrAI.selectionChoice);
 
-                battleUIController.SetFlavorText(string.Format("{0} Used {1}", OtherKeeper.monsters[OtherCretinIndex].GetMonsterName, OtherKeeper.monsters[OtherCretinIndex]
-                    .GetAvailableAttacks[otherSelectionIndex].attackName));
+                battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
+                    networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
             }
 
-            if (localSelection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (local.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(true, localSelectionIndex);
+                ApplyAttack(true, local.selectionChoice);
 
-                battleUIController.SetFlavorText(string.Format("{0} Used {1}", LocalKeeper.monsters[LocalCretinIndex].GetMonsterName, LocalKeeper.monsters[LocalCretinIndex]
-                    .GetAvailableAttacks[localSelectionIndex].attackName));
+                battleUIController.SetFlavorText(string.Format("{0} Used {1}", local.currentCretin.GetMonsterName,
+                    local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
             }
         }
-
-        _localSelectionIndex = _otherSelectionIndex = -1;
+        
+        local.selectionChoice = networkOrAI.selectionChoice = -1;
 
         battleUIController.menuState = MenuState.MAIN_MENU;
 
@@ -221,8 +188,8 @@ public class BattleHandler : MonoBehaviour
     /// <param name="attackIndex">the attack index to be used</param>
     private void ApplyAttack(bool isLocalCretin, int attackIndex)
     {
-        MonsterDataObject localKeeperMonster = LocalKeeper.monsters[LocalCretinIndex];
-        MonsterDataObject otherKeeperMonster = OtherKeeper.monsters[OtherCretinIndex];
+        MonsterDataObject localKeeperMonster = this.participant1.currentCretin;
+        MonsterDataObject otherKeeperMonster = this.participant2.currentCretin;
 
         // get the attack
         AttackObject attack = isLocalCretin

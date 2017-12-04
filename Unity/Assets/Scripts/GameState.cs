@@ -14,9 +14,19 @@ using UnityEditor;
 
 using ID = System.UInt32;
 
+/// \addtogroup client
+/// @{
+
+/// <summary>
+/// Holds all persistent data from network intergration for local usage
+/// </summary>
+/// \author Dustin Yost
 public class GameState : ScriptableObject, ISerializing
 {
 
+    /// <summary>
+    /// Creates a <see cref="ScriptableObject"/> for GameState from a Unity Menu context
+    /// </summary>
     [MenuItem("Assets/Create/Asset/Game State")]
     public static void Create()
     {
@@ -39,10 +49,16 @@ public class GameState : ScriptableObject, ISerializing
         AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<GameState>(), path);
     }
 
+    /// <summary>
+    /// A state class for all Player objects
+    /// </summary>
     [System.Serializable]
-    public struct Player : ISerializing
+    public class Player : ISerializing
     {
 
+        /// <summary>
+        /// The serialized size of the Player object
+        /// </summary>
         public static int SIZE =
             sizeof(ID) // clientID
             + sizeof(ID) // playerID
@@ -57,8 +73,15 @@ public class GameState : ScriptableObject, ISerializing
             + sizeof(uint) // rank
             ;
 
+        /// <summary>
+        /// The maximum length of <see cref="GameState.Player.name"/>
+        /// </summary>
         public static int SIZE_MAX_NAME = 10;
-        
+
+        /// <summary>
+        /// A unique identifier of the client which controls this player.
+        /// Unqiue across all peers in the network. 
+        /// </summary>
         public ID clientID;
 
         /// <summary>
@@ -73,36 +96,62 @@ public class GameState : ScriptableObject, ISerializing
 
         // Indentification
 
+        /// <summary>
+        /// A unique identifier of the player object.
+        /// Unique across all peers in the network.
+        /// </summary>
         [Tooltip("The unique identifier for this specific player")]
         public ID playerID;
 
+        /// <summary>
+        /// A unique identifier of the player object in a local context.
+        /// Unique across all players with the same <see cref="clientID"/>.
+        /// </summary>
         [Tooltip("The unique identifier for this player on the local machine")]
         public ID localID;
 
+        /// <summary>
+        /// The name identifier of the player. Not unique. Enforced max of <see cref="SIZE_MAX_NAME"/>.
+        /// </summary>
         [Tooltip("The name of this player with 10 characters max")]
         public string name;
 
+        /// <summary>
+        /// The color-overlay.
+        /// </summary>
         [Tooltip("The color of the character for the player")]
         public Color color;
 
         // Physics
 
+        /// <summary>
+        /// The position of the player in the open-world.
+        /// </summary>
         [Tooltip("The current position of the player")]
         public Vector3 position;
 
+        /// <summary>
+        /// The velocity of the player in the open-world.
+        /// </summary>
         [Tooltip("The velocity of the player")]
         public Vector3 velocity;
 
+        /// <summary>
+        /// The accelleration of the player in the open-world.
+        /// </summary>
         [Tooltip("The acceleration of the player")]
         public Vector3 accelleration;
 
         // Battle
 
+        /// <summary>
+        /// If the player is presently in a battle with a player or AI.
+        /// </summary>
         [Tooltip("If the player is in battle")]
         public bool inBattle;
 
         /// <summary>
-        /// The player <see cref="ID"/> of the opponent.
+        /// The player <see cref="ID"/> of the opponent. Could be irrelevant if player is in local battle with AI.
         /// </summary>
         public ID playerIDOpponent;
 
@@ -125,24 +174,39 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public int battleChoice;
 
+        // Scoreboard
+
         /// <summary>
-        /// A list of all the cretins the player has
-        /// NOT SERIALIZED
+        /// The total number of wins since entering the server.
         /// </summary>
-        public List<MonsterDataObject> monsters;
-
-        // scoreboard data
-
         [Tooltip("Total number of wins since entering the server")]
         public uint wins;
 
+        /// <summary>
+        /// The rank of the player in the scoreboard.
+        /// The higher <see cref="wins"/> is compared to other players, the 
+        /// </summary>
         [Tooltip("Scoreboard rank of the player")]
         public uint rank;
 
+        // Not-Serialized
+
         // Game Objects
+
+        /// <summary>
+        /// The reference to the GameObject in the local unity instance
+        /// </summary>
         public PlayerReference objectReference;
 
+        /// <summary>
+        /// Reference to the render output for this <see cref="objectReference"/>
+        /// </summary>
         public RenderTexture cameraTexture;
+
+        /// <summary>
+        /// A list of all the cretins the player has.
+        /// </summary>
+        public List<MonsterDataObject> monsters;
 
         // ~~~~~ ISerializing
 
@@ -156,48 +220,8 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         /// <param name="data">The data.</param>
         /// <param name="lastIndex">The last index.</param>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
         public void Serialize(ref byte[] data, ref int lastIndex)
         {
-
-            // write isLocal
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
-            // write player id
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.playerID));
-            // write player id
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.localID));
-            // write name
-            char[] characters = this.name != null ? this.name.ToCharArray() : new char[0];
-            int nameLength = Mathf.Min(characters.Length, SIZE_MAX_NAME);
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(nameLength));
-            for (int i = 0; i < nameLength; i++)
-            {
-                EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(characters[i]));
-            }
-            // write color
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.r));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.g));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.color.b));
-            // write position
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.x));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.y));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.position.z));
-            // write velocity
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.x));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.y));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.velocity.z));
-            // write acceleration
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.x));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.y));
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.accelleration.z));
-            // write inBattle
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.inBattle));
-            // write wins
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.wins));
-            // write rank
-            EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.rank));
         }
 
         /// <summary>
@@ -205,9 +229,6 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         /// <param name="data">The data.</param>
         /// <param name="lastIndex">The last index.</param>
-        /// <remarks>
-        /// Author: Dustin Yost
-        /// </remarks>
         public void Deserialize(byte[] data, ref int lastIndex)
         {
 
@@ -258,6 +279,11 @@ public class GameState : ScriptableObject, ISerializing
 
         // ~~~~~ Data copy
 
+        /// <summary>
+        /// Copy data from a deserialized player state into this player state
+        /// </summary>
+        /// <param name="info">The newly deserialized player state.</param>
+        /// <param name="deltaTime">The time to integrate physics over.</param>
         public void copyFromGameState(Player info, float deltaTime)
         {
             this.clientID = info.clientID;
@@ -279,6 +305,10 @@ public class GameState : ScriptableObject, ISerializing
             }
         }
 
+        /// <summary>
+        /// Integrate physics in this object (accelleration->velocity, velocity->position).
+        /// </summary>
+        /// <param name="deltaTime">The time to integrate over.</param>
         public void integratePhysics(float deltaTime)
         {
             this.velocity += this.accelleration * deltaTime;
@@ -287,13 +317,22 @@ public class GameState : ScriptableObject, ISerializing
 
     }
 
+    /// <summary>
+    /// Not Serialized.
+    /// Used to store the requests for players on world-enter
+    /// </summary>
     public ConnectMenu.PlayerDescriptor[] playerRequest = null;
 
     [HideInInspector]
     public bool editorFoldoutPlayers;
     public Dictionary<ID, bool> editorFoldouts;
 
-    public bool isLocalGame; // TODO: Serialize
+    [ToDo("Serialize")]
+    public bool isLocalGame;
+    
+    /// <summary>
+    /// A unique identifier (across all peers in the network) of the client which controls this player
+    /// </summary>
     public uint clientID;
 
     public float deltaTime;
@@ -339,6 +378,11 @@ public class GameState : ScriptableObject, ISerializing
         return false;
     }
 
+    /// <summary>
+    /// Add a player to the current game object scene via its info
+    /// </summary>
+    /// <param name="info"></param>
+    [ToDo("FindGameObjectWithTag('AllPlayers') should be cached")]
     public void AddPlayer(Player info)
     {
         // Create the player reference object
@@ -456,36 +500,14 @@ public class GameState : ScriptableObject, ISerializing
     }
 
     /// <summary>
-    /// Serializes data from this event into a byte array
+    /// Serializes data from this event into a byte array.
+    /// Unused for GameState. GameStates are ONLY serialized via server.
     /// </summary>
     /// <param name="data">The data.</param>
     /// <param name="lastIndex">The last index.</param>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
+    /// \author Dustin Yost
     public void Serialize(ref byte[] data, ref int lastIndex)
     {
-        /*
-        // Serialize the clientID
-        EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.clientID));
-
-        // Serialize player count
-        EventNetwork.WriteTo(ref data, ref lastIndex, System.BitConverter.GetBytes(this.players.Count));
-
-        // Serialize the player data
-        foreach (ID playerID in this.players.Keys)
-        {
-            // Get the player
-            ISerializing player = this.players[playerID];
-            // Create the byte array to hold the player
-            byte[] dataPlayer = new byte[player.GetSize()];
-            int dataPlayerIndex = 0;
-            // Serialize the player
-            player.Serialize(ref dataPlayer, ref dataPlayerIndex);
-            // Write player data to main data
-            EventNetwork.WriteTo(ref data, ref lastIndex, dataPlayer);
-        }
-        //*/
     }
 
     /// <summary>
@@ -493,9 +515,7 @@ public class GameState : ScriptableObject, ISerializing
     /// </summary>
     /// <param name="data">The data.</param>
     /// <param name="lastIndex">The last index.</param>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
+    /// \author Dustin Yost
     public void Deserialize(byte[] data, ref int lastIndex)
     {
 
@@ -580,3 +600,5 @@ public class GameState : ScriptableObject, ISerializing
     }
 
 }
+
+/// @}
