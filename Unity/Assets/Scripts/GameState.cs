@@ -208,6 +208,11 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public List<MonsterDataObject> monsters;
 
+        public Player()
+        {
+            this.monsters = new List<MonsterDataObject>();
+        }
+
         // ~~~~~ ISerializing
 
         public int GetSize()
@@ -335,6 +340,8 @@ public class GameState : ScriptableObject, ISerializing
     /// </summary>
     public uint clientID;
 
+    public MonsterDataObject[] starters;
+
     public float deltaTime;
     public Dictionary<ID, Player> players;
 
@@ -423,6 +430,8 @@ public class GameState : ScriptableObject, ISerializing
         info.objectReference.setInfo(info);
 
         info.objectReference.gameObject.name = info.name;
+
+        info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
 
         // Add player to total list
         this.players.Add(info.playerID, info);

@@ -8,9 +8,17 @@ public class EventBattleResultResponse : EventNetwork
     [BitSerialize]
     public uint playerID;
 
-    public EventBattleResultResponse() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT_RESPONSE)
+    public EventBattleResultResponse(byte id) : base(id)
     {
+    }
 
+    public EventBattleResultResponse() : this((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT_RESPONSE)
+    {
+    }
+
+    public EventBattleResultResponse(uint playerID) : this()
+    {
+        this.playerID = playerID;
     }
 
 }

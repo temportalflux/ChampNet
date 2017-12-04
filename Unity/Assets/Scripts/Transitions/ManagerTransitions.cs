@@ -22,7 +22,7 @@ public class ManagerTransitions : MonoBehaviour
             return _instance;
         }
     }
-    
+
     // Mutex for handling if there is a transition in use
     private bool inUse;
 
@@ -87,7 +87,17 @@ public class ManagerTransitions : MonoBehaviour
     /**
      * Trigger a loading of some scene asynchronously with some transition
      */
-    public bool triggerLoadAsync(string nextScene, Transition transition, OnTransitionFinish onFinish = null)
+    public bool triggerLoadAsync(string nextScene, Transition transition, LoadSceneMode loadMode, OnTransitionFinish onFinish = null)
+    {
+        return this.triggerAsync(transition, this.loadScene(nextScene, false, loadMode), onFinish);
+    }
+
+    public bool triggerUnLoadAsync(string nextScene, Transition transition, LoadSceneMode loadMode, OnTransitionFinish onFinish = null)
+    {
+        return this.triggerAsync(transition, this.loadScene(nextScene, true, loadMode), onFinish);
+    }
+
+    private bool triggerAsync(Transition transition, IEnumerator routine, OnTransitionFinish onFinish = null)
     {
         // Check to see if a transition is already occuring
         if (!this.inUse)
@@ -103,7 +113,7 @@ public class ManagerTransitions : MonoBehaviour
             this.routDisplay = StartCoroutine(this.displayTransition(transition));
 
             // Begin the level loading
-            this.routLoad = StartCoroutine(this.loadScene(nextScene));
+            this.routLoad = StartCoroutine(routine);
 
             // Add check for merging routines
             StartCoroutine(this.checkDisplayLoad());
@@ -138,15 +148,19 @@ public class ManagerTransitions : MonoBehaviour
         this.routDisplay = null;
     }
 
-    private IEnumerator loadScene(string nextScene)
+    private IEnumerator loadScene(string nextScene, bool unload = false, LoadSceneMode loadMode = LoadSceneMode.Single)
     {
         // Tell debugger the scene is loading
         //Debug.Log("Loading next scene");
 
-        if (nextScene != null)
+        if (!unload)
         {
             // Start the scene loading
-            this.sceneLoading = SceneManager.LoadSceneAsync(nextScene);
+            this.sceneLoading = SceneManager.LoadSceneAsync(nextScene, loadMode);
+        }
+        else
+        {
+            this.sceneLoading = SceneManager.UnloadSceneAsync(nextScene);
         }
 
         // Prevent scene loading from finishing
@@ -160,7 +174,7 @@ public class ManagerTransitions : MonoBehaviour
 
         //Debug.Log((this.sceneLoading.progress * 100) + "% done");
 
-        if (nextScene != null)
+        if (!unload)
         {
             //Debug.Log(nextScene + " is loaded.");
         }

@@ -37,9 +37,13 @@ public class GameManager : Singleton<GameManager>
     public GameActionMessage onNetworkRejected;
 
     /// <summary>
-    /// The object to handle transitioning between scenes
+    /// The object to handle transitioning to open-world
     /// </summary>
-    public SceneTransition transition;
+    public SceneTransition transitionWorld;
+    /// <summary>
+    /// The object to handle transitioning to battles
+    /// </summary>
+    public SceneTransition transitionBattle;
 
     public GameObject playerPrefab, playerNetworkPrefab;
     
@@ -68,6 +72,17 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private ScoreBoard scoreBoardVar;
 
+    /// <summary>
+    /// The battle handler of the current scene.
+    /// </summary>
+    private BattleHandler battleHandler;
+
+    /// <summary>
+    /// If the game is loading a battle scene or occuping a battle scene.
+    /// True while a battle scene is loading, active, and unloading.
+    /// </summary>
+    private bool isLoadingOrInBattle;
+
     void Awake()
     {
         this.inGame = false;
@@ -77,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         this.netty = NetInterface.INSTANCE;
+        this.isLoadingOrInBattle = false;
     }
 
     /// <summary>
@@ -84,7 +100,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void Play()
     {
-        this.transition.load(
+        this.transitionWorld.load(
             () => {
                 this.inGame = true;
                 this.state.isLocalGame = true;
@@ -99,7 +115,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void PlayNetwork()
     {
-        this.transition.load(
+        this.transitionWorld.load(
             () => {
                 this.inGame = true;
                 this.state.isLocalGame = false;
@@ -125,7 +141,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void Exit()
     {
-        this.transition.exit();
+        this.transitionWorld.exit();
     }
 
     /// <summary>
@@ -184,28 +200,33 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
     {
-        AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("BatleSceneV2", LoadSceneMode.Additive);
-        StartCoroutine(SetUpBattleOnLoadComplete(loadSceneAsync, p1, p2, isNetwokedBattle));
+        if (!this.isLoadingOrInBattle)
+        {
+            this.isLoadingOrInBattle = true;
+            this.transitionBattle.load(() =>
+            {
+                GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+
+                this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+                this.battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
+            });
+        }
     }
-
-    private IEnumerator SetUpBattleOnLoadComplete(AsyncOperation loadSceneAsync, BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
-    {
-        // Wait until the scene has been loaded
-        while (!loadSceneAsync.isDone)
-            yield return null;
-
-        GameObject.FindGameObjectWithTag("HUD").SetActive(false);
-
-        BattleHandler battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
-        battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
-    }
-
+    
     public void UnloadBattleScene()
     {
-        AsyncOperation unloadSceneAsync = SceneManager.UnloadSceneAsync("BatleSceneV2");
-
-        GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+        if (this.isLoadingOrInBattle)
+        {
+            this.battleHandler.onPreExit();
+            this.transitionBattle.exit(() =>
+            {
+                GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+                this.battleHandler = null;
+                this.isLoadingOrInBattle = false;
+            });
+        }
     }
+
 }
 
 /// @} doxygen

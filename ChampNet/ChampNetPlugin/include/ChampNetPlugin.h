@@ -62,6 +62,8 @@ extern "C"
 			ID_BATTLE_RESULT, // PacketUserIDTriple
 			// AB->S: Tell server the client has acknowledged the battle result and is return to normal space
 			ID_BATTLE_RESULT_RESPONSE, // PacketUserID
+			// C->S: Tell server the client has engaged in a local battle with AI
+			ID_BATTLE_LOCAL_START, // PacketUserID
 
 			// Server-Sent Messages
 			// 2) Sent to clients to notify them of the values for some spawning user
