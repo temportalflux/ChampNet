@@ -27,6 +27,11 @@ public class BitSerializeAttribute : Attribute
 {
 
     /// <summary>
+    /// The numerical order in which attributes are sorted - lowest is first.
+    /// </summary>
+    public uint order;
+
+    /// <summary>
     /// A dictionary of primitive types to their primitive sizes
     /// </summary>
     private static Dictionary<Type, Int32> primitiveSizes = new Dictionary<Type, int>()
@@ -44,6 +49,11 @@ public class BitSerializeAttribute : Attribute
         {typeof(Double), sizeof(Double)}, // double
         {typeof(Color), sizeof(Single)*3}, // color
     };
+
+    public BitSerializeAttribute(uint order = 0)
+    {
+        this.order = order;
+    }
 
     /// <summary>
     /// Serialize a monobehavior to a byte array, using BitSerialize and ISerializing
@@ -96,8 +106,7 @@ public class BitSerializeAttribute : Attribute
     /// <returns></returns>
     private static List<KeyValuePair<FieldInfo, int>> GetAttributeFields<T>(T mono, out uint totalBitSize)
     {
-        List<KeyValuePair<FieldInfo, int>> attributes = new List<KeyValuePair<FieldInfo, int>>();
-        totalBitSize = 0;
+        List<KeyValuePair<BitSerializeAttribute, int>> attributes = new List<KeyValuePair<BitSerializeAttribute, int>>();
 
         // Get the type of the object
         Type monoType = mono.GetType();
@@ -105,10 +114,7 @@ public class BitSerializeAttribute : Attribute
         // Retreive the fields from the mono instance, sorted by declaration order
         FieldInfo[] objectFields = monoType.GetFields(
             BindingFlags.Instance | BindingFlags.Public // | BindingFlags.NonPublic
-        );//.OrderBy(f => f.MetadataToken).ToArray();
-        List<FieldInfo> objectFieldList = new List<FieldInfo>(objectFields);
-        objectFieldList.Sort(new Comparison<FieldInfo>((a, b) => { return b.MetadataToken - a.MetadataToken; }));
-        objectFields = objectFieldList.ToArray();
+        );
 
         // search all fields and find the attribute [BitSerialize]
         for (int i = 0; i < objectFields.Length; i++)
@@ -118,28 +124,38 @@ public class BitSerializeAttribute : Attribute
             // if we detect any attribute
             if (attribute != null)
             {
-                object fieldObj = objectFields[i].GetValue(mono);
-
-                // confirm fields are in the correct order
-                Debug.Log(objectFields[i].Name);
-
-                // Get the sizeof the object
-                int size = BitSerializeAttribute.GetSizeOf(fieldObj);
-                // A valid size was found
-                if (size >= 0)
-                {
-                    totalBitSize += (uint)size;
-                    attributes.Add(new KeyValuePair<FieldInfo, int>(objectFields[i], size));
-                }
-                // the size returned was < 0, so it was an invalid attribute
-                else
-                {
-                    Debug.Log("Could not serialize field " + monoType.Name + "#" + objectFields[i].Name + " even though it is marked as bitserialize");
-                }
+                attributes.Add(new KeyValuePair<BitSerializeAttribute, int>(attribute, i));
             }
         }
 
-        return attributes;
+        attributes.Sort(new Comparison<KeyValuePair<BitSerializeAttribute, int>>((a, b) => { return (int)a.Key.order - (int)b.Key.order; }));
+
+        List<KeyValuePair<FieldInfo, int>> fieldsAndSizes = new List<KeyValuePair<FieldInfo, int>>();
+        totalBitSize = 0;
+
+        foreach (KeyValuePair<BitSerializeAttribute, int> attributeEntry in attributes)
+        {
+            object fieldObj = objectFields[attributeEntry.Value].GetValue(mono);
+
+            // confirm fields are in the correct order
+            //Debug.Log(objectFields[i].Name);
+
+            // Get the sizeof the object
+            int size = BitSerializeAttribute.GetSizeOf(fieldObj);
+            // A valid size was found
+            if (size >= 0)
+            {
+                totalBitSize += (uint)size;
+                fieldsAndSizes.Add(new KeyValuePair<FieldInfo, int>(objectFields[attributeEntry.Value], size));
+            }
+            // the size returned was < 0, so it was an invalid attribute
+            else
+            {
+                Debug.Log("Could not serialize field " + monoType.Name + "#" + objectFields[attributeEntry.Value].Name + " even though it is marked as bitserialize");
+            }
+        }
+
+        return fieldsAndSizes;
     }
 
     /// <summary>

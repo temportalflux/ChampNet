@@ -8,6 +8,8 @@ public class SceneTransition : MonoBehaviour {
     
     public string nextScene;
 
+    public LoadSceneMode loadMode;
+
     private Transition transition;
 
     private void Start()
@@ -17,12 +19,12 @@ public class SceneTransition : MonoBehaviour {
 
     public void load(ManagerTransitions.OnTransitionFinish onFinish = null)
     {
-        ManagerTransitions.INSTANCE.triggerLoadAsync(this.nextScene, this.transition, onFinish);
+        ManagerTransitions.INSTANCE.triggerLoadAsync(this.nextScene, this.transition, this.loadMode, onFinish);
     }
     
     public void exit(ManagerTransitions.OnTransitionFinish onFinish = null)
     {
-        ManagerTransitions.INSTANCE.triggerLoadAsync(null, this.transition, onFinish);
+        ManagerTransitions.INSTANCE.triggerUnLoadAsync(this.nextScene, this.transition, this.loadMode, onFinish);
     }
 
 }

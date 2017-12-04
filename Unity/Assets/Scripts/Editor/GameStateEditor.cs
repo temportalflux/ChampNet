@@ -22,6 +22,8 @@ public class GameStateEditor : Editor
         );
         GUI.enabled = true;
 
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("starters"), true);
+
         gameState.editorFoldoutPlayers = EditorGUILayout.Foldout(gameState.editorFoldoutPlayers, "Players");
         if (gameState.editorFoldoutPlayers)
         {
@@ -53,6 +55,13 @@ public class GameStateEditor : Editor
                     EditorGUILayout.Vector3Field("Accelleration", player.accelleration);
 
                     EditorGUILayout.Toggle("In Battle", player.inBattle);
+
+                    EditorGUILayout.LabelField("Cretins #" + player.monsters.Count);
+                    foreach (MonsterDataObject mdo in player.monsters)
+                    {
+                        //EditorGUILayout.ObjectField("Cretin", mdo, typeof(MonsterDataObject), true);
+                        EditorGUILayout.LabelField("Cretin " + mdo.GetMonsterName);
+                    }
 
                     GUI.enabled = true;
                     EditorGUI.indentLevel--;

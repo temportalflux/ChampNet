@@ -9,10 +9,10 @@ using UnityEngine;
 public class EventRequestMovement : EventWithLocation
 {
     
-    [BitSerialize]
+    [BitSerialize(5)]
     public float velX;
 
-    [BitSerialize]
+    [BitSerialize(6)]
     public float velY;
 
     public EventRequestMovement() : base((byte)ChampNetPlugin.MessageIDs.ID_PLAYER_REQUEST_MOVEMENT)

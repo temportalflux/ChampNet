@@ -306,4 +306,14 @@ public class BattleHandler : MonoBehaviour
     {
         return typeMatchUp[(int) attackType][(int) monsterType];
     }
+
+    public void onPreExit()
+    {
+        if (!this.isNetworked)
+        {
+            this.participant1.onPreExit();
+            this.participant2.onPreExit();
+        }
+    }
+
 }

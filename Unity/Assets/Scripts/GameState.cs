@@ -208,6 +208,11 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public List<MonsterDataObject> monsters;
 
+        public Player()
+        {
+            this.monsters = new List<MonsterDataObject>();
+        }
+
         // ~~~~~ ISerializing
 
         public int GetSize()
@@ -297,12 +302,12 @@ public class GameState : ScriptableObject, ISerializing
             this.wins = info.wins;
             this.rank = info.rank;
 
-            this.integratePhysics(deltaTime);
-
             if (this.objectReference != null)
             {
-                this.objectReference.integrateInfo(info);
+                this.objectReference.integrateInfo(this);
             }
+
+            //this.integratePhysics(deltaTime);
         }
 
         /// <summary>
@@ -334,6 +339,8 @@ public class GameState : ScriptableObject, ISerializing
     /// A unique identifier (across all peers in the network) of the client which controls this player
     /// </summary>
     public uint clientID;
+
+    public MonsterDataObject[] starters;
 
     public float deltaTime;
     public Dictionary<ID, Player> players;
@@ -418,6 +425,8 @@ public class GameState : ScriptableObject, ISerializing
             playerObject.GetComponentInChildren<Camera>(true).targetTexture = info.cameraTexture;
             GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
         }
+
+        info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
 
         // Set the info for the player script
         info.objectReference.setInfo(info);

@@ -27,7 +27,18 @@ public class PlayerLocal : PlayerReference
         {
             this.requestBattle(player);
         }
-
+    }
+    
+    public void onChallengeBy(MonsterDataObject opponentAI)
+    {
+        List<MonsterDataObject> cretins = this.getInfo().monsters;
+        if (cretins.Count > 0)
+        {
+            NetInterface.INSTANCE.Dispatch(new EventBattleLocalStart(this.getID()));
+            BattleParticipant me = new BattleParticipant(this.getInfo(), 0);
+            BattleParticipant opponent = new BattleParticipant(opponentAI);
+            GameManager.INSTANCE.LoadBattleScene(me, opponent, false);
+        }
     }
 
     /// <summary>
@@ -51,6 +62,8 @@ public class PlayerLocal : PlayerReference
     public void requestMove()
     {
         GameState.Player info = this.getInfo();
+        
+        if (info.inBattle) return;
 
         Vector3 position, deltaMove;
         _pic.Move(this.moveTarget.position, out position, out deltaMove);
