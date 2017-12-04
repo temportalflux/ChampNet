@@ -55,8 +55,11 @@ public class BattleHandler : MonoBehaviour
     /// </summary>
     /// <param name="localKeeperSystem"></param>
     /// <param name="otherKeeperSystem"></param>
-    public void SetUpBattle(KeeperSystem localKeeperSystem, KeeperSystem otherKeeperSystem)
+    /// <param name="isNetworkedBattle"></param>
+    public void SetUpBattle(KeeperSystem localKeeperSystem, KeeperSystem otherKeeperSystem, bool isNetworkedBattle = false)
     {
+        isNetworked = isNetworkedBattle;
+
         LocalKeeper = localKeeperSystem;
         LocalCretinIndex = 0;
 

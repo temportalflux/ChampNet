@@ -44,4 +44,9 @@ public class EventBattleSelection : EventBattle
     {
     }
 
+    public override void Execute()
+    {
+        base.Execute();
+
+    }
 }
