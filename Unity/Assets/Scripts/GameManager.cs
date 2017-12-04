@@ -40,6 +40,8 @@ public class GameManager : Singleton<GameManager>
     /// The object to handle transitioning between scenes
     /// </summary>
     public SceneTransition transition;
+
+    public GameObject playerPrefab, playerNetworkPrefab;
     
     /// <summary>
     /// The game state
