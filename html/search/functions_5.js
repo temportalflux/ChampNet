@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handlepacket',['handlePacket',['../class_state_server.html#a8983232b9935b74fda71ed409b45c7fd',1,'StateServer']]],
-  ['handleresponse',['HandleResponse',['../class_battle_handler.html#a9899956562c6a887611411ea4682957a',1,'BattleHandler']]]
+  ['findnextclientid',['findNextClientID',['../class_state_server.html#afcde4aa297197e9f2840d24612501b5a',1,'StateServer']]],
+  ['findnextplayerid',['findNextPlayerID',['../class_state_server.html#a23120a56bdaa4d5e9d555b05e6ba1e8e',1,'StateServer']]]
 ];

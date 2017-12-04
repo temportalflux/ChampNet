@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['oninput',['onInput',['../class_state_server.html#a680525d2a1036dbbefaf21a7057fb39e',1,'StateServer']]],
-  ['onkeydown',['onKeyDown',['../class_state_application.html#a386fc53c7629d80d25dc86b2ad431406',1,'StateApplication::onKeyDown()'],['../class_state_server.html#a69b988594b45275a55bcb7ba5ceb7aeb',1,'StateServer::onKeyDown()']]]
+  ['loadsingleton',['loadSingleton',['../class_singleton_3_01_t_01_4.html#abd0672430ce6d6c8ae4c01905f4bd4b1',1,'Singleton&lt; T &gt;']]],
+  ['lock',['Lock',['../class_singleton_3_01_t_01_4.html#a93ff9802b7793e342ce7e64983a59a0d',1,'Singleton&lt; T &gt;']]]
 ];

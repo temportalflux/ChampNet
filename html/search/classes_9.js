@@ -13,7 +13,7 @@ var searchData=
   ['packetuseriddouble',['PacketUserIDDouble',['../struct_packet_user_i_d_double.html',1,'']]],
   ['packetuseridtriple',['PacketUserIDTriple',['../struct_packet_user_i_d_triple.html',1,'']]],
   ['performancetracker',['PerformanceTracker',['../class_performance_tracker.html',1,'']]],
-  ['player',['Player',['../struct_game_state_1_1_player.html',1,'GameState']]],
+  ['player',['Player',['../class_game_state_1_1_player.html',1,'GameState']]],
   ['playercharactercontroller',['PlayerCharacterController',['../class_player_character_controller.html',1,'']]],
   ['playerinputcontroller',['PlayerInputController',['../class_player_input_controller.html',1,'']]],
   ['playerlocal',['PlayerLocal',['../class_player_local.html',1,'']]],

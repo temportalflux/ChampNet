@@ -32,11 +32,17 @@ void \hyperlink{class_game_manager_a3c3a8e05664851d7642c13989af691cf}{Network\-C
 \begin{DoxyCompactList}\small\item\em Connect the client with some server \end{DoxyCompactList}\item 
 void \hyperlink{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}{Exit} ()
 \begin{DoxyCompactList}\small\item\em Exit the current scene \end{DoxyCompactList}\item 
-\hyperlink{class_player_reference}{Player\-Reference} \hyperlink{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}{get\-Random\-Player} (\hyperlink{struct_game_state_1_1_player}{Game\-State.\-Player} not\-Me)
+\hyperlink{class_player_reference}{Player\-Reference} \hyperlink{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}{get\-Random\-Player} (\hyperlink{class_game_state_1_1_player}{Game\-State.\-Player} not\-Me)
 \begin{DoxyCompactList}\small\item\em Get a random player from the current player listings in Game\-State.\-players \end{DoxyCompactList}\item 
 Audio\-Source \hyperlink{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{Get\-Music\-Source} ()
 \begin{DoxyCompactList}\small\item\em Gets the music source. \end{DoxyCompactList}\item 
 \hypertarget{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}{void {\bfseries grab\-Score\-Board} ()}\label{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}
+
+\item 
+\hypertarget{class_game_manager_a9d3b6a3fb49a9402e1afde9224a12e21}{void {\bfseries Load\-Battle\-Scene} (\hyperlink{class_battle_participant}{Battle\-Participant} p1, \hyperlink{class_battle_participant}{Battle\-Participant} p2, bool is\-Netwoked\-Battle)}\label{class_game_manager_a9d3b6a3fb49a9402e1afde9224a12e21}
+
+\item 
+\hypertarget{class_game_manager_a4b49768a7f34b0f3795741f997eca643}{void {\bfseries Unload\-Battle\-Scene} ()}\label{class_game_manager_a4b49768a7f34b0f3795741f997eca643}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
@@ -50,6 +56,9 @@ Audio\-Source \hyperlink{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{G
 \item 
 \hyperlink{class_scene_transition}{Scene\-Transition} \hyperlink{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{transition}
 \begin{DoxyCompactList}\small\item\em The object to handle transitioning between scenes \end{DoxyCompactList}\item 
+\hypertarget{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}{Game\-Object {\bfseries player\-Prefab}}\label{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}
+
+\item 
 \hyperlink{class_game_state}{Game\-State} \hyperlink{class_game_manager_a8d86b330237462e38933b28276ed0e2c}{state}
 \begin{DoxyCompactList}\small\item\em The game state \end{DoxyCompactList}\item 
 Main\-Camera \hyperlink{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}{main\-Camera}

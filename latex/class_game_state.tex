@@ -1,6 +1,11 @@
 \hypertarget{class_game_state}{\section{Game\-State Class Reference}
 \label{class_game_state}\index{Game\-State@{Game\-State}}
 }
+
+
+Holds all persistent data from network intergration for local usage  
+
+
 Inheritance diagram for Game\-State\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,24 +15,23 @@ Inheritance diagram for Game\-State\-:\begin{figure}[H]
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct_game_state_1_1_player}{Player}
-\end{DoxyCompactItemize}
+struct \hyperlink{class_game_state_1_1_player}{Player}
+\begin{DoxyCompactList}\small\item\em A state class for all \hyperlink{class_game_state_1_1_player}{Player} objects \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_state_a05acc40696378ba026165a2cc824acf0}{bool {\bfseries Has\-Player} (ref \hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a05acc40696378ba026165a2cc824acf0}
+\hypertarget{class_game_state_a05acc40696378ba026165a2cc824acf0}{bool {\bfseries Has\-Player} (ref \hyperlink{class_game_state_1_1_player}{Player} info)}\label{class_game_state_a05acc40696378ba026165a2cc824acf0}
 
 \item 
-\hypertarget{class_game_state_a4c4e32237639764263332c7c236974d1}{void {\bfseries Add\-Player} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a4c4e32237639764263332c7c236974d1}
+void \hyperlink{class_game_state_a4c4e32237639764263332c7c236974d1}{Add\-Player} (\hyperlink{class_game_state_1_1_player}{Player} info)
+\begin{DoxyCompactList}\small\item\em Add a player to the current game object scene via its info \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}{void {\bfseries Remove\-Player} (\hyperlink{class_game_state_1_1_player}{Player} info)}\label{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}
 
 \item 
-\hypertarget{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}{void {\bfseries Remove\-Player} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_ae8d21ce826daada0dabeadd11c6eb233}
+\hypertarget{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}{void {\bfseries Add\-Player\-Local} (\hyperlink{class_game_state_1_1_player}{Player} info)}\label{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}
 
 \item 
-\hypertarget{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}{void {\bfseries Add\-Player\-Local} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a1e3c3340e55693af1c8326879a81f1c4}
-
-\item 
-\hypertarget{class_game_state_a2e6cdef311e93ec46d07206d621f6837}{void {\bfseries Add\-Player\-Connected} (\hyperlink{struct_game_state_1_1_player}{Player} info)}\label{class_game_state_a2e6cdef311e93ec46d07206d621f6837}
+\hypertarget{class_game_state_a2e6cdef311e93ec46d07206d621f6837}{void {\bfseries Add\-Player\-Connected} (\hyperlink{class_game_state_1_1_player}{Player} info)}\label{class_game_state_a2e6cdef311e93ec46d07206d621f6837}
 
 \item 
 \hypertarget{class_game_state_a61e4817740bd283ce4a6ea44e0d0f00a}{void {\bfseries Spawn\-Local\-Multiplayer} ()}\label{class_game_state_a61e4817740bd283ce4a6ea44e0d0f00a}
@@ -42,7 +46,7 @@ struct \hyperlink{struct_game_state_1_1_player}{Player}
 int \hyperlink{class_game_state_a57d152b243c11aa86e7ba0f07b4bd0dd}{Get\-Size} ()
 \begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
 void \hyperlink{class_game_state_af57a06c77a763e8b57841bab79c9b12f}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
-\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array. Unused for \hyperlink{class_game_state}{Game\-State}. Game\-States are O\-N\-L\-Y serialized via server. \end{DoxyCompactList}\item 
 void \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
 \begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}{void {\bfseries Fixed\-Update} ()}\label{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}
@@ -51,27 +55,25 @@ void \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Deserialize}
 \hypertarget{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}{{\bfseries Game\-State} (int id)}\label{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}
 
 \item 
-\hypertarget{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}{void {\bfseries add\-Player} (unsigned int client\-I\-D, unsigned int player\-I\-D, unsigned int local\-I\-D, std\-::string name, float color\-R, float color\-G, float color\-B)}\label{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}
+\hypertarget{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}{void {\bfseries add\-Player} (unsigned int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, unsigned int player\-I\-D, unsigned int local\-I\-D, std\-::string name, float color\-R, float color\-G, float color\-B)}\label{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}
 
 \item 
 \hypertarget{class_game_state_a733fa68895adba783b0b4b804f16906f}{void {\bfseries remove\-Player} (unsigned int player\-I\-D)}\label{class_game_state_a733fa68895adba783b0b4b804f16906f}
 
 \item 
-\hypertarget{class_game_state_a291fcda337b1a25c21871fe338399c27}{char $\ast$ {\bfseries serialize\-For\-Client} (unsigned char packet\-I\-D, int client\-I\-D, int \&data\-Length)}\label{class_game_state_a291fcda337b1a25c21871fe338399c27}
+\hypertarget{class_game_state_a291fcda337b1a25c21871fe338399c27}{char $\ast$ {\bfseries serialize\-For\-Client} (unsigned char packet\-I\-D, int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, int \&data\-Length)}\label{class_game_state_a291fcda337b1a25c21871fe338399c27}
 
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_state_a2f3154927e33e16bd595b4aece996c61}{static void {\bfseries Create} ()}\label{class_game_state_a2f3154927e33e16bd595b4aece996c61}
-
-\end{DoxyCompactItemize}
+static void \hyperlink{class_game_state_a2f3154927e33e16bd595b4aece996c61}{Create} ()
+\begin{DoxyCompactList}\small\item\em Creates a Scriptable\-Object for \hyperlink{class_game_state}{Game\-State} from a Unity Menu context \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_state_a8b1949523ac8e40776c0617666023d64}{Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} {\bfseries player\-Request} = null}\label{class_game_state_a8b1949523ac8e40776c0617666023d64}
-
-\item 
+Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} \hyperlink{class_game_state_a8b1949523ac8e40776c0617666023d64}{player\-Request} = null
+\begin{DoxyCompactList}\small\item\em Not Serialized. Used to store the requests for players on world-\/enter \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_ad68ed3f1f32060bfff68d296e6750712}{bool {\bfseries editor\-Foldout\-Players}}\label{class_game_state_ad68ed3f1f32060bfff68d296e6750712}
 
 \item 
@@ -81,33 +83,67 @@ void \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Deserialize}
 \hypertarget{class_game_state_aa4cba70bc38a13e80439dc784c6ca12e}{bool {\bfseries is\-Local\-Game}}\label{class_game_state_aa4cba70bc38a13e80439dc784c6ca12e}
 
 \item 
-\hypertarget{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{uint {\bfseries client\-I\-D}}\label{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}
-
-\item 
+uint \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}
+\begin{DoxyCompactList}\small\item\em A unique identifier (across all peers in the network) of the client which controls this player \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_a857eed8c97274c3dd9d3eb558a33f855}{float {\bfseries delta\-Time}}\label{class_game_state_a857eed8c97274c3dd9d3eb558a33f855}
 
 \item 
-\hypertarget{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}{Dictionary$<$ I\-D, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}
+\hypertarget{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}{Dictionary$<$ I\-D, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}
 
 \item 
 \hypertarget{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}{int {\bfseries client\-I\-D}}\label{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}
 
 \item 
-\hypertarget{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}{std\-::map$<$ unsigned int, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}
+\hypertarget{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}{std\-::map$<$ unsigned int, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}
 
 \end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}{Dictionary$<$ uint, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries local\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}
+\hypertarget{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}{Dictionary$<$ uint, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries local\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_a3fe38a9e11fe72dd4bc4796e1d4a6c1b}
 
 \item 
-\hypertarget{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}{Dictionary$<$ uint, \hyperlink{struct_game_state_1_1_player}{Player} $>$ {\bfseries connected\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}
+\hypertarget{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}{Dictionary$<$ uint, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries connected\-Players}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_ad0f225ac26f38bf21be10d35a1cd6011}
 
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Holds all persistent data from network intergration for local usage 
+
+\begin{DoxyAuthor}{Author}
+Dustin Yost 
+\end{DoxyAuthor}
+
+
 \subsection{Member Function Documentation}
+\hypertarget{class_game_state_a4c4e32237639764263332c7c236974d1}{\index{Game\-State@{Game\-State}!Add\-Player@{Add\-Player}}
+\index{Add\-Player@{Add\-Player}!GameState@{Game\-State}}
+\subsubsection[{Add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Add\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_a4c4e32237639764263332c7c236974d1}
+
+
+Add a player to the current game object scene via its info 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_game_state_a2f3154927e33e16bd595b4aece996c61}{\index{Game\-State@{Game\-State}!Create@{Create}}
+\index{Create@{Create}!GameState@{Game\-State}}
+\subsubsection[{Create}]{\setlength{\rightskip}{0pt plus 5cm}static void Game\-State.\-Create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_game_state_a2f3154927e33e16bd595b4aece996c61}
+
+
+Creates a Scriptable\-Object for \hyperlink{class_game_state}{Game\-State} from a Unity Menu context 
+
 \hypertarget{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{\index{Game\-State@{Game\-State}!Deserialize@{Deserialize}}
 \index{Deserialize@{Deserialize}!GameState@{Game\-State}}
 \subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Deserialize (
@@ -127,9 +163,10 @@ Deserializes data from a byte array into this event's data
 {\em last\-Index} & The last index.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Dustin Yost 
+\end{DoxyAuthor}
 
-
-Author\-: Dustin Yost 
 
 Implements \hyperlink{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}{I\-Serializing}.
 
@@ -163,7 +200,7 @@ Implements \hyperlink{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_af57a06c77a763e8b57841bab79c9b12f}
 
 
-Serializes data from this event into a byte array 
+Serializes data from this event into a byte array. Unused for \hyperlink{class_game_state}{Game\-State}. Game\-States are O\-N\-L\-Y serialized via server. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -172,11 +209,29 @@ Serializes data from this event into a byte array
 {\em last\-Index} & The last index.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Dustin Yost 
+\end{DoxyAuthor}
 
-
-Author\-: Dustin Yost 
 
 Implements \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{I\-Serializing}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{\index{Game\-State@{Game\-State}!client\-I\-D@{client\-I\-D}}
+\index{client\-I\-D@{client\-I\-D}!GameState@{Game\-State}}
+\subsubsection[{client\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}uint Game\-State.\-client\-I\-D}}\label{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}
+
+
+A unique identifier (across all peers in the network) of the client which controls this player 
+
+\hypertarget{class_game_state_a8b1949523ac8e40776c0617666023d64}{\index{Game\-State@{Game\-State}!player\-Request@{player\-Request}}
+\index{player\-Request@{player\-Request}!GameState@{Game\-State}}
+\subsubsection[{player\-Request}]{\setlength{\rightskip}{0pt plus 5cm}Connect\-Menu.\-Player\-Descriptor \mbox{[}$\,$\mbox{]} Game\-State.\-player\-Request = null}}\label{class_game_state_a8b1949523ac8e40776c0617666023d64}
+
+
+Not Serialized. Used to store the requests for players on world-\/enter 
 
 
 

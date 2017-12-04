@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loadsingleton',['loadSingleton',['../class_singleton_3_01_t_01_4.html#abd0672430ce6d6c8ae4c01905f4bd4b1',1,'Singleton&lt; T &gt;']]],
-  ['lock',['Lock',['../class_singleton_3_01_t_01_4.html#a93ff9802b7793e342ce7e64983a59a0d',1,'Singleton&lt; T &gt;']]]
+  ['handlepacket',['handlePacket',['../class_state_server.html#a8983232b9935b74fda71ed409b45c7fd',1,'StateServer']]],
+  ['handleresponse',['HandleResponse',['../class_battle_handler.html#a25e3f172c7752e64dec1834f88055ad4',1,'BattleHandler']]]
 ];

@@ -130,7 +130,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a5d9cafdd495a4ed2760de13b7b9c80b6">Exit</a> ()</td></tr>
 <tr class="memdesc:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit the current scene  <a href="#a5d9cafdd495a4ed2760de13b7b9c80b6">More...</a><br/></td></tr>
 <tr class="separator:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadd5e389068b81b09036cc2bb8c097d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#aadd5e389068b81b09036cc2bb8c097d6">getRandomPlayer</a> (<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a> notMe)</td></tr>
+<tr class="memitem:aadd5e389068b81b09036cc2bb8c097d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#aadd5e389068b81b09036cc2bb8c097d6">getRandomPlayer</a> (<a class="el" href="class_game_state_1_1_player.html">GameState.Player</a> notMe)</td></tr>
 <tr class="memdesc:aadd5e389068b81b09036cc2bb8c097d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a random player from the current player listings in GameState.players  <a href="#aadd5e389068b81b09036cc2bb8c097d6">More...</a><br/></td></tr>
 <tr class="separator:aadd5e389068b81b09036cc2bb8c097d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf59d5ce551af5e35529f71a99d89d76"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#abf59d5ce551af5e35529f71a99d89d76">GetMusicSource</a> ()</td></tr>
@@ -139,6 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a414dcfd0d1f5a5904d2440165e42923d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a414dcfd0d1f5a5904d2440165e42923d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>grabScoreBoard</b> ()</td></tr>
 <tr class="separator:a414dcfd0d1f5a5904d2440165e42923d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d3b6a3fb49a9402e1afde9224a12e21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d3b6a3fb49a9402e1afde9224a12e21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadBattleScene</b> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> p1, <a class="el" href="class_battle_participant.html">BattleParticipant</a> p2, bool isNetwokedBattle)</td></tr>
+<tr class="separator:a9d3b6a3fb49a9402e1afde9224a12e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b49768a7f34b0f3795741f997eca643"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b49768a7f34b0f3795741f997eca643"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UnloadBattleScene</b> ()</td></tr>
+<tr class="separator:a4b49768a7f34b0f3795741f997eca643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_singleton_3_01_t_01_4"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_singleton_3_01_t_01_4')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_singleton_3_01_t_01_4.html">Singleton&lt; T &gt;</a></td></tr>
 <tr class="memitem:aaf243fc3c85154c237fb3086b67ef6ff inherit pub_methods_class_singleton_3_01_t_01_4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton_3_01_t_01_4.html#aaf243fc3c85154c237fb3086b67ef6ff">isInUse</a> ()</td></tr>
 <tr class="memdesc:aaf243fc3c85154c237fb3086b67ef6ff inherit pub_methods_class_singleton_3_01_t_01_4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Author: Dustin Yost Returns if this object is currently being used  <a href="#aaf243fc3c85154c237fb3086b67ef6ff">More...</a><br/></td></tr>
@@ -161,6 +167,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#abae15982d4eb90ef9e5f3d24d15e22f2">transition</a></td></tr>
 <tr class="memdesc:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The object to handle transitioning between scenes  <a href="#abae15982d4eb90ef9e5f3d24d15e22f2">More...</a><br/></td></tr>
 <tr class="separator:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d400c7a28f42865048fbdbaf236cfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57d400c7a28f42865048fbdbaf236cfb"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>playerPrefab</b></td></tr>
+<tr class="separator:a57d400c7a28f42865048fbdbaf236cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d86b330237462e38933b28276ed0e2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_state.html">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a8d86b330237462e38933b28276ed0e2c">state</a></td></tr>
 <tr class="memdesc:a8d86b330237462e38933b28276ed0e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game state  <a href="#a8d86b330237462e38933b28276ed0e2c">More...</a><br/></td></tr>
 <tr class="separator:a8d86b330237462e38933b28276ed0e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,7 +255,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="class_player_reference.html">PlayerReference</a> GameManager.getRandomPlayer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_game_state_1_1_player.html">GameState.Player</a>&#160;</td>
           <td class="paramname"><em>notMe</em></td><td>)</td>
           <td></td>
         </tr>

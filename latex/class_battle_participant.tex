@@ -1,0 +1,151 @@
+\hypertarget{class_battle_participant}{\section{Battle\-Participant Class Reference}
+\label{class_battle_participant}\index{Battle\-Participant@{Battle\-Participant}}
+}
+
+
+Class to hold information about a participant in a battle. Could be a local player, networked player, or cretin A\-I.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_battle_participant_aa08199f7a1456a22690a8a4b61da5089}{Battle\-Participant} (\hyperlink{class_game_state_1_1_player}{Game\-State.\-Player} player, int cretin)
+\begin{DoxyCompactList}\small\item\em Instantiate the participant as a player, networked or local. \end{DoxyCompactList}\item 
+\hyperlink{class_battle_participant_a636ea63e4b3f972767322e56aa5f3088}{Battle\-Participant} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object} cretin\-A\-I)
+\begin{DoxyCompactList}\small\item\em Instantiate the participant as a cretin A\-I. \end{DoxyCompactList}\item 
+void \hyperlink{class_battle_participant_a32c2449a4bf42f88a7abd2ac5639add2}{swap\-Cretin\-To} (int index)
+\begin{DoxyCompactList}\small\item\em Swaps the current cretin index for P\-L\-A\-Y\-E\-R participants. Performs fetch\-Current\-Cretin once the index is set. \end{DoxyCompactList}\item 
+bool \hyperlink{class_battle_participant_a772329be78feaa3c85a692c39dc54a47}{is\-Player} ()
+\begin{DoxyCompactList}\small\item\em Checks if the participant is a player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_state_1_1_player}{Game\-State.\-Player} \hyperlink{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{player\-Controller}
+\begin{DoxyCompactList}\small\item\em The Player info for the controlling player. Null if the controller is the opponent for a local player vs A\-I battle. \end{DoxyCompactList}\item 
+\hyperlink{class_monster_data_object}{Monster\-Data\-Object} \hyperlink{class_battle_participant_a595abdc8d0d62918b99b37ea9d948d00}{current\-Cretin}
+\begin{DoxyCompactList}\small\item\em The current cretin in battle. If \hyperlink{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{player\-Controller} is non-\/null, \hyperlink{class_battle_participant_a595abdc8d0d62918b99b37ea9d948d00}{current\-Cretin} = \end{DoxyCompactList}\item 
+int \hyperlink{class_battle_participant_a1ad2e6be9469ff3c433be70fc6245484}{current\-Cretin\-Index}
+\begin{DoxyCompactList}\small\item\em The current index of the cretin in the controller. -\/1 if the controller is the opponent for a local player vs A\-I battle. \end{DoxyCompactList}\item 
+\hyperlink{class_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Game\-State.\-Player.\-Enum\-Battle\-Selection} \hyperlink{class_battle_participant_abf036cb064ddcd97270c1b9ed8442f50}{selection}
+\begin{DoxyCompactList}\small\item\em The latest selection of the player/\-A\-I. \end{DoxyCompactList}\item 
+int \hyperlink{class_battle_participant_a30032b373a898bbb16f67e24bf245557}{selection\-Choice} = -\/1
+\begin{DoxyCompactList}\small\item\em The latest selection choice of the player/\-A\-I. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to hold information about a participant in a battle. Could be a local player, networked player, or cretin A\-I. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_battle_participant_aa08199f7a1456a22690a8a4b61da5089}{\index{Battle\-Participant@{Battle\-Participant}!Battle\-Participant@{Battle\-Participant}}
+\index{Battle\-Participant@{Battle\-Participant}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{Battle\-Participant}]{\setlength{\rightskip}{0pt plus 5cm}Battle\-Participant.\-Battle\-Participant (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-State.\-Player}}]{player, }
+\item[{int}]{cretin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_participant_aa08199f7a1456a22690a8a4b61da5089}
+
+
+Instantiate the participant as a player, networked or local. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player state.\\
+\hline
+{\em cretin} & The cretin index in {\ttfamily \hyperlink{class_game_state_1_1_player}{Game\-State.\-Player}.monsters}\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_battle_participant_a636ea63e4b3f972767322e56aa5f3088}{\index{Battle\-Participant@{Battle\-Participant}!Battle\-Participant@{Battle\-Participant}}
+\index{Battle\-Participant@{Battle\-Participant}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{Battle\-Participant}]{\setlength{\rightskip}{0pt plus 5cm}Battle\-Participant.\-Battle\-Participant (
+\begin{DoxyParamCaption}
+\item[{{\bf Monster\-Data\-Object}}]{cretin\-A\-I}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_participant_a636ea63e4b3f972767322e56aa5f3088}
+
+
+Instantiate the participant as a cretin A\-I. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cretin\-A\-I} & The monster stats for the battling cretin.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_battle_participant_a772329be78feaa3c85a692c39dc54a47}{\index{Battle\-Participant@{Battle\-Participant}!is\-Player@{is\-Player}}
+\index{is\-Player@{is\-Player}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{is\-Player}]{\setlength{\rightskip}{0pt plus 5cm}bool Battle\-Participant.\-is\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_participant_a772329be78feaa3c85a692c39dc54a47}
+
+
+Checks if the participant is a player. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily True}, if \hyperlink{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{player\-Controller} is non-\/null.
+\end{DoxyReturn}
+\hypertarget{class_battle_participant_a32c2449a4bf42f88a7abd2ac5639add2}{\index{Battle\-Participant@{Battle\-Participant}!swap\-Cretin\-To@{swap\-Cretin\-To}}
+\index{swap\-Cretin\-To@{swap\-Cretin\-To}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{swap\-Cretin\-To}]{\setlength{\rightskip}{0pt plus 5cm}void Battle\-Participant.\-swap\-Cretin\-To (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_participant_a32c2449a4bf42f88a7abd2ac5639add2}
+
+
+Swaps the current cretin index for P\-L\-A\-Y\-E\-R participants. Performs fetch\-Current\-Cretin once the index is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The new index for the cretin.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_battle_participant_a595abdc8d0d62918b99b37ea9d948d00}{\index{Battle\-Participant@{Battle\-Participant}!current\-Cretin@{current\-Cretin}}
+\index{current\-Cretin@{current\-Cretin}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{current\-Cretin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Monster\-Data\-Object} Battle\-Participant.\-current\-Cretin}}\label{class_battle_participant_a595abdc8d0d62918b99b37ea9d948d00}
+
+
+The current cretin in battle. If \hyperlink{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{player\-Controller} is non-\/null, \hyperlink{class_battle_participant_a595abdc8d0d62918b99b37ea9d948d00}{current\-Cretin} = 
+
+{\ttfamily \hyperlink{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{player\-Controller}.monsters\mbox{[}\hyperlink{class_battle_participant_a1ad2e6be9469ff3c433be70fc6245484}{current\-Cretin\-Index}\mbox{]}}. \hypertarget{class_battle_participant_a1ad2e6be9469ff3c433be70fc6245484}{\index{Battle\-Participant@{Battle\-Participant}!current\-Cretin\-Index@{current\-Cretin\-Index}}
+\index{current\-Cretin\-Index@{current\-Cretin\-Index}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{current\-Cretin\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Battle\-Participant.\-current\-Cretin\-Index}}\label{class_battle_participant_a1ad2e6be9469ff3c433be70fc6245484}
+
+
+The current index of the cretin in the controller. -\/1 if the controller is the opponent for a local player vs A\-I battle. 
+
+\hypertarget{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}{\index{Battle\-Participant@{Battle\-Participant}!player\-Controller@{player\-Controller}}
+\index{player\-Controller@{player\-Controller}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{player\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-State.\-Player} Battle\-Participant.\-player\-Controller}}\label{class_battle_participant_a2f1584b2283c99eaaaa8e5b66ced968f}
+
+
+The Player info for the controlling player. Null if the controller is the opponent for a local player vs A\-I battle. 
+
+\hypertarget{class_battle_participant_abf036cb064ddcd97270c1b9ed8442f50}{\index{Battle\-Participant@{Battle\-Participant}!selection@{selection}}
+\index{selection@{selection}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{selection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-State.\-Player.\-Enum\-Battle\-Selection} Battle\-Participant.\-selection}}\label{class_battle_participant_abf036cb064ddcd97270c1b9ed8442f50}
+
+
+The latest selection of the player/\-A\-I. 
+
+\hypertarget{class_battle_participant_a30032b373a898bbb16f67e24bf245557}{\index{Battle\-Participant@{Battle\-Participant}!selection\-Choice@{selection\-Choice}}
+\index{selection\-Choice@{selection\-Choice}!BattleParticipant@{Battle\-Participant}}
+\subsubsection[{selection\-Choice}]{\setlength{\rightskip}{0pt plus 5cm}int Battle\-Participant.\-selection\-Choice = -\/1}}\label{class_battle_participant_a30032b373a898bbb16f67e24bf245557}
+
+
+The latest selection choice of the player/\-A\-I. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Battles/Battle\-Participant.\-cs\end{DoxyCompactItemize}

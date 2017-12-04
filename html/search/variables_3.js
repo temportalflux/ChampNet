@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isnetworked',['isNetworked',['../class_battle_handler.html#a91faa80b5273370273762c40a364305d',1,'BattleHandler']]]
+  ['deltatime',['deltaTime',['../class_event_network.html#a1417c775954bdd96b119af2d4707db9e',1,'EventNetwork']]]
 ];

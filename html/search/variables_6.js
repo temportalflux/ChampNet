@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['state',['state',['../class_game_manager.html#a8d86b330237462e38933b28276ed0e2c',1,'GameManager']]]
+  ['localid',['localID',['../class_game_state_1_1_player.html#ae0383475b3348fb85ba5be64433443ff',1,'GameState::Player']]]
 ];

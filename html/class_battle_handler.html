@@ -88,7 +88,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#properties">Properties</a> &#124;
 <a href="class_battle_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BattleHandler Class Reference</div>  </div>
@@ -115,15 +114,15 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab27ebc9022c6d8e60c065432240484ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#ab27ebc9022c6d8e60c065432240484ff">SetUpBattle</a> (<a class="el" href="class_player_reference.html">PlayerReference</a> localKeeperSystem, <a class="el" href="class_player_reference.html">PlayerReference</a> otherKeeperSystem)</td></tr>
-<tr class="memdesc:ab27ebc9022c6d8e60c065432240484ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called To set up the battle scene. Must be called at the start  <a href="#ab27ebc9022c6d8e60c065432240484ff">More...</a><br/></td></tr>
-<tr class="separator:ab27ebc9022c6d8e60c065432240484ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67">SendBattleOption</a> (bool isLocalPlayer, <a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> selection, uint selectionIndex)</td></tr>
+<tr class="memitem:a380a371e96df1b362027a8f33c8ed7fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#a380a371e96df1b362027a8f33c8ed7fb">SetUpBattle</a> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> first, <a class="el" href="class_battle_participant.html">BattleParticipant</a> second, bool isNetworkedBattle)</td></tr>
+<tr class="memdesc:a380a371e96df1b362027a8f33c8ed7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called To set up the battle scene. Must be called at the start  <a href="#a380a371e96df1b362027a8f33c8ed7fb">More...</a><br/></td></tr>
+<tr class="separator:a380a371e96df1b362027a8f33c8ed7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67">SendBattleOption</a> (bool isLocalPlayer, <a class="el" href="class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> selection, uint selectionIndex)</td></tr>
 <tr class="memdesc:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to send a battle selection  <a href="#ad207e2adf6f1f3882e98b1c8a5f59f67">More...</a><br/></td></tr>
 <tr class="separator:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9899956562c6a887611411ea4682957a"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#a9899956562c6a887611411ea4682957a">HandleResponse</a> (<a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> localSelection, int localSelectionIndex, <a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> otherSelection, int otherSelectionIndex)</td></tr>
-<tr class="memdesc:a9899956562c6a887611411ea4682957a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when both parties have made selections  <a href="#a9899956562c6a887611411ea4682957a">More...</a><br/></td></tr>
-<tr class="separator:a9899956562c6a887611411ea4682957a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e3f172c7752e64dec1834f88055ad4"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#a25e3f172c7752e64dec1834f88055ad4">HandleResponse</a> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> local, <a class="el" href="class_battle_participant.html">BattleParticipant</a> networkOrAI)</td></tr>
+<tr class="memdesc:a25e3f172c7752e64dec1834f88055ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when both parties have made selections  <a href="#a25e3f172c7752e64dec1834f88055ad4">More...</a><br/></td></tr>
+<tr class="separator:a25e3f172c7752e64dec1834f88055ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -133,28 +132,19 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a91faa80b5273370273762c40a364305d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#a91faa80b5273370273762c40a364305d">isNetworked</a></td></tr>
 <tr class="memdesc:a91faa80b5273370273762c40a364305d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the current battle is between networked players  <a href="#a91faa80b5273370273762c40a364305d">More...</a><br/></td></tr>
 <tr class="separator:a91faa80b5273370273762c40a364305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95fc9651e0a7845913c3a2bf1330e2cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95fc9651e0a7845913c3a2bf1330e2cf"></a>
+<a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td><td class="memItemRight" valign="bottom"><b>participant1</b></td></tr>
+<tr class="separator:a95fc9651e0a7845913c3a2bf1330e2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a303ed561d4ed9408dfb02b03034ed2a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a303ed561d4ed9408dfb02b03034ed2a9"></a>
+<a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td><td class="memItemRight" valign="bottom"><b>participant2</b></td></tr>
+<tr class="separator:a303ed561d4ed9408dfb02b03034ed2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa33e18e5c8a07eea1a78986ada6a7b5"><td class="memItemLeft" align="right" valign="top">readonly float[][]&#160;</td><td class="memItemRight" valign="bottom"><b>typeMatchUp</b></td></tr>
 <tr class="separator:aaa33e18e5c8a07eea1a78986ada6a7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a88981ecb333f8bec6b191700602f672e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88981ecb333f8bec6b191700602f672e"></a>
-<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LocalKeeper</b><code> [get]</code></td></tr>
-<tr class="separator:a88981ecb333f8bec6b191700602f672e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98377d96ef4b291ea9603714030f3b61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98377d96ef4b291ea9603714030f3b61"></a>
-<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>OtherKeeper</b><code> [get]</code></td></tr>
-<tr class="separator:a98377d96ef4b291ea9603714030f3b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03afb3776c24d8dbe13a9959f7a52a71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03afb3776c24d8dbe13a9959f7a52a71"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>LocalCretinIndex</b><code> [get]</code></td></tr>
-<tr class="separator:a03afb3776c24d8dbe13a9959f7a52a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa20edb29e29187f8fd01f934376df8e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa20edb29e29187f8fd01f934376df8e4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><code> [get]</code></td></tr>
-<tr class="separator:aa20edb29e29187f8fd01f934376df8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>&lt;author&gt;Jake Ruth&lt;/author&gt; </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a9899956562c6a887611411ea4682957a"></a>
+<a class="anchor" id="a25e3f172c7752e64dec1834f88055ad4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -164,26 +154,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><c
         <tr>
           <td class="memname">IEnumerator BattleHandler.HandleResponse </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td>
-          <td class="paramname"><em>localSelection</em>, </td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>local</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>localSelectionIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td>
-          <td class="paramname"><em>otherSelection</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>otherSelectionIndex</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>networkOrAI</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -227,7 +205,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><c
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td>
           <td class="paramname"><em>selection</em>, </td>
         </tr>
         <tr>
@@ -262,7 +240,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><c
 
 </div>
 </div>
-<a class="anchor" id="ab27ebc9022c6d8e60c065432240484ff"></a>
+<a class="anchor" id="a380a371e96df1b362027a8f33c8ed7fb"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -272,14 +250,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><c
         <tr>
           <td class="memname">void BattleHandler.SetUpBattle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td>
-          <td class="paramname"><em>localKeeperSystem</em>, </td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td>
-          <td class="paramname"><em>otherKeeperSystem</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>second</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isNetworkedBattle</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -297,8 +281,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OtherCretinIndex</b><c
 <p>Called To set up the battle scene. Must be called at the start </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">localKeeperSystem</td><td>The local player</td></tr>
-    <tr><td class="paramname">otherKeeperSystem</td><td>Other opponent player</td></tr>
+    <tr><td class="paramname">first</td><td>The local player</td></tr>
+    <tr><td class="paramname">second</td><td>Other opponent player</td></tr>
+    <tr><td class="paramname">isNetworkedBattle</td><td>Is the battle a networked battle or not</td></tr>
   </table>
   </dd>
 </dl>
