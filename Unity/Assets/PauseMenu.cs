@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
 
-    public KeeperSystem trainer;
+    public PlayerReference trainer;
 
     private Text msg;
     private int display;
@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour {
 
         this.display = 1;
 
-        foreach (MonsterDataObject data in this.trainer.monsters)
+        foreach (MonsterDataObject data in this.trainer.getInfo().monsters)
         {
             this.msg = GameObject.Find("Cretin Name (" + display + ")").GetComponent<Text>();
             this.msg.text = data.GetMonsterName;
@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour {
     public void HealCretin()
     {
         this.display = 1;
-        foreach (MonsterDataObject data in this.trainer.monsters)
+        foreach (MonsterDataObject data in this.trainer.getInfo().monsters)
         {
             data.Heal();
             this.msg = GameObject.Find("Cretin HP (" + display + ")").GetComponent<Text>();

@@ -22,11 +22,11 @@ public class BattleHandler : MonoBehaviour
     /// Indicates that the current battle is between networked players
     /// </summary>
     public bool isNetworked;
-
-    private KeeperSystem _localKeeper;
+    
+    private PlayerReference _localKeeper;
     private int _localCretinIndex;
 
-    private KeeperSystem _otherKeeper;
+    private PlayerReference _otherKeeper;
     private int _otherCretinIndex;
 
     // Used for local battles
@@ -36,14 +36,14 @@ public class BattleHandler : MonoBehaviour
     private int _otherSelectionIndex = -1;
 
     // Getters and Setters
-    public KeeperSystem LocalKeeper
+    public GameState.Player LocalKeeper
     {
-        get { return _localKeeper; }
+        get { return _localKeeper.getInfo(); }
         //set { _localKeeper = value; }
     }
-    public KeeperSystem OtherKeeper
+    public GameState.Player OtherKeeper
     {
-        get { return _otherKeeper; }
+        get { return _otherKeeper.getInfo(); }
         //set { _otherKeeper = value; }
     }
     public int LocalCretinIndex
@@ -62,7 +62,7 @@ public class BattleHandler : MonoBehaviour
     /// </summary>
     /// <param name="localKeeperSystem">The local player</param>
     /// <param name="otherKeeperSystem">Other opponent player</param>
-    public void SetUpBattle(KeeperSystem localKeeperSystem, KeeperSystem otherKeeperSystem)
+    public void SetUpBattle(PlayerReference localKeeperSystem, PlayerReference otherKeeperSystem)
     {
         _localKeeper = localKeeperSystem;
         _localCretinIndex = 0;
@@ -74,7 +74,7 @@ public class BattleHandler : MonoBehaviour
     /// <summary>
     /// Used to send a battle selection
     /// </summary>
-    /// <param name="isLocalPlayer">if is <code>true</code> then the selection is from the local player</param>
+    /// <param name="isLocalPlayer">if is <code>true</code> then the selection is from the "local" player (local = main player, not AI, not networked)</param>
     /// <param name="selection">The selection option</param>
     /// <param name="selectionIndex">the index of the selection</param>
     /// <returns>returns <code>False</code> if the selection index is not positive</returns>

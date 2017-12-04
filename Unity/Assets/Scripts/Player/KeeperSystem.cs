@@ -21,7 +21,7 @@ public class KeeperSystem : MonoBehaviour
     /// The list of cretins to battle with
     /// </summary>
     // TODO: Move this to GameState.Player?
-    public List<MonsterDataObject> monsters;
+    //public List<MonsterDataObject> monsters;
 
     /// <summary>
     /// The number of wins

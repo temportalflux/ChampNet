@@ -42,5 +42,5 @@ public class EventBattlePromptSelection : EventNetwork
     public EventBattlePromptSelection() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_PROMPT_SELECTION)
     {
     }
-    
+
 }

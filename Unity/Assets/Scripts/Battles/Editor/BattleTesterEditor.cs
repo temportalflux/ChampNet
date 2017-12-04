@@ -25,12 +25,12 @@ public class BattleTesterEditor : Editor
                 if (t.localPlayerTest == null || t.otherPlayerTest == null)
                     return;
 
-                foreach (MonsterDataObject o in t.localPlayerTest.monsters)
+                foreach (MonsterDataObject o in t.localPlayerTest.getInfo().monsters)
                 {
                     o.Heal();
                 }
 
-                foreach (MonsterDataObject o in t.otherPlayerTest.monsters)
+                foreach (MonsterDataObject o in t.otherPlayerTest.getInfo().monsters)
                 {
                     o.Heal();
                 }
