@@ -35,7 +35,7 @@ public class BattleTesterEditor : Editor
                     o.Heal();
                 }
 
-                t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest);
+                t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest, false);
                 t.IsBattleSetup = true;
             }
         }

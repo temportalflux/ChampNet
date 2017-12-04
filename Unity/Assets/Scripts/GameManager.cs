@@ -156,4 +156,29 @@ public class GameManager : Singleton<GameManager>
     {
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
+
+    public void LoadBattleScene(PlayerReference localPlayer, PlayerReference otherKeeperSystem, bool isNetwokedBattle)
+    {
+        AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("BatleSceneV2", LoadSceneMode.Additive);
+        StartCoroutine(SetUpBattleOnLoadComplete(loadSceneAsync, localPlayer, otherKeeperSystem, isNetwokedBattle));
+    }
+
+    private IEnumerator SetUpBattleOnLoadComplete(AsyncOperation loadSceneAsync, PlayerReference localKeeperSystem, PlayerReference otherKeeperSystem, bool isNetwokedBattle)
+    {
+        // Wait until the scene has been loaded
+        while (!loadSceneAsync.isDone)
+            yield return null;
+
+        GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+
+        BattleHandler battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+        battleHandler.SetUpBattle(localKeeperSystem, otherKeeperSystem, isNetwokedBattle);
+    }
+
+    public void UnloadBattleScene()
+    {
+        AsyncOperation unloadSceneAsync = SceneManager.UnloadSceneAsync("BatleSceneV2");
+
+        GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+    }
 }

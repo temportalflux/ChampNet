@@ -24,6 +24,8 @@ public class EventBattleResponse : EventBattle
     {
         // This was sent back to the requester to notify them of the other's result, so receiver and requester are flipped
         //Debug.Log("Request from " + this.idReceiver + " was" + (this.accepted ? "" : " not ") + " accepted by " + this.idSender);
+
+
     }
 
 }
