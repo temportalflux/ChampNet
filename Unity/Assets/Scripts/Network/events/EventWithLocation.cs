@@ -8,10 +8,10 @@ using UnityEngine;
 public class EventWithLocation : EventWithPlayerID
 {
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public float posX;
 
-    [BitSerialize]
+    [BitSerialize(4)]
     public float posY;
 
     public EventWithLocation(byte id) : base(id)

@@ -5,10 +5,10 @@ using UnityEngine;
 public class EventWithPlayerID : EventNetwork
 {
 
-    [BitSerialize]
+    [BitSerialize(1)]
     public uint clientID;
 
-    [BitSerialize]
+    [BitSerialize(2)]
     public uint playerID;
 
     public EventWithPlayerID(byte id) : base(id)

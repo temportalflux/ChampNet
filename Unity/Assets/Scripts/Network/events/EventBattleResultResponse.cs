@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventBattleResultResponse : EventNetwork
 {
 
-    [BitSerialize]
+    [BitSerialize(1)]
     public uint playerID;
 
     public EventBattleResultResponse(byte id) : base(id)

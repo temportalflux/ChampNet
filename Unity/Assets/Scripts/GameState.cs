@@ -302,12 +302,12 @@ public class GameState : ScriptableObject, ISerializing
             this.wins = info.wins;
             this.rank = info.rank;
 
-            this.integratePhysics(deltaTime);
-
             if (this.objectReference != null)
             {
-                this.objectReference.integrateInfo(info);
+                this.objectReference.integrateInfo(this);
             }
+
+            //this.integratePhysics(deltaTime);
         }
 
         /// <summary>
@@ -426,12 +426,12 @@ public class GameState : ScriptableObject, ISerializing
             GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
         }
 
+        info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
+
         // Set the info for the player script
         info.objectReference.setInfo(info);
 
         info.objectReference.gameObject.name = info.name;
-
-        info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
 
         // Add player to total list
         this.players.Add(info.playerID, info);

@@ -5,10 +5,10 @@ using UnityEngine;
 public class EventBattlePromptSelection : EventNetwork
 {
 
-    [BitSerialize]
+    [BitSerialize(1)]
     public uint playerAID;
 
-    [BitSerialize]
+    [BitSerialize(2)]
     public int _playerASelection;
 
     public GameState.Player.EnumBattleSelection playerASelection
@@ -19,13 +19,13 @@ public class EventBattlePromptSelection : EventNetwork
         }
     }
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public int playerAChoice;
 
-    [BitSerialize]
+    [BitSerialize(4)]
     public uint playerBID;
 
-    [BitSerialize]
+    [BitSerialize(5)]
     public int _playerBSelection;
 
     public GameState.Player.EnumBattleSelection playerBSelection
@@ -36,7 +36,7 @@ public class EventBattlePromptSelection : EventNetwork
         }
     }
 
-    [BitSerialize]
+    [BitSerialize(6)]
     public int playerBChoice;
 
     public EventBattlePromptSelection() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_PROMPT_SELECTION)

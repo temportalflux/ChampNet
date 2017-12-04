@@ -56,6 +56,13 @@ public class GameStateEditor : Editor
 
                     EditorGUILayout.Toggle("In Battle", player.inBattle);
 
+                    EditorGUILayout.LabelField("Cretins #" + player.monsters.Count);
+                    foreach (MonsterDataObject mdo in player.monsters)
+                    {
+                        //EditorGUILayout.ObjectField("Cretin", mdo, typeof(MonsterDataObject), true);
+                        EditorGUILayout.LabelField("Cretin " + mdo.GetMonsterName);
+                    }
+
                     GUI.enabled = true;
                     EditorGUI.indentLevel--;
                 }

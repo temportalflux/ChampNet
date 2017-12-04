@@ -21,7 +21,7 @@ public class EventBattleSelection : EventBattle
         }
     }
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public uint _selection;
 
     public GameState.Player.EnumBattleSelection selection
@@ -32,7 +32,7 @@ public class EventBattleSelection : EventBattle
         }
     }
 
-    [BitSerialize]
+    [BitSerialize(4)]
     public uint choice;
 
     public EventBattleSelection() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_SELECTION)

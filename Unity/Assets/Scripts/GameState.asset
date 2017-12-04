@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652ef110eee0f564ebc04d427b2862c3, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  editorFoldoutPlayers: 0
+  editorFoldoutPlayers: 1
   isLocalGame: 0
   clientID: 0
   starters:
@@ -33,4 +33,4 @@ MonoBehaviour:
     statStageSpecialAttack: 0
     statStageSpecialDefense: 0
     statStageSpeed: 0
-  deltaTime: 0
+  deltaTime: 44140.023
