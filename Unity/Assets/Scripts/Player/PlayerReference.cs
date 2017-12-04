@@ -29,7 +29,8 @@ public class PlayerReference : MonoBehaviour {
     }
 
     /// <summary>
-    /// Current Rank of the player
+    /// Current Rank of the player.
+    /// Ask @Hypocripe (Chris Brennan) about how its sorted.
     /// </summary>
     public uint rank
     {

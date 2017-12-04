@@ -6,12 +6,13 @@ using UnityEngine;
 
 using Netty = ChampNetPlugin.Network;
 
+/// \addtogroup client
+/// @{
+
 /// <summary>
 /// The interface to work with the plugin to fetch and send packet data
 /// </summary>
-/// <remarks>
-/// Author: Dustin Yost
-/// </remarks>
+/// \author Dustin Yost
 public class NetInterface : Singleton<NetInterface>
 {
 
@@ -32,6 +33,7 @@ public class NetInterface : Singleton<NetInterface>
     /// The server address
     /// </summary>
     private string serverAddress = "127.0.0.1";
+
     /// <summary>
     /// The server port
     /// </summary>
@@ -59,7 +61,7 @@ public class NetInterface : Singleton<NetInterface>
     void OnDestroy()
     {
         Debug.Log("Destroying network");
-        GameManager.INSTANCE.Disconnect();
+        this.Dispatch(new EventClientLeft(GameManager.INSTANCE.state.clientID));
         Netty.Destroy();
     }
 
@@ -68,9 +70,6 @@ public class NetInterface : Singleton<NetInterface>
     /// </summary>
     /// <param name="address">The address.</param>
     /// <param name="port">The port.</param>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     public void Connect(string address, int port)
     {
         Netty.StartClient();
@@ -82,17 +81,17 @@ public class NetInterface : Singleton<NetInterface>
     /// <summary>
     /// Disconnects from the server.
     /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     public void Disconnect()
     {
         Netty.Disconnect();
     }
-    
+
+    /// <summary>
+    /// Update the network and process network events on a fixed timestep
+    /// </summary>
+    [ToDo("This can be pushed into separate coroutines with mutex")]
     private void FixedUpdate()
     {
-        // TODO: This can be pushed into separate coroutines with mutex
         this.UpdateNetwork();
         this.ProcessEvents();
     }
@@ -100,9 +99,6 @@ public class NetInterface : Singleton<NetInterface>
     /// <summary>
     /// Fetch and process network updates.
     /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     private void UpdateNetwork()
     {
         // Get all packets since last update
@@ -128,9 +124,6 @@ public class NetInterface : Singleton<NetInterface>
     /// <param name="id">The identifier.</param>
     /// <param name="address">The address.</param>
     /// <param name="data">The data.</param>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     private void HandlePacket(int id, string address, byte[] data, float transmitDeltaTime)
     {
         // Create the event to be processed
@@ -145,9 +138,6 @@ public class NetInterface : Singleton<NetInterface>
     /// <summary>
     /// Processes the events in the event queue.
     /// </summary>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     private void ProcessEvents()
     {
         // While there are events
@@ -164,9 +154,6 @@ public class NetInterface : Singleton<NetInterface>
     /// </summary>
     /// <param name="evt">The event.</param>
     /// <returns>true if there is an event</returns>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     private bool PollEvent(out EventNetwork evt)
     {
         // ensure the event out is always something
@@ -199,9 +186,6 @@ public class NetInterface : Singleton<NetInterface>
     /// <param name="evt">The event.</param>
     /// <param name="address">The server address.</param>
     /// <param name="port">The server port.</param>
-    /// <remarks>
-    /// Author: Jake Ruth
-    /// </remarks>
     public void Dispatch(EventNetwork evt, string address, int port)
     {
         byte[] data = BitSerializeAttribute.Serialize(evt);
@@ -213,12 +197,11 @@ public class NetInterface : Singleton<NetInterface>
     /// Gets the server IP details.
     /// </summary>
     /// <returns>the server address/port</returns>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
     public KeyValuePair<string, int> getServer()
     {
         return new KeyValuePair<string, int>(this.serverAddress, this.serverPort);
     }
 
 }
+
+/// @}
