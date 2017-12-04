@@ -27,7 +27,18 @@ public class PlayerLocal : PlayerReference
         {
             this.requestBattle(player);
         }
+    }
 
+    [ToDo("Start battle here")]
+    public void onChallengeBy(MonsterDataObject opponentAI)
+    {
+        List<MonsterDataObject> cretins = this.getInfo().monsters;
+        if (cretins.Count > 0)
+        {
+            BattleParticipant me = new BattleParticipant(this.getInfo(), 1);
+            BattleParticipant opponent = new BattleParticipant(opponentAI);
+            GameManager.INSTANCE.LoadBattleScene(me, opponent, false);
+        }
     }
 
     /// <summary>
