@@ -121,7 +121,7 @@ public class BitSerializeAttribute : Attribute
                 object fieldObj = objectFields[i].GetValue(mono);
 
                 // confirm fields are in the correct order
-                Debug.Log(objectFields[i].Name);
+                //Debug.Log(objectFields[i].Name);
 
                 // Get the sizeof the object
                 int size = BitSerializeAttribute.GetSizeOf(fieldObj);

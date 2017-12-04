@@ -10,15 +10,20 @@ public class TallGrass : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log(other.name);
-        MonsterDataObject opponent = this.getRandomOpponent();
-        if (opponent != null)
+
+        if (UnityEngine.Random.Range(0, 100) < 25)
         {
-            PlayerLocal player = other.GetComponent<PlayerLocal>();
-            if (player != null)
+            MonsterDataObject opponent = this.getRandomOpponent();
+            if (opponent != null)
             {
-                player.onChallengeBy(opponent);
+                PlayerLocal player = other.GetComponent<PlayerLocal>();
+                if (player != null)
+                {
+                    player.onChallengeBy(opponent);
+                }
             }
         }
+        
     }
 
     private MonsterDataObject getRandomOpponent()

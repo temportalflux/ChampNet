@@ -77,6 +77,12 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private BattleHandler battleHandler;
 
+    /// <summary>
+    /// If the game is loading a battle scene or occuping a battle scene.
+    /// True while a battle scene is loading, active, and unloading.
+    /// </summary>
+    private bool isLoadingOrInBattle;
+
     void Awake()
     {
         this.inGame = false;
@@ -86,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         this.netty = NetInterface.INSTANCE;
+        this.isLoadingOrInBattle = false;
     }
 
     /// <summary>
@@ -193,27 +200,31 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
     {
-        this.transitionBattle.load(() =>
+        if (!this.isLoadingOrInBattle)
         {
-            GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+            this.isLoadingOrInBattle = true;
+            this.transitionBattle.load(() =>
+            {
+                GameObject.FindGameObjectWithTag("HUD").SetActive(false);
 
-            this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
-            this.battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
-        });
+                this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+                this.battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
+            });
+        }
     }
     
     public void UnloadBattleScene()
     {
-        this.transitionBattle.exit(() =>
+        if (this.isLoadingOrInBattle)
         {
-            GameObject.FindGameObjectWithTag("HUD").SetActive(true);
-            this.battleHandler = null;
-        });
-    }
-
-    public bool isInBattle()
-    {
-        return this.battleHandler != null;
+            this.battleHandler.onPreExit();
+            this.transitionBattle.exit(() =>
+            {
+                GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+                this.battleHandler = null;
+                this.isLoadingOrInBattle = false;
+            });
+        }
     }
 
 }

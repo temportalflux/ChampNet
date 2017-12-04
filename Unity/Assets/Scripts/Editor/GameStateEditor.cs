@@ -22,6 +22,8 @@ public class GameStateEditor : Editor
         );
         GUI.enabled = true;
 
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("starters"), true);
+
         gameState.editorFoldoutPlayers = EditorGUILayout.Foldout(gameState.editorFoldoutPlayers, "Players");
         if (gameState.editorFoldoutPlayers)
         {

@@ -91,6 +91,15 @@ public class BattleParticipant
         return this.playerController != null;
     }
 
+    public void onPreExit()
+    {
+        if (this.isPlayer())
+        {
+            // send packet to server saying done battle
+            NetInterface.INSTANCE.Dispatch(new EventBattleResultResponse(this.playerController.playerID));
+        }
+    }
+
 }
 
 /// @}
