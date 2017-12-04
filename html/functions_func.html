@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -86,7 +87,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
@@ -100,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -159,7 +162,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
 <li>Execute()
-: <a class="el" href="class_event_battle_request.html#a870561ee05467ac4b18b8f9dc0370be9">EventBattleRequest</a>
+: <a class="el" href="class_event_battle_prompt_selection.html#aed70e58f6ae8cb1e78b7b11869faf1e5">EventBattlePromptSelection</a>
+, <a class="el" href="class_event_battle_request.html#a870561ee05467ac4b18b8f9dc0370be9">EventBattleRequest</a>
 , <a class="el" href="class_event_battle_response.html#a3168ba71869e7eb77b6cd25165384ae8">EventBattleResponse</a>
 , <a class="el" href="class_event_battle_result.html#ae2c6d5e3e01daef4de97df2e481fcac5">EventBattleResult</a>
 , <a class="el" href="class_event_connected.html#ae8af518ac79381830f7ed283de10c82c">EventConnected</a>
@@ -167,6 +171,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_event_disconnected.html#a68523999bd55e4525522e5587ba82c3b">EventDisconnected</a>
 , <a class="el" href="class_event_game_state.html#a9cf710bdb22c50a1e3af2615508861b6">EventGameState</a>
 , <a class="el" href="class_event_network.html#aa5e94745568f3049a2b798c066087114">EventNetwork</a>
+</li>
+<li>Exit()
+: <a class="el" href="class_game_manager.html#a5d9cafdd495a4ed2760de13b7b9c80b6">GameManager</a>
 </li>
 </ul>
 
@@ -196,6 +203,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>GetMusicSource()
 : <a class="el" href="class_game_manager.html#abf59d5ce551af5e35529f71a99d89d76">GameManager</a>
+</li>
+<li>getRandomPlayer()
+: <a class="el" href="class_game_manager.html#aadd5e389068b81b09036cc2bb8c097d6">GameManager</a>
 </li>
 <li>getServer()
 : <a class="el" href="class_net_interface.html#a18dfbf82b7c690b9abf4ae9ed9aaddcd">NetInterface</a>
@@ -243,6 +253,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>NetworkConnect()
+: <a class="el" href="class_game_manager.html#a3c3a8e05664851d7642c13989af691cf">GameManager</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>onInput()
 : <a class="el" href="class_state_server.html#a680525d2a1036dbbefaf21a7057fb39e">StateServer</a>
@@ -250,6 +267,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>onKeyDown()
 : <a class="el" href="class_state_application.html#a386fc53c7629d80d25dc86b2ad431406">StateApplication</a>
 , <a class="el" href="class_state_server.html#a69b988594b45275a55bcb7ba5ceb7aeb">StateServer</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>Play()
+: <a class="el" href="class_game_manager.html#a3403831c40f16191e3997be60d95380b">GameManager</a>
+</li>
+<li>PlayNetwork()
+: <a class="el" href="class_game_manager.html#a1138f86278583414cba9456d02d0fa1c">GameManager</a>
 </li>
 </ul>
 
@@ -267,7 +294,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>SendBattleOption()
-: <a class="el" href="class_battle_handler.html#a259e910a8ef50cbe1f610b8abdfeb3dd">BattleHandler</a>
+: <a class="el" href="class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67">BattleHandler</a>
 </li>
 <li>sendDisconnectPacket()
 : <a class="el" href="class_state_server.html#a4ba2a2bde5a70c0aa50ad936ca88ad44">StateServer</a>
@@ -286,7 +313,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3">BitSerializeAttribute</a>
 </li>
 <li>SetUpBattle()
-: <a class="el" href="class_battle_handler.html#ad07ba8dd758a56e3a1532e53f90e1932">BattleHandler</a>
+: <a class="el" href="class_battle_handler.html#ab27ebc9022c6d8e60c065432240484ff">BattleHandler</a>
 </li>
 <li>start()
 : <a class="el" href="class_state_server.html#aaeb4f49e47304f186f87f79a3612b085">StateServer</a>
@@ -295,6 +322,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>ToDo()
+: <a class="el" href="class_to_do.html#a13f85f07515c82da18d3a9dd49d28042">ToDo</a>
+</li>
 <li>triggerLoadAsync()
 : <a class="el" href="class_manager_transitions.html#a3ea45c86116b67a94fadc91db88f0f55">ManagerTransitions</a>
 </li>
@@ -321,9 +351,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>updateNetwork()
 : <a class="el" href="class_state_application.html#a55c3922d9e1be3e3ef39f7252c698fc4">StateApplication</a>
 , <a class="el" href="class_state_server.html#aceb9a260a5c4a4d46607e8fe71be2667">StateServer</a>
-</li>
-<li>updatePlayerWin()
-: <a class="el" href="class_game_manager.html#a6a788456fbde7a3587013f1707586f73">GameManager</a>
 </li>
 </ul>
 

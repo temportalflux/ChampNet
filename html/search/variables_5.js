@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['score',['score',['../class_event_with_score.html#a521dbdffa1ed1b2a08a671d881f66062',1,'EventWithScore']]]
+  ['playeridopponent',['playerIDOpponent',['../struct_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca',1,'GameState::Player']]]
 ];

@@ -1,6 +1,11 @@
 \hypertarget{class_game_manager}{\section{Game\-Manager Class Reference}
 \label{class_game_manager}\index{Game\-Manager@{Game\-Manager}}
 }
+
+
+The manager for the client game Is a singleton, instatiated in the first scene  
+
+
 Inheritance diagram for Game\-Manager\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,31 +24,18 @@ class \hyperlink{class_game_manager_1_1_game_action_message}{Game\-Action\-Messa
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_manager_a3403831c40f16191e3997be60d95380b}{void {\bfseries Play} ()}\label{class_game_manager_a3403831c40f16191e3997be60d95380b}
-
-\item 
-\hypertarget{class_game_manager_a1138f86278583414cba9456d02d0fa1c}{void {\bfseries Play\-Network} ()}\label{class_game_manager_a1138f86278583414cba9456d02d0fa1c}
-
-\item 
-\hypertarget{class_game_manager_a3c3a8e05664851d7642c13989af691cf}{void {\bfseries Network\-Connect} (string address, int port, Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} players)}\label{class_game_manager_a3c3a8e05664851d7642c13989af691cf}
-
-\item 
-\hypertarget{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}{void {\bfseries Exit} ()}\label{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}
-
-\item 
-\hypertarget{class_game_manager_adb53a672ec492ed3a0cb89ca00808bd4}{void {\bfseries Disconnect} ()}\label{class_game_manager_adb53a672ec492ed3a0cb89ca00808bd4}
-
-\item 
-\hypertarget{class_game_manager_aebdaf24911f168c490194f548297f8d1}{void {\bfseries remove\-Player} (\hyperlink{struct_game_state_1_1_player}{Game\-State.\-Player} player\-Info)}\label{class_game_manager_aebdaf24911f168c490194f548297f8d1}
-
-\item 
-\hypertarget{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}{\hyperlink{class_player_reference}{Player\-Reference} {\bfseries get\-Random\-Player} (\hyperlink{struct_game_state_1_1_player}{Game\-State.\-Player} not\-Me)}\label{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}
-
-\item 
+void \hyperlink{class_game_manager_a3403831c40f16191e3997be60d95380b}{Play} ()
+\begin{DoxyCompactList}\small\item\em Start the game in a local world \end{DoxyCompactList}\item 
+void \hyperlink{class_game_manager_a1138f86278583414cba9456d02d0fa1c}{Play\-Network} ()
+\begin{DoxyCompactList}\small\item\em Start the game in a networked world \end{DoxyCompactList}\item 
+void \hyperlink{class_game_manager_a3c3a8e05664851d7642c13989af691cf}{Network\-Connect} (string address, int port, Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]} players)
+\begin{DoxyCompactList}\small\item\em Connect the client with some server \end{DoxyCompactList}\item 
+void \hyperlink{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}{Exit} ()
+\begin{DoxyCompactList}\small\item\em Exit the current scene \end{DoxyCompactList}\item 
+\hyperlink{class_player_reference}{Player\-Reference} \hyperlink{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}{get\-Random\-Player} (\hyperlink{struct_game_state_1_1_player}{Game\-State.\-Player} not\-Me)
+\begin{DoxyCompactList}\small\item\em Get a random player from the current player listings in Game\-State.\-players \end{DoxyCompactList}\item 
 Audio\-Source \hyperlink{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{Get\-Music\-Source} ()
 \begin{DoxyCompactList}\small\item\em Gets the music source. \end{DoxyCompactList}\item 
-void \hyperlink{class_game_manager_a6a788456fbde7a3587013f1707586f73}{update\-Player\-Win} (uint winner\-I\-D)
-\begin{DoxyCompactList}\small\item\em update the player's win count \end{DoxyCompactList}\item 
 \hypertarget{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}{void {\bfseries grab\-Score\-Board} ()}\label{class_game_manager_a414dcfd0d1f5a5904d2440165e42923d}
 
 \end{DoxyCompactItemize}
@@ -56,34 +48,37 @@ void \hyperlink{class_game_manager_a6a788456fbde7a3587013f1707586f73}{update\-Pl
 \hypertarget{class_game_manager_af977df043b83671ab9a4753b90fbf75b}{\hyperlink{class_game_manager_1_1_game_action_message}{Game\-Action\-Message} {\bfseries on\-Network\-Rejected}}\label{class_game_manager_af977df043b83671ab9a4753b90fbf75b}
 
 \item 
-\hypertarget{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{\hyperlink{class_scene_transition}{Scene\-Transition} {\bfseries transition}}\label{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}
-
-\item 
-\hypertarget{class_game_manager_a4783d964ba3d7bf89b0142286d745014}{float {\bfseries update\-Delay} = 0.\-5f}\label{class_game_manager_a4783d964ba3d7bf89b0142286d745014}
-
-\item 
-\hypertarget{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}{Game\-Object {\bfseries player\-Prefab}}\label{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}
-
-\item 
-\hypertarget{class_game_manager_aeca2fe86e0abba27ebac921e0fd193ab}{Game\-Object {\bfseries player\-Network\-Prefab}}\label{class_game_manager_aeca2fe86e0abba27ebac921e0fd193ab}
-
-\item 
-\hypertarget{class_game_manager_a8d86b330237462e38933b28276ed0e2c}{\hyperlink{class_game_state}{Game\-State} {\bfseries state}}\label{class_game_manager_a8d86b330237462e38933b28276ed0e2c}
-
-\item 
-\hypertarget{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}{Main\-Camera {\bfseries main\-Camera}}\label{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}
-
-\end{DoxyCompactItemize}
+\hyperlink{class_scene_transition}{Scene\-Transition} \hyperlink{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{transition}
+\begin{DoxyCompactList}\small\item\em The object to handle transitioning between scenes \end{DoxyCompactList}\item 
+\hyperlink{class_game_state}{Game\-State} \hyperlink{class_game_manager_a8d86b330237462e38933b28276ed0e2c}{state}
+\begin{DoxyCompactList}\small\item\em The game state \end{DoxyCompactList}\item 
+Main\-Camera \hyperlink{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}{main\-Camera}
+\begin{DoxyCompactList}\small\item\em The main camera in the open-\/world \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}{static \hyperlink{class_game_manager}{Game\-Manager} {\bfseries I\-N\-S\-T\-A\-N\-C\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}
-
-\end{DoxyCompactItemize}
+static \hyperlink{class_game_manager}{Game\-Manager} \hyperlink{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}{I\-N\-S\-T\-A\-N\-C\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The public getter for the instance \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+The manager for the client game Is a singleton, instatiated in the first scene 
+
+$<$author$>$Dustin Yost$<$/author$>$ 
+
 \subsection{Member Function Documentation}
+\hypertarget{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}{\index{Game\-Manager@{Game\-Manager}!Exit@{Exit}}
+\index{Exit@{Exit}!GameManager@{Game\-Manager}}
+\subsubsection[{Exit}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-Exit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a5d9cafdd495a4ed2760de13b7b9c80b6}
+
+
+Exit the current scene 
+
 \hypertarget{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{\index{Game\-Manager@{Game\-Manager}!Get\-Music\-Source@{Get\-Music\-Source}}
 \index{Get\-Music\-Source@{Get\-Music\-Source}!GameManager@{Game\-Manager}}
 \subsubsection[{Get\-Music\-Source}]{\setlength{\rightskip}{0pt plus 5cm}Audio\-Source Game\-Manager.\-Get\-Music\-Source (
@@ -98,22 +93,103 @@ Gets the music source.
 \begin{DoxyReturn}{Returns}
 The Audio\-Source component
 \end{DoxyReturn}
-\hypertarget{class_game_manager_a6a788456fbde7a3587013f1707586f73}{\index{Game\-Manager@{Game\-Manager}!update\-Player\-Win@{update\-Player\-Win}}
-\index{update\-Player\-Win@{update\-Player\-Win}!GameManager@{Game\-Manager}}
-\subsubsection[{update\-Player\-Win}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-update\-Player\-Win (
+\hypertarget{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}{\index{Game\-Manager@{Game\-Manager}!get\-Random\-Player@{get\-Random\-Player}}
+\index{get\-Random\-Player@{get\-Random\-Player}!GameManager@{Game\-Manager}}
+\subsubsection[{get\-Random\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-Reference} Game\-Manager.\-get\-Random\-Player (
 \begin{DoxyParamCaption}
-\item[{uint}]{winner\-I\-D}
+\item[{{\bf Game\-State.\-Player}}]{not\-Me}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a6a788456fbde7a3587013f1707586f73}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_aadd5e389068b81b09036cc2bb8c097d6}
 
 
-update the player's win count 
+Get a random player from the current player listings in Game\-State.\-players 
 
 
 \begin{DoxyParams}{Parameters}
-{\em winner\-I\-D} & I\-D of the winner of a battle \\
+{\em not\-Me} & The player which should not be included\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_game_manager_a3c3a8e05664851d7642c13989af691cf}{\index{Game\-Manager@{Game\-Manager}!Network\-Connect@{Network\-Connect}}
+\index{Network\-Connect@{Network\-Connect}!GameManager@{Game\-Manager}}
+\subsubsection[{Network\-Connect}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-Network\-Connect (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{int}]{port, }
+\item[{Connect\-Menu.\-Player\-Descriptor\mbox{[}$\,$\mbox{]}}]{players}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a3c3a8e05664851d7642c13989af691cf}
+
+
+Connect the client with some server 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The I\-Pv4 address\\
+\hline
+{\em port} & The address port\\
+\hline
+{\em players} & the desired player descriptors to connect with\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_game_manager_a3403831c40f16191e3997be60d95380b}{\index{Game\-Manager@{Game\-Manager}!Play@{Play}}
+\index{Play@{Play}!GameManager@{Game\-Manager}}
+\subsubsection[{Play}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-Play (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a3403831c40f16191e3997be60d95380b}
+
+
+Start the game in a local world 
+
+\hypertarget{class_game_manager_a1138f86278583414cba9456d02d0fa1c}{\index{Game\-Manager@{Game\-Manager}!Play\-Network@{Play\-Network}}
+\index{Play\-Network@{Play\-Network}!GameManager@{Game\-Manager}}
+\subsubsection[{Play\-Network}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager.\-Play\-Network (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_manager_a1138f86278583414cba9456d02d0fa1c}
+
+
+Start the game in a networked world 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}{\index{Game\-Manager@{Game\-Manager}!main\-Camera@{main\-Camera}}
+\index{main\-Camera@{main\-Camera}!GameManager@{Game\-Manager}}
+\subsubsection[{main\-Camera}]{\setlength{\rightskip}{0pt plus 5cm}Main\-Camera Game\-Manager.\-main\-Camera}}\label{class_game_manager_aafd6b83529911d9e32cc4b79bd477d74}
+
+
+The main camera in the open-\/world 
+
+\hypertarget{class_game_manager_a8d86b330237462e38933b28276ed0e2c}{\index{Game\-Manager@{Game\-Manager}!state@{state}}
+\index{state@{state}!GameManager@{Game\-Manager}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-State} Game\-Manager.\-state}}\label{class_game_manager_a8d86b330237462e38933b28276ed0e2c}
+
+
+The game state 
+
+\hypertarget{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{\index{Game\-Manager@{Game\-Manager}!transition@{transition}}
+\index{transition@{transition}!GameManager@{Game\-Manager}}
+\subsubsection[{transition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene\-Transition} Game\-Manager.\-transition}}\label{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}
+
+
+The object to handle transitioning between scenes 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}{\index{Game\-Manager@{Game\-Manager}!I\-N\-S\-T\-A\-N\-C\-E@{I\-N\-S\-T\-A\-N\-C\-E}}
+\index{I\-N\-S\-T\-A\-N\-C\-E@{I\-N\-S\-T\-A\-N\-C\-E}!GameManager@{Game\-Manager}}
+\subsubsection[{I\-N\-S\-T\-A\-N\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Manager} Game\-Manager.\-I\-N\-S\-T\-A\-N\-C\-E\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}}\label{class_game_manager_a5c1d1f77dd4a2668a47a75c934c87075}
+
+
+The public getter for the instance 
+
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

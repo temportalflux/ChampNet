@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -72,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_event_battle_selection-members.html">List of all members</a>  </div>
@@ -104,13 +105,31 @@ Inheritance diagram for EventBattleSelection:</div>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a4876cd100f697f06d7c60af3be268fa0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>EnumSelection</b> { <b>ATTACK</b>, 
-<b>SWAP</b>, 
-<b>FLEE</b>
- }</td></tr>
-<tr class="separator:a4876cd100f697f06d7c60af3be268fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8cdfccc9d7b5e9bda4d9a62c31f509ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cdfccc9d7b5e9bda4d9a62c31f509ca"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>EventBattleSelection</b> (uint playerID, uint opponentID, <a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> selection, uint choice)</td></tr>
+<tr class="separator:a8cdfccc9d7b5e9bda4d9a62c31f509ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_event_battle"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_event_battle')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_event_battle.html">EventBattle</a></td></tr>
+<tr class="memitem:a2e50e3860526edbba767018e38419e6f inherit pub_methods_class_event_battle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e50e3860526edbba767018e38419e6f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>EventBattle</b> (byte id)</td></tr>
+<tr class="separator:a2e50e3860526edbba767018e38419e6f inherit pub_methods_class_event_battle"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_event_network"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_event_network')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_event_network.html">EventNetwork</a></td></tr>
+<tr class="memitem:a1f1a80ff09325571c5a27a45fb056d66 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f1a80ff09325571c5a27a45fb056d66"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>EventNetwork</b> (byte id)</td></tr>
+<tr class="separator:a1f1a80ff09325571c5a27a45fb056d66 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#a627a22414c184cd4fbe4f23a25877166">GetSize</a> ()</td></tr>
+<tr class="memdesc:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the packet (the size for a potential byte[])  <a href="#a627a22414c184cd4fbe4f23a25877166">More...</a><br/></td></tr>
+<tr class="separator:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#af31b288f5029d8542122abe985f7df18">Deserialize</a> (byte[] data, ref int lastIndex)</td></tr>
+<tr class="memdesc:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes data from a byte array into this event's data  <a href="#af31b288f5029d8542122abe985f7df18">More...</a><br/></td></tr>
+<tr class="separator:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238">Serialize</a> (ref byte[] data, ref int lastIndex)</td></tr>
+<tr class="memdesc:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes data from this event into a byte array  <a href="#ae2574cdc2bb836f3e41628ff1c095238">More...</a><br/></td></tr>
+<tr class="separator:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#aa5e94745568f3049a2b798c066087114">Execute</a> ()</td></tr>
+<tr class="memdesc:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes this event to affect the actual environment  <a href="#aa5e94745568f3049a2b798c066087114">More...</a><br/></td></tr>
+<tr class="separator:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -143,32 +162,12 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>playerId</b><code> [g
 <tr class="memitem:a4b91cf6aadc6b2c1073413811e764903"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b91cf6aadc6b2c1073413811e764903"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>playerIdOpponent</b><code> [get]</code></td></tr>
 <tr class="separator:a4b91cf6aadc6b2c1073413811e764903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb849e7b9c472030fd4237d81cfc3111"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb849e7b9c472030fd4237d81cfc3111"></a>
-EnumSelection&#160;</td><td class="memItemRight" valign="bottom"><b>selection</b><code> [set]</code></td></tr>
-<tr class="separator:abb849e7b9c472030fd4237d81cfc3111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0c2c21a8b44a5afc75a61df7a9597b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc0c2c21a8b44a5afc75a61df7a9597b"></a>
+<a class="el" href="struct_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>selection</b><code> [set]</code></td></tr>
+<tr class="separator:afc0c2c21a8b44a5afc75a61df7a9597b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_class_event_battle"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_event_battle')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_event_battle.html">EventBattle</a></td></tr>
-<tr class="memitem:a2e50e3860526edbba767018e38419e6f inherit pub_methods_class_event_battle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e50e3860526edbba767018e38419e6f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EventBattle</b> (byte id)</td></tr>
-<tr class="separator:a2e50e3860526edbba767018e38419e6f inherit pub_methods_class_event_battle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_event_network"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_event_network')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_event_network.html">EventNetwork</a></td></tr>
-<tr class="memitem:a1f1a80ff09325571c5a27a45fb056d66 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f1a80ff09325571c5a27a45fb056d66"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EventNetwork</b> (byte id)</td></tr>
-<tr class="separator:a1f1a80ff09325571c5a27a45fb056d66 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#a627a22414c184cd4fbe4f23a25877166">GetSize</a> ()</td></tr>
-<tr class="memdesc:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the packet (the size for a potential byte[])  <a href="#a627a22414c184cd4fbe4f23a25877166">More...</a><br/></td></tr>
-<tr class="separator:a627a22414c184cd4fbe4f23a25877166 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#af31b288f5029d8542122abe985f7df18">Deserialize</a> (byte[] data, ref int lastIndex)</td></tr>
-<tr class="memdesc:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes data from a byte array into this event's data  <a href="#af31b288f5029d8542122abe985f7df18">More...</a><br/></td></tr>
-<tr class="separator:af31b288f5029d8542122abe985f7df18 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238">Serialize</a> (ref byte[] data, ref int lastIndex)</td></tr>
-<tr class="memdesc:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes data from this event into a byte array  <a href="#ae2574cdc2bb836f3e41628ff1c095238">More...</a><br/></td></tr>
-<tr class="separator:ae2574cdc2bb836f3e41628ff1c095238 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#aa5e94745568f3049a2b798c066087114">Execute</a> ()</td></tr>
-<tr class="memdesc:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes this event to affect the actual environment  <a href="#aa5e94745568f3049a2b798c066087114">More...</a><br/></td></tr>
-<tr class="separator:aa5e94745568f3049a2b798c066087114 inherit pub_methods_class_event_network"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_event_network"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_event_network')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_event_network.html">EventNetwork</a></td></tr>
 <tr class="memitem:a9cf2940f859a4c2d168fbfe83e6a19e8 inherit pub_static_methods_class_event_network"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_event_network.html">EventNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_network.html#a9cf2940f859a4c2d168fbfe83e6a19e8">createEvent</a> (int id)</td></tr>
 <tr class="memdesc:a9cf2940f859a4c2d168fbfe83e6a19e8 inherit pub_static_methods_class_event_network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an event from a packet identifier  <a href="#a9cf2940f859a4c2d168fbfe83e6a19e8">More...</a><br/></td></tr>

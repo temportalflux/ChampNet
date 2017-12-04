@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -72,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,9 +91,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#properties">Properties</a> &#124;
 <a href="class_game_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">GameManager Class Reference</div>  </div>
+<div class="title">GameManager Class Reference<div class="ingroups"><a class="el" href="group__client.html">Client: Cretins</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The manager for the client game Is a singleton, instatiated in the first scene  
+ <a href="class_game_manager.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for GameManager:</div>
 <div class="dyncontent">
@@ -114,33 +118,24 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3403831c40f16191e3997be60d95380b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3403831c40f16191e3997be60d95380b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Play</b> ()</td></tr>
+<tr class="memitem:a3403831c40f16191e3997be60d95380b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a3403831c40f16191e3997be60d95380b">Play</a> ()</td></tr>
+<tr class="memdesc:a3403831c40f16191e3997be60d95380b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the game in a local world  <a href="#a3403831c40f16191e3997be60d95380b">More...</a><br/></td></tr>
 <tr class="separator:a3403831c40f16191e3997be60d95380b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1138f86278583414cba9456d02d0fa1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1138f86278583414cba9456d02d0fa1c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PlayNetwork</b> ()</td></tr>
+<tr class="memitem:a1138f86278583414cba9456d02d0fa1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a1138f86278583414cba9456d02d0fa1c">PlayNetwork</a> ()</td></tr>
+<tr class="memdesc:a1138f86278583414cba9456d02d0fa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the game in a networked world  <a href="#a1138f86278583414cba9456d02d0fa1c">More...</a><br/></td></tr>
 <tr class="separator:a1138f86278583414cba9456d02d0fa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c3a8e05664851d7642c13989af691cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c3a8e05664851d7642c13989af691cf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>NetworkConnect</b> (string address, int port, ConnectMenu.PlayerDescriptor[] players)</td></tr>
+<tr class="memitem:a3c3a8e05664851d7642c13989af691cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a3c3a8e05664851d7642c13989af691cf">NetworkConnect</a> (string address, int port, ConnectMenu.PlayerDescriptor[] players)</td></tr>
+<tr class="memdesc:a3c3a8e05664851d7642c13989af691cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the client with some server  <a href="#a3c3a8e05664851d7642c13989af691cf">More...</a><br/></td></tr>
 <tr class="separator:a3c3a8e05664851d7642c13989af691cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d9cafdd495a4ed2760de13b7b9c80b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Exit</b> ()</td></tr>
+<tr class="memitem:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a5d9cafdd495a4ed2760de13b7b9c80b6">Exit</a> ()</td></tr>
+<tr class="memdesc:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit the current scene  <a href="#a5d9cafdd495a4ed2760de13b7b9c80b6">More...</a><br/></td></tr>
 <tr class="separator:a5d9cafdd495a4ed2760de13b7b9c80b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb53a672ec492ed3a0cb89ca00808bd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb53a672ec492ed3a0cb89ca00808bd4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Disconnect</b> ()</td></tr>
-<tr class="separator:adb53a672ec492ed3a0cb89ca00808bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebdaf24911f168c490194f548297f8d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebdaf24911f168c490194f548297f8d1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removePlayer</b> (<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a> playerInfo)</td></tr>
-<tr class="separator:aebdaf24911f168c490194f548297f8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadd5e389068b81b09036cc2bb8c097d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd5e389068b81b09036cc2bb8c097d6"></a>
-<a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getRandomPlayer</b> (<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a> notMe)</td></tr>
+<tr class="memitem:aadd5e389068b81b09036cc2bb8c097d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#aadd5e389068b81b09036cc2bb8c097d6">getRandomPlayer</a> (<a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a> notMe)</td></tr>
+<tr class="memdesc:aadd5e389068b81b09036cc2bb8c097d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a random player from the current player listings in GameState.players  <a href="#aadd5e389068b81b09036cc2bb8c097d6">More...</a><br/></td></tr>
 <tr class="separator:aadd5e389068b81b09036cc2bb8c097d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf59d5ce551af5e35529f71a99d89d76"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#abf59d5ce551af5e35529f71a99d89d76">GetMusicSource</a> ()</td></tr>
 <tr class="memdesc:abf59d5ce551af5e35529f71a99d89d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the music source.  <a href="#abf59d5ce551af5e35529f71a99d89d76">More...</a><br/></td></tr>
 <tr class="separator:abf59d5ce551af5e35529f71a99d89d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a788456fbde7a3587013f1707586f73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a6a788456fbde7a3587013f1707586f73">updatePlayerWin</a> (uint winnerID)</td></tr>
-<tr class="memdesc:a6a788456fbde7a3587013f1707586f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">update the player's win count  <a href="#a6a788456fbde7a3587013f1707586f73">More...</a><br/></td></tr>
-<tr class="separator:a6a788456fbde7a3587013f1707586f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a414dcfd0d1f5a5904d2440165e42923d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a414dcfd0d1f5a5904d2440165e42923d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>grabScoreBoard</b> ()</td></tr>
 <tr class="separator:a414dcfd0d1f5a5904d2440165e42923d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,29 +158,20 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af977df043b83671ab9a4753b90fbf75b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af977df043b83671ab9a4753b90fbf75b"></a>
 <a class="el" href="class_game_manager_1_1_game_action_message.html">GameActionMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onNetworkRejected</b></td></tr>
 <tr class="separator:af977df043b83671ab9a4753b90fbf75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abae15982d4eb90ef9e5f3d24d15e22f2"></a>
-<a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><b>transition</b></td></tr>
+<tr class="memitem:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#abae15982d4eb90ef9e5f3d24d15e22f2">transition</a></td></tr>
+<tr class="memdesc:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The object to handle transitioning between scenes  <a href="#abae15982d4eb90ef9e5f3d24d15e22f2">More...</a><br/></td></tr>
 <tr class="separator:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4783d964ba3d7bf89b0142286d745014"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4783d964ba3d7bf89b0142286d745014"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>updateDelay</b> = 0.5f</td></tr>
-<tr class="separator:a4783d964ba3d7bf89b0142286d745014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57d400c7a28f42865048fbdbaf236cfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57d400c7a28f42865048fbdbaf236cfb"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>playerPrefab</b></td></tr>
-<tr class="separator:a57d400c7a28f42865048fbdbaf236cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeca2fe86e0abba27ebac921e0fd193ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeca2fe86e0abba27ebac921e0fd193ab"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>playerNetworkPrefab</b></td></tr>
-<tr class="separator:aeca2fe86e0abba27ebac921e0fd193ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d86b330237462e38933b28276ed0e2c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d86b330237462e38933b28276ed0e2c"></a>
-<a class="el" href="class_game_state.html">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="memitem:a8d86b330237462e38933b28276ed0e2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_state.html">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a8d86b330237462e38933b28276ed0e2c">state</a></td></tr>
+<tr class="memdesc:a8d86b330237462e38933b28276ed0e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game state  <a href="#a8d86b330237462e38933b28276ed0e2c">More...</a><br/></td></tr>
 <tr class="separator:a8d86b330237462e38933b28276ed0e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd6b83529911d9e32cc4b79bd477d74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafd6b83529911d9e32cc4b79bd477d74"></a>
-MainCamera&#160;</td><td class="memItemRight" valign="bottom"><b>mainCamera</b></td></tr>
+<tr class="memitem:aafd6b83529911d9e32cc4b79bd477d74"><td class="memItemLeft" align="right" valign="top">MainCamera&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#aafd6b83529911d9e32cc4b79bd477d74">mainCamera</a></td></tr>
+<tr class="memdesc:aafd6b83529911d9e32cc4b79bd477d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main camera in the open-world  <a href="#aafd6b83529911d9e32cc4b79bd477d74">More...</a><br/></td></tr>
 <tr class="separator:aafd6b83529911d9e32cc4b79bd477d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a5c1d1f77dd4a2668a47a75c934c87075"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c1d1f77dd4a2668a47a75c934c87075"></a>
-static <a class="el" href="class_game_manager.html">GameManager</a>&#160;</td><td class="memItemRight" valign="bottom"><b>INSTANCE</b><code> [get]</code></td></tr>
+<tr class="memitem:a5c1d1f77dd4a2668a47a75c934c87075"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_manager.html">GameManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a5c1d1f77dd4a2668a47a75c934c87075">INSTANCE</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5c1d1f77dd4a2668a47a75c934c87075"><td class="mdescLeft">&#160;</td><td class="mdescRight">The public getter for the instance  <a href="#a5c1d1f77dd4a2668a47a75c934c87075">More...</a><br/></td></tr>
 <tr class="separator:a5c1d1f77dd4a2668a47a75c934c87075"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -195,7 +181,35 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:abd0672430ce6d6c8ae4c01905f4bd4b1 inherit pro_methods_class_singleton_3_01_t_01_4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Author: Dustin Yost Loads the singleton. Checks for singleton properties, then marks the instance  <a href="#abd0672430ce6d6c8ae4c01905f4bd4b1">More...</a><br/></td></tr>
 <tr class="separator:abd0672430ce6d6c8ae4c01905f4bd4b1 inherit pro_methods_class_singleton_3_01_t_01_4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The manager for the client game Is a singleton, instatiated in the first scene </p>
+<p>&lt;author&gt;Dustin Yost&lt;/author&gt; </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a5d9cafdd495a4ed2760de13b7b9c80b6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameManager.Exit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exit the current scene </p>
+
+</div>
+</div>
 <a class="anchor" id="abf59d5ce551af5e35529f71a99d89d76"></a>
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +236,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6a788456fbde7a3587013f1707586f73"></a>
+<a class="anchor" id="aadd5e389068b81b09036cc2bb8c097d6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -230,10 +244,10 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GameManager.updatePlayerWin </td>
+          <td class="memname"><a class="el" href="class_player_reference.html">PlayerReference</a> GameManager.getRandomPlayer </td>
           <td>(</td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>winnerID</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_game_state_1_1_player.html">GameState.Player</a>&#160;</td>
+          <td class="paramname"><em>notMe</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -244,13 +258,180 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>update the player's win count </p>
+<p>Get a random player from the current player listings in GameState.players </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">winnerID</td><td>ID of the winner of a battle </td></tr>
+    <tr><td class="paramname">notMe</td><td>The player which should not be included</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3c3a8e05664851d7642c13989af691cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameManager.NetworkConnect </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ConnectMenu.PlayerDescriptor[]&#160;</td>
+          <td class="paramname"><em>players</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Connect the client with some server </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The IPv4 address</td></tr>
+    <tr><td class="paramname">port</td><td>The address port</td></tr>
+    <tr><td class="paramname">players</td><td>the desired player descriptors to connect with</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3403831c40f16191e3997be60d95380b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameManager.Play </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start the game in a local world </p>
+
+</div>
+</div>
+<a class="anchor" id="a1138f86278583414cba9456d02d0fa1c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameManager.PlayNetwork </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start the game in a networked world </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aafd6b83529911d9e32cc4b79bd477d74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainCamera GameManager.mainCamera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The main camera in the open-world </p>
+
+</div>
+</div>
+<a class="anchor" id="a8d86b330237462e38933b28276ed0e2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_state.html">GameState</a> GameManager.state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The game state </p>
+
+</div>
+</div>
+<a class="anchor" id="abae15982d4eb90ef9e5f3d24d15e22f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_scene_transition.html">SceneTransition</a> GameManager.transition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The object to handle transitioning between scenes </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a5c1d1f77dd4a2668a47a75c934c87075"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_manager.html">GameManager</a> GameManager.INSTANCE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The public getter for the instance </p>
 
 </div>
 </div>

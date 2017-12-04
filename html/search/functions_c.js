@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['unlock',['Unlock',['../class_singleton_3_01_t_01_4.html#a4832d0cc115af2e3fe38947538f17dee',1,'Singleton&lt; T &gt;']]],
-  ['update',['update',['../class_game.html#a79df6376b332d63c9eca0dcee30305c3',1,'Game']]],
-  ['updategame',['updateGame',['../class_state_application.html#ae8c352707a7a61196ad655f0e357faff',1,'StateApplication::updateGame()'],['../class_state_server.html#afc726acef321e4fd0b9f3aeacb126845',1,'StateServer::updateGame()']]],
-  ['updategameforinput',['updateGameForInput',['../class_state_application.html#a32ae34ecad2716a916e1342a10c1f620',1,'StateApplication']]],
-  ['updateinput',['updateInput',['../class_state_application.html#aa23f7bb0379af168a9d261acbb580cc4',1,'StateApplication']]],
-  ['updatenetwork',['updateNetwork',['../class_state_application.html#a55c3922d9e1be3e3ef39f7252c698fc4',1,'StateApplication::updateNetwork()'],['../class_state_server.html#aceb9a260a5c4a4d46607e8fe71be2667',1,'StateServer::updateNetwork()']]],
-  ['updateplayerwin',['updatePlayerWin',['../class_game_manager.html#a6a788456fbde7a3587013f1707586f73',1,'GameManager']]]
+  ['sendbattleoption',['SendBattleOption',['../class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67',1,'BattleHandler']]],
+  ['senddisconnectpacket',['sendDisconnectPacket',['../class_state_server.html#a4ba2a2bde5a70c0aa50ad936ca88ad44',1,'StateServer']]],
+  ['sendpacket',['sendPacket',['../class_state_server.html#ab03b5fe855178bbfa7ec2741b7a08172',1,'StateServer::sendPacket(const char *address, char *data, int dataSize, bool broadcast)'],['../class_state_server.html#a88bda7a0bfd4878781f4676e3b4b19bd',1,'StateServer::sendPacket(const char *address, T *packet, bool broadcast)']]],
+  ['serialize',['Serialize',['../struct_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5',1,'GameState.Player.Serialize()'],['../class_game_state.html#af57a06c77a763e8b57841bab79c9b12f',1,'GameState.Serialize()'],['../class_event_client_joined.html#a10a9f8d247e3446fec1cc7a1eb13e6a0',1,'EventClientJoined.Serialize()'],['../class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238',1,'EventNetwork.Serialize()'],['../interface_i_serializing.html#ac31a44c2358a197e774fa3f79cc80356',1,'ISerializing.Serialize()']]],
+  ['serialize_3c_20t_20_3e',['Serialize&lt; T &gt;',['../class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3',1,'BitSerializeAttribute']]],
+  ['setupbattle',['SetUpBattle',['../class_battle_handler.html#ab27ebc9022c6d8e60c065432240484ff',1,'BattleHandler']]],
+  ['start',['start',['../class_state_server.html#aaeb4f49e47304f186f87f79a3612b085',1,'StateServer']]]
 ];

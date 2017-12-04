@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['render',['render',['../class_state_application.html#abf6724778903f7f4f9106d4be5a1f9f4',1,'StateApplication::render()'],['../class_state_server.html#afb476eb4f969490b00944a93157b76c8',1,'StateServer::render()']]],
-  ['requestbattle',['requestBattle',['../class_player_local.html#a5344425e801a7f02419bf29ede2cb2af',1,'PlayerLocal']]]
+  ['oninput',['onInput',['../class_state_server.html#a680525d2a1036dbbefaf21a7057fb39e',1,'StateServer']]],
+  ['onkeydown',['onKeyDown',['../class_state_application.html#a386fc53c7629d80d25dc86b2ad431406',1,'StateApplication::onKeyDown()'],['../class_state_server.html#a69b988594b45275a55bcb7ba5ceb7aeb',1,'StateServer::onKeyDown()']]]
 ];
