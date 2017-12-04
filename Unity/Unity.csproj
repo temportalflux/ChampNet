@@ -233,19 +233,20 @@
     <Compile Include="Assets\MainCamera.cs" />
     <Compile Include="Assets\MonsterDataObjectEditor.cs" />
     <Compile Include="Assets\PauseMenu.cs" />
-    <Compile Include="Assets\PlayerLocalSpawn.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitSerializeAttribute.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitTest.cs" />
     <Compile Include="Assets\Scripts\Attribute\BitTest2.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleHandler.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleTester.cs" />
     <Compile Include="Assets\Scripts\Battles\BattleUIController.cs" />
+    <Compile Include="Assets\Scripts\Battles\TallGrass.cs" />
     <Compile Include="Assets\Scripts\ChampNet\Network.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\Misc\CameraPixelCorrector.cs" />
     <Compile Include="Assets\Scripts\Misc\Color.cs" />
     <Compile Include="Assets\Scripts\Misc\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Misc\ToDo.cs" />
     <Compile Include="Assets\Scripts\MonsterDataObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\AttackObject.cs" />
     <Compile Include="Assets\Scripts\MonsterScriptableObjects\MonsterStat.cs" />
@@ -260,14 +261,10 @@
     <Compile Include="Assets\Scripts\Network\events\EventClientLeft.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventConnected.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventGameState.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventIncrementScore.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventNetwork.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventRequestMovement.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventSendRank.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithLocation.cs" />
     <Compile Include="Assets\Scripts\Network\events\EventWithPlayerID.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventWithRank.cs" />
-    <Compile Include="Assets\Scripts\Network\events\EventWithScore.cs" />
     <Compile Include="Assets\Scripts\Network\events\ISerializing.cs" />
     <Compile Include="Assets\Scripts\Network\NetInterface.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
@@ -288,7 +285,6 @@
     <Compile Include="Assets\Scripts\UI\ScoreBoard.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreboardIncrementTest.cs" />
     <Compile Include="Assets\Scripts\UI\UIInput.cs" />
-    <Compile Include="Assets\TallGrass.cs" />
     <Compile Include="Assets\UIMenuSelection.cs" />
   </ItemGroup>
   <ItemGroup>

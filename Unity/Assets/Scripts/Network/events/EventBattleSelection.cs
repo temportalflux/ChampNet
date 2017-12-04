@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class EventBattleSelection : EventBattle
 {
-
-    public enum EnumSelection
-    {
-        ATTACK, SWAP, FLEE,
-    }
     
     public uint playerId
     {
@@ -29,7 +24,7 @@ public class EventBattleSelection : EventBattle
     [BitSerialize]
     public uint _selection;
 
-    public EnumSelection selection
+    public GameState.Player.EnumBattleSelection selection
     {
         set
         {
@@ -44,9 +39,12 @@ public class EventBattleSelection : EventBattle
     {
     }
 
-    public override void Execute()
+    public EventBattleSelection(uint playerID, uint opponentID, GameState.Player.EnumBattleSelection selection, uint choice) : this()
     {
-        base.Execute();
-
+        this.idSender = playerID;
+        this.idReceiver = opponentID;
+        this.selection = selection;
+        this.choice = choice;
     }
+
 }

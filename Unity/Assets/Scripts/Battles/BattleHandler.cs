@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-// Author: Jake Ruth
+/// <summary>
+/// 
+/// </summary>
+/// <author>Jake Ruth</author>
 public class BattleHandler : MonoBehaviour
 {
     public enum BattleState
@@ -14,12 +17,16 @@ public class BattleHandler : MonoBehaviour
 
     [Header("Transform Dependencies")]
     public BattleUIController battleUIController;
-    public bool isNetworked;
 
-    private KeeperSystem _localKeeper;
+    /// <summary>
+    /// Indicates that the current battle is between networked players
+    /// </summary>
+    public bool isNetworked;
+    
+    private PlayerReference _localKeeper;
     private int _localCretinIndex;
 
-    private KeeperSystem _otherKeeper;
+    private PlayerReference _otherKeeper;
     private int _otherCretinIndex;
 
     // Used for local battles
@@ -29,73 +36,76 @@ public class BattleHandler : MonoBehaviour
     private int _otherSelectionIndex = -1;
 
     // Getters and Setters
-    public KeeperSystem LocalKeeper
+    public GameState.Player LocalKeeper
     {
-        get { return _localKeeper; }
-        set { _localKeeper = value; }
+        get { return _localKeeper.getInfo(); }
+        //set { _localKeeper = value; }
     }
-    public KeeperSystem OtherKeeper
+    public GameState.Player OtherKeeper
     {
-        get { return _otherKeeper; }
-        set { _otherKeeper = value; }
+        get { return _otherKeeper.getInfo(); }
+        //set { _otherKeeper = value; }
     }
     public int LocalCretinIndex
     {
         get { return _localCretinIndex; }
-        set { _localCretinIndex = value; }
+        //set { _localCretinIndex = value; }
     }
     public int OtherCretinIndex
     {
         get { return _otherCretinIndex; }
-        set { _otherCretinIndex = value; }
+        //set { _otherCretinIndex = value; }
     }
 
     /// <summary>
     /// Called To set up the battle scene. Must be called at the start
     /// </summary>
-    /// <param name="localKeeperSystem"></param>
-    /// <param name="otherKeeperSystem"></param>
-    /// <param name="isNetworkedBattle"></param>
-    public void SetUpBattle(KeeperSystem localKeeperSystem, KeeperSystem otherKeeperSystem, bool isNetworkedBattle = false)
+    /// <param name="localKeeperSystem">The local player</param>
+    /// <param name="otherKeeperSystem">Other opponent player</param>
+    public void SetUpBattle(PlayerReference localKeeperSystem, PlayerReference otherKeeperSystem)
     {
-        isNetworked = isNetworkedBattle;
+        _localKeeper = localKeeperSystem;
+        _localCretinIndex = 0;
 
-        LocalKeeper = localKeeperSystem;
-        LocalCretinIndex = 0;
-
-        OtherKeeper = otherKeeperSystem;
-        OtherCretinIndex = 0;
+        _otherKeeper = otherKeeperSystem;
+        _otherCretinIndex = 0;
     }
 
     /// <summary>
     /// Used to send a battle selection
     /// </summary>
-    /// <param name="isLocalPlayer">if is <code>true</code> then the selection is from the local player</param>
+    /// <param name="isLocalPlayer">if is <code>true</code> then the selection is from the "local" player (local = main player, not AI, not networked)</param>
     /// <param name="selection">The selection option</param>
     /// <param name="selectionIndex">the index of the selection</param>
     /// <returns>returns <code>False</code> if the selection index is not positive</returns>
-    public bool SendBattleOption(bool isLocalPlayer, GameState.Player.EnumBattleSelection selection, int selectionIndex)
+    [ToDo("add networked portion here")]
+    public bool SendBattleOption(bool isLocalPlayer, GameState.Player.EnumBattleSelection selection, uint selectionIndex)
     {
         if (selectionIndex < 0)
             return false;
-
+        
+        // This is a networked battle, so all logic on when players have gone is handled via server
         if (isNetworked)
         {
-            // Todo: add networked portion here
+            // TODO: 1
+            //NetInterface.INSTANCE.Dispatch(new EventBattleSelection(-1, -1, selection, selectionIndex));
         }
+        // This is a battle between a player and AI, so everything is handled locally
         else
         {
+            // The executor is the player
             if (isLocalPlayer)
             {
                 _localSelection = selection;
-                _localSelectionIndex = selectionIndex;
+                _localSelectionIndex = (int)selectionIndex;
             }
+            // The executor is the AI
             else
             {
                 _otherSelection = selection;
-                _otherSelectionIndex = selectionIndex;
+                _otherSelectionIndex = (int)selectionIndex;
             }
-
+            // Both have picked their selection
             if (_localSelectionIndex != -1 && _otherSelectionIndex != -1)
             {
                 StartCoroutine(HandleResponse(_localSelection, _localSelectionIndex - 1, _otherSelection, _otherSelectionIndex - 1));
@@ -112,6 +122,7 @@ public class BattleHandler : MonoBehaviour
     /// <param name="localSelectionIndex">The index for the selection for the local player</param>
     /// <param name="otherSelection">The selection for the other keeper</param>
     /// <param name="otherSelectionIndex">the index for the selection for the other keeper</param>
+    [ToDo("handle a death")]
     public IEnumerator HandleResponse(GameState.Player.EnumBattleSelection localSelection, int localSelectionIndex, GameState.Player.EnumBattleSelection otherSelection, int otherSelectionIndex)
     {
         // Check to see if either selection was to flee
@@ -133,7 +144,6 @@ public class BattleHandler : MonoBehaviour
         if (localSelection == GameState.Player.EnumBattleSelection.SWAP)
         {
             // local keeper swapped a creiten
-
             battleUIController.SetFlavorText("You swapped in " + LocalKeeper.monsters[localSelectionIndex].GetMonsterName);
             yield return  new WaitForSeconds(2.0f);
         }
@@ -152,6 +162,7 @@ public class BattleHandler : MonoBehaviour
         // check to see if either selection was to attack, ordered based on certin speed
         if (localCreitenIsFaster)
         {
+            // Check "local" first
             if (localSelection == GameState.Player.EnumBattleSelection.ATTACK)
             {
                 ApplyAttack(true, localSelectionIndex);
@@ -161,10 +172,10 @@ public class BattleHandler : MonoBehaviour
                 yield return new WaitForSeconds(2.0f);
 
                 // check to see if any of the current cretins are dead
-                // todo: handle a death
+                // TODO: 1
 
             }
-
+            // then check other (network or AI)
             if (otherSelection == GameState.Player.EnumBattleSelection.ATTACK)
             {
                 ApplyAttack(false, otherSelectionIndex);
@@ -199,13 +210,14 @@ public class BattleHandler : MonoBehaviour
 
         battleUIController.menuState = MenuState.MAIN_MENU;
 
-        yield return null;
+        // Don't need, this doesn't exit the routine, just stalls it
+        //yield return null;
     }
 
     /// <summary>
     /// Apply a move to the current battle
     /// </summary>
-    /// <param name="isLocalCretin">if <code>true</code> then the attack came from the local player</param>
+    /// <param name="isLocalCretin">if <code>true</code> then the attack came from the local player, as oppossed to a network player or AI</param>
     /// <param name="attackIndex">the attack index to be used</param>
     private void ApplyAttack(bool isLocalCretin, int attackIndex)
     {
