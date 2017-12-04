@@ -41,7 +41,7 @@ public class BattleTesterEditor : Editor
                     }
                 }
 
-                t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest);
+                t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest, false);
                 t.IsBattleSetup = true;
             }
         }

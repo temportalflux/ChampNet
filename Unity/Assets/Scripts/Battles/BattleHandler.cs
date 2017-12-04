@@ -31,8 +31,10 @@ public class BattleHandler : MonoBehaviour
     /// </summary>
     /// <param name="first">The local player</param>
     /// <param name="second">Other opponent player</param>
-    public void SetUpBattle(BattleParticipant first, BattleParticipant second)
+    /// <param name="isNetworkedBattle">Is the battle a networked battle or not</param>
+    public void SetUpBattle(BattleParticipant first, BattleParticipant second, bool isNetworkedBattle)
     {
+        isNetworked = isNetworkedBattle;
         this.participant1 = first;
         this.participant2 = second;
     }
