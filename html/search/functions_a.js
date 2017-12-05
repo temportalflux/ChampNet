@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['networkconnect',['NetworkConnect',['../class_game_manager.html#a3c3a8e05664851d7642c13989af691cf',1,'GameManager']]]
+  ['multfactor',['multFactor',['../class_timer.html#a0e116daa696f3d5cd9dc3d2092606761',1,'Timer']]]
 ];

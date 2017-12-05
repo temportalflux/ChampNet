@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['localid',['localID',['../class_game_state_1_1_player.html#ae0383475b3348fb85ba5be64433443ff',1,'GameState::Player']]],
-  ['logger',['logger',['../class_champ_net_1_1_network.html#a4588391c9f6064ad7fb83a08f0ea02c6',1,'ChampNet::Network']]]
+  ['id',['id',['../struct_packet_general.html#aac5930add4956e3e3bab8c9a1d170ad8',1,'PacketGeneral::id()'],['../struct_packet_user_i_d.html#a1576d84ee490095dbc4bc61767c2380c',1,'PacketUserID::id()'],['../struct_packet_client_player_i_d.html#acce86d76b02d18b841377d80849d0f09',1,'PacketClientPlayerID::id()'],['../struct_packet_player_scoreboard_info.html#a57c4aeafb56667d32226fe2aacabb02b',1,'PacketPlayerScoreboardInfo::id()'],['../struct_packet_player_position.html#ad80364604ce3113e51136c2b0ca5d6e0',1,'PacketPlayerPosition::id()'],['../struct_packet_user_i_d_double.html#aab2990fb8840c5bbbbaced392bea66f1',1,'PacketUserIDDouble::id()'],['../struct_packet_user_i_d_triple.html#a0b1062f754fdd84e60c3cb4eec5fb83b',1,'PacketUserIDTriple::id()'],['../struct_packet_battle_response.html#ac70feabfe2e6f94c88c72734825c9ba3',1,'PacketBattleResponse::id()'],['../struct_packet_battle_prompt_selection.html#aaee299dad27b67f3a110f43bdb153483',1,'PacketBattlePromptSelection::id()'],['../struct_packet_battle_selection.html#ad9d05ea40a225c467a8b88893f9936af',1,'PacketBattleSelection::id()']]],
+  ['inbattle',['inBattle',['../class_game_state_1_1_player.html#a3cff343fceb3dc315d2371fc8fe25ec6',1,'GameState::Player']]],
+  ['iscaps',['isCaps',['../struct_state_input.html#a74ffea978c21525eef29d3612f8ab88f',1,'StateInput']]],
+  ['isnetworked',['isNetworked',['../class_battle_handler.html#a91faa80b5273370273762c40a364305d',1,'BattleHandler']]]
 ];

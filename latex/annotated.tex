@@ -49,17 +49,17 @@ Here are the classes, structs, unions and interfaces with brief descriptions\-:\
 \item\contentsline{section}{\hyperlink{class_champ_net_1_1_network}{Champ\-Net\-::\-Network} \\*Base class for handling all \hyperlink{class_champ_net_1_1_packet}{Champ\-Net\-::\-Packet} data }{\pageref{class_champ_net_1_1_network}}{}
 \item\contentsline{section}{\hyperlink{class_champ_net_plugin_1_1_network}{Champ\-Net\-Plugin.\-Network} }{\pageref{class_champ_net_plugin_1_1_network}}{}
 \item\contentsline{section}{\hyperlink{class_champ_net_1_1_packet}{Champ\-Net\-::\-Packet} \\*A class to handle packet data from Rak\-Net }{\pageref{class_champ_net_1_1_packet}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_battle_prompt_selection}{Packet\-Battle\-Prompt\-Selection} }{\pageref{struct_packet_battle_prompt_selection}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_battle_response}{Packet\-Battle\-Response} }{\pageref{struct_packet_battle_response}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection} }{\pageref{struct_packet_battle_selection}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_client_player_i_d}{Packet\-Client\-Player\-I\-D} }{\pageref{struct_packet_client_player_i_d}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_general}{Packet\-General} }{\pageref{struct_packet_general}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_player_position}{Packet\-Player\-Position} }{\pageref{struct_packet_player_position}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_player_scoreboard_info}{Packet\-Player\-Scoreboard\-Info} }{\pageref{struct_packet_player_scoreboard_info}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_battle_prompt_selection}{Packet\-Battle\-Prompt\-Selection} \\*A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of \hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection} }{\pageref{struct_packet_battle_prompt_selection}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_battle_response}{Packet\-Battle\-Response} \\*A packet responding to a battle request (\hyperlink{struct_packet_user_i_d_double}{Packet\-User\-I\-D\-Double}), and includes an acceptance flag }{\pageref{struct_packet_battle_response}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection} \\*A packet with a player\-I\-D, their opponent's I\-D, and the player's selections for battle }{\pageref{struct_packet_battle_selection}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_client_player_i_d}{Packet\-Client\-Player\-I\-D} \\*A packet with a client\-I\-D and player\-I\-D }{\pageref{struct_packet_client_player_i_d}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_general}{Packet\-General} \\*A general packet with the packet\-I\-D }{\pageref{struct_packet_general}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_player_position}{Packet\-Player\-Position} \\*A packet with a client\-I\-D, player\-I\-D, and dead reckoning variables }{\pageref{struct_packet_player_position}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_player_scoreboard_info}{Packet\-Player\-Scoreboard\-Info} \\*A packet with a client\-I\-D, player\-I\-D, and score of the player }{\pageref{struct_packet_player_scoreboard_info}}{}
 \item\contentsline{section}{\hyperlink{class_champ_net_1_1_packet_queue}{Champ\-Net\-::\-Packet\-Queue} }{\pageref{class_champ_net_1_1_packet_queue}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_user_i_d}{Packet\-User\-I\-D} }{\pageref{struct_packet_user_i_d}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_user_i_d_double}{Packet\-User\-I\-D\-Double} }{\pageref{struct_packet_user_i_d_double}}{}
-\item\contentsline{section}{\hyperlink{struct_packet_user_i_d_triple}{Packet\-User\-I\-D\-Triple} }{\pageref{struct_packet_user_i_d_triple}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_user_i_d}{Packet\-User\-I\-D} \\*A paccket with an unknown identifier }{\pageref{struct_packet_user_i_d}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_user_i_d_double}{Packet\-User\-I\-D\-Double} \\*A packet with two player\-I\-Ds }{\pageref{struct_packet_user_i_d_double}}{}
+\item\contentsline{section}{\hyperlink{struct_packet_user_i_d_triple}{Packet\-User\-I\-D\-Triple} \\*A packet with three player\-I\-Ds }{\pageref{struct_packet_user_i_d_triple}}{}
 \item\contentsline{section}{\hyperlink{class_performance_tracker}{Performance\-Tracker} }{\pageref{class_performance_tracker}}{}
 \item\contentsline{section}{\hyperlink{class_game_state_1_1_player}{Game\-State.\-Player} \\*A state class for all \hyperlink{class_game_state_1_1_player}{Player} objects }{\pageref{class_game_state_1_1_player}}{}
 \item\contentsline{section}{\hyperlink{class_player_character_controller}{Player\-Character\-Controller} }{\pageref{class_player_character_controller}}{}
@@ -73,12 +73,12 @@ Here are the classes, structs, unions and interfaces with brief descriptions\-:\
 \item\contentsline{section}{\hyperlink{class_score_board}{Score\-Board} }{\pageref{class_score_board}}{}
 \item\contentsline{section}{\hyperlink{class_scoreboard_increment_test}{Scoreboard\-Increment\-Test} }{\pageref{class_scoreboard_increment_test}}{}
 \item\contentsline{section}{\hyperlink{class_singleton_3_01_t_01_4}{Singleton$<$ T $>$} \\*Author\-: Dustin Yost Base class to assist with objects which only occur once in the lifetime of the game }{\pageref{class_singleton_3_01_t_01_4}}{}
-\item\contentsline{section}{\hyperlink{class_state_application}{State\-Application} }{\pageref{class_state_application}}{}
-\item\contentsline{section}{\hyperlink{struct_state_console}{State\-Console} }{\pageref{struct_state_console}}{}
-\item\contentsline{section}{\hyperlink{struct_state_data}{State\-Data} }{\pageref{struct_state_data}}{}
-\item\contentsline{section}{\hyperlink{struct_state_input}{State\-Input} }{\pageref{struct_state_input}}{}
-\item\contentsline{section}{\hyperlink{struct_state_network}{State\-Network} }{\pageref{struct_state_network}}{}
-\item\contentsline{section}{\hyperlink{class_state_server}{State\-Server} }{\pageref{class_state_server}}{}
+\item\contentsline{section}{\hyperlink{class_state_application}{State\-Application} \\*The information state -\/ handles all persistent data }{\pageref{class_state_application}}{}
+\item\contentsline{section}{\hyperlink{struct_state_console}{State\-Console} \\*The state of the console window }{\pageref{struct_state_console}}{}
+\item\contentsline{section}{\hyperlink{struct_state_data}{State\-Data} \\*The data state of all local data }{\pageref{struct_state_data}}{}
+\item\contentsline{section}{\hyperlink{struct_state_input}{State\-Input} \\*The state of the input keys }{\pageref{struct_state_input}}{}
+\item\contentsline{section}{\hyperlink{struct_state_network}{State\-Network} \\*The state of the network data }{\pageref{struct_state_network}}{}
+\item\contentsline{section}{\hyperlink{class_state_server}{State\-Server} \\*The state application for the server (the server has only one state) }{\pageref{class_state_server}}{}
 \item\contentsline{section}{\hyperlink{class_tall_grass}{Tall\-Grass} }{\pageref{class_tall_grass}}{}
 \item\contentsline{section}{\hyperlink{class_timer}{Timer} }{\pageref{class_timer}}{}
 \item\contentsline{section}{\hyperlink{struct_champ_net_1_1_time_stamp}{Champ\-Net\-::\-Time\-Stamp} \\*Holds Time\-Stamped information which wraps Rak\-Net\-::\-Time for usage for cross-\/network \& forwarded packet time tracking }{\pageref{struct_champ_net_1_1_time_stamp}}{}

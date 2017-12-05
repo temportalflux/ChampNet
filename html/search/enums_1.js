@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messageids',['MessageIDs',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821',1,'ChampNetPlugin.MessageIDs()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821',1,'ChampNetPlugin::MessageIDs()']]]
+  ['enumbattleselection',['EnumBattleSelection',['../class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615',1,'GameState::Player']]]
 ];

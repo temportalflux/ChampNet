@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['id',['id',['../struct_packet_general.html#aac5930add4956e3e3bab8c9a1d170ad8',1,'PacketGeneral::id()'],['../struct_packet_user_i_d.html#a1576d84ee490095dbc4bc61767c2380c',1,'PacketUserID::id()'],['../struct_packet_client_player_i_d.html#acce86d76b02d18b841377d80849d0f09',1,'PacketClientPlayerID::id()'],['../struct_packet_player_scoreboard_info.html#a57c4aeafb56667d32226fe2aacabb02b',1,'PacketPlayerScoreboardInfo::id()'],['../struct_packet_player_position.html#ad80364604ce3113e51136c2b0ca5d6e0',1,'PacketPlayerPosition::id()'],['../struct_packet_user_i_d_double.html#aab2990fb8840c5bbbbaced392bea66f1',1,'PacketUserIDDouble::id()'],['../struct_packet_user_i_d_triple.html#a0b1062f754fdd84e60c3cb4eec5fb83b',1,'PacketUserIDTriple::id()'],['../struct_packet_battle_response.html#ac70feabfe2e6f94c88c72734825c9ba3',1,'PacketBattleResponse::id()'],['../struct_packet_battle_prompt_selection.html#aaee299dad27b67f3a110f43bdb153483',1,'PacketBattlePromptSelection::id()'],['../struct_packet_battle_selection.html#ad9d05ea40a225c467a8b88893f9936af',1,'PacketBattleSelection::id()']]],
   ['id_5fbattle_5flocal_5fstart',['ID_BATTLE_LOCAL_START',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ab54454887b51006a69a632ca6a13aab6',1,'ChampNetPlugin']]],
   ['id_5fbattle_5fprompt_5fselection',['ID_BATTLE_PROMPT_SELECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1ce06c939b64517c251a1cc36168837f',1,'ChampNetPlugin']]],
   ['id_5fbattle_5frequest',['ID_BATTLE_REQUEST',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1099c58a5b9ad43616e67c5865ce539a',1,'ChampNetPlugin']]],
@@ -25,10 +26,12 @@ var searchData=
   ['integrateinfo',['integrateInfo',['../class_player_reference.html#a4918fec4590780ff599dec4a5035bbbe',1,'PlayerReference']]],
   ['integratephysics',['integratePhysics',['../class_game_state_1_1_player.html#a59ac624b5378e8253ac70d827febfe6a',1,'GameState::Player']]],
   ['isactive',['isActive',['../class_champ_net_1_1_network.html#a2266d0ef6af69462b1594246cea5b95d',1,'ChampNet::Network']]],
+  ['iscaps',['isCaps',['../struct_state_input.html#a74ffea978c21525eef29d3612f8ab88f',1,'StateInput']]],
   ['isempty',['isEmpty',['../class_champ_net_1_1_packet_queue.html#a0959c0f0b04096739dbc64ffb3ce5a00',1,'ChampNet::PacketQueue']]],
   ['iserializing',['ISerializing',['../interface_i_serializing.html',1,'']]],
   ['isinuse',['isInUse',['../class_singleton_3_01_t_01_4.html#aaf243fc3c85154c237fb3086b67ef6ff',1,'Singleton&lt; T &gt;']]],
   ['islocal',['isLocal',['../class_game_state_1_1_player.html#affd7c601a6d763dafdc59a58c415e9e7',1,'GameState::Player']]],
   ['isnetworked',['isNetworked',['../class_battle_handler.html#a91faa80b5273370273762c40a364305d',1,'BattleHandler']]],
-  ['isplayer',['isPlayer',['../class_battle_participant.html#a772329be78feaa3c85a692c39dc54a47',1,'BattleParticipant']]]
+  ['isplayer',['isPlayer',['../class_battle_participant.html#a772329be78feaa3c85a692c39dc54a47',1,'BattleParticipant']]],
+  ['isrunning',['isRunning',['../class_game.html#aa61c0358c2611d00eb47ebf72a88f8c7',1,'Game']]]
 ];

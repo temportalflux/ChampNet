@@ -88,35 +88,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_packet_battle_prompt_selection-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PacketBattlePromptSelection Struct Reference</div>  </div>
+<div class="title">PacketBattlePromptSelection Struct Reference<div class="ingroups"><a class="el" href="group__server.html">Server: Cretins</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of <a class="el" href="struct_packet_battle_selection.html" title="A packet with a playerID, their opponent&#39;s ID, and the player&#39;s selections for battle. ">PacketBattleSelection</a>.  
+ <a href="struct_packet_battle_prompt_selection.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_packets_8h_source.html">Packets.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aaee299dad27b67f3a110f43bdb153483"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaee299dad27b67f3a110f43bdb153483"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#aaee299dad27b67f3a110f43bdb153483">id</a></td></tr>
+<tr class="memdesc:aaee299dad27b67f3a110f43bdb153483"><td class="mdescLeft">&#160;</td><td class="mdescRight">The packetID. <br/></td></tr>
 <tr class="separator:aaee299dad27b67f3a110f43bdb153483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf39f8101ce7fdca0cc6d6fcdd22c4b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf39f8101ce7fdca0cc6d6fcdd22c4b3"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerAId</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#adf39f8101ce7fdca0cc6d6fcdd22c4b3">playerAId</a></td></tr>
+<tr class="memdesc:adf39f8101ce7fdca0cc6d6fcdd22c4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133" title="A unique identifier of the player object. Unique across all peers in the network. ...">GameState::Player::playerID</a> of the first player in the previous round. <br/></td></tr>
 <tr class="separator:adf39f8101ce7fdca0cc6d6fcdd22c4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc4ee55b1a7dff6cb25bb47e2c517dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc4ee55b1a7dff6cb25bb47e2c517dea"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>playerASelection</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#afc4ee55b1a7dff6cb25bb47e2c517dea">playerASelection</a></td></tr>
+<tr class="memdesc:afc4ee55b1a7dff6cb25bb47e2c517dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="group__server.html#ga729fc596fd91937095a8172eb71be582" title="The selections for battles. ">BattleSelection</a> of the first player, -1 if invalid. <br/></td></tr>
 <tr class="separator:afc4ee55b1a7dff6cb25bb47e2c517dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd26c08394d5c6e0bbadb794d07750e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd26c08394d5c6e0bbadb794d07750e0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>playerAChoice</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#abd26c08394d5c6e0bbadb794d07750e0">playerAChoice</a></td></tr>
+<tr class="memdesc:abd26c08394d5c6e0bbadb794d07750e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="group__server.html#ga729fc596fd91937095a8172eb71be582" title="The selections for battles. ">BattleSelection</a> choice of the first player, -1 if invalid. <br/></td></tr>
 <tr class="separator:abd26c08394d5c6e0bbadb794d07750e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7108e4202c67ac30571bc3083277727"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7108e4202c67ac30571bc3083277727"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerBId</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#aa7108e4202c67ac30571bc3083277727">playerBId</a></td></tr>
+<tr class="memdesc:aa7108e4202c67ac30571bc3083277727"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133" title="A unique identifier of the player object. Unique across all peers in the network. ...">GameState::Player::playerID</a> of the second player in the previous round. <br/></td></tr>
 <tr class="separator:aa7108e4202c67ac30571bc3083277727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa696c396d478697bdddf8c2394c1a0b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa696c396d478697bdddf8c2394c1a0b7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>playerBSelection</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#aa696c396d478697bdddf8c2394c1a0b7">playerBSelection</a></td></tr>
+<tr class="memdesc:aa696c396d478697bdddf8c2394c1a0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="group__server.html#ga729fc596fd91937095a8172eb71be582" title="The selections for battles. ">BattleSelection</a> of the second player, -1 if invalid. <br/></td></tr>
 <tr class="separator:aa696c396d478697bdddf8c2394c1a0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68ff044c6f22f9aaaeb3aa2a8d12e2eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68ff044c6f22f9aaaeb3aa2a8d12e2eb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>playerBChoice</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_prompt_selection.html#a68ff044c6f22f9aaaeb3aa2a8d12e2eb">playerBChoice</a></td></tr>
+<tr class="memdesc:a68ff044c6f22f9aaaeb3aa2a8d12e2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="group__server.html#ga729fc596fd91937095a8172eb71be582" title="The selections for battles. ">BattleSelection</a> choice of the second player, -1 if invalid. <br/></td></tr>
 <tr class="separator:a68ff044c6f22f9aaaeb3aa2a8d12e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of <a class="el" href="struct_packet_battle_selection.html" title="A packet with a playerID, their opponent&#39;s ID, and the player&#39;s selections for battle. ">PacketBattleSelection</a>. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_packets_8h_source.html">Packets.h</a></li>
 </ul>
 </div><!-- contents -->

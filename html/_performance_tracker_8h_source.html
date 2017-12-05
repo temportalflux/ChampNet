@@ -96,23 +96,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_performance_tracker.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_performance_tracker.html">PerformanceTracker</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="class_performance_tracker.html">PerformanceTracker</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    ~<a class="code" href="class_performance_tracker.html">PerformanceTracker</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> startTracking( <span class="keyword">const</span> std::string&amp; trackerName );</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> stopTracking( <span class="keyword">const</span> std::string&amp; trackerName );</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">double</span> getElapsedTime( <span class="keyword">const</span> std::string&amp; trackerName );</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> removeTracker( <span class="keyword">const</span> std::string&amp; trackerName );</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> clearTracker( <span class="keyword">const</span> std::string&amp; trackerName );</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::map&lt;std::string,Timer*&gt; mTimers;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="ttc" id="class_performance_tracker_html"><div class="ttname"><a href="class_performance_tracker.html">PerformanceTracker</a></div><div class="ttdef"><b>Definition:</b> PerformanceTracker.h:8</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_performance_tracker.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_performance_tracker.html">PerformanceTracker</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::map&lt;std::string, Timer*&gt; mTimers;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_performance_tracker.html#a3ca7c573d743478e4924f3239f258a70">PerformanceTracker</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_performance_tracker.html#a58ca08b74e28ccea87a8ecd6d2d5e7c0">~PerformanceTracker</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_performance_tracker.html#abffee8acc3818592a7011dec4c6100c8">startTracking</a>( <span class="keyword">const</span> std::string&amp; trackerName );</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_performance_tracker.html#ac1dfa09a27f6dd1baeeb8068b009a432">stopTracking</a>( <span class="keyword">const</span> std::string&amp; trackerName );</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_performance_tracker.html#a6197691d9a0e4bce1d69e78a589a31fb">getElapsedTime</a>( <span class="keyword">const</span> std::string&amp; trackerName );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_performance_tracker.html#a0caacd20bc7e668cdfb9ef9567df6aeb">removeTracker</a>( <span class="keyword">const</span> std::string&amp; trackerName );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_performance_tracker.html#a81acadf369ceab082eea07241eb14866">clearTracker</a>( <span class="keyword">const</span> std::string&amp; trackerName );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="ttc" id="class_performance_tracker_html_a0caacd20bc7e668cdfb9ef9567df6aeb"><div class="ttname"><a href="class_performance_tracker.html#a0caacd20bc7e668cdfb9ef9567df6aeb">PerformanceTracker::removeTracker</a></div><div class="ttdeci">void removeTracker(const std::string &amp;trackerName)</div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:61</div></div>
+<div class="ttc" id="class_performance_tracker_html_a6197691d9a0e4bce1d69e78a589a31fb"><div class="ttname"><a href="class_performance_tracker.html#a6197691d9a0e4bce1d69e78a589a31fb">PerformanceTracker::getElapsedTime</a></div><div class="ttdeci">double getElapsedTime(const std::string &amp;trackerName)</div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:49</div></div>
+<div class="ttc" id="class_performance_tracker_html_a81acadf369ceab082eea07241eb14866"><div class="ttname"><a href="class_performance_tracker.html#a81acadf369ceab082eea07241eb14866">PerformanceTracker::clearTracker</a></div><div class="ttdeci">void clearTracker(const std::string &amp;trackerName)</div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:73</div></div>
+<div class="ttc" id="class_performance_tracker_html_ac1dfa09a27f6dd1baeeb8068b009a432"><div class="ttname"><a href="class_performance_tracker.html#ac1dfa09a27f6dd1baeeb8068b009a432">PerformanceTracker::stopTracking</a></div><div class="ttdeci">void stopTracking(const std::string &amp;trackerName)</div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:38</div></div>
+<div class="ttc" id="class_performance_tracker_html"><div class="ttname"><a href="class_performance_tracker.html">PerformanceTracker</a></div><div class="ttdef"><b>Definition:</b> PerformanceTracker.h:13</div></div>
+<div class="ttc" id="class_performance_tracker_html_a3ca7c573d743478e4924f3239f258a70"><div class="ttname"><a href="class_performance_tracker.html#a3ca7c573d743478e4924f3239f258a70">PerformanceTracker::PerformanceTracker</a></div><div class="ttdeci">PerformanceTracker()</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:5</div></div>
+<div class="ttc" id="class_performance_tracker_html_a58ca08b74e28ccea87a8ecd6d2d5e7c0"><div class="ttname"><a href="class_performance_tracker.html#a58ca08b74e28ccea87a8ecd6d2d5e7c0">PerformanceTracker::~PerformanceTracker</a></div><div class="ttdeci">~PerformanceTracker()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:9</div></div>
+<div class="ttc" id="class_performance_tracker_html_abffee8acc3818592a7011dec4c6100c8"><div class="ttname"><a href="class_performance_tracker.html#abffee8acc3818592a7011dec4c6100c8">PerformanceTracker::startTracking</a></div><div class="ttdeci">void startTracking(const std::string &amp;trackerName)</div><div class="ttdef"><b>Definition:</b> PerformanceTracker.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

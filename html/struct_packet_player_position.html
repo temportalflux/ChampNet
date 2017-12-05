@@ -88,35 +88,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_packet_player_position-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PacketPlayerPosition Struct Reference</div>  </div>
+<div class="title">PacketPlayerPosition Struct Reference<div class="ingroups"><a class="el" href="group__server.html">Server: Cretins</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A packet with a clientID, playerID, and dead reckoning variables.  
+ <a href="struct_packet_player_position.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_packets_8h_source.html">Packets.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ad80364604ce3113e51136c2b0ca5d6e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad80364604ce3113e51136c2b0ca5d6e0"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#ad80364604ce3113e51136c2b0ca5d6e0">id</a></td></tr>
+<tr class="memdesc:ad80364604ce3113e51136c2b0ca5d6e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The packetID. <br/></td></tr>
 <tr class="separator:ad80364604ce3113e51136c2b0ca5d6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3647ac419f4e01afe948da2468b67658"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3647ac419f4e01afe948da2468b67658"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>clientID</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#a3647ac419f4e01afe948da2468b67658">clientID</a></td></tr>
+<tr class="memdesc:a3647ac419f4e01afe948da2468b67658"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID of the client, akin to <a class="el" href="class_game_state.html#ad24a423ba6655fc6541b2f12ce98e0d0" title="A unique identifier (across all peers in the network) of the client which controls this player ...">GameState::clientID</a> <br/></td></tr>
 <tr class="separator:a3647ac419f4e01afe948da2468b67658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94c602eaa03f27c22937d37257368ab6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a94c602eaa03f27c22937d37257368ab6"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerID</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#a94c602eaa03f27c22937d37257368ab6">playerID</a></td></tr>
+<tr class="memdesc:a94c602eaa03f27c22937d37257368ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID of the player, akin to <a class="el" href="class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133" title="A unique identifier of the player object. Unique across all peers in the network. ...">GameState::Player::playerID</a> <br/></td></tr>
 <tr class="separator:a94c602eaa03f27c22937d37257368ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1719505fbc59c8f4948cfec4772859b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1719505fbc59c8f4948cfec4772859b0"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>posX</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#a1719505fbc59c8f4948cfec4772859b0">posX</a></td></tr>
+<tr class="memdesc:a1719505fbc59c8f4948cfec4772859b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The x-coord of the player's position, <a class="el" href="class_game_state_1_1_player.html#a0342f6d74f9c08351cd0c5139ac55de6" title="the position ">GameState::Player::posX</a> <br/></td></tr>
 <tr class="separator:a1719505fbc59c8f4948cfec4772859b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401e60ee7a35eaa7154827814082f794"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a401e60ee7a35eaa7154827814082f794"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>posY</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#a401e60ee7a35eaa7154827814082f794">posY</a></td></tr>
+<tr class="memdesc:a401e60ee7a35eaa7154827814082f794"><td class="mdescLeft">&#160;</td><td class="mdescRight">The y-coord of the player's position, GameState::Player::posY <br/></td></tr>
 <tr class="separator:a401e60ee7a35eaa7154827814082f794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f4b56eb20f827dec38d7ddaf8ea0f13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f4b56eb20f827dec38d7ddaf8ea0f13"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>velX</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#a4f4b56eb20f827dec38d7ddaf8ea0f13">velX</a></td></tr>
+<tr class="memdesc:a4f4b56eb20f827dec38d7ddaf8ea0f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">The x-coord of the player's velocity, <a class="el" href="class_game_state_1_1_player.html#afcc72f7f23db9714a20ac1b08fda0288" title="velocity ">GameState::Player::velX</a> <br/></td></tr>
 <tr class="separator:a4f4b56eb20f827dec38d7ddaf8ea0f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcf1d97becbe982654e73cc9ec8d88c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcf1d97becbe982654e73cc9ec8d88c8"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>velY</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_player_position.html#abcf1d97becbe982654e73cc9ec8d88c8">velY</a></td></tr>
+<tr class="memdesc:abcf1d97becbe982654e73cc9ec8d88c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The y-coord of the player's velocity, <a class="el" href="class_game_state_1_1_player.html#afcc72f7f23db9714a20ac1b08fda0288" title="velocity ">GameState::Player::velX</a> <br/></td></tr>
 <tr class="separator:abcf1d97becbe982654e73cc9ec8d88c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A packet with a clientID, playerID, and dead reckoning variables. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_packets_8h_source.html">Packets.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -2,6 +2,7 @@ var searchData=
 [
   ['challengerandomplayer',['challengeRandomPlayer',['../class_player_local.html#aa5c459588b976499120386eda1c1fac0',1,'PlayerLocal']]],
   ['clear',['clear',['../class_champ_net_1_1_packet_queue.html#a58fb470b0b4a6678495c36e89a7d4f58',1,'ChampNet::PacketQueue']]],
+  ['cleartracker',['clearTracker',['../class_performance_tracker.html#a81acadf369ceab082eea07241eb14866',1,'PerformanceTracker']]],
   ['connect',['Connect',['../class_net_interface.html#a565fb35ea7ed5e364902aa8bd0bc6bf9',1,'NetInterface']]],
   ['connecttoserver',['connectToServer',['../class_champ_net_1_1_network.html#a9dbfd1e6e9e5f11720a6e8e41174df1e',1,'ChampNet::Network::connectToServer()'],['../namespace_champ_net_plugin.html#ae65d85077ea14169471c94ef9412db81',1,'ChampNetPlugin::ConnectToServer()']]],
   ['copy',['copy',['../class_champ_net_1_1_packet.html#a068e85d829e9fa4b980ec115b40048d3',1,'ChampNet::Packet']]],

@@ -88,26 +88,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_packet_battle_response-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PacketBattleResponse Struct Reference</div>  </div>
+<div class="title">PacketBattleResponse Struct Reference<div class="ingroups"><a class="el" href="group__server.html">Server: Cretins</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A packet responding to a battle request (<a class="el" href="struct_packet_user_i_d_double.html" title="A packet with two playerIDs. ">PacketUserIDDouble</a>), and includes an acceptance flag.  
+ <a href="struct_packet_battle_response.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_packets_8h_source.html">Packets.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac70feabfe2e6f94c88c72734825c9ba3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac70feabfe2e6f94c88c72734825c9ba3"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_response.html#ac70feabfe2e6f94c88c72734825c9ba3">id</a></td></tr>
+<tr class="memdesc:ac70feabfe2e6f94c88c72734825c9ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The packetID. <br/></td></tr>
 <tr class="separator:ac70feabfe2e6f94c88c72734825c9ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a160a7d9a9d83a0aa30799e0e625cb585"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a160a7d9a9d83a0aa30799e0e625cb585"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerIdSender</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_response.html#a160a7d9a9d83a0aa30799e0e625cb585">playerIdSender</a></td></tr>
+<tr class="memdesc:a160a7d9a9d83a0aa30799e0e625cb585"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133" title="A unique identifier of the player object. Unique across all peers in the network. ...">GameState::Player::playerID</a>. The sender of the response (and the receiver of a battle request). <br/></td></tr>
 <tr class="separator:a160a7d9a9d83a0aa30799e0e625cb585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6060ede7257820987a0d8b086a3d205f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6060ede7257820987a0d8b086a3d205f"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerIdReceiver</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_response.html#a6060ede7257820987a0d8b086a3d205f">playerIdReceiver</a></td></tr>
+<tr class="memdesc:a6060ede7257820987a0d8b086a3d205f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133" title="A unique identifier of the player object. Unique across all peers in the network. ...">GameState::Player::playerID</a>. The receiver of the response (and the sender of the battle request). <br/></td></tr>
 <tr class="separator:a6060ede7257820987a0d8b086a3d205f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d1d3efb9c0be580bb6676b7262fdd9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58d1d3efb9c0be580bb6676b7262fdd9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>accepted</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_packet_battle_response.html#a58d1d3efb9c0be580bb6676b7262fdd9">accepted</a></td></tr>
+<tr class="memdesc:a58d1d3efb9c0be580bb6676b7262fdd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag indicating if the <a class="el" href="struct_packet_battle_response.html#a160a7d9a9d83a0aa30799e0e625cb585" title="A GameState::Player::playerID. The sender of the response (and the receiver of a battle request)...">PacketBattleResponse::playerIdSender</a> has accepted the battle. <br/></td></tr>
 <tr class="separator:a58d1d3efb9c0be580bb6676b7262fdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A packet responding to a battle request (<a class="el" href="struct_packet_user_i_d_double.html" title="A packet with two playerIDs. ">PacketUserIDDouble</a>), and includes an acceptance flag. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_packets_8h_source.html">Packets.h</a></li>
 </ul>
 </div><!-- contents -->

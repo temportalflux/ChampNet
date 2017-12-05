@@ -102,6 +102,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>A state class for all <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> objects  
  <a href="class_game_state_1_1_player.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game_state_8h_source.html">GameState.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GameState.Player:</div>
 <div class="dyncontent">
@@ -193,19 +195,24 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a4412b3835e68a55b00610438118cdb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the cretins the player has.  <a href="#a4412b3835e68a55b00610438118cdb16">More...</a><br/></td></tr>
 <tr class="separator:a4412b3835e68a55b00610438118cdb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bef4cd92306bd5cf330c4756e63686c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bef4cd92306bd5cf330c4756e63686c"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>clientID</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a1bef4cd92306bd5cf330c4756e63686c">clientID</a></td></tr>
+<tr class="memdesc:a1bef4cd92306bd5cf330c4756e63686c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clientID of the controlling client. This is unique across all peers in a network. <br/></td></tr>
 <tr class="separator:a1bef4cd92306bd5cf330c4756e63686c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac71d68698435ee1c625237b1f2b377cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac71d68698435ee1c625237b1f2b377cb"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>playerID</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ac71d68698435ee1c625237b1f2b377cb">playerID</a></td></tr>
+<tr class="memdesc:ac71d68698435ee1c625237b1f2b377cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The playerID of the character. This is unique across all players in a network. <br/></td></tr>
 <tr class="separator:ac71d68698435ee1c625237b1f2b377cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1600ee9b9d01027e5304e991be11407"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1600ee9b9d01027e5304e991be11407"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>localID</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ab1600ee9b9d01027e5304e991be11407">localID</a></td></tr>
+<tr class="memdesc:ab1600ee9b9d01027e5304e991be11407"><td class="mdescLeft">&#160;</td><td class="mdescRight">The localID of the character. This is unqiue to all players with the same <a class="el" href="class_game_state_1_1_player.html#aacc123df8ea5256f83c1060a5fdd19c2" title="A unique identifier of the client which controls this player. Unqiue across all peers in the network...">Player::clientID</a>. <br/></td></tr>
 <tr class="separator:ab1600ee9b9d01027e5304e991be11407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6638478952037ab0d1b3b0a3c496a820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6638478952037ab0d1b3b0a3c496a820"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a6638478952037ab0d1b3b0a3c496a820">name</a></td></tr>
+<tr class="memdesc:a6638478952037ab0d1b3b0a3c496a820"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the character <br/></td></tr>
 <tr class="separator:a6638478952037ab0d1b3b0a3c496a820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b350ee750dd994b421ad4332448112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54b350ee750dd994b421ad4332448112"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>colorR</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a54b350ee750dd994b421ad4332448112">colorR</a></td></tr>
+<tr class="memdesc:a54b350ee750dd994b421ad4332448112"><td class="mdescLeft">&#160;</td><td class="mdescRight">the highlight color of the character <br/></td></tr>
 <tr class="separator:a54b350ee750dd994b421ad4332448112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c9551e961a1f601fd689f3677ce277"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26c9551e961a1f601fd689f3677ce277"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>colorG</b></td></tr>
@@ -214,7 +221,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>colorG</b></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>colorB</b></td></tr>
 <tr class="separator:ad3f992ed5676471f80c6ba3c9ce0f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0342f6d74f9c08351cd0c5139ac55de6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0342f6d74f9c08351cd0c5139ac55de6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>posX</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a0342f6d74f9c08351cd0c5139ac55de6">posX</a></td></tr>
+<tr class="memdesc:a0342f6d74f9c08351cd0c5139ac55de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the position <br/></td></tr>
 <tr class="separator:a0342f6d74f9c08351cd0c5139ac55de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a831daac1ac1f3da9ec90a9c2247b3b2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a831daac1ac1f3da9ec90a9c2247b3b2f"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>posY</b></td></tr>
@@ -223,7 +231,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>posY</b></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>posZ</b></td></tr>
 <tr class="separator:af71e7ca3fb57c91895254d8c2741a36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcc72f7f23db9714a20ac1b08fda0288"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcc72f7f23db9714a20ac1b08fda0288"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>velX</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#afcc72f7f23db9714a20ac1b08fda0288">velX</a></td></tr>
+<tr class="memdesc:afcc72f7f23db9714a20ac1b08fda0288"><td class="mdescLeft">&#160;</td><td class="mdescRight">velocity <br/></td></tr>
 <tr class="separator:afcc72f7f23db9714a20ac1b08fda0288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5fa5186567b76be447afe96e86c9f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e5fa5186567b76be447afe96e86c9f9"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>velY</b></td></tr>
@@ -232,7 +241,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>velY</b></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>velZ</b></td></tr>
 <tr class="separator:af69e80093c2205d374bfcab9baa3f57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d726c8aaa2bb433e9d6d3e09c945328"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d726c8aaa2bb433e9d6d3e09c945328"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>accX</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a0d726c8aaa2bb433e9d6d3e09c945328">accX</a></td></tr>
+<tr class="memdesc:a0d726c8aaa2bb433e9d6d3e09c945328"><td class="mdescLeft">&#160;</td><td class="mdescRight">and acceleration <br/></td></tr>
 <tr class="separator:a0d726c8aaa2bb433e9d6d3e09c945328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13a126f3ac6426ce52effd7ccd14c5f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13a126f3ac6426ce52effd7ccd14c5f0"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>accY</b></td></tr>
@@ -241,19 +251,24 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>accY</b></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>accZ</b></td></tr>
 <tr class="separator:abec98fdec68ed34c3ff6bf202d4ac446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac7333a06ea194848f12090be762cdd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac7333a06ea194848f12090be762cdd6"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>wins</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aac7333a06ea194848f12090be762cdd6">wins</a></td></tr>
+<tr class="memdesc:aac7333a06ea194848f12090be762cdd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of wins the player has. <br/></td></tr>
 <tr class="separator:aac7333a06ea194848f12090be762cdd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43dd8a9e79c35d9615596fb6ab25d653"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>rank</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a43dd8a9e79c35d9615596fb6ab25d653">rank</a></td></tr>
+<tr class="memdesc:a43dd8a9e79c35d9615596fb6ab25d653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rank of player on the scoreboard. <br/></td></tr>
 <tr class="separator:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae60a4f411ef984c6d649d98c65b274bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae60a4f411ef984c6d649d98c65b274bd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>battleOpponentId</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ae60a4f411ef984c6d649d98c65b274bd">battleOpponentId</a></td></tr>
+<tr class="memdesc:ae60a4f411ef984c6d649d98c65b274bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the playerId of the opponent, -1 if invalid, otherwise &gt;= 0 <br/></td></tr>
 <tr class="separator:ae60a4f411ef984c6d649d98c65b274bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2383ab7d3783c5122f3e68230069eb2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2383ab7d3783c5122f3e68230069eb2e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>lastBattleSelection</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a2383ab7d3783c5122f3e68230069eb2e">lastBattleSelection</a></td></tr>
+<tr class="memdesc:a2383ab7d3783c5122f3e68230069eb2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the last selection in battles, -1 if invalid, otherwise &gt;= 0 <br/></td></tr>
 <tr class="separator:a2383ab7d3783c5122f3e68230069eb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf61e3258c2170b7b66355389cca541f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf61e3258c2170b7b66355389cca541f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>lastBattleChoice</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#adf61e3258c2170b7b66355389cca541f">lastBattleChoice</a></td></tr>
+<tr class="memdesc:adf61e3258c2170b7b66355389cca541f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the last selection choice in battle, -1 if invalid, otherwise &gt;= 0 <br/></td></tr>
 <tr class="separator:adf61e3258c2170b7b66355389cca541f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -265,9 +280,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="memdesc:a1cdc9de8183b220e87632f7f6a7147d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of <a class="el" href="class_game_state_1_1_player.html#afc2b145df544ca5bffc7c87ef294bcde" title="The name identifier of the player. Not unique. Enforced max of SIZE_MAX_NAME. ">GameState.Player.name</a>  <a href="#a1cdc9de8183b220e87632f7f6a7147d0">More...</a><br/></td></tr>
 <tr class="separator:a1cdc9de8183b220e87632f7f6a7147d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16d0264ca6adfedb582e22f59a550fc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16d0264ca6adfedb582e22f59a550fc5"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE_MAX_NAME</b> = 10</td></tr>
+static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a16d0264ca6adfedb582e22f59a550fc5">SIZE_MAX_NAME</a> = 10</td></tr>
+<tr class="memdesc:a16d0264ca6adfedb582e22f59a550fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of any player's name. <br/></td></tr>
 <tr class="separator:a16d0264ca6adfedb582e22f59a550fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE</b></td></tr>
+<tr class="memitem:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a07b452f69128e1f3f6d3bb575c2976f1">SIZE</a></td></tr>
+<tr class="memdesc:a07b452f69128e1f3f6d3bb575c2976f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of the <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> when serialized into a byte[].  <a href="#a07b452f69128e1f3f6d3bb575c2976f1">More...</a><br/></td></tr>
 <tr class="separator:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -278,6 +295,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A state class for all <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> objects </p>
+<p>A structure to hold information about each player.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a9f54c5eca1e60acbaa2074e981f51615"></a>
 <div class="memitem">
@@ -584,6 +602,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>If the player is presently in a battle with a player or AI. </p>
+<p>if the player is in battle</p>
 
 </div>
 </div>
@@ -740,6 +759,8 @@ Properties</h2></td></tr>
 <div class="line">            </div>
 <div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)</div>
 </div><!-- fragment -->
+<p>The maximum length of the <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> when serialized into a byte[]. </p>
+
 </div>
 </div>
 <a class="anchor" id="ada2d068d3d5f973f73abac805c162d17"></a>

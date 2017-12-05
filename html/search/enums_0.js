@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enumbattleselection',['EnumBattleSelection',['../class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615',1,'GameState::Player']]]
+  ['battleselection',['BattleSelection',['../group__server.html#ga729fc596fd91937095a8172eb71be582',1,'Packets.h']]]
 ];

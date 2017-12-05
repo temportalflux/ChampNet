@@ -89,38 +89,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="struct_state_input-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">StateInput Struct Reference</div>  </div>
+<div class="title">StateInput Struct Reference<div class="ingroups"><a class="el" href="group__server.html">Server: Cretins</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The state of the input keys.  
+ <a href="struct_state_input.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_state_data_8h_source.html">StateData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a48ab250bd3e991a9de2c5ddb25f825e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48ab250bd3e991a9de2c5ddb25f825e4"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>keyboard</b> [SIZE_KEYBOARD]</td></tr>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#a48ab250bd3e991a9de2c5ddb25f825e4">keyboard</a> [<a class="el" href="struct_state_input.html#acc91adb5a30e828f5fd4be0228a09040">SIZE_KEYBOARD</a>]</td></tr>
+<tr class="memdesc:a48ab250bd3e991a9de2c5ddb25f825e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current keyboard state. <br/></td></tr>
 <tr class="separator:a48ab250bd3e991a9de2c5ddb25f825e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a711e607cf2c158c933b80bfc8caa036a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a711e607cf2c158c933b80bfc8caa036a"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>previous</b> [SIZE_KEYBOARD]</td></tr>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#a711e607cf2c158c933b80bfc8caa036a">previous</a> [<a class="el" href="struct_state_input.html#acc91adb5a30e828f5fd4be0228a09040">SIZE_KEYBOARD</a>]</td></tr>
+<tr class="memdesc:a711e607cf2c158c933b80bfc8caa036a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The previous keyboard state. <br/></td></tr>
 <tr class="separator:a711e607cf2c158c933b80bfc8caa036a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74ffea978c21525eef29d3612f8ab88f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74ffea978c21525eef29d3612f8ab88f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isCaps</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#a74ffea978c21525eef29d3612f8ab88f">isCaps</a></td></tr>
+<tr class="memdesc:a74ffea978c21525eef29d3612f8ab88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the input is currently treated as the CAPS lock being on. <br/></td></tr>
 <tr class="separator:a74ffea978c21525eef29d3612f8ab88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a144b051f8d304e3fb9f8d69e4fddaa5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a144b051f8d304e3fb9f8d69e4fddaa5d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>allowEmptyLines</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#a144b051f8d304e3fb9f8d69e4fddaa5d">allowEmptyLines</a></td></tr>
+<tr class="memdesc:a144b051f8d304e3fb9f8d69e4fddaa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">If empty lines are enabled on ENTER. <br/></td></tr>
 <tr class="separator:a144b051f8d304e3fb9f8d69e4fddaa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ce1360c9195f7dfe700e9398b9c8e7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ce1360c9195f7dfe700e9398b9c8e7b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>currentLine</b></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#a5ce1360c9195f7dfe700e9398b9c8e7b">currentLine</a></td></tr>
+<tr class="memdesc:a5ce1360c9195f7dfe700e9398b9c8e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current line of text (before pressing ENTER) <br/></td></tr>
 <tr class="separator:a5ce1360c9195f7dfe700e9398b9c8e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6d707a36eabe343d0b46838773da8f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6d707a36eabe343d0b46838773da8f9"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>lineSizePrevious</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#ab6d707a36eabe343d0b46838773da8f9">lineSizePrevious</a></td></tr>
+<tr class="memdesc:ab6d707a36eabe343d0b46838773da8f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The previous size of the currentLine (-1 when the line is cleared) <br/></td></tr>
 <tr class="separator:ab6d707a36eabe343d0b46838773da8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:acc91adb5a30e828f5fd4be0228a09040"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc91adb5a30e828f5fd4be0228a09040"></a>
-static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>SIZE_KEYBOARD</b> = 256</td></tr>
+static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_state_input.html#acc91adb5a30e828f5fd4be0228a09040">SIZE_KEYBOARD</a> = 256</td></tr>
+<tr class="memdesc:acc91adb5a30e828f5fd4be0228a09040"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max size of the keyboard arrays. <br/></td></tr>
 <tr class="separator:acc91adb5a30e828f5fd4be0228a09040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The state of the input keys. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_state_data_8h_source.html">StateData.h</a></li>
 </ul>
 </div><!-- contents -->

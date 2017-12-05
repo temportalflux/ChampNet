@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7epacket',['~Packet',['../class_champ_net_1_1_packet.html#abc292b1324121a2d367aa7a44275eff5',1,'ChampNet::Packet']]],
-  ['_7epacketqueue',['~PacketQueue',['../class_champ_net_1_1_packet_queue.html#ace2be8c7f79db8eef199b17fff57aecf',1,'ChampNet::PacketQueue']]]
+  ['writetimestamps',['writeTimestamps',['../class_champ_net_1_1_network.html#af31e6a74b5354057bd01c95670e3c7a3',1,'ChampNet::Network']]],
+  ['writeto',['WriteTo',['../class_event_network.html#adf54898a5ba1d6efc5f24bd58cf84b8e',1,'EventNetwork']]]
 ];

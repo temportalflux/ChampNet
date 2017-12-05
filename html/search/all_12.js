@@ -1,7 +1,7 @@
 var searchData=
 [
   ['tallgrass',['TallGrass',['../class_tall_grass.html',1,'']]],
-  ['timer',['Timer',['../class_timer.html',1,'']]],
+  ['timer',['Timer',['../class_timer.html',1,'Timer'],['../class_timer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer::Timer()']]],
   ['timesloaded',['timesLoaded',['../struct_champ_net_1_1_time_stamp.html#a15ed2cd3a07ef3b0b4bd58a0cbc2060c',1,'ChampNet::TimeStamp']]],
   ['timestamp',['TimeStamp',['../struct_champ_net_1_1_time_stamp.html',1,'ChampNet']]],
   ['timestampinfo',['timestampInfo',['../class_champ_net_1_1_packet.html#a0fcefd5ba56854e5a8e3e63a51e3963e',1,'ChampNet::Packet']]],

@@ -1,31 +1,43 @@
 \hypertarget{struct_packet_battle_prompt_selection}{\section{Packet\-Battle\-Prompt\-Selection Struct Reference}
 \label{struct_packet_battle_prompt_selection}\index{Packet\-Battle\-Prompt\-Selection@{Packet\-Battle\-Prompt\-Selection}}
 }
+
+
+A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of \hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection}.  
+
+
+
+
+{\ttfamily \#include $<$Packets.\-h$>$}
+
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{struct_packet_battle_prompt_selection_aaee299dad27b67f3a110f43bdb153483}{unsigned char {\bfseries id}}\label{struct_packet_battle_prompt_selection_aaee299dad27b67f3a110f43bdb153483}
+\hypertarget{struct_packet_battle_prompt_selection_aaee299dad27b67f3a110f43bdb153483}{unsigned char \hyperlink{struct_packet_battle_prompt_selection_aaee299dad27b67f3a110f43bdb153483}{id}}\label{struct_packet_battle_prompt_selection_aaee299dad27b67f3a110f43bdb153483}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_adf39f8101ce7fdca0cc6d6fcdd22c4b3}{unsigned int {\bfseries player\-A\-Id}}\label{struct_packet_battle_prompt_selection_adf39f8101ce7fdca0cc6d6fcdd22c4b3}
+\begin{DoxyCompactList}\small\item\em The packet\-I\-D. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_adf39f8101ce7fdca0cc6d6fcdd22c4b3}{unsigned int \hyperlink{struct_packet_battle_prompt_selection_adf39f8101ce7fdca0cc6d6fcdd22c4b3}{player\-A\-Id}}\label{struct_packet_battle_prompt_selection_adf39f8101ce7fdca0cc6d6fcdd22c4b3}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_afc4ee55b1a7dff6cb25bb47e2c517dea}{int {\bfseries player\-A\-Selection}}\label{struct_packet_battle_prompt_selection_afc4ee55b1a7dff6cb25bb47e2c517dea}
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Game\-State\-::\-Player\-::player\-I\-D} of the first player in the previous round. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_afc4ee55b1a7dff6cb25bb47e2c517dea}{int \hyperlink{struct_packet_battle_prompt_selection_afc4ee55b1a7dff6cb25bb47e2c517dea}{player\-A\-Selection}}\label{struct_packet_battle_prompt_selection_afc4ee55b1a7dff6cb25bb47e2c517dea}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_abd26c08394d5c6e0bbadb794d07750e0}{int {\bfseries player\-A\-Choice}}\label{struct_packet_battle_prompt_selection_abd26c08394d5c6e0bbadb794d07750e0}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} of the first player, -\/1 if invalid. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_abd26c08394d5c6e0bbadb794d07750e0}{int \hyperlink{struct_packet_battle_prompt_selection_abd26c08394d5c6e0bbadb794d07750e0}{player\-A\-Choice}}\label{struct_packet_battle_prompt_selection_abd26c08394d5c6e0bbadb794d07750e0}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_aa7108e4202c67ac30571bc3083277727}{unsigned int {\bfseries player\-B\-Id}}\label{struct_packet_battle_prompt_selection_aa7108e4202c67ac30571bc3083277727}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} choice of the first player, -\/1 if invalid. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_aa7108e4202c67ac30571bc3083277727}{unsigned int \hyperlink{struct_packet_battle_prompt_selection_aa7108e4202c67ac30571bc3083277727}{player\-B\-Id}}\label{struct_packet_battle_prompt_selection_aa7108e4202c67ac30571bc3083277727}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_aa696c396d478697bdddf8c2394c1a0b7}{int {\bfseries player\-B\-Selection}}\label{struct_packet_battle_prompt_selection_aa696c396d478697bdddf8c2394c1a0b7}
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Game\-State\-::\-Player\-::player\-I\-D} of the second player in the previous round. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_aa696c396d478697bdddf8c2394c1a0b7}{int \hyperlink{struct_packet_battle_prompt_selection_aa696c396d478697bdddf8c2394c1a0b7}{player\-B\-Selection}}\label{struct_packet_battle_prompt_selection_aa696c396d478697bdddf8c2394c1a0b7}
 
-\item 
-\hypertarget{struct_packet_battle_prompt_selection_a68ff044c6f22f9aaaeb3aa2a8d12e2eb}{int {\bfseries player\-B\-Choice}}\label{struct_packet_battle_prompt_selection_a68ff044c6f22f9aaaeb3aa2a8d12e2eb}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} of the second player, -\/1 if invalid. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_prompt_selection_a68ff044c6f22f9aaaeb3aa2a8d12e2eb}{int \hyperlink{struct_packet_battle_prompt_selection_a68ff044c6f22f9aaaeb3aa2a8d12e2eb}{player\-B\-Choice}}\label{struct_packet_battle_prompt_selection_a68ff044c6f22f9aaaeb3aa2a8d12e2eb}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} choice of the second player, -\/1 if invalid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of \hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection}. 
 
 The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

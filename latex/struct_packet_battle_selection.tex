@@ -1,25 +1,37 @@
 \hypertarget{struct_packet_battle_selection}{\section{Packet\-Battle\-Selection Struct Reference}
 \label{struct_packet_battle_selection}\index{Packet\-Battle\-Selection@{Packet\-Battle\-Selection}}
 }
+
+
+A packet with a player\-I\-D, their opponent's I\-D, and the player's selections for battle.  
+
+
+
+
+{\ttfamily \#include $<$Packets.\-h$>$}
+
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{struct_packet_battle_selection_ad9d05ea40a225c467a8b88893f9936af}{unsigned char {\bfseries id}}\label{struct_packet_battle_selection_ad9d05ea40a225c467a8b88893f9936af}
+\hypertarget{struct_packet_battle_selection_ad9d05ea40a225c467a8b88893f9936af}{unsigned char \hyperlink{struct_packet_battle_selection_ad9d05ea40a225c467a8b88893f9936af}{id}}\label{struct_packet_battle_selection_ad9d05ea40a225c467a8b88893f9936af}
 
-\item 
-\hypertarget{struct_packet_battle_selection_a767bb8ef07ff0e11ef9a248be56818e1}{unsigned int {\bfseries player\-Id}}\label{struct_packet_battle_selection_a767bb8ef07ff0e11ef9a248be56818e1}
+\begin{DoxyCompactList}\small\item\em The packet\-I\-D. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_selection_a767bb8ef07ff0e11ef9a248be56818e1}{unsigned int \hyperlink{struct_packet_battle_selection_a767bb8ef07ff0e11ef9a248be56818e1}{player\-Id}}\label{struct_packet_battle_selection_a767bb8ef07ff0e11ef9a248be56818e1}
 
-\item 
-\hypertarget{struct_packet_battle_selection_a7822f759fa2277fdae4d2e53850c4748}{unsigned int {\bfseries player\-Id\-Opponent}}\label{struct_packet_battle_selection_a7822f759fa2277fdae4d2e53850c4748}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Game\-State\-::\-Player\-::player\-I\-D} of the player whose selection this is. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_selection_a7822f759fa2277fdae4d2e53850c4748}{unsigned int \hyperlink{struct_packet_battle_selection_a7822f759fa2277fdae4d2e53850c4748}{player\-Id\-Opponent}}\label{struct_packet_battle_selection_a7822f759fa2277fdae4d2e53850c4748}
 
-\item 
-\hypertarget{struct_packet_battle_selection_a39d44bbd7a4520259ef8d5133ccc5a83}{unsigned int {\bfseries selection}}\label{struct_packet_battle_selection_a39d44bbd7a4520259ef8d5133ccc5a83}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Game\-State\-::\-Player\-::player\-I\-D} of the opponent. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_selection_a39d44bbd7a4520259ef8d5133ccc5a83}{unsigned int \hyperlink{struct_packet_battle_selection_a39d44bbd7a4520259ef8d5133ccc5a83}{selection}}\label{struct_packet_battle_selection_a39d44bbd7a4520259ef8d5133ccc5a83}
 
-\item 
-\hypertarget{struct_packet_battle_selection_ad8afea9993a2eb9a31e62d5d321ef80a}{unsigned int {\bfseries choice}}\label{struct_packet_battle_selection_ad8afea9993a2eb9a31e62d5d321ef80a}
+\begin{DoxyCompactList}\small\item\em The player's battle option \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_battle_selection_ad8afea9993a2eb9a31e62d5d321ef80a}{unsigned int \hyperlink{struct_packet_battle_selection_ad8afea9993a2eb9a31e62d5d321ef80a}{choice}}\label{struct_packet_battle_selection_ad8afea9993a2eb9a31e62d5d321ef80a}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The player's battle option \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} choice. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+A packet with a player\-I\-D, their opponent's I\-D, and the player's selections for battle. 
 
 The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

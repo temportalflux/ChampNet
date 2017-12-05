@@ -6,6 +6,10 @@
 Holds all persistent data from network intergration for local usage  
 
 
+
+
+{\ttfamily \#include $<$Game\-State.\-h$>$}
+
 Inheritance diagram for Game\-State\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -52,17 +56,16 @@ void \hyperlink{class_game_state_aa5f956de2c49182fbe5fc32e9d2ca431}{Deserialize}
 \hypertarget{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}{void {\bfseries Fixed\-Update} ()}\label{class_game_state_a268b639f06e4fa7fa1ca1819cc5d3175}
 
 \item 
-\hypertarget{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}{{\bfseries Game\-State} (int id)}\label{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}
-
+\hyperlink{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}{Game\-State} (int id)
 \item 
-\hypertarget{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}{void {\bfseries add\-Player} (unsigned int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, unsigned int player\-I\-D, unsigned int local\-I\-D, std\-::string name, float color\-R, float color\-G, float color\-B)}\label{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}
+\hypertarget{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}{\hyperlink{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}{$\sim$\-Game\-State} ()}\label{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}
 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}{add\-Player} (unsigned int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, unsigned int player\-I\-D, unsigned int local\-I\-D, std\-::string name, float color\-R, float color\-G, float color\-B)
 \item 
-\hypertarget{class_game_state_a733fa68895adba783b0b4b804f16906f}{void {\bfseries remove\-Player} (unsigned int player\-I\-D)}\label{class_game_state_a733fa68895adba783b0b4b804f16906f}
-
+void \hyperlink{class_game_state_a733fa68895adba783b0b4b804f16906f}{remove\-Player} (unsigned int player\-I\-D)
 \item 
-\hypertarget{class_game_state_a291fcda337b1a25c21871fe338399c27}{char $\ast$ {\bfseries serialize\-For\-Client} (unsigned char packet\-I\-D, int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, int \&data\-Length)}\label{class_game_state_a291fcda337b1a25c21871fe338399c27}
-
+char $\ast$ \hyperlink{class_game_state_a291fcda337b1a25c21871fe338399c27}{serialize\-For\-Client} (unsigned char packet\-I\-D, int \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D}, int \&data\-Length)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -94,12 +97,12 @@ uint \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D
 \hypertarget{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}{Dictionary$<$ I\-D, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_aed9c4cf83c497c6e36585e0ed3999564}
 
 \item 
-\hypertarget{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}{int {\bfseries client\-I\-D}}\label{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}
+\hypertarget{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}{int \hyperlink{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}{client\-I\-D}}\label{class_game_state_adb8c9c7f10d683332cbd62927d35cb35}
 
-\item 
-\hypertarget{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}{std\-::map$<$ unsigned int, \hyperlink{class_game_state_1_1_player}{Player} $>$ {\bfseries players}}\label{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}
+\begin{DoxyCompactList}\small\item\em The I\-D of the client this gamestate is in. \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}{std\-::map$<$ unsigned int, \hyperlink{class_game_state_1_1_player}{Player} $>$ \hyperlink{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}{players}}\label{class_game_state_a8f156a6cce5f2b9945c274b6bfc971ce}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A map of all players, from their global unqiue $<$see cref=\char`\"{}\-Player\-::player\-I\-D\char`\"{}$>$ to the \hyperlink{class_game_state_1_1_player}{Player} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
@@ -115,11 +118,56 @@ uint \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D
 Holds all persistent data from network intergration for local usage 
 
 \begin{DoxyAuthor}{Author}
-Dustin Yost 
+Dustin Yost
 \end{DoxyAuthor}
+The state of the game across server/client boundaries. N\-E\-V\-E\-R serialized in the client, N\-E\-V\-E\-R deserialized for the server 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}{\index{Game\-State@{Game\-State}!Game\-State@{Game\-State}}
+\index{Game\-State@{Game\-State}!GameState@{Game\-State}}
+\subsubsection[{Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}Game\-State\-::\-Game\-State (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a74a35fb7045c0eee7e68f07c387e2ddf}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em id} & the \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{client\-I\-D} \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}{\index{Game\-State@{Game\-State}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!GameState@{Game\-State}}
+\subsubsection[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State\-::add\-Player (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{client\-I\-D, }
+\item[{unsigned int}]{player\-I\-D, }
+\item[{unsigned int}]{local\-I\-D, }
+\item[{std\-::string}]{name, }
+\item[{float}]{color\-R, }
+\item[{float}]{color\-G, }
+\item[{float}]{color\-B}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_ad74bf5767b052d5b32805220ca0c1fab}
+Add a player to the game state 
+\begin{DoxyParams}{Parameters}
+{\em client\-I\-D} & the client which owns the player \\
+\hline
+{\em player\-I\-D} & the unique I\-D of the player \\
+\hline
+{\em local\-I\-D} & the unique I\-D local to the client \\
+\hline
+{\em name} & the name of the player \\
+\hline
+{\em color\-R} & the red channel of the overlay color \\
+\hline
+{\em color\-G} & the green channel of the overlay color \\
+\hline
+{\em color\-B} & the blue channel of the overlay color \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_game_state_a4c4e32237639764263332c7c236974d1}{\index{Game\-State@{Game\-State}!Add\-Player@{Add\-Player}}
 \index{Add\-Player@{Add\-Player}!GameState@{Game\-State}}
 \subsubsection[{Add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Add\-Player (
@@ -193,6 +241,18 @@ Author\-: Dustin Yost
 
 Implements \hyperlink{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}{I\-Serializing}.
 
+\hypertarget{class_game_state_a733fa68895adba783b0b4b804f16906f}{\index{Game\-State@{Game\-State}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!GameState@{Game\-State}}
+\subsubsection[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State\-::remove\-Player (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{player\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a733fa68895adba783b0b4b804f16906f}
+Remove a player from the game state 
+\begin{DoxyParams}{Parameters}
+{\em player\-I\-D} & the unique \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Player\-::player\-I\-D} of the player \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_game_state_af57a06c77a763e8b57841bab79c9b12f}{\index{Game\-State@{Game\-State}!Serialize@{Serialize}}
 \index{Serialize@{Serialize}!GameState@{Game\-State}}
 \subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Serialize (
@@ -219,6 +279,27 @@ Dustin Yost
 
 Implements \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{I\-Serializing}.
 
+\hypertarget{class_game_state_a291fcda337b1a25c21871fe338399c27}{\index{Game\-State@{Game\-State}!serialize\-For\-Client@{serialize\-For\-Client}}
+\index{serialize\-For\-Client@{serialize\-For\-Client}!GameState@{Game\-State}}
+\subsubsection[{serialize\-For\-Client}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ Game\-State\-::serialize\-For\-Client (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{packet\-I\-D, }
+\item[{int}]{client\-I\-D, }
+\item[{int \&}]{data\-Length}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a291fcda337b1a25c21871fe338399c27}
+Serializes the game state into a byte\mbox{[}\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em packet\-I\-D} & the packet I\-D to include \\
+\hline
+{\em client\-I\-D} & the client\-I\-D to emulate this packet as (replaces the game state \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{Game\-State\-::client\-I\-D} with the value in the byte\mbox{[}\mbox{]}, but doesn't set the value in the local game state). \\
+\hline
+{\em data\-Length} & the length of the byte\mbox{[}\mbox{]} returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+byte\mbox{[}\mbox{]} 
+\end{DoxyReturn}
 
 
 \subsection{Member Data Documentation}

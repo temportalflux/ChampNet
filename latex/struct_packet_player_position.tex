@@ -1,31 +1,43 @@
 \hypertarget{struct_packet_player_position}{\section{Packet\-Player\-Position Struct Reference}
 \label{struct_packet_player_position}\index{Packet\-Player\-Position@{Packet\-Player\-Position}}
 }
+
+
+A packet with a client\-I\-D, player\-I\-D, and dead reckoning variables.  
+
+
+
+
+{\ttfamily \#include $<$Packets.\-h$>$}
+
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{struct_packet_player_position_ad80364604ce3113e51136c2b0ca5d6e0}{unsigned char {\bfseries id}}\label{struct_packet_player_position_ad80364604ce3113e51136c2b0ca5d6e0}
+\hypertarget{struct_packet_player_position_ad80364604ce3113e51136c2b0ca5d6e0}{unsigned char \hyperlink{struct_packet_player_position_ad80364604ce3113e51136c2b0ca5d6e0}{id}}\label{struct_packet_player_position_ad80364604ce3113e51136c2b0ca5d6e0}
 
-\item 
-\hypertarget{struct_packet_player_position_a3647ac419f4e01afe948da2468b67658}{unsigned int {\bfseries client\-I\-D}}\label{struct_packet_player_position_a3647ac419f4e01afe948da2468b67658}
+\begin{DoxyCompactList}\small\item\em The packet\-I\-D. \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_a3647ac419f4e01afe948da2468b67658}{unsigned int \hyperlink{struct_packet_player_position_a3647ac419f4e01afe948da2468b67658}{client\-I\-D}}\label{struct_packet_player_position_a3647ac419f4e01afe948da2468b67658}
 
-\item 
-\hypertarget{struct_packet_player_position_a94c602eaa03f27c22937d37257368ab6}{unsigned int {\bfseries player\-I\-D}}\label{struct_packet_player_position_a94c602eaa03f27c22937d37257368ab6}
+\begin{DoxyCompactList}\small\item\em The I\-D of the client, akin to \hyperlink{class_game_state_ad24a423ba6655fc6541b2f12ce98e0d0}{Game\-State\-::client\-I\-D} \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_a94c602eaa03f27c22937d37257368ab6}{unsigned int \hyperlink{struct_packet_player_position_a94c602eaa03f27c22937d37257368ab6}{player\-I\-D}}\label{struct_packet_player_position_a94c602eaa03f27c22937d37257368ab6}
 
-\item 
-\hypertarget{struct_packet_player_position_a1719505fbc59c8f4948cfec4772859b0}{float {\bfseries pos\-X}}\label{struct_packet_player_position_a1719505fbc59c8f4948cfec4772859b0}
+\begin{DoxyCompactList}\small\item\em The I\-D of the player, akin to \hyperlink{class_game_state_1_1_player_acbd28d89e6eb8611aa66452ec31e9133}{Game\-State\-::\-Player\-::player\-I\-D} \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_a1719505fbc59c8f4948cfec4772859b0}{float \hyperlink{struct_packet_player_position_a1719505fbc59c8f4948cfec4772859b0}{pos\-X}}\label{struct_packet_player_position_a1719505fbc59c8f4948cfec4772859b0}
 
-\item 
-\hypertarget{struct_packet_player_position_a401e60ee7a35eaa7154827814082f794}{float {\bfseries pos\-Y}}\label{struct_packet_player_position_a401e60ee7a35eaa7154827814082f794}
+\begin{DoxyCompactList}\small\item\em The x-\/coord of the player's position, \hyperlink{class_game_state_1_1_player_a0342f6d74f9c08351cd0c5139ac55de6}{Game\-State\-::\-Player\-::pos\-X} \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_a401e60ee7a35eaa7154827814082f794}{float \hyperlink{struct_packet_player_position_a401e60ee7a35eaa7154827814082f794}{pos\-Y}}\label{struct_packet_player_position_a401e60ee7a35eaa7154827814082f794}
 
-\item 
-\hypertarget{struct_packet_player_position_a4f4b56eb20f827dec38d7ddaf8ea0f13}{float {\bfseries vel\-X}}\label{struct_packet_player_position_a4f4b56eb20f827dec38d7ddaf8ea0f13}
+\begin{DoxyCompactList}\small\item\em The y-\/coord of the player's position, Game\-State\-::\-Player\-::pos\-Y \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_a4f4b56eb20f827dec38d7ddaf8ea0f13}{float \hyperlink{struct_packet_player_position_a4f4b56eb20f827dec38d7ddaf8ea0f13}{vel\-X}}\label{struct_packet_player_position_a4f4b56eb20f827dec38d7ddaf8ea0f13}
 
-\item 
-\hypertarget{struct_packet_player_position_abcf1d97becbe982654e73cc9ec8d88c8}{float {\bfseries vel\-Y}}\label{struct_packet_player_position_abcf1d97becbe982654e73cc9ec8d88c8}
+\begin{DoxyCompactList}\small\item\em The x-\/coord of the player's velocity, \hyperlink{class_game_state_1_1_player_afcc72f7f23db9714a20ac1b08fda0288}{Game\-State\-::\-Player\-::vel\-X} \end{DoxyCompactList}\item 
+\hypertarget{struct_packet_player_position_abcf1d97becbe982654e73cc9ec8d88c8}{float \hyperlink{struct_packet_player_position_abcf1d97becbe982654e73cc9ec8d88c8}{vel\-Y}}\label{struct_packet_player_position_abcf1d97becbe982654e73cc9ec8d88c8}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The y-\/coord of the player's velocity, \hyperlink{class_game_state_1_1_player_afcc72f7f23db9714a20ac1b08fda0288}{Game\-State\-::\-Player\-::vel\-X} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+A packet with a client\-I\-D, player\-I\-D, and dead reckoning variables. 
 
 The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

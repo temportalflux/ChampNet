@@ -1,0 +1,55 @@
+\hypertarget{group__server}{\section{Server\-: Cretins}
+\label{group__server}\index{Server\-: Cretins@{Server\-: Cretins}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_game}{Game}
+\item 
+class \hyperlink{class_game_state}{Game\-State}
+\begin{DoxyCompactList}\small\item\em Holds all persistent data from network intergration for local usage \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_general}{Packet\-General}
+\begin{DoxyCompactList}\small\item\em A general packet with the packet\-I\-D. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_user_i_d}{Packet\-User\-I\-D}
+\begin{DoxyCompactList}\small\item\em A paccket with an unknown identifier. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_client_player_i_d}{Packet\-Client\-Player\-I\-D}
+\begin{DoxyCompactList}\small\item\em A packet with a client\-I\-D and player\-I\-D. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_player_scoreboard_info}{Packet\-Player\-Scoreboard\-Info}
+\begin{DoxyCompactList}\small\item\em A packet with a client\-I\-D, player\-I\-D, and score of the player. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_player_position}{Packet\-Player\-Position}
+\begin{DoxyCompactList}\small\item\em A packet with a client\-I\-D, player\-I\-D, and dead reckoning variables. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_user_i_d_double}{Packet\-User\-I\-D\-Double}
+\begin{DoxyCompactList}\small\item\em A packet with two player\-I\-Ds. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_user_i_d_triple}{Packet\-User\-I\-D\-Triple}
+\begin{DoxyCompactList}\small\item\em A packet with three player\-I\-Ds. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_battle_response}{Packet\-Battle\-Response}
+\begin{DoxyCompactList}\small\item\em A packet responding to a battle request (\hyperlink{struct_packet_user_i_d_double}{Packet\-User\-I\-D\-Double}), and includes an acceptance flag. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_battle_prompt_selection}{Packet\-Battle\-Prompt\-Selection}
+\begin{DoxyCompactList}\small\item\em A packet with with user selected data from the previous round. Expects a response back from both player's for their next move in the form of \hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection}. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_packet_battle_selection}{Packet\-Battle\-Selection}
+\begin{DoxyCompactList}\small\item\em A packet with a player\-I\-D, their opponent's I\-D, and the player's selections for battle. \end{DoxyCompactList}\item 
+class \hyperlink{class_performance_tracker}{Performance\-Tracker}
+\item 
+struct \hyperlink{struct_state_input}{State\-Input}
+\begin{DoxyCompactList}\small\item\em The state of the input keys. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_state_console}{State\-Console}
+\begin{DoxyCompactList}\small\item\em The state of the console window. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_state_network}{State\-Network}
+\begin{DoxyCompactList}\small\item\em The state of the network data. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_state_data}{State\-Data}
+\begin{DoxyCompactList}\small\item\em The data state of all local data. \end{DoxyCompactList}\item 
+class \hyperlink{class_state_server}{State\-Server}
+\begin{DoxyCompactList}\small\item\em The state application for the server (the server has only one state) \end{DoxyCompactList}\item 
+class \hyperlink{class_timer}{Timer}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__server_ga729fc596fd91937095a8172eb71be582}{Battle\-Selection} \-: unsigned int \{ {\bfseries A\-T\-T\-A\-C\-K}, 
+{\bfseries S\-W\-A\-P}, 
+{\bfseries F\-L\-E\-E}
+ \}
+\begin{DoxyCompactList}\small\item\em The selections for battles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
