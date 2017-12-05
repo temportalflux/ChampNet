@@ -87,7 +87,7 @@ public class PlayerCharacterController : MonoBehaviour
     /// </summary>
     /// <param name="start"></param>
     /// <param name="Facing"></param>
-    public void CheckForPlayerRaycast(Vector3 start, Vector3 Facing)
+    public PlayerReference CheckForPlayerRaycast(Vector3 start, Vector3 Facing)
     {
         int numOfRays = 3;
         float raySeperation = _size / (numOfRays - 1);
@@ -103,23 +103,24 @@ public class PlayerCharacterController : MonoBehaviour
             //Debug.DrawRay(point, input * 5);
 
             RaycastHit2D hit = Physics2D.Raycast(point, Facing, 0.5f);
+
             if (hit)
             {
                 if (hit.transform == transform)
                     continue;
-
                 if (hit.transform.tag == "Wall")
                 {
                     Debug.Log("Hit a Wall");
-                    break;
+                    return null;
                 }
                 else if (hit.transform.tag == "Player")
                 {
                     Debug.Log("Hit a Player");
-                    break;
+                    return hit.transform.GetComponent<PlayerReference>();
                 }
             }
         }
+        return null;
     }
 
 }

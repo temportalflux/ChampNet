@@ -37,13 +37,13 @@ public class PlayerLocal : PlayerReference
     /// </remarks>
     public void challengeNetworkedPlayer()
     {
-        _pic.CharacterFacing(this.moveTarget.position);
-        // remove this once player is found
-        //PlayerReference player = GameManager.INSTANCE.getRandomPlayer(this.playerInfo);
-        //if (player != null)
-        //{
-        //    this.requestBattle(player);
-        //}
+        PlayerReference player = _pic.CharacterFacing(this.moveTarget.position);
+        //remove this once player is found
+       //PlayerReference player = GameManager.INSTANCE.getRandomPlayer(this.playerInfo);
+        if (player != null)
+        {
+            this.requestBattle(player);
+        }
     }
 
     public void onChallengeBy(MonsterDataObject opponentAI)

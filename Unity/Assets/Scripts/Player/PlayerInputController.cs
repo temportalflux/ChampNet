@@ -46,7 +46,7 @@ public class PlayerInputController : MonoBehaviour
     /// <Author>
     /// Christopher Brennan
     /// </Author>
-    public void CharacterFacing(Vector3 start)
+    public PlayerReference CharacterFacing(Vector3 start)
     {
         switch (latestDirection)
         {
@@ -63,7 +63,7 @@ public class PlayerInputController : MonoBehaviour
                 break;
         }
 
-        _pcc.CheckForPlayerRaycast(start, _LastInputDirection.normalized);
+        return _pcc.CheckForPlayerRaycast(start, _LastInputDirection.normalized);
     }
 
     public Vector3 _input;
