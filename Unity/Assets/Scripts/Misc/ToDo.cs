@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// \addtogroup client
+/// @{
+
 /// <summary>
 /// An <see cref="Attribute"/> to indicate things to do.
 /// Taken from https://www.linkedin.com/pulse/alternative-way-manage-to-dos-unity-using-c-custom-steve-sedlmayr.
@@ -57,3 +60,4 @@ public class ToDo : Attribute
     }
 
 }
+/// @}

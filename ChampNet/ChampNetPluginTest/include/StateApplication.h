@@ -3,6 +3,7 @@
 
 struct StateData;
 
+/// The information state - handles all persistent data
 class StateApplication
 {
 

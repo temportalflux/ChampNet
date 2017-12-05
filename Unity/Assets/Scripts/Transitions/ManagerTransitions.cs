@@ -160,7 +160,7 @@ public class ManagerTransitions : MonoBehaviour
         }
         else
         {
-            this.sceneLoading = SceneManager.UnloadSceneAsync(nextScene);
+            this.sceneLoading = loadMode == LoadSceneMode.Additive ? SceneManager.UnloadSceneAsync(nextScene) : null;
         }
 
         // Prevent scene loading from finishing
@@ -178,7 +178,7 @@ public class ManagerTransitions : MonoBehaviour
         {
             //Debug.Log(nextScene + " is loaded.");
         }
-        else
+        else if (loadMode != LoadSceneMode.Additive)
         {
             this.triggerExit();
         }

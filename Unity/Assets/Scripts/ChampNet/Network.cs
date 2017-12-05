@@ -12,9 +12,15 @@ using System;
 using System.Runtime.InteropServices;
 using AOT;
 
+/// \addtogroup client
+/// @{
+
 namespace ChampNetPlugin
 {
 
+    /// <summary>
+    /// The message IDs accessible by client. Same as the server Message IDs.
+    /// </summary>
     public enum MessageIDs
     {
         // RakNet Messages (used for clients)
@@ -63,26 +69,45 @@ namespace ChampNetPlugin
         ID_CLIENT_RANK_UPDATE,
     }
 
+    /// <summary>
+    /// A Unity interface with the C++ plugin under <see cref="ChampNet::Network"/> and <see cref="ChampNetPlugin"/>.
+    /// </summary>
     public class Network
     {
 
+        /// <summary>
+        /// The DLL identifier
+        /// </summary>
         const string IDENTIFIER = "ChampNetPlugin";
 
         public delegate void debugCallback(IntPtr request, int color, int size);
         enum Color { red, green, blue, black, white, yellow, orange };
 
-        // Create a network to connect with
+        /// Create a network to connect with
         [DllImport(IDENTIFIER)]
         public static extern int Create();
 
+        /// <summary>
+        /// Register a callback function for console logs
+        /// </summary>
+        /// <param name="callback"></param>
         [DllImport(IDENTIFIER, CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterDebugCallback(debugCallback callback);
 
+        /// <summary>
+        /// Sets up the debug callback in <see cref="RegisterDebugCallback(debugCallback)"/>
+        /// </summary>
         public static void SetDebugCallback()
         {
             RegisterDebugCallback(OnDebugCallback);
         }
 
+        /// <summary>
+        /// Handles marshalling string console logs
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="color"></param>
+        /// <param name="size"></param>
         [MonoPInvokeCallback(typeof(debugCallback))]
         static void OnDebugCallback(IntPtr request, int color, int size)
         {
@@ -102,51 +127,51 @@ namespace ChampNetPlugin
             UnityEngine.Debug.Log(debug_string);
         }
 
-        // Destroy the network (must call Create prior) (must call when owning object is destroyed)
+        /// Destroy the network (must call Create prior) (must call when owning object is destroyed)
         [DllImport(IDENTIFIER)]
         public static extern int Destroy();
 
-        // Start a server with the specified credentials using this object
+        /// Start a server with the specified credentials using this object
         [DllImport(IDENTIFIER)]
         public static extern int StartServer(int port, int maxClients);
 
-        // Start a client using this object
+        /// Start a client using this object
         [DllImport(IDENTIFIER)]
         public static extern int StartClient();
 
-        // Connect this CLIENT to some server using the specified credentials
+        /// Connect this CLIENT to some server using the specified credentials
         [DllImport(IDENTIFIER)]
         public static extern int ConnectToServer(string address, int port);
 
-        // Fetch all incoming packets. Must call prior to PollPacket. Must be called after Create and before Destroy. Returns the quantity of packets in the queue after fetch.
+        /// Fetch all incoming packets. Must call prior to PollPacket. Must be called after Create and before Destroy. Returns the quantity of packets in the queue after fetch.
         [DllImport(IDENTIFIER)]
         public static extern int FetchPackets();
 
-        // Poll the packet queue. Returns a pointer to the first packet, and removes that packet from the queue. If valid is true, then the packet can be processed, else the packet does not exist (no packets presently in the queue).
+        /// Poll the packet queue. Returns a pointer to the first packet, and removes that packet from the queue. If valid is true, then the packet can be processed, else the packet does not exist (no packets presently in the queue).
         [DllImport(IDENTIFIER)]
         public static extern IntPtr PollPacket(ref bool valid);
 
-        // Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
+        /// Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
         public static extern IntPtr GetPacketAddress(IntPtr packetRef, ref uint length);
 
-        // Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
+        /// Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
         public static extern IntPtr GetPacketData(IntPtr packetRef, ref uint length, ref ulong transmitTime);
 
-        // Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
+        /// Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true).
         [DllImport(IDENTIFIER)]
         public static extern void FreePacket(IntPtr packetRef);
 
-        // Send a byte array to the server
+        /// Send a byte array to the server
         [DllImport(IDENTIFIER)]
         public static extern void SendByteArray(string address, int port, byte[] byteArray, int byteArraySize);
 
-        // WRAPPER METHOD
-        // Handles polling the network for packets, and returning the address and data of that packet.
-        // Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket
-        // Copies out the data from a valid packet, and frees the packet from memory.
-        // Returns true if a valid packet was found, else false.
+        /// WRAPPER METHOD
+        /// Handles polling the network for packets, and returning the address and data of that packet.
+        /// Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket
+        /// Copies out the data from a valid packet, and frees the packet from memory.
+        /// Returns true if a valid packet was found, else false.
         public static bool PollPacket(out string address, out byte[] data, out ulong transmitTime)
         {
 
@@ -193,10 +218,11 @@ namespace ChampNetPlugin
             return foundPacket;
         }
 
-        // Disconnect from the interface
+        /// Disconnect from the interface
         [DllImport(IDENTIFIER)]
         public static extern void Disconnect();
 
     }
 
 }
+/// @}

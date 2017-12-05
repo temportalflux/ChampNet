@@ -8,7 +8,7 @@ using UnityEngine;
 public class EventBattleResult : EventBattle
 {
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public uint playerIDWinner;
 
     public EventBattleResult() : base((byte)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT)

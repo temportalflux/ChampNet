@@ -9,6 +9,12 @@ and/or communicate a copy of this project to a plagiarism-checking service, whic
 */
 using UnityEngine;
 
+/// \addtogroup client
+/// @{
+
+/// <summary>
+/// All The Colors
+/// </summary>
 public static class Colors
 {
 
@@ -1528,3 +1534,4 @@ public static class Colors
     };
 
 }
+/// @}

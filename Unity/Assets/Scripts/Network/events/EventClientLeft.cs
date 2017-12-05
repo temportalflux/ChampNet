@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventClientLeft : EventNetwork
 {
 
-    [BitSerialize]
+    [BitSerialize(1)]
     public uint clientID;
 
     public EventClientLeft() : base((byte)ChampNetPlugin.MessageIDs.ID_CLIENT_LEFT)

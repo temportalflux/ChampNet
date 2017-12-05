@@ -63,7 +63,7 @@ public class EventNetwork : ISerializing
     /// <remarks>
     /// Author: Dustin Yost
     /// </remarks>
-    [BitSerialize]
+    [BitSerialize(0)]
     public byte eventID;
 
     /// <summary>

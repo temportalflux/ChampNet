@@ -185,15 +185,11 @@
   <ItemGroup>
     <ClInclude Include="include\ChampNet.h" />
     <ClInclude Include="include\Packet.h" />
-    <ClInclude Include="include\PerformanceTracker.h" />
-    <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Win.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ChampNet.cpp" />
     <ClCompile Include="source\Packet.cpp" />
-    <ClCompile Include="source\PerformanceTracker.cpp" />
-    <ClCompile Include="source\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
