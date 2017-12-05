@@ -178,16 +178,20 @@
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\PerformanceTracker.cpp" />
     <ClCompile Include="source\StateServer.cpp" />
     <ClCompile Include="source\StateApplication.cpp" />
+    <ClCompile Include="source\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Packets.h" />
+    <ClInclude Include="include\PerformanceTracker.h" />
     <ClInclude Include="include\StateServer.h" />
     <ClInclude Include="include\StateApplication.h" />
     <ClInclude Include="include\StateData.h" />
+    <ClInclude Include="include\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

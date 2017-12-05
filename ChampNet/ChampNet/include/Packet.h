@@ -26,9 +26,7 @@ namespace ChampNet
 		RakNet::Time totalTransferTime_local = 0;
 	};
 
-	/** A class to handle packet data from RakNet
-	* \author Dustin Yost
-	 */
+	//! A class to handle packet data from RakNet
 	class Packet
 	{
 		friend class PacketQueue;
@@ -93,10 +91,9 @@ namespace ChampNet
 
 	};
 
-	/** A class to handle a queue of Packets (wrapped RakNet packets).
-	* Operates as a true queue (sub-structure of LinkedList).
-	* \author Dustin Yost
-	*/
+	/// A class to handle a queue of Packets (wrapped RakNet packets).
+	/// Operates as a true queue (sub-structure of LinkedList).
+	/// \author Dustin Yost
 	class PacketQueue
 	{
 
