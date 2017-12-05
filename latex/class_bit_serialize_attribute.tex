@@ -12,6 +12,12 @@ Inheritance diagram for Bit\-Serialize\-Attribute\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_bit_serialize_attribute}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_bit_serialize_attribute_a28774b3727990228edb19840f2e9badd}{{\bfseries Bit\-Serialize\-Attribute} (uint \hyperlink{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}{order}=0)}\label{class_bit_serialize_attribute_a28774b3727990228edb19840f2e9badd}
+
+\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +29,11 @@ static void \hyperlink{class_bit_serialize_attribute_aca1cc7a1f81cfffcf0ae04058d
 \begin{DoxyCompactList}\small\item\em Write some byte array into another byte array at some offset \end{DoxyCompactList}\item 
 static void \hyperlink{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}{Deserialize$<$ T $>$} (T mono, byte\mbox{[}$\,$\mbox{]} data)
 \begin{DoxyCompactList}\small\item\em Deserialize a byte array into a monobehavior \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint \hyperlink{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}{order}
+\begin{DoxyCompactList}\small\item\em The numerical order in which attributes are sorted -\/ lowest is first. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -112,6 +123,16 @@ Serialize a monobehavior to a byte array, using Bit\-Serialize and \hyperlink{in
 \begin{DoxyReturn}{Returns}
 A byte array of data formatted in the order of fields and extra data according to \hyperlink{interface_i_serializing}{I\-Serializing}
 \end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!order@{order}}
+\index{order@{order}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
+\subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}uint Bit\-Serialize\-Attribute.\-order}}\label{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}
+
+
+The numerical order in which attributes are sorted -\/ lowest is first. 
+
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

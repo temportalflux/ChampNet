@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,7 +85,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_bit_serialize_attribute-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BitSerializeAttribute Class Reference</div>  </div>
@@ -103,6 +105,12 @@ Inheritance diagram for BitSerializeAttribute:</div>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a28774b3727990228edb19840f2e9badd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28774b3727990228edb19840f2e9badd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BitSerializeAttribute</b> (uint <a class="el" href="class_bit_serialize_attribute.html#ad0a026f7b3c5c95879852db7a66a2726">order</a>=0)</td></tr>
+<tr class="separator:a28774b3727990228edb19840f2e9badd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3">Serialize&lt; T &gt;</a> (T mono)</td></tr>
@@ -117,6 +125,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae92d448c6f7bf6ffab890747e1737c65"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ae92d448c6f7bf6ffab890747e1737c65">Deserialize&lt; T &gt;</a> (T mono, byte[] data)</td></tr>
 <tr class="memdesc:ae92d448c6f7bf6ffab890747e1737c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a byte array into a monobehavior  <a href="#ae92d448c6f7bf6ffab890747e1737c65">More...</a><br/></td></tr>
 <tr class="separator:ae92d448c6f7bf6ffab890747e1737c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ad0a026f7b3c5c95879852db7a66a2726"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ad0a026f7b3c5c95879852db7a66a2726">order</a></td></tr>
+<tr class="memdesc:ad0a026f7b3c5c95879852db7a66a2726"><td class="mdescLeft">&#160;</td><td class="mdescRight">The numerical order in which attributes are sorted - lowest is first.  <a href="#ad0a026f7b3c5c95879852db7a66a2726">More...</a><br/></td></tr>
+<tr class="separator:ad0a026f7b3c5c95879852db7a66a2726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles (de)serializing of specific fields. Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, <a class="el" href="interface_i_serializing.html">ISerializing</a>, and any composite arrays of the former. If the MonoBehaviour being serialized is <a class="el" href="interface_i_serializing.html">ISerializing</a>, the <a class="el" href="interface_i_serializing.html">ISerializing</a> methods are treated as additions to all fields marked with BitSerialize </p>
@@ -278,6 +292,21 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A byte array of data formatted in the order of fields and extra data according to <a class="el" href="interface_i_serializing.html">ISerializing</a></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad0a026f7b3c5c95879852db7a66a2726"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint BitSerializeAttribute.order</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The numerical order in which attributes are sorted - lowest is first. </p>
 
 </div>
 </div>

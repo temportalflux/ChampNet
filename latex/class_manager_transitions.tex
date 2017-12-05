@@ -13,7 +13,10 @@ Inheritance diagram for Manager\-Transitions\-:\begin{figure}[H]
 \hypertarget{class_manager_transitions_af143a676b64ad9405dee52e0b3524db0}{delegate void {\bfseries On\-Transition\-Finish} ()}\label{class_manager_transitions_af143a676b64ad9405dee52e0b3524db0}
 
 \item 
-bool \hyperlink{class_manager_transitions_a3ea45c86116b67a94fadc91db88f0f55}{trigger\-Load\-Async} (string next\-Scene, \hyperlink{class_transition}{Transition} transition, On\-Transition\-Finish on\-Finish=null)
+bool \hyperlink{class_manager_transitions_aeb23059e823543ba248f10d138ebf045}{trigger\-Load\-Async} (string next\-Scene, \hyperlink{class_transition}{Transition} transition, Load\-Scene\-Mode load\-Mode, On\-Transition\-Finish on\-Finish=null)
+\item 
+\hypertarget{class_manager_transitions_a5d65799742ec1d9c71abf4b69688bc80}{bool {\bfseries trigger\-Un\-Load\-Async} (string next\-Scene, \hyperlink{class_transition}{Transition} transition, Load\-Scene\-Mode load\-Mode, On\-Transition\-Finish on\-Finish=null)}\label{class_manager_transitions_a5d65799742ec1d9c71abf4b69688bc80}
+
 \item 
 \hypertarget{class_manager_transitions_a7809ff8c65986d89284ae9a7ad570355}{void {\bfseries trigger\-Exit} ()}\label{class_manager_transitions_a7809ff8c65986d89284ae9a7ad570355}
 
@@ -30,15 +33,16 @@ bool \hyperlink{class_manager_transitions_a3ea45c86116b67a94fadc91db88f0f55}{tri
 Author\-: Dustin Yost Static component class which handles transitioning between scenes 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_manager_transitions_a3ea45c86116b67a94fadc91db88f0f55}{\index{Manager\-Transitions@{Manager\-Transitions}!trigger\-Load\-Async@{trigger\-Load\-Async}}
+\hypertarget{class_manager_transitions_aeb23059e823543ba248f10d138ebf045}{\index{Manager\-Transitions@{Manager\-Transitions}!trigger\-Load\-Async@{trigger\-Load\-Async}}
 \index{trigger\-Load\-Async@{trigger\-Load\-Async}!ManagerTransitions@{Manager\-Transitions}}
 \subsubsection[{trigger\-Load\-Async}]{\setlength{\rightskip}{0pt plus 5cm}bool Manager\-Transitions.\-trigger\-Load\-Async (
 \begin{DoxyParamCaption}
 \item[{string}]{next\-Scene, }
 \item[{{\bf Transition}}]{transition, }
+\item[{Load\-Scene\-Mode}]{load\-Mode, }
 \item[{On\-Transition\-Finish}]{on\-Finish = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_manager_transitions_a3ea45c86116b67a94fadc91db88f0f55}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_manager_transitions_aeb23059e823543ba248f10d138ebf045}
 Trigger a loading of some scene asynchronously with some transition 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

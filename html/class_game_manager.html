@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -164,9 +164,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af977df043b83671ab9a4753b90fbf75b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af977df043b83671ab9a4753b90fbf75b"></a>
 <a class="el" href="class_game_manager_1_1_game_action_message.html">GameActionMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onNetworkRejected</b></td></tr>
 <tr class="separator:af977df043b83671ab9a4753b90fbf75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#abae15982d4eb90ef9e5f3d24d15e22f2">transition</a></td></tr>
-<tr class="memdesc:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The object to handle transitioning between scenes  <a href="#abae15982d4eb90ef9e5f3d24d15e22f2">More...</a><br/></td></tr>
-<tr class="separator:abae15982d4eb90ef9e5f3d24d15e22f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59aeb9d1bcc8580f55f3f4dcdae396fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a59aeb9d1bcc8580f55f3f4dcdae396fd">transitionWorld</a></td></tr>
+<tr class="memdesc:a59aeb9d1bcc8580f55f3f4dcdae396fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The object to handle transitioning to open-world  <a href="#a59aeb9d1bcc8580f55f3f4dcdae396fd">More...</a><br/></td></tr>
+<tr class="separator:a59aeb9d1bcc8580f55f3f4dcdae396fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bd9eb164a33c054431f5bf8ccc8d3b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_transition.html">SceneTransition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a1bd9eb164a33c054431f5bf8ccc8d3b8">transitionBattle</a></td></tr>
+<tr class="memdesc:a1bd9eb164a33c054431f5bf8ccc8d3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The object to handle transitioning to battles  <a href="#a1bd9eb164a33c054431f5bf8ccc8d3b8">More...</a><br/></td></tr>
+<tr class="separator:a1bd9eb164a33c054431f5bf8ccc8d3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57d400c7a28f42865048fbdbaf236cfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57d400c7a28f42865048fbdbaf236cfb"></a>
 GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>playerPrefab</b></td></tr>
 <tr class="separator:a57d400c7a28f42865048fbdbaf236cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -407,17 +410,31 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abae15982d4eb90ef9e5f3d24d15e22f2"></a>
+<a class="anchor" id="a1bd9eb164a33c054431f5bf8ccc8d3b8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_scene_transition.html">SceneTransition</a> GameManager.transition</td>
+          <td class="memname"><a class="el" href="class_scene_transition.html">SceneTransition</a> GameManager.transitionBattle</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The object to handle transitioning between scenes </p>
+<p>The object to handle transitioning to battles </p>
+
+</div>
+</div>
+<a class="anchor" id="a59aeb9d1bcc8580f55f3f4dcdae396fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_scene_transition.html">SceneTransition</a> GameManager.transitionWorld</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The object to handle transitioning to open-world </p>
 
 </div>
 </div>

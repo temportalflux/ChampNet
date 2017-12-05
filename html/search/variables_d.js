@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['transition',['transition',['../class_game_manager.html#abae15982d4eb90ef9e5f3d24d15e22f2',1,'GameManager']]]
+  ['transitionbattle',['transitionBattle',['../class_game_manager.html#a1bd9eb164a33c054431f5bf8ccc8d3b8',1,'GameManager']]],
+  ['transitionworld',['transitionWorld',['../class_game_manager.html#a59aeb9d1bcc8580f55f3f4dcdae396fd',1,'GameManager']]]
 ];

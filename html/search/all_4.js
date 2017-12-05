@@ -2,6 +2,7 @@ var searchData=
 [
   ['enumbattleselection',['EnumBattleSelection',['../class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615',1,'GameState::Player']]],
   ['eventbattle',['EventBattle',['../class_event_battle.html',1,'']]],
+  ['eventbattlelocalstart',['EventBattleLocalStart',['../class_event_battle_local_start.html',1,'']]],
   ['eventbattlepromptselection',['EventBattlePromptSelection',['../class_event_battle_prompt_selection.html',1,'']]],
   ['eventbattlerequest',['EventBattleRequest',['../class_event_battle_request.html',1,'']]],
   ['eventbattleresponse',['EventBattleResponse',['../class_event_battle_response.html',1,'']]],

@@ -54,8 +54,10 @@ Audio\-Source \hyperlink{class_game_manager_abf59d5ce551af5e35529f71a99d89d76}{G
 \hypertarget{class_game_manager_af977df043b83671ab9a4753b90fbf75b}{\hyperlink{class_game_manager_1_1_game_action_message}{Game\-Action\-Message} {\bfseries on\-Network\-Rejected}}\label{class_game_manager_af977df043b83671ab9a4753b90fbf75b}
 
 \item 
-\hyperlink{class_scene_transition}{Scene\-Transition} \hyperlink{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{transition}
-\begin{DoxyCompactList}\small\item\em The object to handle transitioning between scenes \end{DoxyCompactList}\item 
+\hyperlink{class_scene_transition}{Scene\-Transition} \hyperlink{class_game_manager_a59aeb9d1bcc8580f55f3f4dcdae396fd}{transition\-World}
+\begin{DoxyCompactList}\small\item\em The object to handle transitioning to open-\/world \end{DoxyCompactList}\item 
+\hyperlink{class_scene_transition}{Scene\-Transition} \hyperlink{class_game_manager_a1bd9eb164a33c054431f5bf8ccc8d3b8}{transition\-Battle}
+\begin{DoxyCompactList}\small\item\em The object to handle transitioning to battles \end{DoxyCompactList}\item 
 \hypertarget{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}{Game\-Object {\bfseries player\-Prefab}}\label{class_game_manager_a57d400c7a28f42865048fbdbaf236cfb}
 
 \item 
@@ -182,12 +184,19 @@ The main camera in the open-\/world
 
 The game state 
 
-\hypertarget{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}{\index{Game\-Manager@{Game\-Manager}!transition@{transition}}
-\index{transition@{transition}!GameManager@{Game\-Manager}}
-\subsubsection[{transition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene\-Transition} Game\-Manager.\-transition}}\label{class_game_manager_abae15982d4eb90ef9e5f3d24d15e22f2}
+\hypertarget{class_game_manager_a1bd9eb164a33c054431f5bf8ccc8d3b8}{\index{Game\-Manager@{Game\-Manager}!transition\-Battle@{transition\-Battle}}
+\index{transition\-Battle@{transition\-Battle}!GameManager@{Game\-Manager}}
+\subsubsection[{transition\-Battle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene\-Transition} Game\-Manager.\-transition\-Battle}}\label{class_game_manager_a1bd9eb164a33c054431f5bf8ccc8d3b8}
 
 
-The object to handle transitioning between scenes 
+The object to handle transitioning to battles 
+
+\hypertarget{class_game_manager_a59aeb9d1bcc8580f55f3f4dcdae396fd}{\index{Game\-Manager@{Game\-Manager}!transition\-World@{transition\-World}}
+\index{transition\-World@{transition\-World}!GameManager@{Game\-Manager}}
+\subsubsection[{transition\-World}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene\-Transition} Game\-Manager.\-transition\-World}}\label{class_game_manager_a59aeb9d1bcc8580f55f3f4dcdae396fd}
+
+
+The object to handle transitioning to open-\/world 
 
 
 
