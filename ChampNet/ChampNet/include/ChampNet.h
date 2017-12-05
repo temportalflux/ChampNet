@@ -13,16 +13,17 @@ enum PacketPriority;
 enum PacketReliability;
 
 /** \defgroup champnet ChampNet */
+
+/** \addtogroup champnet
+* @{
+*/
+//! ChampNet wraps all RakNet operations with easy to manage Packets and Network interfaces
 namespace ChampNet
 {
 
 	class PacketQueue;
 	class Packet;
 	struct TimeStamp;
-
-	/** \addtogroup champnet
-	* @{
-	*/
 
 	//! The total size of a timestamp addition
 	//! \author Jake Ruth
@@ -46,12 +47,12 @@ namespace ChampNet
 		//! All the packets to be processed
 		PacketQueue* mpPackets;
 
+	public:
+
 		//! The callback for sending logs
 		MsgCallBack logger = NULL;
 
-	public:
-
-		//! Output to console through the Network::logger
+		//! Output to console through the <see cref="Network::logger"/>
 		void sendLog(const char *msg, int color);
 
 		Network();
@@ -125,8 +126,8 @@ namespace ChampNet
 		int readTimestamps(const char *buffer, RakNet::Time &time1, RakNet::Time &time2);
 
 	};
-	/** @} */
 
 };
+/** @} */
 
 #endif // _CHAMPNET_MAIN_H
