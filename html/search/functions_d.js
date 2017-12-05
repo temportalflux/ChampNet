@@ -5,6 +5,6 @@ var searchData=
   ['performancetracker',['PerformanceTracker',['../class_performance_tracker.html#a3ca7c573d743478e4924f3239f258a70',1,'PerformanceTracker']]],
   ['play',['Play',['../class_game_manager.html#a3403831c40f16191e3997be60d95380b',1,'GameManager']]],
   ['playnetwork',['PlayNetwork',['../class_game_manager.html#a1138f86278583414cba9456d02d0fa1c',1,'GameManager']]],
-  ['pollpacket',['PollPacket',['../namespace_champ_net_plugin.html#abb7c7dca9d557ab9cd6b29fbb6a75785',1,'ChampNetPlugin']]],
+  ['pollpacket',['PollPacket',['../class_champ_net_plugin_1_1_network.html#aa7cd4d50064649ad52aa1d4b4c43af3a',1,'ChampNetPlugin.Network.PollPacket(ref bool valid)'],['../class_champ_net_plugin_1_1_network.html#a3d42caa51e4fdc73edb33057cd34896b',1,'ChampNetPlugin.Network.PollPacket(out string address, out byte[] data, out ulong transmitTime)'],['../namespace_champ_net_plugin.html#abb7c7dca9d557ab9cd6b29fbb6a75785',1,'ChampNetPlugin::PollPacket()']]],
   ['pollpackets',['pollPackets',['../class_champ_net_1_1_network.html#ae01cddc2981169cda9f4d65661c204f6',1,'ChampNet::Network']]]
 ];

@@ -96,6 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ChampNetPlugin.Network Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A Unity interface with the C++ plugin under <a class="el" href="class_champ_net_1_1_network.html" title="Base class for handling all ChampNet::Packet data. ">ChampNet::Network</a> and <a class="el" href="namespace_champ_net_plugin.html">ChampNetPlugin</a>.  
+ <a href="class_champ_net_plugin_1_1_network.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -103,54 +106,158 @@ Public Member Functions</h2></td></tr>
 delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>debugCallback</b> (IntPtr request, int color, int size)</td></tr>
 <tr class="separator:ae91e1558fdacd55163986aaf2edf3c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac69b7dd1eb986a17ba005cded2581fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac69b7dd1eb986a17ba005cded2581fa"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>Create</b> ()</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#aac69b7dd1eb986a17ba005cded2581fa">Create</a> ()</td></tr>
+<tr class="memdesc:aac69b7dd1eb986a17ba005cded2581fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a network to connect with. <br/></td></tr>
 <tr class="separator:aac69b7dd1eb986a17ba005cded2581fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33f8a1666e92815fc3968ad98fd3f782"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33f8a1666e92815fc3968ad98fd3f782"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterDebugCallback</b> (debugCallback callback)</td></tr>
+<tr class="memitem:a33f8a1666e92815fc3968ad98fd3f782"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a33f8a1666e92815fc3968ad98fd3f782">RegisterDebugCallback</a> (debugCallback callback)</td></tr>
+<tr class="memdesc:a33f8a1666e92815fc3968ad98fd3f782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a callback function for console logs  <a href="#a33f8a1666e92815fc3968ad98fd3f782">More...</a><br/></td></tr>
 <tr class="separator:a33f8a1666e92815fc3968ad98fd3f782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38e92ac395f9860fa696d0194ca04f4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38e92ac395f9860fa696d0194ca04f4b"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>Destroy</b> ()</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a38e92ac395f9860fa696d0194ca04f4b">Destroy</a> ()</td></tr>
+<tr class="memdesc:a38e92ac395f9860fa696d0194ca04f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the network (must call Create prior) (must call when owning object is destroyed) <br/></td></tr>
 <tr class="separator:a38e92ac395f9860fa696d0194ca04f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d04fdd4e422f9dbf0e20bbbd4209884"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d04fdd4e422f9dbf0e20bbbd4209884"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>StartServer</b> (int port, int maxClients)</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a9d04fdd4e422f9dbf0e20bbbd4209884">StartServer</a> (int port, int maxClients)</td></tr>
+<tr class="memdesc:a9d04fdd4e422f9dbf0e20bbbd4209884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a server with the specified credentials using this object. <br/></td></tr>
 <tr class="separator:a9d04fdd4e422f9dbf0e20bbbd4209884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaf000c31710d5c8f2720a6143773c4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acaf000c31710d5c8f2720a6143773c4d"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>StartClient</b> ()</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#acaf000c31710d5c8f2720a6143773c4d">StartClient</a> ()</td></tr>
+<tr class="memdesc:acaf000c31710d5c8f2720a6143773c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a client using this object. <br/></td></tr>
 <tr class="separator:acaf000c31710d5c8f2720a6143773c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82f643f5065fc2d081be45de41e89aff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82f643f5065fc2d081be45de41e89aff"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectToServer</b> (string address, int port)</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a82f643f5065fc2d081be45de41e89aff">ConnectToServer</a> (string address, int port)</td></tr>
+<tr class="memdesc:a82f643f5065fc2d081be45de41e89aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect this CLIENT to some server using the specified credentials. <br/></td></tr>
 <tr class="separator:a82f643f5065fc2d081be45de41e89aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a591fc1d265a3d980b5ea185100e1a3c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a591fc1d265a3d980b5ea185100e1a3c9"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>FetchPackets</b> ()</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a591fc1d265a3d980b5ea185100e1a3c9">FetchPackets</a> ()</td></tr>
+<tr class="memdesc:a591fc1d265a3d980b5ea185100e1a3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch all incoming packets. Must call prior to PollPacket. Must be called after Create and before Destroy. Returns the quantity of packets in the queue after fetch. <br/></td></tr>
 <tr class="separator:a591fc1d265a3d980b5ea185100e1a3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7cd4d50064649ad52aa1d4b4c43af3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7cd4d50064649ad52aa1d4b4c43af3a"></a>
-static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>PollPacket</b> (ref bool valid)</td></tr>
+static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#aa7cd4d50064649ad52aa1d4b4c43af3a">PollPacket</a> (ref bool valid)</td></tr>
+<tr class="memdesc:aa7cd4d50064649ad52aa1d4b4c43af3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll the packet queue. Returns a pointer to the first packet, and removes that packet from the queue. If valid is true, then the packet can be processed, else the packet does not exist (no packets presently in the queue). <br/></td></tr>
 <tr class="separator:aa7cd4d50064649ad52aa1d4b4c43af3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582632ef24eedc5973791aaedc4fcd7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a582632ef24eedc5973791aaedc4fcd7d"></a>
-static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetPacketAddress</b> (IntPtr packetRef, ref uint length)</td></tr>
+static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a582632ef24eedc5973791aaedc4fcd7d">GetPacketAddress</a> (IntPtr packetRef, ref uint length)</td></tr>
+<tr class="memdesc:a582632ef24eedc5973791aaedc4fcd7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the packet's address, given some valid packet pointer (Call after PollPacket if valid is true). <br/></td></tr>
 <tr class="separator:a582632ef24eedc5973791aaedc4fcd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6c381600f60a77db7c24d327c7c2c52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6c381600f60a77db7c24d327c7c2c52"></a>
-static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetPacketData</b> (IntPtr packetRef, ref uint length, ref ulong transmitTime)</td></tr>
+static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#af6c381600f60a77db7c24d327c7c2c52">GetPacketData</a> (IntPtr packetRef, ref uint length, ref ulong transmitTime)</td></tr>
+<tr class="memdesc:af6c381600f60a77db7c24d327c7c2c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the packet's data, given some valid packet pointer (Call after PollPacket if valid is true). <br/></td></tr>
 <tr class="separator:af6c381600f60a77db7c24d327c7c2c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230482602fa8f253b8d1f3d0a11780d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a230482602fa8f253b8d1f3d0a11780d3"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>FreePacket</b> (IntPtr packetRef)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a230482602fa8f253b8d1f3d0a11780d3">FreePacket</a> (IntPtr packetRef)</td></tr>
+<tr class="memdesc:a230482602fa8f253b8d1f3d0a11780d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory of some packet, given some valid packet pointer (Call after PollPacket if valid is true). <br/></td></tr>
 <tr class="separator:a230482602fa8f253b8d1f3d0a11780d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a018ec78857afa38d5f64607e63201abd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a018ec78857afa38d5f64607e63201abd"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>SendByteArray</b> (string address, int port, byte[] byteArray, int byteArraySize)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a018ec78857afa38d5f64607e63201abd">SendByteArray</a> (string address, int port, byte[] byteArray, int byteArraySize)</td></tr>
+<tr class="memdesc:a018ec78857afa38d5f64607e63201abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a byte array to the server. <br/></td></tr>
 <tr class="separator:a018ec78857afa38d5f64607e63201abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f6c434b9b5587b34bd8a3f0d25488c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f6c434b9b5587b34bd8a3f0d25488c4"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Disconnect</b> ()</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a7f6c434b9b5587b34bd8a3f0d25488c4">Disconnect</a> ()</td></tr>
+<tr class="memdesc:a7f6c434b9b5587b34bd8a3f0d25488c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from the interface. <br/></td></tr>
 <tr class="separator:a7f6c434b9b5587b34bd8a3f0d25488c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad01cdffbb961d7aee298ad1a03e1047b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad01cdffbb961d7aee298ad1a03e1047b"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDebugCallback</b> ()</td></tr>
+<tr class="memitem:ad01cdffbb961d7aee298ad1a03e1047b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#ad01cdffbb961d7aee298ad1a03e1047b">SetDebugCallback</a> ()</td></tr>
+<tr class="memdesc:ad01cdffbb961d7aee298ad1a03e1047b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the debug callback in <a class="el" href="class_champ_net_plugin_1_1_network.html#a33f8a1666e92815fc3968ad98fd3f782" title="Register a callback function for console logs ">RegisterDebugCallback(debugCallback)</a>  <a href="#ad01cdffbb961d7aee298ad1a03e1047b">More...</a><br/></td></tr>
 <tr class="separator:ad01cdffbb961d7aee298ad1a03e1047b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d42caa51e4fdc73edb33057cd34896b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d42caa51e4fdc73edb33057cd34896b"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>PollPacket</b> (out string address, out byte[] data, out ulong transmitTime)</td></tr>
+<tr class="memitem:a3d42caa51e4fdc73edb33057cd34896b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_plugin_1_1_network.html#a3d42caa51e4fdc73edb33057cd34896b">PollPacket</a> (out string address, out byte[] data, out ulong transmitTime)</td></tr>
 <tr class="separator:a3d42caa51e4fdc73edb33057cd34896b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A Unity interface with the C++ plugin under <a class="el" href="class_champ_net_1_1_network.html" title="Base class for handling all ChampNet::Packet data. ">ChampNet::Network</a> and <a class="el" href="namespace_champ_net_plugin.html">ChampNetPlugin</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3d42caa51e4fdc73edb33057cd34896b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ChampNetPlugin.Network.PollPacket </td>
+          <td>(</td>
+          <td class="paramtype">out string&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out byte[]&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out ulong&#160;</td>
+          <td class="paramname"><em>transmitTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>WRAPPER METHOD Handles polling the network for packets, and returning the address and data of that packet. Use instead of PollPacket(bool), GetPacketAddress, GetPacketData, and FreePacket Copies out the data from a valid packet, and frees the packet from memory. Returns true if a valid packet was found, else false. </p>
+
+</div>
+</div>
+<a class="anchor" id="a33f8a1666e92815fc3968ad98fd3f782"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ChampNetPlugin.Network.RegisterDebugCallback </td>
+          <td>(</td>
+          <td class="paramtype">debugCallback&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register a callback function for console logs </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad01cdffbb961d7aee298ad1a03e1047b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ChampNetPlugin.Network.SetDebugCallback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets up the debug callback in <a class="el" href="class_champ_net_plugin_1_1_network.html#a33f8a1666e92815fc3968ad98fd3f782" title="Register a callback function for console logs ">RegisterDebugCallback(debugCallback)</a> </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/ChampNet/Network.cs</li>
 </ul>

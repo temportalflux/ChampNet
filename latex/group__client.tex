@@ -1,17 +1,49 @@
 \hypertarget{group__client}{\section{Client\-: Cretins}
 \label{group__client}\index{Client\-: Cretins@{Client\-: Cretins}}
 }
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+package \hyperlink{namespace_champ_net_plugin}{Champ\-Net\-Plugin}
+\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \hyperlink{class_bit_serialize_attribute}{Bit\-Serialize\-Attribute}
+\begin{DoxyCompactList}\small\item\em Handles (de)serializing of specific fields. Valid types include\-: bool, byte, char, (u)short, (u)int, (u)long, float, double, \hyperlink{interface_i_serializing}{I\-Serializing}, and any composite arrays of the former. If the Mono\-Behaviour being serialized is \hyperlink{interface_i_serializing}{I\-Serializing}, the \hyperlink{interface_i_serializing}{I\-Serializing} methods are treated as additions to all fields marked with Bit\-Serialize \end{DoxyCompactList}\item 
+class \hyperlink{class_battle_handler}{Battle\-Handler}
+\item 
 class \hyperlink{class_battle_participant}{Battle\-Participant}
 \begin{DoxyCompactList}\small\item\em Class to hold information about a participant in a battle. Could be a local player, networked player, or cretin A\-I. \end{DoxyCompactList}\item 
+class \hyperlink{class_battle_u_i_controller}{Battle\-U\-I\-Controller}
+\item 
+class \hyperlink{class_tall_grass}{Tall\-Grass}
+\begin{DoxyCompactList}\small\item\em Handles spawning enemies in tall grass areas \end{DoxyCompactList}\item 
 class \hyperlink{class_game_manager}{Game\-Manager}
 \begin{DoxyCompactList}\small\item\em The manager for the client game Is a singleton, instatiated in the first scene \end{DoxyCompactList}\item 
 class \hyperlink{class_game_state}{Game\-State}
 \begin{DoxyCompactList}\small\item\em Holds all persistent data from network intergration for local usage \end{DoxyCompactList}\item 
+class {\bfseries Colors}
+\begin{DoxyCompactList}\small\item\em All The Colors \end{DoxyCompactList}\item 
+class \hyperlink{class_singleton_3_01_t_01_4}{Singleton$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Base class to assist with objects which only occur once in the lifetime of the game \end{DoxyCompactList}\item 
+class \hyperlink{class_to_do}{To\-Do}
+\begin{DoxyCompactList}\small\item\em An Attribute to indicate things to do. Taken from \href{https://www.linkedin.com/pulse/alternative-way-manage-to-dos-unity-using-c-custom-steve-sedlmayr}{\tt https\-://www.\-linkedin.\-com/pulse/alternative-\/way-\/manage-\/to-\/dos-\/unity-\/using-\/c-\/custom-\/steve-\/sedlmayr}. \end{DoxyCompactList}\item 
 class \hyperlink{class_net_interface}{Net\-Interface}
 \begin{DoxyCompactList}\small\item\em The interface to work with the plugin to fetch and send packet data \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Menu\-State} \{ \\*
+{\bfseries M\-A\-I\-N\-\_\-\-M\-E\-N\-U}, 
+{\bfseries A\-T\-T\-A\-C\-K\-\_\-\-M\-E\-N\-U}, 
+{\bfseries I\-T\-E\-M\-\_\-\-M\-E\-N\-U}, 
+{\bfseries S\-W\-I\-T\-C\-H\-\_\-\-M\-E\-N\-U}, 
+\\*
+{\bfseries F\-O\-R\-F\-E\-I\-T\-\_\-\-M\-E\-N\-U}, 
+{\bfseries W\-A\-I\-T\-I\-N\-G}
+ \}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}

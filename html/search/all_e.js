@@ -40,7 +40,7 @@ var searchData=
   ['playerrequest',['playerRequest',['../class_game_state.html#a8b1949523ac8e40776c0617666023d64',1,'GameState']]],
   ['players',['players',['../class_game_state.html#a8f156a6cce5f2b9945c274b6bfc971ce',1,'GameState']]],
   ['playnetwork',['PlayNetwork',['../class_game_manager.html#a1138f86278583414cba9456d02d0fa1c',1,'GameManager']]],
-  ['pollpacket',['PollPacket',['../namespace_champ_net_plugin.html#abb7c7dca9d557ab9cd6b29fbb6a75785',1,'ChampNetPlugin']]],
+  ['pollpacket',['PollPacket',['../class_champ_net_plugin_1_1_network.html#aa7cd4d50064649ad52aa1d4b4c43af3a',1,'ChampNetPlugin.Network.PollPacket(ref bool valid)'],['../class_champ_net_plugin_1_1_network.html#a3d42caa51e4fdc73edb33057cd34896b',1,'ChampNetPlugin.Network.PollPacket(out string address, out byte[] data, out ulong transmitTime)'],['../namespace_champ_net_plugin.html#abb7c7dca9d557ab9cd6b29fbb6a75785',1,'ChampNetPlugin::PollPacket()']]],
   ['pollpackets',['pollPackets',['../class_champ_net_1_1_network.html#ae01cddc2981169cda9f4d65661c204f6',1,'ChampNet::Network']]],
   ['port',['port',['../struct_state_network.html#a369a4768473db59ccbd4ba509a61595c',1,'StateNetwork']]],
   ['position',['position',['../class_game_state_1_1_player.html#a24a9ccd0325cae667f125821b3be79c2',1,'GameState::Player']]],
