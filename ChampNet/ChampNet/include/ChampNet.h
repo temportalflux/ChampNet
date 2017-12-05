@@ -13,10 +13,6 @@ enum PacketPriority;
 enum PacketReliability;
 
 /** \defgroup champnet ChampNet */
-
-/** \addtogroup champnet
-* @{
-*/
 namespace ChampNet
 {
 
@@ -24,9 +20,12 @@ namespace ChampNet
 	class Packet;
 	struct TimeStamp;
 
-	/** The total size of a timestamp addition
-	* \author Jake Ruth
+	/** \addtogroup champnet
+	* @{
 	*/
+
+	//! The total size of a timestamp addition
+	//! \author Jake Ruth
 	const int SIZE_OF_TIMESTAMPS = sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time);
 
 	/** Base class for handling all <see cref="ChampNet::Packet"/> data. */
@@ -52,7 +51,7 @@ namespace ChampNet
 
 	public:
 
-		/** Output to console through the Network::logger */
+		//! Output to console through the Network::logger
 		void sendLog(const char *msg, int color);
 
 		Network();
@@ -126,8 +125,8 @@ namespace ChampNet
 		int readTimestamps(const char *buffer, RakNet::Time &time1, RakNet::Time &time2);
 
 	};
+	/** @} */
 
 };
-/** @} */
 
 #endif // _CHAMPNET_MAIN_H
