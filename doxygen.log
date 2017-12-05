@@ -265,7 +265,6 @@ Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTe
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/StateData.h:51: warning: Compound StateData is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleTester.cs:7: warning: Compound BattleTester is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h:34: warning: Compound PacketPlayerPosition is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:11: warning: Compound ChampNet::TimeStamp is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/GameStateEditor.cs:8: warning: Compound GameStateEditor is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreboardIncrementTest.cs:8: warning: Compound ScoreboardIncrementTest is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h:65: warning: Compound PacketBattlePromptSelection is not documented.
@@ -892,25 +891,6 @@ Genera/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/Play
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/UIInput.cs:9: warning: Member fields (variable) of class UIInput is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/UIInput.cs:10: warning: Member selector (variable) of class UIInput is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/UIInput.cs:12: warning: Member numberOfColumns (variable) of class UIInput is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:13: warning: Member timesLoaded (variable) of class ChampNet::TimeStamp is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:15: warning: Member packetReadTime_local (variable) of class ChampNet::TimeStamp is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:17: warning: Member readDiff_local (variable) of class ChampNet::TimeStamp is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:19: warning: Member sentTime_remote (variable) of class ChampNet::TimeStamp is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:21: warning: Member totalTransferTime_local (variable) of class ChampNet::TimeStamp is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:48: warning: Member Packet(const unsigned int lengthAddress, const char *address, const unsigned int dataLength, const unsigned char *data) (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:52: warning: Member copy(const unsigned char *&source, unsigned char *&dest, unsigned int length) (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:55: warning: Member getID() const  (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:58: warning: Member getAddress(const char *&address, unsigned int &length) (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:60: warning: Member getAddress() (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:63: warning: Member getData(unsigned char *&data, unsigned int &length) (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:65: warning: Member getDataLength() const  (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:69: warning: Member getPacketAs(unsigned int &dataSize) (function) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:46: warning: Member timestampInfo (variable) of class ChampNet::Packet is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:94: warning: Member enqueue(Packet *packet) (function) of class ChampNet::PacketQueue is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:98: warning: Member dequeue(Packet *&packet) (function) of class ChampNet::PacketQueue is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:101: warning: Member clear() (function) of class ChampNet::PacketQueue is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:104: warning: Member isEmpty() (function) of class ChampNet::PacketQueue is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/Packet.h:107: warning: Member getCount() const  (function) of class ChampNet::PacketQueue is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPlugin/include/ChampNetPlugin.h:89: warning: Member FuncCallBack)(const char *message, int color, int size) (typedef) of namespace ChampNetPlugin is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/ChampNet/Network.cs:19: warning: Member MessageIDs (enumeration) of namespace ChampNetPlugin is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPlugin/include/ChampNetPlugin.h:29: warning: Member MessageIDs (enumeration) of namespace ChampNetPlugin is not documented.
@@ -991,5 +971,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 705/65536 hits=9288 misses=766
+lookup cache used 697/65536 hits=9232 misses=758
 finished...

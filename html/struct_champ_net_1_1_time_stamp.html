@@ -95,26 +95,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ChampNet::TimeStamp Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Holds TimeStamped information which wraps RakNet::Time for usage for cross-network &amp; forwarded packet time tracking.  
+ <a href="struct_champ_net_1_1_time_stamp.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_packet_8h_source.html">Packet.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a15ed2cd3a07ef3b0b4bd58a0cbc2060c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15ed2cd3a07ef3b0b4bd58a0cbc2060c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>timesLoaded</b> = false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_champ_net_1_1_time_stamp.html#a15ed2cd3a07ef3b0b4bd58a0cbc2060c">timesLoaded</a> = false</td></tr>
+<tr class="memdesc:a15ed2cd3a07ef3b0b4bd58a0cbc2060c"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the timestamps were found in the packet. <br/></td></tr>
 <tr class="separator:a15ed2cd3a07ef3b0b4bd58a0cbc2060c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2369d7af00c796be178f28ed2d14438"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2369d7af00c796be178f28ed2d14438"></a>
-RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><b>packetReadTime_local</b> = 0</td></tr>
+RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_champ_net_1_1_time_stamp.html#ad2369d7af00c796be178f28ed2d14438">packetReadTime_local</a> = 0</td></tr>
+<tr class="memdesc:ad2369d7af00c796be178f28ed2d14438"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lcoal time that the packet was read at. <br/></td></tr>
 <tr class="separator:ad2369d7af00c796be178f28ed2d14438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2e6c532773210386df4ff9d2c5e1f2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2e6c532773210386df4ff9d2c5e1f2b"></a>
-RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><b>readDiff_local</b> = 0</td></tr>
+RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_champ_net_1_1_time_stamp.html#aa2e6c532773210386df4ff9d2c5e1f2b">readDiff_local</a> = 0</td></tr>
+<tr class="memdesc:aa2e6c532773210386df4ff9d2c5e1f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local time duration the packet took to start reading. <br/></td></tr>
 <tr class="separator:aa2e6c532773210386df4ff9d2c5e1f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa99efe10e72f2c086f81e77cc6fbd337"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa99efe10e72f2c086f81e77cc6fbd337"></a>
-RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><b>sentTime_remote</b> = 0</td></tr>
+RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_champ_net_1_1_time_stamp.html#aa99efe10e72f2c086f81e77cc6fbd337">sentTime_remote</a> = 0</td></tr>
+<tr class="memdesc:aa99efe10e72f2c086f81e77cc6fbd337"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote time that the packet was sent at. <br/></td></tr>
 <tr class="separator:aa99efe10e72f2c086f81e77cc6fbd337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8466c79c649081a4027fd7ed355e9c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8466c79c649081a4027fd7ed355e9c1"></a>
-RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><b>totalTransferTime_local</b> = 0</td></tr>
+RakNet::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_champ_net_1_1_time_stamp.html#ae8466c79c649081a4027fd7ed355e9c1">totalTransferTime_local</a> = 0</td></tr>
+<tr class="memdesc:ae8466c79c649081a4027fd7ed355e9c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The total time (local) that the packet took to be received/read. <br/></td></tr>
 <tr class="separator:ae8466c79c649081a4027fd7ed355e9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Holds TimeStamped information which wraps RakNet::Time for usage for cross-network &amp; forwarded packet time tracking. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/<a class="el" href="_packet_8h_source.html">Packet.h</a></li>
 </ul>
 </div><!-- contents -->

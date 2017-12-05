@@ -102,36 +102,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff76d883fd5533bda3210d11c6d3ca2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff76d883fd5533bda3210d11c6d3ca2e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Packet</b> (const unsigned int lengthAddress, const char *address, const unsigned int dataLength, const unsigned char *data)</td></tr>
-<tr class="separator:aff76d883fd5533bda3210d11c6d3ca2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc292b1324121a2d367aa7a44275eff5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc292b1324121a2d367aa7a44275eff5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#abc292b1324121a2d367aa7a44275eff5">~Packet</a> ()</td></tr>
+<tr class="memdesc:abc292b1324121a2d367aa7a44275eff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr class="separator:abc292b1324121a2d367aa7a44275eff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068e85d829e9fa4b980ec115b40048d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a068e85d829e9fa4b980ec115b40048d3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>copy</b> (const unsigned char *&amp;source, unsigned char *&amp;dest, unsigned int length)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a068e85d829e9fa4b980ec115b40048d3">copy</a> (const unsigned char *&amp;source, unsigned char *&amp;dest, unsigned int length)</td></tr>
+<tr class="memdesc:a068e85d829e9fa4b980ec115b40048d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new char[] at dest, and copies the contents of the range [0, length) from source into dest. <br/></td></tr>
 <tr class="separator:a068e85d829e9fa4b980ec115b40048d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe3a5de756c64e6890dcf4b0a95a2db7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe3a5de756c64e6890dcf4b0a95a2db7"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getID</b> () const </td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#abe3a5de756c64e6890dcf4b0a95a2db7">getID</a> () const </td></tr>
+<tr class="memdesc:abe3a5de756c64e6890dcf4b0a95a2db7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ID of this packet (assumed the first byte of data in the packet) <br/></td></tr>
 <tr class="separator:abe3a5de756c64e6890dcf4b0a95a2db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ab4d17481d7fc08f3c0dc2c48eb9a0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ab4d17481d7fc08f3c0dc2c48eb9a0a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getAddress</b> (const char *&amp;address, unsigned int &amp;length)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a8ab4d17481d7fc08f3c0dc2c48eb9a0a">getAddress</a> (const char *&amp;address, unsigned int &amp;length)</td></tr>
+<tr class="memdesc:a8ab4d17481d7fc08f3c0dc2c48eb9a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets address and length to the address characters of the ip address. <br/></td></tr>
 <tr class="separator:a8ab4d17481d7fc08f3c0dc2c48eb9a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98b70a972a4a956e94f7203bc2f77402"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98b70a972a4a956e94f7203bc2f77402"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getAddress</b> ()</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a98b70a972a4a956e94f7203bc2f77402">getAddress</a> ()</td></tr>
+<tr class="memdesc:a98b70a972a4a956e94f7203bc2f77402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the const char* address as a string (wraps getAddress(const char*, unsigned int)) <br/></td></tr>
 <tr class="separator:a98b70a972a4a956e94f7203bc2f77402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01e9211c5d6a0080d035ddf969a4efa5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01e9211c5d6a0080d035ddf969a4efa5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getData</b> (unsigned char *&amp;data, unsigned int &amp;length)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a01e9211c5d6a0080d035ddf969a4efa5">getData</a> (unsigned char *&amp;data, unsigned int &amp;length)</td></tr>
+<tr class="memdesc:a01e9211c5d6a0080d035ddf969a4efa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets data and length to the byte data from the packet. <br/></td></tr>
 <tr class="separator:a01e9211c5d6a0080d035ddf969a4efa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a8b68fc76f6bfe512244acfef247627"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a8b68fc76f6bfe512244acfef247627"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getDataLength</b> () const </td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a0a8b68fc76f6bfe512244acfef247627">getDataLength</a> () const </td></tr>
+<tr class="memdesc:a0a8b68fc76f6bfe512244acfef247627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data length (same thing as length in getData) <br/></td></tr>
 <tr class="separator:a0a8b68fc76f6bfe512244acfef247627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad336c6b2ff59a0dff1bf7d70f1da9340"><td class="memTemplParams" colspan="2"><a class="anchor" id="ad336c6b2ff59a0dff1bf7d70f1da9340"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad336c6b2ff59a0dff1bf7d70f1da9340"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>getPacketAs</b> (unsigned int &amp;dataSize)</td></tr>
+<tr class="memitem:ad336c6b2ff59a0dff1bf7d70f1da9340"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#ad336c6b2ff59a0dff1bf7d70f1da9340">getPacketAs</a> (unsigned int &amp;dataSize)</td></tr>
+<tr class="memdesc:ad336c6b2ff59a0dff1bf7d70f1da9340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Casts the packet data to some structure T, returning the length of data as a reference parameter. <br/></td></tr>
 <tr class="separator:ad336c6b2ff59a0dff1bf7d70f1da9340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41aeb09357d49b53ae2bdb7829a2c7cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41aeb09357d49b53ae2bdb7829a2c7cb"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a41aeb09357d49b53ae2bdb7829a2c7cb">getTransmitTime</a> () const </td></tr>
+<tr class="memdesc:a41aeb09357d49b53ae2bdb7829a2c7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total ms it took to transmit this packet from its original source to its final destination. <br/></td></tr>
+<tr class="separator:a41aeb09357d49b53ae2bdb7829a2c7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0fcefd5ba56854e5a8e3e63a51e3963e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fcefd5ba56854e5a8e3e63a51e3963e"></a>
-<a class="el" href="struct_champ_net_1_1_time_stamp.html">TimeStamp</a>&#160;</td><td class="memItemRight" valign="bottom"><b>timestampInfo</b></td></tr>
+<a class="el" href="struct_champ_net_1_1_time_stamp.html">TimeStamp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_packet.html#a0fcefd5ba56854e5a8e3e63a51e3963e">timestampInfo</a></td></tr>
+<tr class="memdesc:a0fcefd5ba56854e5a8e3e63a51e3963e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The timestamp information about this packet. <br/></td></tr>
 <tr class="separator:a0fcefd5ba56854e5a8e3e63a51e3963e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -139,9 +152,13 @@ Friends</h2></td></tr>
 <tr class="memitem:ac3f1afb9cc164b535c73e6f5909519ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3f1afb9cc164b535c73e6f5909519ff"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>PacketQueue</b></td></tr>
 <tr class="separator:ac3f1afb9cc164b535c73e6f5909519ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88b59289ffd793fecd040d32e397b1e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88b59289ffd793fecd040d32e397b1e9"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Network</b></td></tr>
+<tr class="separator:a88b59289ffd793fecd040d32e397b1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Author: Dustin Yost A class to handle packet data from RakNet </p>
+<div class="textblock"><p>A class to handle packet data from RakNet </p>
+<dl class="section author"><dt>Author</dt><dd>Dustin Yost </dd></dl>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/include/<a class="el" href="_packet_8h_source.html">Packet.h</a></li>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNet/source/Packet.cpp</li>

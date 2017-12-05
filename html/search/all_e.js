@@ -9,6 +9,8 @@ var searchData=
   ['packetplayerposition',['PacketPlayerPosition',['../struct_packet_player_position.html',1,'']]],
   ['packetplayerscoreboardinfo',['PacketPlayerScoreboardInfo',['../struct_packet_player_scoreboard_info.html',1,'']]],
   ['packetqueue',['PacketQueue',['../class_champ_net_1_1_packet_queue.html',1,'ChampNet']]],
+  ['packetqueue',['PacketQueue',['../class_champ_net_1_1_packet_queue.html#a26d8e8206649764d5c6a947ae90b17b8',1,'ChampNet::PacketQueue']]],
+  ['packetreadtime_5flocal',['packetReadTime_local',['../struct_champ_net_1_1_time_stamp.html#ad2369d7af00c796be178f28ed2d14438',1,'ChampNet::TimeStamp']]],
   ['packetuserid',['PacketUserID',['../struct_packet_user_i_d.html',1,'']]],
   ['packetuseriddouble',['PacketUserIDDouble',['../struct_packet_user_i_d_double.html',1,'']]],
   ['packetuseridtriple',['PacketUserIDTriple',['../struct_packet_user_i_d_triple.html',1,'']]],

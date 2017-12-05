@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['dequeue',['dequeue',['../class_champ_net_1_1_packet_queue.html#a775c0b091e646b35b24abd60ed8003e9',1,'ChampNet::PacketQueue']]],
   ['deserialize',['Deserialize',['../class_game_state_1_1_player.html#aaf7c5b93f45be35c3501626cb6759c0b',1,'GameState.Player.Deserialize()'],['../class_game_state.html#aa5f956de2c49182fbe5fc32e9d2ca431',1,'GameState.Deserialize()'],['../class_event_game_state.html#ac8d792c7dea5e0d703d317a66bcd4cdf',1,'EventGameState.Deserialize()'],['../class_event_network.html#af31b288f5029d8542122abe985f7df18',1,'EventNetwork.Deserialize()'],['../interface_i_serializing.html#a92f8ba3a06d21e7b01e37411e4e3145c',1,'ISerializing.Deserialize()']]],
   ['deserialize_3c_20t_20_3e',['Deserialize&lt; T &gt;',['../class_bit_serialize_attribute.html#ae92d448c6f7bf6ffab890747e1737c65',1,'BitSerializeAttribute']]],
   ['disconnect',['Disconnect',['../class_net_interface.html#ae0be68e392f32d422325ac54fcaa7cae',1,'NetInterface.Disconnect()'],['../class_champ_net_1_1_network.html#a6d06699d228d77aff9c358f79c76ed56',1,'ChampNet::Network::disconnect()'],['../class_state_server.html#a066a1d342ca796d2f40d273dc375a032',1,'StateServer::disconnect()']]],

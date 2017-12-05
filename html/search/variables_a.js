@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['packetreadtime_5flocal',['packetReadTime_local',['../struct_champ_net_1_1_time_stamp.html#ad2369d7af00c796be178f28ed2d14438',1,'ChampNet::TimeStamp']]],
   ['playercontroller',['playerController',['../class_battle_participant.html#a2f1584b2283c99eaaaa8e5b66ced968f',1,'BattleParticipant']]],
   ['playerid',['playerID',['../class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133',1,'GameState::Player']]],
   ['playeridopponent',['playerIDOpponent',['../class_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca',1,'GameState::Player']]],

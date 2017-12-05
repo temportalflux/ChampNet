@@ -91,9 +91,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_champ_net_1_1_network-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ChampNet::Network Class Reference<div class="ingroups"><a class="el" href="group__champnet.html">ChampNet</a></div></div>  </div>
+<div class="title">ChampNet::Network Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -118,7 +119,7 @@ typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d25e6581e6a53201de1f68ed266724e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d25e6581e6a53201de1f68ed266724e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_network.html#a3d25e6581e6a53201de1f68ed266724e">sendLog</a> (const char *msg, int color)</td></tr>
-<tr class="memdesc:a3d25e6581e6a53201de1f68ed266724e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output to console through the Network::logger. <br/></td></tr>
+<tr class="memdesc:a3d25e6581e6a53201de1f68ed266724e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output to console through the <a class="el" href="class_champ_net_1_1_network.html#a4588391c9f6064ad7fb83a08f0ea02c6" title="The callback for sending logs. ">Network::logger</a> <br/></td></tr>
 <tr class="separator:a3d25e6581e6a53201de1f68ed266724e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0d53751c94ef1df4cee9ce3719432bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0d53751c94ef1df4cee9ce3719432bf"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_network.html#ac0d53751c94ef1df4cee9ce3719432bf">initServer</a> (const int port, const int maxClients)</td></tr>
@@ -180,6 +181,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_network.html#ae298bf9276a935974c0b69bc5011f8dc">readTimestamps</a> (const char *buffer, RakNet::Time &amp;time1, RakNet::Time &amp;time2)</td></tr>
 <tr class="memdesc:ae298bf9276a935974c0b69bc5011f8dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the time stamp from a buffer. <br/></td></tr>
 <tr class="separator:ae298bf9276a935974c0b69bc5011f8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a4588391c9f6064ad7fb83a08f0ea02c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4588391c9f6064ad7fb83a08f0ea02c6"></a>
+<a class="el" href="class_champ_net_1_1_network.html#a3f98f6ee0fd5617faa5679162195b39a">MsgCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_champ_net_1_1_network.html#a4588391c9f6064ad7fb83a08f0ea02c6">logger</a> = NULL</td></tr>
+<tr class="memdesc:a4588391c9f6064ad7fb83a08f0ea02c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The callback for sending logs. <br/></td></tr>
+<tr class="separator:a4588391c9f6064ad7fb83a08f0ea02c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for handling all <a class="el" href="class_champ_net_1_1_packet.html">ChampNet::Packet</a> data. </p>
