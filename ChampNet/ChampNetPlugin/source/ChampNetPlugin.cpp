@@ -165,7 +165,7 @@ namespace ChampNetPlugin {
 		// this means data MUST be copied by the caller
 		unsigned char* data;
 		((ChampNet::Packet*)packetPtr)->getData(data, length);
-		transmitTime = ((ChampNet::Packet*)packetPtr)->timestampInfo.timesLoaded ? (unsigned long)((ChampNet::Packet*)packetPtr)->timestampInfo.totalTransferTime_local : 0;
+		transmitTime = (unsigned long)((ChampNet::Packet*)packetPtr)->getTransmitTime();
 		return data;
 	}
 
