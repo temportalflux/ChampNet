@@ -8,6 +8,7 @@ Champlain College
 2011
 */
 
+
 class Timer
 {
 public:

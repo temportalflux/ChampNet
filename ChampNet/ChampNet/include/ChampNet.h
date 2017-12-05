@@ -29,7 +29,7 @@ namespace ChampNet
 	//! \author Jake Ruth
 	const int SIZE_OF_TIMESTAMPS = sizeof(char) + sizeof(RakNet::Time) + sizeof(RakNet::Time);
 
-	/** Base class for handling all <see cref="ChampNet::Packet"/> data. */
+	//! Base class for handling all <see cref="ChampNet::Packet"/> data.
 	class Network
 	{
 	public:
