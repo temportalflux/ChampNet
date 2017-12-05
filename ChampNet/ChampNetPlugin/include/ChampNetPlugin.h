@@ -27,13 +27,13 @@ extern "C"
 	namespace ChampNetPlugin {
 
 		/// All the Message/Packet identifiers used for this implementation
-		/// TODO: Not DLL general - should be moved for just server usage (irrellevant to non-Cretin usage)
-		/// Designations:
-		/// C: Client
-		/// S: Server
-		/// A: Client A
-		/// B: Client B
-		/// all: all Clients
+		// TODO: Not DLL general - should be moved for just server usage (irrellevant to non-Cretin usage)
+		// Designations:
+		// C: Client
+		// S: Server
+		// A: Client A
+		// B: Client B
+		// all: all Clients
 		enum MessageIDs
 		{
 			//! RakNet messages (unsued for clients)
