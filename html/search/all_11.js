@@ -17,7 +17,7 @@ var searchData=
   ['singleton_3c_20t_20_3e',['Singleton&lt; T &gt;',['../class_singleton_3_01_t_01_4.html',1,'']]],
   ['size',['SIZE',['../class_game_state_1_1_player.html#ada2d068d3d5f973f73abac805c162d17',1,'GameState::Player']]],
   ['size_5fmax_5fname',['SIZE_MAX_NAME',['../class_game_state_1_1_player.html#a1cdc9de8183b220e87632f7f6a7147d0',1,'GameState::Player']]],
-  ['size_5fof_5ftimestamps',['SIZE_OF_TIMESTAMPS',['../namespace_champ_net.html#ae8bece8e869e20f234d9ae67256a735f',1,'ChampNet']]],
+  ['size_5fof_5ftimestamps',['SIZE_OF_TIMESTAMPS',['../group__champnet.html#gae8bece8e869e20f234d9ae67256a735f',1,'ChampNet']]],
   ['start',['start',['../class_state_server.html#aaeb4f49e47304f186f87f79a3612b085',1,'StateServer']]],
   ['state',['state',['../class_game_manager.html#a8d86b330237462e38933b28276ed0e2c',1,'GameManager']]],
   ['stateapplication',['StateApplication',['../class_state_application.html',1,'']]],
