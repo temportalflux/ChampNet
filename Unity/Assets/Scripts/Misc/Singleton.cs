@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// \addtogroup client
+/// @{
+
 /// <summary>
-/// Author: Dustin Yost
 /// Base class to assist with objects which only occur once in the lifetime of the game
 /// </summary>
 /// <typeparam name="T"></typeparam>
+/// \author Dustin Yost
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 
     /// <summary>
-    /// Author: Dustin Yost
     /// Loads the singleton.
     /// Checks for singleton properties, then marks the instance
     /// </summary>
     /// <param name="inst">The instance to check and set</param>
     /// <param name="staticRef">The singleton reference instance</param>
+    /// \author Dustin Yost
     protected void loadSingleton(T inst, ref T staticRef)
     {
 
@@ -65,3 +68,4 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     public void Unlock() { inUse = false; }
 
 }
+/// @}
