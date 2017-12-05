@@ -25,21 +25,52 @@ public class PlayerInputController : MonoBehaviour
             case 0: // X
                 if (Mathf.Abs(_input.x) > 0)
                     _input.y = 0;
+                    _LastInputDirection = _input;
                 break;
             case 1: // Y
                 if (Mathf.Abs(_input.y) > 0)
                     _input.x = 0;
+                    _LastInputDirection = _input;
                 break;
             default:
                 _input = Vector3.zero;
                 break;
         }
-
         _pcc.Move(start, _input.normalized, out deltaMove, out position);
     }
 
+    /// <summary>
+    /// Grabs direction player is facing and calls the check to see if there is a player
+    /// </summary>
+    /// <param name="start"></param>
+    /// <Author>
+    /// Christopher Brennan
+    /// </Author>
+    public void CharacterFacing(Vector3 start)
+    {
+        switch (latestDirection)
+        {
+            case 0: // X
+                if (Mathf.Abs(_LastInputDirection.x) > 0)
+                    _LastInputDirection.y = 0;
+                break;
+            case 1: // Y
+                if (Mathf.Abs(_LastInputDirection.y) > 0)
+                    _LastInputDirection.x = 0;
+                break;
+            default:
+                _LastInputDirection = Vector3.zero;
+                break;
+        }
+
+        _pcc.CheckForPlayerRaycast(start, _LastInputDirection.normalized);
+    }
+
     public Vector3 _input;
+    public Vector3 _LastInputDirection;
     int latestAxis = -1; // 0 = X, 1 = Y, -1 = none
+    int latestDirection = 1; // 0 = X, 1 = Y
+
     bool isDownX, isDownY;
 
     public void onAxis(InputDevice device, InputResponse.UpdateEvent evt, MappedAxis axis, AxisDirection value)
@@ -79,11 +110,13 @@ public class PlayerInputController : MonoBehaviour
         {
             case InputResponse.UpdateEvent.DOWN:
                 latestAxis = 0;
+                latestDirection = 0;
                 isDownX = true;
                 break;
             case InputResponse.UpdateEvent.UP:
                 isDownX = false;
                 latestAxis = isDownY ? 1 : -1;
+                latestDirection = 1;
                 break;
             default:
                 break;
@@ -102,11 +135,13 @@ public class PlayerInputController : MonoBehaviour
         {
             case InputResponse.UpdateEvent.DOWN:
                 latestAxis = 1;
+                latestDirection = 1;
                 isDownY = true;
                 break;
             case InputResponse.UpdateEvent.UP:
                 isDownY = false;
                 latestAxis = isDownX ? 0 : -1;
+                latestDirection = 0;
                 break;
             default:
                 break;

@@ -134,6 +134,8 @@ public class PlayerReference : MonoBehaviour {
         //GUI.Label(new Rect(screenPos.x, screenPos.y, 100, 50), this.playerInfo.name);
     }
 
+    public Vector3 displacement;
+
     private void FixedUpdate()
     {
 
@@ -143,7 +145,7 @@ public class PlayerReference : MonoBehaviour {
 
 		if (this._anim != null) // can happen during instantiation of object (via setInfo)
 		{
-			Vector3 displacement = this.moveTarget.position - this.transform.position;
+			displacement = this.moveTarget.position - this.transform.position;
 			if (Mathf.Abs (displacement.x) > Mathf.Abs (displacement.y))
 				displacement.y = 0;
 			else
