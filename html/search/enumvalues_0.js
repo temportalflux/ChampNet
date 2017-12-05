@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['id_5fbattle_5flocal_5fstart',['ID_BATTLE_LOCAL_START',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ab54454887b51006a69a632ca6a13aab6',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fprompt_5fselection',['ID_BATTLE_PROMPT_SELECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1ce06c939b64517c251a1cc36168837f',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5frequest',['ID_BATTLE_REQUEST',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1099c58a5b9ad43616e67c5865ce539a',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fresponse',['ID_BATTLE_RESPONSE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a4d61a30352b41b284f20eeb6d46d0b18',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fresult',['ID_BATTLE_RESULT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a744cf8458d36d27da738fcf6ba76001c',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fresult_5fresponse',['ID_BATTLE_RESULT_RESPONSE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a0400430dae2bfdb56c3c5be84d5fc2b1',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fselection',['ID_BATTLE_SELECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821aaf35bd9b65c9b7d548147fbd85717bf9',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fconnection',['ID_CLIENT_CONNECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821aecc0564c52e3106cfe012e5533b080da',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fconnection_5faccepted',['ID_CLIENT_CONNECTION_ACCEPTED',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a0295101371b4a70a1c007a4f6e206e1d',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fdisconnection',['ID_CLIENT_DISCONNECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a2ed0fbbbbe782bca6c76277c89050ad9',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fjoined',['ID_CLIENT_JOINED',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821aeb7ac0bb4cb955cc0b7a3bebc9f14774',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fleft',['ID_CLIENT_LEFT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a170a6a655b34086567c4039a8e9ba81d',1,'ChampNetPlugin']]],
+  ['id_5fclient_5fmissing',['ID_CLIENT_MISSING',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a31932f93b241ffddf903d32af0fc2155',1,'ChampNetPlugin']]],
+  ['id_5fclient_5frequest_5fplayer',['ID_CLIENT_REQUEST_PLAYER',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a95ea635e1f4775e77d635b7039a9711e',1,'ChampNetPlugin']]],
+  ['id_5fdisconnect',['ID_DISCONNECT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ab64ca706dd3c8029ea9dc9a239237e15',1,'ChampNetPlugin']]],
+  ['id_5fplaceholder',['ID_PLACEHOLDER',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a6acf78ef40fd50b2e823237ea828fc1b',1,'ChampNetPlugin']]],
+  ['id_5fplayer_5frequest_5fmovement',['ID_PLAYER_REQUEST_MOVEMENT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821abaa5b813ea0118cdccbb8f80d461fea8',1,'ChampNetPlugin']]],
+  ['id_5fupdate_5fgamestate',['ID_UPDATE_GAMESTATE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a6c390584862af2434c946e375365fe02',1,'ChampNetPlugin']]]
+];
