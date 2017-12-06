@@ -19,6 +19,9 @@ public class MinimapHandler : MonoBehaviour
 
     void Start ()
     {
+        if (GameManager.INSTANCE == null)
+            return;
+
         // Find A local player on start
         foreach (KeyValuePair<uint, GameState.Player> pair in GameManager.INSTANCE.state.localPlayers)
         {
@@ -62,10 +65,11 @@ public class MinimapHandler : MonoBehaviour
         }
         else
         {
+            if (GameManager.INSTANCE == null)
+                return;
+
             if (_lookForPlayerCoroutine == null)
-            {
                 _lookForPlayerCoroutine = StartCoroutine(LookForLocalPlayer(0.5f));
-            }
         }
 	}
 }
