@@ -97,19 +97,20 @@ Inheritance diagram for ISerializing:</div>
  <div class="center">
   <img src="interface_i_serializing.png" usemap="#ISerializing_map" alt=""/>
   <map id="ISerializing_map" name="ISerializing_map">
-<area href="class_event_network.html" title="A base class for network events https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx " alt="EventNetwork" shape="rect" coords="0,56,166,80"/>
-<area href="class_game_state.html" title="Holds all persistent data from network intergration for local usage " alt="GameState" shape="rect" coords="176,56,342,80"/>
-<area href="class_game_state_1_1_player.html" title="A state class for all Player objects " alt="GameState.Player" shape="rect" coords="352,56,518,80"/>
-<area href="class_event_battle.html" alt="EventBattle" shape="rect" coords="176,112,342,136"/>
-<area href="class_event_battle_prompt_selection.html" alt="EventBattlePromptSelection" shape="rect" coords="176,168,342,192"/>
-<area href="class_event_battle_result_response.html" alt="EventBattleResultResponse" shape="rect" coords="176,224,342,248"/>
-<area href="class_event_client_joined.html" alt="EventClientJoined" shape="rect" coords="176,280,342,304"/>
-<area href="class_event_client_left.html" alt="EventClientLeft" shape="rect" coords="176,336,342,360"/>
-<area href="class_event_connected.html" title="Event: Notification that the client has been accepted to the server " alt="EventConnected" shape="rect" coords="176,392,342,416"/>
-<area href="class_event_connection_rejected.html" title="Event: Notification that the client has been rejected from the server " alt="EventConnectionRejected" shape="rect" coords="176,448,342,472"/>
-<area href="class_event_disconnected.html" alt="EventDisconnected" shape="rect" coords="176,504,342,528"/>
-<area href="class_event_game_state.html" title="Event: A gamestate update " alt="EventGameState" shape="rect" coords="176,560,342,584"/>
-<area href="class_event_with_player_i_d.html" alt="EventWithPlayerID" shape="rect" coords="176,616,342,640"/>
+<area href="class_bit_test_1_1_sereal.html" alt="BitTest.Sereal" shape="rect" coords="0,56,166,80"/>
+<area href="class_event_network.html" title="A base class for network events https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.unmanagedtype(v=vs.110).aspx " alt="EventNetwork" shape="rect" coords="176,56,342,80"/>
+<area href="class_game_state.html" title="Holds all persistent data from network intergration for local usage " alt="GameState" shape="rect" coords="352,56,518,80"/>
+<area href="class_event_battle.html" alt="EventBattle" shape="rect" coords="352,112,518,136"/>
+<area href="class_event_battle_prompt_selection.html" alt="EventBattlePromptSelection" shape="rect" coords="352,168,518,192"/>
+<area href="class_event_battle_result_response.html" alt="EventBattleResultResponse" shape="rect" coords="352,224,518,248"/>
+<area href="class_event_client_joined.html" alt="EventClientJoined" shape="rect" coords="352,280,518,304"/>
+<area href="class_event_client_left.html" alt="EventClientLeft" shape="rect" coords="352,336,518,360"/>
+<area href="class_event_connected.html" title="Event: Notification that the client has been accepted to the server " alt="EventConnected" shape="rect" coords="352,392,518,416"/>
+<area href="class_event_connection_rejected.html" title="Event: Notification that the client has been rejected from the server " alt="EventConnectionRejected" shape="rect" coords="352,448,518,472"/>
+<area href="class_event_disconnected.html" alt="EventDisconnected" shape="rect" coords="352,504,518,528"/>
+<area href="class_event_game_state.html" title="Event: A gamestate update " alt="EventGameState" shape="rect" coords="352,560,518,584"/>
+<area href="class_event_player_add_monster.html" alt="EventPlayerAddMonster" shape="rect" coords="352,616,518,640"/>
+<area href="class_event_with_player_i_d.html" alt="EventWithPlayerID" shape="rect" coords="352,672,518,696"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -160,7 +161,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Author: Dustin Yost </p>
 
-<p>Implemented in <a class="el" href="class_game_state.html#aa5f956de2c49182fbe5fc32e9d2ca431">GameState</a>, <a class="el" href="class_game_state_1_1_player.html#aaf7c5b93f45be35c3501626cb6759c0b">GameState.Player</a>, <a class="el" href="class_event_network.html#af31b288f5029d8542122abe985f7df18">EventNetwork</a>, and <a class="el" href="class_event_game_state.html#ac8d792c7dea5e0d703d317a66bcd4cdf">EventGameState</a>.</p>
+<p>Implemented in <a class="el" href="class_game_state.html#aa5f956de2c49182fbe5fc32e9d2ca431">GameState</a>, <a class="el" href="class_event_network.html#af31b288f5029d8542122abe985f7df18">EventNetwork</a>, <a class="el" href="class_event_game_state.html#ac8d792c7dea5e0d703d317a66bcd4cdf">EventGameState</a>, and <a class="el" href="class_bit_test_1_1_sereal.html#a09fd14bfb4c58714302d127a3e5030d7">BitTest.Sereal</a>.</p>
 
 </div>
 </div>
@@ -181,7 +182,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the integer length of a byte array to hold this event's data </dd></dl>
 <p>Author: Dustin Yost </p>
 
-<p>Implemented in <a class="el" href="class_game_state.html#a57d152b243c11aa86e7ba0f07b4bd0dd">GameState</a>, <a class="el" href="class_game_state_1_1_player.html#a58e1b4e7eaca487703abf36826e41c45">GameState.Player</a>, <a class="el" href="class_event_network.html#a627a22414c184cd4fbe4f23a25877166">EventNetwork</a>, and <a class="el" href="class_event_client_joined.html#ad556a9c7eeb4a425ecf86ec271009241">EventClientJoined</a>.</p>
+<p>Implemented in <a class="el" href="class_game_state.html#a57d152b243c11aa86e7ba0f07b4bd0dd">GameState</a>, <a class="el" href="class_event_network.html#a627a22414c184cd4fbe4f23a25877166">EventNetwork</a>, <a class="el" href="class_event_client_joined.html#ad556a9c7eeb4a425ecf86ec271009241">EventClientJoined</a>, and <a class="el" href="class_bit_test_1_1_sereal.html#aba8f9fa60b53f974ddd59bf83f56fd35">BitTest.Sereal</a>.</p>
 
 </div>
 </div>
@@ -219,7 +220,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Author: Dustin Yost </p>
 
-<p>Implemented in <a class="el" href="class_game_state.html#af57a06c77a763e8b57841bab79c9b12f">GameState</a>, <a class="el" href="class_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5">GameState.Player</a>, <a class="el" href="class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238">EventNetwork</a>, and <a class="el" href="class_event_client_joined.html#a10a9f8d247e3446fec1cc7a1eb13e6a0">EventClientJoined</a>.</p>
+<p>Implemented in <a class="el" href="class_game_state.html#af57a06c77a763e8b57841bab79c9b12f">GameState</a>, <a class="el" href="class_event_network.html#ae2574cdc2bb836f3e41628ff1c095238">EventNetwork</a>, <a class="el" href="class_event_client_joined.html#a10a9f8d247e3446fec1cc7a1eb13e6a0">EventClientJoined</a>, and <a class="el" href="class_bit_test_1_1_sereal.html#ad5a8343dbe518ffa4c1b99db449638ad">BitTest.Sereal</a>.</p>
 
 </div>
 </div>

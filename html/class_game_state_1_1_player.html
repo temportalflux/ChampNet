@@ -110,7 +110,6 @@ Inheritance diagram for GameState.Player:</div>
  <div class="center">
   <img src="class_game_state_1_1_player.png" usemap="#GameState.Player_map" alt=""/>
   <map id="GameState.Player_map" name="GameState.Player_map">
-<area href="interface_i_serializing.html" alt="ISerializing" shape="rect" coords="0,0,113,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -125,21 +124,43 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a58e1b4e7eaca487703abf36826e41c45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a58e1b4e7eaca487703abf36826e41c45">GetSize</a> ()</td></tr>
-<tr class="memdesc:a58e1b4e7eaca487703abf36826e41c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the packet (the size for a potential byte[])  <a href="#a58e1b4e7eaca487703abf36826e41c45">More...</a><br/></td></tr>
-<tr class="separator:a58e1b4e7eaca487703abf36826e41c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8df830f0a0bcfbfb263a634d125c3a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aa8df830f0a0bcfbfb263a634d125c3a5">Serialize</a> (ref byte[] data, ref int lastIndex)</td></tr>
-<tr class="memdesc:aa8df830f0a0bcfbfb263a634d125c3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes data from this event into a byte array  <a href="#aa8df830f0a0bcfbfb263a634d125c3a5">More...</a><br/></td></tr>
-<tr class="separator:aa8df830f0a0bcfbfb263a634d125c3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf7c5b93f45be35c3501626cb6759c0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aaf7c5b93f45be35c3501626cb6759c0b">Deserialize</a> (byte[] data, ref int lastIndex)</td></tr>
-<tr class="memdesc:aaf7c5b93f45be35c3501626cb6759c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes data from a byte array into this event's data  <a href="#aaf7c5b93f45be35c3501626cb6759c0b">More...</a><br/></td></tr>
-<tr class="separator:aaf7c5b93f45be35c3501626cb6759c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace7e3625cf1996b8c56bcafae36673af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ace7e3625cf1996b8c56bcafae36673af">copyFromGameState</a> (<a class="el" href="class_game_state_1_1_player.html">Player</a> info, float deltaTime)</td></tr>
 <tr class="memdesc:ace7e3625cf1996b8c56bcafae36673af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from a deserialized player state into this player state  <a href="#ace7e3625cf1996b8c56bcafae36673af">More...</a><br/></td></tr>
 <tr class="separator:ace7e3625cf1996b8c56bcafae36673af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59ac624b5378e8253ac70d827febfe6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a59ac624b5378e8253ac70d827febfe6a">integratePhysics</a> (float deltaTime)</td></tr>
 <tr class="memdesc:a59ac624b5378e8253ac70d827febfe6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate physics in this object (accelleration-&gt;velocity, velocity-&gt;position).  <a href="#a59ac624b5378e8253ac70d827febfe6a">More...</a><br/></td></tr>
 <tr class="separator:a59ac624b5378e8253ac70d827febfe6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab6c2f1d15057b161ba0cba271fd9d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ab6c2f1d15057b161ba0cba271fd9d3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>IndexOf</b> (<a class="el" href="class_monster_data_object.html">MonsterDataObject</a> item)</td></tr>
+<tr class="separator:a3ab6c2f1d15057b161ba0cba271fd9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84cdeefa239fade5ab90b42b3d55bda8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84cdeefa239fade5ab90b42b3d55bda8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Insert</b> (int index, <a class="el" href="class_monster_data_object.html">MonsterDataObject</a> item)</td></tr>
+<tr class="separator:a84cdeefa239fade5ab90b42b3d55bda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971bad69d0ef56fbd860c71ed1b56dae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a971bad69d0ef56fbd860c71ed1b56dae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAt</b> (int index)</td></tr>
+<tr class="separator:a971bad69d0ef56fbd860c71ed1b56dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad791ddd2f697e5237c6e04c7fc5c1e5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad791ddd2f697e5237c6e04c7fc5c1e5f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Add</b> (<a class="el" href="class_monster_data_object.html">MonsterDataObject</a> item)</td></tr>
+<tr class="separator:ad791ddd2f697e5237c6e04c7fc5c1e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a732e5b36f28a1fa3aa998fb5659a986a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a732e5b36f28a1fa3aa998fb5659a986a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Clear</b> ()</td></tr>
+<tr class="separator:a732e5b36f28a1fa3aa998fb5659a986a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac862c1353bfbc38d53e2301548ded23a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac862c1353bfbc38d53e2301548ded23a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Contains</b> (<a class="el" href="class_monster_data_object.html">MonsterDataObject</a> item)</td></tr>
+<tr class="separator:ac862c1353bfbc38d53e2301548ded23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c3546baf67a5d27553c814df4def68a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c3546baf67a5d27553c814df4def68a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CopyTo</b> (<a class="el" href="class_monster_data_object.html">MonsterDataObject</a>[] array, int arrayIndex)</td></tr>
+<tr class="separator:a5c3546baf67a5d27553c814df4def68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c86c2ffe06038710acb4951479dff9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98c86c2ffe06038710acb4951479dff9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Remove</b> (<a class="el" href="class_monster_data_object.html">MonsterDataObject</a> item)</td></tr>
+<tr class="separator:a98c86c2ffe06038710acb4951479dff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e1f98267c1fcf0258528ad72bd5d25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02e1f98267c1fcf0258528ad72bd5d25"></a>
+IEnumerator&lt; <a class="el" href="class_monster_data_object.html">MonsterDataObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetEnumerator</b> ()</td></tr>
+<tr class="separator:a02e1f98267c1fcf0258528ad72bd5d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb92c259431397bdda45f001e59addea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb92c259431397bdda45f001e59addea"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#abb92c259431397bdda45f001e59addea">getSize</a> () const </td></tr>
+<tr class="memdesc:abb92c259431397bdda45f001e59addea"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of the <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> when serialized into a byte[]. <br/></td></tr>
+<tr class="separator:abb92c259431397bdda45f001e59addea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -185,15 +206,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a6cf0778cc27a824eac211b8b29b3dfcc">rank</a></td></tr>
 <tr class="memdesc:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rank of the player in the scoreboard. The higher <a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70" title="The total number of wins since entering the server. ">wins</a> is compared to other players, the  <a href="#a6cf0778cc27a824eac211b8b29b3dfcc">More...</a><br/></td></tr>
 <tr class="separator:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4ed3c60a2969cd4f891e12c8265377"><td class="memItemLeft" align="right" valign="top">List&lt; uint &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a2c4ed3c60a2969cd4f891e12c8265377">monsterIDs</a></td></tr>
+<tr class="memdesc:a2c4ed3c60a2969cd4f891e12c8265377"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the cretins the player has.  <a href="#a2c4ed3c60a2969cd4f891e12c8265377">More...</a><br/></td></tr>
+<tr class="separator:a2c4ed3c60a2969cd4f891e12c8265377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf24de01e14055dc940d0493753484f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aebf24de01e14055dc940d0493753484f">objectReference</a></td></tr>
 <tr class="memdesc:aebf24de01e14055dc940d0493753484f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference to the GameObject in the local unity instance  <a href="#aebf24de01e14055dc940d0493753484f">More...</a><br/></td></tr>
 <tr class="separator:aebf24de01e14055dc940d0493753484f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memItemLeft" align="right" valign="top">RenderTexture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ac1f7e0b5bc335c32c3be71e3653787a6">cameraTexture</a></td></tr>
 <tr class="memdesc:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the render output for this <a class="el" href="class_game_state_1_1_player.html#aebf24de01e14055dc940d0493753484f" title="The reference to the GameObject in the local unity instance ">objectReference</a>  <a href="#ac1f7e0b5bc335c32c3be71e3653787a6">More...</a><br/></td></tr>
 <tr class="separator:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4412b3835e68a55b00610438118cdb16"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_monster_data_object.html">MonsterDataObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a4412b3835e68a55b00610438118cdb16">monsters</a></td></tr>
-<tr class="memdesc:a4412b3835e68a55b00610438118cdb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the cretins the player has.  <a href="#a4412b3835e68a55b00610438118cdb16">More...</a><br/></td></tr>
-<tr class="separator:a4412b3835e68a55b00610438118cdb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bef4cd92306bd5cf330c4756e63686c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bef4cd92306bd5cf330c4756e63686c"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a1bef4cd92306bd5cf330c4756e63686c">clientID</a></td></tr>
 <tr class="memdesc:a1bef4cd92306bd5cf330c4756e63686c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clientID of the controlling client. This is unique across all peers in a network. <br/></td></tr>
@@ -220,6 +241,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>colorG</b></td></tr>
 <tr class="memitem:ad3f992ed5676471f80c6ba3c9ce0f505"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3f992ed5676471f80c6ba3c9ce0f505"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>colorB</b></td></tr>
 <tr class="separator:ad3f992ed5676471f80c6ba3c9ce0f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a828e830d7461991e4980f7fc7336e552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a828e830d7461991e4980f7fc7336e552"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>colorA</b></td></tr>
+<tr class="separator:a828e830d7461991e4980f7fc7336e552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0342f6d74f9c08351cd0c5139ac55de6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0342f6d74f9c08351cd0c5139ac55de6"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a0342f6d74f9c08351cd0c5139ac55de6">posX</a></td></tr>
 <tr class="memdesc:a0342f6d74f9c08351cd0c5139ac55de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the position <br/></td></tr>
@@ -258,6 +282,12 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a43dd8a9e79c35d9615596fb6ab25d653">rank</a></td></tr>
 <tr class="memdesc:a43dd8a9e79c35d9615596fb6ab25d653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rank of player on the scoreboard. <br/></td></tr>
 <tr class="separator:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5bbae042c927e8dd0f27a189a18dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f5bbae042c927e8dd0f27a189a18dea"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>monstersCount</b></td></tr>
+<tr class="separator:a7f5bbae042c927e8dd0f27a189a18dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc3642e98d820c6e4fce5864254c79e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cc3642e98d820c6e4fce5864254c79e"></a>
+unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><b>monsters</b></td></tr>
+<tr class="separator:a2cc3642e98d820c6e4fce5864254c79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae60a4f411ef984c6d649d98c65b274bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae60a4f411ef984c6d649d98c65b274bd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ae60a4f411ef984c6d649d98c65b274bd">battleOpponentId</a></td></tr>
 <tr class="memdesc:ae60a4f411ef984c6d649d98c65b274bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the playerId of the opponent, -1 if invalid, otherwise &gt;= 0 <br/></td></tr>
@@ -283,15 +313,18 @@ Static Public Attributes</h2></td></tr>
 static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a16d0264ca6adfedb582e22f59a550fc5">SIZE_MAX_NAME</a> = 10</td></tr>
 <tr class="memdesc:a16d0264ca6adfedb582e22f59a550fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of any player's name. <br/></td></tr>
 <tr class="separator:a16d0264ca6adfedb582e22f59a550fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a07b452f69128e1f3f6d3bb575c2976f1">SIZE</a></td></tr>
-<tr class="memdesc:a07b452f69128e1f3f6d3bb575c2976f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of the <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> when serialized into a byte[].  <a href="#a07b452f69128e1f3f6d3bb575c2976f1">More...</a><br/></td></tr>
-<tr class="separator:a07b452f69128e1f3f6d3bb575c2976f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:affd7c601a6d763dafdc59a58c415e9e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#affd7c601a6d763dafdc59a58c415e9e7">isLocal</a><code> [get]</code></td></tr>
 <tr class="memdesc:affd7c601a6d763dafdc59a58c415e9e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the player id is from a local player (controlled on this game) or networked (controlled by a peer)  <a href="#affd7c601a6d763dafdc59a58c415e9e7">More...</a><br/></td></tr>
 <tr class="separator:affd7c601a6d763dafdc59a58c415e9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebfa739a98ff4f88d151235905b439bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebfa739a98ff4f88d151235905b439bf"></a>
+IList&lt; <a class="el" href="class_monster_data_object.html">MonsterDataObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>monsters</b><code> [get]</code></td></tr>
+<tr class="separator:aebfa739a98ff4f88d151235905b439bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8dafc199bbda42740ab5f3587202495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8dafc199bbda42740ab5f3587202495"></a>
+<a class="el" href="class_monster_data_object.html">MonsterDataObject</a>&#160;</td><td class="memItemRight" valign="bottom"><b>this[int index]</b><code> [get, set]</code></td></tr>
+<tr class="separator:ab8dafc199bbda42740ab5f3587202495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A state class for all <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> objects </p>
@@ -355,80 +388,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaf7c5b93f45be35c3501626cb6759c0b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GameState.Player.Deserialize </td>
-          <td>(</td>
-          <td class="paramtype">byte[]&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>lastIndex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Deserializes data from a byte array into this event's data </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The data.</td></tr>
-    <tr><td class="paramname">lastIndex</td><td>The last index.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="interface_i_serializing.html#a92f8ba3a06d21e7b01e37411e4e3145c">ISerializing</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a58e1b4e7eaca487703abf36826e41c45"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int GameState.Player.GetSize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the size of the packet (the size for a potential byte[]) </p>
-<dl class="section return"><dt>Returns</dt><dd>the integer length of a byte array to hold this event's data </dd></dl>
-<p>Author: Dustin Yost </p>
-
-<p>Implements <a class="el" href="interface_i_serializing.html#a9e6ea0afaeac8d1d57e20579f87bebe2">ISerializing</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a59ac624b5378e8253ac70d827febfe6a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -458,51 +417,6 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="aa8df830f0a0bcfbfb263a634d125c3a5"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GameState.Player.Serialize </td>
-          <td>(</td>
-          <td class="paramtype">ref byte[]&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>lastIndex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Serializes data from this event into a byte array </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The data.</td></tr>
-    <tr><td class="paramname">lastIndex</td><td>The last index.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="interface_i_serializing.html#ac31a44c2358a197e774fa3f79cc80356">ISerializing</a>.</p>
 
 </div>
 </div>
@@ -620,12 +534,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4412b3835e68a55b00610438118cdb16"></a>
+<a class="anchor" id="a2c4ed3c60a2969cd4f891e12c8265377"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_monster_data_object.html">MonsterDataObject</a>&gt; GameState.Player.monsters</td>
+          <td class="memname">List&lt;uint&gt; GameState.Player.monsterIDs</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -715,51 +629,6 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The rank of the player in the scoreboard. The higher <a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70" title="The total number of wins since entering the server. ">wins</a> is compared to other players, the </p>
-
-</div>
-</div>
-<a class="anchor" id="a07b452f69128e1f3f6d3bb575c2976f1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int GameState.Player.SIZE</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= 0</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) + (<a class="code" href="class_game_state_1_1_player.html#a1cdc9de8183b220e87632f7f6a7147d0">SIZE_MAX_NAME</a> * (<span class="keyword">sizeof</span>(char) * 2))</div>
-<div class="line">            </div>
-<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
-<div class="line">            </div>
-<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
-<div class="line">            </div>
-<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
-<div class="line">            </div>
-<div class="line">            + (<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) * 3)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">bool</span>)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> int)</div>
-<div class="line">            </div>
-<div class="line">            + <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)</div>
-</div><!-- fragment -->
-<p>The maximum length of the <a class="el" href="class_game_state_1_1_player.html" title="A state class for all Player objects ">Player</a> when serialized into a byte[]. </p>
 
 </div>
 </div>
@@ -873,6 +742,7 @@ Properties</h2></td></tr>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs</li>
 <li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/<a class="el" href="_game_state_8h_source.html">GameState.h</a></li>
+<li>/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/source/GameState.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

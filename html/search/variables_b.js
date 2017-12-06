@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['objectreference',['objectReference',['../class_game_state_1_1_player.html#aebf24de01e14055dc940d0493753484f',1,'GameState::Player']]],
-  ['order',['order',['../class_bit_serialize_attribute.html#ad0a026f7b3c5c95879852db7a66a2726',1,'BitSerializeAttribute']]]
+  ['name',['name',['../class_game_state_1_1_player.html#afc2b145df544ca5bffc7c87ef294bcde',1,'GameState.Player.name()'],['../class_game_state_1_1_player.html#a6638478952037ab0d1b3b0a3c496a820',1,'GameState.Player::name()']]]
 ];

@@ -1,18 +1,10 @@
 var searchData=
 [
-  ['maincamera',['mainCamera',['../class_game_manager.html#aafd6b83529911d9e32cc4b79bd477d74',1,'GameManager']]],
-  ['managertransitions',['ManagerTransitions',['../class_manager_transitions.html',1,'']]],
-  ['maxclients',['maxClients',['../struct_state_network.html#a441e11a6962b2ef0f9456c937a1abbb6',1,'StateNetwork']]],
-  ['maxplayersperclient',['maxPlayersPerClient',['../struct_state_network.html#a49f4dd1dc1c43b2962da4dff48101003',1,'StateNetwork']]],
-  ['message',['message',['../class_to_do.html#a336e134b1d082bc32723268bff2920d0',1,'ToDo']]],
-  ['messageids',['MessageIDs',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821',1,'ChampNetPlugin.MessageIDs()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821',1,'ChampNetPlugin::MessageIDs()']]],
-  ['minimaphandler',['MinimapHandler',['../class_minimap_handler.html',1,'']]],
-  ['monsterdataobject',['MonsterDataObject',['../class_monster_data_object.html',1,'']]],
-  ['monsterdataobjecteditor',['MonsterDataObjectEditor',['../class_monster_data_object_editor.html',1,'']]],
-  ['monsters',['monsters',['../class_game_state_1_1_player.html#a4412b3835e68a55b00610438118cdb16',1,'GameState::Player']]],
-  ['monsterstat',['MonsterStat',['../class_monster_stat.html',1,'']]],
-  ['mpnext',['mpNext',['../class_game.html#a247b4d7b1656218d90a8544cb674f0b3',1,'Game']]],
-  ['mpstate',['mpState',['../class_game.html#a1f85e8206f06c0bd64430effae32c577',1,'Game']]],
-  ['msgcallback',['MsgCallBack',['../class_champ_net_1_1_network.html#a3f98f6ee0fd5617faa5679162195b39a',1,'ChampNet::Network']]],
-  ['multfactor',['multFactor',['../class_timer.html#a0e116daa696f3d5cd9dc3d2092606761',1,'Timer']]]
+  ['lastbattlechoice',['lastBattleChoice',['../class_game_state_1_1_player.html#adf61e3258c2170b7b66355389cca541f',1,'GameState::Player']]],
+  ['lastbattleselection',['lastBattleSelection',['../class_game_state_1_1_player.html#a2383ab7d3783c5122f3e68230069eb2e',1,'GameState::Player']]],
+  ['linesizeprevious',['lineSizePrevious',['../struct_state_input.html#ab6d707a36eabe343d0b46838773da8f9',1,'StateInput']]],
+  ['loadsingleton',['loadSingleton',['../class_singleton_3_01_t_01_4.html#abd0672430ce6d6c8ae4c01905f4bd4b1',1,'Singleton&lt; T &gt;']]],
+  ['localid',['localID',['../class_game_state_1_1_player.html#ae0383475b3348fb85ba5be64433443ff',1,'GameState.Player.localID()'],['../class_game_state_1_1_player.html#ab1600ee9b9d01027e5304e991be11407',1,'GameState.Player::localID()']]],
+  ['lock',['Lock',['../class_singleton_3_01_t_01_4.html#a93ff9802b7793e342ce7e64983a59a0d',1,'Singleton&lt; T &gt;']]],
+  ['logger',['logger',['../class_champ_net_1_1_network.html#a4588391c9f6064ad7fb83a08f0ea02c6',1,'ChampNet::Network']]]
 ];

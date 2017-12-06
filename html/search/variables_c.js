@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['packetreadtime_5flocal',['packetReadTime_local',['../struct_champ_net_1_1_time_stamp.html#ad2369d7af00c796be178f28ed2d14438',1,'ChampNet::TimeStamp']]],
-  ['peersconnected',['peersConnected',['../struct_state_network.html#acad16df2ea00513fd70701fbfa90e329',1,'StateNetwork']]],
-  ['playerachoice',['playerAChoice',['../struct_packet_battle_prompt_selection.html#abd26c08394d5c6e0bbadb794d07750e0',1,'PacketBattlePromptSelection']]],
-  ['playeraid',['playerAId',['../struct_packet_battle_prompt_selection.html#adf39f8101ce7fdca0cc6d6fcdd22c4b3',1,'PacketBattlePromptSelection']]],
-  ['playeraselection',['playerASelection',['../struct_packet_battle_prompt_selection.html#afc4ee55b1a7dff6cb25bb47e2c517dea',1,'PacketBattlePromptSelection']]],
-  ['playerbchoice',['playerBChoice',['../struct_packet_battle_prompt_selection.html#a68ff044c6f22f9aaaeb3aa2a8d12e2eb',1,'PacketBattlePromptSelection']]],
-  ['playerbid',['playerBId',['../struct_packet_battle_prompt_selection.html#aa7108e4202c67ac30571bc3083277727',1,'PacketBattlePromptSelection']]],
-  ['playerbselection',['playerBSelection',['../struct_packet_battle_prompt_selection.html#aa696c396d478697bdddf8c2394c1a0b7',1,'PacketBattlePromptSelection']]],
-  ['playercontroller',['playerController',['../class_battle_participant.html#a2f1584b2283c99eaaaa8e5b66ced968f',1,'BattleParticipant']]],
-  ['playerid',['playerId',['../struct_packet_battle_selection.html#a767bb8ef07ff0e11ef9a248be56818e1',1,'PacketBattleSelection::playerId()'],['../class_game_state_1_1_player.html#acbd28d89e6eb8611aa66452ec31e9133',1,'GameState.Player.playerID()'],['../class_game_state_1_1_player.html#ac71d68698435ee1c625237b1f2b377cb',1,'GameState.Player::playerID()'],['../struct_packet_client_player_i_d.html#aba10b2aba2707dc70eb3714c900e516f',1,'PacketClientPlayerID::playerID()'],['../struct_packet_player_scoreboard_info.html#aaf646a832b6f674bcd54ceacc9592ae6',1,'PacketPlayerScoreboardInfo::playerID()'],['../struct_packet_player_position.html#a94c602eaa03f27c22937d37257368ab6',1,'PacketPlayerPosition::playerID()']]],
-  ['playeridopponent',['playerIDOpponent',['../class_game_state_1_1_player.html#aaed188c94b7f6be4dabe39744aa818ca',1,'GameState.Player.playerIDOpponent()'],['../struct_packet_battle_selection.html#a7822f759fa2277fdae4d2e53850c4748',1,'PacketBattleSelection::playerIdOpponent()']]],
-  ['playeridreceiver',['playerIdReceiver',['../struct_packet_user_i_d_double.html#a92513f17c674d75301758a01dad58c55',1,'PacketUserIDDouble::playerIdReceiver()'],['../struct_packet_user_i_d_triple.html#a1181a138b9ab0d5ee33dc3f2c33171a4',1,'PacketUserIDTriple::playerIdReceiver()'],['../struct_packet_battle_response.html#a6060ede7257820987a0d8b086a3d205f',1,'PacketBattleResponse::playerIdReceiver()']]],
-  ['playeridsender',['playerIdSender',['../struct_packet_user_i_d_double.html#aaa0532e70306102f0d275d2f6df1c3ff',1,'PacketUserIDDouble::playerIdSender()'],['../struct_packet_user_i_d_triple.html#a2150148f417662b9c0b8987ac8e57ef6',1,'PacketUserIDTriple::playerIdSender()'],['../struct_packet_battle_response.html#a160a7d9a9d83a0aa30799e0e625cb585',1,'PacketBattleResponse::playerIdSender()']]],
-  ['playeridthird',['playerIdThird',['../struct_packet_user_i_d_triple.html#adc0ab416d757528e3d3b0fcf59414e97',1,'PacketUserIDTriple']]],
-  ['playerrequest',['playerRequest',['../class_game_state.html#a8b1949523ac8e40776c0617666023d64',1,'GameState']]],
-  ['players',['players',['../class_game_state.html#a8f156a6cce5f2b9945c274b6bfc971ce',1,'GameState']]],
-  ['port',['port',['../struct_state_network.html#a369a4768473db59ccbd4ba509a61595c',1,'StateNetwork']]],
-  ['position',['position',['../class_game_state_1_1_player.html#a24a9ccd0325cae667f125821b3be79c2',1,'GameState::Player']]],
-  ['posx',['posX',['../class_game_state_1_1_player.html#a0342f6d74f9c08351cd0c5139ac55de6',1,'GameState.Player::posX()'],['../struct_packet_player_position.html#a1719505fbc59c8f4948cfec4772859b0',1,'PacketPlayerPosition::posX()']]],
-  ['posy',['posY',['../struct_packet_player_position.html#a401e60ee7a35eaa7154827814082f794',1,'PacketPlayerPosition']]],
-  ['previous',['previous',['../struct_state_input.html#a711e607cf2c158c933b80bfc8caa036a',1,'StateInput']]]
+  ['objectreference',['objectReference',['../class_game_state_1_1_player.html#aebf24de01e14055dc940d0493753484f',1,'GameState::Player']]],
+  ['order',['order',['../class_bit_serialize_attribute.html#ad0a026f7b3c5c95879852db7a66a2726',1,'BitSerializeAttribute']]]
 ];

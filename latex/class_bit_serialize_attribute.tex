@@ -12,6 +12,15 @@ Inheritance diagram for Bit\-Serialize\-Attribute\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_bit_serialize_attribute}
 \end{center}
 \end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_bit_serialize_attribute_1_1_attribute_field}{Attribute\-Field}
+\item 
+interface \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module}{I\-Serialization\-Module}
+\begin{DoxyCompactList}\small\item\em The interface to use Serialization\-Module\{\-T\} in collections without knowing the type. \end{DoxyCompactList}\item 
+class \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4}{Serialization\-Module$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em The implementation of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module}{I\-Serialization\-Module}, where all the generic \char`\"{}object\char`\"{} fields are objects with the type T. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,19 +30,26 @@ Inheritance diagram for Bit\-Serialize\-Attribute\-:\begin{figure}[H]
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static byte\mbox{[}$\,$\mbox{]} \hyperlink{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}{Serialize$<$ T $>$} (T mono)
-\begin{DoxyCompactList}\small\item\em Serialize a monobehavior to a byte array, using Bit\-Serialize and \hyperlink{interface_i_serializing}{I\-Serializing} \end{DoxyCompactList}\item 
-static int \hyperlink{class_bit_serialize_attribute_a45dcbeb6ab33c11f4d6cc4971bb4ba55}{Get\-Size\-Of} (object value)
-\begin{DoxyCompactList}\small\item\em Attempts to determine the size of some object (effectively sizeof(object)) \end{DoxyCompactList}\item 
-static void \hyperlink{class_bit_serialize_attribute_aca1cc7a1f81cfffcf0ae04058d2da2c9}{Copy\-To} (ref byte\mbox{[}$\,$\mbox{]} dest, ref int offset, byte\mbox{[}$\,$\mbox{]} source)
-\begin{DoxyCompactList}\small\item\em Write some byte array into another byte array at some offset \end{DoxyCompactList}\item 
-static void \hyperlink{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}{Deserialize$<$ T $>$} (T mono, byte\mbox{[}$\,$\mbox{]} data)
-\begin{DoxyCompactList}\small\item\em Deserialize a byte array into a monobehavior \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hypertarget{class_bit_serialize_attribute_ad468b24a1856f4caa6878fa1816b1a02}{static byte\mbox{[}$\,$\mbox{]} {\bfseries Serialize$<$ T $>$} (T obj, byte\mbox{[}$\,$\mbox{]} data=null, int start=0, \hyperlink{class_bit_serialize_attribute_1_1_attribute_field}{Attribute\-Field} attribute=null)}\label{class_bit_serialize_attribute_ad468b24a1856f4caa6878fa1816b1a02}
+
+\item 
+\hypertarget{class_bit_serialize_attribute_a25ccfef7039f0ed04d5884a4817f4d60}{static object {\bfseries Deserialize} (object obj, byte\mbox{[}$\,$\mbox{]} data, int start=0, \hyperlink{class_bit_serialize_attribute_1_1_attribute_field}{Attribute\-Field} attribute=null, Type type\-In=null)}\label{class_bit_serialize_attribute_a25ccfef7039f0ed04d5884a4817f4d60}
+
+\item 
+\hypertarget{class_bit_serialize_attribute_abcbd2fdebdb8ab0a3105bf74e5714ece}{static object {\bfseries Deserialize} (object obj, byte\mbox{[}$\,$\mbox{]} data, ref int start, \hyperlink{class_bit_serialize_attribute_1_1_attribute_field}{Attribute\-Field} attribute=null, Type type\-In=null)}\label{class_bit_serialize_attribute_abcbd2fdebdb8ab0a3105bf74e5714ece}
+
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 uint \hyperlink{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}{order}
 \begin{DoxyCompactList}\small\item\em The numerical order in which attributes are sorted -\/ lowest is first. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Dictionary$<$ Type, \\*
+\hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module}{I\-Serialization\-Module} $>$ \hyperlink{class_bit_serialize_attribute_ae713451406fed4a03f33416a583eeb1e}{M\-O\-D\-U\-L\-E\-S}
+\begin{DoxyCompactList}\small\item\em A dictionary of (De)Serialization interfaces for handling how any one type should be handled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -41,91 +57,14 @@ Handles (de)serializing of specific fields. Valid types include\-: bool, byte, c
 
 
 
-\subsection{Member Function Documentation}
-\hypertarget{class_bit_serialize_attribute_aca1cc7a1f81cfffcf0ae04058d2da2c9}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Copy\-To@{Copy\-To}}
-\index{Copy\-To@{Copy\-To}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Copy\-To}]{\setlength{\rightskip}{0pt plus 5cm}static void Bit\-Serialize\-Attribute.\-Copy\-To (
-\begin{DoxyParamCaption}
-\item[{ref byte\mbox{[}$\,$\mbox{]}}]{dest, }
-\item[{ref int}]{offset, }
-\item[{byte\mbox{[}$\,$\mbox{]}}]{source}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_aca1cc7a1f81cfffcf0ae04058d2da2c9}
-
-
-Write some byte array into another byte array at some offset 
-
-
-\begin{DoxyParams}{Parameters}
-{\em dest} & The data to copy.\\
-\hline
-{\em offset} & The offset in bytes.\\
-\hline
-{\em source} & The data object to copy into at the offset.\\
-\hline
-\end{DoxyParams}
-
-
-Author\-: Dustin Yost \hypertarget{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Deserialize$<$ T $>$@{Deserialize$<$ T $>$}}
-\index{Deserialize$<$ T $>$@{Deserialize$<$ T $>$}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Deserialize$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}static void Bit\-Serialize\-Attribute.\-Deserialize$<$ T $>$ (
-\begin{DoxyParamCaption}
-\item[{T}]{mono, }
-\item[{byte\mbox{[}$\,$\mbox{]}}]{data}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_ae92d448c6f7bf6ffab890747e1737c65}
-
-
-Deserialize a byte array into a monobehavior 
-
-
-\begin{DoxyParams}{Parameters}
-{\em mono} & The monobehavior to set data in\\
-\hline
-{\em data} & A byte array of data created with Serialize\\
-\hline
-\end{DoxyParams}
-\hypertarget{class_bit_serialize_attribute_a45dcbeb6ab33c11f4d6cc4971bb4ba55}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Get\-Size\-Of@{Get\-Size\-Of}}
-\index{Get\-Size\-Of@{Get\-Size\-Of}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Get\-Size\-Of}]{\setlength{\rightskip}{0pt plus 5cm}static int Bit\-Serialize\-Attribute.\-Get\-Size\-Of (
-\begin{DoxyParamCaption}
-\item[{object}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_a45dcbeb6ab33c11f4d6cc4971bb4ba55}
-
-
-Attempts to determine the size of some object (effectively sizeof(object)) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The object to size up\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The size of some object, using sizeof for primitive objects, recursive behavior for arrays, and Get\-Size for \hyperlink{interface_i_serializing}{I\-Serializing}
-\end{DoxyReturn}
-\hypertarget{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!Serialize$<$ T $>$@{Serialize$<$ T $>$}}
-\index{Serialize$<$ T $>$@{Serialize$<$ T $>$}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
-\subsubsection[{Serialize$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Bit\-Serialize\-Attribute.\-Serialize$<$ T $>$ (
-\begin{DoxyParamCaption}
-\item[{T}]{mono}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_bit_serialize_attribute_a0d934db4b1bdd25dbb3ef5ba6536f6c3}
-
-
-Serialize a monobehavior to a byte array, using Bit\-Serialize and \hyperlink{interface_i_serializing}{I\-Serializing} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em mono} & The monobehavior to serialize\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A byte array of data formatted in the order of fields and extra data according to \hyperlink{interface_i_serializing}{I\-Serializing}
-\end{DoxyReturn}
-
-
 \subsection{Member Data Documentation}
+\hypertarget{class_bit_serialize_attribute_ae713451406fed4a03f33416a583eeb1e}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!M\-O\-D\-U\-L\-E\-S@{M\-O\-D\-U\-L\-E\-S}}
+\index{M\-O\-D\-U\-L\-E\-S@{M\-O\-D\-U\-L\-E\-S}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
+\subsubsection[{M\-O\-D\-U\-L\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<$Type, {\bf I\-Serialization\-Module}$>$ Bit\-Serialize\-Attribute.\-M\-O\-D\-U\-L\-E\-S\hspace{0.3cm}{\ttfamily [static]}}}\label{class_bit_serialize_attribute_ae713451406fed4a03f33416a583eeb1e}
+
+
+A dictionary of (De)Serialization interfaces for handling how any one type should be handled. 
+
 \hypertarget{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}{\index{Bit\-Serialize\-Attribute@{Bit\-Serialize\-Attribute}!order@{order}}
 \index{order@{order}!BitSerializeAttribute@{Bit\-Serialize\-Attribute}}
 \subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}uint Bit\-Serialize\-Attribute.\-order}}\label{class_bit_serialize_attribute_ad0a026f7b3c5c95879852db7a66a2726}

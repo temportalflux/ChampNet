@@ -1,0 +1,154 @@
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4}{\section{Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$ Class Template Reference}
+\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4}\index{Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$}}
+}
+
+
+The implementation of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module}{I\-Serialization\-Module}, where all the generic \char`\"{}object\char`\"{} fields are objects with the type T.  
+
+
+Inheritance diagram for Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2ab6b7e0f1e8eccfe929221a4c86c0b3}{Get\-Size} (object obj)
+\begin{DoxyCompactList}\small\item\em Determine the size of some object -\/ effectively sizeof(object). \end{DoxyCompactList}\item 
+byte\mbox{[}$\,$\mbox{]} \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a566f48c068bafbe25a9d3371afb83892}{Serialize} (object obj, byte\mbox{[}$\,$\mbox{]} data, int start)
+\begin{DoxyCompactList}\small\item\em Serialize a specfic object into a byte array. Returns the byte\mbox{[}\mbox{]} with the populated data. \end{DoxyCompactList}\item 
+object \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a7259a654093fa61bab6ef3766d13a12e}{Deserialize} (object obj, byte\mbox{[}$\,$\mbox{]} data, int start, Type type)
+\begin{DoxyCompactList}\small\item\em Deserialize a byte array into an object with the type T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Func$<$ T, int $>$ \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_ae7b34baf697be55e822689dddd3d8dca}{\-\_\-\-Get\-Size}
+\begin{DoxyCompactList}\small\item\em A generic, and module settable, version of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_a057ba8b3168eb8a0999a329cca222cea}{I\-Serialization\-Module.\-Get\-Size(object)}. \end{DoxyCompactList}\item 
+Func$<$ T, byte\mbox{[}$\,$\mbox{]}, int, byte\mbox{[}$\,$\mbox{]}$>$ \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2e3a228e7b2cfe75c555a69c859f6564}{\-\_\-\-Serialize}
+\begin{DoxyCompactList}\small\item\em A generic, and module settable, version of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_ad3b3d5f329538f550958a8342d9e0708}{I\-Serialization\-Module.\-Serialize(object, byte\mbox{[}$\,$\mbox{]}, int)}. \end{DoxyCompactList}\item 
+Func$<$ T, byte\mbox{[}$\,$\mbox{]}, int, Type, T $>$ \hyperlink{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a888f4fda944e93208eddd2368b2ed5a2}{\-\_\-\-Deserialize}
+\begin{DoxyCompactList}\small\item\em A generic, and module settable, version of I\-Serialization\-Module.\-Deserialize(byte\mbox{[}$\,$\mbox{]}, int). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The implementation of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module}{I\-Serialization\-Module}, where all the generic \char`\"{}object\char`\"{} fields are objects with the type T. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The generic type which this struct wraps the (De)Serialization of.\\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a7259a654093fa61bab6ef3766d13a12e}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}object Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.Deserialize (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{int}]{start, }
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a7259a654093fa61bab6ef3766d13a12e}
+
+
+Deserialize a byte array into an object with the type T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the byte\mbox{[}\mbox{]} of data.\\
+\hline
+{\em start} & How far into the serialized data the object was put.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object with the type T
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_a9c1c3c1a875354c8d3320e99c63da4a4}{Bit\-Serialize\-Attribute.\-I\-Serialization\-Module}.
+
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2ab6b7e0f1e8eccfe929221a4c86c0b3}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!Get\-Size@{Get\-Size}}
+\index{Get\-Size@{Get\-Size}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.Get\-Size (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2ab6b7e0f1e8eccfe929221a4c86c0b3}
+
+
+Determine the size of some object -\/ effectively sizeof(object). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object with the type T.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_a057ba8b3168eb8a0999a329cca222cea}{Bit\-Serialize\-Attribute.\-I\-Serialization\-Module}.
+
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a566f48c068bafbe25a9d3371afb83892}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}byte \mbox{[}$\,$\mbox{]} Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.Serialize (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
+\item[{int}]{start}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a566f48c068bafbe25a9d3371afb83892}
+
+
+Serialize a specfic object into a byte array. Returns the byte\mbox{[}\mbox{]} with the populated data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to serialize with the type T.\\
+\hline
+{\em data} & The byte array of data.\\
+\hline
+{\em start} & How far into the data to put the object's serialized data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+byte\mbox{[}\mbox{]}
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_ad3b3d5f329538f550958a8342d9e0708}{Bit\-Serialize\-Attribute.\-I\-Serialization\-Module}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a888f4fda944e93208eddd2368b2ed5a2}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!\-\_\-\-Deserialize@{\-\_\-\-Deserialize}}
+\index{\-\_\-\-Deserialize@{\-\_\-\-Deserialize}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{\-\_\-\-Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}Func$<$T, byte\mbox{[}$\,$\mbox{]}, int, Type, T$>$ Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.\-\_\-\-Deserialize}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a888f4fda944e93208eddd2368b2ed5a2}
+
+
+A generic, and module settable, version of I\-Serialization\-Module.\-Deserialize(byte\mbox{[}$\,$\mbox{]}, int). 
+
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_ae7b34baf697be55e822689dddd3d8dca}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!\-\_\-\-Get\-Size@{\-\_\-\-Get\-Size}}
+\index{\-\_\-\-Get\-Size@{\-\_\-\-Get\-Size}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{\-\_\-\-Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}Func$<$T, int$>$ Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.\-\_\-\-Get\-Size}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_ae7b34baf697be55e822689dddd3d8dca}
+
+
+A generic, and module settable, version of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_a057ba8b3168eb8a0999a329cca222cea}{I\-Serialization\-Module.\-Get\-Size(object)}. 
+
+\hypertarget{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2e3a228e7b2cfe75c555a69c859f6564}{\index{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}!\-\_\-\-Serialize@{\-\_\-\-Serialize}}
+\index{\-\_\-\-Serialize@{\-\_\-\-Serialize}!BitSerializeAttribute::SerializationModule< T >@{Bit\-Serialize\-Attribute\-::\-Serialization\-Module$<$ T $>$}}
+\subsubsection[{\-\_\-\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}Func$<$T, byte\mbox{[}$\,$\mbox{]}, int, byte\mbox{[}$\,$\mbox{]}$>$ Bit\-Serialize\-Attribute.\-Serialization\-Module$<$ T $>$.\-\_\-\-Serialize}}\label{class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4_a2e3a228e7b2cfe75c555a69c859f6564}
+
+
+A generic, and module settable, version of \hyperlink{interface_bit_serialize_attribute_1_1_i_serialization_module_ad3b3d5f329538f550958a8342d9e0708}{I\-Serialization\-Module.\-Serialize(object, byte\mbox{[}$\,$\mbox{]}, int)}. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/\-Attribute/Bit\-Serialize\-Attribute.\-cs\end{DoxyCompactItemize}

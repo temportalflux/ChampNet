@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['maincamera',['mainCamera',['../class_game_manager.html#aafd6b83529911d9e32cc4b79bd477d74',1,'GameManager']]],
-  ['maxclients',['maxClients',['../struct_state_network.html#a441e11a6962b2ef0f9456c937a1abbb6',1,'StateNetwork']]],
-  ['maxplayersperclient',['maxPlayersPerClient',['../struct_state_network.html#a49f4dd1dc1c43b2962da4dff48101003',1,'StateNetwork']]],
-  ['monsters',['monsters',['../class_game_state_1_1_player.html#a4412b3835e68a55b00610438118cdb16',1,'GameState::Player']]],
-  ['mpnext',['mpNext',['../class_game.html#a247b4d7b1656218d90a8544cb674f0b3',1,'Game']]],
-  ['mpstate',['mpState',['../class_game.html#a1f85e8206f06c0bd64430effae32c577',1,'Game']]]
+  ['lastbattlechoice',['lastBattleChoice',['../class_game_state_1_1_player.html#adf61e3258c2170b7b66355389cca541f',1,'GameState::Player']]],
+  ['lastbattleselection',['lastBattleSelection',['../class_game_state_1_1_player.html#a2383ab7d3783c5122f3e68230069eb2e',1,'GameState::Player']]],
+  ['linesizeprevious',['lineSizePrevious',['../struct_state_input.html#ab6d707a36eabe343d0b46838773da8f9',1,'StateInput']]],
+  ['localid',['localID',['../class_game_state_1_1_player.html#ae0383475b3348fb85ba5be64433443ff',1,'GameState.Player.localID()'],['../class_game_state_1_1_player.html#ab1600ee9b9d01027e5304e991be11407',1,'GameState.Player::localID()']]],
+  ['logger',['logger',['../class_champ_net_1_1_network.html#a4588391c9f6064ad7fb83a08f0ea02c6',1,'ChampNet::Network']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['battlechoice',['battleChoice',['../class_game_state_1_1_player.html#a3bfa8ea6e2067982474dc4f6073061c5',1,'GameState::Player']]],
-  ['battleopponentid',['battleOpponentId',['../class_game_state_1_1_player.html#ae60a4f411ef984c6d649d98c65b274bd',1,'GameState::Player']]],
-  ['battleselection',['battleSelection',['../class_game_state_1_1_player.html#a123c8ee2ef6e66e88bcca1a80f73ab4a',1,'GameState::Player']]]
+  ['accelleration',['accelleration',['../class_game_state_1_1_player.html#a8f25769e000454ef477d359f44a5ed31',1,'GameState::Player']]],
+  ['accepted',['accepted',['../struct_packet_battle_response.html#a58d1d3efb9c0be580bb6676b7262fdd9',1,'PacketBattleResponse']]],
+  ['accx',['accX',['../class_game_state_1_1_player.html#a0d726c8aaa2bb433e9d6d3e09c945328',1,'GameState::Player']]],
+  ['allowemptylines',['allowEmptyLines',['../struct_state_input.html#a144b051f8d304e3fb9f8d69e4fddaa5d',1,'StateInput']]]
 ];

@@ -85,9 +85,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_bit_serialize_attribute-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BitSerializeAttribute Class Reference<div class="ingroups"><a class="el" href="group__client.html">Client: Cretins</a></div></div>  </div>
@@ -105,6 +107,17 @@ Inheritance diagram for BitSerializeAttribute:</div>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute_1_1_attribute_field.html">AttributeField</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_bit_serialize_attribute_1_1_i_serialization_module.html">ISerializationModule</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface to use SerializationModule{T} in collections without knowing the type.  <a href="interface_bit_serialize_attribute_1_1_i_serialization_module.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4.html">SerializationModule&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The implementation of <a class="el" href="interface_bit_serialize_attribute_1_1_i_serialization_module.html" title="The interface to use SerializationModule{T} in collections without knowing the type. ">ISerializationModule</a>, where all the generic "object" fields are objects with the type T.  <a href="class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a28774b3727990228edb19840f2e9badd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28774b3727990228edb19840f2e9badd"></a>
@@ -113,29 +126,33 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#a0d934db4b1bdd25dbb3ef5ba6536f6c3">Serialize&lt; T &gt;</a> (T mono)</td></tr>
-<tr class="memdesc:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a monobehavior to a byte array, using BitSerialize and <a class="el" href="interface_i_serializing.html">ISerializing</a>  <a href="#a0d934db4b1bdd25dbb3ef5ba6536f6c3">More...</a><br/></td></tr>
-<tr class="separator:a0d934db4b1bdd25dbb3ef5ba6536f6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#a45dcbeb6ab33c11f4d6cc4971bb4ba55">GetSizeOf</a> (object value)</td></tr>
-<tr class="memdesc:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to determine the size of some object (effectively sizeof(object))  <a href="#a45dcbeb6ab33c11f4d6cc4971bb4ba55">More...</a><br/></td></tr>
-<tr class="separator:a45dcbeb6ab33c11f4d6cc4971bb4ba55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#aca1cc7a1f81cfffcf0ae04058d2da2c9">CopyTo</a> (ref byte[] dest, ref int offset, byte[] source)</td></tr>
-<tr class="memdesc:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write some byte array into another byte array at some offset  <a href="#aca1cc7a1f81cfffcf0ae04058d2da2c9">More...</a><br/></td></tr>
-<tr class="separator:aca1cc7a1f81cfffcf0ae04058d2da2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae92d448c6f7bf6ffab890747e1737c65"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ae92d448c6f7bf6ffab890747e1737c65">Deserialize&lt; T &gt;</a> (T mono, byte[] data)</td></tr>
-<tr class="memdesc:ae92d448c6f7bf6ffab890747e1737c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a byte array into a monobehavior  <a href="#ae92d448c6f7bf6ffab890747e1737c65">More...</a><br/></td></tr>
-<tr class="separator:ae92d448c6f7bf6ffab890747e1737c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad468b24a1856f4caa6878fa1816b1a02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad468b24a1856f4caa6878fa1816b1a02"></a>
+static byte[]&#160;</td><td class="memItemRight" valign="bottom"><b>Serialize&lt; T &gt;</b> (T obj, byte[] data=null, int start=0, <a class="el" href="class_bit_serialize_attribute_1_1_attribute_field.html">AttributeField</a> attribute=null)</td></tr>
+<tr class="separator:ad468b24a1856f4caa6878fa1816b1a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ccfef7039f0ed04d5884a4817f4d60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25ccfef7039f0ed04d5884a4817f4d60"></a>
+static object&#160;</td><td class="memItemRight" valign="bottom"><b>Deserialize</b> (object obj, byte[] data, int start=0, <a class="el" href="class_bit_serialize_attribute_1_1_attribute_field.html">AttributeField</a> attribute=null, Type typeIn=null)</td></tr>
+<tr class="separator:a25ccfef7039f0ed04d5884a4817f4d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbd2fdebdb8ab0a3105bf74e5714ece"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcbd2fdebdb8ab0a3105bf74e5714ece"></a>
+static object&#160;</td><td class="memItemRight" valign="bottom"><b>Deserialize</b> (object obj, byte[] data, ref int start, <a class="el" href="class_bit_serialize_attribute_1_1_attribute_field.html">AttributeField</a> attribute=null, Type typeIn=null)</td></tr>
+<tr class="separator:abcbd2fdebdb8ab0a3105bf74e5714ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ad0a026f7b3c5c95879852db7a66a2726"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ad0a026f7b3c5c95879852db7a66a2726">order</a></td></tr>
 <tr class="memdesc:ad0a026f7b3c5c95879852db7a66a2726"><td class="mdescLeft">&#160;</td><td class="mdescRight">The numerical order in which attributes are sorted - lowest is first.  <a href="#ad0a026f7b3c5c95879852db7a66a2726">More...</a><br/></td></tr>
 <tr class="separator:ad0a026f7b3c5c95879852db7a66a2726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ae713451406fed4a03f33416a583eeb1e"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; Type, <br class="typebreak"/>
+<a class="el" href="interface_bit_serialize_attribute_1_1_i_serialization_module.html">ISerializationModule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bit_serialize_attribute.html#ae713451406fed4a03f33416a583eeb1e">MODULES</a></td></tr>
+<tr class="memdesc:ae713451406fed4a03f33416a583eeb1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of (De)Serialization interfaces for handling how any one type should be handled.  <a href="#ae713451406fed4a03f33416a583eeb1e">More...</a><br/></td></tr>
+<tr class="separator:ae713451406fed4a03f33416a583eeb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles (de)serializing of specific fields. Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, <a class="el" href="interface_i_serializing.html">ISerializing</a>, and any composite arrays of the former. If the MonoBehaviour being serialized is <a class="el" href="interface_i_serializing.html">ISerializing</a>, the <a class="el" href="interface_i_serializing.html">ISerializing</a> methods are treated as additions to all fields marked with BitSerialize </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aca1cc7a1f81cfffcf0ae04058d2da2c9"></a>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ae713451406fed4a03f33416a583eeb1e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -143,159 +160,20 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void BitSerializeAttribute.CopyTo </td>
-          <td>(</td>
-          <td class="paramtype">ref byte[]&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte[]&#160;</td>
-          <td class="paramname"><em>source</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">Dictionary&lt;Type, <a class="el" href="interface_bit_serialize_attribute_1_1_i_serialization_module.html">ISerializationModule</a>&gt; BitSerializeAttribute.MODULES</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Write some byte array into another byte array at some offset </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dest</td><td>The data to copy.</td></tr>
-    <tr><td class="paramname">offset</td><td>The offset in bytes.</td></tr>
-    <tr><td class="paramname">source</td><td>The data object to copy into at the offset.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Author: Dustin Yost </p>
+<p>A dictionary of (De)Serialization interfaces for handling how any one type should be handled. </p>
 
 </div>
 </div>
-<a class="anchor" id="ae92d448c6f7bf6ffab890747e1737c65"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BitSerializeAttribute.Deserialize&lt; T &gt; </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>mono</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte[]&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Deserialize a byte array into a monobehavior </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mono</td><td>The monobehavior to set data in</td></tr>
-    <tr><td class="paramname">data</td><td>A byte array of data created with Serialize</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a45dcbeb6ab33c11f4d6cc4971bb4ba55"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BitSerializeAttribute.GetSizeOf </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Attempts to determine the size of some object (effectively sizeof(object)) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The object to size up</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The size of some object, using sizeof for primitive objects, recursive behavior for arrays, and GetSize for <a class="el" href="interface_i_serializing.html">ISerializing</a></dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a0d934db4b1bdd25dbb3ef5ba6536f6c3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static byte [] BitSerializeAttribute.Serialize&lt; T &gt; </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>mono</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Serialize a monobehavior to a byte array, using BitSerialize and <a class="el" href="interface_i_serializing.html">ISerializing</a> </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mono</td><td>The monobehavior to serialize</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A byte array of data formatted in the order of fields and extra data according to <a class="el" href="interface_i_serializing.html">ISerializing</a></dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="ad0a026f7b3c5c95879852db7a66a2726"></a>
 <div class="memitem">
 <div class="memproto">

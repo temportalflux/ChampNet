@@ -15,6 +15,7 @@ var searchData=
   ['eventdisconnected',['EventDisconnected',['../class_event_disconnected.html',1,'']]],
   ['eventgamestate',['EventGameState',['../class_event_game_state.html',1,'']]],
   ['eventnetwork',['EventNetwork',['../class_event_network.html',1,'']]],
+  ['eventplayeraddmonster',['EventPlayerAddMonster',['../class_event_player_add_monster.html',1,'']]],
   ['eventrequestmovement',['EventRequestMovement',['../class_event_request_movement.html',1,'']]],
   ['eventwithlocation',['EventWithLocation',['../class_event_with_location.html',1,'']]],
   ['eventwithplayerid',['EventWithPlayerID',['../class_event_with_player_i_d.html',1,'']]]

@@ -16,6 +16,7 @@ var searchData=
   ['id_5fclient_5frequest_5fplayer',['ID_CLIENT_REQUEST_PLAYER',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a95ea635e1f4775e77d635b7039a9711e',1,'ChampNetPlugin']]],
   ['id_5fdisconnect',['ID_DISCONNECT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ab64ca706dd3c8029ea9dc9a239237e15',1,'ChampNetPlugin']]],
   ['id_5fplaceholder',['ID_PLACEHOLDER',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a6acf78ef40fd50b2e823237ea828fc1b',1,'ChampNetPlugin']]],
+  ['id_5fplayer_5fadd_5fmonster',['ID_PLAYER_ADD_MONSTER',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a942496ffc9e2a24c46c0bfd3f24460f6',1,'ChampNetPlugin::ID_PLAYER_ADD_MONSTER()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ad42c079bb7459dbaf419eeb2e845f3e2',1,'ChampNetPlugin.ID_PLAYER_ADD_MONSTER()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ad42c079bb7459dbaf419eeb2e845f3e2',1,'ChampNetPlugin.ID_PLAYER_ADD_MONSTER()']]],
   ['id_5fplayer_5frequest_5fmovement',['ID_PLAYER_REQUEST_MOVEMENT',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821abaa5b813ea0118cdccbb8f80d461fea8',1,'ChampNetPlugin']]],
   ['id_5fupdate_5fgamestate',['ID_UPDATE_GAMESTATE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a6c390584862af2434c946e375365fe02',1,'ChampNetPlugin']]]
 ];

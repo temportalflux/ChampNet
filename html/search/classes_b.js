@@ -3,6 +3,8 @@ var searchData=
   ['scenetransition',['SceneTransition',['../class_scene_transition.html',1,'']]],
   ['scoreboard',['ScoreBoard',['../class_score_board.html',1,'']]],
   ['scoreboardincrementtest',['ScoreboardIncrementTest',['../class_scoreboard_increment_test.html',1,'']]],
+  ['sereal',['Sereal',['../class_bit_test_1_1_sereal.html',1,'BitTest']]],
+  ['serializationmodule_3c_20t_20_3e',['SerializationModule&lt; T &gt;',['../class_bit_serialize_attribute_1_1_serialization_module_3_01_t_01_4.html',1,'BitSerializeAttribute']]],
   ['singleton_3c_20t_20_3e',['Singleton&lt; T &gt;',['../class_singleton_3_01_t_01_4.html',1,'']]],
   ['stateapplication',['StateApplication',['../class_state_application.html',1,'']]],
   ['stateconsole',['StateConsole',['../struct_state_console.html',1,'']]],

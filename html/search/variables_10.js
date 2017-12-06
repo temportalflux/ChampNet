@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['velocity',['velocity',['../class_game_state_1_1_player.html#aa22122c85cfdae428d82bd1571ab022a',1,'GameState::Player']]],
-  ['velx',['velX',['../class_game_state_1_1_player.html#afcc72f7f23db9714a20ac1b08fda0288',1,'GameState.Player::velX()'],['../struct_packet_player_position.html#a4f4b56eb20f827dec38d7ddaf8ea0f13',1,'PacketPlayerPosition::velX()']]],
-  ['vely',['velY',['../struct_packet_player_position.html#abcf1d97becbe982654e73cc9ec8d88c8',1,'PacketPlayerPosition']]]
+  ['timesloaded',['timesLoaded',['../struct_champ_net_1_1_time_stamp.html#a15ed2cd3a07ef3b0b4bd58a0cbc2060c',1,'ChampNet::TimeStamp']]],
+  ['timestampinfo',['timestampInfo',['../class_champ_net_1_1_packet.html#a0fcefd5ba56854e5a8e3e63a51e3963e',1,'ChampNet::Packet']]],
+  ['totaltransfertime_5flocal',['totalTransferTime_local',['../struct_champ_net_1_1_time_stamp.html#ae8466c79c649081a4027fd7ed355e9c1',1,'ChampNet::TimeStamp']]],
+  ['transitionbattle',['transitionBattle',['../class_game_manager.html#a1bd9eb164a33c054431f5bf8ccc8d3b8',1,'GameManager']]],
+  ['transitionworld',['transitionWorld',['../class_game_manager.html#a59aeb9d1bcc8580f55f3f4dcdae396fd',1,'GameManager']]]
 ];

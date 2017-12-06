@@ -27,16 +27,40 @@ enum \hyperlink{class_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{E
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{class_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}{Get\-Size} ()
-\begin{DoxyCompactList}\small\item\em Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) \end{DoxyCompactList}\item 
-void \hyperlink{class_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}{Serialize} (ref byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
-\begin{DoxyCompactList}\small\item\em Serializes data from this event into a byte array \end{DoxyCompactList}\item 
-void \hyperlink{class_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{Deserialize} (byte\mbox{[}$\,$\mbox{]} data, ref int last\-Index)
-\begin{DoxyCompactList}\small\item\em Deserializes data from a byte array into this event's data \end{DoxyCompactList}\item 
 void \hyperlink{class_game_state_1_1_player_ace7e3625cf1996b8c56bcafae36673af}{copy\-From\-Game\-State} (\hyperlink{class_game_state_1_1_player}{Player} info, float delta\-Time)
 \begin{DoxyCompactList}\small\item\em Copy data from a deserialized player state into this player state \end{DoxyCompactList}\item 
 void \hyperlink{class_game_state_1_1_player_a59ac624b5378e8253ac70d827febfe6a}{integrate\-Physics} (float delta\-Time)
-\begin{DoxyCompactList}\small\item\em Integrate physics in this object (accelleration-\/$>$velocity, velocity-\/$>$position). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Integrate physics in this object (accelleration-\/$>$velocity, velocity-\/$>$position). \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_1_1_player_a3ab6c2f1d15057b161ba0cba271fd9d3}{int {\bfseries Index\-Of} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object} item)}\label{class_game_state_1_1_player_a3ab6c2f1d15057b161ba0cba271fd9d3}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a84cdeefa239fade5ab90b42b3d55bda8}{void {\bfseries Insert} (int index, \hyperlink{class_monster_data_object}{Monster\-Data\-Object} item)}\label{class_game_state_1_1_player_a84cdeefa239fade5ab90b42b3d55bda8}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a971bad69d0ef56fbd860c71ed1b56dae}{void {\bfseries Remove\-At} (int index)}\label{class_game_state_1_1_player_a971bad69d0ef56fbd860c71ed1b56dae}
+
+\item 
+\hypertarget{class_game_state_1_1_player_ad791ddd2f697e5237c6e04c7fc5c1e5f}{void {\bfseries Add} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object} item)}\label{class_game_state_1_1_player_ad791ddd2f697e5237c6e04c7fc5c1e5f}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a732e5b36f28a1fa3aa998fb5659a986a}{void {\bfseries Clear} ()}\label{class_game_state_1_1_player_a732e5b36f28a1fa3aa998fb5659a986a}
+
+\item 
+\hypertarget{class_game_state_1_1_player_ac862c1353bfbc38d53e2301548ded23a}{bool {\bfseries Contains} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object} item)}\label{class_game_state_1_1_player_ac862c1353bfbc38d53e2301548ded23a}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a5c3546baf67a5d27553c814df4def68a}{void {\bfseries Copy\-To} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object}\mbox{[}$\,$\mbox{]} array, int array\-Index)}\label{class_game_state_1_1_player_a5c3546baf67a5d27553c814df4def68a}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a98c86c2ffe06038710acb4951479dff9}{bool {\bfseries Remove} (\hyperlink{class_monster_data_object}{Monster\-Data\-Object} item)}\label{class_game_state_1_1_player_a98c86c2ffe06038710acb4951479dff9}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a02e1f98267c1fcf0258528ad72bd5d25}{I\-Enumerator$<$ \hyperlink{class_monster_data_object}{Monster\-Data\-Object} $>$ {\bfseries Get\-Enumerator} ()}\label{class_game_state_1_1_player_a02e1f98267c1fcf0258528ad72bd5d25}
+
+\item 
+\hypertarget{class_game_state_1_1_player_abb92c259431397bdda45f001e59addea}{int \hyperlink{class_game_state_1_1_player_abb92c259431397bdda45f001e59addea}{get\-Size} () const }\label{class_game_state_1_1_player_abb92c259431397bdda45f001e59addea}
+
+\begin{DoxyCompactList}\small\item\em The maximum length of the \hyperlink{class_game_state_1_1_player}{Player} when serialized into a byte\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,12 +92,12 @@ uint \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{w
 \begin{DoxyCompactList}\small\item\em The total number of wins since entering the server. \end{DoxyCompactList}\item 
 uint \hyperlink{class_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}{rank}
 \begin{DoxyCompactList}\small\item\em The rank of the player in the scoreboard. The higher \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{wins} is compared to other players, the \end{DoxyCompactList}\item 
+List$<$ uint $>$ \hyperlink{class_game_state_1_1_player_a2c4ed3c60a2969cd4f891e12c8265377}{monster\-I\-Ds}
+\begin{DoxyCompactList}\small\item\em A list of all the cretins the player has. \end{DoxyCompactList}\item 
 \hyperlink{class_player_reference}{Player\-Reference} \hyperlink{class_game_state_1_1_player_aebf24de01e14055dc940d0493753484f}{object\-Reference}
 \begin{DoxyCompactList}\small\item\em The reference to the Game\-Object in the local unity instance \end{DoxyCompactList}\item 
 Render\-Texture \hyperlink{class_game_state_1_1_player_ac1f7e0b5bc335c32c3be71e3653787a6}{camera\-Texture}
 \begin{DoxyCompactList}\small\item\em Reference to the render output for this \hyperlink{class_game_state_1_1_player_aebf24de01e14055dc940d0493753484f}{object\-Reference} \end{DoxyCompactList}\item 
-List$<$ \hyperlink{class_monster_data_object}{Monster\-Data\-Object} $>$ \hyperlink{class_game_state_1_1_player_a4412b3835e68a55b00610438118cdb16}{monsters}
-\begin{DoxyCompactList}\small\item\em A list of all the cretins the player has. \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}{unsigned int \hyperlink{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}{client\-I\-D}}\label{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}
 
 \begin{DoxyCompactList}\small\item\em The client\-I\-D of the controlling client. This is unique across all peers in a network. \end{DoxyCompactList}\item 
@@ -93,6 +117,9 @@ List$<$ \hyperlink{class_monster_data_object}{Monster\-Data\-Object} $>$ \hyperl
 
 \item 
 \hypertarget{class_game_state_1_1_player_ad3f992ed5676471f80c6ba3c9ce0f505}{float {\bfseries color\-B}}\label{class_game_state_1_1_player_ad3f992ed5676471f80c6ba3c9ce0f505}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a828e830d7461991e4980f7fc7336e552}{float {\bfseries color\-A}}\label{class_game_state_1_1_player_a828e830d7461991e4980f7fc7336e552}
 
 \item 
 \hypertarget{class_game_state_1_1_player_a0342f6d74f9c08351cd0c5139ac55de6}{float \hyperlink{class_game_state_1_1_player_a0342f6d74f9c08351cd0c5139ac55de6}{pos\-X}}\label{class_game_state_1_1_player_a0342f6d74f9c08351cd0c5139ac55de6}
@@ -128,6 +155,12 @@ List$<$ \hyperlink{class_monster_data_object}{Monster\-Data\-Object} $>$ \hyperl
 \hypertarget{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}{unsigned int \hyperlink{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}{rank}}\label{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}
 
 \begin{DoxyCompactList}\small\item\em Rank of player on the scoreboard. \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_1_1_player_a7f5bbae042c927e8dd0f27a189a18dea}{int {\bfseries monsters\-Count}}\label{class_game_state_1_1_player_a7f5bbae042c927e8dd0f27a189a18dea}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a2cc3642e98d820c6e4fce5864254c79e}{unsigned int $\ast$ {\bfseries monsters}}\label{class_game_state_1_1_player_a2cc3642e98d820c6e4fce5864254c79e}
+
+\item 
 \hypertarget{class_game_state_1_1_player_ae60a4f411ef984c6d649d98c65b274bd}{int \hyperlink{class_game_state_1_1_player_ae60a4f411ef984c6d649d98c65b274bd}{battle\-Opponent\-Id}}\label{class_game_state_1_1_player_ae60a4f411ef984c6d649d98c65b274bd}
 
 \begin{DoxyCompactList}\small\item\em the player\-Id of the opponent, -\/1 if invalid, otherwise $>$= 0 \end{DoxyCompactList}\item 
@@ -146,14 +179,18 @@ static int \hyperlink{class_game_state_1_1_player_a1cdc9de8183b220e87632f7f6a714
 \begin{DoxyCompactList}\small\item\em The maximum length of \hyperlink{class_game_state_1_1_player_afc2b145df544ca5bffc7c87ef294bcde}{Game\-State.\-Player.\-name} \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_1_1_player_a16d0264ca6adfedb582e22f59a550fc5}{static const int \hyperlink{class_game_state_1_1_player_a16d0264ca6adfedb582e22f59a550fc5}{S\-I\-Z\-E\-\_\-\-M\-A\-X\-\_\-\-N\-A\-M\-E} = 10}\label{class_game_state_1_1_player_a16d0264ca6adfedb582e22f59a550fc5}
 
-\begin{DoxyCompactList}\small\item\em The maximum length of any player's name. \end{DoxyCompactList}\item 
-static const int \hyperlink{class_game_state_1_1_player_a07b452f69128e1f3f6d3bb575c2976f1}{S\-I\-Z\-E}
-\begin{DoxyCompactList}\small\item\em The maximum length of the \hyperlink{class_game_state_1_1_player}{Player} when serialized into a byte\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The maximum length of any player's name. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 bool \hyperlink{class_game_state_1_1_player_affd7c601a6d763dafdc59a58c415e9e7}{is\-Local}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em If the player id is from a local player (controlled on this game) or networked (controlled by a peer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em If the player id is from a local player (controlled on this game) or networked (controlled by a peer) \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_1_1_player_aebfa739a98ff4f88d151235905b439bf}{I\-List$<$ \hyperlink{class_monster_data_object}{Monster\-Data\-Object} $>$ {\bfseries monsters}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_game_state_1_1_player_aebfa739a98ff4f88d151235905b439bf}
+
+\item 
+\hypertarget{class_game_state_1_1_player_ab8dafc199bbda42740ab5f3587202495}{\hyperlink{class_monster_data_object}{Monster\-Data\-Object} {\bfseries this\mbox{[}int index\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{class_game_state_1_1_player_ab8dafc199bbda42740ab5f3587202495}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -191,49 +228,6 @@ Copy data from a deserialized player state into this player state
 {\em delta\-Time} & The time to integrate physics over.\\
 \hline
 \end{DoxyParams}
-\hypertarget{class_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Deserialize@{Deserialize}}
-\index{Deserialize@{Deserialize}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Player.\-Deserialize (
-\begin{DoxyParamCaption}
-\item[{byte\mbox{[}$\,$\mbox{]}}]{data, }
-\item[{ref int}]{last\-Index}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_1_1_player_aaf7c5b93f45be35c3501626cb6759c0b}
-
-
-Deserializes data from a byte array into this event's data 
-
-
-\begin{DoxyParams}{Parameters}
-{\em data} & The data.\\
-\hline
-{\em last\-Index} & The last index.\\
-\hline
-\end{DoxyParams}
-
-
-Implements \hyperlink{interface_i_serializing_a92f8ba3a06d21e7b01e37411e4e3145c}{I\-Serializing}.
-
-\hypertarget{class_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Get\-Size@{Get\-Size}}
-\index{Get\-Size@{Get\-Size}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{Get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-State.\-Player.\-Get\-Size (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_1_1_player_a58e1b4e7eaca487703abf36826e41c45}
-
-
-Returns the size of the packet (the size for a potential byte\mbox{[}\mbox{]}) 
-
-\begin{DoxyReturn}{Returns}
-the integer length of a byte array to hold this event's data 
-\end{DoxyReturn}
-
-
-Author\-: Dustin Yost 
-
-Implements \hyperlink{interface_i_serializing_a9e6ea0afaeac8d1d57e20579f87bebe2}{I\-Serializing}.
-
 \hypertarget{class_game_state_1_1_player_a59ac624b5378e8253ac70d827febfe6a}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!integrate\-Physics@{integrate\-Physics}}
 \index{integrate\-Physics@{integrate\-Physics}!GameState::Player@{Game\-State\-::\-Player}}
 \subsubsection[{integrate\-Physics}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Player.\-integrate\-Physics (
@@ -250,29 +244,6 @@ Integrate physics in this object (accelleration-\/$>$velocity, velocity-\/$>$pos
 {\em delta\-Time} & The time to integrate over.\\
 \hline
 \end{DoxyParams}
-\hypertarget{class_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!Serialize@{Serialize}}
-\index{Serialize@{Serialize}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-State.\-Player.\-Serialize (
-\begin{DoxyParamCaption}
-\item[{ref byte\mbox{[}$\,$\mbox{]}}]{data, }
-\item[{ref int}]{last\-Index}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_game_state_1_1_player_aa8df830f0a0bcfbfb263a634d125c3a5}
-
-
-Serializes data from this event into a byte array 
-
-
-\begin{DoxyParams}{Parameters}
-{\em data} & The data.\\
-\hline
-{\em last\-Index} & The last index.\\
-\hline
-\end{DoxyParams}
-
-
-Implements \hyperlink{interface_i_serializing_ac31a44c2358a197e774fa3f79cc80356}{I\-Serializing}.
-
 
 
 \subsection{Member Data Documentation}
@@ -332,9 +303,9 @@ if the player is in battle\hypertarget{class_game_state_1_1_player_ae0383475b334
 
 A unique identifier of the player object in a local context. Unique across all players with the same \hyperlink{class_game_state_1_1_player_aacc123df8ea5256f83c1060a5fdd19c2}{client\-I\-D}. 
 
-\hypertarget{class_game_state_1_1_player_a4412b3835e68a55b00610438118cdb16}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!monsters@{monsters}}
-\index{monsters@{monsters}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{monsters}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Monster\-Data\-Object}$>$ Game\-State.\-Player.\-monsters}}\label{class_game_state_1_1_player_a4412b3835e68a55b00610438118cdb16}
+\hypertarget{class_game_state_1_1_player_a2c4ed3c60a2969cd4f891e12c8265377}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!monster\-I\-Ds@{monster\-I\-Ds}}
+\index{monster\-I\-Ds@{monster\-I\-Ds}!GameState::Player@{Game\-State\-::\-Player}}
+\subsubsection[{monster\-I\-Ds}]{\setlength{\rightskip}{0pt plus 5cm}List$<$uint$>$ Game\-State.\-Player.\-monster\-I\-Ds}}\label{class_game_state_1_1_player_a2c4ed3c60a2969cd4f891e12c8265377}
 
 
 A list of all the cretins the player has. 
@@ -380,39 +351,6 @@ The position of the player in the open-\/world.
 
 
 The rank of the player in the scoreboard. The higher \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{wins} is compared to other players, the 
-
-\hypertarget{class_game_state_1_1_player_a07b452f69128e1f3f6d3bb575c2976f1}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
-\index{S\-I\-Z\-E@{S\-I\-Z\-E}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const int Game\-State.\-Player.\-S\-I\-Z\-E\hspace{0.3cm}{\ttfamily [static]}}}\label{class_game_state_1_1_player_a07b452f69128e1f3f6d3bb575c2976f1}
-{\bfseries Initial value\-:}
-\begin{DoxyCode}
-= 0
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} int)
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} int)
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) + (\hyperlink{class_game_state_1_1_player_a1cdc9de8183b220e87632f7f6a7147d0}{SIZE\_MAX\_NAME} * (\textcolor{keyword}{sizeof}(char) * 2))
-            
-            + (\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}) * 3)
-            
-            + (\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}) * 3)
-            
-            + (\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}) * 3)
-            
-            + (\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}) * 3)
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool})
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} int)
-            
-            + \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})
-\end{DoxyCode}
-
-
-The maximum length of the \hyperlink{class_game_state_1_1_player}{Player} when serialized into a byte\mbox{[}\mbox{]}. 
 
 \hypertarget{class_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
 \index{S\-I\-Z\-E@{S\-I\-Z\-E}!GameState::Player@{Game\-State\-::\-Player}}
@@ -472,4 +410,5 @@ If the player id is from a local player (controlled on this game) or networked (
 The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 /home/travis/build/temportalflux/\-Champ\-Net/\-Unity/\-Assets/\-Scripts/Game\-State.\-cs\item 
-/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Champ\-Net\-Plugin\-Test/include/Game\-State.\-h\end{DoxyCompactItemize}
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Champ\-Net\-Plugin\-Test/include/Game\-State.\-h\item 
+/home/travis/build/temportalflux/\-Champ\-Net/\-Champ\-Net/\-Champ\-Net\-Plugin\-Test/source/Game\-State.\-cpp\end{DoxyCompactItemize}
