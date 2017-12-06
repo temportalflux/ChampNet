@@ -107,8 +107,18 @@ public class BattleUIController : MonoBehaviour
         menuState = MenuState.MAIN_MENU;
     }
 
-    public void ButtonClicked(uint buttonIndex)
+    void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            BackButtonClicked();
+        }
+    }
+
+    // Must be int, not uint, so unity's inspector can use it during OnClick
+    public void ButtonClicked(int buttonIndex)
+    {
+        Debug.Log("Button clicked: + " + buttonIndex);
         switch (menuState)
         {
             case MenuState.MAIN_MENU:
@@ -134,7 +144,7 @@ public class BattleUIController : MonoBehaviour
                 break;
             case MenuState.ATTACK_MENU:
 
-                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.ATTACK, buttonIndex);
+                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.ATTACK, (uint)buttonIndex);
                 menuState = MenuState.WAITING;
 
                 break;
@@ -146,7 +156,7 @@ public class BattleUIController : MonoBehaviour
                 break;
             case MenuState.SWITCH_MENU:
 
-                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.SWAP, buttonIndex);
+                battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.SWAP, (uint)buttonIndex);
                 menuState = MenuState.WAITING;
 
                 break;
@@ -171,7 +181,7 @@ public class BattleUIController : MonoBehaviour
 
     public void BackButtonClicked()
     {
-        if (menuState != MenuState.WAITING)
+        if (menuState != MenuState.WAITING && menuState != MenuState.MAIN_MENU)
             menuState = MenuState.MAIN_MENU;
     }
 
@@ -180,4 +190,3 @@ public class BattleUIController : MonoBehaviour
         waitingText.text = text;
     }
 }
-/// @}
