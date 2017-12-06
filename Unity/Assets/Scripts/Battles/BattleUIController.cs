@@ -58,7 +58,7 @@ public class BattleUIController : MonoBehaviour
                 case MenuState.SWITCH_MENU:
                     //Debug.Assert(battleHandler.participant1.isPlayer());
 
-                    List<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
+                    IList<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
                     for (int i = 0; i < cretinButtons.Length; i++)
                     {
                         bool hasMatchingMonster = i < availableMonsters.Count;

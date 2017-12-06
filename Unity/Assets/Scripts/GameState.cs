@@ -13,6 +13,8 @@ using UnityEngine;
 using UnityEditor;
 
 using ID = System.UInt32;
+using System.Linq;
+using System;
 
 /// \addtogroup client
 /// @{
@@ -53,7 +55,7 @@ public class GameState : ScriptableObject, ISerializing
     /// A state class for all Player objects
     /// </summary>
     [System.Serializable]
-    public class Player
+    public class Player : IList<MonsterDataObject>
     {
 
         /// <summary>
@@ -203,8 +205,8 @@ public class GameState : ScriptableObject, ISerializing
         /// <summary>
         /// A list of all the cretins the player has.
         /// </summary>
-        //[BitSerialize(11)]
-        public List<MonsterDataObject> monsters;
+        [BitSerialize(11)]
+        public List<uint> monsterIDs;
 
         // Not-Serialized
 
@@ -222,7 +224,7 @@ public class GameState : ScriptableObject, ISerializing
 
         public Player()
         {
-            this.monsters = new List<MonsterDataObject>();
+            this.monsterIDs = new List<uint>();
         }
 
         // ~~~~~ Data copy
@@ -244,6 +246,7 @@ public class GameState : ScriptableObject, ISerializing
             this.inBattle = info.inBattle;
             this.wins = info.wins;
             this.rank = info.rank;
+            this.monsterIDs = info.monsterIDs;
 
             if (this.objectReference != null)
             {
@@ -261,6 +264,62 @@ public class GameState : ScriptableObject, ISerializing
         {
             this.velocity += this.accelleration * deltaTime;
             this.position += this.velocity * deltaTime;
+        }
+
+        // IList
+
+        public IList<MonsterDataObject> monsters
+        {
+            get
+            {
+                return this;
+            }
+        }
+        
+        public MonsterDataObject this[int index] {
+            get
+            {
+                return GameManager.INSTANCE.state.allMonsters[this.monsterIDs[index]];
+            }
+            set
+            {
+                this.monsterIDs[index] = value.monsterStat.id;
+            }
+        }
+        public int IndexOf(MonsterDataObject item) { return this.monsterIDs.IndexOf(item.monsterStat.id); }
+        public void Insert(int index, MonsterDataObject item) { this.monsterIDs.Insert(index, item.monsterStat.id); }
+        public void RemoveAt(int index) { this.monsterIDs.RemoveAt(index); }
+        public void Add(MonsterDataObject item) {
+            this.monsterIDs.Add(item.monsterStat.id);
+        }
+        int ICollection<MonsterDataObject>.Count
+        {
+            get
+            {
+                return this.monsterIDs.Count;
+            }
+        }
+        bool ICollection<MonsterDataObject>.IsReadOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
+        public void Clear() { this.monsterIDs.Clear(); }
+        public bool Contains(MonsterDataObject item) { return this.monsterIDs.Contains(item.monsterStat.id); }
+        public void CopyTo(MonsterDataObject[] array, int arrayIndex)
+        {
+            this.monsterIDs.CopyTo(System.Array.ConvertAll(array, x => x.monsterStat.id), arrayIndex);
+        }
+        public bool Remove(MonsterDataObject item) { return this.monsterIDs.Remove(item.monsterStat.id); }
+        public IEnumerator<MonsterDataObject> GetEnumerator()
+        {
+            return GameManager.INSTANCE.state.allMonsters.TakeWhile((MonsterDataObject item) => { return this.Contains(item); }).GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GameManager.INSTANCE.state.allMonsters.GetEnumerator();
         }
 
     }
@@ -290,6 +349,7 @@ public class GameState : ScriptableObject, ISerializing
 
     public uint getClientID() { return this._clientID; }
 
+    public MonsterDataObject[] allMonsters;
     public MonsterDataObject[] starters;
 
     public float deltaTime;
@@ -394,6 +454,7 @@ public class GameState : ScriptableObject, ISerializing
             {
                 info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
             }
+            EventPlayerAddMonster.Dispatch(info.playerID, info.monsterIDs[0]); // set via info.monsters
         }
 
         // Set the info for the player script

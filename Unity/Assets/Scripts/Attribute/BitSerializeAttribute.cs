@@ -700,7 +700,7 @@ public class BitSerializeAttribute : Attribute
             size = (int)Deserialize(size, data, start, intFields);
             start += GetSizeOf(size, intFields.fields);
 
-            if (size > 0)
+            if (size >= 0)
             {
                 if (typeof(IList).IsAssignableFrom(type))
                 {

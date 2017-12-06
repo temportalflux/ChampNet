@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
   m_Name: 0001-Bulbasaur
   m_EditorClassIdentifier: 
+  id: 0
   monsterName: Bulbasaur
   monsterPicture: {fileID: 21300000, guid: cec4c4106eba81745855ebc4afbb9514, type: 3}
   types: 03000000

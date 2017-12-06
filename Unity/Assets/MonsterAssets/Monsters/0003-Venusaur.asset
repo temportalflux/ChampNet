@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
   m_Name: 0003-Venusaur
   m_EditorClassIdentifier: 
+  id: 2
   monsterName: Venusaur
   monsterPicture: {fileID: 21300000, guid: d58267906d2b3dc44a4d459530a6a91f, type: 3}
   types: 03000000
