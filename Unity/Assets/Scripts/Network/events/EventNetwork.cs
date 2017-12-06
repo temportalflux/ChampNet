@@ -40,16 +40,18 @@ public class EventNetwork : ISerializing
                 return new EventRequestMovement();
             case (char)ChampNetPlugin.MessageIDs.ID_UPDATE_GAMESTATE:
                 return new EventGameState(ChampNetPlugin.MessageIDs.ID_UPDATE_GAMESTATE);
+
             /*
-        case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
-            return new EventNetwork.EventUserID();
+            case (char)ChampNetPlugin.MessageIDs.ID_USER_ID:
+                return new EventNetwork.EventUserID();
+            */
         case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_REQUEST:
-            return new EventNetwork.EventBattleRequest();
+            return new EventBattleRequest();
         case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESPONSE:
-            return new EventNetwork.EventBattleResponse();
+            return new EventBattleResponse();
         case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
-            return new EventNetwork.EventBattleResult();
-            //*/
+            return new EventBattleResult();
+
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_SCORE_UP:
                 return new EventGameState(ChampNetPlugin.MessageIDs.ID_CLIENT_SCORE_UP);
             default:

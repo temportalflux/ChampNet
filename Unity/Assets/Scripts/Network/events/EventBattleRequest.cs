@@ -18,6 +18,7 @@ public class EventBattleRequest : EventBattle
 
     public override void Execute()
     {
+
         // Some user (requester) has asked us (receiver) to battle
         Debug.Log("Received request to battle from " + this.idSender + "... auto accepting");
         NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
