@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {x: 0, y: 0, z: 0}
+  _LastInputDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114468771059613572
 MonoBehaviour:
   m_ObjectHideFlags: 1

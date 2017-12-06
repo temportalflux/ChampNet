@@ -38,10 +38,9 @@ public class PlayerLocal : PlayerReference
     public void challengeNetworkedPlayer()
     {
         PlayerReference player = _pic.CharacterFacing(this.moveTarget.position);
-        //remove this once player is found
-       //PlayerReference player = GameManager.INSTANCE.getRandomPlayer(this.playerInfo);
         if (player != null)
         {
+            this.playerInfo.inBattle = true;
             this.requestBattle(player);
         }
     }

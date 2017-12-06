@@ -96,31 +96,26 @@ public class PlayerCharacterController : MonoBehaviour
         {
             Vector3 inputRotate = new Vector3(-Facing.y, Facing.x);
             Vector3 point = start +
-                            Facing.normalized * (_halfSize + _skinWidth / 2) -
+                            Facing.normalized * (_halfSize + _skinWidth) -
                             inputRotate * _halfSize +
                             inputRotate * i * raySeperation;
 
-            //Debug.DrawRay(point, input * 5);
+            Debug.DrawRay(point, Facing * 1.0f);
 
-            RaycastHit2D hit = Physics2D.Raycast(point, Facing, 0.5f);
+            RaycastHit2D hit = Physics2D.Raycast(point, Facing, 1.0f);
 
             if (hit)
             {
-                if (hit.transform == transform)
-                    continue;
-                if (hit.transform.tag == "Wall")
+                if (hit.transform.tag == "Player")
                 {
-                    Debug.Log("Hit a Wall");
-                    return null;
-                }
-                else if (hit.transform.tag == "Player")
-                {
-                    Debug.Log("Hit a Player");
-                    return hit.transform.GetComponent<PlayerReference>();
+                    if (!hit.transform.GetComponent<PlayerNetwork>().getInfo().inBattle)
+                    {
+                        Debug.Log("Hit The Player called: " + hit.transform.name);
+                        return hit.transform.GetComponent<PlayerNetwork>();
+                    }
                 }
             }
         }
         return null;
     }
-
 }
