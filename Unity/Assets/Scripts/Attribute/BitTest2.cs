@@ -5,7 +5,7 @@ using UnityEngine;
 public class BitTest2 : BitTest
 {
 
-    [BitSerialize]
+    [BitSerialize(5)]
     public string bitTest2Str;
 
     protected override void init()
