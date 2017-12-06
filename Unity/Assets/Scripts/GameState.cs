@@ -424,9 +424,27 @@ public class GameState : ScriptableObject, ISerializing
             info.cameraTexture.Create();
             playerObject.GetComponentInChildren<Camera>(true).targetTexture = info.cameraTexture;
             GameManager.INSTANCE.StartCoroutine(this.AddPlayerToCamera(info));
-        }
 
-        info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
+            Color playerColor = info.color;
+
+            // Add a monster based on which color chanel has the greatest value
+            if (playerColor.r > info.color.g && playerColor.r > playerColor.b) // Add charmander
+            {
+                info.monsters.Add(this.starters[0]);
+            }
+            else if (playerColor.g > info.color.r && playerColor.g > playerColor.b) // Add bulbasaur
+            {
+                info.monsters.Add(this.starters[1]);
+            }
+            else if (playerColor.b > info.color.r && playerColor.b > playerColor.g) // Add squartile
+            {
+                info.monsters.Add(this.starters[2]);
+            }
+            else // No one color chanel is greater, Select a random one.
+            {
+                info.monsters.Add(this.starters[UnityEngine.Random.Range(0, this.starters.Length)]);
+            }
+        }
 
         // Set the info for the player script
         info.objectReference.setInfo(info);

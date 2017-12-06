@@ -17,7 +17,7 @@ public class BattleHandler : MonoBehaviour
         WAITING_ON_INPUT,
         DISPLAYING_TURN
     }
-
+ 
     [Header("Transform Dependencies")]
     public BattleUIController battleUIController;
 
@@ -129,6 +129,7 @@ public class BattleHandler : MonoBehaviour
         // Calculate who attacks first
         bool localCreitenIsFaster = local.currentCretin.GetSpeed > networkOrAI.currentCretin.GetSpeed;
 
+        List<BattleParticipant> faintedParticipants = new List<BattleParticipant>();
         // check to see if either selection was to attack, ordered based on certin speed
         if (localCreitenIsFaster)
         {
@@ -141,18 +142,25 @@ public class BattleHandler : MonoBehaviour
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
-                // check to see if any of the current cretins are dead
-                // TODO: 1
+                if (networkOrAI.currentCretin.CurrentHP <= 0)
+                {
+                    faintedParticipants.Add(networkOrAI);
+                }
 
             }
             // then check other (network or AI)
-            if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
             {
                 ApplyAttack(false, networkOrAI.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
+
+                if (local.currentCretin.CurrentHP <= 0)
+                {
+                    faintedParticipants.Add(local);
+                }
             }
         }
         else
@@ -164,24 +172,111 @@ public class BattleHandler : MonoBehaviour
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
+
+                if (local.currentCretin.CurrentHP <= 0)
+                {
+                    faintedParticipants.Add(local);
+                }
             }
 
-            if (local.selection == GameState.Player.EnumBattleSelection.ATTACK)
+            if (local.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
             {
                 ApplyAttack(true, local.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", local.currentCretin.GetMonsterName,
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
+
+                if (networkOrAI.currentCretin.CurrentHP <= 0)
+                {
+                    faintedParticipants.Add(networkOrAI);
+                }
+            }
+        }
+
+        foreach (BattleParticipant participant in faintedParticipants)
+        {
+            string message = participant.currentCretin.GetMonsterName;
+
+            message += " has fainted!!!";
+            battleUIController.SetFlavorText(message);
+            yield return new WaitForSeconds(2.0f);
+
+            if (participant.isPlayer())
+            {
+                int indexToSwitchTo = -1;
+                for (int index = 0; index < participant.playerController.monsters.Count; index++)
+                {
+                    MonsterDataObject monster = participant.playerController.monsters[index];
+                    if (monster.CurrentHP < 0)
+                        continue;
+
+                    indexToSwitchTo = index;
+                    break;
+                }
+
+                if (indexToSwitchTo != -1)
+                {
+                    participant.swapCretinTo(indexToSwitchTo);
+                    message = participant.currentCretin.GetMonsterName;
+                    message += " Was substituded in";
+                    battleUIController.SetFlavorText(message);
+                    yield return new WaitForSeconds(2.0f);
+                }
+                else
+                {
+                    message = participant.playerController.name;
+                    message += " is out of usable cretins. They have lost the battle.";
+                    battleUIController.SetFlavorText(message);
+                    yield return new WaitForSeconds(2.0f);
+
+                    if (participant == local)
+                    {
+                        BattleIsOver(local, networkOrAI);
+                    }
+                    else
+                    {
+                        BattleIsOver(networkOrAI, local);
+                    }
+                }
+            }
+            else
+            {
+                message = "The battle is over.";
+                battleUIController.SetFlavorText(message);
+                yield return new WaitForSeconds(2.0f);
+                BattleIsOver(local, networkOrAI);
             }
         }
         
         local.selectionChoice = networkOrAI.selectionChoice = -1;
 
         battleUIController.menuState = MenuState.MAIN_MENU;
+    }
 
-        // Don't need, this doesn't exit the routine, just stalls it
-        //yield return null;
+    /// <summary>
+    /// Set the winner and loser of the battle
+    /// </summary>
+    /// <param name="loser">The losing participant</param>
+    /// <param name="winner">the winning participant</param>
+    private void BattleIsOver(BattleParticipant loser, BattleParticipant winner)
+    {
+        if (isNetworked)
+        {
+            EventBattleResult eventBattleResult = new EventBattleResult();
+            eventBattleResult.idSender = participant1.playerController.clientID;
+            eventBattleResult.idReceiver = participant2.playerController.clientID;
+            eventBattleResult.playerIDWinner = winner.playerController.clientID;
+
+            NetInterface.INSTANCE.Dispatch(eventBattleResult);
+        }
+        else
+        {
+            // Not sure if anything
+            // todo: 1
+        }
+
+        GameManager.INSTANCE.UnloadBattleScene();
     }
 
     /// <summary>
@@ -277,15 +372,7 @@ public class BattleHandler : MonoBehaviour
         else
         {
             localKeeperMonster.CurrentHP -= (int) damage;
-            
         }
-
-
-    }
-
-    private void CretinHasDied(bool isLocalCretin)
-    {
-
     }
 
     // Type effectiveness match up 2d array hard coded here. 2d arrays dont look nice in unity inspector
