@@ -17,6 +17,9 @@ using System;
 using System.Reflection;
 using System.Linq;
 
+/// \addtogroup client
+/// @{
+
 /// <summary>
 /// Handles (de)serializing of specific fields.
 /// Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, ISerializing, and any composite arrays of the former.
@@ -412,6 +415,13 @@ public class BitSerializeAttribute : Attribute
         }
     }
 
+    /// <summary>
+    /// Deserializes data based on one of the types defined in <see cref="primitiveSizes"/>/
+    /// </summary>
+    /// <param name="data">The data to deserialize from</param>
+    /// <param name="offset">The offset which the data is at (incremented the appropriate size of the value)</param>
+    /// <param name="type">The type of the value to deserialze as</param>
+    /// <returns>object of the type 'type'</returns>
     private static object DeserializePrimitive(byte[] data, ref int offset, Type type)
     {
         object obj = null;
@@ -438,3 +448,4 @@ public class BitSerializeAttribute : Attribute
     }
 
 }
+/// @}

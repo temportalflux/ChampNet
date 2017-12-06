@@ -165,7 +165,7 @@ namespace ChampNetPlugin {
 		// this means data MUST be copied by the caller
 		unsigned char* data;
 		((ChampNet::Packet*)packetPtr)->getData(data, length);
-		transmitTime = ((ChampNet::Packet*)packetPtr)->timestampInfo.timesLoaded ? (unsigned long)((ChampNet::Packet*)packetPtr)->timestampInfo.totalTransferTime_local : 0;
+		transmitTime = (unsigned long)((ChampNet::Packet*)packetPtr)->getTransmitTime();
 		return data;
 	}
 
@@ -205,18 +205,6 @@ namespace ChampNetPlugin {
 	const char* GetAddress()
 	{
 		return gpNetwork->getIP().c_str();
-	}
-
-	// Write the time stamp to a buffer
-	int WriteTimeStamp(char *buffer, const RakNet::Time &time1, const RakNet::Time &time2)
-	{
-		return gpNetwork->writeTimestamps(buffer, time1, time2);
-	}
-
-	// read the time stamp from a buffer
-	int ReadTimeStamp(const char *buffer, RakNet::Time &time1, RakNet::Time &time2)
-	{
-		return gpNetwork->readTimestamps(buffer, time1, time2);
 	}
 
 

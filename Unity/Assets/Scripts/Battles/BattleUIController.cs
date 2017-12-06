@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// \addtogroup client
+/// @{
+
 public enum MenuState
 {
     MAIN_MENU,
@@ -175,3 +178,4 @@ public class BattleUIController : MonoBehaviour
         waitingText.text = text;
     }
 }
+/// @}

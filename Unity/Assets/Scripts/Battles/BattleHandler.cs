@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
+/// \addtogroup client
+/// @{
+
 /// <summary>
 /// 
 /// </summary>
@@ -317,3 +320,4 @@ public class BattleHandler : MonoBehaviour
     }
 
 }
+/// @}

@@ -10,6 +10,8 @@
 
 using namespace std;
 
+/// \defgroup server Server: Cretins
+
 int main() {
 	cout << "Starting ChampNet server...\n";
 	srand(time(NULL));
