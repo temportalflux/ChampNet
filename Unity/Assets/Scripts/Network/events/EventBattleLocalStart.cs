@@ -11,5 +11,4 @@ public class EventBattleLocalStart : EventBattleResultResponse
     {
         this.playerID = playerID;
     }
-
 }

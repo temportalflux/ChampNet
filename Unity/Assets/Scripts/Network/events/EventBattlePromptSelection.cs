@@ -46,7 +46,31 @@ public class EventBattlePromptSelection : EventNetwork
     public override void Execute()
     {
         base.Execute();
-        
+
+        BattleHandler battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+        bool playerAisParticipant1 = battleHandler.participant1.playerController.clientID == playerAID;
+        if (playerAisParticipant1)
+        {
+            battleHandler.participant1.selectionChoice = playerAChoice;
+            battleHandler.participant1.selection = (GameState.Player.EnumBattleSelection) _playerASelection;
+
+            battleHandler.participant2.selectionChoice = playerBChoice;
+            battleHandler.participant2.selection = (GameState.Player.EnumBattleSelection)_playerBSelection;
+
+            battleHandler.StartCoroutine(battleHandler.HandleResponse(battleHandler.participant1,
+                battleHandler.participant2));
+        }
+        else
+        {
+            battleHandler.participant2.selectionChoice = playerAChoice;
+            battleHandler.participant2.selection = (GameState.Player.EnumBattleSelection)_playerASelection;
+
+            battleHandler.participant1.selectionChoice = playerBChoice;
+            battleHandler.participant1.selection = (GameState.Player.EnumBattleSelection)_playerBSelection;
+
+            battleHandler.StartCoroutine(battleHandler.HandleResponse(battleHandler.participant1,
+                battleHandler.participant2));
+        }
     }
 
 }
