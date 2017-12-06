@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class BitTest : MonoBehaviour {
 
-    [BitSerialize]
+    [BitSerialize(0)]
     public int intVar;
 
-    [BitSerialize]
+    [BitSerialize(1)]
     public float floatVar;
 
-    [BitSerialize]
+    [BitSerialize(2)]
     public bool[] arrayTest;
 
-    [BitSerialize]
+    [BitSerialize(3)]
     public string testString;
 
-    [BitSerialize]
+    [BitSerialize(4)]
     public GameState.Player player;
 
     protected virtual void Start()
     {
         this.init();
 
-        byte[] data = BitSerializeAttribute.Serialize(this);
+        byte[] data = BitSerializing.Serialize(this);
 
         this.clear();
 
-        BitSerializeAttribute.Deserialize(this, data);
+        BitSerializing.Deserialize(this, data);
 
         this.report();
 

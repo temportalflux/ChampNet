@@ -207,6 +207,25 @@ public class BitSerializeAttribute : Attribute
         {
             return BitSerializeAttribute.primitiveSizes[type];
         }
+        else if (typeof(ICollection).IsAssignableFrom(type))
+        {
+            ICollection collection = value as ICollection;
+            int count = collection.Count;
+            if (count > 0)
+            {
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    IList list = value as IList;
+                    return sizeof(int) + count * GetSizeOf(list[0]);
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    IDictionary dictionary = value as IDictionary;
+                    return sizeof(int) + count * (GetSizeOf(dictionary.Keys.GetEnumerator().Current) + GetSizeOf(dictionary.Values.GetEnumerator().Current));
+                }
+            }
+            return sizeof(int);
+        }
         else if (typeof(ISerializing).IsAssignableFrom(type))
         {
             return (value as ISerializing).GetSize();
@@ -232,8 +251,13 @@ public class BitSerializeAttribute : Attribute
             return;
         }
         Type type = value.GetType();
+        // It is not an array, try primitive
+        if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        {
+            CopyTo(ref destination, ref offset, SerializePrimitive(value, type));
+        }
         // If it is a string
-        if (type == typeof(string))
+        else if (type == typeof(string))
         {
             Serialize(ref destination, ref offset, (value as string).ToCharArray());
         }
@@ -252,10 +276,34 @@ public class BitSerializeAttribute : Attribute
                 Serialize(ref destination, ref offset, fieldArray[i]);
             }
         }
-        // It is not an array, try primitive
-        else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        else if (typeof(ICollection).IsAssignableFrom(type))
         {
-            CopyTo(ref destination, ref offset, SerializePrimitive(value, type));
+            ICollection collection = value as ICollection;
+            int count = collection.Count;
+
+            // Write the size of the array
+            CopyTo(ref destination, ref offset, System.BitConverter.GetBytes(count));
+
+            if (count > 0)
+            {
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    IList list = value as IList;
+                    for (int iCount = 0; iCount < count; iCount++)
+                    {
+                        Serialize(ref destination, ref offset, list[iCount]);
+                    }
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    IDictionary dictionary = value as IDictionary;
+                    foreach (object key in dictionary.Keys)
+                    {
+                        Serialize(ref destination, ref offset, key);
+                        Serialize(ref destination, ref offset, dictionary[key]);
+                    }
+                }
+            }
         }
         else if (typeof(ISerializing).IsAssignableFrom(type))
         {
@@ -358,8 +406,13 @@ public class BitSerializeAttribute : Attribute
         {
             return;
         }
+        // It is not an array, try primitive
+        if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        {
+            obj = DeserializePrimitive(data, ref offset, type);
+        }
         // The passed value is an array of some type T
-        if (type == typeof(string))
+        else if (type == typeof(string))
         {
             // Get the size of the array
             object arraySizeObj;
@@ -402,10 +455,24 @@ public class BitSerializeAttribute : Attribute
 
             obj = arr;
         }
-        // It is not an array, try primitive
-        else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        else if (typeof(ICollection).IsAssignableFrom(type))
         {
-            obj = DeserializePrimitive(data, ref offset, type);
+            object sizeObj;
+            int size = 0;
+            Deserialize(data, ref offset, typeof(int), out sizeObj);
+            size = (int)sizeObj;
+            
+            if (size > 0)
+            {
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    
+                }
+            }
         }
         else if (typeof(ISerializing).IsAssignableFrom(type))
         {

@@ -68,6 +68,8 @@ public:
 		/// Rank of player on the scoreboard
 		unsigned int rank;
 
+
+
 		// Not serialized
 		/// the playerId of the opponent, -1 if invalid, otherwise >= 0
 		int battleOpponentId;
