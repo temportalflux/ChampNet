@@ -4,6 +4,32 @@ using UnityEngine;
 
 public class BitTest : MonoBehaviour {
 
+    public class Sereal : ISerializing
+    {
+        [BitSerialize]
+        public uint clientID;
+
+        public Color color;
+
+        public int GetSize()
+        {
+            return BitSerializeAttribute.MODULES[typeof(Color)].GetSize(this.color);
+        }
+
+        public void Serialize(ref byte[] data, ref int lastIndex)
+        {
+            data = BitSerializeAttribute.MODULES[typeof(Color)].Serialize(this.color, data, lastIndex);
+            lastIndex += BitSerializeAttribute.MODULES[typeof(Color)].GetSize(this.color);
+        }
+
+        public void Deserialize(byte[] data, ref int lastIndex)
+        {
+            this.color = (Color)BitSerializeAttribute.MODULES[typeof(Color)].Deserialize(data, lastIndex, typeof(Color));
+            lastIndex += BitSerializeAttribute.MODULES[typeof(Color)].GetSize(this.color);
+        }
+
+    }
+
     [BitSerialize(0)]
     public int intVar;
 
@@ -17,17 +43,17 @@ public class BitTest : MonoBehaviour {
     public string testString;
 
     [BitSerialize(4)]
-    public GameState.Player player;
+    public Sereal player;
 
     protected virtual void Start()
     {
         this.init();
 
-        byte[] data = BitSerializing.Serialize(this);
+        byte[] data = BitSerializeAttribute.Serialize(this);
 
         this.clear();
 
-        BitSerializing.Deserialize(this, data);
+        BitSerializeAttribute.Deserialize(this, data);
 
         this.report();
 
@@ -40,7 +66,7 @@ public class BitTest : MonoBehaviour {
         this.floatVar = 30.5f;
         this.arrayTest = new bool[] { false, true, true, false, true };
         this.testString = "hello world";
-        this.player = new GameState.Player();
+        this.player = new Sereal();
         this.player.clientID = 25;
         this.player.color = Color.red;
 
@@ -53,7 +79,7 @@ public class BitTest : MonoBehaviour {
         this.floatVar = 0;
         this.arrayTest = null;
         this.testString = null;
-        this.player = new GameState.Player();
+        this.player = new Sereal();
 
     }
 
