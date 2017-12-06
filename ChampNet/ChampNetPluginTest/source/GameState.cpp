@@ -31,12 +31,15 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.colorR = colorR;
 	player.colorG = colorG;
 	player.colorB = colorB;
+	player.colorA = 1.0f;
 	player.posX = player.posY = player.posZ = 0;
 	player.velX = player.velY = player.velZ = 0;
 	player.accX = player.accY = player.accZ = 0;
 	player.inBattle = false;
 	player.wins = 0;
 	player.rank = 0;
+	player.monstersCount = 0;
+	player.monsters = new unsigned int[0];
 
 	player.battleOpponentId = -1;
 	player.lastBattleSelection = -1;
@@ -53,18 +56,60 @@ void GameState::removePlayer(unsigned int playerID)
 	}
 }
 
-char* GameState::serializeForClient(unsigned char packetID, int clientID, int &dataLength)
+int GameState::Player::getSize() const
 {
-	const int size = 0
+	return 0
+		// clientID
+		+ sizeof(unsigned int)
+		// playerID
+		+ sizeof(unsigned int)
+		// localID
+		+ sizeof(unsigned int)
+		// name
+		+ sizeof(int) + (this->name.length() * (sizeof(char) * 2))
+		// color
+		+ (sizeof(float) * 4)
+		// position
+		+ (sizeof(float) * 3)
+		// velocity
+		+ (sizeof(float) * 3)
+		// acceleration
+		+ (sizeof(float) * 3)
+		// inBattle
+		+ sizeof(bool)
+		// Wins
+		+ sizeof(unsigned int)
+		// Rank
+		+ sizeof(unsigned int)
+		// number of monsters
+		+ sizeof(int)
+		// size of monster
+		+ (this->monstersCount * sizeof(unsigned int));
+	;
+}
+
+int GameState::getSize() const
+{
+	int totalSize = 0
 		// packetID
-		+ sizeof(packetID)
+		+ sizeof(unsigned char)
 		// clientID
 		+ sizeof(int)
-		// number of players
-		+ sizeof(int)
-		// amount of space required for players
-		+ (this->players.size() * Player::SIZE)
 		;
+	// number of players
+	int sizePlayers = this->players.size();
+	totalSize += sizeof(int);
+	// amount of space required for players
+	for (auto const &entry : this->players)
+	{
+		totalSize += entry.second.getSize();
+	}
+	return totalSize;
+}
+
+char* GameState::serializeForClient(unsigned char packetID, int clientID, int &dataLength)
+{
+	const int size = this->getSize();
 	dataLength = size;
 	char *data = new char[size];
 	char *pos = data;
@@ -105,6 +150,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		*((float *)pos) = player.colorR; pos += sizeof(float);
 		*((float *)pos) = player.colorG; pos += sizeof(float);
 		*((float *)pos) = player.colorB; pos += sizeof(float);
+		*((float *)pos) = player.colorA; pos += sizeof(float);
 		// write position
 		*((float *)pos) = player.posX; pos += sizeof(float);
 		*((float *)pos) = player.posY; pos += sizeof(float);
@@ -123,6 +169,13 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		*((unsigned int *)pos) = player.wins; pos += sizeof(unsigned int);
 		// write Rank
 		*((unsigned int *)pos) = player.rank; pos += sizeof(unsigned int);
+		// write # of monsters
+		*((int *)pos) = player.monstersCount; pos += sizeof(int);
+		// write monsters
+		for (int iMonster = 0; iMonster < player.monstersCount; iMonster++)
+		{
+			*((unsigned int *)pos) = player.monsters[iMonster]; pos += sizeof(unsigned int);
+		}
 	}
 
 	// data is now filled with the gamestate data

@@ -10,6 +10,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Asset/ Create new Monster", order = 100)]
 public class MonsterStat : ScriptableObject
 {
+    public uint id;
     [Header("Monster Stats")]
     public string monsterName;
 	public Sprite monsterPicture;

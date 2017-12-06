@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
   m_Name: 0008-Wartortle
   m_EditorClassIdentifier: 
+  id: 7
   monsterName: Wartortle
   monsterPicture: {fileID: 21300000, guid: 4d604ea766427124f82c315b47f785e3, type: 3}
   types: 02000000

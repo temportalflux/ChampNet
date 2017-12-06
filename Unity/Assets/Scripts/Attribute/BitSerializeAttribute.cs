@@ -25,7 +25,7 @@ using System.Linq;
 /// Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, ISerializing, and any composite arrays of the former.
 /// If the <see cref="MonoBehaviour"/> being serialized is ISerializing, the ISerializing methods are treated as additions to all fields marked with BitSerialize
 /// </summary>
-[AttributeUsage(AttributeTargets.Field)]
+[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
 public class BitSerializeAttribute : Attribute
 {
 
@@ -64,7 +64,7 @@ public class BitSerializeAttribute : Attribute
         /// <param name="data">the byte[] of data.</param>
         /// <param name="start">How far into the serialized data the object was put.</param>
         /// <returns>object</returns>
-        object Deserialize(byte[] data, int start, Type type);
+        object Deserialize(object obj, byte[] data, int start, Type type);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class BitSerializeAttribute : Attribute
         /// <summary>
         /// A generic, and module settable, version of <see cref="ISerializationModule.Deserialize(byte[], int)"/>.
         /// </summary>
-        public Func<byte[], int, Type, T> _Deserialize;
+        public Func<T, byte[], int, Type, T> _Deserialize;
 
         /// <summary>
         /// Determine the size of some object - effectively sizeof(object).
@@ -106,7 +106,7 @@ public class BitSerializeAttribute : Attribute
         /// <param name="data">the byte[] of data.</param>
         /// <param name="start">How far into the serialized data the object was put.</param>
         /// <returns>object with the type <see cref="T"/></returns>
-        public object Deserialize(byte[] data, int start, Type type) { return _Deserialize(data, start, type); }
+        public object Deserialize(object obj, byte[] data, int start, Type type) { return _Deserialize((T)obj, data, start, type); }
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class BitSerializeAttribute : Attribute
                 data[start] = valueB;
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Byte>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Byte, byte[], int, Type, Byte>((Byte obj, byte[] data, int start, Type type) => {
                 return data[start];
             }),
         } },
@@ -132,7 +132,7 @@ public class BitSerializeAttribute : Attribute
                 data[start] = (byte)(valueB ? 1 : 0);
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Boolean>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Boolean, byte[], int, Type, Boolean>((Boolean obj, byte[] data, int start, Type type) => {
                 return data[start] > 0;
             }),
         } },
@@ -143,7 +143,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Char>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Char, byte[], int, Type, Char>((Char obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToChar(data, start);
             }),
         } },
@@ -154,7 +154,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Int16>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Int16, byte[], int, Type, Int16>((Int16 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToInt16(data, start);
             }),
         } },
@@ -165,7 +165,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Int32>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Int32, byte[], int, Type, Int32>((Int32 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToInt32(data, start);
             }),
         } },
@@ -176,7 +176,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Int64>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Int64, byte[], int, Type, Int64>((Int64 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToInt64(data, start);
             }),
         } },
@@ -187,7 +187,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, UInt16>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<UInt16, byte[], int, Type, UInt16>((UInt16 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToUInt16(data, start);
             }),
         } },
@@ -198,7 +198,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, UInt32>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<UInt32, byte[], int, Type, UInt32>((UInt32 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToUInt32(data, start);
             }),
         } },
@@ -209,7 +209,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, UInt64>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<UInt64, byte[], int, Type, UInt64>((UInt64 obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToUInt64(data, start);
             }),
         } },
@@ -220,7 +220,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Single>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Single, byte[], int, Type, Single>((Single obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToSingle(data, start);
             }),
         } },
@@ -231,7 +231,7 @@ public class BitSerializeAttribute : Attribute
                 CopyTo(ref data, start, BitConverter.GetBytes(valueB));
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Double>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Double, byte[], int, Type, Double>((Double obj, byte[] data, int start, Type type) => {
                 return BitConverter.ToDouble(data, start);
             }),
         } },
@@ -243,7 +243,7 @@ public class BitSerializeAttribute : Attribute
                 data = Serialize(valueB.ToCharArray(), data, start, new AttributeField());
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, string>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<string, byte[], int, Type, string>((string obj, byte[] data, int start, Type type) => {
                 return new string((char[])Deserialize(null, data, start, new AttributeField(), typeof(char[])));
             }),
         } },
@@ -259,14 +259,14 @@ public class BitSerializeAttribute : Attribute
                 data = module.Serialize(valueB.z, data, start);
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Vector3>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Vector3, byte[], int, Type, Vector3>((Vector3 obj, byte[] data, int start, Type type) => {
                 Type single = typeof(Single);
                 ISerializationModule module = MODULES[single];
-                float x = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float x = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 start += sizeof(Single);
-                float y = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float y = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 start += sizeof(Single);
-                float z = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float z = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 return new Vector3(x,y,z);
             }),
         } },
@@ -284,16 +284,16 @@ public class BitSerializeAttribute : Attribute
                 data = module.Serialize(valueB.a, data, start);
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, Color>((byte[] data, int start, Type type) => {
+            _Deserialize = new Func<Color, byte[], int, Type, Color>((Color obj, byte[] data, int start, Type type) => {
                 Type single = typeof(Single);
                 ISerializationModule module = MODULES[single];
-                float r = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float r = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 start += sizeof(Single);
-                float g = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float g = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 start += sizeof(Single);
-                float b = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float b = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 start += sizeof(Single);
-                float a = (float)MODULES[typeof(Single)].Deserialize(data, start, single);
+                float a = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
                 return new Color(r, g, b, a);
             }),
         } },
@@ -304,8 +304,7 @@ public class BitSerializeAttribute : Attribute
                 valueB.Serialize(ref data, ref start);
                 return data;
             }),
-            _Deserialize = new Func<byte[], int, Type, ISerializing>((byte[] data, int start, Type type) => {
-                ISerializing obj = (ISerializing)Activator.CreateInstance(type, new object[] { });
+            _Deserialize = new Func<ISerializing, byte[], int, Type, ISerializing>((ISerializing obj, byte[] data, int start, Type type) => {
                 obj.Deserialize(data, ref start);
                 return obj;
             }),
@@ -322,118 +321,7 @@ public class BitSerializeAttribute : Attribute
     {
         Array.Copy(source, 0, dest, start, source.Length);
     }
-
-
-    /// <summary>
-    /// Serialize a specfic object into a byte array
-    /// </summary>
-    /// <param name="destination">The byte array of data</param>
-    /// <param name="start">How far into the data to put the objects serialized data</param>
-    /// <param name="value">tThe value to serialize</param>
-    private static void SerializeData<T>(ref byte[] data, int start, T value)
-    {
-        Type type = value.GetType();
-        if (MODULES.ContainsKey(type))
-        {
-            data = MODULES[type].Serialize(value, data, start);
-        }
-        else if (type.IsArray)
-        {
-            SerializeArray(value, ref data, start, type.GetElementType());
-        }
-        else
-        {
-            foreach (Type key in MODULES.Keys)
-            {
-                if (key.IsAssignableFrom(type))
-                {
-                    data = MODULES[key].Serialize(value, data, start);
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Deserialize a byte array into a monobehavior
-    /// </summary>
-    /// <param name="data">A byte array of data created with Serialize</param>
-    /// <param name="start"></param>
-    /// <returns>the deserialized object</returns>
-    private static object DeserializeData(byte[] data, int start, Type type)
-    {
-        if (MODULES.ContainsKey(type))
-        {
-            return MODULES[type].Deserialize(data, start, type);
-        }
-        else if (type.IsArray)
-        {
-            return DeserializeArray(data, start, type.GetElementType());
-        }
-        else
-        {
-            foreach (Type key in MODULES.Keys)
-            {
-                if (key.IsAssignableFrom(type))
-                {
-                    return MODULES[key].Deserialize(data, start, type);
-                }
-            }
-        }
-        return null;
-    }
-
-    private static void SerializeArray<T>(T[] value, ref byte[] data, int start)
-    {
-        SerializeArray(value, ref data, start, typeof(T));
-    }
-
-    private static T[] DeserializeArray<T>(byte[] data, int start)
-    {
-        return (T[])DeserializeArray(data, start, typeof(T));
-    }
-
-    private static void SerializeArray(object value, ref byte[] data, int start, Type type)
-    {
-        // We can cast to ILIst because arrays implement it and we verfied that it is an array in the if statement
-        System.Collections.IList fieldArray = (System.Collections.IList)value;
-
-        // Write the size of the array
-        //Serialize(fieldArray.Count, ref data, start);
-        //start += GetSizeOf(fieldArray.Count);
-
-        // Write all values
-        for (int i = 0; i < fieldArray.Count; i++)
-        {
-            // Serialize(fieldArray[i], ref data, start);
-            //start += GetSizeOf(fieldArray[i]);
-        }
-    }
-
-    private static object DeserializeArray(byte[] data, int start, Type type)
-    {
-
-        // Get the size of the array
-        int size = 0;
-        //Deserialize(ref size, data, ref start, typeof(int));
-        //start += GetSizeOf(size);
-
-        Array arr = System.Array.CreateInstance(type, size);
-
-        // Iterate over all elements that will be deserializes
-        for (int i = 0; i < size; i++)
-        {
-            //uint totalBitSize;
-            //List<KeyValuePair<FieldInfo, int>> attributeObjects = GetAttributeFields(value, out totalBitSize);
-
-            object element = null;
-            //Deserialize(ref element, data, start, type);
-            //start += GetSizeOf(element);
-            arr.SetValue(element, i);
-        }
-
-        return arr;
-    }
-
+    
     public class AttributeField
     {
 
@@ -755,6 +643,11 @@ public class BitSerializeAttribute : Attribute
 
     public static object Deserialize(object obj, byte[] data, int start = 0, AttributeField attribute = null, Type typeIn = null)
     {
+        return Deserialize(obj, data, ref start, attribute, typeIn);
+    }
+
+    public static object Deserialize(object obj, byte[] data, ref int start, AttributeField attribute = null, Type typeIn = null)
+    {
         if (attribute == null)
         {
             attribute = new AttributeField
@@ -767,7 +660,9 @@ public class BitSerializeAttribute : Attribute
 
         if (MODULES.ContainsKey(type))
         {
-            return MODULES[type].Deserialize(data, start, type);
+            obj = MODULES[type].Deserialize(obj, data, start, type);
+            start += MODULES[type].GetSize(obj);
+            return obj;
         }
         else if (type.IsArray)
         {
@@ -805,7 +700,7 @@ public class BitSerializeAttribute : Attribute
             size = (int)Deserialize(size, data, start, intFields);
             start += GetSizeOf(size, intFields.fields);
 
-            if (size > 0)
+            if (size >= 0)
             {
                 if (typeof(IList).IsAssignableFrom(type))
                 {
@@ -882,7 +777,7 @@ public class BitSerializeAttribute : Attribute
             {
                 if (key.IsAssignableFrom(type))
                 {
-                    MODULES[key].Deserialize(data, start, type);
+                    obj = MODULES[key].Deserialize(obj, data, start, type);
                     start += MODULES[key].GetSize(obj);
                 }
             }

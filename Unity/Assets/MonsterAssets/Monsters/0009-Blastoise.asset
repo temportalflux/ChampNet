@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
   m_Name: 0009-Blastoise
   m_EditorClassIdentifier: 
+  id: 8
   monsterName: Blastoise
   monsterPicture: {fileID: 21300000, guid: a1e84b7537d5ea44f93dc11371ea6319, type: 3}
   types: 02000000
