@@ -55,6 +55,8 @@ extern "C"
 			ID_CLIENT_JOINED,
 			//! C->S: ask server to move player
 			ID_PLAYER_REQUEST_MOVEMENT,
+			//! C->: ask server to add monster to player
+			ID_PLAYER_ADD_MONSTER, // PacketUserIDDouble
 
 			// Battle Messages
 			//! C->S: request a battle with some other player

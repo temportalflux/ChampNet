@@ -31,7 +31,7 @@ public class PlayerLocal : PlayerReference
     
     public void onChallengeBy(MonsterDataObject opponentAI)
     {
-        List<MonsterDataObject> cretins = this.getInfo().monsters;
+        IList<MonsterDataObject> cretins = this.getInfo().monsters;
         if (cretins.Count > 0)
         {
             NetInterface.INSTANCE.Dispatch(new EventBattleLocalStart(this.getID()));

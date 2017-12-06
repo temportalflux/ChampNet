@@ -48,15 +48,17 @@ public class BattleUIController : MonoBehaviour
                         attackButtons[i].interactable = hasMatchingAttack;
                         if (hasMatchingAttack)
                         {
-                            attackButtons[i].GetComponentInChildren<Text>().text = availableAttacks[i].attackName;
+                            Text attackTextBox = attackButtons[i].GetComponentInChildren<Text>();
+                            attackTextBox.text = availableAttacks[i].attackName;
                         }
                     }
                     break;
                 case MenuState.ITEM_MENU:
                     break;
                 case MenuState.SWITCH_MENU:
-                    Debug.Assert(battleHandler.participant1.isPlayer());
-                    List<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
+                    //Debug.Assert(battleHandler.participant1.isPlayer());
+
+                    IList<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
                     for (int i = 0; i < cretinButtons.Length; i++)
                     {
                         bool hasMatchingMonster = i < availableMonsters.Count;

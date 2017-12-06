@@ -61,7 +61,7 @@ public class NetInterface : Singleton<NetInterface>
     void OnDestroy()
     {
         Debug.Log("Destroying network");
-        this.Dispatch(new EventClientLeft(GameManager.INSTANCE.state.clientID));
+        this.Dispatch(new EventClientLeft(GameManager.INSTANCE.state.getClientID()));
         Netty.Destroy();
     }
 
