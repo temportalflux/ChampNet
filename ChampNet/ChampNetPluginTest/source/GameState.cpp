@@ -31,6 +31,7 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.colorR = colorR;
 	player.colorG = colorG;
 	player.colorB = colorB;
+	player.colorA = 1.0f;
 	player.posX = player.posY = player.posZ = 0;
 	player.velX = player.velY = player.velZ = 0;
 	player.accX = player.accY = player.accZ = 0;
@@ -105,6 +106,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		*((float *)pos) = player.colorR; pos += sizeof(float);
 		*((float *)pos) = player.colorG; pos += sizeof(float);
 		*((float *)pos) = player.colorB; pos += sizeof(float);
+		*((float *)pos) = player.colorA; pos += sizeof(float);
 		// write position
 		*((float *)pos) = player.posX; pos += sizeof(float);
 		*((float *)pos) = player.posY; pos += sizeof(float);

@@ -24,7 +24,7 @@ public class BitTest : MonoBehaviour {
 
         public void Deserialize(byte[] data, ref int lastIndex)
         {
-            this.color = (Color)BitSerializeAttribute.MODULES[typeof(Color)].Deserialize(data, lastIndex, typeof(Color));
+            this.color = (Color)BitSerializeAttribute.MODULES[typeof(Color)].Deserialize(this.color, data, lastIndex, typeof(Color));
             lastIndex += BitSerializeAttribute.MODULES[typeof(Color)].GetSize(this.color);
         }
 

@@ -53,7 +53,7 @@ public class GameState : ScriptableObject, ISerializing
     /// A state class for all Player objects
     /// </summary>
     [System.Serializable]
-    public class Player : ISerializing
+    public class Player
     {
 
         /// <summary>
@@ -82,6 +82,7 @@ public class GameState : ScriptableObject, ISerializing
         /// A unique identifier of the client which controls this player.
         /// Unqiue across all peers in the network. 
         /// </summary>
+        [BitSerialize(0)]
         public ID clientID;
 
         /// <summary>
@@ -90,7 +91,7 @@ public class GameState : ScriptableObject, ISerializing
         public bool isLocal {
             get
             {
-                return this.clientID == GameManager.INSTANCE.state.clientID;
+                return this.clientID == GameManager.INSTANCE.state.getClientID();
             }
         }
 
@@ -101,6 +102,7 @@ public class GameState : ScriptableObject, ISerializing
         /// Unique across all peers in the network.
         /// </summary>
         [Tooltip("The unique identifier for this specific player")]
+        [BitSerialize(1)]
         public ID playerID;
 
         /// <summary>
@@ -108,18 +110,21 @@ public class GameState : ScriptableObject, ISerializing
         /// Unique across all players with the same <see cref="clientID"/>.
         /// </summary>
         [Tooltip("The unique identifier for this player on the local machine")]
+        [BitSerialize(2)]
         public ID localID;
 
         /// <summary>
         /// The name identifier of the player. Not unique. Enforced max of <see cref="SIZE_MAX_NAME"/>.
         /// </summary>
         [Tooltip("The name of this player with 10 characters max")]
+        [BitSerialize(3)]
         public string name;
 
         /// <summary>
         /// The color-overlay.
         /// </summary>
         [Tooltip("The color of the character for the player")]
+        [BitSerialize(4)]
         public Color color;
 
         // Physics
@@ -128,18 +133,21 @@ public class GameState : ScriptableObject, ISerializing
         /// The position of the player in the open-world.
         /// </summary>
         [Tooltip("The current position of the player")]
+        [BitSerialize(5)]
         public Vector3 position;
 
         /// <summary>
         /// The velocity of the player in the open-world.
         /// </summary>
         [Tooltip("The velocity of the player")]
+        [BitSerialize(6)]
         public Vector3 velocity;
 
         /// <summary>
         /// The accelleration of the player in the open-world.
         /// </summary>
         [Tooltip("The acceleration of the player")]
+        [BitSerialize(7)]
         public Vector3 accelleration;
 
         // Battle
@@ -148,6 +156,7 @@ public class GameState : ScriptableObject, ISerializing
         /// If the player is presently in a battle with a player or AI.
         /// </summary>
         [Tooltip("If the player is in battle")]
+        [BitSerialize(8)]
         public bool inBattle;
 
         /// <summary>
@@ -180,6 +189,7 @@ public class GameState : ScriptableObject, ISerializing
         /// The total number of wins since entering the server.
         /// </summary>
         [Tooltip("Total number of wins since entering the server")]
+        [BitSerialize(9)]
         public uint wins;
 
         /// <summary>
@@ -187,7 +197,14 @@ public class GameState : ScriptableObject, ISerializing
         /// The higher <see cref="wins"/> is compared to other players, the 
         /// </summary>
         [Tooltip("Scoreboard rank of the player")]
+        [BitSerialize(10)]
         public uint rank;
+
+        /// <summary>
+        /// A list of all the cretins the player has.
+        /// </summary>
+        //[BitSerialize(11)]
+        public List<MonsterDataObject> monsters;
 
         // Not-Serialized
 
@@ -203,83 +220,9 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public RenderTexture cameraTexture;
 
-        /// <summary>
-        /// A list of all the cretins the player has.
-        /// </summary>
-        public List<MonsterDataObject> monsters;
-
         public Player()
         {
             this.monsters = new List<MonsterDataObject>();
-        }
-
-        // ~~~~~ ISerializing
-
-        public int GetSize()
-        {
-            return SIZE;
-        }
-
-        /// <summary>
-        /// Serializes data from this event into a byte array
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="lastIndex">The last index.</param>
-        public void Serialize(ref byte[] data, ref int lastIndex)
-        {
-        }
-
-        /// <summary>
-        /// Deserializes data from a byte array into this event's data
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="lastIndex">The last index.</param>
-        public void Deserialize(byte[] data, ref int lastIndex)
-        {
-
-            // read isLocal
-            this.clientID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
-            // read player id
-            this.playerID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
-            // read local id
-            this.localID = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(System.UInt32);
-            // read name
-            int nameLength = System.BitConverter.ToInt32(data, lastIndex); lastIndex += sizeof(System.Int32);
-            this.name = "";
-            for (int i = 0; i < nameLength; i++)
-            {
-                this.name += System.BitConverter.ToChar(data, lastIndex);
-                lastIndex += sizeof(System.Char);
-            }
-            // read color
-            this.color.r = this.DeserializeFloat(data, ref lastIndex);
-            this.color.g = this.DeserializeFloat(data, ref lastIndex);
-            this.color.b = this.DeserializeFloat(data, ref lastIndex);
-            this.color.a = 1.0f;
-            // read position
-            this.position.x = this.DeserializeFloat(data, ref lastIndex);
-            this.position.y = this.DeserializeFloat(data, ref lastIndex);
-            this.position.z = this.DeserializeFloat(data, ref lastIndex);
-            // read velocity
-            this.velocity.x = this.DeserializeFloat(data, ref lastIndex);
-            this.velocity.y = this.DeserializeFloat(data, ref lastIndex);
-            this.velocity.z = this.DeserializeFloat(data, ref lastIndex);
-            // read accelleration
-            this.accelleration.x = this.DeserializeFloat(data, ref lastIndex);
-            this.accelleration.y = this.DeserializeFloat(data, ref lastIndex);
-            this.accelleration.z = this.DeserializeFloat(data, ref lastIndex);
-            // read inBattle
-            this.inBattle = System.BitConverter.ToBoolean(data, lastIndex); lastIndex += sizeof(System.Boolean);
-            // read wins
-            this.wins = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(uint);
-            // read rank
-            this.rank = System.BitConverter.ToUInt32(data, lastIndex); lastIndex += sizeof(uint);
-        }
-
-        private float DeserializeFloat(byte[] data, ref int lastIndex)
-        {
-            float ret = System.BitConverter.ToSingle(data, lastIndex); lastIndex += sizeof(System.Single);
-            return ret;
         }
 
         // ~~~~~ Data copy
@@ -334,11 +277,18 @@ public class GameState : ScriptableObject, ISerializing
 
     [ToDo("Serialize")]
     public bool isLocalGame;
-    
+
     /// <summary>
     /// A unique identifier (across all peers in the network) of the client which controls this player
     /// </summary>
-    public uint clientID;
+    private uint _clientID;
+    /// <summary>
+    /// A unique identifier (across all peers in the network) of the client which controls this player
+    /// </summary>
+    [BitSerialize(0)]
+    public int clientID;
+
+    public uint getClientID() { return this._clientID; }
 
     public MonsterDataObject[] starters;
 
@@ -523,7 +473,8 @@ public class GameState : ScriptableObject, ISerializing
     public int GetSize()
     {
         // clientID + # of players + amount of space required for players
-        return sizeof(uint) + sizeof(int) + (this.players.Count * Player.SIZE);
+        return //sizeof(uint) +
+            sizeof(int) + (this.players.Count * Player.SIZE);
     }
 
     /// <summary>
@@ -546,13 +497,15 @@ public class GameState : ScriptableObject, ISerializing
     public void Deserialize(byte[] data, ref int lastIndex)
     {
 
+        /*
         // Deserialize clientID
         int clientID = System.BitConverter.ToInt32(data, lastIndex);
         lastIndex += sizeof(ID);
+        //*/
         // Check for valid clientID (if < 0, then the gamestate was broadcasted)
-        if (clientID >= 0)
+        if (this.clientID >= 0)
         {
-            this.clientID = (uint)clientID;
+            this._clientID = (uint)clientID;
         }
 
         // Deserialize player count
@@ -564,9 +517,9 @@ public class GameState : ScriptableObject, ISerializing
         for (int i = 0; i < playerCount; i++)
         {
             // Deserialize the player data
-            Player player = new Player();
-            player.objectReference = null;
-            player.Deserialize(data, ref lastIndex);
+            Player player = (Player)BitSerializeAttribute.Deserialize(new Player(), data, ref lastIndex);
+            //player.objectReference = null;
+            //player.Deserialize(data, ref lastIndex);
 
             playersFromData.Add(player.playerID);
 

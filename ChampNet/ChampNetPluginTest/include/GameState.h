@@ -30,7 +30,7 @@ public:
 			// name
 			+ sizeof(int) + (SIZE_MAX_NAME * (sizeof(char) * 2))
 			// color
-			+ (sizeof(float) * 3)
+			+ (sizeof(float) * 4)
 			// position
 			+ (sizeof(float) * 3)
 			// velocity
@@ -54,7 +54,7 @@ public:
 		/// the name of the character
 		std::string name;
 		/// the highlight color of the character
-		float colorR, colorG, colorB;
+		float colorR, colorG, colorB, colorA;
 		/// the position
 		float posX, posY, posZ;
 		/// velocity
