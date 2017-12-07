@@ -50,6 +50,15 @@ public class BattleParticipant
         this.fetchCurrentCretin();
     }
 
+    public int maxHP = 75;
+
+    private int _hp;
+    public int CurrentHP
+    {
+        get { return _hp = Mathf.Clamp(_hp, 0, maxHP); }
+        set { _hp = Mathf.Clamp(value, 0, maxHP); }
+    }
+
     /// <summary>
     /// Instantiate the participant as a cretin AI.
     /// </summary>

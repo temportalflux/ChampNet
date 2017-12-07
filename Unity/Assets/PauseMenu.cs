@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour {
             this.msg.text = "Spd: " + data.GetSpeed.ToString();
 
             this.msg = GameObject.Find("Cretin HP (" + display + ")").GetComponent<Text>();
-            this.msg.text = "HP: " + data.CurrentHP.ToString() + "/" + data.GetMaxHp.ToString();
+            //this.msg.text = "HP: " + data.CurrentHP.ToString() + "/" + data.GetMaxHp.ToString();
 
             display += 1;
         }
@@ -50,9 +50,9 @@ public class PauseMenu : MonoBehaviour {
         this.display = 1;
         foreach (MonsterDataObject data in this.trainer.getInfo().monsters)
         {
-            data.Heal();
+            //data.Heal();
             this.msg = GameObject.Find("Cretin HP (" + display + ")").GetComponent<Text>();
-            this.msg.text = "HP: " + data.CurrentHP.ToString() + "/" + data.GetMaxHp.ToString();
+            //this.msg.text = "HP: " + data.CurrentHP.ToString() + "/" + data.GetMaxHp.ToString();
 
             this.display += 1;
         }

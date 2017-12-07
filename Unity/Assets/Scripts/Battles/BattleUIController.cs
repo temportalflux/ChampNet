@@ -213,12 +213,12 @@ public class BattleUIController : MonoBehaviour
     {
         localCretinNameText.text = local.currentCretin.GetMonsterName;
         localCretinHealthText.text =
-            string.Format("{0} / {1}", local.currentCretin.CurrentHP, local.currentCretin.GetMaxHp);
-        localHPBar.transform.localScale = new Vector3(local.currentCretin.CurrentHP / (float)local.currentCretin.GetMaxHp, 1, 1);
+            string.Format("{0} / {1}", local.CurrentHP, local.maxHP);
+        localHPBar.transform.localScale = new Vector3(local.CurrentHP / (float)local.maxHP, 1, 1);
 
         otherCretinNameText.text = other.currentCretin.GetMonsterName;
         otherCretinHealthText.text =
-            string.Format("{0} / {1}", other.currentCretin.CurrentHP, other.currentCretin.GetMaxHp);
-        otherHPBar.transform.localScale = new Vector3(other.currentCretin.CurrentHP / (float)other.currentCretin.GetMaxHp, 1, 1);
+            string.Format("{0} / {1}", other.CurrentHP, other.maxHP);
+        otherHPBar.transform.localScale = new Vector3(other.CurrentHP / (float)other.maxHP, 1, 1);
     }
 }
