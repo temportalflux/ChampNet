@@ -637,7 +637,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				// the playerID of the winner
 				unsigned int winnerID = pPacket->playerIdThird;
 				// TODO: Account for winner
+				this->mpGameState->players[winnerID].wins++;
 
+				// update scoreboards
+				CalculateScoreBoardData();
 
 				// Send the request to the receiver
 				this->sendPacket(addressSender.c_str(), pPacket, false);
@@ -904,4 +907,33 @@ void StateServer::deserializePlayerRequests(ChampNet::Packet *pPacket, PlayerReq
 const char* StateServer::getClientAddressFrom(unsigned int playerID)
 {
 	return this->mpClientAddresses[this->mpPlayerIdToClientId[playerID]]->c_str();
+}
+
+void StateServer::CalculateScoreBoardData()
+{
+	std::map<unsigned int, GameState::Player> rankingPlayers = this->mpGameState->players;
+	
+	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
+	{
+		for (unsigned int k = i + 1; k < rankingPlayers.size(); ++k)
+		{
+			if (rankingPlayers[i].wins < rankingPlayers[k].wins)
+			{
+				GameState::Player temp = rankingPlayers[i];
+				rankingPlayers[i] = rankingPlayers[k];
+				rankingPlayers[k] = temp;
+			}
+		}
+	}
+	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
+	{
+		for (unsigned int k = 0; k < rankingPlayers.size(); ++k)
+		{
+			if (this->mpGameState->players[i].playerID == rankingPlayers[k].playerID)
+			{
+				this->mpGameState->players[i].rank = k;
+				break;
+			}
+		}
+	}
 }
