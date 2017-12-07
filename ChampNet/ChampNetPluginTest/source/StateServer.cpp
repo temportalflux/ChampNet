@@ -603,7 +603,25 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT:
-			// INVALID
+			{
+				// Winner is telling us they won
+				unsigned int pPacketLength = 0;
+				PacketUserIDTriple* pPacket = packet->getPacketAs<PacketUserIDTriple>(pPacketLength);
+
+				// Get the address of the sender (the challenger/requester) for reporting purposes
+				std::string addressSender = packet->getAddress();
+				// Get the address of the receiver
+				std::string *addressReceiver = this->mpClientAddresses[this->mpPlayerIdToClientId[pPacket->playerIdReceiver]];
+
+				// the playerID of the winner
+				unsigned int winnerID = pPacket->playerIdThird;
+				// TODO: Account for winner
+
+
+				// Send the request to the receiver
+				this->sendPacket(addressSender.c_str(), pPacket, false);
+				this->sendPacket(addressReceiver->c_str(), pPacket, false);
+			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:
 			{
