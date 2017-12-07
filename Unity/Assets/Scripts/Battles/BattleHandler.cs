@@ -124,9 +124,35 @@ public class BattleHandler : MonoBehaviour
             {
                 StartCoroutine(HandleResponse(this.participant1, this.participant2));
             }
+
+            if (isLocalPlayer)
+            {
+                // AI now needs to make decision
+                this.submitAIDecision(this.participant2);
+            }
+
         }
 
         return true;
+    }
+
+    private void submitAIDecision(BattleParticipant ai)
+    {
+        GameState.Player.EnumBattleSelection selection;
+
+        selection = GameState.Player.EnumBattleSelection.ATTACK;
+
+        switch (selection)
+        {
+            case GameState.Player.EnumBattleSelection.ATTACK:
+                uint selectionIndex = (uint)Random.Range(
+                    0, ai.currentCretin.GetAvailableAttacks.Count
+                ) + 1;
+                this.SendBattleOption(false, selection, selectionIndex);
+                break;
+            default:
+                break;
+        }
     }
 
     private void getLocalNetwork(BattleParticipant p1, BattleParticipant p2, out BattleParticipant local,
@@ -146,7 +172,7 @@ public class BattleHandler : MonoBehaviour
         local.selectionChoice -= 1;
         networkOrAI.selectionChoice -= 1;
 
-        Debug.Log(string.Format("local: {0}\t network: {1}", local.selectionChoice, networkOrAI.selectionChoice));
+        //Debug.Log(string.Format("local: {0}\t network: {1}", local.selectionChoice, networkOrAI.selectionChoice));
 
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
@@ -154,6 +180,9 @@ public class BattleHandler : MonoBehaviour
             // Local keeper fled
             battleUIController.SetFlavorText("You Fled the battle");
             yield return  new WaitForSeconds(2.0f);
+
+            this.BattleIsOver(local, networkOrAI);
+            yield break;
         }
 
         if (networkOrAI.selection == GameState.Player.EnumBattleSelection.FLEE)
@@ -163,6 +192,7 @@ public class BattleHandler : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
 
             this.BattleIsOver(networkOrAI, local);
+            yield break;
         }
 
         // Check to see if either selection was to switch
