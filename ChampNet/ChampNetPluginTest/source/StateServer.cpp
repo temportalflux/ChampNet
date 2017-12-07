@@ -914,29 +914,24 @@ const char* StateServer::getClientAddressFrom(unsigned int playerID)
 
 void StateServer::CalculateScoreBoardData()
 {
-	std::map<unsigned int, GameState::Player> rankingPlayers = this->mpGameState->players;
-	
-	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
+
+	int rank = 0;
+	for (auto iter = this->mpGameState->players.begin(); iter != this->mpGameState->players.end(); iter++)
 	{
-		for (unsigned int k = i + 1; k < rankingPlayers.size(); ++k)
+		iter->second.rank = rank++;
+	}
+
+	for (auto iterI = this->mpGameState->players.begin(); iterI != this->mpGameState->players.end(); iterI++)
+	{
+		for (auto iterJ = this->mpGameState->players.begin(); iterJ != this->mpGameState->players.end(); iterJ++)
 		{
-			if (rankingPlayers[i].wins < rankingPlayers[k].wins)
+			if (iterI->second.wins < iterJ->second.wins)
 			{
-				GameState::Player temp = rankingPlayers[i];
-				rankingPlayers[i] = rankingPlayers[k];
-				rankingPlayers[k] = temp;
+				int tmp = iterI->second.rank;
+				iterI->second.rank = iterJ->second.rank;
+				iterJ->second.rank = tmp;
 			}
 		}
 	}
-	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
-	{
-		for (unsigned int k = 0; k < rankingPlayers.size(); ++k)
-		{
-			if (this->mpGameState->players[i].playerID == rankingPlayers[k].playerID)
-			{
-				this->mpGameState->players[i].rank = k;
-				break;
-			}
-		}
-	}
+
 }
