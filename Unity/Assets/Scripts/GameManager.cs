@@ -206,6 +206,10 @@ public class GameManager : Singleton<GameManager>
     {
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
+    public ScoreBoard getScoreBoard()
+    {
+        return this.scoreBoardVar;
+    }
 
     private GameObject _hudGameObject;
 

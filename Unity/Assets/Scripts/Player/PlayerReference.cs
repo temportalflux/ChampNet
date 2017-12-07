@@ -32,7 +32,7 @@ public class PlayerReference : MonoBehaviour {
     /// Current Rank of the player.
     /// Ask @Hypocripe (Chris Brennan) about how its sorted.
     /// </summary>
-    public uint rank
+    public int rank
     {
         get
         {

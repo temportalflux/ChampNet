@@ -172,6 +172,31 @@ public class BattleHandler : MonoBehaviour
             yield break;
         }
 
+        // Calculate who attacks first
+        bool localCreitenIsFaster = local.currentCretin.GetSpeed > networkOrAI.currentCretin.GetSpeed;
+
+        if (this.isNetworked)
+        {
+            if (local.selection == GameState.Player.EnumBattleSelection.FLEE && local.selection == networkOrAI.selection)
+            {
+                // Both fled
+                uint winner = local.playerController.playerID;
+                uint loser = networkOrAI.playerController.playerID;
+                // Winner = lowest playerID
+                if (winner > loser)
+                {
+                    uint tmp = winner;
+                    winner = loser;
+                    loser = tmp;
+                }
+                // If I am winner
+                if (local.playerController.playerID == winner)
+                {
+                    EventBattleResult.Dispatch(winner, loser);
+                }
+            }
+        }
+
         // Check to see if either selection was to switch
         if (local.selection == GameState.Player.EnumBattleSelection.SWAP)
         {
@@ -186,9 +211,6 @@ public class BattleHandler : MonoBehaviour
             battleUIController.SetFlavorText("Your opponent swapped in " + networkOrAI.currentCretin.GetMonsterName);
             yield return new WaitForSeconds(2.0f);
         }
-
-        // Calculate who attacks first
-        bool localCreitenIsFaster = local.currentCretin.GetSpeed > networkOrAI.currentCretin.GetSpeed;
 
         List<BattleParticipant> faintedParticipants = new List<BattleParticipant>();
         // check to see if either selection was to attack, ordered based on certin speed

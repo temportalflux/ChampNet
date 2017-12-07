@@ -810,11 +810,14 @@ void StateServer::removeClient(unsigned int clientID)
 					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
 					if (opponentID >= 0)
 					{
-						PacketUserIDDouble packetBattleBroken[1];
-						packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
-						packetBattleBroken->playerIdSender = playerID;
-						packetBattleBroken->playerIdReceiver = opponentID;
-						this->sendPacket(this->mpClientAddresses[this->mpPlayerIdToClientId[opponentID]]->c_str(), packetBattleBroken, false);
+						unsigned int oppClientID = this->mpPlayerIdToClientId[opponentID];
+						if (oppClientID >= 0) {
+							PacketUserIDDouble packetBattleBroken[1];
+							packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
+							packetBattleBroken->playerIdSender = playerID;
+							packetBattleBroken->playerIdReceiver = opponentID;
+							this->sendPacket(this->mpClientAddresses[oppClientID]->c_str(), packetBattleBroken, false);
+						}
 					}
 				}
 				this->mpGameState->removePlayer(playerID);
