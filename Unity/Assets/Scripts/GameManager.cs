@@ -258,11 +258,11 @@ public class GameManager : Singleton<GameManager>
         //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
 
         // set asking window to active
-        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(true);
-        
+        GameObject name = GameObject.FindGameObjectWithTag("AllPlayers").GetComponent<RequestWindowScript>().GetBattleRequestWindow();
+        name.SetActive(true);
+
         // display character name in asking window
-        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().GetComponentInChildren<Text>().text
-            = ("Battle Request From " + this.state.players[opponentID].name);
+        name.GetComponentInChildren<Text>().text = ("Battle Request From " + this.state.players[opponentID].name);
 
         //GameObject.FindGameObjectWithTag("UIRequest").SetActive(true);
         //GameObject.Find("BattleRequestWindow").SetActive(true);
