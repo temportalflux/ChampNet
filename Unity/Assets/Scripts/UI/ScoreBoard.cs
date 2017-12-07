@@ -212,9 +212,9 @@ public class ScoreBoard : MonoBehaviour {
             if (player.rank != player.oldRank && player.oldRank >= 0 && player.oldRank < this.rankText.Length)
             {
                 // set name info
-                this.rankText[player.rank].NameObject.GetComponent<Text>().text = "N/A";
+                this.rankText[player.oldRank].NameObject.GetComponent<Text>().text = "N/A";
                 // set win info
-                this.rankText[player.rank].WinObject.GetComponent<Text>().text = "0";
+                this.rankText[player.oldRank].WinObject.GetComponent<Text>().text = "0";
             }
 
             if (player.rank < this.rankText.Length)
