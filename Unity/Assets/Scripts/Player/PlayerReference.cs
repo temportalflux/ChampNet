@@ -109,7 +109,20 @@ public class PlayerReference : MonoBehaviour {
         SpriteRenderer s = t.GetComponent<SpriteRenderer>();
         s.color = this.playerInfo.color;
 
-        
+
+    }
+
+    public void resetDelay()
+    {
+        StartCoroutine(this.battleDelay());
+    }
+
+    private IEnumerator battleDelay()
+    {
+        this.getInfo().canLocalBattle = false;
+        float wait = UnityEngine.Random.Range(5.0f, 10);
+        yield return new WaitForSeconds(wait);
+        this.getInfo().canLocalBattle = true;
     }
 
     public GameState.Player getInfo()

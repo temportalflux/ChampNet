@@ -198,8 +198,11 @@ public class GameState : ScriptableObject, ISerializing
 
         public int oldRank;
 
+        public bool canLocalBattle;
+
         public Player()
         {
+            this.canLocalBattle = true;
             this.monsterIDs = new List<uint>();
         }
 

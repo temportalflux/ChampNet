@@ -26,6 +26,8 @@ public class EventNetwork : ISerializing
         //Debug.Log("Got event " + id);
         switch (id)
         {
+            case (char)ChampNetPlugin.MessageIDs.ID_CONNECTION_LOST:
+                return new EventDisconnected();
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_ACCEPTED:
                 return new EventConnected();
             case (char)ChampNetPlugin.MessageIDs.ID_CLIENT_CONNECTION_REJECTED:

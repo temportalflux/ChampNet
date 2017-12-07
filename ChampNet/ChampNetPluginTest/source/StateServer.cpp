@@ -465,7 +465,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					// create new stats
 					unsigned int *newMonsters = new unsigned int[mpGameState->players[playerID].monstersCount];
 					// copy old stats
-					memcpy(newMonsters, oldMonsters, oldMonstersCount);
+					for (int iMonster = 0; iMonster < oldMonstersCount; iMonster++)
+						newMonsters[iMonster] = oldMonsters[iMonster];
 					// add new id
 					newMonsters[oldMonstersCount] = monsterID;
 					// set new stats
@@ -632,23 +633,27 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				std::string addressSender = packet->getAddress();
 				// Get the address of the receiver
 				int receiverClientID = this->mpPlayerIdToClientId[pPacket->playerIdReceiver];
-				std::string *addressReceiver = receiverClientID >= 0 ? this->mpClientAddresses[receiverClientID] : NULL;
 
 				// the playerID of the winner
 				unsigned int winnerID = pPacket->playerIdThird;
-				// TODO: Account for winner
-				this->mpGameState->players[winnerID].wins++;
+				// will be the same if player battled AI
+				if (winnerID != receiverClientID)
+				{
+					this->mpGameState->players[winnerID].wins++;
 
-				// update scoreboards
-				CalculateScoreBoardData();
+					// update scoreboards
+					CalculateScoreBoardData();
+
+					// NULL if they disconnected during battle
+					std::string *addressReceiver = receiverClientID >= 0 ? this->mpClientAddresses[receiverClientID] : NULL;
+					if (addressReceiver != NULL)
+					{
+						this->sendPacket(addressReceiver->c_str(), pPacket, false);
+					}
+				}
 
 				// Send the request to the receiver
 				this->sendPacket(addressSender.c_str(), pPacket, false);
-				// NULL if they disconnected during battle
-				if (addressReceiver != NULL)
-				{
-					this->sendPacket(addressReceiver->c_str(), pPacket, false);
-				}
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:

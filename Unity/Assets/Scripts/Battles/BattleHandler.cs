@@ -204,6 +204,7 @@ public class BattleHandler : MonoBehaviour
         // Check to see if either selection was to switch
         if (local.selection == GameState.Player.EnumBattleSelection.SWAP)
         {
+            local.swapCretinTo(local.selectionChoice);
             // local keeper swapped a creiten
             battleUIController.SetFlavorText("You swapped in " + local.currentCretin.GetMonsterName);
             yield return  new WaitForSeconds(2.0f);
@@ -211,6 +212,7 @@ public class BattleHandler : MonoBehaviour
 
         if (networkOrAI.selection == GameState.Player.EnumBattleSelection.SWAP)
         {
+            networkOrAI.swapCretinTo(networkOrAI.selectionChoice);
             // other keeper swapped a creiten
             battleUIController.SetFlavorText("Your opponent swapped in " + networkOrAI.currentCretin.GetMonsterName);
             yield return new WaitForSeconds(2.0f);
@@ -359,7 +361,9 @@ public class BattleHandler : MonoBehaviour
                 EventPlayerAddMonster.Dispatch(winner.playerController.playerID, loser.currentCretin.monsterStat.id);
             }
 
-            GameManager.INSTANCE.UnloadBattleScene();
+            uint playerID = (winner.isPlayer() ? winner : loser).playerController.playerID;
+            EventBattleResult.Dispatch(playerID, playerID);
+            //GameManager.INSTANCE.UnloadBattleScene();
         }
     }
 
