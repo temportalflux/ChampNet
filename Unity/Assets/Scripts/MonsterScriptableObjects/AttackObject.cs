@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public enum MonsterType
@@ -21,7 +20,7 @@ public enum MoveKind
     SPECIAL,
     STATUS
 }
-[CanEditMultipleObjects]
+
 [Serializable]
 [CreateAssetMenu(menuName = "Asset/ Create New Attack", order = 100)]
 public class AttackObject : ScriptableObject

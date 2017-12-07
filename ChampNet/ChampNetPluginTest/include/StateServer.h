@@ -147,6 +147,9 @@ public:
 	/// \author Dustin Yost
 	const char* getClientAddressFrom(unsigned int playerID);
 
+	/// Used to put players into rank order based on wins
+	void CalculateScoreBoardData();
+
 };
 
 /// @}

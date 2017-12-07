@@ -117,9 +117,12 @@ public class BattleUIController : MonoBehaviour
     public Text localCretinNameText;
     public Text localCretinHealthText;
     public Image localHPBar;
+    public Image localCretinImage;
+
     public Text otherCretinNameText;
     public Text otherCretinHealthText;
     public Image otherHPBar;
+    public Image otherCretinImage;
 
     void Start()
     {
@@ -184,6 +187,7 @@ public class BattleUIController : MonoBehaviour
                 {
                     case 1:
                         battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.FLEE, 0);
+                        menuState = MenuState.WAITING;
                         break;
                     default:
                         BackButtonClicked();
@@ -215,10 +219,12 @@ public class BattleUIController : MonoBehaviour
         localCretinHealthText.text =
             string.Format("{0} / {1}", local.CurrentHP, local.maxHP);
         localHPBar.transform.localScale = new Vector3(local.CurrentHP / (float)local.maxHP, 1, 1);
+        localCretinImage.sprite = local.currentCretin.monsterStat.monsterPicture;
 
         otherCretinNameText.text = other.currentCretin.GetMonsterName;
         otherCretinHealthText.text =
             string.Format("{0} / {1}", other.CurrentHP, other.maxHP);
         otherHPBar.transform.localScale = new Vector3(other.CurrentHP / (float)other.maxHP, 1, 1);
+        otherCretinImage.sprite = other.currentCretin.monsterStat.monsterPicture;
     }
 }
