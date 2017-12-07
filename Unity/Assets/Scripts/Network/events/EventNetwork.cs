@@ -49,6 +49,8 @@ public class EventNetwork : ISerializing
                 return new EventBattleResponse();
             case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_PROMPT_SELECTION:
                 return new EventBattlePromptSelection();
+            case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_OPPONENT_DISCONNECTED:
+                return new EventBattleOpponentDisconnected();
             case (char)ChampNetPlugin.MessageIDs.ID_BATTLE_RESULT:
                 return new EventBattleResult();
             //*/

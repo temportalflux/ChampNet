@@ -23,6 +23,15 @@ struct PacketUserID
 	unsigned int dataID;
 };
 
+struct PacketUserIDBool
+{
+	/// The packetID
+	unsigned char id;
+	/// The <see cref="GameState::Player::playerID"/> of the player.
+	unsigned int playerID;
+	bool toggle;
+};
+
 /// A packet with a clientID and playerID
 struct PacketClientPlayerID
 {
