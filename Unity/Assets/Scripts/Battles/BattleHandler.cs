@@ -58,8 +58,7 @@ public class BattleHandler : MonoBehaviour
         // This is a networked battle, so all logic on when players have gone is handled via server
         if (isNetworked)
         {
-            // TODO: 1
-            //NetInterface.INSTANCE.Dispatch(new EventBattleSelection(-1, -1, selection, selectionIndex));
+            NetInterface.INSTANCE.Dispatch(new EventBattleSelection(participant1.playerController.playerID, participant2.playerController.playerID, selection, selectionIndex));
         }
         // This is a battle between a player and AI, so everything is handled locally
         else
