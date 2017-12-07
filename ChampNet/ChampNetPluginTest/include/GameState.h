@@ -19,32 +19,6 @@ public:
 		/// The maximum length of any player's name
 		const static int SIZE_MAX_NAME = 10;
 
-		/// The maximum length of the Player when serialized into a byte[]
-		const static int SIZE = 0
-			// clientID
-			+ sizeof(unsigned int)
-			// playerID
-			+ sizeof(unsigned int)
-			// localID
-			+ sizeof(unsigned int)
-			// name
-			+ sizeof(int) + (SIZE_MAX_NAME * (sizeof(char) * 2))
-			// color
-			+ (sizeof(float) * 3)
-			// position
-			+ (sizeof(float) * 3)
-			// velocity
-			+ (sizeof(float) * 3)
-			// acceleration
-			+ (sizeof(float) * 3)
-			// inBattle
-			+ sizeof(bool)
-			// Wins
-			+ sizeof(unsigned int)
-			// Rank
-			+ sizeof(unsigned int)
-			;
-
 		/// The clientID of the controlling client. This is unique across all peers in a network.
 		unsigned int clientID;
 		/// The playerID of the character. This is unique across all players in a network.
@@ -54,7 +28,7 @@ public:
 		/// the name of the character
 		std::string name;
 		/// the highlight color of the character
-		float colorR, colorG, colorB;
+		float colorR, colorG, colorB, colorA;
 		/// the position
 		float posX, posY, posZ;
 		/// velocity
@@ -68,6 +42,9 @@ public:
 		/// Rank of player on the scoreboard
 		unsigned int rank;
 
+		int monstersCount;
+		unsigned int *monsters;
+
 		// Not serialized
 		/// the playerId of the opponent, -1 if invalid, otherwise >= 0
 		int battleOpponentId;
@@ -75,6 +52,9 @@ public:
 		int lastBattleSelection;
 		/// the last selection choice in battle, -1 if invalid, otherwise >= 0
 		int lastBattleChoice;
+
+		/// The maximum length of the Player when serialized into a byte[]
+		int getSize() const;
 
 	};
 
@@ -104,6 +84,8 @@ public:
 	/// Remove a player from the game state
 	/// @param playerID the unique <see cref="Player::playerID"/> of the player
 	void removePlayer(unsigned int playerID);
+
+	int getSize() const;
 
 	/// Serializes the game state into a byte[]
 	/// @param packetID the packet ID to include

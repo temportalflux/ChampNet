@@ -11,6 +11,9 @@ public class BattleTester : MonoBehaviour
     public BattleParticipant localPlayerTest;
     public BattleParticipant otherPlayerTest;
 
+    public MonsterDataObject monsterA;
+    public MonsterDataObject monsterB;
+
     protected bool isBattleSetup;
 
     public bool IsBattleSetup
@@ -22,5 +25,8 @@ public class BattleTester : MonoBehaviour
     void Start()
     {
         IsBattleSetup = false;
+
+        localPlayerTest = new BattleParticipant(monsterA);
+        otherPlayerTest = new BattleParticipant(monsterB);
     }
 }

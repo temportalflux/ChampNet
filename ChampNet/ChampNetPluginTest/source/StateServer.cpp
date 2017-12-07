@@ -449,6 +449,32 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				//this->sendGameState(ChampNetPlugin::ID_UPDATE_GAMESTATE);
 			}
 			break;
+		case ChampNetPlugin::ID_PLAYER_ADD_MONSTER:
+			{
+				unsigned int pPacketLength = 0;
+				PacketUserIDDouble* pPacket = packet->getPacketAs<PacketUserIDDouble>(pPacketLength);
+				unsigned int playerID = pPacket->playerIdSender;
+				unsigned int monsterID = pPacket->playerIdReceiver;
+				// Add monsterID to the monsters for playerID
+				{
+					// get the old stats
+					int oldMonstersCount = mpGameState->players[playerID].monstersCount;
+					unsigned int *oldMonsters = mpGameState->players[playerID].monsters;
+					// increment the count (adding 1)
+					mpGameState->players[playerID].monstersCount++;
+					// create new stats
+					unsigned int *newMonsters = new unsigned int[mpGameState->players[playerID].monstersCount];
+					// copy old stats
+					memcpy(newMonsters, oldMonsters, oldMonstersCount);
+					// add new id
+					newMonsters[oldMonstersCount] = monsterID;
+					// set new stats
+					mpGameState->players[playerID].monsters = newMonsters;
+					// delete old stats
+					delete[] oldMonsters;
+				}
+			}
+			break;
 		case ChampNetPlugin::ID_CLIENT_MISSING:
 			std::cout << "Connection lost\n";
 			this->stopRunning();
@@ -506,29 +532,6 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressReceiver, false);
 					this->sendPacket(addressSender, promptSelection, false);
 					this->sendPacket(addressReceiver, promptSelection, false);
-				}
-
-
-				// TODO: This will be moved to post-battle
-				if (pPacket->accepted)
-				{
-					/*
-					// Notify all users of a battle winner
-					PacketUserIDTriple packetBattleResult[1];
-					packetBattleResult->id = ChampNetPlugin::ID_BATTLE_RESULT;
-					// Rearrange the ids so it is valid with who requested the battle
-					packetBattleResult->playerIdSender = pPacket->playerIdReceiver;
-					packetBattleResult->playerIdReceiver = pPacket->playerIdSender;
-					//*/
-					// get a random winner
-					//packetBattleResult->playerIdThird = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
-
-					//unsigned int winner = rand() % 2 == 0 ? pPacket->playerIdReceiver : pPacket->playerIdSender;
-					//this->mpGameState->players[winner].wins++;
-					//this->mpGameState->players[pPacket->playerIdSender].inBattle = false;
-					//this->mpGameState->players[pPacket->playerIdReceiver].inBattle = false;
-
-					//this->sendPacket(ChampNetPlugin::GetAddress(), packetBattleResult, true);
 				}
 
 			}

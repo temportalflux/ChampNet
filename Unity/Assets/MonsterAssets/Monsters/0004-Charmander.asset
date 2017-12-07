@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189abb3104c3da240820adc6c06d35fd, type: 3}
   m_Name: 0004-Charmander
   m_EditorClassIdentifier: 
+  id: 3
   monsterName: Charmander
   monsterPicture: {fileID: 21300000, guid: 1b9a56dbb1bc72f4f9c5c3f6e66270df, type: 3}
   types: 01000000

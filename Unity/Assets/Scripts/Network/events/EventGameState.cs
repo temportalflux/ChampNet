@@ -15,6 +15,10 @@ public class EventGameState : EventNetwork
     {
     }
 
+    public EventGameState() : this(ChampNetPlugin.MessageIDs.ID_UPDATE_GAMESTATE)
+    {
+    }
+
     /// <summary>
     /// Deserializes data from a byte array into this event's data
     /// </summary>
@@ -27,7 +31,8 @@ public class EventGameState : EventNetwork
     {
         base.Deserialize(data, ref lastIndex);
         GameManager.INSTANCE.state.deltaTime = this.deltaTime;
-        GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
+        GameManager.INSTANCE.state = (GameState)BitSerializeAttribute.Deserialize(GameManager.INSTANCE.state, data, lastIndex);
+        //GameManager.INSTANCE.state.Deserialize(data, ref lastIndex);
     }
 
     /// <summary>

@@ -25,7 +25,7 @@ using System.Linq;
 /// Valid types include: bool, byte, char, (u)short, (u)int, (u)long, float, double, ISerializing, and any composite arrays of the former.
 /// If the <see cref="MonoBehaviour"/> being serialized is ISerializing, the ISerializing methods are treated as additions to all fields marked with BitSerialize
 /// </summary>
-[AttributeUsage(AttributeTargets.Field)]
+[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
 public class BitSerializeAttribute : Attribute
 {
 
@@ -34,88 +34,330 @@ public class BitSerializeAttribute : Attribute
     /// </summary>
     public uint order;
 
-    /// <summary>
-    /// A dictionary of primitive types to their primitive sizes
-    /// </summary>
-    private static Dictionary<Type, Int32> primitiveSizes = new Dictionary<Type, int>()
-    {
-        {typeof(Boolean), sizeof(Boolean)}, // bool
-        {typeof(Byte), 1}, // byte
-        {typeof(Char), sizeof(Char)}, // char
-        {typeof(Int16), sizeof(Int16)}, // short
-        {typeof(Int32), sizeof(Int32)}, // int
-        {typeof(Int64), sizeof(Int64)}, // long
-        {typeof(UInt16), sizeof(UInt16)}, // ushort
-        {typeof(UInt32), sizeof(UInt32)}, // uint
-        {typeof(UInt64), sizeof(UInt64)}, // ulong
-        {typeof(Single), sizeof(Single)}, // float
-        {typeof(Double), sizeof(Double)}, // double
-        {typeof(Color), sizeof(Single)*3}, // color
-    };
-
     public BitSerializeAttribute(uint order = 0)
     {
         this.order = order;
     }
 
     /// <summary>
-    /// Serialize a monobehavior to a byte array, using BitSerialize and ISerializing
+    /// The interface to use <see cref="SerializationModule{T}"/> in collections without knowing the type.
     /// </summary>
-    /// <param name="mono">The monobehavior to serialize</param>
-    /// <returns>A byte array of data formatted in the order of fields and extra data according to ISerializing</returns>
-    public static byte[] Serialize<T>(T mono)
+    public interface ISerializationModule
     {
-        // Find all the bitserializable fields in the object
-        uint totalBitSize;
-        List<KeyValuePair<FieldInfo, int>> attributeObjects = GetAttributeFields(mono, out totalBitSize);
-        int monoSerializingSize = -1;
-
-        // If mono is ISerializing, then it could have extra data to serialize
-        if (mono is ISerializing)
-        {
-            // If there is more data to serialize
-            monoSerializingSize = (mono as ISerializing).GetSize();
-            if (monoSerializingSize > 0)
-            {
-                // Add the bytes to the total size
-                totalBitSize += (uint)monoSerializingSize;
-            }
-        }
-
-        // Create the byte array of data
-        byte[] data = new byte[totalBitSize];
-        int offset = 0;
-        // Fill the data with the serialized fields
-        for (int fieldIndex = 0; fieldIndex < attributeObjects.Count; fieldIndex++)
-        {
-            Serialize(ref data, ref offset, attributeObjects[fieldIndex].Key.GetValue(mono));
-        }
-
-        // If mono is ISerializing, then if it has additional bytes to serialize
-        if (monoSerializingSize > 0)
-        {
-            // Serialize the remaining bytes
-            (mono as ISerializing).Serialize(ref data, ref offset);
-        }
-
-        return data;
+        /// <summary>
+        /// Determine the size of some object - effectively sizeof(object).
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <returns>int</returns>
+        int GetSize(object obj);
+        /// <summary>
+        /// Serialize a specfic object into a byte array. Returns the byte[] with the populated data.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="data">The byte array of data.</param>
+        /// <param name="start">How far into the data to put the object's serialized data.</param>
+        /// <returns>byte[]</returns>
+        byte[] Serialize(object obj, byte[] data, int start);
+        /// <summary>
+        /// Deserialize a byte array into an object.
+        /// </summary>
+        /// <param name="data">the byte[] of data.</param>
+        /// <param name="start">How far into the serialized data the object was put.</param>
+        /// <returns>object</returns>
+        object Deserialize(object obj, byte[] data, int start, Type type);
     }
 
     /// <summary>
-    /// Gets all BitSerialize attribute fields in a monobehavior, calculating the size of each along the way
+    /// The implementation of <see cref="ISerializationModule"/>, where all the generic "object" fields are objects with the type <see cref="T"/>.
     /// </summary>
-    /// <param name="mono">The MonoBehaviour with BitSerialize fields</param>
-    /// <param name="totalBitSize">The total bytes of the BitSerialize fields</param>
-    /// <returns></returns>
-    private static List<KeyValuePair<FieldInfo, int>> GetAttributeFields<T>(T mono, out uint totalBitSize)
+    /// <typeparam name="T">The generic type which this struct wraps the (De)Serialization of.</typeparam>
+    public class SerializationModule<T> : ISerializationModule
     {
-        List<KeyValuePair<BitSerializeAttribute, int>> attributes = new List<KeyValuePair<BitSerializeAttribute, int>>();
+        /// <summary>
+        /// A generic, and module settable, version of <see cref="ISerializationModule.GetSize(object)"/>.
+        /// </summary>
+        public Func<T, int> _GetSize;
+        /// <summary>
+        /// A generic, and module settable, version of <see cref="ISerializationModule.Serialize(object, byte[], int)"/>.
+        /// </summary>
+        public Func<T, byte[], int, byte[]> _Serialize;
+        /// <summary>
+        /// A generic, and module settable, version of <see cref="ISerializationModule.Deserialize(byte[], int)"/>.
+        /// </summary>
+        public Func<T, byte[], int, Type, T> _Deserialize;
+
+        /// <summary>
+        /// Determine the size of some object - effectively sizeof(object).
+        /// </summary>
+        /// <param name="obj">The object with the type <see cref="T"/>.</param>
+        /// <returns>int</returns>
+        public int GetSize(object obj) { return _GetSize((T)obj); }
+        /// <summary>
+        /// Serialize a specfic object into a byte array. Returns the byte[] with the populated data.
+        /// </summary>
+        /// <param name="obj">The object to serialize with the type <see cref="T"/>.</param>
+        /// <param name="data">The byte array of data.</param>
+        /// <param name="start">How far into the data to put the object's serialized data.</param>
+        /// <returns>byte[]</returns>
+        public byte[] Serialize(object obj, byte[] data, int start) { return _Serialize((T)obj, data, start); }
+        /// <summary>
+        /// Deserialize a byte array into an object with the type <see cref="T"/>.
+        /// </summary>
+        /// <param name="data">the byte[] of data.</param>
+        /// <param name="start">How far into the serialized data the object was put.</param>
+        /// <returns>object with the type <see cref="T"/></returns>
+        public object Deserialize(object obj, byte[] data, int start, Type type) { return _Deserialize((T)obj, data, start, type); }
+    }
+
+    /// <summary>
+    /// A dictionary of (De)Serialization interfaces for handling how any one type should be handled.
+    /// </summary>
+    public static Dictionary<Type, ISerializationModule> MODULES = new Dictionary<Type, ISerializationModule>()
+    {
+        // Byte
+        { typeof(Byte), new SerializationModule<Byte> {
+            _GetSize = new Func<Byte, int>((Byte valueA) => { return 1; }),
+            _Serialize = new Func<Byte, byte[], int, byte[]>((Byte valueB, byte[] data, int start) => {
+                data[start] = valueB;
+                return data;
+            }),
+            _Deserialize = new Func<Byte, byte[], int, Type, Byte>((Byte obj, byte[] data, int start, Type type) => {
+                return data[start];
+            }),
+        } },
+        // Boolean
+        { typeof(Boolean), new SerializationModule<Boolean> {
+            _GetSize = new Func<Boolean, int>((Boolean valueA) => { return 1; }),
+            _Serialize = new Func<Boolean, byte[], int, byte[]>((Boolean valueB, byte[] data, int start) => {
+                data[start] = (byte)(valueB ? 1 : 0);
+                return data;
+            }),
+            _Deserialize = new Func<Boolean, byte[], int, Type, Boolean>((Boolean obj, byte[] data, int start, Type type) => {
+                return data[start] > 0;
+            }),
+        } },
+        // Char
+        { typeof(Char), new SerializationModule<Char> {
+            _GetSize = new Func<Char, int>((Char valueA) => { return sizeof(Char); }),
+            _Serialize = new Func<Char, byte[], int, byte[]>((Char valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Char, byte[], int, Type, Char>((Char obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToChar(data, start);
+            }),
+        } },
+        // Int16
+        { typeof(Int16), new SerializationModule<Int16> {
+            _GetSize = new Func<Int16, int>((Int16 valueA) => { return sizeof(Int16); }),
+            _Serialize = new Func<Int16, byte[], int, byte[]>((Int16 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Int16, byte[], int, Type, Int16>((Int16 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToInt16(data, start);
+            }),
+        } },
+        // Int32
+        { typeof(Int32), new SerializationModule<Int32> {
+            _GetSize = new Func<Int32, int>((Int32 valueA) => { return sizeof(Int32); }),
+            _Serialize = new Func<Int32, byte[], int, byte[]>((Int32 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Int32, byte[], int, Type, Int32>((Int32 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToInt32(data, start);
+            }),
+        } },
+        // Int64
+        { typeof(Int64), new SerializationModule<Int64> {
+            _GetSize = new Func<Int64, int>((Int64 valueA) => { return sizeof(Int64); }),
+            _Serialize = new Func<Int64, byte[], int, byte[]>((Int64 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Int64, byte[], int, Type, Int64>((Int64 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToInt64(data, start);
+            }),
+        } },
+        // UInt16
+        { typeof(UInt16), new SerializationModule<UInt16> {
+            _GetSize = new Func<UInt16, int>((UInt16 valueA) => { return sizeof(UInt16); }),
+            _Serialize = new Func<UInt16, byte[], int, byte[]>((UInt16 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<UInt16, byte[], int, Type, UInt16>((UInt16 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToUInt16(data, start);
+            }),
+        } },
+        // UInt32
+        { typeof(UInt32), new SerializationModule<UInt32> {
+            _GetSize = new Func<UInt32, int>((UInt32 valueA) => { return sizeof(UInt32); }),
+            _Serialize = new Func<UInt32, byte[], int, byte[]>((UInt32 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<UInt32, byte[], int, Type, UInt32>((UInt32 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToUInt32(data, start);
+            }),
+        } },
+        // UInt64
+        { typeof(UInt64), new SerializationModule<UInt64> {
+            _GetSize = new Func<UInt64, int>((UInt64 valueA) => { return sizeof(UInt64); }),
+            _Serialize = new Func<UInt64, byte[], int, byte[]>((UInt64 valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<UInt64, byte[], int, Type, UInt64>((UInt64 obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToUInt64(data, start);
+            }),
+        } },
+        // Single
+        { typeof(Single), new SerializationModule<Single> {
+            _GetSize = new Func<Single, int>((Single valueA) => { return sizeof(Single); }),
+            _Serialize = new Func<Single, byte[], int, byte[]>((Single valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Single, byte[], int, Type, Single>((Single obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToSingle(data, start);
+            }),
+        } },
+        // Double
+        { typeof(Double), new SerializationModule<Double> {
+            _GetSize = new Func<Double, int>((Double valueA) => { return sizeof(Double); }),
+            _Serialize = new Func<Double, byte[], int, byte[]>((Double valueB, byte[] data, int start) => {
+                CopyTo(ref data, start, BitConverter.GetBytes(valueB));
+                return data;
+            }),
+            _Deserialize = new Func<Double, byte[], int, Type, Double>((Double obj, byte[] data, int start, Type type) => {
+                return BitConverter.ToDouble(data, start);
+            }),
+        } },
+        // String
+        { typeof(string), new SerializationModule<string> {
+            _GetSize = new Func<string, int>((string valueA) => { return GetSizeOf(valueA.ToCharArray(), null); }),
+            _Serialize = new Func<string, byte[], int, byte[]>((string valueB, byte[] data, int start) => {
+                // we KNOW chars don't have BitSerialize in them
+                data = Serialize(valueB.ToCharArray(), data, start, new AttributeField());
+                return data;
+            }),
+            _Deserialize = new Func<string, byte[], int, Type, string>((string obj, byte[] data, int start, Type type) => {
+                return new string((char[])Deserialize(null, data, start, new AttributeField(), typeof(char[])));
+            }),
+        } },
+        // Vector3
+        { typeof(Vector3), new SerializationModule<Vector3> {
+            _GetSize = new Func<Vector3, int>((Vector3 valueA) => { return 3 * sizeof(Single); }),
+            _Serialize = new Func<Vector3, byte[], int, byte[]>((Vector3 valueB, byte[] data, int start) => {
+                ISerializationModule module = MODULES[typeof(Single)];
+                data = module.Serialize(valueB.x, data, start);
+                start += sizeof(Single);
+                data = module.Serialize(valueB.y, data, start);
+                start += sizeof(Single);
+                data = module.Serialize(valueB.z, data, start);
+                return data;
+            }),
+            _Deserialize = new Func<Vector3, byte[], int, Type, Vector3>((Vector3 obj, byte[] data, int start, Type type) => {
+                Type single = typeof(Single);
+                ISerializationModule module = MODULES[single];
+                float x = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                start += sizeof(Single);
+                float y = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                start += sizeof(Single);
+                float z = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                return new Vector3(x,y,z);
+            }),
+        } },
+        // Color
+        { typeof(Color), new SerializationModule<Color> {
+            _GetSize = new Func<Color, int>((Color valueA) => { return 4 * sizeof(Single); }),
+            _Serialize = new Func<Color, byte[], int, byte[]>((Color valueB, byte[] data, int start) => {
+                ISerializationModule module = MODULES[typeof(Single)];
+                data = module.Serialize(valueB.r, data, start);
+                start += sizeof(Single);
+                data = module.Serialize(valueB.g, data, start);
+                start += sizeof(Single);
+                data = module.Serialize(valueB.b, data, start);
+                start += sizeof(Single);
+                data = module.Serialize(valueB.a, data, start);
+                return data;
+            }),
+            _Deserialize = new Func<Color, byte[], int, Type, Color>((Color obj, byte[] data, int start, Type type) => {
+                Type single = typeof(Single);
+                ISerializationModule module = MODULES[single];
+                float r = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                start += sizeof(Single);
+                float g = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                start += sizeof(Single);
+                float b = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                start += sizeof(Single);
+                float a = (float)MODULES[typeof(Single)].Deserialize(0.0f, data, start, single);
+                return new Color(r, g, b, a);
+            }),
+        } },
+        // ISerializing
+        { typeof(ISerializing), new SerializationModule<ISerializing> {
+            _GetSize = new Func<ISerializing, int>((ISerializing valueA) => { return valueA.GetSize(); }),
+            _Serialize = new Func<ISerializing, byte[], int, byte[]>((ISerializing valueB, byte[] data, int start) => {
+                valueB.Serialize(ref data, ref start);
+                return data;
+            }),
+            _Deserialize = new Func<ISerializing, byte[], int, Type, ISerializing>((ISerializing obj, byte[] data, int start, Type type) => {
+                obj.Deserialize(data, ref start);
+                return obj;
+            }),
+        } },
+    };
+
+    /// <summary>
+    /// Write some byte array into another byte array at some offset.
+    /// </summary>
+    /// <param name="dest">The data to copy.</param>
+    /// <param name="start">The offset in bytes.</param>
+    /// <param name="source">The data object to copy into at the offset.</param>
+    private static void CopyTo(ref byte[] dest, int start, byte[] source)
+    {
+        Array.Copy(source, 0, dest, start, source.Length);
+    }
+    
+    public class AttributeField
+    {
+
+        public FieldInfo info = null;
+        public int size = 0;
+        public List<AttributeField> fields = new List<AttributeField>();
+        public List<AttributeField> fieldsbyGeneric = new List<AttributeField>();
+
+    }
+
+    private struct BitAttribute
+    {
+        public BitSerializeAttribute attribute;
+        public FieldInfo field;
+    }
+
+    private static List<BitAttribute> GetBitAttributeFields<T>(T value, Type fieldType = null)
+    {
+        List<BitAttribute> attributes = new List<BitAttribute>();
 
         // Get the type of the object
-        Type monoType = mono.GetType();
+        Type type = null;
+        if (value != null)
+        {
+            type = value.GetType();
+        }
+        else
+        {
+            Debug.Assert(fieldType != null);
+            type = fieldType;
+        }
+        Type subType = type.GetElementType();
+        if (subType != null) type = subType;
 
         // Retreive the fields from the mono instance, sorted by declaration order
-        FieldInfo[] objectFields = monoType.GetFields(
+        FieldInfo[] objectFields = type.GetFields(
             BindingFlags.Instance | BindingFlags.Public // | BindingFlags.NonPublic
         );
 
@@ -127,38 +369,67 @@ public class BitSerializeAttribute : Attribute
             // if we detect any attribute
             if (attribute != null)
             {
-                attributes.Add(new KeyValuePair<BitSerializeAttribute, int>(attribute, i));
+                attributes.Add(new BitAttribute { attribute = attribute, field = objectFields[i] });
             }
         }
 
-        attributes.Sort(new Comparison<KeyValuePair<BitSerializeAttribute, int>>((a, b) => { return (int)a.Key.order - (int)b.Key.order; }));
+        attributes.Sort(new Comparison<BitAttribute>((a, b) => { return (int)a.attribute.order - (int)b.attribute.order; }));
 
-        List<KeyValuePair<FieldInfo, int>> fieldsAndSizes = new List<KeyValuePair<FieldInfo, int>>();
-        totalBitSize = 0;
+        return attributes;
+    }
 
-        foreach (KeyValuePair<BitSerializeAttribute, int> attributeEntry in attributes)
+    /// <summary>
+    /// Gets all BitSerialize attribute fields in a monobehavior, calculating the size of each along the way
+    /// </summary>
+    /// <param name="value">The MonoBehaviour with BitSerialize fields</param>
+    /// <param name="totalBitSize">The total bytes of the BitSerialize fields</param>
+    /// <returns></returns>
+    private static List<AttributeField> GetAttributeFields<T>(T value, Type fieldType = null)
+    {
+        List<AttributeField> attributeFields = new List<AttributeField>();
+
+        foreach (BitAttribute attributeEntry in GetBitAttributeFields(value, fieldType))
         {
-            object fieldObj = objectFields[attributeEntry.Value].GetValue(mono);
+            T def;
+            try
+            {
+                def = value != null ? value : (T)Activator.CreateInstance(fieldType);
+            }
+            catch (Exception e)
+            {
+                break;
+            }
+            object fieldObj = attributeEntry.field.GetValue(def);
 
-            // confirm fields are in the correct order
-            //Debug.Log(objectFields[i].Name);
+            AttributeField field = new AttributeField { info = attributeEntry.field, fieldsbyGeneric = new List<AttributeField>() };
+            field.fields = GetAttributeFields(fieldObj, attributeEntry.field.FieldType); // empty for collections
+
+            // This is for collections
+            Type[] genericArgs = field.info.FieldType.GetGenericArguments();
+            if (genericArgs.Length > 0)
+            {
+                for (int iGeneric = 0; iGeneric < genericArgs.Length; iGeneric++)
+                {
+                    AttributeField fieldTypeGeneric = new AttributeField { size = 0, fields = GetAttributeFields(fieldObj, genericArgs[iGeneric]) };
+                    field.fieldsbyGeneric.Add(fieldTypeGeneric);
+                }
+            }
 
             // Get the sizeof the object
-            int size = BitSerializeAttribute.GetSizeOf(fieldObj);
+            field.size = GetSizeOf(fieldObj, field.fields, field.fieldsbyGeneric);
             // A valid size was found
-            if (size >= 0)
+            if (field.size >= 0)
             {
-                totalBitSize += (uint)size;
-                fieldsAndSizes.Add(new KeyValuePair<FieldInfo, int>(objectFields[attributeEntry.Value], size));
+                attributeFields.Add(field);
             }
             // the size returned was < 0, so it was an invalid attribute
             else
             {
-                Debug.Log("Could not serialize field " + monoType.Name + "#" + objectFields[attributeEntry.Value].Name + " even though it is marked as bitserialize");
+                Debug.Log("Could not serialize field " + typeof(ValueType).Name + "#" + attributeEntry.field.Name + " even though it is marked as bitserialize");
             }
         }
 
-        return fieldsAndSizes;
+        return attributeFields;
     }
 
     /// <summary>
@@ -166,22 +437,21 @@ public class BitSerializeAttribute : Attribute
     /// </summary>
     /// <param name="value">The object to size up</param>
     /// <returns>The size of some object, using sizeof for primitive objects, recursive behavior for arrays, and GetSize for ISerializing</returns>
-    public static int GetSizeOf(object value)
+    private static int GetSizeOf<T>(T obj, List<AttributeField> fields, List<AttributeField> generics = null)
     {
-        if (value == null)
+        if (obj == null) return 0;
+        if (fields == null) fields = new List<AttributeField>();
+        if (generics == null) generics = new List<AttributeField>();
+
+        Type type = obj.GetType();
+        if (MODULES.ContainsKey(type))
         {
-            return 0;
+            return MODULES[type].GetSize(obj);
         }
-        Type type = value.GetType();
-        if (type == typeof(string))
-        {
-            return sizeof(int) + (value as string).Length * sizeof(char);
-        }
-        // The passed value is an array of some type T
         else if (type.IsArray)
         {
             // We can cast to ILIst because arrays implement it and we verfied that it is an array in the if statement
-            System.Collections.IList fieldArray = (System.Collections.IList)value;
+            System.Collections.IList fieldArray = (System.Collections.IList)obj;
             // The value has no entries, so it has no data
             if (fieldArray.Count <= 0)
             {
@@ -190,261 +460,331 @@ public class BitSerializeAttribute : Attribute
             // the value has entries, so it has a size
             else
             {
-                // multiply the size of the inner type by the number of entries (there is at least 1)
-                int entrySize = GetSizeOf(fieldArray[0]);
-                if (entrySize >= 0)
+                int size = sizeof(int);
+                for (int iArr = 0; iArr < fieldArray.Count; iArr++)
                 {
-                    return sizeof(int) + fieldArray.Count * entrySize;
+                    object fieldObj = fieldArray[iArr];
+                    size += GetSizeOf(fieldObj, fields);
                 }
-                else
-                {
-                    return -1;
-                }
+                return size;
             }
         }
-        // It is not an array, try primitive
-        else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        else if (typeof(ICollection).IsAssignableFrom(type))
         {
-            return BitSerializeAttribute.primitiveSizes[type];
+            ICollection collection = obj as ICollection;
+            int count = collection.Count;
+            if (count > 0)
+            {
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    IList list = obj as IList;
+                    int size = sizeof(int);
+                    for (int iList = 0; iList < count; iList++)
+                    {
+                        size += GetSizeOf(list[iList], fields);
+                    }
+                    return size;
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    IDictionary dictionary = obj as IDictionary;
+                    int size = sizeof(int);
+                    foreach (object key in dictionary.Keys)
+                    {
+                        object value = dictionary[key];
+                        int sizeKey = GetSizeOf(key, generics[0].fields);
+                        int sizeValue = GetSizeOf(value, generics[1].fields);
+                        size += (sizeKey + sizeValue);
+                    }
+                    return size;
+                }
+            }
+            return sizeof(int);
         }
-        else if (typeof(ISerializing).IsAssignableFrom(type))
+
+        // Is not a collection, nor in MODULES
+
+        // Starting size, none
+        int totalSize = 0;
+
+        // Get the total size of all auto-serializing fields
+        foreach (AttributeField field in fields)
         {
-            return (value as ISerializing).GetSize();
+            totalSize += field.size;
         }
-        // Cannot determine size
-        else
+
+        // Check all parent classes in MODULES (ISerializing)
+        foreach (Type key in MODULES.Keys)
         {
-            Debug.LogError("Could not determine size of " + type);
-            return -1;
+            if (key.IsAssignableFrom(type))
+            {
+                totalSize += MODULES[key].GetSize(obj);
+            }
         }
+
+        return totalSize > 0 ? totalSize : -1;
     }
 
-    /// <summary>
-    /// Serialize a specfic object into a byte array
-    /// </summary>
-    /// <param name="destination">The byte array of data</param>
-    /// <param name="offset">How far into the data to put the objects serialized data</param>
-    /// <param name="value">tThe value to serialize</param>
-    private static void Serialize(ref byte[] destination, ref int offset, object value)
+    public static byte[] Serialize<T>(T obj, byte[] data = null, int start = 0, AttributeField attribute = null)
     {
-        if (value == null)
+        // For GetSizeOf and Serializing, the fields are required
+        if (attribute == null)
         {
-            return;
+            attribute = new AttributeField
+            {
+                fields = GetAttributeFields(obj)
+            };
         }
-        Type type = value.GetType();
-        // If it is a string
-        if (type == typeof(string))
+        Type type = obj.GetType();
+
+        // No incoming data object, so this is the beginning of a serialization, so we need the size
+        if (data == null)
         {
-            Serialize(ref destination, ref offset, (value as string).ToCharArray());
+            // Determine size of obj
+            int totalBitSize = GetSizeOf(obj, attribute.fields);
+            // Can be serialized?
+            if (totalBitSize >= 0)
+            {
+                data = new byte[totalBitSize];
+            }
+            else
+            {
+                // Cannot serialize
+                return null;
+            }
         }
-        // The passed value is an array of some type T
+
+        // Serialize obj into data, starting at start
+
+        if (MODULES.ContainsKey(type))
+        {
+            return MODULES[type].Serialize(obj, data, start);
+        }
         else if (type.IsArray)
         {
             // We can cast to ILIst because arrays implement it and we verfied that it is an array in the if statement
-            System.Collections.IList fieldArray = (System.Collections.IList)value;
+            System.Collections.IList fieldArray = (System.Collections.IList)obj;
 
             // Write the size of the array
-            CopyTo(ref destination, ref offset, System.BitConverter.GetBytes(fieldArray.Count));
+            AttributeField intFields = new AttributeField();
+            data = Serialize(fieldArray.Count, data, start, intFields);
+            start += GetSizeOf(fieldArray.Count, intFields.fields);
 
             // Write all values
             for (int i = 0; i < fieldArray.Count; i++)
             {
-                Serialize(ref destination, ref offset, fieldArray[i]);
+                data = Serialize(fieldArray[i], data, start, attribute);
+                start += GetSizeOf(fieldArray[i], attribute.fields);
             }
+
+            return data;
         }
-        // It is not an array, try primitive
-        else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        else if (typeof(ICollection).IsAssignableFrom(type))
         {
-            CopyTo(ref destination, ref offset, SerializePrimitive(value, type));
-        }
-        else if (typeof(ISerializing).IsAssignableFrom(type))
-        {
-            (value as ISerializing).Serialize(ref destination, ref offset);
-        }
-    }
+            ICollection collection = obj as ICollection;
+            int count = collection.Count;
 
-    /// <summary>
-    /// Converts some primitive object into an array of bytes
-    /// </summary>
-    /// <param name="value">The PRIMITIVE object to convert to bytes via System.BitConverter.GetBytes</param>
-    /// <param name="type">The type of the primitive</param>
-    /// <returns></returns>
-    private static byte[] SerializePrimitive(object value, Type type = null)
-    {
-        if (type == null) type = value.GetType();
-        if (type == typeof(Boolean)) return System.BitConverter.GetBytes((Boolean)value);
-        else if (type == typeof(Byte)) return new byte[] { (byte)value };
-        else if (type == typeof(Char)) return System.BitConverter.GetBytes((Char)value);
-        else if (type == typeof(Int16)) return System.BitConverter.GetBytes((Int16)value);
-        else if (type == typeof(Int32)) return System.BitConverter.GetBytes((Int32)value);
-        else if (type == typeof(Int64)) return System.BitConverter.GetBytes((Int64)value);
-        else if (type == typeof(UInt16)) return System.BitConverter.GetBytes((UInt16)value);
-        else if (type == typeof(UInt32)) return System.BitConverter.GetBytes((UInt32)value);
-        else if (type == typeof(UInt64)) return System.BitConverter.GetBytes((UInt64)value);
-        else if (type == typeof(Single)) return System.BitConverter.GetBytes((Single)value);
-        else if (type == typeof(Double)) return System.BitConverter.GetBytes((Double)value);
-        else if (type == typeof(Color))
-            return SerializePrimitive(((Color)value).r) // serialize red
-                .Concat(SerializePrimitive(((Color)value).g)) // serialize green
-                .Concat(SerializePrimitive(((Color)value).b)) // serialize blue
-                .ToArray();
-        else return null;
-    }
+            // Write the size of the array
+            AttributeField intFields = new AttributeField();
+            data = Serialize(count, data, start, intFields);
+            start += GetSizeOf(count, intFields.fields);
 
-    /// <summary>
-    /// Write some byte array into another byte array at some offset
-    /// </summary>
-    /// <param name="dest">The data to copy.</param>
-    /// <param name="offset">The offset in bytes.</param>
-    /// <param name="source">The data object to copy into at the offset.</param>
-    /// <remarks>
-    /// Author: Dustin Yost
-    /// </remarks>
-    public static void CopyTo(ref byte[] dest, ref int offset, byte[] source)
-    {
-        // copy all data from the source to the destination, starting at some offset
-        System.Array.Copy(source, 0, dest, offset, source.Length);
-        offset += source.Length;
-    }
-
-    /// <summary>
-    /// Deserialize a byte array into a monobehavior
-    /// </summary>
-    /// <param name="mono">The monobehavior to set data in</param>
-    /// <param name="data">A byte array of data created with Serialize</param>
-    public static void Deserialize<T>(T mono, byte[] data)
-    {
-        // Find all the bitserializable fields in the object
-        uint totalBitSize;
-        List<KeyValuePair<FieldInfo, int>> attributeObjects = GetAttributeFields(mono, out totalBitSize);
-
-        int offset = 0;
-
-        // Extract the data with the serialized fields
-        for (int fieldIndex = 0; fieldIndex < attributeObjects.Count; fieldIndex++)
-        {
-            // Extract the info and size
-            FieldInfo info = attributeObjects[fieldIndex].Key;
-            int size = attributeObjects[fieldIndex].Value;
-            // Get the current value of the field
-            //object fieldValue = info.GetValue(mono);
-            Type type = info.FieldType;
-            // Deserialize the info
-            object value;
-            Deserialize(data, ref offset, type, out value);
-            // Set the new value in the object
-            info.SetValue(mono, value);
-        }
-
-        // If mono is ISerializing, it might need to deserialize any remaining bytes
-        if (mono is ISerializing)
-        {
-            (mono as ISerializing).Deserialize(data, ref offset);
-        }
-
-    }
-    
-    /// <summary>
-    /// Deserialize data from a byte array into a specific type
-    /// </summary>
-    /// <param name="data">The data to deserialize from</param>
-    /// <param name="offset">The offset which the data is at (incremented the appropriate size of the value)</param>
-    /// <param name="type">The type of the value to deserialze as</param>
-    /// <param name="obj">The object to which the data is deserialized into (as an object of type 'type')</param>
-    private static void Deserialize(byte[] data, ref int offset, Type type, out object obj)
-    {
-        obj = null;
-        if (type == null)
-        {
-            return;
-        }
-        // The passed value is an array of some type T
-        if (type == typeof(string))
-        {
-            // Get the size of the array
-            object arraySizeObj;
-            int arraySize = 0;
-            Deserialize(data, ref offset, typeof(int), out arraySizeObj);
-            arraySize = (int)arraySizeObj;
-
-            string str = "";
-
-            // Iterate over all elements that will be deserializes
-            for (int i = 0; i < arraySize; i++)
+            if (count > 0)
             {
-                object element;
-                Deserialize(data, ref offset, typeof(char), out element);
-                str += (char)element;
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    IList list = obj as IList;
+                    for (int iCount = 0; iCount < count; iCount++)
+                    {
+                        data = Serialize(list[iCount], data, start, attribute);
+                        start += GetSizeOf(list[iCount], attribute.fields);
+                    }
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    IDictionary dictionary = obj as IDictionary;
+                    foreach (object key in dictionary.Keys)
+                    {
+                        data = Serialize(key, data, start, attribute.fieldsbyGeneric[0]);
+                        start += GetSizeOf(key, attribute.fieldsbyGeneric[0].fields);
+                        data = Serialize(dictionary[key], data, start, attribute.fieldsbyGeneric[1]);
+                        start += GetSizeOf(dictionary[key], attribute.fieldsbyGeneric[1].fields);
+                    }
+                }
             }
 
-            obj = str;
+            return data;
+        }
+        // Is not a collection, nor in MODULES
+        else
+        {
+            // Fill the data with the serialized fields
+            foreach (AttributeField attributeField in attribute.fields)
+            {
+                object value = attributeField.info.GetValue(obj);
+                data = Serialize(value, data, start, attributeField);
+                // increment the total size of what is being serialized
+                start += attributeField.size;
+            }
+
+            // Check all parent classes in MODULES (ISerializing)
+            foreach (Type key in MODULES.Keys)
+            {
+                if (key.IsAssignableFrom(type))
+                {
+                    data = MODULES[key].Serialize(obj, data, start);
+                    start += MODULES[key].GetSize(obj);
+                }
+            }
+
+            return data;
+        }
+    }
+
+    public static object Deserialize(object obj, byte[] data, int start = 0, AttributeField attribute = null, Type typeIn = null)
+    {
+        return Deserialize(obj, data, ref start, attribute, typeIn);
+    }
+
+    public static object Deserialize(object obj, byte[] data, ref int start, AttributeField attribute = null, Type typeIn = null)
+    {
+        if (attribute == null)
+        {
+            attribute = new AttributeField
+            {
+                fields = GetAttributeFields(obj)
+            };
+        }
+
+        Type type = typeIn == null && obj != null ? obj.GetType() : typeIn;
+
+        if (MODULES.ContainsKey(type))
+        {
+            obj = MODULES[type].Deserialize(obj, data, start, type);
+            start += MODULES[type].GetSize(obj);
+            return obj;
         }
         else if (type.IsArray)
         {
             // Get the size of the array
-            object arraySizeObj;
-            int arraySize = 0;
-            Deserialize(data, ref offset, typeof(int), out arraySizeObj);
-            arraySize = (int)arraySizeObj;
+            int size = 0;
+            AttributeField intFields = new AttributeField();
+            size = (int)Deserialize(size, data, start, intFields);
+            start += GetSizeOf(size, intFields.fields);
 
-            // The type of the array (T), such that obj = T[]
             Type subtype = type.GetElementType();
-
-            Array arr = System.Array.CreateInstance(subtype, arraySize);
+            Array arr = Array.CreateInstance(subtype, size);
 
             // Iterate over all elements that will be deserializes
-            for (int i = 0; i < arraySize; i++)
+            for (int i = 0; i < size; i++)
             {
-                object element;
-                Deserialize(data, ref offset, subtype, out element);
+                object element = null;
+
+                try
+                {
+                    element = Activator.CreateInstance(subtype);
+                }
+                catch (Exception e) { }
+
+                element = Deserialize(element, data, start, attribute, subtype);
                 arr.SetValue(element, i);
+                start += GetSizeOf(element, attribute.fields);
             }
 
-            obj = arr;
+            return (object)arr;
         }
-        // It is not an array, try primitive
-        else if (BitSerializeAttribute.primitiveSizes.ContainsKey(type))
+        else if (typeof(ICollection).IsAssignableFrom(type))
         {
-            obj = DeserializePrimitive(data, ref offset, type);
-        }
-        else if (typeof(ISerializing).IsAssignableFrom(type))
-        {
-            // Requires an empty constructor
-            obj = Activator.CreateInstance(type, new object[] { });
-            (obj as ISerializing).Deserialize(data, ref offset);
-        }
-    }
+            int size = 0;
+            AttributeField intFields = new AttributeField();
+            size = (int)Deserialize(size, data, start, intFields);
+            start += GetSizeOf(size, intFields.fields);
 
-    /// <summary>
-    /// Deserializes data based on one of the types defined in <see cref="primitiveSizes"/>/
-    /// </summary>
-    /// <param name="data">The data to deserialize from</param>
-    /// <param name="offset">The offset which the data is at (incremented the appropriate size of the value)</param>
-    /// <param name="type">The type of the value to deserialze as</param>
-    /// <returns>object of the type 'type'</returns>
-    private static object DeserializePrimitive(byte[] data, ref int offset, Type type)
-    {
-        object obj = null;
-        if (type == typeof(Boolean)) { obj = System.BitConverter.ToBoolean(data, offset); offset += sizeof(Boolean); }
-        else if (type == typeof(Byte)) { obj = data[offset]; offset += 1; }
-        else if (type == typeof(Char)) { obj = System.BitConverter.ToChar(data, offset); offset += sizeof(Char); }
-        else if (type == typeof(Int16)) { obj = System.BitConverter.ToInt16(data, offset); offset += sizeof(Int16); }
-        else if (type == typeof(Int32)) { obj = System.BitConverter.ToInt32(data, offset); offset += sizeof(Int32); }
-        else if (type == typeof(Int64)) { obj = System.BitConverter.ToInt64(data, offset); offset += sizeof(Int64); }
-        else if (type == typeof(UInt16)) { obj = System.BitConverter.ToUInt16(data, offset); offset += sizeof(UInt16); }
-        else if (type == typeof(UInt32)) { obj = System.BitConverter.ToUInt32(data, offset); offset += sizeof(UInt32); }
-        else if (type == typeof(UInt64)) { obj = System.BitConverter.ToUInt64(data, offset); offset += sizeof(UInt64); }
-        else if (type == typeof(Single)) { obj = System.BitConverter.ToSingle(data, offset); offset += sizeof(Single); }
-        else if (type == typeof(Double)) { obj = System.BitConverter.ToDouble(data, offset); offset += sizeof(Double); }
-        else if (type == typeof(Color))
-        {
-            obj = new Color(
-                (Single)DeserializePrimitive(data, ref offset, typeof(Single)), // r
-                (Single)DeserializePrimitive(data, ref offset, typeof(Single)), // g
-                (Single)DeserializePrimitive(data, ref offset, typeof(Single)) // b
-            );
+            if (size >= 0)
+            {
+                if (typeof(IList).IsAssignableFrom(type))
+                {
+                    IList list = (IList)Activator.CreateInstance(type);
+                    Type subtype = type.GetGenericArguments()[0];
+                    for (int iList = 0; iList < size; iList++)
+                    {
+                        object element = null;
+
+                        try
+                        {
+                            element = Activator.CreateInstance(subtype);
+                        }
+                        catch (Exception e) { }
+
+                        list.Add(Deserialize(element, data, start, attribute, subtype));
+                        start += GetSizeOf(list[iList], attribute.fields);
+                    }
+                    return list;
+                }
+                else if (typeof(IDictionary).IsAssignableFrom(type))
+                {
+                    IDictionary dict = (IDictionary)Activator.CreateInstance(type);
+                    Type typeKey = type.GetGenericArguments()[0];
+                    Type typeValue = type.GetGenericArguments()[1];
+                    for (int iDict = 0; iDict < size; iDict++)
+                    {
+                        object key = null;
+                        try
+                        {
+                            key = Activator.CreateInstance(typeKey);
+                        }
+                        catch (Exception e) { }
+                        key = Deserialize(key, data, start, attribute.fieldsbyGeneric[0], typeKey);
+                        start += GetSizeOf(key, attribute.fieldsbyGeneric[0].fields);
+                        object value = null;
+                        try
+                        {
+                            value = Activator.CreateInstance(typeValue);
+                        }
+                        catch (Exception e) { }
+                        value = Deserialize(value, data, start, attribute.fieldsbyGeneric[1], typeValue);
+                        start += GetSizeOf(value, attribute.fieldsbyGeneric[1].fields);
+                        dict[key] = value;
+                    }
+                    return dict;
+                }
+            }
+
+            return null;
         }
-        return obj;
+        // Is not a collection, nor in MODULES
+        else
+        {
+            // Fill the data with the serialized fields
+            foreach (AttributeField attributeField in attribute.fields)
+            {
+                object element = null;
+
+                try
+                {
+                    element = Activator.CreateInstance(attributeField.info.FieldType);
+                }
+                catch (Exception e) { }
+
+                element = Deserialize(element, data, start, attributeField, attributeField.info.FieldType);
+                attributeField.info.SetValue(obj, element);
+                // increment the total size of what is being serialized
+                start += GetSizeOf(element, attributeField.fields, attributeField.fieldsbyGeneric);
+            }
+
+            // Check all parent classes in MODULES (ISerializing)
+            foreach (Type key in MODULES.Keys)
+            {
+                if (key.IsAssignableFrom(type))
+                {
+                    obj = MODULES[key].Deserialize(obj, data, start, type);
+                    start += MODULES[key].GetSize(obj);
+                }
+            }
+
+            return obj;
+        }
+
     }
 
 }
