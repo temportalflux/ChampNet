@@ -143,6 +143,12 @@ public class ConnectMenu : MonoBehaviour {
                         GUILayout.Label("Blue " + (int)(this.players[localID].color.b * 255));
                         this.players[localID].color.b = GUILayout.HorizontalSlider(
                             this.players[localID].color.b * 255, 0, 255) / 255F;
+
+                        Texture2D texture = new Texture2D(1, 1);
+                        Color[] colors = new []{this.players[localID].color};
+                        texture.SetPixels(colors);
+
+                        GUILayout.Label();
                     }
                     GUILayout.EndVertical();
 

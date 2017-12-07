@@ -272,6 +272,8 @@ public class BattleHandler : MonoBehaviour
             }
         }
         
+        battleUIController.SetFlavorText("Waiting for response...");
+
         local.selectionChoice = networkOrAI.selectionChoice = -1;
 
         battleUIController.menuState = MenuState.MAIN_MENU;
@@ -286,12 +288,16 @@ public class BattleHandler : MonoBehaviour
     {
         if (isNetworked)
         {
-            EventBattleResult eventBattleResult = new EventBattleResult();
-            eventBattleResult.idSender = participant1.playerController.playerID;
-            eventBattleResult.idReceiver = participant2.playerController.playerID;
-            eventBattleResult.playerIDWinner = winner.playerController.playerID;
+            if (winner.playerController.isLocal)
+            {
+                EventBattleResult eventBattleResult = new EventBattleResult();
+                eventBattleResult.idSender = winner.playerController.playerID;
+                eventBattleResult.idReceiver = loser.playerController.playerID;
+                eventBattleResult.playerIDWinner = winner.playerController.playerID;
 
-            NetInterface.INSTANCE.Dispatch(eventBattleResult);
+                NetInterface.INSTANCE.Dispatch(eventBattleResult);
+
+            }
         }
         else
         {
