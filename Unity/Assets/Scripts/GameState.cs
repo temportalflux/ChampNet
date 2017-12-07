@@ -174,7 +174,7 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         [Tooltip("Scoreboard rank of the player")]
         [BitSerialize(10)]
-        public uint rank;
+        public int rank;
 
         /// <summary>
         /// A list of all the cretins the player has.

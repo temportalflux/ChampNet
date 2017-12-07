@@ -37,7 +37,7 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.accX = player.accY = player.accZ = 0;
 	player.inBattle = false;
 	player.wins = 0;
-	player.rank = 0;
+	player.rank = -1;
 	player.monstersCount = 0;
 	player.monsters = new unsigned int[0];
 
@@ -80,7 +80,7 @@ int GameState::Player::getSize() const
 		// Wins
 		+ sizeof(unsigned int)
 		// Rank
-		+ sizeof(unsigned int)
+		+ sizeof(int)
 		// number of monsters
 		+ sizeof(int)
 		// size of monster
@@ -168,7 +168,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		// write Wins
 		*((unsigned int *)pos) = player.wins; pos += sizeof(unsigned int);
 		// write Rank
-		*((unsigned int *)pos) = player.rank; pos += sizeof(unsigned int);
+		*((int *)pos) = player.rank; pos += sizeof(int);
 		// write # of monsters
 		*((int *)pos) = player.monstersCount; pos += sizeof(int);
 		// write monsters

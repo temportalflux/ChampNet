@@ -21,13 +21,13 @@ public class ScoreBoard : MonoBehaviour {
     
     //private Text name;
     private Text win;
-    private uint currentText = 1;
+    private int currentText = 1;
 
     [System.Serializable]
     public class RankText
     {
         [Tooltip("Rank setting (sets itself on start) (don't touch)")]
-        public uint Rank;
+        public int Rank;
 
         [Tooltip("Size of font used for text created")]
         public int fontSize;

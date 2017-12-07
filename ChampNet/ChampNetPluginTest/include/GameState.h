@@ -40,7 +40,7 @@ public:
 		/// Number of wins the player has
 		unsigned int wins;
 		/// Rank of player on the scoreboard
-		unsigned int rank;
+		int rank;
 
 		int monstersCount;
 		unsigned int *monsters;
