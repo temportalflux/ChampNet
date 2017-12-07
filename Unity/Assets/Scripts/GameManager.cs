@@ -108,6 +108,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transitionWorld.load(
             () => {
+                this.transitionWorld.setValue(0.0f);
                 this.inGame = true;
                 this.state.isLocalGame = true;
                 this.grabScoreBoard();
@@ -123,6 +124,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transitionWorld.load(
             () => {
+                this.transitionWorld.setValue(0.0f);
                 this.inGame = true;
                 this.state.isLocalGame = false;
                 this.grabScoreBoard();
@@ -211,6 +213,7 @@ public class GameManager : Singleton<GameManager>
             this.isLoadingOrInBattle = true;
             this.transitionBattle.load(() =>
             {
+                this.transitionBattle.setValue(0.0f);
                 GameObject.FindGameObjectWithTag("HUD").SetActive(false);
 
                 this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
@@ -226,7 +229,8 @@ public class GameManager : Singleton<GameManager>
             this.battleHandler.onPreExit();
             this.transitionBattle.exit(() =>
             {
-                GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+                this.transitionBattle.setValue(0.0f);
+                // TODO: GameObject.FindGameObjectWithTag("HUD").SetActive(true);
                 this.battleHandler = null;
                 this.isLoadingOrInBattle = false;
             });

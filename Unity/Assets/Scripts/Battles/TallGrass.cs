@@ -23,7 +23,8 @@ public class TallGrass : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         // If there is a successful 25% chance
-        if (UnityEngine.Random.Range(0, 100) < 25)
+        float chance = UnityEngine.Random.Range(0, 1.0f) * 1000;
+        if (chance < 10)
         {
             // And there is a valid enemy/opponent monster
             MonsterDataObject opponent = this.getRandomOpponent();
