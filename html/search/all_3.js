@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['calculatescoreboarddata',['CalculateScoreBoardData',['../class_state_server.html#a7a316f25f6f2fd7c66fe95c4cffa5db1',1,'StateServer']]],
   ['camerablit',['CameraBlit',['../class_camera_blit.html',1,'']]],
   ['cameracontroller',['CameraController',['../class_camera_controller.html',1,'']]],
   ['camerapixelcorrector',['CameraPixelCorrector',['../class_camera_pixel_corrector.html',1,'']]],
@@ -22,11 +23,12 @@ var searchData=
   ['consolewindow',['consoleWindow',['../struct_state_console.html#a101e38bf2e857e66c26c4372e5e1d287',1,'StateConsole']]],
   ['copy',['copy',['../class_champ_net_1_1_packet.html#a068e85d829e9fa4b980ec115b40048d3',1,'ChampNet::Packet']]],
   ['copyfromgamestate',['copyFromGameState',['../class_game_state_1_1_player.html#ace7e3625cf1996b8c56bcafae36673af',1,'GameState::Player']]],
-  ['create',['Create',['../class_champ_net_plugin_1_1_network.html#aac69b7dd1eb986a17ba005cded2581fa',1,'ChampNetPlugin.Network.Create()'],['../class_game_state.html#a2f3154927e33e16bd595b4aece996c61',1,'GameState.Create()'],['../namespace_champ_net_plugin.html#a849f82c5f4de7d9a7cf5d56644a5ebf2',1,'ChampNetPlugin::Create()']]],
+  ['create',['Create',['../class_champ_net_plugin_1_1_network.html#aac69b7dd1eb986a17ba005cded2581fa',1,'ChampNetPlugin.Network.Create()'],['../class_game_state_editor.html#a2ff679df4b2c28baef1a437bd0f656a6',1,'GameStateEditor.Create()'],['../namespace_champ_net_plugin.html#a849f82c5f4de7d9a7cf5d56644a5ebf2',1,'ChampNetPlugin::Create()']]],
   ['createevent',['createEvent',['../class_event_network.html#a9cf2940f859a4c2d168fbfe83e6a19e8',1,'EventNetwork']]],
   ['currentcretin',['currentCretin',['../class_battle_participant.html#a595abdc8d0d62918b99b37ea9d948d00',1,'BattleParticipant']]],
   ['currentcretinindex',['currentCretinIndex',['../class_battle_participant.html#a1ad2e6be9469ff3c433be70fc6245484',1,'BattleParticipant']]],
   ['currentline',['currentLine',['../struct_state_input.html#a5ce1360c9195f7dfe700e9398b9c8e7b',1,'StateInput']]],
   ['cursorposx',['cursorPosX',['../struct_state_console.html#ae75b5a93145d506e18b8ee8c3c1f4e2b',1,'StateConsole']]],
+  ['customlistdrawer',['CustomListDrawer',['../class_custom_list_drawer.html',1,'']]],
   ['champnetplugin',['ChampNetPlugin',['../group__plugin.html',1,'']]]
 ];

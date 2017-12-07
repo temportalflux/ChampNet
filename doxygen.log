@@ -60,9 +60,9 @@ Searching for files in directory /home/travis/build/temportalflux/ChampNet/Champ
 Searching for files in directory /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/source
 Searching for files in directory /home/travis/build/temportalflux/ChampNet/ChampNet/Libs
 Searching for files in directory /home/travis/build/temportalflux/ChampNet/ChampNet/Libs/include
-Searching for files in directory /home/travis/build/temportalflu/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:477: warning: end of file while inside a group
+Searching for files in directory /home/travis/build/temportalflu/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:474: warning: end of file while inside a group
 
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:225: warning: end of file while inside a group
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:231: warning: end of file while inside a group
 
 x/ChampNet/ChampNet/Libs/include/RakNet
 Searching for files in directory /home/travis/build/temportalflux/ChampNet/ChampNet/Libs/lib
@@ -96,6 +96,8 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Bit
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/BitSerializing.cs...
 Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/ChampNet/Network.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/ChampNet/Network.cs...
+Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/CustomListDrawer.cs...
+Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/CustomListDrawer.cs...
 Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/GameStateEditor.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/GameStateEditor.cs...
 Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/MonsterDataObjectEditor.cs...
@@ -176,10 +178,10 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Pla
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerNetwork.cs...
 Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerReference.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerReference.cs...
-Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/CameraBlit.cs...
+Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Asset/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ConnectMenu.cs:212: warning: File ended in the middle of a comment block! Perhaps a missing \endcode?
+s/Scripts/Transitions/CameraBlit.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/CameraBlit.cs...
-Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets//home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ConnectMenu.cs:197: warning: File ended in the middle of a comment block! Perhaps a missing \endcode?
-Scripts/Transitions/ManagerTransitions.cs...
+Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/ManagerTransitions.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/ManagerTransitions.cs...
 Preprocessing /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs...
 Parsing file /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs...
@@ -217,9 +219,7 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginT
 Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Game.h...
 Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h...
 Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h...
-Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h...
-Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h...
-Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTe/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattleResultResponse.cs:6: warning: Compound EventBattleResultResponse is not documented.
+Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPlug/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattleResultResponse.cs:6: warning: Compound EventBattleResultResponse is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Attribute/BitTest2.cs:6: warning: Compound BitTest2 is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/MiniMap/MinimapHandler.cs:15: warning: Compound MinimapHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/Editor/BattleTesterEditor.cs:10: warning: Compound BattleTesterEditor is not documented.
@@ -229,7 +229,7 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginT
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerReference.cs:5: warning: Compound PlayerReference is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Misc/CameraPixelCorrector.cs:15: warning: Compound CameraPixelCorrector is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattleOpponentDisconnected.cs:6: warning: Compound EventBattleOpponentDisconnected is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:28: warning: Compound AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:27: warning: Compound AttackObject is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerLocal.cs:8: warning: Compound PlayerLocal is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/MonsterDataObjectEditor.cs:8: warning: Compound MonsterDataObjectEditor is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h:27: warning: Compound PacketUserIDBool is not documented.
@@ -238,6 +238,7 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginT
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/Editor/AttackObjectEditor.cs:13: warning: Compound AttackObjectEditor is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventPlayerAddMonster.cs:6: warning: Compound EventPlayerAddMonster is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/CameraController.cs:6: warning: Compound CameraController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/CustomListDrawer.cs:9: warning: Compound CustomListDrawer is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/TransitionShader.cs:6: warning: Compound TransitionShader is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:28: warning: Compound ScoreBoard::RankText is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/UIInput.cs:7: warning: Compound UIInput is not documented.
@@ -260,7 +261,9 @@ Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginT
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Attribute/BitTest.cs:8: warning: Compound BitTest::Sereal is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs:7: warning: Compound SceneTransition is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattleSelection.cs:6: warning: Compound EventBattleSelection is not documented.
-st/include/PerformanceTracker.h...
+inTest/include/Packets.h...
+Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/Packets.h...
+Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/PerformanceTracker.h...
 Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/PerformanceTracker.h...
 Preprocessing /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/StateApplication.h...
 Parsing file /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/StateApplication.h...
@@ -325,24 +328,18 @@ Adding source references...
 Adding xrefitems...
 Sorting member lists...
 Computing dependencies between directories...
-Generating citations page...
-Counting data structures...
-Resolving user defined references...
-Finding anchors and sections in the documentation...
-Transferring function references...
-Combining using relations...
-Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:16: warning: Member BattleState (enumeration) of class BattleHandler is not documented.
+Generating citations page/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:16: warning: Member BattleState (enumeration) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:12: warning: Member MenuState (enumeration) of group client is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:147: warning: Member HandleResponse(BattleParticipant p1, BattleParticipant p2) (function) of class BattleHandler is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:468: warning: Member onPreExit() (function) of class BattleHandler is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:138: warning: Member ButtonClicked(int buttonIndex) (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:201: warning: Member BackButtonClicked() (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:207: warning: Member SetFlavorText(string text) (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:212: warning: Member UpdateCretinDisplayData(BattleParticipant local, BattleParticipant other) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:465: warning: Member onPreExit() (function) of class BattleHandler is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:141: warning: Member ButtonClicked(int buttonIndex) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:205: warning: Member BackButtonClicked() (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:211: warning: Member SetFlavorText(string text) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:216: warning: Member UpdateCretinDisplayData(BattleParticipant local, BattleParticipant other) (function) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:22: warning: Member battleUIController (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:29: warning: Member participant1 (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:30: warning: Member participant2 (variable) of class BattleHandler is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:448: warning: Member typeMatchUp (variable) of class BattleHandler is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:445: warning: Member typeMatchUp (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:92: warning: Member battleHandler (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:95: warning: Member mainMenuGameObject (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:96: warning: Member attackMenuGameObject (variable) of class BattleUIController is not documented.
@@ -356,34 +353,36 @@ Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:117: warning: Member localCretinNameText (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:118: warning: Member localCretinHealthText (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:119: warning: Member localHPBar (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:120: warning: Member otherCretinNameText (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:121: warning: Member otherCretinHealthText (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:122: warning: Member otherHPBar (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:120: warning: Member localCretinImage (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:122: warning: Member otherCretinNameText (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:123: warning: Member otherCretinHealthText (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:124: warning: Member otherHPBar (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:125: warning: Member otherCretinImage (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:25: warning: Member menuState (property) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:47: warning: Member UseAttack() (function) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:29: warning: Member attackName (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:30: warning: Member type (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:31: warning: Member physicalOrSpecial (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:32: warning: Member doesDamage (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:33: warning: Member power (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:35: warning: Member doesModifiesStats (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:36: warning: Member doesModifyOpponentStats (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:37: warning: Member modifyAttackValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:38: warning: Member modifyDefenseValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:39: warning: Member modifySpecialAttackValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:40: warning: Member modifySpecialDefenseValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:41: warning: Member modifyAccuracyValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:42: warning: Member modifySpeedValue (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:44: warning: Member accuracy (variable) of class AttackObject is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:45: warning: Member powerPoints (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:46: warning: Member UseAttack() (function) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:28: warning: Member attackName (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:29: warning: Member type (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:30: warning: Member physicalOrSpecial (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:31: warning: Member doesDamage (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:32: warning: Member power (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:34: warning: Member doesModifiesStats (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:35: warning: Member doesModifyOpponentStats (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:36: warning: Member modifyAttackValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:37: warning: Member modifyDefenseValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:38: warning: Member modifySpecialAttackValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:39: warning: Member modifySpecialDefenseValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:40: warning: Member modifyAccuracyValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:41: warning: Member modifySpeedValue (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:43: warning: Member accuracy (variable) of class AttackObject is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/AttackObject.cs:44: warning: Member powerPoints (variable) of class AttackObject is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/MonsterScriptableObjects/Editor/AttackObjectEditor.cs:14: warning: Member OnInspectorGUI() (function) of class AttackObjectEditor is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:16: warning: Member BattleState (enumeration) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:147: warning: Member HandleResponse(BattleParticipant p1, BattleParticipant p2) (function) of class BattleHandler is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:468: warning: Member onPreExit() (function) of class BattleHandler is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:465: warning: Member onPreExit() (function) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:22: warning: Member battleUIController (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:29: warning: Member participant1 (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:30: warning: Member participant2 (variable) of class BattleHandler is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:448: warning: Member typeMatchUp (variable) of class BattleHandler is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:445: warning: Member typeMatchUp (variable) of class BattleHandler is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:10: warning: Unsupported xml/html tag <author> found
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleHandler.cs:10: warning: Unsupported xml/html tag </author> found
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleParticipant.cs:103: warning: Member onPreExit() (function) of class BattleParticipant is not documented.
@@ -398,10 +397,10 @@ Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleTester.cs:17: warning: Member isBattleSetup (variable) of class BattleTester is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleTester.cs:19: warning: Member IsBattleSetup (property) of class BattleTester is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/Editor/BattleTesterEditor.cs:11: warning: Member OnInspectorGUI() (function) of class BattleTesterEditor is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:138: warning: Member ButtonClicked(int buttonIndex) (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:201: warning: Member BackButtonClicked() (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:207: warning: Member SetFlavorText(string text) (function) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:212: warning: Member UpdateCretinDisplayData(BattleParticipant local, BattleParticipant other) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:141: warning: Member ButtonClicked(int buttonIndex) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:205: warning: Member BackButtonClicked() (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:211: warning: Member SetFlavorText(string text) (function) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:216: warning: Member UpdateCretinDisplayData(BattleParticipant local, BattleParticipant other) (function) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:92: warning: Member battleHandler (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:95: warning: Member mainMenuGameObject (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:96: warning: Member attackMenuGameObject (variable) of class BattleUIController is not documented.
@@ -415,9 +414,11 @@ Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:117: warning: Member localCretinNameText (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:118: warning: Member localCretinHealthText (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:119: warning: Member localHPBar (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:120: warning: Member otherCretinNameText (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:121: warning: Member otherCretinHealthText (variable) of class BattleUIController is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:122: warning: Member otherHPBar (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:120: warning: Member localCretinImage (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:122: warning: Member otherCretinNameText (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:123: warning: Member otherCretinHealthText (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:124: warning: Member otherHPBar (variable) of class BattleUIController is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:125: warning: Member otherCretinImage (variable) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Battles/BattleUIController.cs:25: warning: Member menuState (property) of class BattleUIController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Attribute/BitSerializeAttribute.cs:33: warning: Member BitSerializeAttribute(uint order=0) (function) of class BitSerializeAttribute is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Attribute/BitSerializeAttribute.cs:524: warning: Member Serialize< T >(T obj, byte[] data=null, int start=0, AttributeField attribute=null) (function) of class BitSerializeAttribute is not documented.
@@ -463,6 +464,7 @@ Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/CameraController.cs:12: warning: Member lerpPercentage (variable) of class CameraController is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Misc/CameraPixelCorrector.cs:17: warning: Member targetViewportSizeInPixels (variable) of class CameraPixelCorrector is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Misc/CameraPixelCorrector.cs:18: warning: Member pixelsPerUnit (variable) of class CameraPixelCorrector is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/CustomListDrawer.cs:10: warning: Member OnGUI(Rect position, SerializedProperty property, GUIContent label) (function) of class CustomListDrawer is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattle.cs:14: warning: Member EventBattle(byte id) (function) of class EventBattle is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventNetwork.cs:78: warning: Member EventNetwork(byte id) (function) of class EventNetwork is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventBattle.cs:9: warning: Member idSender (variable) of class EventBattle is not documented.
@@ -560,36 +562,13 @@ Adding members to index pa/home/travis/build/temportalflux/ChampNet/Unity/Assets
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventNetwork.cs:78: warning: Member EventNetwork(byte id) (function) of class EventNetwork is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventWithPlayerID.cs:9: warning: Member clientID (variable) of class EventWithPlayerID is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Network/events/EventWithPlayerID.cs:12: warning: Member playerID (variable) of class EventWithPlayerID is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:205: warning: Member grabScoreBoard() (function) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:212: warning: Member LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle) (function) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:231: warning: Member UnloadBattleScene() (function) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:246: warning: Member sendResponse(bool answer) (function) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:257: warning: Member setResponseIDs(uint LocalClient, uint opponentID) (function) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:34: warning: Member onNetworkConnectionHandled (variable) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:38: warning: Member onNetworkRejected (variable) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:49: warning: Member playerPrefab (variable) of class GameManager is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:13: warning: Unsupported xml/html tag <author> found
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:13: warning: Unsupported xml/html tag </author> found
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:350: warning: Member getClientID() (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:388: warning: Member HasPlayer(ref Player info) (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:477: warning: Member RemovePlayer(Player info) (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:493: warning: Member AddPlayerLocal(Player info) (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:498: warning: Member AddPlayerConnected(Player info) (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:503: warning: Member SpawnLocalMultiplayer() (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:508: warning: Member SpawnLocalPlayer() (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:526: warning: Member SpawnPlayer() (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:618: warning: Member FixedUpdate() (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:88: warning: Member getSize() const  (function) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:334: warning: Member editorFoldoutPlayers (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:335: warning: Member editorFoldouts (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:338: warning: Member isLocalGame (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:352: warning: Member allMonsters (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:353: warning: Member starters (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:355: warning: Member deltaTime (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:356: warning: Member players (variable) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:362: warning: Member localPlayers (property) of class GameState is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:369: warning: Member connectedPlayers (property) of class GameState is not documented.
-ges...
+...
+Counting data structures...
+Resolving user defined references...
+Finding anchors and sections in the documentation...
+Transferring function references...
+Combining using relations...
+Adding members to index pages...
 Generating style sheet...
 Generating search indices...
 Generating example documentation...
@@ -629,6 +608,7 @@ Generating docs for compound BitTest2...
 Generating docs for compound CameraBlit...
 Generating docs for compound CameraController...
 Generating docs for compound CameraPixelCorrector...
+Generating docs for compound CustomListDrawer...
 Generating docs for compound EventBattle...
 Generating docs for compound EventBattleLocalToggle...
 Generating docs for compound EventBattleOpponentDisconnected...
@@ -650,20 +630,44 @@ Generating docs for compound EventRequestMovement...
 Generating docs for compound EventWithLocation...
 Generating docs for compound EventWithPlayerID...
 Generating docs for compound Game...
-Generating docs for compound GameManager...
-Generating docs for nested compound GameManager::GameAction...
-Generating docs for nested compound GameManager::GameActionFlag...
-Generating docs for nested compound GameManager::GameActionMessage...
-Generating docs for compound GameState...
-Generating docs fo/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:289: warning: Member IndexOf(MonsterDataObject item) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:290: warning: Member Insert(int index, MonsterDataObject item) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:291: warning: Member RemoveAt(int index) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:292: warning: Member Add(MonsterDataObject item) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:309: warning: Member Clear() (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:310: warning: Member Contains(MonsterDataObject item) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:311: warning: Member CopyTo(MonsterDataObject[] array, int arrayIndex) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:315: warning: Member Remove(MonsterDataObject item) (function) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:316: warning: Member GetEnumerator() (function) of class GameState::Player is not documented.
+Generating docs for compound GameManager../home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:205: warning: Member grabScoreBoard() (function) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:212: warning: Member LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle) (function) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:231: warning: Member UnloadBattleScene() (function) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:246: warning: Member sendResponse(bool answer) (function) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:257: warning: Member setResponseIDs(uint LocalClient, uint opponentID) (function) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:34: warning: Member onNetworkConnectionHandled (variable) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:38: warning: Member onNetworkRejected (variable) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:49: warning: Member playerPrefab (variable) of class GameManager is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:13: warning: Unsupported xml/html tag <author> found
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameManager.cs:13: warning: Unsupported xml/html tag </author> found
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:324: warning: Member getClientID() (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:362: warning: Member HasPlayer(ref Player info) (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:451: warning: Member RemovePlayer(Player info) (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:467: warning: Member AddPlayerLocal(Player info) (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:472: warning: Member AddPlayerConnected(Player info) (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:477: warning: Member SpawnLocalMultiplayer() (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:482: warning: Member SpawnLocalPlayer() (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:500: warning: Member SpawnPlayer() (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:592: warning: Member FixedUpdate() (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:88: warning: Member getSize() const  (function) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:308: warning: Member editorFoldoutPlayers (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:309: warning: Member editorFoldouts (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:312: warning: Member isLocalGame (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:326: warning: Member allMonsters (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:327: warning: Member starters (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:329: warning: Member deltaTime (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:330: warning: Member players (variable) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:336: warning: Member localPlayers (property) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:343: warning: Member connectedPlayers (property) of class GameState is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:263: warning: Member IndexOf(MonsterDataObject item) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:264: warning: Member Insert(int index, MonsterDataObject item) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:265: warning: Member RemoveAt(int index) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:266: warning: Member Add(MonsterDataObject item) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:283: warning: Member Clear() (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:284: warning: Member Contains(MonsterDataObject item) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:285: warning: Member CopyTo(MonsterDataObject[] array, int arrayIndex) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:289: warning: Member Remove(MonsterDataObject item) (function) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:290: warning: Member GetEnumerator() (function) of class GameState::Player is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:31: warning: Member colorG (variable) of class GameState::Player is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:31: warning: Member colorB (variable) of class GameState::Player is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:31: warning: Member colorA (variable) of class GameState::Player is not documented.
@@ -675,11 +679,11 @@ Generating docs fo/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:37: warning: Member accZ (variable) of class GameState::Player is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:45: warning: Member monstersCount (variable) of class GameState::Player is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPluginTest/include/GameState.h:46: warning: Member monsters (variable) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:271: warning: Member monsters (property) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:279: warning: Member this[int index] (property) of class GameState::Player is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/GameStateEditor.cs:10: warning: Member OnInspectorGUI() (function) of class GameStateEditor is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/KeeperSystem.cs:7: warning: Unsupported xml/html tag <author> found
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/KeeperSystem.cs:7: warning: Unsupported xml/html tag </author> found
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:245: warning: Member monsters (property) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/GameState.cs:253: warning: Member this[int index] (property) of class GameState::Player is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Editor/GameStateEditor.cs:35: warning: Member OnInspectorGUI() (function) of class GameStateEditor is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/KeeperSystem.cs:6: warning: Unsupported xml/html tag <author> found
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/KeeperSystem.cs:6: warning: Unsupported xml/html tag </author> found
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/ManagerTransitions.cs:12: warning: Member OnTransitionFinish() (function) of class ManagerTransitions is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/ManagerTransitions.cs:95: warning: Member triggerUnLoadAsync(string nextScene, Transition transition, LoadSceneMode loadMode, OnTransitionFinish onFinish=null) (function) of class ManagerTransitions is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/ManagerTransitions.cs:224: warning: Member triggerExit() (function) of class ManagerTransitions is not documented.
@@ -801,7 +805,7 @@ Generating docs fo/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs:30: warning: Member setValue(float value) (function) of class SceneTransition is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs:9: warning: Member nextScene (variable) of class SceneTransition is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Transitions/SceneTransition.cs:11: warning: Member loadMode (variable) of class SceneTransition is not documented.
-/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:271: warning: Member removePlayerOnLeave(uint removeName) (function) of class ScoreBoard is not documented.
+/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:274: warning: Member removePlayerOnLeave(uint removeName) (function) of class ScoreBoard is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:17: warning: Member NameHeader (variable) of class ScoreBoard is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:18: warning: Member WinHeader (variable) of class ScoreBoard is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/UI/ScoreBoard.cs:20: warning: Member theCamera (variable) of class ScoreBoard is not documented.
@@ -861,7 +865,12 @@ Generating docs fo/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPlugin/include/ChampNetPlugin.h:104: warning: Member Color (enumeration) of namespace ChampNetPlugin is not documented.
 /home/travis/build/temportalflux/ChampNet/ChampNet/ChampNetPlugin/source/ChampNetPlugin.cpp:24: warning: Member gpNetwork (variable) of namespace ChampNetPlugin is not documented.
 /home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/ChampNet/Network.cs:87: warning: Member debugCallback(IntPtr request, int color, int size) (function) of class ChampNetPlugin::Network is not documented.
-r nested compound GameState::Player...
+.
+Generating docs for nested compound GameManager::GameAction...
+Generating docs for nested compound GameManager::GameActionFlag...
+Generating docs for nested compound GameManager::GameActionMessage...
+Generating docs for compound GameState...
+Generating docs for nested compound GameState::Player...
 Generating docs for compound GameStateEditor...
 Generating docs for compound ISerializing...
 Generating docs for compound KeeperSystem...
@@ -929,5 +938,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 677/65536 hits=9384 misses=747
+lookup cache used 681/65536 hits=9391 misses=751
 finished...
