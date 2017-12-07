@@ -113,6 +113,8 @@ public class BattleHandler : MonoBehaviour
         local.selectionChoice -= 1;
         networkOrAI.selectionChoice -= 1;
 
+        Debug.Log(string.Format("local: {0}\t network: {1}", local.selectionChoice, networkOrAI.selectionChoice));
+
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
@@ -303,8 +305,34 @@ public class BattleHandler : MonoBehaviour
     /// <param name="attackIndex">the attack index to be used</param>
     private void ApplyAttack(bool isLocalCretin, int attackIndex)
     {
-        MonsterDataObject localKeeperMonster = this.participant1.currentCretin;
-        MonsterDataObject otherKeeperMonster = this.participant2.currentCretin;
+        MonsterDataObject localKeeperMonster = null, otherKeeperMonster = null;
+        
+        if (isLocalCretin)
+        {
+            if (participant1.playerController.isLocal)
+            {
+                localKeeperMonster = participant1.currentCretin;
+                otherKeeperMonster = participant2.currentCretin;
+            }
+            else
+            {
+                localKeeperMonster = participant2.currentCretin;
+                otherKeeperMonster = participant1.currentCretin;
+            }
+        }
+        else
+        {
+            if (!participant1.playerController.isLocal)
+            {
+                otherKeeperMonster = participant1.currentCretin;
+                localKeeperMonster = participant2.currentCretin;
+            }
+            else
+            {
+                otherKeeperMonster = participant2.currentCretin;
+                localKeeperMonster = participant1.currentCretin;
+            }
+        }
 
         // get the attack
         AttackObject attack = isLocalCretin
