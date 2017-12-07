@@ -184,6 +184,7 @@ public class BattleUIController : MonoBehaviour
                 {
                     case 1:
                         battleHandler.SendBattleOption(true, GameState.Player.EnumBattleSelection.FLEE, 0);
+                        menuState = MenuState.WAITING;
                         break;
                     default:
                         BackButtonClicked();
