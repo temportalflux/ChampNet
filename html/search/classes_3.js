@@ -1,7 +1,8 @@
 var searchData=
 [
   ['eventbattle',['EventBattle',['../class_event_battle.html',1,'']]],
-  ['eventbattlelocalstart',['EventBattleLocalStart',['../class_event_battle_local_start.html',1,'']]],
+  ['eventbattlelocaltoggle',['EventBattleLocalToggle',['../class_event_battle_local_toggle.html',1,'']]],
+  ['eventbattleopponentdisconnected',['EventBattleOpponentDisconnected',['../class_event_battle_opponent_disconnected.html',1,'']]],
   ['eventbattlepromptselection',['EventBattlePromptSelection',['../class_event_battle_prompt_selection.html',1,'']]],
   ['eventbattlerequest',['EventBattleRequest',['../class_event_battle_request.html',1,'']]],
   ['eventbattleresponse',['EventBattleResponse',['../class_event_battle_response.html',1,'']]],

@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 465.116279
+%%BoundingBox: 0 0 500 372.093023
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,7 +19,7 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 1.075000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 1.343750 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
@@ -173,8 +173,8 @@
 
 boxfont setfont
 1 boundaspect scale
-(EventBattleLocalStart) cw
-(EventBattleResultResponse) cw
+(EventBattleOpponentDisconnected) cw
+(EventBattle) cw
 (EventNetwork) cw
 (ISerializing) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -188,8 +188,8 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (EventBattleLocalStart) 0.000000 0.000000 box
- (EventBattleResultResponse) 0.000000 1.000000 box
+ (EventBattleOpponentDisconnected) 0.000000 0.000000 box
+ (EventBattle) 0.000000 1.000000 box
  (EventNetwork) 0.000000 2.000000 box
  (ISerializing) 0.000000 3.000000 box
 

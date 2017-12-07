@@ -26,8 +26,9 @@ void \hyperlink{class_battle_handler_a380a371e96df1b362027a8f33c8ed7fb}{Set\-Up\
 \begin{DoxyCompactList}\small\item\em Called To set up the battle scene. Must be called at the start \end{DoxyCompactList}\item 
 bool \hyperlink{class_battle_handler_ad207e2adf6f1f3882e98b1c8a5f59f67}{Send\-Battle\-Option} (bool is\-Local\-Player, \hyperlink{class_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Game\-State.\-Player.\-Enum\-Battle\-Selection} selection, uint selection\-Index)
 \begin{DoxyCompactList}\small\item\em Used to send a battle selection \end{DoxyCompactList}\item 
-I\-Enumerator \hyperlink{class_battle_handler_a25e3f172c7752e64dec1834f88055ad4}{Handle\-Response} (\hyperlink{class_battle_participant}{Battle\-Participant} local, \hyperlink{class_battle_participant}{Battle\-Participant} network\-Or\-A\-I)
-\begin{DoxyCompactList}\small\item\em Called when both parties have made selections \end{DoxyCompactList}\item 
+\hypertarget{class_battle_handler_ad69bfcfc81caec50b1db97edb95e33b1}{I\-Enumerator {\bfseries Handle\-Response} (\hyperlink{class_battle_participant}{Battle\-Participant} p1, \hyperlink{class_battle_participant}{Battle\-Participant} p2)}\label{class_battle_handler_ad69bfcfc81caec50b1db97edb95e33b1}
+
+\item 
 \hypertarget{class_battle_handler_a13610e1414fd1f866292588574c96139}{void {\bfseries on\-Pre\-Exit} ()}\label{class_battle_handler_a13610e1414fd1f866292588574c96139}
 
 \end{DoxyCompactItemize}
@@ -55,29 +56,6 @@ readonly float\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} {\bfseries type\-Match\-U
 $<$author$>$Jake Ruth$<$/author$>$ 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_battle_handler_a25e3f172c7752e64dec1834f88055ad4}{\index{Battle\-Handler@{Battle\-Handler}!Handle\-Response@{Handle\-Response}}
-\index{Handle\-Response@{Handle\-Response}!BattleHandler@{Battle\-Handler}}
-\subsubsection[{Handle\-Response}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerator Battle\-Handler.\-Handle\-Response (
-\begin{DoxyParamCaption}
-\item[{{\bf Battle\-Participant}}]{local, }
-\item[{{\bf Battle\-Participant}}]{network\-Or\-A\-I}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_handler_a25e3f172c7752e64dec1834f88055ad4}
-
-
-Called when both parties have made selections 
-
-
-\begin{DoxyParams}{Parameters}
-{\em local\-Selection} & The selection for the local player\\
-\hline
-{\em local\-Selection\-Index} & The index for the selection for the local player\\
-\hline
-{\em other\-Selection} & The selection for the other keeper\\
-\hline
-{\em other\-Selection\-Index} & the index for the selection for the other keeper\\
-\hline
-\end{DoxyParams}
 \hypertarget{class_battle_handler_ad207e2adf6f1f3882e98b1c8a5f59f67}{\index{Battle\-Handler@{Battle\-Handler}!Send\-Battle\-Option@{Send\-Battle\-Option}}
 \index{Send\-Battle\-Option@{Send\-Battle\-Option}!BattleHandler@{Battle\-Handler}}
 \subsubsection[{Send\-Battle\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Battle\-Handler.\-Send\-Battle\-Option (

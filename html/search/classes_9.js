@@ -10,6 +10,7 @@ var searchData=
   ['packetplayerscoreboardinfo',['PacketPlayerScoreboardInfo',['../struct_packet_player_scoreboard_info.html',1,'']]],
   ['packetqueue',['PacketQueue',['../class_champ_net_1_1_packet_queue.html',1,'ChampNet']]],
   ['packetuserid',['PacketUserID',['../struct_packet_user_i_d.html',1,'']]],
+  ['packetuseridbool',['PacketUserIDBool',['../struct_packet_user_i_d_bool.html',1,'']]],
   ['packetuseriddouble',['PacketUserIDDouble',['../struct_packet_user_i_d_double.html',1,'']]],
   ['packetuseridtriple',['PacketUserIDTriple',['../struct_packet_user_i_d_triple.html',1,'']]],
   ['performancetracker',['PerformanceTracker',['../class_performance_tracker.html',1,'']]],

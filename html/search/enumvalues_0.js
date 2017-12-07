@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['id_5fbattle_5flocal_5fstart',['ID_BATTLE_LOCAL_START',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821ab54454887b51006a69a632ca6a13aab6',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5flocal_5ftoggle',['ID_BATTLE_LOCAL_TOGGLE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a01d87e1852357f746b5c583c76db4e23',1,'ChampNetPlugin']]],
+  ['id_5fbattle_5fopponent_5fdisconnected',['ID_BATTLE_OPPONENT_DISCONNECTED',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a6bf2d8b7c920b398839dd015883be97d',1,'ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821addd7d4ef5710787934d893be10785f0d',1,'ChampNetPlugin.ID_BATTLE_OPPONENT_DISCONNECTED()'],['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821addd7d4ef5710787934d893be10785f0d',1,'ChampNetPlugin.ID_BATTLE_OPPONENT_DISCONNECTED()']]],
   ['id_5fbattle_5fprompt_5fselection',['ID_BATTLE_PROMPT_SELECTION',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1ce06c939b64517c251a1cc36168837f',1,'ChampNetPlugin']]],
   ['id_5fbattle_5frequest',['ID_BATTLE_REQUEST',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a1099c58a5b9ad43616e67c5865ce539a',1,'ChampNetPlugin']]],
   ['id_5fbattle_5fresponse',['ID_BATTLE_RESPONSE',['../namespace_champ_net_plugin.html#a2ade5cfa7cf6c25ab7236c6b54a57821a4d61a30352b41b284f20eeb6d46d0b18',1,'ChampNetPlugin']]],

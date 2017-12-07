@@ -120,9 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67">SendBattleOption</a> (bool isLocalPlayer, <a class="el" href="class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> selection, uint selectionIndex)</td></tr>
 <tr class="memdesc:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to send a battle selection  <a href="#ad207e2adf6f1f3882e98b1c8a5f59f67">More...</a><br/></td></tr>
 <tr class="separator:ad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25e3f172c7752e64dec1834f88055ad4"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_handler.html#a25e3f172c7752e64dec1834f88055ad4">HandleResponse</a> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> local, <a class="el" href="class_battle_participant.html">BattleParticipant</a> networkOrAI)</td></tr>
-<tr class="memdesc:a25e3f172c7752e64dec1834f88055ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when both parties have made selections  <a href="#a25e3f172c7752e64dec1834f88055ad4">More...</a><br/></td></tr>
-<tr class="separator:a25e3f172c7752e64dec1834f88055ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad69bfcfc81caec50b1db97edb95e33b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad69bfcfc81caec50b1db97edb95e33b1"></a>
+IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>HandleResponse</b> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> p1, <a class="el" href="class_battle_participant.html">BattleParticipant</a> p2)</td></tr>
+<tr class="separator:ad69bfcfc81caec50b1db97edb95e33b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13610e1414fd1f866292588574c96139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13610e1414fd1f866292588574c96139"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>onPreExit</b> ()</td></tr>
 <tr class="separator:a13610e1414fd1f866292588574c96139"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,51 +147,6 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>&lt;author&gt;Jake Ruth&lt;/author&gt; </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a25e3f172c7752e64dec1834f88055ad4"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">IEnumerator BattleHandler.HandleResponse </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
-          <td class="paramname"><em>local</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
-          <td class="paramname"><em>networkOrAI</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called when both parties have made selections </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">localSelection</td><td>The selection for the local player</td></tr>
-    <tr><td class="paramname">localSelectionIndex</td><td>The index for the selection for the local player</td></tr>
-    <tr><td class="paramname">otherSelection</td><td>The selection for the other keeper</td></tr>
-    <tr><td class="paramname">otherSelectionIndex</td><td>the index for the selection for the other keeper</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ad207e2adf6f1f3882e98b1c8a5f59f67"></a>
 <div class="memitem">
 <div class="memproto">
