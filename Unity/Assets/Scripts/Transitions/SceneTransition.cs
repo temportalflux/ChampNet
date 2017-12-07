@@ -27,4 +27,9 @@ public class SceneTransition : MonoBehaviour {
         ManagerTransitions.INSTANCE.triggerUnLoadAsync(this.nextScene, this.transition, this.loadMode, onFinish);
     }
 
+    public void setValue(float value)
+    {
+        this.transition.updateShader(value);
+    }
+
 }
