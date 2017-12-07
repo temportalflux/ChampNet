@@ -510,6 +510,16 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Get the address of the receiver (the challenger/requester)
 				const char *addressSender = this->getClientAddressFrom(pPacket->playerIdSender);
+
+				bool noReceiver = this->mpPlayerIdToClientId[pPacket->playerIdReceiver] < 0;
+
+				if (noReceiver)
+				{
+					pPacket->accepted = false;
+					this->sendPacket(addressSender, pPacket, false);
+					return;
+				}
+
 				const char *addressReceiver = this->getClientAddressFrom(pPacket->playerIdReceiver);
 				// Forward the packet - forward the response to the one who requested the battle
 				this->sendPacket(addressReceiver, pPacket, false);
@@ -795,11 +805,14 @@ void StateServer::removeClient(unsigned int clientID)
 				{
 					// stop battle
 					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
-					PacketUserIDDouble packetBattleBroken[1];
-					packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
-					packetBattleBroken->playerIdSender = playerID;
-					packetBattleBroken->playerIdReceiver = opponentID;
-					this->sendPacket(this->mpClientAddresses[this->mpPlayerIdToClientId[opponentID]]->c_str(), packetBattleBroken, false);
+					if (opponentID >= 0)
+					{
+						PacketUserIDDouble packetBattleBroken[1];
+						packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
+						packetBattleBroken->playerIdSender = playerID;
+						packetBattleBroken->playerIdReceiver = opponentID;
+						this->sendPacket(this->mpClientAddresses[this->mpPlayerIdToClientId[opponentID]]->c_str(), packetBattleBroken, false);
+					}
 				}
 				this->mpGameState->removePlayer(playerID);
 				this->mpPlayerIdToClientId[playerID] = -1;
