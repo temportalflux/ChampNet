@@ -317,6 +317,7 @@ MonoBehaviour:
   sprite: {fileID: 4975964848137938}
   overlay: {fileID: 212510256852981740}
   moveTarget: {fileID: 4447707636484808}
+  displacement: {x: 0, y: 0, z: 0}
 --- !u!114 &114375858895001024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {x: 0, y: 0, z: 0}
+  _LastInputDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114468771059613572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,7 +374,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114064580263914160}
-          m_MethodName: challengeRandomPlayer
+          m_MethodName: challengeNetworkedPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

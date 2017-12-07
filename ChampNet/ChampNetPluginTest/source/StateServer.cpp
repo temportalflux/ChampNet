@@ -486,6 +486,10 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				unsigned int pPacketLength = 0;
 				PacketUserIDDouble* pPacket = packet->getPacketAs<PacketUserIDDouble>(pPacketLength);
 
+				// prevents users from moving until battle request is accepted
+				this->mpGameState->players[pPacket->playerIdSender].inBattle = true;
+				this->mpGameState->players[pPacket->playerIdReceiver].inBattle = true;
+
 				// Get the address of the sender (the challenger/requester) for reporting purposes
 				std::string addressSender = packet->getAddress();
 				// Get the address of the receiver
@@ -532,6 +536,12 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					this->sendGameState(ChampNetPlugin::MessageIDs::ID_UPDATE_GAMESTATE, addressReceiver, false);
 					this->sendPacket(addressSender, promptSelection, false);
 					this->sendPacket(addressReceiver, promptSelection, false);
+				}
+				// if battle is rejected then allow both players to move again
+				else
+				{
+					this->mpGameState->players[pPacket->playerIdSender].inBattle = false;
+					this->mpGameState->players[pPacket->playerIdReceiver].inBattle = false;
 				}
 
 			}

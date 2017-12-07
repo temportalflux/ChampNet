@@ -28,7 +28,22 @@ public class PlayerLocal : PlayerReference
             this.requestBattle(player);
         }
     }
-    
+
+    /// <summary>
+    /// Challenges another player to a networked battle
+    /// </summary>
+    /// <remarks>
+    /// Author: Christopher Brennan
+    /// </remarks>
+    public void challengeNetworkedPlayer()
+    {
+        PlayerReference player = _pic.CharacterFacing(this.moveTarget.position);
+        if (player != null)
+        {
+            this.requestBattle(player);
+        }
+    }
+
     public void onChallengeBy(MonsterDataObject opponentAI)
     {
         IList<MonsterDataObject> cretins = this.getInfo().monsters;

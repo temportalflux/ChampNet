@@ -83,6 +83,12 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private bool isLoadingOrInBattle;
 
+    /// <summary>
+    /// Used for response. Saved when requests is recieved.
+    /// </summary>
+    private uint MyRequestID;
+    private uint RequesterID;
+
     void Awake()
     {
         this.inGame = false;
@@ -225,6 +231,31 @@ public class GameManager : Singleton<GameManager>
                 this.isLoadingOrInBattle = false;
             });
         }
+    }
+
+    public void sendResponse(bool answer)
+    {
+        //Debug.Log("Instance My: " + INSTANCE.MyRequestID + " Yours " + INSTANCE.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        INSTANCE.netty.Dispatch(new EventBattleResponse(INSTANCE.RequesterID, INSTANCE.MyRequestID, answer));
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(false);
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(false);
+        //GameObject.Find("BattleRequestWindow").SetActive(false);
+    }
+
+    public void setResponseIDs(uint LocalClient, uint opponentID)
+    {
+        this.MyRequestID = LocalClient;
+        this.RequesterID = opponentID;
+
+        //Debug.Log("This My: " + this.MyRequestID + " Yours " + this.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(true);
+
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(true);
+        //GameObject.Find("BattleRequestWindow").SetActive(true);
     }
 
 }

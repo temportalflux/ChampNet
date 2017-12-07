@@ -18,9 +18,24 @@ public class EventBattleRequest : EventBattle
 
     public override void Execute()
     {
-        // Some user (requester) has asked us (receiver) to battle
-        Debug.Log("Received request to battle from " + this.idSender + "... auto accepting");
-        NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
-    }
+        // if in battle then refuse battle request
+        if (GameManager.INSTANCE.state.players[this.idReceiver].inBattle)
+        {
+            // Some user (requester) has asked us (receiver) to battle
+            Debug.Log("Received request to battle from " + this.idSender + "... auto Declinning");
+            NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, false));
+        }
+        // if not in battle then prompt user to answer battle request
+        else
+        {
+            // ask player for answer and then from answer send response
+            // tldr: delete whats below and create a menu that recieves player answer to battle
+            Debug.Log("Received request to battle from " + this.idSender);
 
+            // saves ID's for when player has to choose yes or no
+            GameManager.INSTANCE.setResponseIDs(this.idReceiver, this.idSender);
+
+            //NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
+        }
+    }
 }

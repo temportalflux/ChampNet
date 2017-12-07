@@ -15,6 +15,7 @@ TagManager:
   - BattleHandler
   - HUD
   - BattleHandlerUI
+  - UIRequest
   layers:
   - Default
   - TransparentFX
