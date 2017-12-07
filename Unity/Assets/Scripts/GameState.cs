@@ -455,7 +455,7 @@ public class GameState : ScriptableObject, ISerializing
     {
         if (this.HasPlayer(ref info))
         {
-            GameManager.INSTANCE.getScoreBoard().removePlayerOnLeave(info.rank);
+            //GameManager.INSTANCE.getScoreBoard().removePlayerOnLeave(info.rank);
 
             this.players.Remove(info.playerID);
 
