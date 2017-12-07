@@ -69,6 +69,8 @@ extern "C"
 			ID_BATTLE_PROMPT_SELECTION, // PacketBattlePromptSelection
 			//! AB->S: Respond to PROMPT_SELECTION with a selection for battle
 			ID_BATTLE_SELECTION, // PacketBattleSelection
+			//! S->A: Notify A that B disconnected during battle
+			ID_BATTLE_OPPONENT_DISCONNECTED,
 			//! A(winner)->S: tell server I won
 			//! S->AB: notify clients of outcome of battle
 			ID_BATTLE_RESULT, // PacketUserIDTriple

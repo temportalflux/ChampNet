@@ -148,7 +148,7 @@ public class ConnectMenu : MonoBehaviour {
                         Color[] colors = new []{this.players[localID].color};
                         texture.SetPixels(colors);
 
-                        GUILayout.Label();
+                        //GUILayout.Label();
                     }
                     GUILayout.EndVertical();
 

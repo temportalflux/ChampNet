@@ -47,6 +47,8 @@ namespace ChampNetPlugin
         ID_BATTLE_PROMPT_SELECTION,
         // AB->S: Respond to PROMPT_SELECTION with a selection for battle
         ID_BATTLE_SELECTION,
+        //! S->A: Notify A that B disconnected during battle
+        ID_BATTLE_OPPONENT_DISCONNECTED,
         // S->AB: notify clients of outcome of battle
         ID_BATTLE_RESULT,
         // AB->S: Tell server the client has acknowledged the battle result and is return to normal space
