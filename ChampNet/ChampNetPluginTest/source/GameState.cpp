@@ -136,7 +136,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		// write name
 		// NOTE: this does not use ALL of the name byte, if the name is < SIZE_MAX_NAME characters
 		int nameLength = player.name.length();
-		nameLength = nameLength < Player::SIZE_MAX_NAME ? nameLength : Player::SIZE_MAX_NAME;
+		//nameLength = nameLength < Player::SIZE_MAX_NAME ? nameLength : Player::SIZE_MAX_NAME;
 		*((int *)pos) = nameLength; pos += sizeof(int);
 		for (int i = 0; i < nameLength; i++)
 		{
