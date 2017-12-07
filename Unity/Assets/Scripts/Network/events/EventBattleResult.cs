@@ -30,8 +30,6 @@ public class EventBattleResult : EventBattle
             sender.name, sender.playerID, receiver.name, receiver.playerID, winner.name, winner.playerID));
         EventBattleResultResponse.Dispatch(sender.isLocal ? sender.playerID : receiver.playerID);
         GameManager.INSTANCE.UnloadBattleScene();
-
-        GameManager.INSTANCE.getScoreBoard().DisplayScoreBoard();
     }
 
     public static void Dispatch(uint winner, uint loser)
