@@ -100,16 +100,20 @@ public class BattleHandler : MonoBehaviour
         return true;
     }
 
-    /// <summary>
-    /// Called when both parties have made selections
-    /// </summary>
-    /// <param name="localSelection">The selection for the local player</param>
-    /// <param name="localSelectionIndex">The index for the selection for the local player</param>
-    /// <param name="otherSelection">The selection for the other keeper</param>
-    /// <param name="otherSelectionIndex">the index for the selection for the other keeper</param>
-    [ToDo("handle a death")]
-    public IEnumerator HandleResponse(BattleParticipant local, BattleParticipant networkOrAI)
+    private void getLocalNetwork(BattleParticipant p1, BattleParticipant p2, out BattleParticipant local,
+        out BattleParticipant networkOrAI)
     {
+        bool p1IsNetworkOrAI = p1.playerController == null || p1.playerController.isLocal;
+        local = !p1IsNetworkOrAI ? p1 : p2;
+        networkOrAI = p1IsNetworkOrAI ? p1 : p2;
+    }
+
+
+    [ToDo("handle an ai death (add monster)")]
+    public IEnumerator HandleResponse(BattleParticipant p1, BattleParticipant p2)
+    {
+        BattleParticipant local, networkOrAI;
+        getLocalNetwork(p1, p2, out local, out networkOrAI);
         local.selectionChoice -= 1;
         networkOrAI.selectionChoice -= 1;
 
@@ -155,7 +159,7 @@ public class BattleHandler : MonoBehaviour
             // Check "local" first
             if (local.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(true, local.selectionChoice);
+                ApplyAttack(local, networkOrAI, local.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", local.currentCretin.GetMonsterName,
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
@@ -170,7 +174,7 @@ public class BattleHandler : MonoBehaviour
             // then check other (network or AI)
             if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
             {
-                ApplyAttack(false, networkOrAI.selectionChoice);
+                ApplyAttack(networkOrAI, local, networkOrAI.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
@@ -186,7 +190,7 @@ public class BattleHandler : MonoBehaviour
         {
             if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK)
             {
-                ApplyAttack(false, networkOrAI.selectionChoice);
+                ApplyAttack(networkOrAI, local, networkOrAI.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", networkOrAI.currentCretin.GetMonsterName,
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
@@ -200,7 +204,7 @@ public class BattleHandler : MonoBehaviour
 
             if (local.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
             {
-                ApplyAttack(true, local.selectionChoice);
+                ApplyAttack(local, networkOrAI, local.selectionChoice);
 
                 battleUIController.SetFlavorText(string.Format("{0} Used {1}", local.currentCretin.GetMonsterName,
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
@@ -298,47 +302,13 @@ public class BattleHandler : MonoBehaviour
         GameManager.INSTANCE.UnloadBattleScene();
     }
 
-    /// <summary>
-    /// Apply a move to the current battle
-    /// </summary>
-    /// <param name="isLocalCretin">if <code>true</code> then the attack came from the local player, as oppossed to a network player or AI</param>
-    /// <param name="attackIndex">the attack index to be used</param>
-    private void ApplyAttack(bool isLocalCretin, int attackIndex)
+
+    private void ApplyAttack(BattleParticipant attacker, BattleParticipant receiver, int attackIndex)
     {
         MonsterDataObject localKeeperMonster = null, otherKeeperMonster = null;
+
+        AttackObject attack = attacker.currentCretin.GetAvailableAttacks[attackIndex];
         
-        if (isLocalCretin)
-        {
-            if (participant1.playerController.isLocal)
-            {
-                localKeeperMonster = participant1.currentCretin;
-                otherKeeperMonster = participant2.currentCretin;
-            }
-            else
-            {
-                localKeeperMonster = participant2.currentCretin;
-                otherKeeperMonster = participant1.currentCretin;
-            }
-        }
-        else
-        {
-            if (!participant1.playerController.isLocal)
-            {
-                otherKeeperMonster = participant1.currentCretin;
-                localKeeperMonster = participant2.currentCretin;
-            }
-            else
-            {
-                otherKeeperMonster = participant2.currentCretin;
-                localKeeperMonster = participant1.currentCretin;
-            }
-        }
-
-        // get the attack
-        AttackObject attack = isLocalCretin
-            ? localKeeperMonster.GetAvailableAttacks[attackIndex]
-            : otherKeeperMonster.GetAvailableAttacks[attackIndex];
-
         // The damage the attack will ultimately do
         float damage;
 
@@ -350,14 +320,10 @@ public class BattleHandler : MonoBehaviour
         float power = attack.power;
 
         // the effective attack stat of the user
-        float attackStat = isLocalCretin
-            ? localKeeperMonster.GetMonsterAttackStat(attack.physicalOrSpecial, true)
-            : otherKeeperMonster.GetMonsterAttackStat(attack.physicalOrSpecial, true);
+        float attackStat = attacker.currentCretin.GetMonsterAttackStat(attack.physicalOrSpecial, true);
 
         // the effective defense stat of the reciever
-        float defenseStat = isLocalCretin
-            ? localKeeperMonster.GetMonsterDefenseStat(attack.physicalOrSpecial, true)
-            : otherKeeperMonster.GetMonsterDefenseStat(attack.physicalOrSpecial, true);
+        float defenseStat = receiver.currentCretin.GetMonsterAttackStat(attack.physicalOrSpecial, true);
 
         // a modifier if the attack would target multiple monsters (I.E. a doubles battle)
         // for our sake, because there is always one target so the value will be 1
@@ -378,7 +344,7 @@ public class BattleHandler : MonoBehaviour
         // a modifier for the Same-Type Attack Bonus (STAB)
         // 1.5 if the type of the attack matches one of the user's types, otherwise 1
         float stab = 1;
-        foreach (MonsterType type in isLocalCretin ? localKeeperMonster.GetTypes : otherKeeperMonster.GetTypes)
+        foreach (MonsterType type in attacker.currentCretin.GetTypes)
         {
             if (type == attack.type)
             {
@@ -390,7 +356,7 @@ public class BattleHandler : MonoBehaviour
         // a modifier to the attack's type effectiveness, the default is 1
         // the value is halfed, doubled, or multiplied by 0 depending on type match ups from the attack type and the other's types.
         float typeAdvantage = 1;
-        foreach (MonsterType type in isLocalCretin ? localKeeperMonster.GetTypes : otherKeeperMonster.GetTypes)
+        foreach (MonsterType type in receiver.currentCretin.GetTypes)
         {
             typeAdvantage *= GetTypeEffectivenes(attack.type, type);
         }
@@ -406,18 +372,9 @@ public class BattleHandler : MonoBehaviour
         float modifier = targets * weather * critical * random * stab * typeAdvantage * burn * other;
 
         damage = ((2 * level / 5 + 2) * power * attackStat * defenseStat / 50 + 2) * modifier;
-        damage = Mathf.Floor(damage);
 
-        // apply damage after calculations
-        if (isLocalCretin)
-        {
-            otherKeeperMonster.CurrentHP -= (int) damage;
-            
-        }
-        else
-        {
-            localKeeperMonster.CurrentHP -= (int) damage;
-        }
+        // Apply damage
+        receiver.currentCretin.CurrentHP -= Mathf.FloorToInt(damage);
     }
 
     // Type effectiveness match up 2d array hard coded here. 2d arrays dont look nice in unity inspector
