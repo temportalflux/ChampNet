@@ -155,6 +155,7 @@ public class ScoreBoard : MonoBehaviour {
     /// </summary>
     private void Update()
     {
+        DisplayScoreBoard();
 
         // used for single camera
         //foreach (RankText text in rankText)
@@ -205,19 +206,21 @@ public class ScoreBoard : MonoBehaviour {
     public void DisplayScoreBoard()
     {
         //Debug.Log("update scoreboard");
-
-        foreach (RankText scoreboard in rankText)
+        
+        foreach (GameState.Player player in GameManager.INSTANCE.state.players.Values)
         {
-            findNextHighestScore(scoreboard);
-
-            // set name info
-            scoreboard.NameObject.GetComponent<Text>().text = scoreboard.name.ToString();
-
-            // set win info
-            scoreboard.WinObject.GetComponent<Text>().text = scoreboard.score.ToString();
+            if (player.rank < this.rankText.Length)
+            {
+                // set name info
+                this.rankText[player.rank].NameObject.GetComponent<Text>().text = player.name;
+                // set win info
+                this.rankText[player.rank].WinObject.GetComponent<Text>().text = player.wins.ToString();
+            }
         }
     }
 
+
+    // OUTDATED CODE BELOW
     /// <summary>
     /// recieve current score on board to check if a change is needed to be made
     /// </summary>

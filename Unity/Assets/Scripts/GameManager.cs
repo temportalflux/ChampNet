@@ -207,6 +207,11 @@ public class GameManager : Singleton<GameManager>
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
 
+    public ScoreBoard getScoreBoard()
+    {
+        return this.scoreBoardVar;
+    }
+
     public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
     {
         if (!this.isLoadingOrInBattle)
