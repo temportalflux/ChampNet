@@ -58,7 +58,22 @@ public class BattleHandler : MonoBehaviour
         // This is a networked battle, so all logic on when players have gone is handled via server
         if (isNetworked)
         {
-            NetInterface.INSTANCE.Dispatch(new EventBattleSelection(participant1.playerController.playerID, participant2.playerController.playerID, selection, selectionIndex));
+            BattleParticipant localControlled = null, remoteControlled = null;
+            if (participant1.playerController.isLocal)
+            {
+                localControlled = participant1;
+                remoteControlled = participant2;
+            }
+            else if (participant2.playerController.isLocal)
+            {
+                localControlled = participant2;
+                remoteControlled = participant1;
+            }
+
+            if (localControlled != null && remoteControlled != null)
+            {
+                NetInterface.INSTANCE.Dispatch(new EventBattleSelection(localControlled.playerController.playerID, remoteControlled.playerController.playerID, selection, selectionIndex));
+            }
         }
         // This is a battle between a player and AI, so everything is handled locally
         else
@@ -263,9 +278,9 @@ public class BattleHandler : MonoBehaviour
         if (isNetworked)
         {
             EventBattleResult eventBattleResult = new EventBattleResult();
-            eventBattleResult.idSender = participant1.playerController.clientID;
-            eventBattleResult.idReceiver = participant2.playerController.clientID;
-            eventBattleResult.playerIDWinner = winner.playerController.clientID;
+            eventBattleResult.idSender = participant1.playerController.playerID;
+            eventBattleResult.idReceiver = participant2.playerController.playerID;
+            eventBattleResult.playerIDWinner = winner.playerController.playerID;
 
             NetInterface.INSTANCE.Dispatch(eventBattleResult);
         }

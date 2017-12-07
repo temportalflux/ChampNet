@@ -51,7 +51,7 @@ public class EventBattlePromptSelection : EventNetwork
         if (gameObjectWithTag != null)
         {
             BattleHandler battleHandler = gameObjectWithTag.GetComponent<BattleHandler>();
-            bool playerAisParticipant1 = battleHandler.participant1.playerController.clientID == playerAID;
+            bool playerAisParticipant1 = battleHandler.participant1.playerController.playerID == playerAID;
             if (playerAisParticipant1)
             {
                 battleHandler.participant1.selectionChoice = playerAChoice;
