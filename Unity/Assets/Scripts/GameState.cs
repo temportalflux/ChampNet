@@ -10,7 +10,6 @@ and/or communicate a copy of this project to a plagiarism-checking service, whic
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 using ID = System.UInt32;
 using System.Linq;
@@ -25,31 +24,6 @@ using System;
 /// \author Dustin Yost
 public class GameState : ScriptableObject, ISerializing
 {
-
-    /// <summary>
-    /// Creates a <see cref="ScriptableObject"/> for GameState from a Unity Menu context
-    /// </summary>
-    [MenuItem("Assets/Create/Asset/Game State")]
-    public static void Create()
-    {
-        // Get the path to the selected asset
-        string selectedPath = "Assets";
-        UnityEngine.Object selectedObj = Selection.activeObject;
-        if (selectedObj != null) selectedPath = AssetDatabase.GetAssetPath(selectedObj.GetInstanceID());
-
-        // Create the save panel
-        string path = EditorUtility.SaveFilePanelInProject(
-            "Save Game State", "New Game State",
-            "asset", "Save Game State",
-            selectedPath
-        );
-        // Check if path was invalid
-        if (path == "")
-            return;
-
-        // Create the brush asset
-        AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<GameState>(), path);
-    }
 
     /// <summary>
     /// A state class for all Player objects
