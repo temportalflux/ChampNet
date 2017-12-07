@@ -536,15 +536,15 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 			}
 			break;
-		case ChampNetPlugin::ID_BATTLE_LOCAL_START:
+		case ChampNetPlugin::ID_BATTLE_LOCAL_TOGGLE:
 			{
 				// Get Packet
 				unsigned int pPacketLength = 0;
-				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+				PacketUserIDBool* pPacket = packet->getPacketAs<PacketUserIDBool>(pPacketLength);
 				// Get the playerID
-				unsigned int playerID = pPacket->dataID;
+				unsigned int playerID = pPacket->playerID;
 				// Player is telling us they have entered a local AI battle, so in battle w/o player opponent
-				this->mpGameState->players[playerID].inBattle = true;
+				this->mpGameState->players[playerID].inBattle = pPacket->toggle;
 				this->mpGameState->players[playerID].battleOpponentId = -1;
 			}
 			break;
