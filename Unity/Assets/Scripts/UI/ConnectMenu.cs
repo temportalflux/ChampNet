@@ -28,19 +28,30 @@ public class ConnectMenu : MonoBehaviour {
 
     private bool connecting = false, showGui = true;
 
-    private string[] _names = new[]
+    private readonly string[] _names =
     {
         "Ash", "Gary", "Brock", "New Player",
-        "Red", "Blue", "Green", "Professor Oak", "Misty",
+        "Red", "Blue", "Green", "Oak", "Misty",
         "Jake", "Chris", "Dustin", "Jeff", "Blake", "Tim",
-        "Molly", "Patrick Stump", "NPH", "John", "Danny B 27",
-        "April 5th", "Santa Clause", "John Wilkes Booth", "Ted Bundy",
-
+        "Molly", "Patrick", "NPH", "John", "DannyB27",
+        "April 5th", "Santa", "JohnWBooth", "Ted Bundy",
+        "jUSTIN", "Dusty", "Tohper", "Jake Rum", "Jessie", "James",
+        "Jesus"
     };
 
     void OnEnable()
     {
         this.players[0].name = _names[UnityEngine.Random.Range(0, _names.Length)];
+
+        Color c = Colors.ALL_COLORS[UnityEngine.Random.Range(0, Colors.ALL_COLORS.Length)];
+
+        //this.players[0].color.r = UnityEngine.Random.Range(0, 1.0f);
+        //this.players[0].color.g = UnityEngine.Random.Range(0, 1.0f);
+        //this.players[0].color.b = UnityEngine.Random.Range(0, 1.0f);
+
+        this.players[0].color = c;
+
+
     }
 
     void OnGUI()
