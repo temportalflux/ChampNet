@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa617897cf92c385b734176b3c0f6a51b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa617897cf92c385b734176b3c0f6a51b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Move</b> (Vector3 start, out Vector3 position, out Vector3 deltaMove)</td></tr>
 <tr class="separator:aa617897cf92c385b734176b3c0f6a51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509e98602c529b1ca1e391c4ffde100b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_reference.html">PlayerReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_input_controller.html#a509e98602c529b1ca1e391c4ffde100b">CharacterFacing</a> (Vector3 start)</td></tr>
+<tr class="memdesc:a509e98602c529b1ca1e391c4ffde100b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grabs direction player is facing and calls the check to see if there is a player  <a href="#a509e98602c529b1ca1e391c4ffde100b">More...</a><br/></td></tr>
+<tr class="separator:a509e98602c529b1ca1e391c4ffde100b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a113e3417863a2d9ab228c795702607b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a113e3417863a2d9ab228c795702607b3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>onAxis</b> (InputDevice device, InputResponse.UpdateEvent evt, MappedAxis axis, AxisDirection value)</td></tr>
 <tr class="separator:a113e3417863a2d9ab228c795702607b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,7 +133,44 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae7ad9ffda52758888cf9d6940d52e589"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7ad9ffda52758888cf9d6940d52e589"></a>
 Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>_input</b></td></tr>
 <tr class="separator:ae7ad9ffda52758888cf9d6940d52e589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b4114ca0dd08bb1f909f2e6cfa0c8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15b4114ca0dd08bb1f909f2e6cfa0c8f"></a>
+Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>_LastInputDirection</b></td></tr>
+<tr class="separator:a15b4114ca0dd08bb1f909f2e6cfa0c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a509e98602c529b1ca1e391c4ffde100b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player_reference.html">PlayerReference</a> PlayerInputController.CharacterFacing </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>start</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grabs direction player is facing and calls the check to see if there is a player </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>&lt;Author&gt; Christopher Brennan &lt;/Author&gt; </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/temportalflux/ChampNet/Unity/Assets/Scripts/Player/PlayerInputController.cs</li>
 </ul>

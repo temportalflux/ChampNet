@@ -22,28 +22,28 @@ enum {\bfseries Battle\-State} \{ {\bfseries W\-A\-I\-T\-I\-N\-G\-\_\-\-O\-N\-\_
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_battle_handler_a380a371e96df1b362027a8f33c8ed7fb}{Set\-Up\-Battle} (\hyperlink{class_battle_participant}{Battle\-Participant} first, \hyperlink{class_battle_participant}{Battle\-Participant} second, bool is\-Networked\-Battle)
+void \hyperlink{group__client_ga380a371e96df1b362027a8f33c8ed7fb}{Set\-Up\-Battle} (\hyperlink{class_battle_participant}{Battle\-Participant} first, \hyperlink{class_battle_participant}{Battle\-Participant} second, bool is\-Networked\-Battle)
 \begin{DoxyCompactList}\small\item\em Called To set up the battle scene. Must be called at the start \end{DoxyCompactList}\item 
-bool \hyperlink{class_battle_handler_ad207e2adf6f1f3882e98b1c8a5f59f67}{Send\-Battle\-Option} (bool is\-Local\-Player, \hyperlink{class_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Game\-State.\-Player.\-Enum\-Battle\-Selection} selection, uint selection\-Index)
+bool \hyperlink{group__client_gad207e2adf6f1f3882e98b1c8a5f59f67}{Send\-Battle\-Option} (bool is\-Local\-Player, \hyperlink{class_game_state_1_1_player_a9f54c5eca1e60acbaa2074e981f51615}{Game\-State.\-Player.\-Enum\-Battle\-Selection} selection, uint selection\-Index)
 \begin{DoxyCompactList}\small\item\em Used to send a battle selection \end{DoxyCompactList}\item 
-\hypertarget{class_battle_handler_ad69bfcfc81caec50b1db97edb95e33b1}{I\-Enumerator {\bfseries Handle\-Response} (\hyperlink{class_battle_participant}{Battle\-Participant} p1, \hyperlink{class_battle_participant}{Battle\-Participant} p2)}\label{class_battle_handler_ad69bfcfc81caec50b1db97edb95e33b1}
+\hypertarget{group__client_gad69bfcfc81caec50b1db97edb95e33b1}{I\-Enumerator {\bfseries Handle\-Response} (\hyperlink{class_battle_participant}{Battle\-Participant} p1, \hyperlink{class_battle_participant}{Battle\-Participant} p2)}\label{group__client_gad69bfcfc81caec50b1db97edb95e33b1}
 
 \item 
-\hypertarget{class_battle_handler_a13610e1414fd1f866292588574c96139}{void {\bfseries on\-Pre\-Exit} ()}\label{class_battle_handler_a13610e1414fd1f866292588574c96139}
+\hypertarget{group__client_ga13610e1414fd1f866292588574c96139}{void {\bfseries on\-Pre\-Exit} ()}\label{group__client_ga13610e1414fd1f866292588574c96139}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_battle_handler_ad57da165c3aa4c3906b10dc80cca73e2}{\hyperlink{class_battle_u_i_controller}{Battle\-U\-I\-Controller} {\bfseries battle\-U\-I\-Controller}}\label{class_battle_handler_ad57da165c3aa4c3906b10dc80cca73e2}
+\hypertarget{group__client_gad57da165c3aa4c3906b10dc80cca73e2}{\hyperlink{class_battle_u_i_controller}{Battle\-U\-I\-Controller} {\bfseries battle\-U\-I\-Controller}}\label{group__client_gad57da165c3aa4c3906b10dc80cca73e2}
 
 \item 
-bool \hyperlink{class_battle_handler_a91faa80b5273370273762c40a364305d}{is\-Networked}
+bool \hyperlink{group__client_ga91faa80b5273370273762c40a364305d}{is\-Networked}
 \begin{DoxyCompactList}\small\item\em Indicates that the current battle is between networked players \end{DoxyCompactList}\item 
-\hypertarget{class_battle_handler_a95fc9651e0a7845913c3a2bf1330e2cf}{\hyperlink{class_battle_participant}{Battle\-Participant} {\bfseries participant1}}\label{class_battle_handler_a95fc9651e0a7845913c3a2bf1330e2cf}
+\hypertarget{group__client_ga95fc9651e0a7845913c3a2bf1330e2cf}{\hyperlink{class_battle_participant}{Battle\-Participant} {\bfseries participant1}}\label{group__client_ga95fc9651e0a7845913c3a2bf1330e2cf}
 
 \item 
-\hypertarget{class_battle_handler_a303ed561d4ed9408dfb02b03034ed2a9}{\hyperlink{class_battle_participant}{Battle\-Participant} {\bfseries participant2}}\label{class_battle_handler_a303ed561d4ed9408dfb02b03034ed2a9}
+\hypertarget{group__client_ga303ed561d4ed9408dfb02b03034ed2a9}{\hyperlink{class_battle_participant}{Battle\-Participant} {\bfseries participant2}}\label{group__client_ga303ed561d4ed9408dfb02b03034ed2a9}
 
 \item 
 readonly float\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} {\bfseries type\-Match\-Up}
@@ -54,80 +54,6 @@ readonly float\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} {\bfseries type\-Match\-U
 
 
 $<$author$>$Jake Ruth$<$/author$>$ 
-
-\subsection{Member Function Documentation}
-\hypertarget{class_battle_handler_ad207e2adf6f1f3882e98b1c8a5f59f67}{\index{Battle\-Handler@{Battle\-Handler}!Send\-Battle\-Option@{Send\-Battle\-Option}}
-\index{Send\-Battle\-Option@{Send\-Battle\-Option}!BattleHandler@{Battle\-Handler}}
-\subsubsection[{Send\-Battle\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Battle\-Handler.\-Send\-Battle\-Option (
-\begin{DoxyParamCaption}
-\item[{bool}]{is\-Local\-Player, }
-\item[{{\bf Game\-State.\-Player.\-Enum\-Battle\-Selection}}]{selection, }
-\item[{uint}]{selection\-Index}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_handler_ad207e2adf6f1f3882e98b1c8a5f59f67}
-
-
-Used to send a battle selection 
-
-
-\begin{DoxyParams}{Parameters}
-{\em is\-Local\-Player} & if is {\ttfamily true} then the selection is from the \char`\"{}local\char`\"{} player (local = main player, not A\-I, not networked)\\
-\hline
-{\em selection} & The selection option\\
-\hline
-{\em selection\-Index} & the index of the selection\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-returns {\ttfamily False} if the selection index is not positive
-\end{DoxyReturn}
-\hypertarget{class_battle_handler_a380a371e96df1b362027a8f33c8ed7fb}{\index{Battle\-Handler@{Battle\-Handler}!Set\-Up\-Battle@{Set\-Up\-Battle}}
-\index{Set\-Up\-Battle@{Set\-Up\-Battle}!BattleHandler@{Battle\-Handler}}
-\subsubsection[{Set\-Up\-Battle}]{\setlength{\rightskip}{0pt plus 5cm}void Battle\-Handler.\-Set\-Up\-Battle (
-\begin{DoxyParamCaption}
-\item[{{\bf Battle\-Participant}}]{first, }
-\item[{{\bf Battle\-Participant}}]{second, }
-\item[{bool}]{is\-Networked\-Battle}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_battle_handler_a380a371e96df1b362027a8f33c8ed7fb}
-
-
-Called To set up the battle scene. Must be called at the start 
-
-
-\begin{DoxyParams}{Parameters}
-{\em first} & The local player\\
-\hline
-{\em second} & Other opponent player\\
-\hline
-{\em is\-Networked\-Battle} & Is the battle a networked battle or not\\
-\hline
-\end{DoxyParams}
-
-
-\subsection{Member Data Documentation}
-\hypertarget{class_battle_handler_a91faa80b5273370273762c40a364305d}{\index{Battle\-Handler@{Battle\-Handler}!is\-Networked@{is\-Networked}}
-\index{is\-Networked@{is\-Networked}!BattleHandler@{Battle\-Handler}}
-\subsubsection[{is\-Networked}]{\setlength{\rightskip}{0pt plus 5cm}bool Battle\-Handler.\-is\-Networked}}\label{class_battle_handler_a91faa80b5273370273762c40a364305d}
-
-
-Indicates that the current battle is between networked players 
-
-\hypertarget{class_battle_handler_aaa33e18e5c8a07eea1a78986ada6a7b5}{\index{Battle\-Handler@{Battle\-Handler}!type\-Match\-Up@{type\-Match\-Up}}
-\index{type\-Match\-Up@{type\-Match\-Up}!BattleHandler@{Battle\-Handler}}
-\subsubsection[{type\-Match\-Up}]{\setlength{\rightskip}{0pt plus 5cm}readonly float \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} Battle\-Handler.\-type\-Match\-Up}}\label{class_battle_handler_aaa33e18e5c8a07eea1a78986ada6a7b5}
-{\bfseries Initial value\-:}
-\begin{DoxyCode}
-=
-    \{
-        
-        \textcolor{keyword}{new} \textcolor{keywordtype}{float}[] \{1.0f,  1.0f,   1.0f,   1.0f\}, 
-        \textcolor{keyword}{new} \textcolor{keywordtype}{float}[] \{1.0f,  1.0f,   0.5f,   2.0f\}, 
-        \textcolor{keyword}{new} \textcolor{keywordtype}{float}[] \{1.0f,  2.0f,   1.0f,   0.5f\}, 
-        \textcolor{keyword}{new} \textcolor{keywordtype}{float}[] \{1.0f,  0.5f,   2.0f,   1.0f\}, 
-    \}
-\end{DoxyCode}
-
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

@@ -129,6 +129,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:ga462f02e37e614ca0e453d73d54b85a95"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>BattleState</b> { <b>WAITING_ON_INPUT</b>, 
+<b>DISPLAYING_TURN</b>
+ }</td></tr>
+<tr class="separator:ga462f02e37e614ca0e453d73d54b85a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa3041ae4242c0dd57a126d17505443b2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>MenuState</b> { <br/>
 &#160;&#160;<b>MAIN_MENU</b>, 
 <b>ATTACK_MENU</b>, 
@@ -143,6 +147,18 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga380a371e96df1b362027a8f33c8ed7fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__client.html#ga380a371e96df1b362027a8f33c8ed7fb">BattleHandler.SetUpBattle</a> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> first, <a class="el" href="class_battle_participant.html">BattleParticipant</a> second, bool isNetworkedBattle)</td></tr>
+<tr class="memdesc:ga380a371e96df1b362027a8f33c8ed7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called To set up the battle scene. Must be called at the start  <a href="#ga380a371e96df1b362027a8f33c8ed7fb">More...</a><br/></td></tr>
+<tr class="separator:ga380a371e96df1b362027a8f33c8ed7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__client.html#gad207e2adf6f1f3882e98b1c8a5f59f67">BattleHandler.SendBattleOption</a> (bool isLocalPlayer, <a class="el" href="class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a> selection, uint selectionIndex)</td></tr>
+<tr class="memdesc:gad207e2adf6f1f3882e98b1c8a5f59f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to send a battle selection  <a href="#gad207e2adf6f1f3882e98b1c8a5f59f67">More...</a><br/></td></tr>
+<tr class="separator:gad207e2adf6f1f3882e98b1c8a5f59f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad69bfcfc81caec50b1db97edb95e33b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad69bfcfc81caec50b1db97edb95e33b1"></a>
+IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.HandleResponse</b> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> p1, <a class="el" href="class_battle_participant.html">BattleParticipant</a> p2)</td></tr>
+<tr class="separator:gad69bfcfc81caec50b1db97edb95e33b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13610e1414fd1f866292588574c96139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga13610e1414fd1f866292588574c96139"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.onPreExit</b> ()</td></tr>
+<tr class="separator:ga13610e1414fd1f866292588574c96139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3a85307f98994f49ffcb122ad836895f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3a85307f98994f49ffcb122ad836895f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.ButtonClicked</b> (int buttonIndex)</td></tr>
 <tr class="separator:ga3a85307f98994f49ffcb122ad836895f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,9 +168,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.Ba
 <tr class="memitem:ga05427e5dab5da5027fd3f12526e7d98c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga05427e5dab5da5027fd3f12526e7d98c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.SetFlavorText</b> (string text)</td></tr>
 <tr class="separator:ga05427e5dab5da5027fd3f12526e7d98c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e5edea6e65f3deca364e9750bd11e6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e5edea6e65f3deca364e9750bd11e6f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.UpdateCretinDisplayData</b> (<a class="el" href="class_battle_participant.html">BattleParticipant</a> local, <a class="el" href="class_battle_participant.html">BattleParticipant</a> other)</td></tr>
+<tr class="separator:ga2e5edea6e65f3deca364e9750bd11e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:gad57da165c3aa4c3906b10dc80cca73e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad57da165c3aa4c3906b10dc80cca73e2"></a>
+<a class="el" href="class_battle_u_i_controller.html">BattleUIController</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.battleUIController</b></td></tr>
+<tr class="separator:gad57da165c3aa4c3906b10dc80cca73e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91faa80b5273370273762c40a364305d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__client.html#ga91faa80b5273370273762c40a364305d">BattleHandler.isNetworked</a></td></tr>
+<tr class="memdesc:ga91faa80b5273370273762c40a364305d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the current battle is between networked players  <a href="#ga91faa80b5273370273762c40a364305d">More...</a><br/></td></tr>
+<tr class="separator:ga91faa80b5273370273762c40a364305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga95fc9651e0a7845913c3a2bf1330e2cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga95fc9651e0a7845913c3a2bf1330e2cf"></a>
+<a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.participant1</b></td></tr>
+<tr class="separator:ga95fc9651e0a7845913c3a2bf1330e2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga303ed561d4ed9408dfb02b03034ed2a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga303ed561d4ed9408dfb02b03034ed2a9"></a>
+<a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.participant2</b></td></tr>
+<tr class="separator:ga303ed561d4ed9408dfb02b03034ed2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa33e18e5c8a07eea1a78986ada6a7b5"><td class="memItemLeft" align="right" valign="top">readonly float[][]&#160;</td><td class="memItemRight" valign="bottom"><b>BattleHandler.typeMatchUp</b></td></tr>
+<tr class="separator:gaaa33e18e5c8a07eea1a78986ada6a7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b3ecd57ac7d9161ea56b8942003a2b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1b3ecd57ac7d9161ea56b8942003a2b5"></a>
 <a class="el" href="class_battle_handler.html">BattleHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.battleHandler</b></td></tr>
 <tr class="separator:ga1b3ecd57ac7d9161ea56b8942003a2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +218,24 @@ Button[]&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIControlle
 <tr class="memitem:ga2f5cb0c646d3675c7c7805381d7e54d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2f5cb0c646d3675c7c7805381d7e54d2"></a>
 Text&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.waitingText</b></td></tr>
 <tr class="separator:ga2f5cb0c646d3675c7c7805381d7e54d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72b6e8ee777e63e4cbcf7a51cede53ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga72b6e8ee777e63e4cbcf7a51cede53ed"></a>
+Text&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.localCretinNameText</b></td></tr>
+<tr class="separator:ga72b6e8ee777e63e4cbcf7a51cede53ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77e347d67633680a65e9adf1f790176a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga77e347d67633680a65e9adf1f790176a"></a>
+Text&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.localCretinHealthText</b></td></tr>
+<tr class="separator:ga77e347d67633680a65e9adf1f790176a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b64cecb96ddcc2f7dfdeb062ed1869e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b64cecb96ddcc2f7dfdeb062ed1869e"></a>
+Image&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.localHPBar</b></td></tr>
+<tr class="separator:ga2b64cecb96ddcc2f7dfdeb062ed1869e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad58b390bc1a3e5cf185cbee5d300dcef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad58b390bc1a3e5cf185cbee5d300dcef"></a>
+Text&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.otherCretinNameText</b></td></tr>
+<tr class="separator:gad58b390bc1a3e5cf185cbee5d300dcef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9604d7804d5c5c0bb227bf3b67fc2d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad9604d7804d5c5c0bb227bf3b67fc2d4"></a>
+Text&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.otherCretinHealthText</b></td></tr>
+<tr class="separator:gad9604d7804d5c5c0bb227bf3b67fc2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3cc33d5aeca7b5fca82f8de11ac072e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab3cc33d5aeca7b5fca82f8de11ac072e"></a>
+Image&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIController.otherHPBar</b></td></tr>
+<tr class="separator:gab3cc33d5aeca7b5fca82f8de11ac072e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="prop-members"></a>
 Properties</h2></td></tr>
@@ -193,6 +244,143 @@ MenuState&#160;</td><td class="memItemRight" valign="bottom"><b>BattleUIControll
 <tr class="separator:ga4f8584c7f4ebdeb9b29bf982dc8a5e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gad207e2adf6f1f3882e98b1c8a5f59f67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BattleHandler.SendBattleOption </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isLocalPlayer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_game_state_1_1_player.html#a9f54c5eca1e60acbaa2074e981f51615">GameState.Player.EnumBattleSelection</a>&#160;</td>
+          <td class="paramname"><em>selection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>selectionIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used to send a battle selection </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">isLocalPlayer</td><td>if is <code>true</code> then the selection is from the "local" player (local = main player, not AI, not networked)</td></tr>
+    <tr><td class="paramname">selection</td><td>The selection option</td></tr>
+    <tr><td class="paramname">selectionIndex</td><td>the index of the selection</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>returns <code>False</code> if the selection index is not positive</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga380a371e96df1b362027a8f33c8ed7fb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BattleHandler.SetUpBattle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_battle_participant.html">BattleParticipant</a>&#160;</td>
+          <td class="paramname"><em>second</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isNetworkedBattle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called To set up the battle scene. Must be called at the start </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>The local player</td></tr>
+    <tr><td class="paramname">second</td><td>Other opponent player</td></tr>
+    <tr><td class="paramname">isNetworkedBattle</td><td>Is the battle a networked battle or not</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="ga91faa80b5273370273762c40a364305d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BattleHandler.isNetworked</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates that the current battle is between networked players </p>
+
+</div>
+</div>
+<a class="anchor" id="gaaa33e18e5c8a07eea1a78986ada6a7b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float [][] BattleHandler.typeMatchUp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    {</div>
+<div class="line">        </div>
+<div class="line">        <span class="keyword">new</span> <span class="keywordtype">float</span>[] {1.0f,  1.0f,   1.0f,   1.0f}, </div>
+<div class="line">        <span class="keyword">new</span> <span class="keywordtype">float</span>[] {1.0f,  1.0f,   0.5f,   2.0f}, </div>
+<div class="line">        <span class="keyword">new</span> <span class="keywordtype">float</span>[] {1.0f,  2.0f,   1.0f,   0.5f}, </div>
+<div class="line">        <span class="keyword">new</span> <span class="keywordtype">float</span>[] {1.0f,  0.5f,   2.0f,   1.0f}, </div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

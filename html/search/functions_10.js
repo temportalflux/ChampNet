@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sendbattleoption',['SendBattleOption',['../class_battle_handler.html#ad207e2adf6f1f3882e98b1c8a5f59f67',1,'BattleHandler']]],
+  ['sendbattleoption',['SendBattleOption',['../group__client.html#gad207e2adf6f1f3882e98b1c8a5f59f67',1,'BattleHandler']]],
   ['sendbytearray',['SendByteArray',['../class_champ_net_plugin_1_1_network.html#a018ec78857afa38d5f64607e63201abd',1,'ChampNetPlugin.Network.SendByteArray()'],['../namespace_champ_net_plugin.html#aa200f86d409d3024b59ff9398b531797',1,'ChampNetPlugin::SendByteArray()']]],
   ['senddata',['SendData',['../namespace_champ_net_plugin.html#a50b06a48ff0ffb5f98dc98a8b29546ad',1,'ChampNetPlugin']]],
   ['senddisconnectpacket',['sendDisconnectPacket',['../class_state_server.html#a4ba2a2bde5a70c0aa50ad936ca88ad44',1,'StateServer']]],
@@ -12,7 +12,7 @@ var searchData=
   ['serializeforclient',['serializeForClient',['../class_game_state.html#a291fcda337b1a25c21871fe338399c27',1,'GameState']]],
   ['setdebugcallback',['SetDebugCallback',['../class_champ_net_plugin_1_1_network.html#ad01cdffbb961d7aee298ad1a03e1047b',1,'ChampNetPlugin::Network']]],
   ['setfactor',['setFactor',['../class_timer.html#a0da285550f750a5ba6c16e5766785883',1,'Timer']]],
-  ['setupbattle',['SetUpBattle',['../class_battle_handler.html#a380a371e96df1b362027a8f33c8ed7fb',1,'BattleHandler']]],
+  ['setupbattle',['SetUpBattle',['../group__client.html#ga380a371e96df1b362027a8f33c8ed7fb',1,'BattleHandler']]],
   ['sleepuntilelapsed',['sleepUntilElapsed',['../class_timer.html#a918584568a93c6cff18e3fddca0c1d44',1,'Timer']]],
   ['start',['start',['../class_state_server.html#aaeb4f49e47304f186f87f79a3612b085',1,'StateServer::start()'],['../class_timer.html#a3a8b5272198d029779dc9302a54305a8',1,'Timer::start()']]],
   ['startclient',['StartClient',['../class_champ_net_plugin_1_1_network.html#acaf000c31710d5c8f2720a6143773c4d',1,'ChampNetPlugin.Network.StartClient()'],['../namespace_champ_net_plugin.html#ab92621bbf98ccf055d3a884220d5577e',1,'ChampNetPlugin::StartClient()']]],

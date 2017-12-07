@@ -34,7 +34,7 @@ var searchData=
   ['iserializing',['ISerializing',['../interface_i_serializing.html',1,'']]],
   ['isinuse',['isInUse',['../class_singleton_3_01_t_01_4.html#aaf243fc3c85154c237fb3086b67ef6ff',1,'Singleton&lt; T &gt;']]],
   ['islocal',['isLocal',['../class_game_state_1_1_player.html#affd7c601a6d763dafdc59a58c415e9e7',1,'GameState::Player']]],
-  ['isnetworked',['isNetworked',['../class_battle_handler.html#a91faa80b5273370273762c40a364305d',1,'BattleHandler']]],
+  ['isnetworked',['isNetworked',['../group__client.html#ga91faa80b5273370273762c40a364305d',1,'BattleHandler']]],
   ['isplayer',['isPlayer',['../class_battle_participant.html#a772329be78feaa3c85a692c39dc54a47',1,'BattleParticipant']]],
   ['isrunning',['isRunning',['../class_game.html#aa61c0358c2611d00eb47ebf72a88f8c7',1,'Game']]]
 ];
