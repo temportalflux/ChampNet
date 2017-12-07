@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391c07e4a5cd3ef4d91c18c107155a64, type: 3}
   m_Name: Tail Whip
   m_EditorClassIdentifier: 
-  attackName: 
+  attackName: Tail Whip
   type: 0
-  physicalOrSpecial: 0
+  physicalOrSpecial: 2
   doesDamage: 0
   power: 0
   doesModifiesStats: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
   modifySpecialDefenseValue: 0
   modifyAccuracyValue: 0
   modifySpeedValue: 0
-  accuracy: 0
+  accuracy: 100
   powerPoints: 0
