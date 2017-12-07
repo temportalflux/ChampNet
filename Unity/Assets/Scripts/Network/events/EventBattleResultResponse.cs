@@ -21,4 +21,9 @@ public class EventBattleResultResponse : EventNetwork
         this.playerID = playerID;
     }
 
+    public static void Dispatch(uint playerID)
+    {
+        NetInterface.INSTANCE.Dispatch(new EventBattleResultResponse(playerID));
+    }
+
 }

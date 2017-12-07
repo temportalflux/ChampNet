@@ -40,6 +40,35 @@ public class BattleHandler : MonoBehaviour
         isNetworked = isNetworkedBattle;
         this.participant1 = first;
         this.participant2 = second;
+
+        if (participant1.isPlayer())
+        {
+            foreach (MonsterDataObject monster in participant1.playerController.monsters)
+            {
+                monster.Heal();
+            }
+        }
+        else
+        {
+            participant1.currentCretin.Heal();
+        }
+
+        if (participant2.isPlayer())
+        {
+            foreach (MonsterDataObject monster in participant2.playerController.monsters)
+            {
+                monster.Heal();
+            }
+        }
+        else
+        {
+            participant2.currentCretin.Heal();
+        }
+
+        if(participant1.isPlayer() && participant1.playerController.isLocal)
+            battleUIController.UpdateCretinDisplayData(participant1, participant2);
+        else
+            battleUIController.UpdateCretinDisplayData(participant2, participant1);
     }
 
     /// <summary>
@@ -202,6 +231,7 @@ public class BattleHandler : MonoBehaviour
                     faintedParticipants.Add(networkOrAI);
                 }
 
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
             // then check other (network or AI)
             if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
@@ -216,6 +246,8 @@ public class BattleHandler : MonoBehaviour
                 {
                     faintedParticipants.Add(local);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
         }
         else
@@ -232,6 +264,8 @@ public class BattleHandler : MonoBehaviour
                 {
                     faintedParticipants.Add(local);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
 
             if (local.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
@@ -246,6 +280,8 @@ public class BattleHandler : MonoBehaviour
                 {
                     faintedParticipants.Add(networkOrAI);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
         }
 
@@ -418,7 +454,37 @@ public class BattleHandler : MonoBehaviour
 
         float modifier = targets * weather * critical * random * stab * typeAdvantage * burn * other;
 
-        damage = ((2 * level / 5 + 2) * power * attackStat * defenseStat / 50 + 2) * modifier;
+        //
+        //damage = ((2 * level / 5 + 2) * power * attackStat * defenseStat / 50 + 2) * modifier;
+        damage = 2 * level;
+        damage /= 5;
+        damage += 2;
+        damage *= power;
+        damage *= attackStat;
+        damage /= defenseStat;
+        damage /= 50.0f;
+        damage += 2;
+        damage *= modifier;
+
+        //damage = ((((2 * level) / 5 + 2) * power * attackStat / defenseStat) / 50.0f + 2) * modifier;
+
+        /*
+        Debug.Log("Attack: " + attack.attackName + "\t" +
+                  "Total Damage: " + damage + "\t" +
+                  "level: " + level + "\t" +
+                  "power: " + power + "\n" +
+                  "attackStat: " + attackStat + "\t" +
+                  "defenseStat: " + defenseStat + "\t" +
+                  "Total Modifier: " + modifier + "\t" +
+                  "targets: " + targets + "\n" +
+                  "weather: " + weather + "\t" +
+                  "critical: " + critical + "\t" +
+                  "random: " + random + "\t" +
+                  "stab: " + stab + "\n" +
+                  "typeAdvantage: " + typeAdvantage + "\t" +
+                  "burn: " + burn + "\t" +
+                  "other: " + other);
+        //*/
 
         // Apply damage
         receiver.currentCretin.CurrentHP -= Mathf.FloorToInt(damage);
@@ -454,6 +520,4 @@ public class BattleHandler : MonoBehaviour
             this.participant2.onPreExit();
         }
     }
-
 }
-/// @}
