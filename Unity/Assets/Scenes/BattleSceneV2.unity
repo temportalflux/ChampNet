@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleHandler: {fileID: 95787966}
-  battleUIController: {fileID: 0}
+  battleUIController: {fileID: 539972085}
   monsterA:
     monsterStat: {fileID: 11400000, guid: d4fac9a655089064081cfa8b913e491c, type: 2}
     statStageAttack: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa05ffc7fe7bd8f4a83d84473e834637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleUIController: {fileID: 0}
+  battleUIController: {fileID: 539972085}
   isNetworked: 0
 --- !u!4 &95787967
 Transform:

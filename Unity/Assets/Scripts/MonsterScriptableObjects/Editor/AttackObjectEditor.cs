@@ -79,5 +79,14 @@ public class AttackObjectEditor : Editor
 
         ao.accuracy = EditorGUILayout.IntField("Accuracy", ao.accuracy);
         ao.powerPoints = EditorGUILayout.IntField("Power Points", ao.powerPoints);
+
+        // Save changed properties
+        this.serializedObject.ApplyModifiedProperties();
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(this.target);
+            AssetDatabase.SaveAssets();
+        }
     }
 }

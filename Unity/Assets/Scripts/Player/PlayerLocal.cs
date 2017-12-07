@@ -49,7 +49,7 @@ public class PlayerLocal : PlayerReference
         IList<MonsterDataObject> cretins = this.getInfo().monsters;
         if (cretins.Count > 0)
         {
-            NetInterface.INSTANCE.Dispatch(new EventBattleLocalStart(this.getID()));
+            EventBattleLocalToggle.Dispatch(this.getID(), true);
             BattleParticipant me = new BattleParticipant(this.getInfo(), 0);
             BattleParticipant opponent = new BattleParticipant(opponentAI);
             GameManager.INSTANCE.LoadBattleScene(me, opponent, false);

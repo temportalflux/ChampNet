@@ -141,29 +141,36 @@ public class PlayerReference : MonoBehaviour {
 
         // Integrate all physics
         this.playerInfo.integratePhysics(Time.deltaTime);
-        this.moveTarget.position = this.playerInfo.position;
 
-		if (this._anim != null) // can happen during instantiation of object (via setInfo)
-		{
-			displacement = this.moveTarget.position - this.transform.position;
-			if (Mathf.Abs (displacement.x) > Mathf.Abs (displacement.y))
-				displacement.y = 0;
-			else
-				displacement.x = 0;
+        if (!this.playerInfo.inBattle)
+        {
+            this.moveTarget.position = this.playerInfo.position;
 
-			_anim.SetFloat("velX", displacement.x);
-			_anim.SetFloat("velY", displacement.y);
-			_anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
+            if (this._anim != null) // can happen during instantiation of object (via setInfo)
+            {
+                displacement = this.moveTarget.position - this.transform.position;
+                if (Mathf.Abs(displacement.x) > Mathf.Abs(displacement.y))
+                    displacement.y = 0;
+                else
+                    displacement.x = 0;
 
-			//Debug.Log (displacement);
-		}
-		else
-		{
-			_anim = GetComponentInChildren<Animator>();
-		}
+                _anim.SetFloat("velX", displacement.x);
+                _anim.SetFloat("velY", displacement.y);
+                _anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
 
-        this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
+                //Debug.Log (displacement);
+            }
+            else
+            {
+                _anim = GetComponentInChildren<Animator>();
+            }
 
+            this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
+        }
+        else
+        {
+            _anim.SetBool("walking", false);
+        }
     }
 
     public virtual void OnLocalInput(Vector3 position, Vector3 deltaMove)
