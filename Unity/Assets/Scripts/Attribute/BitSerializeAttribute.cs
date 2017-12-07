@@ -10,12 +10,8 @@ and/or communicate a copy of this project to a plagiarism-checking service, whic
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using UnityEngineInternal;
-using UnityEditorInternal;
 using System;
 using System.Reflection;
-using System.Linq;
 
 /// \addtogroup client
 /// @{
