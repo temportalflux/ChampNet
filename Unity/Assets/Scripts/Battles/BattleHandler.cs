@@ -82,13 +82,13 @@ public class BattleHandler : MonoBehaviour
             if (isLocalPlayer)
             {
                 this.participant1.selection = selection;
-                this.participant1.selectionChoice = (int)selectionIndex - 1;
+                this.participant1.selectionChoice = (int)selectionIndex;
             }
             // The executor is the AI
             else
             {
                 this.participant2.selection = selection;
-                this.participant2.selectionChoice = (int)selectionIndex - 1;
+                this.participant2.selectionChoice = (int)selectionIndex;
             }
             // Both have picked their selection
             if (this.participant1.selectionChoice != -1 && this.participant2.selectionChoice != -1)
@@ -110,6 +110,9 @@ public class BattleHandler : MonoBehaviour
     [ToDo("handle a death")]
     public IEnumerator HandleResponse(BattleParticipant local, BattleParticipant networkOrAI)
     {
+        local.selectionChoice -= 1;
+        networkOrAI.selectionChoice -= 1;
+
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
