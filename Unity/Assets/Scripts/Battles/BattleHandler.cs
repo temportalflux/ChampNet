@@ -40,6 +40,22 @@ public class BattleHandler : MonoBehaviour
         isNetworked = isNetworkedBattle;
         this.participant1 = first;
         this.participant2 = second;
+
+        if (participant1.isPlayer())
+        {
+            foreach (MonsterDataObject monster in participant1.playerController.monsters)
+            {
+                monster.Heal();
+            }
+        }
+
+        if (participant2.isPlayer())
+        {
+            foreach (MonsterDataObject monster in participant2.playerController.monsters)
+            {
+                monster.Heal();
+            }
+        }
     }
 
     /// <summary>
