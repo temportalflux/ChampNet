@@ -19,7 +19,7 @@ public class EventBattleRequest : EventBattle
     public override void Execute()
     {
         // if in battle then refuse battle request
-        if (GameManager.INSTANCE.state.players[this.idSender].inBattle)
+        if (GameManager.INSTANCE.state.players[this.idReceiver].inBattle)
         {
             // Some user (requester) has asked us (receiver) to battle
             Debug.Log("Received request to battle from " + this.idSender + "... auto Declinning");

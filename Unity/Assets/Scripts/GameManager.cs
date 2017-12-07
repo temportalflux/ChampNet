@@ -235,15 +235,27 @@ public class GameManager : Singleton<GameManager>
 
     public void sendResponse(bool answer)
     {
-        netty.Dispatch(new EventBattleResponse(this.MyRequestID, this.RequesterID, answer));
-        GameObject.Find("BattleRequestWindow").SetActive(false);
+        //Debug.Log("Instance My: " + INSTANCE.MyRequestID + " Yours " + INSTANCE.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        INSTANCE.netty.Dispatch(new EventBattleResponse(INSTANCE.RequesterID, INSTANCE.MyRequestID, answer));
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(false);
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(false);
+        //GameObject.Find("BattleRequestWindow").SetActive(false);
     }
 
     public void setResponseIDs(uint LocalClient, uint opponentID)
     {
-        MyRequestID = LocalClient;
-        RequesterID = opponentID;
-        GameObject.Find("BattleRequestWindow").SetActive(true);
+        this.MyRequestID = LocalClient;
+        this.RequesterID = opponentID;
+
+        //Debug.Log("This My: " + this.MyRequestID + " Yours " + this.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(true);
+
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(true);
+        //GameObject.Find("BattleRequestWindow").SetActive(true);
     }
 
 }
