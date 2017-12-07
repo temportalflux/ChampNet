@@ -151,6 +151,8 @@ public class BattleHandler : MonoBehaviour
         local.selectionChoice -= 1;
         networkOrAI.selectionChoice -= 1;
 
+        bool hasFlee = false;
+
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
@@ -159,7 +161,7 @@ public class BattleHandler : MonoBehaviour
             yield return  new WaitForSeconds(2.0f);
 
             this.BattleIsOver(local, networkOrAI);
-            yield break;
+            hasFlee = true;
         }
 
         if (networkOrAI.selection == GameState.Player.EnumBattleSelection.FLEE)
@@ -169,7 +171,7 @@ public class BattleHandler : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
 
             this.BattleIsOver(networkOrAI, local);
-            yield break;
+            hasFlee = true;
         }
 
         // Calculate who attacks first
@@ -196,6 +198,8 @@ public class BattleHandler : MonoBehaviour
                 }
             }
         }
+
+        if (hasFlee) yield break;
 
         // Check to see if either selection was to switch
         if (local.selection == GameState.Player.EnumBattleSelection.SWAP)
