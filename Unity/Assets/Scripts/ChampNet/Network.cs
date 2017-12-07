@@ -47,12 +47,14 @@ namespace ChampNetPlugin
         ID_BATTLE_PROMPT_SELECTION,
         // AB->S: Respond to PROMPT_SELECTION with a selection for battle
         ID_BATTLE_SELECTION,
+        //! S->A: Notify A that B disconnected during battle
+        ID_BATTLE_OPPONENT_DISCONNECTED,
         // S->AB: notify clients of outcome of battle
         ID_BATTLE_RESULT,
         // AB->S: Tell server the client has acknowledged the battle result and is return to normal space
         ID_BATTLE_RESULT_RESPONSE,
         // C->S: Tell server the client has engaged in a local battle with AI
-        ID_BATTLE_LOCAL_START,
+        ID_BATTLE_LOCAL_TOGGLE,
 
         // Server-Sent Messages
         // 2) Sent to clients to notify them of the values for some spawning user

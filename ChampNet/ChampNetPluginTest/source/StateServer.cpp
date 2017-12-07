@@ -397,7 +397,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Report out that the user left
 				std::cout << "Client " << clientID << " has left\n";
-
+								
 				this->removeClient(clientID);
 
 				// Notify all other clients that the user left
@@ -536,15 +536,15 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 			}
 			break;
-		case ChampNetPlugin::ID_BATTLE_LOCAL_START:
+		case ChampNetPlugin::ID_BATTLE_LOCAL_TOGGLE:
 			{
 				// Get Packet
 				unsigned int pPacketLength = 0;
-				PacketUserID* pPacket = packet->getPacketAs<PacketUserID>(pPacketLength);
+				PacketUserIDBool* pPacket = packet->getPacketAs<PacketUserIDBool>(pPacketLength);
 				// Get the playerID
-				unsigned int playerID = pPacket->dataID;
+				unsigned int playerID = pPacket->playerID;
 				// Player is telling us they have entered a local AI battle, so in battle w/o player opponent
-				this->mpGameState->players[playerID].inBattle = true;
+				this->mpGameState->players[playerID].inBattle = pPacket->toggle;
 				this->mpGameState->players[playerID].battleOpponentId = -1;
 			}
 			break;
@@ -603,7 +603,30 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT:
-			// INVALID
+			{
+				// Winner is telling us they won
+				unsigned int pPacketLength = 0;
+				PacketUserIDTriple* pPacket = packet->getPacketAs<PacketUserIDTriple>(pPacketLength);
+
+				// Get the address of the sender (the challenger/requester) for reporting purposes
+				std::string addressSender = packet->getAddress();
+				// Get the address of the receiver
+				int receiverClientID = this->mpPlayerIdToClientId[pPacket->playerIdReceiver];
+				std::string *addressReceiver = receiverClientID >= 0 ? this->mpClientAddresses[receiverClientID] : NULL;
+
+				// the playerID of the winner
+				unsigned int winnerID = pPacket->playerIdThird;
+				// TODO: Account for winner
+
+
+				// Send the request to the receiver
+				this->sendPacket(addressSender.c_str(), pPacket, false);
+				// NULL if they disconnected during battle
+				if (addressReceiver != NULL)
+				{
+					this->sendPacket(addressReceiver->c_str(), pPacket, false);
+				}
+			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:
 			{
@@ -746,33 +769,44 @@ bool StateServer::addClient(const char* address, unsigned int &id)
 	return true;
 }
 
-void StateServer::removeClient(unsigned int id)
+void StateServer::removeClient(unsigned int clientID)
 {
-	if (this->mpClientAddresses[id] != NULL)
-	{
-		delete this->mpClientAddresses[id];
-		this->mpClientAddresses[id] = NULL;
-	}
-
-	if (this->mpClientIdToPlayers[id] != NULL)
+	if (this->mpClientIdToPlayers[clientID] != NULL)
 	{
 		// Remove all players
 		for (unsigned int localID = 0; localID < this->mpState->mNetwork.maxPlayersPerClient; localID++)
 		{
-			if (this->mpClientIdToPlayers[id][localID] >= 0)
+			if (this->mpClientIdToPlayers[clientID][localID] >= 0)
 			{
-				unsigned int playerID = this->mpClientIdToPlayers[id][localID];
+				unsigned int playerID = this->mpClientIdToPlayers[clientID][localID];
 				std::cout << "Removing player " << playerID
-					<< " at client|local=" << id << '|' << localID << '\n';
+					<< " at client|local=" << clientID << '|' << localID << '\n';
+				if (this->mpGameState->players[playerID].inBattle)
+				{
+					// stop battle
+					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
+					PacketUserIDDouble packetBattleBroken[1];
+					packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
+					packetBattleBroken->playerIdSender = playerID;
+					packetBattleBroken->playerIdReceiver = opponentID;
+					this->sendPacket(this->mpClientAddresses[clientID]->c_str(), packetBattleBroken, false);
+				}
 				this->mpGameState->removePlayer(playerID);
 				this->mpPlayerIdToClientId[playerID] = -1;
 			}
 		}
 
 		// Remove map
-		delete this->mpClientIdToPlayers[id];
-		this->mpClientIdToPlayers[id] = NULL;
+		delete this->mpClientIdToPlayers[clientID];
+		this->mpClientIdToPlayers[clientID] = NULL;
 	}
+
+	if (this->mpClientAddresses[clientID] != NULL)
+	{
+		delete this->mpClientAddresses[clientID];
+		this->mpClientAddresses[clientID] = NULL;
+	}
+
 }
 
 bool StateServer::addPlayer(unsigned int clientID, unsigned int localID, unsigned int &playerID,

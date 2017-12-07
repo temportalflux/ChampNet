@@ -15,11 +15,22 @@ public class EventBattleResult : EventBattle
     {
     }
 
+    public EventBattleResult(uint winner, uint loser) : this()
+    {
+        this.idSender = this.playerIDWinner = winner;
+        this.idReceiver = loser;
+    }
+
     public override void Execute()
     {
         Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
         GameState.Player player = GameManager.INSTANCE.state.players[this.playerIDWinner];
         player.wins++;
+    }
+
+    public static void Dispatch(uint winner, uint loser)
+    {
+        NetInterface.INSTANCE.Dispatch(new EventBattleResult(winner, loser));
     }
 
 }
