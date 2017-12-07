@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
@@ -256,7 +257,12 @@ public class GameManager : Singleton<GameManager>
         //Debug.Log("This My: " + this.MyRequestID + " Yours " + this.RequesterID);
         //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
 
+        // set asking window to active
         GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(true);
+        
+        // display character name in asking window
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().GetComponentInChildren<Text>().text
+            = ("Battle Request From " + this.state.players[opponentID].name);
 
         //GameObject.FindGameObjectWithTag("UIRequest").SetActive(true);
         //GameObject.Find("BattleRequestWindow").SetActive(true);
