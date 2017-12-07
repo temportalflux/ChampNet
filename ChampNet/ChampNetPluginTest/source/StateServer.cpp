@@ -923,7 +923,7 @@ void StateServer::CalculateScoreBoardData()
 
 	for (auto iterI = this->mpGameState->players.begin(); iterI != this->mpGameState->players.end(); iterI++)
 	{
-		for (auto iterJ = this->mpGameState->players.begin(); iterJ != this->mpGameState->players.end(); iterJ++)
+		for (auto iterJ = iterI; iterJ != this->mpGameState->players.end(); iterJ++)
 		{
 			if (iterI->second.wins < iterJ->second.wins)
 			{
