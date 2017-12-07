@@ -31,7 +31,11 @@ public class EventBattleRequest : EventBattle
             // ask player for answer and then from answer send response
             // tldr: delete whats below and create a menu that recieves player answer to battle
             Debug.Log("Received request to battle from " + this.idSender);
-            NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
+
+            // saves ID's for when player has to choose yes or no
+            GameManager.INSTANCE.setResponseIDs(this.idReceiver, this.idSender);
+
+            //NetInterface.INSTANCE.Dispatch(new EventBattleResponse(this.idReceiver, this.idSender, true));
         }
     }
 }

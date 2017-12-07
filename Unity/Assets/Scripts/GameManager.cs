@@ -83,6 +83,12 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private bool isLoadingOrInBattle;
 
+    /// <summary>
+    /// Used for response. Saved when requests is recieved.
+    /// </summary>
+    private uint MyRequestID;
+    private uint RequesterID;
+
     void Awake()
     {
         this.inGame = false;
@@ -225,6 +231,19 @@ public class GameManager : Singleton<GameManager>
                 this.isLoadingOrInBattle = false;
             });
         }
+    }
+
+    public void sendResponse(bool answer)
+    {
+        netty.Dispatch(new EventBattleResponse(this.MyRequestID, this.RequesterID, answer));
+        GameObject.Find("BattleRequestWindow").SetActive(false);
+    }
+
+    public void setResponseIDs(uint LocalClient, uint opponentID)
+    {
+        MyRequestID = LocalClient;
+        RequesterID = opponentID;
+        GameObject.Find("BattleRequestWindow").SetActive(true);
     }
 
 }

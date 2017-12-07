@@ -40,7 +40,6 @@ public class PlayerLocal : PlayerReference
         PlayerReference player = _pic.CharacterFacing(this.moveTarget.position);
         if (player != null)
         {
-            this.playerInfo.inBattle = true;
             this.requestBattle(player);
         }
     }
