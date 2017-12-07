@@ -196,6 +196,8 @@ public class GameState : ScriptableObject, ISerializing
         /// </summary>
         public RenderTexture cameraTexture;
 
+        public int oldRank;
+
         public Player()
         {
             this.monsterIDs = new List<uint>();
@@ -219,6 +221,7 @@ public class GameState : ScriptableObject, ISerializing
             this.accelleration = info.accelleration;
             this.inBattle = info.inBattle;
             this.wins = info.wins;
+            this.oldRank = this.rank;
             this.rank = info.rank;
             this.monsterIDs = info.monsterIDs;
 
@@ -452,6 +455,8 @@ public class GameState : ScriptableObject, ISerializing
     {
         if (this.HasPlayer(ref info))
         {
+            GameManager.INSTANCE.getScoreBoard().removePlayerOnLeave(info.rank);
+
             this.players.Remove(info.playerID);
 
             if (this.playersLocal.ContainsKey(info.playerID))

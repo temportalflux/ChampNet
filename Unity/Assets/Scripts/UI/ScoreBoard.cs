@@ -209,6 +209,14 @@ public class ScoreBoard : MonoBehaviour {
         
         foreach (GameState.Player player in GameManager.INSTANCE.state.players.Values)
         {
+            if (player.rank != player.oldRank && player.oldRank >= 0 && player.oldRank < this.rankText.Length)
+            {
+                // set name info
+                this.rankText[player.rank].NameObject.GetComponent<Text>().text = "N/A";
+                // set win info
+                this.rankText[player.rank].WinObject.GetComponent<Text>().text = "0";
+            }
+
             if (player.rank < this.rankText.Length)
             {
                 if (player.rank != -1)
@@ -274,17 +282,10 @@ public class ScoreBoard : MonoBehaviour {
             }
         }
     }
-    public void removePlayerOnLeave(uint removeName) // currently using ID
+    public void removePlayerOnLeave(int removedPlayerRank) // currently using ID
     {
-        foreach (RankText scoreboard in rankText)
-        {
-            if(scoreboard.ID == removeName)
-            {
-                scoreboard.name = "N/A";
-                scoreboard.score = 0;
-                scoreboard.ID = -1;
-            }
-        }
+        rankText[removedPlayerRank].name = "N/A";
+        rankText[removedPlayerRank].score = 0;
     }
 
 }
