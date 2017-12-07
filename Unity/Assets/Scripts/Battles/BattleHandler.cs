@@ -103,7 +103,7 @@ public class BattleHandler : MonoBehaviour
     private void getLocalNetwork(BattleParticipant p1, BattleParticipant p2, out BattleParticipant local,
         out BattleParticipant networkOrAI)
     {
-        bool p1IsNetworkOrAI = p1.playerController == null || p1.playerController.isLocal;
+        bool p1IsNetworkOrAI = p1.playerController == null || !p1.playerController.isLocal;
         local = !p1IsNetworkOrAI ? p1 : p2;
         networkOrAI = p1IsNetworkOrAI ? p1 : p2;
     }
