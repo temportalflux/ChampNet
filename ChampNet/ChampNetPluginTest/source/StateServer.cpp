@@ -397,7 +397,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Report out that the user left
 				std::cout << "Client " << clientID << " has left\n";
-
+								
 				this->removeClient(clientID);
 
 				// Notify all other clients that the user left
@@ -603,7 +603,25 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT:
-			// INVALID
+			{
+				// Winner is telling us they won
+				unsigned int pPacketLength = 0;
+				PacketUserIDTriple* pPacket = packet->getPacketAs<PacketUserIDTriple>(pPacketLength);
+
+				// Get the address of the sender (the challenger/requester) for reporting purposes
+				std::string addressSender = packet->getAddress();
+				// Get the address of the receiver
+				std::string *addressReceiver = this->mpClientAddresses[this->mpPlayerIdToClientId[pPacket->playerIdReceiver]];
+
+				// the playerID of the winner
+				unsigned int winnerID = pPacket->playerIdThird;
+				// TODO: Account for winner
+
+
+				// Send the request to the receiver
+				this->sendPacket(addressSender.c_str(), pPacket, false);
+				this->sendPacket(addressReceiver->c_str(), pPacket, false);
+			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:
 			{
@@ -764,6 +782,12 @@ void StateServer::removeClient(unsigned int id)
 				unsigned int playerID = this->mpClientIdToPlayers[id][localID];
 				std::cout << "Removing player " << playerID
 					<< " at client|local=" << id << '|' << localID << '\n';
+				if (this->mpGameState->players[playerID].inBattle)
+				{
+					// stop battle
+					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
+					
+				}
 				this->mpGameState->removePlayer(playerID);
 				this->mpPlayerIdToClientId[playerID] = -1;
 			}

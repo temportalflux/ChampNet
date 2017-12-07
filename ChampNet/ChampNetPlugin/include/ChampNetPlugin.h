@@ -69,6 +69,7 @@ extern "C"
 			ID_BATTLE_PROMPT_SELECTION, // PacketBattlePromptSelection
 			//! AB->S: Respond to PROMPT_SELECTION with a selection for battle
 			ID_BATTLE_SELECTION, // PacketBattleSelection
+			//! A(winner)->S: tell server I won
 			//! S->AB: notify clients of outcome of battle
 			ID_BATTLE_RESULT, // PacketUserIDTriple
 			//! AB->S: Tell server the client has acknowledged the battle result and is return to normal space
