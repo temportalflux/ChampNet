@@ -37,7 +37,7 @@ void GameState::addPlayer(unsigned int clientID, unsigned int playerID, unsigned
 	player.accX = player.accY = player.accZ = 0;
 	player.inBattle = false;
 	player.wins = 0;
-	player.rank = 0;
+	player.rank = -1;
 	player.monstersCount = 0;
 	player.monsters = new unsigned int[0];
 
@@ -80,7 +80,7 @@ int GameState::Player::getSize() const
 		// Wins
 		+ sizeof(unsigned int)
 		// Rank
-		+ sizeof(unsigned int)
+		+ sizeof(int)
 		// number of monsters
 		+ sizeof(int)
 		// size of monster
@@ -136,7 +136,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		// write name
 		// NOTE: this does not use ALL of the name byte, if the name is < SIZE_MAX_NAME characters
 		int nameLength = player.name.length();
-		nameLength = nameLength < Player::SIZE_MAX_NAME ? nameLength : Player::SIZE_MAX_NAME;
+		//nameLength = nameLength < Player::SIZE_MAX_NAME ? nameLength : Player::SIZE_MAX_NAME;
 		*((int *)pos) = nameLength; pos += sizeof(int);
 		for (int i = 0; i < nameLength; i++)
 		{
@@ -168,7 +168,7 @@ char* GameState::serializeForClient(unsigned char packetID, int clientID, int &d
 		// write Wins
 		*((unsigned int *)pos) = player.wins; pos += sizeof(unsigned int);
 		// write Rank
-		*((unsigned int *)pos) = player.rank; pos += sizeof(unsigned int);
+		*((int *)pos) = player.rank; pos += sizeof(int);
 		// write # of monsters
 		*((int *)pos) = player.monstersCount; pos += sizeof(int);
 		// write monsters

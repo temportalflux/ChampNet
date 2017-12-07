@@ -27,6 +27,7 @@ namespace ChampNetPlugin
         // Send to client from server on client connection
         ID_CLIENT_CONNECTION_ACCEPTED = 16,
         ID_CLIENT_CONNECTION_REJECTED = 17,
+        ID_CONNECTION_LOST = 22,
 
         // Client-Sent Messages
         // C->S: ask server to join

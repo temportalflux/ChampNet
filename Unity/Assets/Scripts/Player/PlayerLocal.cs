@@ -47,8 +47,9 @@ public class PlayerLocal : PlayerReference
     public void onChallengeBy(MonsterDataObject opponentAI)
     {
         IList<MonsterDataObject> cretins = this.getInfo().monsters;
-        if (cretins.Count > 0)
+        if (cretins.Count > 0 && this.getInfo().canLocalBattle)
         {
+            this.getInfo().canLocalBattle = false;
             EventBattleLocalToggle.Dispatch(this.getID(), true);
             BattleParticipant me = new BattleParticipant(this.getInfo(), 0);
             BattleParticipant opponent = new BattleParticipant(opponentAI);

@@ -21,13 +21,13 @@ public class ScoreBoard : MonoBehaviour {
     
     //private Text name;
     private Text win;
-    private uint currentText = 1;
+    private int currentText = 1;
 
     [System.Serializable]
     public class RankText
     {
         [Tooltip("Rank setting (sets itself on start) (don't touch)")]
-        public uint Rank;
+        public int Rank;
 
         [Tooltip("Size of font used for text created")]
         public int fontSize;
@@ -209,12 +209,23 @@ public class ScoreBoard : MonoBehaviour {
         
         foreach (GameState.Player player in GameManager.INSTANCE.state.players.Values)
         {
+            //if (player.rank != player.oldRank && player.oldRank >= 0 && player.oldRank < this.rankText.Length)
+            //{
+            //    // set name info
+            //    this.rankText[player.oldRank].NameObject.GetComponent<Text>().text = "N/A";
+            //    // set win info
+            //    this.rankText[player.oldRank].WinObject.GetComponent<Text>().text = "0";
+            //}
+
             if (player.rank < this.rankText.Length)
             {
-                // set name info
-                this.rankText[player.rank].NameObject.GetComponent<Text>().text = player.name;
-                // set win info
-                this.rankText[player.rank].WinObject.GetComponent<Text>().text = player.wins.ToString();
+                if (player.rank != -1)
+                {
+                    // set name info
+                    this.rankText[player.rank].NameObject.GetComponent<Text>().text = player.name;
+                    // set win info
+                    this.rankText[player.rank].WinObject.GetComponent<Text>().text = player.wins.ToString();
+                }
             }
         }
     }
@@ -271,17 +282,10 @@ public class ScoreBoard : MonoBehaviour {
             }
         }
     }
-    public void removePlayerOnLeave(uint removeName) // currently using ID
+    public void removePlayerOnLeave(int removedPlayerRank) // currently using ID
     {
-        foreach (RankText scoreboard in rankText)
-        {
-            if(scoreboard.ID == removeName)
-            {
-                scoreboard.name = "N/A";
-                scoreboard.score = 0;
-                scoreboard.ID = -1;
-            }
-        }
+        rankText[removedPlayerRank].name = "N/A";
+        rankText[removedPlayerRank].score = 0;
     }
 
 }

@@ -16,6 +16,21 @@ public class TallGrass : MonoBehaviour
     /// </summary>
     public MonsterDataObject[] randoms;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // And there is a valid enemy/opponent monster
+        MonsterDataObject opponent = this.getRandomOpponent();
+        if (opponent != null)
+        {
+            // And the player is non-null
+            PlayerLocal player = collision.gameObject.GetComponent<PlayerLocal>();
+            if (player != null)
+            {
+                player.resetDelay();
+            }
+        }
+    }
+
     /// <summary>
     /// On <see cref="PlayerLocal"/> walk over...
     /// </summary>
@@ -24,7 +39,7 @@ public class TallGrass : MonoBehaviour
     {
         // If there is a successful 25% chance
         float chance = UnityEngine.Random.Range(0, 1.0f) * 1000;
-        if (chance < 10)
+        if (chance < 20)
         {
             // And there is a valid enemy/opponent monster
             MonsterDataObject opponent = this.getRandomOpponent();

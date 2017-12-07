@@ -465,7 +465,8 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 					// create new stats
 					unsigned int *newMonsters = new unsigned int[mpGameState->players[playerID].monstersCount];
 					// copy old stats
-					memcpy(newMonsters, oldMonsters, oldMonstersCount);
+					for (int iMonster = 0; iMonster < oldMonstersCount; iMonster++)
+						newMonsters[iMonster] = oldMonsters[iMonster];
 					// add new id
 					newMonsters[oldMonstersCount] = monsterID;
 					// set new stats
@@ -632,23 +633,27 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 				std::string addressSender = packet->getAddress();
 				// Get the address of the receiver
 				int receiverClientID = this->mpPlayerIdToClientId[pPacket->playerIdReceiver];
-				std::string *addressReceiver = receiverClientID >= 0 ? this->mpClientAddresses[receiverClientID] : NULL;
 
 				// the playerID of the winner
 				unsigned int winnerID = pPacket->playerIdThird;
-				// TODO: Account for winner
-				this->mpGameState->players[winnerID].wins++;
+				// will be the same if player battled AI
+				if (winnerID != receiverClientID)
+				{
+					this->mpGameState->players[winnerID].wins++;
 
-				// update scoreboards
-				CalculateScoreBoardData();
+					// update scoreboards
+					CalculateScoreBoardData();
+
+					// NULL if they disconnected during battle
+					std::string *addressReceiver = receiverClientID >= 0 ? this->mpClientAddresses[receiverClientID] : NULL;
+					if (addressReceiver != NULL)
+					{
+						this->sendPacket(addressReceiver->c_str(), pPacket, false);
+					}
+				}
 
 				// Send the request to the receiver
 				this->sendPacket(addressSender.c_str(), pPacket, false);
-				// NULL if they disconnected during battle
-				if (addressReceiver != NULL)
-				{
-					this->sendPacket(addressReceiver->c_str(), pPacket, false);
-				}
 			}
 			break;
 		case ChampNetPlugin::ID_BATTLE_RESULT_RESPONSE:
@@ -810,11 +815,14 @@ void StateServer::removeClient(unsigned int clientID)
 					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
 					if (opponentID >= 0)
 					{
-						PacketUserIDDouble packetBattleBroken[1];
-						packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
-						packetBattleBroken->playerIdSender = playerID;
-						packetBattleBroken->playerIdReceiver = opponentID;
-						this->sendPacket(this->mpClientAddresses[this->mpPlayerIdToClientId[opponentID]]->c_str(), packetBattleBroken, false);
+						unsigned int oppClientID = this->mpPlayerIdToClientId[opponentID];
+						if (oppClientID >= 0) {
+							PacketUserIDDouble packetBattleBroken[1];
+							packetBattleBroken->id = ChampNetPlugin::ID_BATTLE_OPPONENT_DISCONNECTED;
+							packetBattleBroken->playerIdSender = playerID;
+							packetBattleBroken->playerIdReceiver = opponentID;
+							this->sendPacket(this->mpClientAddresses[oppClientID]->c_str(), packetBattleBroken, false);
+						}
 					}
 				}
 				this->mpGameState->removePlayer(playerID);
@@ -911,29 +919,24 @@ const char* StateServer::getClientAddressFrom(unsigned int playerID)
 
 void StateServer::CalculateScoreBoardData()
 {
-	std::map<unsigned int, GameState::Player> rankingPlayers = this->mpGameState->players;
-	
-	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
+
+	int rank = 0;
+	for (auto iter = this->mpGameState->players.begin(); iter != this->mpGameState->players.end(); iter++)
 	{
-		for (unsigned int k = i + 1; k < rankingPlayers.size(); ++k)
+		iter->second.rank = rank++;
+	}
+
+	for (auto iterI = this->mpGameState->players.begin(); iterI != this->mpGameState->players.end(); iterI++)
+	{
+		for (auto iterJ = iterI; iterJ != this->mpGameState->players.end(); iterJ++)
 		{
-			if (rankingPlayers[i].wins < rankingPlayers[k].wins)
+			if (iterI->second.wins < iterJ->second.wins)
 			{
-				GameState::Player temp = rankingPlayers[i];
-				rankingPlayers[i] = rankingPlayers[k];
-				rankingPlayers[k] = temp;
+				int tmp = iterI->second.rank;
+				iterI->second.rank = iterJ->second.rank;
+				iterJ->second.rank = tmp;
 			}
 		}
 	}
-	for (unsigned int i = 0; i < rankingPlayers.size(); ++i)
-	{
-		for (unsigned int k = 0; k < rankingPlayers.size(); ++k)
-		{
-			if (this->mpGameState->players[i].playerID == rankingPlayers[k].playerID)
-			{
-				this->mpGameState->players[i].rank = k;
-				break;
-			}
-		}
-	}
+
 }
