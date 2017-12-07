@@ -203,9 +203,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3a4d13459cad9bd58e058ddc6387af70"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70">wins</a></td></tr>
 <tr class="memdesc:a3a4d13459cad9bd58e058ddc6387af70"><td class="mdescLeft">&#160;</td><td class="mdescRight">The total number of wins since entering the server.  <a href="#a3a4d13459cad9bd58e058ddc6387af70">More...</a><br/></td></tr>
 <tr class="separator:a3a4d13459cad9bd58e058ddc6387af70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a6cf0778cc27a824eac211b8b29b3dfcc">rank</a></td></tr>
-<tr class="memdesc:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rank of the player in the scoreboard. The higher <a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70" title="The total number of wins since entering the server. ">wins</a> is compared to other players, the  <a href="#a6cf0778cc27a824eac211b8b29b3dfcc">More...</a><br/></td></tr>
-<tr class="separator:a6cf0778cc27a824eac211b8b29b3dfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6cd14ba1f335990c39dd99334933147"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aa6cd14ba1f335990c39dd99334933147">rank</a></td></tr>
+<tr class="memdesc:aa6cd14ba1f335990c39dd99334933147"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rank of the player in the scoreboard. The higher <a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70" title="The total number of wins since entering the server. ">wins</a> is compared to other players, the  <a href="#aa6cd14ba1f335990c39dd99334933147">More...</a><br/></td></tr>
+<tr class="separator:aa6cd14ba1f335990c39dd99334933147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c4ed3c60a2969cd4f891e12c8265377"><td class="memItemLeft" align="right" valign="top">List&lt; uint &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a2c4ed3c60a2969cd4f891e12c8265377">monsterIDs</a></td></tr>
 <tr class="memdesc:a2c4ed3c60a2969cd4f891e12c8265377"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the cretins the player has.  <a href="#a2c4ed3c60a2969cd4f891e12c8265377">More...</a><br/></td></tr>
 <tr class="separator:a2c4ed3c60a2969cd4f891e12c8265377"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +215,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memItemLeft" align="right" valign="top">RenderTexture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#ac1f7e0b5bc335c32c3be71e3653787a6">cameraTexture</a></td></tr>
 <tr class="memdesc:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the render output for this <a class="el" href="class_game_state_1_1_player.html#aebf24de01e14055dc940d0493753484f" title="The reference to the GameObject in the local unity instance ">objectReference</a>  <a href="#ac1f7e0b5bc335c32c3be71e3653787a6">More...</a><br/></td></tr>
 <tr class="separator:ac1f7e0b5bc335c32c3be71e3653787a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45f28f490b11d9590a356bbea538a669"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45f28f490b11d9590a356bbea538a669"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>oldRank</b></td></tr>
+<tr class="separator:a45f28f490b11d9590a356bbea538a669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8222ced218f1e9ab024beada9f8f92a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8222ced218f1e9ab024beada9f8f92a7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>canLocalBattle</b></td></tr>
+<tr class="separator:a8222ced218f1e9ab024beada9f8f92a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bef4cd92306bd5cf330c4756e63686c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bef4cd92306bd5cf330c4756e63686c"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a1bef4cd92306bd5cf330c4756e63686c">clientID</a></td></tr>
 <tr class="memdesc:a1bef4cd92306bd5cf330c4756e63686c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clientID of the controlling client. This is unique across all peers in a network. <br/></td></tr>
@@ -278,10 +284,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>accZ</b></td></tr>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#aac7333a06ea194848f12090be762cdd6">wins</a></td></tr>
 <tr class="memdesc:aac7333a06ea194848f12090be762cdd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of wins the player has. <br/></td></tr>
 <tr class="separator:aac7333a06ea194848f12090be762cdd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43dd8a9e79c35d9615596fb6ab25d653"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state_1_1_player.html#a43dd8a9e79c35d9615596fb6ab25d653">rank</a></td></tr>
-<tr class="memdesc:a43dd8a9e79c35d9615596fb6ab25d653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rank of player on the scoreboard. <br/></td></tr>
-<tr class="separator:a43dd8a9e79c35d9615596fb6ab25d653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f5bbae042c927e8dd0f27a189a18dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f5bbae042c927e8dd0f27a189a18dea"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>monstersCount</b></td></tr>
 <tr class="separator:a7f5bbae042c927e8dd0f27a189a18dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -618,17 +620,18 @@ IList&lt; <a class="el" href="class_monster_data_object.html">MonsterDataObject<
 
 </div>
 </div>
-<a class="anchor" id="a6cf0778cc27a824eac211b8b29b3dfcc"></a>
+<a class="anchor" id="aa6cd14ba1f335990c39dd99334933147"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint GameState.Player.rank</td>
+          <td class="memname">int GameState.Player.rank</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The rank of the player in the scoreboard. The higher <a class="el" href="class_game_state_1_1_player.html#a3a4d13459cad9bd58e058ddc6387af70" title="The total number of wins since entering the server. ">wins</a> is compared to other players, the </p>
+<p>Rank of player on the scoreboard.</p>
 
 </div>
 </div>

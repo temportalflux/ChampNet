@@ -90,7 +90,7 @@ int \hyperlink{class_game_state_1_1_player_a3bfa8ea6e2067982474dc4f6073061c5}{ba
 \begin{DoxyCompactList}\small\item\em The descriptor for the type of action (narrows down choice to options like which attack a cretin makes, or what cretin is being swapped to). \end{DoxyCompactList}\item 
 uint \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{wins}
 \begin{DoxyCompactList}\small\item\em The total number of wins since entering the server. \end{DoxyCompactList}\item 
-uint \hyperlink{class_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}{rank}
+int \hyperlink{class_game_state_1_1_player_aa6cd14ba1f335990c39dd99334933147}{rank}
 \begin{DoxyCompactList}\small\item\em The rank of the player in the scoreboard. The higher \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{wins} is compared to other players, the \end{DoxyCompactList}\item 
 List$<$ uint $>$ \hyperlink{class_game_state_1_1_player_a2c4ed3c60a2969cd4f891e12c8265377}{monster\-I\-Ds}
 \begin{DoxyCompactList}\small\item\em A list of all the cretins the player has. \end{DoxyCompactList}\item 
@@ -98,6 +98,12 @@ List$<$ uint $>$ \hyperlink{class_game_state_1_1_player_a2c4ed3c60a2969cd4f891e1
 \begin{DoxyCompactList}\small\item\em The reference to the Game\-Object in the local unity instance \end{DoxyCompactList}\item 
 Render\-Texture \hyperlink{class_game_state_1_1_player_ac1f7e0b5bc335c32c3be71e3653787a6}{camera\-Texture}
 \begin{DoxyCompactList}\small\item\em Reference to the render output for this \hyperlink{class_game_state_1_1_player_aebf24de01e14055dc940d0493753484f}{object\-Reference} \end{DoxyCompactList}\item 
+\hypertarget{class_game_state_1_1_player_a45f28f490b11d9590a356bbea538a669}{int {\bfseries old\-Rank}}\label{class_game_state_1_1_player_a45f28f490b11d9590a356bbea538a669}
+
+\item 
+\hypertarget{class_game_state_1_1_player_a8222ced218f1e9ab024beada9f8f92a7}{bool {\bfseries can\-Local\-Battle}}\label{class_game_state_1_1_player_a8222ced218f1e9ab024beada9f8f92a7}
+
+\item 
 \hypertarget{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}{unsigned int \hyperlink{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}{client\-I\-D}}\label{class_game_state_1_1_player_a1bef4cd92306bd5cf330c4756e63686c}
 
 \begin{DoxyCompactList}\small\item\em The client\-I\-D of the controlling client. This is unique across all peers in a network. \end{DoxyCompactList}\item 
@@ -152,9 +158,6 @@ Render\-Texture \hyperlink{class_game_state_1_1_player_ac1f7e0b5bc335c32c3be71e3
 \hypertarget{class_game_state_1_1_player_aac7333a06ea194848f12090be762cdd6}{unsigned int \hyperlink{class_game_state_1_1_player_aac7333a06ea194848f12090be762cdd6}{wins}}\label{class_game_state_1_1_player_aac7333a06ea194848f12090be762cdd6}
 
 \begin{DoxyCompactList}\small\item\em Number of wins the player has. \end{DoxyCompactList}\item 
-\hypertarget{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}{unsigned int \hyperlink{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}{rank}}\label{class_game_state_1_1_player_a43dd8a9e79c35d9615596fb6ab25d653}
-
-\begin{DoxyCompactList}\small\item\em Rank of player on the scoreboard. \end{DoxyCompactList}\item 
 \hypertarget{class_game_state_1_1_player_a7f5bbae042c927e8dd0f27a189a18dea}{int {\bfseries monsters\-Count}}\label{class_game_state_1_1_player_a7f5bbae042c927e8dd0f27a189a18dea}
 
 \item 
@@ -345,14 +348,14 @@ The player I\-D of the opponent. Could be irrelevant if player is in local battl
 
 The position of the player in the open-\/world. 
 
-\hypertarget{class_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!rank@{rank}}
+\hypertarget{class_game_state_1_1_player_aa6cd14ba1f335990c39dd99334933147}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!rank@{rank}}
 \index{rank@{rank}!GameState::Player@{Game\-State\-::\-Player}}
-\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}uint Game\-State.\-Player.\-rank}}\label{class_game_state_1_1_player_a6cf0778cc27a824eac211b8b29b3dfcc}
+\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-State.\-Player.\-rank}}\label{class_game_state_1_1_player_aa6cd14ba1f335990c39dd99334933147}
 
 
 The rank of the player in the scoreboard. The higher \hyperlink{class_game_state_1_1_player_a3a4d13459cad9bd58e058ddc6387af70}{wins} is compared to other players, the 
 
-\hypertarget{class_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
+Rank of player on the scoreboard.\hypertarget{class_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}{\index{Game\-State\-::\-Player@{Game\-State\-::\-Player}!S\-I\-Z\-E@{S\-I\-Z\-E}}
 \index{S\-I\-Z\-E@{S\-I\-Z\-E}!GameState::Player@{Game\-State\-::\-Player}}
 \subsubsection[{S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-State.\-Player.\-S\-I\-Z\-E\hspace{0.3cm}{\ttfamily [static]}}}\label{class_game_state_1_1_player_ada2d068d3d5f973f73abac805c162d17}
 {\bfseries Initial value\-:}
