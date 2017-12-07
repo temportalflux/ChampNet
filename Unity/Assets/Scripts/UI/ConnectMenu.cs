@@ -27,7 +27,22 @@ public class ConnectMenu : MonoBehaviour {
     private PlayerDescriptor[] players = new PlayerDescriptor[1];
 
     private bool connecting = false, showGui = true;
-    
+
+    private string[] _names = new[]
+    {
+        "Ash", "Gary", "Brock", "New Player",
+        "Red", "Blue", "Green", "Professor Oak", "Misty",
+        "Jake", "Chris", "Dustin", "Jeff", "Blake", "Tim",
+        "Molly", "Patrick Stump", "NPH", "John", "Danny B 27",
+        "April 5th", "Santa Clause", "John Wilkes Booth", "Ted Bundy",
+
+    };
+
+    void OnEnable()
+    {
+        this.players[0].name = _names[UnityEngine.Random.Range(0, _names.Length)];
+    }
+
     void OnGUI()
     {
         if (!this.showGui) return;
