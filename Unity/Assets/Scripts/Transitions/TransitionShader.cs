@@ -55,7 +55,7 @@ public class TransitionShader : MonoBehaviour
             delta += (Time.deltaTime * direction) / time;
 
             this.percentDone = delta / (end - start);
-
+            //Debug.Log(delta);
             yield return null;
         }
         while (direction * (end - delta) > 0);
@@ -69,7 +69,7 @@ public class TransitionShader : MonoBehaviour
         this.currentTransition = null;
     }
 
-    virtual protected void updateShader(float delta)
+    virtual public void updateShader(float delta)
     {
         CameraBlit.setMaterial(this.transitionMaterial);
     }

@@ -81,4 +81,41 @@ public class PlayerCharacterController : MonoBehaviour
     {
         //Debug.Log(collision.gameObject.name);
     }
+
+    /// <summary>
+    /// Checks to see if another player is within range
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="Facing"></param>
+    public PlayerReference CheckForPlayerRaycast(Vector3 start, Vector3 Facing)
+    {
+        int numOfRays = 3;
+        float raySeperation = _size / (numOfRays - 1);
+
+        for (int i = 0; i < numOfRays; i++)
+        {
+            Vector3 inputRotate = new Vector3(-Facing.y, Facing.x);
+            Vector3 point = start +
+                            Facing.normalized * (_halfSize + _skinWidth) -
+                            inputRotate * _halfSize +
+                            inputRotate * i * raySeperation;
+
+            Debug.DrawRay(point, Facing * 1.0f);
+
+            RaycastHit2D hit = Physics2D.Raycast(point, Facing, 1.0f);
+
+            if (hit)
+            {
+                if (hit.transform.tag == "Player")
+                {
+                    if (!hit.transform.GetComponent<PlayerNetwork>().getInfo().inBattle)
+                    {
+                        Debug.Log("Hit The Player called: " + hit.transform.name);
+                        return hit.transform.GetComponent<PlayerNetwork>();
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

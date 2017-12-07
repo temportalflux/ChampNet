@@ -41,7 +41,13 @@ public class BattleUIController : MonoBehaviour
                 case MenuState.MAIN_MENU:
                     break;
                 case MenuState.ATTACK_MENU:
-                    List<AttackObject> availableAttacks = battleHandler.participant1.currentCretin.GetAvailableAttacks;
+
+                    MonsterDataObject localCretin = battleHandler.participant1.currentCretin;
+                    if (battleHandler.participant2.isPlayer() && battleHandler.participant2.playerController.isLocal)
+                        localCretin = battleHandler.participant2.currentCretin;
+
+                    
+                    List<AttackObject> availableAttacks = localCretin.GetAvailableAttacks;
                     for (int i = 0; i < attackButtons.Length; i++)
                     {
                         bool hasMatchingAttack = i < availableAttacks.Count;
@@ -59,12 +65,17 @@ public class BattleUIController : MonoBehaviour
                     //Debug.Assert(battleHandler.participant1.isPlayer());
 
                     IList<MonsterDataObject> availableMonsters = battleHandler.participant1.playerController.monsters;
+                    if (battleHandler.participant2.isPlayer() && battleHandler.participant2.playerController.isLocal)
+                        availableMonsters = battleHandler.participant2.playerController.monsters;
+
                     for (int i = 0; i < cretinButtons.Length; i++)
                     {
                         bool hasMatchingMonster = i < availableMonsters.Count;
-                        cretinButtons[i].interactable = hasMatchingMonster || battleHandler.participant1.currentCretinIndex == i;
+                        cretinButtons[i].interactable =
+                            hasMatchingMonster || battleHandler.participant1.currentCretinIndex == i;
 
-                        cretinButtons[i].GetComponentInChildren<Text>().text = hasMatchingMonster ? availableMonsters[i].GetMonsterName : "N/A";
+                        cretinButtons[i].GetComponentInChildren<Text>().text =
+                            hasMatchingMonster ? availableMonsters[i].GetMonsterName : "N/A";
                     }
                     break;
                 case MenuState.FORFEIT_MENU:
@@ -102,6 +113,14 @@ public class BattleUIController : MonoBehaviour
     [Header("Waiting Variables")]
     public Text waitingText;
 
+    [Header("Cretin Display Variables")]
+    public Text localCretinNameText;
+    public Text localCretinHealthText;
+    public Image localHPBar;
+    public Text otherCretinNameText;
+    public Text otherCretinHealthText;
+    public Image otherHPBar;
+
     void Start()
     {
         menuState = MenuState.MAIN_MENU;
@@ -118,7 +137,7 @@ public class BattleUIController : MonoBehaviour
     // Must be int, not uint, so unity's inspector can use it during OnClick
     public void ButtonClicked(int buttonIndex)
     {
-        Debug.Log("Button clicked: + " + buttonIndex);
+        Debug.Log("Button clicked: " + buttonIndex);
         switch (menuState)
         {
             case MenuState.MAIN_MENU:
@@ -188,5 +207,18 @@ public class BattleUIController : MonoBehaviour
     public void SetFlavorText(string text)
     {
         waitingText.text = text;
+    }
+
+    public void UpdateCretinDisplayData(BattleParticipant local, BattleParticipant other)
+    {
+        localCretinNameText.text = local.currentCretin.GetMonsterName;
+        localCretinHealthText.text =
+            string.Format("{0} / {1}", local.CurrentHP, local.maxHP);
+        localHPBar.transform.localScale = new Vector3(local.CurrentHP / (float)local.maxHP, 1, 1);
+
+        otherCretinNameText.text = other.currentCretin.GetMonsterName;
+        otherCretinHealthText.text =
+            string.Format("{0} / {1}", other.CurrentHP, other.maxHP);
+        otherHPBar.transform.localScale = new Vector3(other.CurrentHP / (float)other.maxHP, 1, 1);
     }
 }

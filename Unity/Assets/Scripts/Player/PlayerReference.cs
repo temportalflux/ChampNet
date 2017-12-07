@@ -134,11 +134,15 @@ public class PlayerReference : MonoBehaviour {
         //GUI.Label(new Rect(screenPos.x, screenPos.y, 100, 50), this.playerInfo.name);
     }
 
+    public Vector3 displacement;
+
     private void FixedUpdate()
     {
 
         // Integrate all physics
         this.playerInfo.integratePhysics(Time.deltaTime);
+
+        if (this._anim == null ) _anim = GetComponentInChildren<Animator>();
 
         if (!this.playerInfo.inBattle)
         {
@@ -146,7 +150,7 @@ public class PlayerReference : MonoBehaviour {
 
             if (this._anim != null) // can happen during instantiation of object (via setInfo)
             {
-                Vector3 displacement = this.moveTarget.position - this.transform.position;
+                displacement = this.moveTarget.position - this.transform.position;
                 if (Mathf.Abs(displacement.x) > Mathf.Abs(displacement.y))
                     displacement.y = 0;
                 else
@@ -157,10 +161,6 @@ public class PlayerReference : MonoBehaviour {
                 _anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
 
                 //Debug.Log (displacement);
-            }
-            else
-            {
-                _anim = GetComponentInChildren<Animator>();
             }
 
             this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);

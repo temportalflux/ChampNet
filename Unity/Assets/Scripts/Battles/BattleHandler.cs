@@ -40,6 +40,14 @@ public class BattleHandler : MonoBehaviour
         isNetworked = isNetworkedBattle;
         this.participant1 = first;
         this.participant2 = second;
+
+        participant1.CurrentHP = int.MaxValue;
+        participant2.CurrentHP = int.MaxValue;
+
+        if(participant1.isPlayer() && participant1.playerController.isLocal)
+            battleUIController.UpdateCretinDisplayData(participant1, participant2);
+        else
+            battleUIController.UpdateCretinDisplayData(participant2, participant1);
     }
 
     /// <summary>
@@ -95,9 +103,35 @@ public class BattleHandler : MonoBehaviour
             {
                 StartCoroutine(HandleResponse(this.participant1, this.participant2));
             }
+
+            if (isLocalPlayer)
+            {
+                // AI now needs to make decision
+                this.submitAIDecision(this.participant2);
+            }
+
         }
 
         return true;
+    }
+
+    private void submitAIDecision(BattleParticipant ai)
+    {
+        GameState.Player.EnumBattleSelection selection;
+
+        selection = GameState.Player.EnumBattleSelection.ATTACK;
+
+        switch (selection)
+        {
+            case GameState.Player.EnumBattleSelection.ATTACK:
+                uint selectionIndex = (uint)Random.Range(
+                    0, ai.currentCretin.GetAvailableAttacks.Count
+                ) + 1;
+                this.SendBattleOption(false, selection, selectionIndex);
+                break;
+            default:
+                break;
+        }
     }
 
     private void getLocalNetwork(BattleParticipant p1, BattleParticipant p2, out BattleParticipant local,
@@ -117,14 +151,15 @@ public class BattleHandler : MonoBehaviour
         local.selectionChoice -= 1;
         networkOrAI.selectionChoice -= 1;
 
-        Debug.Log(string.Format("local: {0}\t network: {1}", local.selectionChoice, networkOrAI.selectionChoice));
-
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
             // Local keeper fled
             battleUIController.SetFlavorText("You Fled the battle");
             yield return  new WaitForSeconds(2.0f);
+
+            this.BattleIsOver(local, networkOrAI);
+            yield break;
         }
 
         if (networkOrAI.selection == GameState.Player.EnumBattleSelection.FLEE)
@@ -134,6 +169,7 @@ public class BattleHandler : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
 
             this.BattleIsOver(networkOrAI, local);
+            yield break;
         }
 
         // Check to see if either selection was to switch
@@ -167,11 +203,12 @@ public class BattleHandler : MonoBehaviour
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
-                if (networkOrAI.currentCretin.CurrentHP <= 0)
+                if (networkOrAI.CurrentHP <= 0)
                 {
                     faintedParticipants.Add(networkOrAI);
                 }
 
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
             // then check other (network or AI)
             if (networkOrAI.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
@@ -182,10 +219,12 @@ public class BattleHandler : MonoBehaviour
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
-                if (local.currentCretin.CurrentHP <= 0)
+                if (local.CurrentHP <= 0)
                 {
                     faintedParticipants.Add(local);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
         }
         else
@@ -198,10 +237,12 @@ public class BattleHandler : MonoBehaviour
                     networkOrAI.currentCretin.GetAvailableAttacks[networkOrAI.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
-                if (local.currentCretin.CurrentHP <= 0)
+                if (local.CurrentHP <= 0)
                 {
                     faintedParticipants.Add(local);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
 
             if (local.selection == GameState.Player.EnumBattleSelection.ATTACK && faintedParticipants.Count == 0)
@@ -212,10 +253,12 @@ public class BattleHandler : MonoBehaviour
                     local.currentCretin.GetAvailableAttacks[local.selectionChoice].attackName));
                 yield return new WaitForSeconds(2.0f);
 
-                if (networkOrAI.currentCretin.CurrentHP <= 0)
+                if (networkOrAI.CurrentHP <= 0)
                 {
                     faintedParticipants.Add(networkOrAI);
                 }
+
+                battleUIController.UpdateCretinDisplayData(local, networkOrAI);
             }
         }
 
@@ -229,29 +272,9 @@ public class BattleHandler : MonoBehaviour
 
             if (participant.isPlayer())
             {
-                int indexToSwitchTo = -1;
-                for (int index = 0; index < participant.playerController.monsters.Count; index++)
-                {
-                    MonsterDataObject monster = participant.playerController.monsters[index];
-                    if (monster.CurrentHP < 0)
-                        continue;
-
-                    indexToSwitchTo = index;
-                    break;
-                }
-
-                if (indexToSwitchTo != -1)
-                {
-                    participant.swapCretinTo(indexToSwitchTo);
-                    message = participant.currentCretin.GetMonsterName;
-                    message += " Was substituded in";
-                    battleUIController.SetFlavorText(message);
-                    yield return new WaitForSeconds(2.0f);
-                }
-                else
                 {
                     message = participant.playerController.name;
-                    message += " is out of usable cretins. They have lost the battle.";
+                    message += " has no more health, and they have lost the battle.";
                     battleUIController.SetFlavorText(message);
                     yield return new WaitForSeconds(2.0f);
 
@@ -315,8 +338,6 @@ public class BattleHandler : MonoBehaviour
 
             GameManager.INSTANCE.UnloadBattleScene();
         }
-
-        //
     }
 
 
@@ -388,10 +409,38 @@ public class BattleHandler : MonoBehaviour
 
         float modifier = targets * weather * critical * random * stab * typeAdvantage * burn * other;
 
-        damage = ((2 * level / 5 + 2) * power * attackStat * defenseStat / 50 + 2) * modifier;
+        // didnt work for some reason....
+        //damage = ((2 * level / 5 + 2) * power * attackStat * defenseStat / 50 + 2) * modifier;
+        damage = 2 * level;
+        damage /= 5;
+        damage += 2;
+        damage *= power;
+        damage *= attackStat;
+        damage /= defenseStat;
+        damage /= 50.0f;
+        damage += 2;
+        damage *= modifier;
+
+        /*
+        Debug.Log("Attack: " + attack.attackName + "\t" +
+                  "Total Damage: " + damage + "\t" +
+                  "level: " + level + "\t" +
+                  "power: " + power + "\n" +
+                  "attackStat: " + attackStat + "\t" +
+                  "defenseStat: " + defenseStat + "\t" +
+                  "Total Modifier: " + modifier + "\t" +
+                  "targets: " + targets + "\n" +
+                  "weather: " + weather + "\t" +
+                  "critical: " + critical + "\t" +
+                  "random: " + random + "\t" +
+                  "stab: " + stab + "\n" +
+                  "typeAdvantage: " + typeAdvantage + "\t" +
+                  "burn: " + burn + "\t" +
+                  "other: " + other);
+        //*/
 
         // Apply damage
-        receiver.currentCretin.CurrentHP -= Mathf.FloorToInt(damage);
+        receiver.CurrentHP -= Mathf.FloorToInt(damage);
     }
 
     // Type effectiveness match up 2d array hard coded here. 2d arrays dont look nice in unity inspector
@@ -424,6 +473,4 @@ public class BattleHandler : MonoBehaviour
             this.participant2.onPreExit();
         }
     }
-
 }
-/// @}

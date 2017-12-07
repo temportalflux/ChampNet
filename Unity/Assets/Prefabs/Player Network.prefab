@@ -264,7 +264,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579936410149914}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -341,6 +341,7 @@ MonoBehaviour:
   sprite: {fileID: 4695715790391354}
   overlay: {fileID: 212610132236640268}
   moveTarget: {fileID: 4674415687308240}
+  displacement: {x: 0, y: 0, z: 0}
 --- !u!124 &124293656443015256
 Behaviour:
   m_ObjectHideFlags: 1

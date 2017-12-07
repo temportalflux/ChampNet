@@ -25,22 +25,6 @@ public class BattleTesterEditor : Editor
                 if (t.localPlayerTest == null || t.otherPlayerTest == null)
                     return;
 
-                if (t.localPlayerTest.isPlayer())
-                {
-                    foreach (MonsterDataObject o in t.localPlayerTest.playerController.monsters)
-                    {
-                        o.Heal();
-                    }
-                }
-
-                if (t.otherPlayerTest.isPlayer())
-                {
-                    foreach (MonsterDataObject o in t.otherPlayerTest.playerController.monsters)
-                    {
-                        o.Heal();
-                    }
-                }
-
                 t.battleHandler.SetUpBattle(t.localPlayerTest, t.otherPlayerTest, false);
                 t.IsBattleSetup = true;
             }
@@ -98,22 +82,17 @@ public class BattleTesterEditor : Editor
                 int whileCount = 0;
                 while (whileCount < 20)
                 {
-                    uint selectionIndex = (uint)Random.Range(0, t.battleHandler.participant2.playerController.monsters.Count);
+                    uint selectionIndex =
+                        (uint) Random.Range(0, t.battleHandler.participant2.playerController.monsters.Count);
 
-                    if (t.battleHandler.participant2.playerController.monsters[(int)selectionIndex].CurrentHP > 0)
+                    if (selectionIndex != t.battleHandler.participant2.currentCretinIndex)
                     {
-                        if (selectionIndex != t.battleHandler.participant2.currentCretinIndex)
-                        {
-                            t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP, selectionIndex);
-                            break;
-                        }
+                        t.battleHandler.SendBattleOption(false, GameState.Player.EnumBattleSelection.SWAP,
+                            selectionIndex);
                     }
-            
+
                     whileCount++;
                 }
-
-                if(whileCount >= 20)
-                    Debug.Log("No swap made");
             }
         }
     }

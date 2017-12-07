@@ -48,7 +48,7 @@ public class Transition : TransitionShader {
         }
     }
 
-    protected override void updateShader(float delta)
+    public override void updateShader(float delta)
     {
         if (this.useTransition)
             this.setCutoff(delta);

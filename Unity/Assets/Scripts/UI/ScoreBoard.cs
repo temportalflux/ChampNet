@@ -17,9 +17,6 @@ public class ScoreBoard : MonoBehaviour {
     public GameObject NameHeader;
     public GameObject WinHeader;
 
-    // will remove this when the Dictionary of all units is created
-    public PlayerLocal LocalPlayerScript;
-
     public Camera theCamera;
     
     //private Text name;
@@ -67,7 +64,7 @@ public class ScoreBoard : MonoBehaviour {
         // give GameManager the scoreboard
         GameManager.INSTANCE.grabScoreBoard();
         foreach (RankText text in rankText)
-        {
+        {   
 
             // set rank for later use
             text.Rank = currentText;
@@ -82,7 +79,7 @@ public class ScoreBoard : MonoBehaviour {
             text.NameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 
             // set game object location
-            text.NameObject.GetComponent<RectTransform>().transform.position = text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y - (15 * text.Rank), NameHeader.transform.position.z);
+            text.NameObject.GetComponent<RectTransform>().transform.position = new Vector3(NameHeader.transform.position.x, NameHeader.transform.position.y - (15 * text.Rank), NameHeader.transform.position.z);
             //this.camera.ScreenToWorldPoint(new Vector3(
             //(text.NameObject.GetComponent<RectTransform>().rect.width / 2) + 5,
             //((Screen.height - (text.NameObject.GetComponent<RectTransform>().rect.height / 2)) - (15 * text.Rank)), camera.nearClipPlane));

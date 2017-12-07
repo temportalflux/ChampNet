@@ -23,9 +23,13 @@ public class EventBattleResult : EventBattle
 
     public override void Execute()
     {
-        Debug.Log("Battle between " + this.idSender + " and " + this.idReceiver + " was won by " + this.playerIDWinner);
-        GameState.Player player = GameManager.INSTANCE.state.players[this.playerIDWinner];
-        player.wins++;
+        GameState.Player sender = GameManager.INSTANCE.state.players[this.idSender];
+        GameState.Player receiver = GameManager.INSTANCE.state.players[this.idReceiver];
+        GameState.Player winner = GameManager.INSTANCE.state.players[this.playerIDWinner];
+        Debug.Log(string.Format("Battle between {0}({1}) and {2}({3} was won by {4}({5})",
+            sender.name, sender.playerID, receiver.name, receiver.playerID, winner.name, winner.playerID));
+        EventBattleResultResponse.Dispatch(sender.isLocal ? sender.playerID : receiver.playerID);
+        GameManager.INSTANCE.UnloadBattleScene();
     }
 
     public static void Dispatch(uint winner, uint loser)

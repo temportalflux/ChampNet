@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
@@ -83,6 +84,12 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private bool isLoadingOrInBattle;
 
+    /// <summary>
+    /// Used for response. Saved when requests is recieved.
+    /// </summary>
+    private uint MyRequestID;
+    private uint RequesterID;
+
     void Awake()
     {
         this.inGame = false;
@@ -102,6 +109,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transitionWorld.load(
             () => {
+                this.transitionWorld.setValue(0.0f);
                 this.inGame = true;
                 this.state.isLocalGame = true;
                 this.grabScoreBoard();
@@ -117,6 +125,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.transitionWorld.load(
             () => {
+                this.transitionWorld.setValue(0.0f);
                 this.inGame = true;
                 this.state.isLocalGame = false;
                 this.grabScoreBoard();
@@ -198,6 +207,8 @@ public class GameManager : Singleton<GameManager>
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
 
+    private GameObject _hudGameObject;
+
     public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
     {
         if (!this.isLoadingOrInBattle)
@@ -205,7 +216,11 @@ public class GameManager : Singleton<GameManager>
             this.isLoadingOrInBattle = true;
             this.transitionBattle.load(() =>
             {
-                GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+                this.transitionBattle.setValue(0.0f);
+                if (_hudGameObject == null)
+                    _hudGameObject = GameObject.FindGameObjectWithTag("HUD");
+
+                _hudGameObject.SetActive(false);
 
                 this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
                 this.battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
@@ -220,11 +235,42 @@ public class GameManager : Singleton<GameManager>
             this.battleHandler.onPreExit();
             this.transitionBattle.exit(() =>
             {
-                GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+                this.transitionBattle.setValue(0.0f);
+                _hudGameObject.SetActive(true);
                 this.battleHandler = null;
                 this.isLoadingOrInBattle = false;
             });
         }
+    }
+
+    public void sendResponse(bool answer)
+    {
+        //Debug.Log("Instance My: " + INSTANCE.MyRequestID + " Yours " + INSTANCE.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        INSTANCE.netty.Dispatch(new EventBattleResponse(INSTANCE.RequesterID, INSTANCE.MyRequestID, answer));
+        GameObject.Find("Players").GetComponent<RequestWindowScript>().GetBattleRequestWindow().SetActive(false);
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(false);
+        //GameObject.Find("BattleRequestWindow").SetActive(false);
+    }
+
+    public void setResponseIDs(uint LocalClient, uint opponentID)
+    {
+        this.MyRequestID = LocalClient;
+        this.RequesterID = opponentID;
+
+        //Debug.Log("This My: " + this.MyRequestID + " Yours " + this.RequesterID);
+        //Debug.Log("My: " + MyRequestID + " Yours " + RequesterID);
+
+        // set asking window to active
+        GameObject name = GameObject.FindGameObjectWithTag("AllPlayers").GetComponent<RequestWindowScript>().GetBattleRequestWindow();
+        name.SetActive(true);
+
+        // display character name in asking window
+        name.GetComponentInChildren<Text>().text = ("Battle Request From " + this.state.players[opponentID].name);
+
+        //GameObject.FindGameObjectWithTag("UIRequest").SetActive(true);
+        //GameObject.Find("BattleRequestWindow").SetActive(true);
     }
 
 }

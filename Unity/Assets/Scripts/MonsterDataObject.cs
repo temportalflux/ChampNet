@@ -10,7 +10,7 @@ public class MonsterDataObject //: MonoBehaviour
 
     public string GetMonsterName { get { return monsterStat.monsterName;} }
     public List<MonsterType> GetTypes { get { return monsterStat.types; } }
-    public int GetMaxHp { get { return monsterStat.maxHp; } }
+    //public int GetMaxHp { get { return monsterStat.maxHp; } }
     public int GetAttack { get { return monsterStat.attack; } }
     public int GetDefense { get { return monsterStat.defense; } }
     public int GetSpecialAttack { get { return monsterStat.specialAttack; } }
@@ -25,22 +25,17 @@ public class MonsterDataObject //: MonoBehaviour
     public int statStageSpecialDefense;
     public int statStageSpeed;
 
-    private int _hp;
+    //private int _hp;
 
-    public int CurrentHP
-    {
-        get { return _hp = Mathf.Clamp(_hp, 0, GetMaxHp); }
-        set { _hp = Mathf.Clamp(value, 0, GetMaxHp); }
-    }
-
-    public void Heal()
-    {
-        _hp = GetMaxHp;
-    }
+    //public int CurrentHP
+    //{
+    //    get { return _hp = Mathf.Clamp(_hp, 0, GetMaxHp); }
+    //    set { _hp = Mathf.Clamp(value, 0, GetMaxHp); }
+    //}
 
     MonsterDataObject()
     {
-        //_hp = GetMaxHp;
+
     }
 
     /// <summary>
