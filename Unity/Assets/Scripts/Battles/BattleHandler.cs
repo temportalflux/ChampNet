@@ -48,6 +48,10 @@ public class BattleHandler : MonoBehaviour
                 monster.Heal();
             }
         }
+        else
+        {
+            participant1.currentCretin.Heal();
+        }
 
         if (participant2.isPlayer())
         {
@@ -55,6 +59,10 @@ public class BattleHandler : MonoBehaviour
             {
                 monster.Heal();
             }
+        }
+        else
+        {
+            participant2.currentCretin.Heal();
         }
     }
 
