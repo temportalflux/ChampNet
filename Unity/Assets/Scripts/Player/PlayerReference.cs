@@ -142,6 +142,8 @@ public class PlayerReference : MonoBehaviour {
         // Integrate all physics
         this.playerInfo.integratePhysics(Time.deltaTime);
 
+        if (this._anim == null ) _anim = GetComponentInChildren<Animator>();
+
         if (!this.playerInfo.inBattle)
         {
             this.moveTarget.position = this.playerInfo.position;
@@ -159,10 +161,6 @@ public class PlayerReference : MonoBehaviour {
                 _anim.SetBool("walking", Mathf.Abs(displacement.x) > 0.001f || Mathf.Abs(displacement.y) > 0.001f);
 
                 //Debug.Log (displacement);
-            }
-            else
-            {
-                _anim = GetComponentInChildren<Animator>();
             }
 
             this.transform.position = Vector3.Lerp(this.transform.position, this.moveTarget.position, 0.1f);
