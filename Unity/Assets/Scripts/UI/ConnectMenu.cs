@@ -18,7 +18,7 @@ public class ConnectMenu : MonoBehaviour {
     }
 
     //[System.Diagnostics.CodeAnalysis.SuppressMessage(null, "CS0414")]
-    private string txtAddress = "127.0.0.1", txtPort = "425", txtPlayerCount = "1";
+    private string txtAddress = "216.93.149.213", txtPort = "425", txtPlayerCount = "1";
     //[System.Diagnostics.CodeAnalysis.SuppressMessage(null, "CS0414")]
     private string errorPort = null, errorConnect = null, errorPlayerCount = null;
     private Vector2 scrollPosition = Vector2.zero;
@@ -143,12 +143,6 @@ public class ConnectMenu : MonoBehaviour {
                         GUILayout.Label("Blue " + (int)(this.players[localID].color.b * 255));
                         this.players[localID].color.b = GUILayout.HorizontalSlider(
                             this.players[localID].color.b * 255, 0, 255) / 255F;
-
-                        Texture2D texture = new Texture2D(1, 1);
-                        Color[] colors = new []{this.players[localID].color};
-                        texture.SetPixels(colors);
-
-                        GUILayout.Label();
                     }
                     GUILayout.EndVertical();
 

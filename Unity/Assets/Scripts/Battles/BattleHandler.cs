@@ -132,6 +132,8 @@ public class BattleHandler : MonoBehaviour
             // other keeper fled
             battleUIController.SetFlavorText("Your opponent Fled the battle");
             yield return new WaitForSeconds(2.0f);
+
+            this.BattleIsOver(networkOrAI, local);
         }
 
         // Check to see if either selection was to switch
@@ -268,7 +270,7 @@ public class BattleHandler : MonoBehaviour
                 message = "The battle is over.";
                 battleUIController.SetFlavorText(message);
                 yield return new WaitForSeconds(2.0f);
-                BattleIsOver(local, networkOrAI);
+                BattleIsOver(networkOrAI, local);
             }
         }
         
@@ -290,22 +292,31 @@ public class BattleHandler : MonoBehaviour
         {
             if (winner.playerController.isLocal)
             {
-                EventBattleResult eventBattleResult = new EventBattleResult();
-                eventBattleResult.idSender = winner.playerController.playerID;
-                eventBattleResult.idReceiver = loser.playerController.playerID;
-                eventBattleResult.playerIDWinner = winner.playerController.playerID;
+                EventBattleResult eventBattleResult =
+                    new EventBattleResult
+                    {
+                        idSender = winner.playerController.playerID,
+                        idReceiver = loser.playerController.playerID,
+                        playerIDWinner = winner.playerController.playerID
+                    };
 
                 NetInterface.INSTANCE.Dispatch(eventBattleResult);
-
             }
         }
         else
         {
             // Not sure if anything
             // todo: 1
+
+            if (winner.isPlayer())
+            {
+                EventPlayerAddMonster.Dispatch(winner.playerController.playerID, loser.currentCretin.monsterStat.id);
+            }
+
+            GameManager.INSTANCE.UnloadBattleScene();
         }
 
-        GameManager.INSTANCE.UnloadBattleScene();
+        //
     }
 
 
