@@ -17,9 +17,6 @@ public class ScoreBoard : MonoBehaviour {
     public GameObject NameHeader;
     public GameObject WinHeader;
 
-    // will remove this when the Dictionary of all units is created
-    public PlayerLocal LocalPlayerScript;
-
     public Camera theCamera;
     
     //private Text name;
