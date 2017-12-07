@@ -50,7 +50,7 @@ public class BattleParticipant
         this.fetchCurrentCretin();
     }
 
-    public int maxHP = 75;
+    public int maxHP = 100;
 
     private int _hp;
     public int CurrentHP

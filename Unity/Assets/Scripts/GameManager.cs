@@ -207,6 +207,8 @@ public class GameManager : Singleton<GameManager>
         this.scoreBoardVar = GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<ScoreBoard>();
     }
 
+    private GameObject _hudGameObject;
+
     public void LoadBattleScene(BattleParticipant p1, BattleParticipant p2, bool isNetwokedBattle)
     {
         if (!this.isLoadingOrInBattle)
@@ -215,7 +217,10 @@ public class GameManager : Singleton<GameManager>
             this.transitionBattle.load(() =>
             {
                 this.transitionBattle.setValue(0.0f);
-                GameObject.FindGameObjectWithTag("HUD").SetActive(false);
+                if (_hudGameObject == null)
+                    _hudGameObject = GameObject.FindGameObjectWithTag("HUD");
+
+                _hudGameObject.SetActive(false);
 
                 this.battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
                 this.battleHandler.SetUpBattle(p1, p2, isNetwokedBattle);
@@ -231,7 +236,7 @@ public class GameManager : Singleton<GameManager>
             this.transitionBattle.exit(() =>
             {
                 this.transitionBattle.setValue(0.0f);
-                // TODO: GameObject.FindGameObjectWithTag("HUD").SetActive(true);
+                _hudGameObject.SetActive(true);
                 this.battleHandler = null;
                 this.isLoadingOrInBattle = false;
             });
