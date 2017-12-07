@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391c07e4a5cd3ef4d91c18c107155a64, type: 3}
   m_Name: Water Gun
   m_EditorClassIdentifier: 
-  attackName: 
-  type: 0
-  physicalOrSpecial: 0
-  doesDamage: 0
-  power: 0
+  attackName: Water Gun
+  type: 2
+  physicalOrSpecial: 1
+  doesDamage: 1
+  power: 40
   doesModifiesStats: 0
   doesModifyOpponentStats: 0
   modifyAttackValue: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
   modifySpecialDefenseValue: 0
   modifyAccuracyValue: 0
   modifySpeedValue: 0
-  accuracy: 0
+  accuracy: 100
   powerPoints: 0

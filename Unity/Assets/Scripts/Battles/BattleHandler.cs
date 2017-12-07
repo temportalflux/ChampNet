@@ -58,8 +58,22 @@ public class BattleHandler : MonoBehaviour
         // This is a networked battle, so all logic on when players have gone is handled via server
         if (isNetworked)
         {
-            // TODO: 1
-            //NetInterface.INSTANCE.Dispatch(new EventBattleSelection(-1, -1, selection, selectionIndex));
+            BattleParticipant localControlled = null, remoteControlled = null;
+            if (participant1.playerController.isLocal)
+            {
+                localControlled = participant1;
+                remoteControlled = participant2;
+            }
+            else if (participant2.playerController.isLocal)
+            {
+                localControlled = participant2;
+                remoteControlled = participant1;
+            }
+
+            if (localControlled != null && remoteControlled != null)
+            {
+                NetInterface.INSTANCE.Dispatch(new EventBattleSelection(localControlled.playerController.playerID, remoteControlled.playerController.playerID, selection, selectionIndex));
+            }
         }
         // This is a battle between a player and AI, so everything is handled locally
         else
@@ -68,13 +82,13 @@ public class BattleHandler : MonoBehaviour
             if (isLocalPlayer)
             {
                 this.participant1.selection = selection;
-                this.participant1.selectionChoice = (int)selectionIndex - 1;
+                this.participant1.selectionChoice = (int)selectionIndex;
             }
             // The executor is the AI
             else
             {
                 this.participant2.selection = selection;
-                this.participant2.selectionChoice = (int)selectionIndex - 1;
+                this.participant2.selectionChoice = (int)selectionIndex;
             }
             // Both have picked their selection
             if (this.participant1.selectionChoice != -1 && this.participant2.selectionChoice != -1)
@@ -96,6 +110,11 @@ public class BattleHandler : MonoBehaviour
     [ToDo("handle a death")]
     public IEnumerator HandleResponse(BattleParticipant local, BattleParticipant networkOrAI)
     {
+        local.selectionChoice -= 1;
+        networkOrAI.selectionChoice -= 1;
+
+        Debug.Log(string.Format("local: {0}\t network: {1}", local.selectionChoice, networkOrAI.selectionChoice));
+
         // Check to see if either selection was to flee
         if (local.selection == GameState.Player.EnumBattleSelection.FLEE)
         {
@@ -264,9 +283,9 @@ public class BattleHandler : MonoBehaviour
         if (isNetworked)
         {
             EventBattleResult eventBattleResult = new EventBattleResult();
-            eventBattleResult.idSender = participant1.playerController.clientID;
-            eventBattleResult.idReceiver = participant2.playerController.clientID;
-            eventBattleResult.playerIDWinner = winner.playerController.clientID;
+            eventBattleResult.idSender = participant1.playerController.playerID;
+            eventBattleResult.idReceiver = participant2.playerController.playerID;
+            eventBattleResult.playerIDWinner = winner.playerController.playerID;
 
             NetInterface.INSTANCE.Dispatch(eventBattleResult);
         }
@@ -286,8 +305,34 @@ public class BattleHandler : MonoBehaviour
     /// <param name="attackIndex">the attack index to be used</param>
     private void ApplyAttack(bool isLocalCretin, int attackIndex)
     {
-        MonsterDataObject localKeeperMonster = this.participant1.currentCretin;
-        MonsterDataObject otherKeeperMonster = this.participant2.currentCretin;
+        MonsterDataObject localKeeperMonster = null, otherKeeperMonster = null;
+        
+        if (isLocalCretin)
+        {
+            if (participant1.playerController.isLocal)
+            {
+                localKeeperMonster = participant1.currentCretin;
+                otherKeeperMonster = participant2.currentCretin;
+            }
+            else
+            {
+                localKeeperMonster = participant2.currentCretin;
+                otherKeeperMonster = participant1.currentCretin;
+            }
+        }
+        else
+        {
+            if (!participant1.playerController.isLocal)
+            {
+                otherKeeperMonster = participant1.currentCretin;
+                localKeeperMonster = participant2.currentCretin;
+            }
+            else
+            {
+                otherKeeperMonster = participant2.currentCretin;
+                localKeeperMonster = participant1.currentCretin;
+            }
+        }
 
         // get the attack
         AttackObject attack = isLocalCretin
