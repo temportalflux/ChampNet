@@ -397,7 +397,7 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Report out that the user left
 				std::cout << "Client " << clientID << " has left\n";
-
+								
 				this->removeClient(clientID);
 
 				// Notify all other clients that the user left
@@ -764,6 +764,12 @@ void StateServer::removeClient(unsigned int id)
 				unsigned int playerID = this->mpClientIdToPlayers[id][localID];
 				std::cout << "Removing player " << playerID
 					<< " at client|local=" << id << '|' << localID << '\n';
+				if (this->mpGameState->players[playerID].inBattle)
+				{
+					// stop battle
+					int opponentID = this->mpGameState->players[playerID].battleOpponentId;
+					
+				}
 				this->mpGameState->removePlayer(playerID);
 				this->mpPlayerIdToClientId[playerID] = -1;
 			}
