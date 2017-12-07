@@ -328,9 +328,6 @@ public class BattleHandler : MonoBehaviour
         }
         else
         {
-            // Not sure if anything
-            // todo: 1
-
             if (winner.isPlayer())
             {
                 EventPlayerAddMonster.Dispatch(winner.playerController.playerID, loser.currentCretin.monsterStat.id);
