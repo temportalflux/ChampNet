@@ -564,11 +564,11 @@ void StateServer::handlePacket(ChampNet::Packet *packet)
 
 				// Check if other player has responded
 				int opponentIDOptional = this->mpGameState->players[playerID].battleOpponentId;
-				unsigned int opponentID;
+				unsigned int opponentID = (unsigned int)opponentIDOptional;
 				if (opponentIDOptional >= 0 &&
 					// assign opponentID to the unsigned version of opponentIDOptional (which can be negative)
 					// and then check if it's selection is valid (they have already submitted)
-					this->mpGameState->players[(opponentID = (unsigned int)opponentIDOptional)].lastBattleSelection >= 0)
+					this->mpGameState->players[opponentID].lastBattleSelection >= 0)
 				{
 
 					GameState::Player incoming = this->mpGameState->players[playerID];
